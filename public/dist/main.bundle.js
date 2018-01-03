@@ -242,7 +242,7 @@ exports.AppModule = AppModule;
 /***/ "../../../../../src/app/client/client.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-nav></app-nav>\n\n<mat-card class=\"example-card\">\n  <mat-card-header>\n    <div mat-card-avatar class=\"example-header-image\"></div>\n    <mat-card-title>Shiba Inu</mat-card-title>\n    <mat-card-subtitle>Dog Breed</mat-card-subtitle>\n  </mat-card-header>\n  <img mat-card-image src=\"https://material.angular.io/assets/img/examples/shiba2.jpg\" alt=\"Photo of a Shiba Inu\">\n  <mat-card-content>\n    <p>\n      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes\n      very well with mountainous terrain, the Shiba Inu was originally bred for hunting.\n    </p>\n  </mat-card-content>\n  <mat-card-actions>\n    <button mat-raised-button color=\"accent\">LIKE</button>\n    <button mat-raised-button color=\"accent\">SHARE</button>\n  </mat-card-actions>\n</mat-card>\n\n\n<app-footer></app-footer>"
+module.exports = "<app-nav></app-nav>\n\n<div class=\"header\">\n  <section class=\"mat-typography\">\n    <h1>Tulsa Venues</h1>\n    <img class=\"img\" src=\"assets/tulsavenus.png\" alt=\"Picture of outlined city\">\n    <h4>Who knows Tulsa better then tulsans?</h4>\n  </section>\n  <button mat-raised-button color=\"accent\">Find Your Venue Now</button>\n</div>\n\n\n<app-footer></app-footer>"
 
 /***/ }),
 
@@ -254,7 +254,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "body {\n  margin: 0; }\n\ndiv.header {\n  width: 100%; }\n  div.header .img {\n    margin: auto; }\n  div.header h1, div.header h4 {\n    text-align: center; }\n", ""]);
 
 // exports
 
@@ -303,7 +303,7 @@ exports.ClientComponent = ClientComponent;
 /***/ "../../../../../src/app/footer/footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Page Footer -->\n<footer>\n  <!--Copyright-->\n  <div class='footer-copyright'>\n    <div class='container'>\n      <p class=\"text-center\">Copyright\n        <a class='tab-space' routerLink=\"/rights\">&copy; 2018 Venues. All Rights Reserved.</a>\n      </p>\n    </div>\n  </div>\n  <!--/.Copyright-->\n</footer>\n<!-- end-footer -->\n"
+module.exports = "<!-- Page Footer -->\n<footer color=\"primary\">\n  <!--Copyright-->\n  <div class='footerHead' color=\"primary\">\n    \n  </div>\n  <div class='copyright'>\n    <p>Copyright\n      <a href=\"https://www.baldridgephotography.com\">&copy; 2018 TulsaVenues, a Baldridge Photography LLC company. All Rights Reserved.</a>\n    </p>\n  </div>\n  <!--/.Copyright-->\n</footer>\n<!-- end-footer -->\n"
 
 /***/ }),
 
@@ -315,7 +315,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "footer {\n  width: 100%;\n  text-align: center; }\n", ""]);
 
 // exports
 
@@ -425,7 +425,7 @@ exports.LoginComponent = LoginComponent;
 /***/ "../../../../../src/app/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar color=\"accent\">\n  <mat-toolbar-row>\n    <span>TulsaVenues.com</span>\n    <span class=\"spacer\"></span>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item>Item 1</button>\n      <button mat-menu-item>Item 2</button>\n    </mat-menu>\n  </mat-toolbar-row>\n</mat-toolbar>\n"
+module.exports = "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <span class=\"spacer\"></span>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item>Item 1</button>\n      <button mat-menu-item>Item 2</button>\n    </mat-menu>\n  </mat-toolbar-row>\n</mat-toolbar>\n"
 
 /***/ }),
 
