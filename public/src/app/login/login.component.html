@@ -1,3 +1,39 @@
-<p>
-  login works!
-</p>
+<!-- <div>
+  <div>
+    <h1>Login</h1>
+    <form (submit)="loginUser(); loginForm.reset()" #loginForm="ngForm" class="form">
+      <div class="form-input">
+        <input type="text" name="email" required [(ngModel)]="currentUser.email" placeholder="Email" />
+      </div>
+      <div class="form-input">
+        <input type="password" name="password" required [(ngModel)]="currentUser.password" placeholder="Password" />
+      </div>
+      <input type="submit" value="Login" class="btn btn-info" [disabled]="!currentUser.email" rel='nofollow' rel='noreferrer'>
+    </form>
+    <div>
+      <p *ngFor="let error of errors">{{ error }}</p>
+    </div>
+  </div>
+</div> -->
+
+<div class="container">
+  <form>
+    <!-- ** EMAIL ** -->
+    <mat-form-field>
+      <input matInput placeholder="Enter your email" name="email" [formControl]="email" required [(ngModel)]="currentUser.email">
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+
+  <!-- **  PASSWORD ** -->
+    <mat-form-field>
+      <input matInput placeholder="Enter your password"  name="password" required [(ngModel)]="currentUser.password" [type]="hide ? 'password' : 'text'">
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+    </mat-form-field>
+    <button mat-raised-button color="accent" [disabled]="!currentUser.email">
+      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 0h24v24H0z" fill="none" />
+        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+      </svg>
+    </button>
+  </form>
+</div>
