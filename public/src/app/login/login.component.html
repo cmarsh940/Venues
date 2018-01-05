@@ -8,7 +8,7 @@
       <div class="form-input">
         <input type="password" name="password" required [(ngModel)]="currentUser.password" placeholder="Password" />
       </div>
-      <input type="submit" value="Login" class="btn btn-info" [disabled]="!currentUser.email" rel='nofollow' rel='noreferrer'>
+      <input type="submit" value="Login" class="btn btn-info" [disabled]="!currentUser.email">
     </form>
     <div>
       <p *ngFor="let error of errors">{{ error }}</p>
@@ -17,7 +17,7 @@
 </div> -->
 
 <div class="container">
-  <form>
+  <form (submit)="loginUser(); loginForm.reset()" #loginForm="ngForm">
     <!-- ** EMAIL ** -->
     <mat-form-field>
       <input matInput placeholder="Enter your email" name="email" [formControl]="email" required [(ngModel)]="currentUser.email">
@@ -29,11 +29,36 @@
       <input matInput placeholder="Enter your password"  name="password" required [(ngModel)]="currentUser.password" [type]="hide ? 'password' : 'text'">
       <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
     </mat-form-field>
-    <button mat-raised-button color="accent" [disabled]="!currentUser.email">
-      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 0h24v24H0z" fill="none" />
-        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
-      </svg>
+    <button type="submit" value="Login" [disabled]="!currentUser.email">
+      <h3>Login<i class="material-icons">arrow forward</i></h3>
     </button>
   </form>
-</div>
+</div> 
+
+
+<!-- <div class="col-4">
+  <form (submit)="createUser()" class="form"> 
+    <div class="form-input">
+      <label>Name</label>
+      <input type="text" name="name" [(ngModel)]="newUser.name">
+    </div>
+    <div class="form-input">
+      <label>Email</label>
+      <input type="text" name="email" [(ngModel)]="newUser.email">
+    </div>
+    <div class="form-input">
+      <label>Password</label>
+      <input type="text" name="password" [(ngModel)]="newUser.password">
+    </div>
+    <div class="form-input">
+      <label>Password Confirmation</label>
+      <input type="text" name="password_confirmation" [(ngModel)]="newUser.password_confirmation">
+    </div>
+    <div>
+      <input class="btn btn-primary" type="submit" value="Register">
+    </div>
+  </form>
+  <div>
+    <p *ngFor="let error of errors">{{ error }}</p>
+  </div>
+</div> -->

@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _userService: UserService,
+    private _router: Router,
+  ) { }
 
   ngOnInit() {
+    this.isLoggedIn();
+  }
+
+  isLoggedIn() {
+    if (this._userService.getCurrentUser() == null) {
+      this._router.navigateByUrl('/');
+    }
+  }
+  
+  logout() {
+    console.log("you are logged out");
+    sessionStorage.removeItem('currentUser');
   }
 
 }

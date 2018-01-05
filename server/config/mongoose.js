@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const fs = require('fs');
 var path = require('path');
 
-mongoose.connect('mongodb://localhost/Venues', { useMongoClient: true });
+mongoose.connect('mongodb://localhost/Venues');
 mongoose.Promise = global.Promise;
 
 let models_path = __dirname + '/../models';

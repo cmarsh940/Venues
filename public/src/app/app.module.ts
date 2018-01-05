@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { AdminNavComponent } from './admin-nav/admin-nav.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
     NavComponent,
     LoginComponent,
     DashboardComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    AdminNavComponent
   ],
   imports: [
     BrowserModule,
