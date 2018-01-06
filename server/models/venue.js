@@ -25,11 +25,7 @@ const VenueSchema = new mongoose.Schema({
     },
     cityName: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'City'
-    },
-    stateName: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'State'
+        ref: 'city'
     },
     pic_url: {
         type: String,

@@ -18,6 +18,12 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { AdminNavComponent } from './admin-nav/admin-nav.component';
+import { VenueSearchComponent } from './client/venue-search/venue-search.component';
+import { VenueListComponent } from './admin/venue-list/venue-list.component';
+import { VenueEditComponent } from './admin/venue-list/venue-edit/venue-edit.component';
+import { VenueNewComponent } from './admin/venue-list/venue-new/venue-new.component';
+import { VenueShowComponent } from './admin/venue-list/venue-show/venue-show.component';
+import { VenueService } from './services/venue.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +34,12 @@ import { AdminNavComponent } from './admin-nav/admin-nav.component';
     LoginComponent,
     DashboardComponent,
     AdminDashboardComponent,
-    AdminNavComponent
+    AdminNavComponent,
+    VenueSearchComponent,
+    VenueListComponent,
+    VenueEditComponent,
+    VenueNewComponent,
+    VenueShowComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +82,8 @@ import { AdminNavComponent } from './admin-nav/admin-nav.component';
     ReactiveFormsModule,
   ],
   providers: [
-    UserService
+    UserService,
+    VenueService
   ],
   bootstrap: [AppComponent]
 })

@@ -20,7 +20,7 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_lazy_route_resource lazy re
 /***/ "../../../../../src/app/admin-nav/admin-nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" [class.mobile]=\"mobileQuery.matches\">\n  <mat-toolbar color=\"primary\" class=\"toolbar\">\n    <button mat-icon-button (click)=\"snav.toggle()\">\n      <mat-icon>menu</mat-icon>\n    </button>\n    <h1 class=\"header\">ADMIN</h1>\n    <span class=\"spacer\"></span>\n    <i [routerLink]=\"['/']\" (click)='logout()' class=\"material-icons\">&#xE879;</i>\n  </mat-toolbar>\n\n  <mat-sidenav-container class=\"sidenav-container\" [style.marginTop.px]=\"mobileQuery.matches ? 56 : 0\">\n    <mat-sidenav #snav [mode]=\"mobileQuery.matches ? 'over' : 'side'\" [fixedInViewport]=\"mobileQuery.matches\" fixedTopGap=\"56\">\n      <mat-nav-list>\n        <a mat-list-item routerLink=\"/dashboard\">Testing</a>\n      </mat-nav-list>\n    </mat-sidenav>\n  </mat-sidenav-container>\n\n</div>"
+module.exports = "<div class=\"container\" [class.mobile]=\"mobileQuery.matches\">\n  <mat-toolbar color=\"primary\" class=\"toolbar\">\n    <button mat-icon-button (click)=\"snav.toggle()\">\n      <mat-icon>menu</mat-icon>\n    </button>\n    <h1 class=\"header\">ADMIN</h1>\n    <span class=\"spacer\"></span>\n    <i [routerLink]=\"['/']\" (click)='logout()' class=\"material-icons\">&#xE879;</i>\n  </mat-toolbar>\n\n  <mat-sidenav-container class=\"sidenav-container\" [style.marginTop.px]=\"mobileQuery.matches ? 56 : 0\">\n    <mat-sidenav #snav [mode]=\"mobileQuery.matches ? 'over' : 'side'\" [fixedInViewport]=\"mobileQuery.matches\" fixedTopGap=\"56\">\n      <mat-nav-list>\n        <a mat-list-item routerLink=\"/dashboard\">Dashboard</a>\n        <a mat-list-item routerLink=\"list_venue\">Venues</a>\n      </mat-nav-list>\n    </mat-sidenav>\n  </mat-sidenav-container>\n\n</div>"
 
 /***/ }),
 
@@ -237,6 +237,372 @@ exports.AdminComponent = AdminComponent;
 
 /***/ }),
 
+/***/ "../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<button [routerLink]=\"['/list_venue']\">Cancel</button>\n<h2 class=\"text-center\">Edit {{venue.name}}</h2>\n<div class=\"container\">\n  <form (submit)=\"update(venue)\" #formData=\"ngForm\" class=\"form\">\n    <div class=\"form-group\">\n      <label>Name</label>\n      <input type='text' class=\"form-control\" name='name' [(ngModel)]=\"venue.name\" #name='ngModel' required>\n      <div class='errors' *ngIf='name.errors && (name.dirty || name.touch)'>\n        <span *ngIf='name.errors.required'>Name is required</span>\n      </div>\n    </div>\n    <input type='submit' class='btn btn-info' [disabled]=!formData.valid>\n  </form>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
+var venue_1 = __webpack_require__("../../../../../src/app/classes/venue.ts");
+var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var router_1 = __webpack_require__("../../../router/esm5/router.js");
+var VenueEditComponent = (function () {
+    function VenueEditComponent(_route, _venueService, _userService, _router) {
+        this._route = _route;
+        this._venueService = _venueService;
+        this._userService = _userService;
+        this._router = _router;
+        this.venue = new venue_1.Venue;
+    }
+    VenueEditComponent.prototype.ngOnInit = function () {
+        this.isLoggedIn();
+        this.getVenues();
+        this.getRouteParams();
+    };
+    VenueEditComponent.prototype.isLoggedIn = function () {
+        if (this._userService.getCurrentUser() == null) {
+            this._router.navigateByUrl('/');
+        }
+    };
+    VenueEditComponent.prototype.getVenues = function () {
+        var _this = this;
+        this._venueService.get_venues()
+            .then(function (data) {
+            _this.venue_list = data;
+        })
+            .catch(function (err) { console.log(err); });
+    };
+    VenueEditComponent.prototype.getRouteParams = function () {
+        var _this = this;
+        this._route.params.subscribe(function (param) {
+            console.log('request to get one venue from client');
+            console.log(param.id);
+            _this._venueService.get_one(param.id)
+                .then(function (data) {
+                _this.venue = data;
+            })
+                .catch(function (err) { console.log(err); });
+        });
+    };
+    VenueEditComponent.prototype.update = function (venue) {
+        this._venueService.update_venue(this.venue);
+        this._router.navigate(['/list_venue']);
+    };
+    VenueEditComponent = __decorate([
+        core_1.Component({
+            selector: 'app-venue-edit',
+            template: __webpack_require__("../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.scss")]
+        }),
+        __metadata("design:paramtypes", [router_1.ActivatedRoute,
+            venue_service_1.VenueService,
+            user_service_1.UserService,
+            router_1.Router])
+    ], VenueEditComponent);
+    return VenueEditComponent;
+}());
+exports.VenueEditComponent = VenueEditComponent;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/venue-list/venue-list.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  venue-list works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/venue-list/venue-list.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/venue-list/venue-list.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var VenueListComponent = (function () {
+    function VenueListComponent() {
+    }
+    VenueListComponent.prototype.ngOnInit = function () {
+    };
+    VenueListComponent = __decorate([
+        core_1.Component({
+            selector: 'app-venue-list',
+            template: __webpack_require__("../../../../../src/app/admin/venue-list/venue-list.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/admin/venue-list/venue-list.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], VenueListComponent);
+    return VenueListComponent;
+}());
+exports.VenueListComponent = VenueListComponent;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/venue-list/venue-new/venue-new.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<h3 class=\"text-center\">Add a Venue</h3>\n<div class=\"container\">\n  <form #form (submit)=\"create_venue()\" encType=\"multipart/form-data\">\n    <div class=\"form-group\">\n      <input type=\"text\" class=\"form-control\" name=\"name\" required maxlength=125 [(ngModel)]=\"new_venue.name\" placeholder=\"Name\"\n      />\n    </div>\n    \n    <div class=\"form-group\">\n      <input #file type=\"file\" name=\"picture\" [(ngModel)]=\"new_venue.pic_url\">\n    </div>\n\n    <input type=\"submit\" value=\"Submit\">\n  </form>\n  <div>\n    <p class=\"error\" *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/venue-list/venue-new/venue-new.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/venue-list/venue-new/venue-new.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var router_1 = __webpack_require__("../../../router/esm5/router.js");
+var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
+var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
+var venue_1 = __webpack_require__("../../../../../src/app/classes/venue.ts");
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var VenueNewComponent = (function () {
+    function VenueNewComponent(_venueService, _userService, _router) {
+        this._venueService = _venueService;
+        this._userService = _userService;
+        this._router = _router;
+        this.new_venue = new venue_1.Venue;
+        this.errors = [];
+        this.new_venue_event = new core_1.EventEmitter;
+    }
+    VenueNewComponent.prototype.ngOnInit = function () {
+        this.isLoggedIn();
+    };
+    VenueNewComponent.prototype.isLoggedIn = function () {
+        if (this._userService.getCurrentUser() == null) {
+            this._router.navigateByUrl('/');
+        }
+    };
+    VenueNewComponent.prototype.create_venue = function () {
+        var _this = this;
+        var form_data = new FormData(this.my_form.nativeElement);
+        console.log("*** This is the form data", form_data);
+        this._venueService.post_venue(form_data)
+            .then(function () {
+            console.log("*** Setting new venue");
+            _this.new_venue = new venue_1.Venue;
+            console.log("*** Setting file value");
+            _this.file_input.nativeElement.value = "";
+            console.log("*** About to emit");
+            _this.new_venue_event.emit();
+            _this._router.navigate(["/list_venue"]);
+        });
+    };
+    __decorate([
+        core_1.ViewChild("file"),
+        __metadata("design:type", Object)
+    ], VenueNewComponent.prototype, "file_input", void 0);
+    __decorate([
+        core_1.ViewChild("form"),
+        __metadata("design:type", Object)
+    ], VenueNewComponent.prototype, "my_form", void 0);
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", Object)
+    ], VenueNewComponent.prototype, "new_venue_event", void 0);
+    VenueNewComponent = __decorate([
+        core_1.Component({
+            selector: 'app-venue-new',
+            template: __webpack_require__("../../../../../src/app/admin/venue-list/venue-new/venue-new.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/admin/venue-list/venue-new/venue-new.component.scss")]
+        }),
+        __metadata("design:paramtypes", [venue_service_1.VenueService,
+            user_service_1.UserService,
+            router_1.Router])
+    ], VenueNewComponent);
+    return VenueNewComponent;
+}());
+exports.VenueNewComponent = VenueNewComponent;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/venue-list/venue-show/venue-show.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<button [routerLink]=\"['/venue', 'add']\">Add a venue</button>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/venue-list/venue-show/venue-show.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/venue-list/venue-show/venue-show.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var router_1 = __webpack_require__("../../../router/esm5/router.js");
+var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
+var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var VenueShowComponent = (function () {
+    function VenueShowComponent(_venueService, _userService, _router) {
+        this._venueService = _venueService;
+        this._userService = _userService;
+        this._router = _router;
+        this.search_text = "";
+    }
+    VenueShowComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.isLoggedIn();
+        this._venueService.get_venues()
+            .then(function (data) { return _this.venue_list = data; })
+            .catch(function (err) { return console.log(err); });
+    };
+    VenueShowComponent.prototype.isLoggedIn = function () {
+        if (this._userService.getCurrentUser() == null) {
+            this._router.navigateByUrl('/');
+        }
+    };
+    VenueShowComponent.prototype.getVenues = function () {
+        var _this = this;
+        this._venueService.get_venues()
+            .then(function (data) {
+            _this.venue_list = data;
+        })
+            .catch(function (err) { console.log(err); });
+    };
+    VenueShowComponent.prototype.delete = function (venue) {
+        var _this = this;
+        this._venueService.destroy_venue(venue)
+            .then(function () { _this.getVenues(); })
+            .catch(function (err) { console.log("the error is: ", err); });
+    };
+    VenueShowComponent = __decorate([
+        core_1.Component({
+            selector: 'app-venue-show',
+            template: __webpack_require__("../../../../../src/app/admin/venue-list/venue-show/venue-show.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/admin/venue-list/venue-show/venue-show.component.scss")]
+        }),
+        __metadata("design:paramtypes", [venue_service_1.VenueService,
+            user_service_1.UserService,
+            router_1.Router])
+    ], VenueShowComponent);
+    return VenueShowComponent;
+}());
+exports.VenueShowComponent = VenueShowComponent;
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/app-routing.module.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -256,11 +622,16 @@ var login_component_1 = __webpack_require__("../../../../../src/app/login/login.
 var client_component_1 = __webpack_require__("../../../../../src/app/client/client.component.ts");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var router_1 = __webpack_require__("../../../router/esm5/router.js");
+var venue_search_component_1 = __webpack_require__("../../../../../src/app/client/venue-search/venue-search.component.ts");
+var venue_edit_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.ts");
+var venue_new_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-new/venue-new.component.ts");
+var venue_show_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-show/venue-show.component.ts");
 var routes = [
     {
         path: '', component: client_component_1.ClientComponent,
         children: [
             { path: '', pathMatch: 'full', component: dashboard_component_1.DashboardComponent },
+            { path: 'search', pathMatch: 'full', component: venue_search_component_1.VenueSearchComponent },
         ]
     },
     { path: 'admin', pathMatch: 'full', component: login_component_1.LoginComponent },
@@ -268,6 +639,9 @@ var routes = [
         path: 'dashboard', component: admin_component_1.AdminComponent,
         children: [
             { path: 'dashboard', pathMatch: 'full', component: admin_dashboard_component_1.AdminDashboardComponent },
+            { path: 'list_venue', pathMatch: 'full', component: venue_show_component_1.VenueShowComponent },
+            { path: 'venue/add', pathMatch: 'full', component: venue_new_component_1.VenueNewComponent },
+            { path: 'venue/edit/:id', pathMatch: 'full', component: venue_edit_component_1.VenueEditComponent },
         ]
     },
     {
@@ -377,6 +751,12 @@ var http_1 = __webpack_require__("../../../http/esm5/http.js");
 var http_2 = __webpack_require__("../../../common/esm5/http.js");
 var admin_dashboard_component_1 = __webpack_require__("../../../../../src/app/admin/admin-dashboard/admin-dashboard.component.ts");
 var admin_nav_component_1 = __webpack_require__("../../../../../src/app/admin-nav/admin-nav.component.ts");
+var venue_search_component_1 = __webpack_require__("../../../../../src/app/client/venue-search/venue-search.component.ts");
+var venue_list_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-list.component.ts");
+var venue_edit_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.ts");
+var venue_new_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-new/venue-new.component.ts");
+var venue_show_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-show/venue-show.component.ts");
+var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -391,7 +771,12 @@ var AppModule = (function () {
                 login_component_1.LoginComponent,
                 dashboard_component_1.DashboardComponent,
                 admin_dashboard_component_1.AdminDashboardComponent,
-                admin_nav_component_1.AdminNavComponent
+                admin_nav_component_1.AdminNavComponent,
+                venue_search_component_1.VenueSearchComponent,
+                venue_list_component_1.VenueListComponent,
+                venue_edit_component_1.VenueEditComponent,
+                venue_new_component_1.VenueNewComponent,
+                venue_show_component_1.VenueShowComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -434,7 +819,8 @@ var AppModule = (function () {
                 forms_1.ReactiveFormsModule,
             ],
             providers: [
-                user_service_1.UserService
+                user_service_1.UserService,
+                venue_service_1.VenueService
             ],
             bootstrap: [app_component_1.AppComponent]
         })
@@ -458,6 +844,22 @@ var User = (function () {
     return User;
 }());
 exports.User = User;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/classes/venue.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Venue = (function () {
+    function Venue() {
+    }
+    return Venue;
+}());
+exports.Venue = Venue;
 
 
 /***/ }),
@@ -580,6 +982,67 @@ var DashboardComponent = (function () {
     return DashboardComponent;
 }());
 exports.DashboardComponent = DashboardComponent;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/client/venue-search/venue-search.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  venue-search works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/client/venue-search/venue-search.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/client/venue-search/venue-search.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var VenueSearchComponent = (function () {
+    function VenueSearchComponent() {
+    }
+    VenueSearchComponent.prototype.ngOnInit = function () {
+    };
+    VenueSearchComponent = __decorate([
+        core_1.Component({
+            selector: 'app-venue-search',
+            template: __webpack_require__("../../../../../src/app/client/venue-search/venue-search.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/client/venue-search/venue-search.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], VenueSearchComponent);
+    return VenueSearchComponent;
+}());
+exports.VenueSearchComponent = VenueSearchComponent;
 
 
 /***/ }),
@@ -763,7 +1226,7 @@ exports.LoginComponent = LoginComponent;
 /***/ "../../../../../src/app/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <span class=\"spacer\"></span>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item>Item 1</button>\n      <button mat-menu-item>Item 2</button>\n    </mat-menu>\n  </mat-toolbar-row>\n</mat-toolbar>\n"
+module.exports = "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <span class=\"spacer\"></span>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/\">Home</button>\n      <button mat-menu-item routerLink=\"/search\">Search</button>\n      <button mat-menu-item>Item 2</button>\n    </mat-menu>\n  </mat-toolbar-row>\n</mat-toolbar>\n"
 
 /***/ }),
 
@@ -892,6 +1355,66 @@ var UserService = (function () {
     return UserService;
 }());
 exports.UserService = UserService;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/venue.service.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var http_1 = __webpack_require__("../../../http/esm5/http.js");
+__webpack_require__("../../../../rxjs/Rx.js");
+var VenueService = (function () {
+    function VenueService(_http) {
+        this._http = _http;
+    }
+    VenueService.prototype.get_venues = function () {
+        return this._http.get('/venues')
+            .map(function (data) { return data.json(); })
+            .toPromise();
+    };
+    VenueService.prototype.post_venue = function (form_data) {
+        return this._http.post("/venues/add", form_data)
+            .map(function (data) { return data.json(); })
+            .toPromise();
+    };
+    VenueService.prototype.destroy_venue = function (venue) {
+        console.log("*** Hit venues service");
+        return this._http.post('/venues/destroy', venue)
+            .map(function (data) { return data.json(); })
+            .toPromise();
+    };
+    VenueService.prototype.update_venue = function (venue) {
+        return this._http.post('/venues/update', venue)
+            .map(function (data) { return data.json(); })
+            .toPromise();
+    };
+    VenueService.prototype.get_one = function (venue_id) {
+        console.log("venue_id from service", venue_id);
+        return this._http.post('/venues/id', { venue_id: venue_id })
+            .map(function (data) { return data.json(); })
+            .toPromise();
+    };
+    VenueService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.Http])
+    ], VenueService);
+    return VenueService;
+}());
+exports.VenueService = VenueService;
 
 
 /***/ }),

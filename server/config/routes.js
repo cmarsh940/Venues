@@ -1,4 +1,5 @@
 const Users = require('../controllers/users');
+const venues = require('../controllers/venues');
 const path = require('path');
 
 module.exports = function (app) {
@@ -7,11 +8,11 @@ module.exports = function (app) {
     app.delete('/users', Users.logout);
     app.get('/session', Users.session);
 
-    // app.get('/venues', venues.index);
-    // app.post('/venues/add', venues.upload);
-    // app.post('/venues/destroy', venues.destroy);
-    // app.post('/venues/update', venues.update);
-    // app.post('/venues/id', venues.getOne);
+    app.get('/venues', venues.index);
+    app.post('/venues/add', venues.upload);
+    app.post('/venues/destroy', venues.destroy);
+    app.post('/venues/update', venues.update);
+    app.post('/venues/id', venues.getOne);
 
 
     app.all('*', (req, res, next) => {

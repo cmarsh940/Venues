@@ -7,10 +7,6 @@ const CitySchema = new mongoose.Schema({
         maxlength: 100,
         alias: 'name'
     },
-    state: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'State'
-    }
 }, { timestamps: true })
 
 mongoose.model('City', CitySchema);

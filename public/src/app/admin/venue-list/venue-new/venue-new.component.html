@@ -1,0 +1,18 @@
+<h3 class="text-center">Add a Venue</h3>
+<div class="container">
+  <form #form (submit)="create_venue()" encType="multipart/form-data">
+    <div class="form-group">
+      <input type="text" class="form-control" name="name" required maxlength=125 [(ngModel)]="new_venue.name" placeholder="Name"
+      />
+    </div>
+    
+    <div class="form-group">
+      <input #file type="file" name="picture" [(ngModel)]="new_venue.pic_url">
+    </div>
+
+    <input type="submit" value="Submit">
+  </form>
+  <div>
+    <p class="error" *ngFor="let error of errors">{{ error }}</p>
+  </div>
+</div>
