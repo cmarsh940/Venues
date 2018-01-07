@@ -11,3 +11,22 @@ div.header {
         text-align: center;
     }
 }
+
+#search-button {
+    width: 100%;
+    button{
+        display: flex;
+        margin: auto;
+    }
+}
+
+div.movie {
+    width: 25%;
+    height: 10rem;
+    border-right: 1px solid black;
+
+}
+
+h2 {
+    text-align: center;
+}

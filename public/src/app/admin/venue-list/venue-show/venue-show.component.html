@@ -1,2 +1,58 @@
-<button [routerLink]="['/venue', 'add']">Add a venue</button>
+<button mat-raised-button [routerLink]="['/venue', 'add']">Add a venue</button>
 <h1>Venues</h1>
+<hr>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>#</th>
+            <th>Website</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let v of venue_list">
+            <td>{{ v.n }}</td>
+            <td>{{ v.e }}</td>
+            <td>{{ v.p }}</td>
+            <td>{{ v.w }}</td>
+            <td>
+                <button  [routerLink]="['/venue', 'edit', v._id]">
+                    <mat-icon aria-hidden="true">
+                        <i class="material-icons">&#xE3C9;</i>
+                    </mat-icon>
+                </button>
+                <button (click)="delete(v)">
+                    <mat-icon aria-hidden="true">
+                        <i class="material-icons">&#xE872;</i>
+                    </mat-icon>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<!-- <div class="container mat-elevation-z8">
+    <mat-table #table *ngFor="let venue of venue_list">
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+            <mat-cell *matCellDef="let venue"> {{venue.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+            <mat-cell *matCellDef="let venue"> {{venue.email}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="phone">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> # </mat-header-cell>
+            <mat-cell *matCellDef="let venue"> {{venue.phone}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div> -->

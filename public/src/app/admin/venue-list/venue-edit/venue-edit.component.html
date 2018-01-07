@@ -1,11 +1,28 @@
-<button [routerLink]="['/list_venue']">Cancel</button>
-<h2 class="text-center">Edit {{venue.name}}</h2>
+<button mat-raised-button [routerLink]="['/list_venue']">Cancel</button>
+<h1 class="text-center">Edit {{venue.n}} venue</h1>
 <div class="container">
   <form (submit)="update(venue)" #formData="ngForm" class="form">
-    <div class="form-group">
-      <label>Name</label>
-      <input type='text' class="form-control" name='name' [(ngModel)]="venue.name" #name='ngModel' required>
-    </div>
-    <input type='submit' class='btn btn-info' [disabled]=!formData.valid>
+    <!-- Name -->
+    <mat-form-field>
+      <input matInput name='name' [(ngModel)]="venue.n" #name='ngModel' required>
+    </mat-form-field>
+  
+    <!-- Email -->
+    <mat-form-field>
+    <input matInput name='email' [(ngModel)]="venue.e" #email='ngModel' required>
+    </mat-form-field>
+
+    <!-- Phone# -->
+    <mat-form-field>
+      <input matInput name='phone' [(ngModel)]="venue.p" #phone='ngModel' required>
+    </mat-form-field>
+
+    <!-- Website -->
+    <mat-form-field>
+      <input matInput name='website' [(ngModel)]="venue.w" #website='ngModel' required>
+    </mat-form-field>
+
+    <!-- Submit -->
+    <input type='submit' [disabled]=!formData.valid>
   </form>
 </div>

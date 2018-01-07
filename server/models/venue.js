@@ -3,24 +3,24 @@ const mongoose = require('mongoose');
 const VenueSchema = new mongoose.Schema({
     n: {
         type: String,
-        required: [true, 'Name cannot be blank.'],
+        // required: [true, 'Name cannot be blank.'],
         maxlength: 250,
         alias: 'name'
     },
     e: {
         type: String,
-        required: [true, 'Email cannot be blank.'],
+        // required: [true, 'Email cannot be blank.'],
         alias: 'email'
     },
     p: {
         type: Number,
-        required: [true, "Phone number cannot be blank."],
+        // required: [true, "Phone number cannot be blank."],
         maxlength: 12,
         alias: 'phone'
     },
     w: {
         type: String,
-        required: [true, 'Website cannot be blank.'],
+        // required: [true, 'Website cannot be blank.'],
         alias: 'website'
     },
     cityName: {

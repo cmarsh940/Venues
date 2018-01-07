@@ -227,7 +227,7 @@ exports.AdminComponent = AdminComponent;
 /***/ "../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button [routerLink]=\"['/list_venue']\">Cancel</button>\n<h2 class=\"text-center\">Edit {{venue.name}}</h2>\n<div class=\"container\">\n  <form (submit)=\"update(venue)\" #formData=\"ngForm\" class=\"form\">\n    <div class=\"form-group\">\n      <label>Name</label>\n      <input type='text' class=\"form-control\" name='name' [(ngModel)]=\"venue.name\" #name='ngModel' required>\n    </div>\n    <input type='submit' class='btn btn-info' [disabled]=!formData.valid>\n  </form>\n</div>"
+module.exports = "<button mat-raised-button [routerLink]=\"['/list_venue']\">Cancel</button>\n<h1 class=\"text-center\">Edit {{venue.n}} venue</h1>\n<div class=\"container\">\n  <form (submit)=\"update(venue)\" #formData=\"ngForm\" class=\"form\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name='name' [(ngModel)]=\"venue.n\" #name='ngModel' required>\n    </mat-form-field>\n  \n    <!-- Email -->\n    <mat-form-field>\n    <input matInput name='email' [(ngModel)]=\"venue.e\" #email='ngModel' required>\n    </mat-form-field>\n\n    <!-- Phone# -->\n    <mat-form-field>\n      <input matInput name='phone' [(ngModel)]=\"venue.p\" #phone='ngModel' required>\n    </mat-form-field>\n\n    <!-- Website -->\n    <mat-form-field>\n      <input matInput name='website' [(ngModel)]=\"venue.w\" #website='ngModel' required>\n    </mat-form-field>\n\n    <!-- Submit -->\n    <input type='submit' [disabled]=!formData.valid>\n  </form>\n</div>"
 
 /***/ }),
 
@@ -239,7 +239,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "h1 {\n  width: 100%;\n  text-align: center; }\n\nform {\n  width: 50%;\n  margin: auto;\n  overflow: hidden; }\n  form .mat-form-field {\n    width: 100%; }\n", ""]);
 
 // exports
 
@@ -332,7 +332,7 @@ exports.VenueEditComponent = VenueEditComponent;
 /***/ "../../../../../src/app/admin/venue-list/venue-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  venue-list works!\n</p>\n"
+module.exports = ""
 
 /***/ }),
 
@@ -393,7 +393,7 @@ exports.VenueListComponent = VenueListComponent;
 /***/ "../../../../../src/app/admin/venue-list/venue-new/venue-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"text-center\">Add a Venue</h3>\n<div class=\"container\">\n  <form #form (submit)=\"create_venue()\" encType=\"multipart/form-data\">\n    <div class=\"form-group\">\n      <input type=\"text\" class=\"form-control\" name=\"name\" required maxlength=125 [(ngModel)]=\"new_venue.name\" placeholder=\"Name\"\n      />\n    </div>\n    \n    <div class=\"form-group\">\n      <input #file type=\"file\" name=\"picture\" [(ngModel)]=\"new_venue.pic_url\">\n    </div>\n\n    <input type=\"submit\" value=\"Submit\">\n  </form>\n  <div>\n    <p class=\"error\" *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div>\n"
+module.exports = "<button mat-raised-button [routerLink]=\"['/list_venue']\">\n  <i class=\"material-icons\">&#xE5C4;</i>\n</button>\n<h1>Add a Venue</h1>\n  <form #form (submit)=\"create_venue()\" encType=\"multipart/form-data\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name=\"name\" required maxlength=125 [(ngModel)]=\"new_venue.name\" placeholder=\"Venue Name\">\n    </mat-form-field>\n\n    <!-- Email -->\n    <mat-form-field>\n      <input matInput name=\"email\" required maxlength=250 [(ngModel)]=\"new_venue.email\" placeholder=\"Venue Email\">\n    </mat-form-field>\n\n    <!-- Phone# -->\n    <mat-form-field>\n      <input matInput name=\"phone\" required maxlength=20 [(ngModel)]=\"new_venue.phone\" placeholder=\"Venue Phone #\">\n    </mat-form-field>\n\n    <!-- Website -->\n    <mat-form-field>\n      <input matInput name=\"website\" required maxlength=250 [(ngModel)]=\"new_venue.website\" placeholder=\"Venue Website\">\n    </mat-form-field>\n\n    <!-- Picture -->\n    <div>\n      <input #file type=\"file\" name=\"picture\" [(ngModel)]=\"new_venue.pic_url\">\n    </div>\n\n    <!-- Submit -->\n    <input type=\"submit\" value=\"Submit\">\n  </form>\n  \n  <div>\n    <p class=\"error\" *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n"
 
 /***/ }),
 
@@ -405,7 +405,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "form {\n  width: 50%;\n  margin: auto;\n  overflow: hidden; }\n  form .mat-form-field {\n    width: 100%; }\n\nh1 {\n  width: 100%;\n  text-align: center; }\n", ""]);
 
 // exports
 
@@ -499,7 +499,7 @@ exports.VenueNewComponent = VenueNewComponent;
 /***/ "../../../../../src/app/admin/venue-list/venue-show/venue-show.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button [routerLink]=\"['/venue', 'add']\">Add a venue</button>\n<h1>Venues</h1>"
+module.exports = "<button mat-raised-button [routerLink]=\"['/venue', 'add']\">Add a venue</button>\n<h1>Venues</h1>\n<hr>\n<table>\n    <thead>\n        <tr>\n            <th>Name</th>\n            <th>Email</th>\n            <th>#</th>\n            <th>Website</th>\n            <th>Action</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr *ngFor=\"let v of venue_list\">\n            <td>{{ v.n }}</td>\n            <td>{{ v.e }}</td>\n            <td>{{ v.p }}</td>\n            <td>{{ v.w }}</td>\n            <td>\n                <button  [routerLink]=\"['/venue', 'edit', v._id]\">\n                    <mat-icon aria-hidden=\"true\">\n                        <i class=\"material-icons\">&#xE3C9;</i>\n                    </mat-icon>\n                </button>\n                <button (click)=\"delete(v)\">\n                    <mat-icon aria-hidden=\"true\">\n                        <i class=\"material-icons\">&#xE872;</i>\n                    </mat-icon>\n                </button>\n            </td>\n        </tr>\n    </tbody>\n</table>\n\n\n<!-- <div class=\"container mat-elevation-z8\">\n    <mat-table #table *ngFor=\"let venue of venue_list\">\n\n        <ng-container matColumnDef=\"name\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>\n            <mat-cell *matCellDef=\"let venue\"> {{venue.name}} </mat-cell>\n        </ng-container>\n\n        <ng-container matColumnDef=\"email\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>\n            <mat-cell *matCellDef=\"let venue\"> {{venue.email}} </mat-cell>\n        </ng-container>\n\n        <ng-container matColumnDef=\"phone\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header> # </mat-header-cell>\n            <mat-cell *matCellDef=\"let venue\"> {{venue.phone}} </mat-cell>\n        </ng-container>\n\n        <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\n        <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n    </mat-table>\n</div> -->"
 
 /***/ }),
 
@@ -511,7 +511,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  min-width: 300px; }\n\n.mat-table {\n  overflow: auto;\n  max-height: 500px; }\n\n.mat-header-cell.mat-sort-header-sorted {\n  color: black; }\n\nh1 {\n  width: 100%;\n  text-align: center; }\n\ntable {\n  width: 100%; }\n  table th {\n    border-bottom: 1px solid black; }\n  table td {\n    text-align: center;\n    border-bottom: 1px solid black;\n    border-right: 1px solid black; }\n", ""]);
 
 // exports
 
@@ -915,7 +915,7 @@ exports.ClientComponent = ClientComponent;
 /***/ "../../../../../src/app/client/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\n  <section class=\"mat-typography\">\n    <h1>Tulsa Venues</h1>\n    <!-- <img class=\"img\" src=\"assets/tulsavenus.png\" alt=\"Picture of outlined city\"> -->\n    <h4>Who knows Tulsa better then tulsans?</h4>\n  </section>\n  <button mat-raised-button color=\"accent\" routerLink=\"/search\">Find Your Venue Now</button>\n</div>\n<hr>\n<div>\n  <!-- <iframe width=\"420\" height=\"315\" src=\"https://www.youtube.com/embed/XGSy3_Czz8k?controls=0?autoplay=1\">\n  </iframe> -->\n</div>\n<hr>\n<div>\n  <h2>Preferred Venders</h2>\n</div>"
+module.exports = "<div class=\"header\">\n  <section class=\"mat-typography\">\n    <h1>Tulsa Venues</h1>\n    <!-- <img class=\"img\" src=\"assets/tulsavenus.png\" alt=\"Picture of outlined city\"> -->\n    <h4>Who knows Tulsa better then tulsans?</h4>\n  </section>\n  <div id=\"search-button\">\n    <button mat-raised-button color=\"accent\" routerLink=\"/search\">Find Your Venue Now</button>\n  </div>\n</div>\n<hr>\n<div class=\"movie\">\n  <div class=\"icon\">\n    <i class=\"material-icons\">&#xE04A;</i>\n  </div>\n</div>\n<hr>\n<div>\n  <h2>Preferred Venders</h2>\n</div>"
 
 /***/ }),
 
@@ -927,7 +927,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "body {\n  margin: 0; }\n\ndiv.header {\n  width: 100%; }\n  div.header .img {\n    margin: auto; }\n  div.header h1, div.header h4 {\n    text-align: center; }\n", ""]);
+exports.push([module.i, "body {\n  margin: 0; }\n\ndiv.header {\n  width: 100%; }\n  div.header .img {\n    margin: auto; }\n  div.header h1, div.header h4 {\n    text-align: center; }\n\n#search-button {\n  width: 100%; }\n  #search-button button {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin: auto; }\n\ndiv.movie {\n  width: 25%;\n  height: 10rem;\n  border-right: 1px solid black; }\n\nh2 {\n  text-align: center; }\n", ""]);
 
 // exports
 
@@ -1037,7 +1037,7 @@ exports.VenueSearchComponent = VenueSearchComponent;
 /***/ "../../../../../src/app/footer/footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Page Footer -->\n<footer color=\"primary\">\n  <!--Copyright-->\n  <div class='footerHead' color=\"primary\">\n    \n  </div>\n  <div class='copyright'>\n    <p>Copyright\n      <a href=\"https://www.baldridgephotography.com\">&copy; 2018 TulsaVenues, a Baldridge Photography LLC company. All Rights Reserved.</a>\n    </p>\n  </div>\n  <!--/.Copyright-->\n</footer>\n<!-- end-footer -->\n"
+module.exports = "<!-- Page Footer -->\n<footer>\n  <div >\n    \n  </div>\n  <div class='copyright'>\n    <p>Copyright\n      <a href=\"https://www.baldridgephotography.com\">&copy; 2018 TulsaVenues, a Baldridge Photography LLC company. All Rights Reserved.</a>\n    </p>\n  </div>\n  <!--/.Copyright-->\n</footer>\n<!-- end-footer -->\n"
 
 /***/ }),
 
@@ -1049,7 +1049,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "footer {\n  width: 100%;\n  text-align: center; }\n", ""]);
+exports.push([module.i, "footer {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  text-align: center;\n  background: gainsboro; }\n", ""]);
 
 // exports
 
