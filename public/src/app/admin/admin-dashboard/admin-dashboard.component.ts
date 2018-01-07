@@ -15,13 +15,6 @@ export class AdminDashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.isLoggedIn();
-  }
-
-  isLoggedIn() {
-    if (this._userService.getCurrentUser() == null) {
-      this._router.navigateByUrl('/');
-    }
   }
 
 }

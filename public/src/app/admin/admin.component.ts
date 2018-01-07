@@ -15,14 +15,14 @@ export class AdminComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.isLoggedIn();
+    // this.isLoggedIn();
   }
 
-  isLoggedIn() {
-    if (this._userService.getCurrentUser() == null) {
-      this._router.navigateByUrl('/');
-    }
-  }
+  // isLoggedIn() {
+  //   if (this._userService.getCurrentUser() == null) {
+  //     this._router.navigateByUrl('/');
+  //   }
+  // }
   
   logout() {
     console.log("you are logged out");

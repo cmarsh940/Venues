@@ -5,9 +5,6 @@
     <div class="form-group">
       <label>Name</label>
       <input type='text' class="form-control" name='name' [(ngModel)]="venue.name" #name='ngModel' required>
-      <div class='errors' *ngIf='name.errors && (name.dirty || name.touch)'>
-        <span *ngIf='name.errors.required'>Name is required</span>
-      </div>
     </div>
     <input type='submit' class='btn btn-info' [disabled]=!formData.valid>
   </form>

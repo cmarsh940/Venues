@@ -20,7 +20,7 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_lazy_route_resource lazy re
 /***/ "../../../../../src/app/admin-nav/admin-nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" [class.mobile]=\"mobileQuery.matches\">\n  <mat-toolbar color=\"primary\" class=\"toolbar\">\n    <button mat-icon-button (click)=\"snav.toggle()\">\n      <mat-icon>menu</mat-icon>\n    </button>\n    <h1 class=\"header\">ADMIN</h1>\n    <span class=\"spacer\"></span>\n    <i [routerLink]=\"['/']\" (click)='logout()' class=\"material-icons\">&#xE879;</i>\n  </mat-toolbar>\n\n  <mat-sidenav-container class=\"sidenav-container\" [style.marginTop.px]=\"mobileQuery.matches ? 56 : 0\">\n    <mat-sidenav #snav [mode]=\"mobileQuery.matches ? 'over' : 'side'\" [fixedInViewport]=\"mobileQuery.matches\" fixedTopGap=\"56\">\n      <mat-nav-list>\n        <a mat-list-item routerLink=\"/dashboard\">Dashboard</a>\n        <a mat-list-item routerLink=\"list_venue\">Venues</a>\n      </mat-nav-list>\n    </mat-sidenav>\n  </mat-sidenav-container>\n\n</div>"
+module.exports = "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/dashboard\">Home</button>\n      <button mat-menu-item routerLink=\"/list_venue\">Venues</button>\n    </mat-menu>\n    <span class=\"spacer\"></span>\n    <button mat-icon-button [routerLink]=\"['/']\" (click)='logout()'>\n      <mat-icon aria-label=\"Logout button\">exit_to_app</mat-icon>\n    </button>\n  </mat-toolbar-row>\n</mat-toolbar>"
 
 /***/ }),
 
@@ -32,7 +32,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0; }\n\n.mobile .toolbar {\n  position: fixed;\n  /* Make sure the toolbar will stay on top of the content as it scrolls past. */\n  z-index: 2; }\n\nh1.header {\n  margin-left: 8px; }\n\n.sidenav-container {\n  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This\n     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1; }\n\n.mobile .sidenav-container {\n  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the\n     `<body>` to be our scrolling element for mobile layouts. */\n  -webkit-box-flex: 1;\n      -ms-flex: 1 0 auto;\n          flex: 1 0 auto; }\n\n.spacer {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto; }\n", ""]);
+exports.push([module.i, ".spacer {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto; }\n", ""]);
 
 // exports
 
@@ -58,16 +58,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
-var layout_1 = __webpack_require__("../../../cdk/esm5/layout.es5.js");
 var AdminNavComponent = (function () {
-    function AdminNavComponent(changeDetectorRef, media) {
-        this.mobileQuery = media.matchMedia('(max-width: 600px)');
-        this._mobileQueryListener = function () { return changeDetectorRef.detectChanges(); };
-        this.mobileQuery.addListener(this._mobileQueryListener);
+    function AdminNavComponent() {
     }
-    AdminNavComponent.prototype.ngOnDestroy = function () {
-        this.mobileQuery.removeListener(this._mobileQueryListener);
-    };
     AdminNavComponent.prototype.ngOnInit = function () {
     };
     AdminNavComponent.prototype.logout = function () {
@@ -80,7 +73,7 @@ var AdminNavComponent = (function () {
             template: __webpack_require__("../../../../../src/app/admin-nav/admin-nav.component.html"),
             styles: [__webpack_require__("../../../../../src/app/admin-nav/admin-nav.component.scss")]
         }),
-        __metadata("design:paramtypes", [core_1.ChangeDetectorRef, layout_1.MediaMatcher])
+        __metadata("design:paramtypes", [])
     ], AdminNavComponent);
     return AdminNavComponent;
 }());
@@ -92,7 +85,7 @@ exports.AdminNavComponent = AdminNavComponent;
 /***/ "../../../../../src/app/admin/admin-dashboard/admin-dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>ADMIN</h1>"
+module.exports = "<h1>Admin Dashboard</h1>"
 
 /***/ }),
 
@@ -138,12 +131,6 @@ var AdminDashboardComponent = (function () {
         this._router = _router;
     }
     AdminDashboardComponent.prototype.ngOnInit = function () {
-        this.isLoggedIn();
-    };
-    AdminDashboardComponent.prototype.isLoggedIn = function () {
-        if (this._userService.getCurrentUser() == null) {
-            this._router.navigateByUrl('/');
-        }
     };
     AdminDashboardComponent = __decorate([
         core_1.Component({
@@ -164,7 +151,7 @@ exports.AdminDashboardComponent = AdminDashboardComponent;
 /***/ "../../../../../src/app/admin/admin.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-admin-nav></app-admin-nav>\n<router-outlet></router-outlet>\n"
+module.exports = "<app-admin-nav></app-admin-nav>\n<router-outlet></router-outlet>"
 
 /***/ }),
 
@@ -210,13 +197,13 @@ var AdminComponent = (function () {
         this._router = _router;
     }
     AdminComponent.prototype.ngOnInit = function () {
-        this.isLoggedIn();
+        // this.isLoggedIn();
     };
-    AdminComponent.prototype.isLoggedIn = function () {
-        if (this._userService.getCurrentUser() == null) {
-            this._router.navigateByUrl('/');
-        }
-    };
+    // isLoggedIn() {
+    //   if (this._userService.getCurrentUser() == null) {
+    //     this._router.navigateByUrl('/');
+    //   }
+    // }
     AdminComponent.prototype.logout = function () {
         console.log("you are logged out");
         sessionStorage.removeItem('currentUser');
@@ -240,7 +227,7 @@ exports.AdminComponent = AdminComponent;
 /***/ "../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button [routerLink]=\"['/list_venue']\">Cancel</button>\n<h2 class=\"text-center\">Edit {{venue.name}}</h2>\n<div class=\"container\">\n  <form (submit)=\"update(venue)\" #formData=\"ngForm\" class=\"form\">\n    <div class=\"form-group\">\n      <label>Name</label>\n      <input type='text' class=\"form-control\" name='name' [(ngModel)]=\"venue.name\" #name='ngModel' required>\n      <div class='errors' *ngIf='name.errors && (name.dirty || name.touch)'>\n        <span *ngIf='name.errors.required'>Name is required</span>\n      </div>\n    </div>\n    <input type='submit' class='btn btn-info' [disabled]=!formData.valid>\n  </form>\n</div>"
+module.exports = "<button [routerLink]=\"['/list_venue']\">Cancel</button>\n<h2 class=\"text-center\">Edit {{venue.name}}</h2>\n<div class=\"container\">\n  <form (submit)=\"update(venue)\" #formData=\"ngForm\" class=\"form\">\n    <div class=\"form-group\">\n      <label>Name</label>\n      <input type='text' class=\"form-control\" name='name' [(ngModel)]=\"venue.name\" #name='ngModel' required>\n    </div>\n    <input type='submit' class='btn btn-info' [disabled]=!formData.valid>\n  </form>\n</div>"
 
 /***/ }),
 
@@ -512,7 +499,7 @@ exports.VenueNewComponent = VenueNewComponent;
 /***/ "../../../../../src/app/admin/venue-list/venue-show/venue-show.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button [routerLink]=\"['/venue', 'add']\">Add a venue</button>"
+module.exports = "<button [routerLink]=\"['/venue', 'add']\">Add a venue</button>\n<h1>Venues</h1>"
 
 /***/ }),
 
@@ -615,17 +602,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var admin_dashboard_component_1 = __webpack_require__("../../../../../src/app/admin/admin-dashboard/admin-dashboard.component.ts");
-var dashboard_component_1 = __webpack_require__("../../../../../src/app/client/dashboard/dashboard.component.ts");
-var admin_component_1 = __webpack_require__("../../../../../src/app/admin/admin.component.ts");
 var login_component_1 = __webpack_require__("../../../../../src/app/login/login.component.ts");
-var client_component_1 = __webpack_require__("../../../../../src/app/client/client.component.ts");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var router_1 = __webpack_require__("../../../router/esm5/router.js");
+var client_component_1 = __webpack_require__("../../../../../src/app/client/client.component.ts");
+var dashboard_component_1 = __webpack_require__("../../../../../src/app/client/dashboard/dashboard.component.ts");
 var venue_search_component_1 = __webpack_require__("../../../../../src/app/client/venue-search/venue-search.component.ts");
-var venue_edit_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.ts");
-var venue_new_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-new/venue-new.component.ts");
+var admin_component_1 = __webpack_require__("../../../../../src/app/admin/admin.component.ts");
+var admin_dashboard_component_1 = __webpack_require__("../../../../../src/app/admin/admin-dashboard/admin-dashboard.component.ts");
 var venue_show_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-show/venue-show.component.ts");
+var venue_new_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-new/venue-new.component.ts");
+var venue_edit_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.ts");
 var routes = [
     {
         path: '', component: client_component_1.ClientComponent,
@@ -636,7 +623,7 @@ var routes = [
     },
     { path: 'admin', pathMatch: 'full', component: login_component_1.LoginComponent },
     {
-        path: 'dashboard', component: admin_component_1.AdminComponent,
+        path: '', component: admin_component_1.AdminComponent,
         children: [
             { path: 'dashboard', pathMatch: 'full', component: admin_dashboard_component_1.AdminDashboardComponent },
             { path: 'list_venue', pathMatch: 'full', component: venue_show_component_1.VenueShowComponent },
@@ -928,7 +915,7 @@ exports.ClientComponent = ClientComponent;
 /***/ "../../../../../src/app/client/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\n  <section class=\"mat-typography\">\n    <h1>Tulsa Venues</h1>\n    <img class=\"img\" src=\"assets/tulsavenus.png\" alt=\"Picture of outlined city\">\n    <h4>Who knows Tulsa better then tulsans?</h4>\n  </section>\n  <button mat-raised-button color=\"accent\" routerLink=\"#\">Find Your Venue Now</button>\n</div>\n<hr>\n<div>\n  <iframe width=\"420\" height=\"315\" src=\"https://www.youtube.com/embed/XGSy3_Czz8k?controls=0?autoplay=1\">\n  </iframe>\n</div>\n<hr>\n<div>\n  <h2>Preferred Venders</h2>\n</div>"
+module.exports = "<div class=\"header\">\n  <section class=\"mat-typography\">\n    <h1>Tulsa Venues</h1>\n    <!-- <img class=\"img\" src=\"assets/tulsavenus.png\" alt=\"Picture of outlined city\"> -->\n    <h4>Who knows Tulsa better then tulsans?</h4>\n  </section>\n  <button mat-raised-button color=\"accent\" routerLink=\"/search\">Find Your Venue Now</button>\n</div>\n<hr>\n<div>\n  <!-- <iframe width=\"420\" height=\"315\" src=\"https://www.youtube.com/embed/XGSy3_Czz8k?controls=0?autoplay=1\">\n  </iframe> -->\n</div>\n<hr>\n<div>\n  <h2>Preferred Venders</h2>\n</div>"
 
 /***/ }),
 
@@ -1111,7 +1098,7 @@ exports.FooterComponent = FooterComponent;
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <div>\n  <div>\n    <h1>Login</h1>\n    <form (submit)=\"loginUser(); loginForm.reset()\" #loginForm=\"ngForm\" class=\"form\">\n      <div class=\"form-input\">\n        <input type=\"text\" name=\"email\" required [(ngModel)]=\"currentUser.email\" placeholder=\"Email\" />\n      </div>\n      <div class=\"form-input\">\n        <input type=\"password\" name=\"password\" required [(ngModel)]=\"currentUser.password\" placeholder=\"Password\" />\n      </div>\n      <input type=\"submit\" value=\"Login\" class=\"btn btn-info\" [disabled]=\"!currentUser.email\">\n    </form>\n    <div>\n      <p *ngFor=\"let error of errors\">{{ error }}</p>\n    </div>\n  </div>\n</div> -->\n\n<div class=\"container\">\n  <form (submit)=\"loginUser(); loginForm.reset()\" #loginForm=\"ngForm\">\n    <!-- ** EMAIL ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your email\" name=\"email\" [formControl]=\"email\" required [(ngModel)]=\"currentUser.email\">\n      <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n    </mat-form-field>\n\n  <!-- **  PASSWORD ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your password\"  name=\"password\" required [(ngModel)]=\"currentUser.password\" [type]=\"hide ? 'password' : 'text'\">\n      <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n    </mat-form-field>\n    <button type=\"submit\" value=\"Login\" [disabled]=\"!currentUser.email\">\n      <h3>Login<i class=\"material-icons\">arrow forward</i></h3>\n    </button>\n  </form>\n</div> \n\n\n<!-- <div class=\"col-4\">\n  <form (submit)=\"createUser()\" class=\"form\"> \n    <div class=\"form-input\">\n      <label>Name</label>\n      <input type=\"text\" name=\"name\" [(ngModel)]=\"newUser.name\">\n    </div>\n    <div class=\"form-input\">\n      <label>Email</label>\n      <input type=\"text\" name=\"email\" [(ngModel)]=\"newUser.email\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password</label>\n      <input type=\"text\" name=\"password\" [(ngModel)]=\"newUser.password\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password Confirmation</label>\n      <input type=\"text\" name=\"password_confirmation\" [(ngModel)]=\"newUser.password_confirmation\">\n    </div>\n    <div>\n      <input class=\"btn btn-primary\" type=\"submit\" value=\"Register\">\n    </div>\n  </form>\n  <div>\n    <p *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div> -->"
+module.exports = "<div class=\"container\">\n  <form (submit)=\"loginUser(); loginForm.reset()\" #loginForm=\"ngForm\">\n    <!-- ** EMAIL ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your email\"autocomplete=\"email\" name=\"email\" [formControl]=\"email\" required [(ngModel)]=\"currentUser.email\">\n      <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n    </mat-form-field>\n\n  <!-- **  PASSWORD ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your password\" autocomplete=\"current-password\" name=\"password\" required [(ngModel)]=\"currentUser.password\" [type]=\"hide ? 'password' : 'text'\">\n      <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n    </mat-form-field>\n    <button type=\"submit\" value=\"Login\" [disabled]=\"!currentUser.email\">\n      <h3>Login<i class=\"material-icons\">arrow forward</i></h3>\n    </button>\n  </form>\n  <div>\n    <p *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div> \n\n\n<!-- <div class=\"col-4\">\n  <form (submit)=\"createUser()\" class=\"form\"> \n    <div class=\"form-input\">\n      <label>Name</label>\n      <input type=\"text\" name=\"name\" [(ngModel)]=\"newUser.name\">\n    </div>\n    <div class=\"form-input\">\n      <label>Email</label>\n      <input type=\"text\" name=\"email\" [(ngModel)]=\"newUser.email\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password</label>\n      <input type=\"text\" name=\"password\" [(ngModel)]=\"newUser.password\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password Confirmation</label>\n      <input type=\"text\" name=\"password_confirmation\" [(ngModel)]=\"newUser.password_confirmation\">\n    </div>\n    <div>\n      <input class=\"btn btn-primary\" type=\"submit\" value=\"Register\">\n    </div>\n  </form>\n  <div>\n    <p *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div> -->"
 
 /***/ }),
 
@@ -1123,7 +1110,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "form {\n  width: 25%;\n  margin: auto; }\n\n.mat-form-field {\n  display: block; }\n", ""]);
+exports.push([module.i, "form {\n  width: 25%;\n  margin: auto; }\n\n.mat-form-field {\n  display: block; }\n\np {\n  text-align: center;\n  color: red; }\n", ""]);
 
 // exports
 
