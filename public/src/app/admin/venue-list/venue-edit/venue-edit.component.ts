@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-venue-edit',
   templateUrl: './venue-edit.component.html',
-  styleUrls: ['./venue-edit.component.scss']
+  styleUrls: ['./venue-edit.component.css']
 })
 export class VenueEditComponent implements OnInit {
   venue = new Venue;

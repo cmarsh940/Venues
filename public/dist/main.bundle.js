@@ -17,14 +17,7 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_lazy_route_resource lazy re
 
 /***/ }),
 
-/***/ "../../../../../src/app/admin-nav/admin-nav.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/dashboard\">Home</button>\n      <button mat-menu-item routerLink=\"/list_venue\">Venues</button>\n    </mat-menu>\n    <span class=\"spacer\"></span>\n    <button mat-icon-button [routerLink]=\"['/']\" (click)='logout()'>\n      <mat-icon aria-label=\"Logout button\">exit_to_app</mat-icon>\n    </button>\n  </mat-toolbar-row>\n</mat-toolbar>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/admin-nav/admin-nav.component.scss":
+/***/ "../../../../../src/app/admin-nav/admin-nav.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -32,13 +25,20 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".spacer {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto; }\n", ""]);
+exports.push([module.i, ".spacer {\n    -webkit-box-flex: 1;\n        -ms-flex: 1 1 auto;\n            flex: 1 1 auto;\n}", ""]);
 
 // exports
 
 
 /*** EXPORTS FROM exports-loader ***/
 module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin-nav/admin-nav.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/dashboard\">Home</button>\n      <button mat-menu-item routerLink=\"/list_venue\">Venues</button>\n    </mat-menu>\n    <span class=\"spacer\"></span>\n    <button mat-icon-button [routerLink]=\"['/']\" (click)='logout()'>\n      <mat-icon aria-label=\"Logout button\">exit_to_app</mat-icon>\n    </button>\n  </mat-toolbar-row>\n</mat-toolbar>"
 
 /***/ }),
 
@@ -71,7 +71,7 @@ var AdminNavComponent = (function () {
         core_1.Component({
             selector: 'app-admin-nav',
             template: __webpack_require__("../../../../../src/app/admin-nav/admin-nav.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/admin-nav/admin-nav.component.scss")]
+            styles: [__webpack_require__("../../../../../src/app/admin-nav/admin-nav.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], AdminNavComponent);
@@ -82,14 +82,7 @@ exports.AdminNavComponent = AdminNavComponent;
 
 /***/ }),
 
-/***/ "../../../../../src/app/admin/admin-dashboard/admin-dashboard.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<h1>Admin Dashboard</h1>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/admin/admin-dashboard/admin-dashboard.component.scss":
+/***/ "../../../../../src/app/admin/admin-dashboard/admin-dashboard.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -104,6 +97,13 @@ exports.push([module.i, "", ""]);
 
 /*** EXPORTS FROM exports-loader ***/
 module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/admin-dashboard/admin-dashboard.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<h1>Admin Dashboard</h1>"
 
 /***/ }),
 
@@ -136,7 +136,7 @@ var AdminDashboardComponent = (function () {
         core_1.Component({
             selector: 'app-admin-dashboard',
             template: __webpack_require__("../../../../../src/app/admin/admin-dashboard/admin-dashboard.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/admin/admin-dashboard/admin-dashboard.component.scss")]
+            styles: [__webpack_require__("../../../../../src/app/admin/admin-dashboard/admin-dashboard.component.css")]
         }),
         __metadata("design:paramtypes", [user_service_1.UserService,
             router_1.Router])
@@ -148,14 +148,7 @@ exports.AdminDashboardComponent = AdminDashboardComponent;
 
 /***/ }),
 
-/***/ "../../../../../src/app/admin/admin.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<app-admin-nav></app-admin-nav>\n<router-outlet></router-outlet>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/admin/admin.component.scss":
+/***/ "../../../../../src/app/admin/admin.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -170,6 +163,13 @@ exports.push([module.i, "", ""]);
 
 /*** EXPORTS FROM exports-loader ***/
 module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/admin.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<app-admin-nav></app-admin-nav>\n<router-outlet></router-outlet>"
 
 /***/ }),
 
@@ -212,7 +212,7 @@ var AdminComponent = (function () {
         core_1.Component({
             selector: 'app-admin',
             template: __webpack_require__("../../../../../src/app/admin/admin.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/admin/admin.component.scss")]
+            styles: [__webpack_require__("../../../../../src/app/admin/admin.component.css")]
         }),
         __metadata("design:paramtypes", [user_service_1.UserService,
             router_1.Router])
@@ -224,14 +224,7 @@ exports.AdminComponent = AdminComponent;
 
 /***/ }),
 
-/***/ "../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<button mat-raised-button [routerLink]=\"['/list_venue']\">Cancel</button>\n<h1 class=\"text-center\">Edit {{venue.n}} venue</h1>\n<div class=\"container\">\n  <form (submit)=\"update(venue)\" #formData=\"ngForm\" class=\"form\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name='name' [(ngModel)]=\"venue.n\" #name='ngModel' required>\n    </mat-form-field>\n  \n    <!-- Email -->\n    <mat-form-field>\n    <input matInput name='email' [(ngModel)]=\"venue.e\" #email='ngModel' required>\n    </mat-form-field>\n\n    <!-- Phone# -->\n    <mat-form-field>\n      <input matInput name='phone' [(ngModel)]=\"venue.p\" #phone='ngModel' required>\n    </mat-form-field>\n\n    <!-- Website -->\n    <mat-form-field>\n      <input matInput name='website' [(ngModel)]=\"venue.w\" #website='ngModel' required>\n    </mat-form-field>\n\n    <!-- Submit -->\n    <input type='submit' [disabled]=!formData.valid>\n  </form>\n</div>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.scss":
+/***/ "../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -239,13 +232,20 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "h1 {\n  width: 100%;\n  text-align: center; }\n\nform {\n  width: 50%;\n  margin: auto;\n  overflow: hidden; }\n  form .mat-form-field {\n    width: 100%; }\n", ""]);
+exports.push([module.i, "h1 {\n    width: 100%;\n    text-align: center;\n}\n\nform {\n    width:50%;\n    margin: auto;\n    overflow: hidden;\n    .mat-form-field {\n        width: 100%;\n    }\n}", ""]);
 
 // exports
 
 
 /*** EXPORTS FROM exports-loader ***/
 module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<button mat-raised-button [routerLink]=\"['/list_venue']\">Cancel</button>\n<h1 class=\"text-center\">Edit {{venue.n}} venue</h1>\n<div class=\"container\">\n  <form (submit)=\"update(venue)\" #formData=\"ngForm\" class=\"form\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name='name' [(ngModel)]=\"venue.n\" #name='ngModel' required>\n    </mat-form-field>\n  \n    <!-- Email -->\n    <mat-form-field>\n    <input matInput name='email' [(ngModel)]=\"venue.e\" #email='ngModel' required>\n    </mat-form-field>\n\n    <!-- Phone# -->\n    <mat-form-field>\n      <input matInput name='phone' [(ngModel)]=\"venue.p\" #phone='ngModel' required>\n    </mat-form-field>\n\n    <!-- Website -->\n    <mat-form-field>\n      <input matInput name='website' [(ngModel)]=\"venue.w\" #website='ngModel' required>\n    </mat-form-field>\n\n    <!-- Submit -->\n    <input type='submit' [disabled]=!formData.valid>\n  </form>\n</div>"
 
 /***/ }),
 
@@ -315,7 +315,7 @@ var VenueEditComponent = (function () {
         core_1.Component({
             selector: 'app-venue-edit',
             template: __webpack_require__("../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.scss")]
+            styles: [__webpack_require__("../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.css")]
         }),
         __metadata("design:paramtypes", [router_1.ActivatedRoute,
             venue_service_1.VenueService,
@@ -329,14 +329,7 @@ exports.VenueEditComponent = VenueEditComponent;
 
 /***/ }),
 
-/***/ "../../../../../src/app/admin/venue-list/venue-list.component.html":
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "../../../../../src/app/admin/venue-list/venue-list.component.scss":
+/***/ "../../../../../src/app/admin/venue-list/venue-list.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -351,6 +344,13 @@ exports.push([module.i, "", ""]);
 
 /*** EXPORTS FROM exports-loader ***/
 module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/venue-list/venue-list.component.html":
+/***/ (function(module, exports) {
+
+module.exports = ""
 
 /***/ }),
 
@@ -379,7 +379,7 @@ var VenueListComponent = (function () {
         core_1.Component({
             selector: 'app-venue-list',
             template: __webpack_require__("../../../../../src/app/admin/venue-list/venue-list.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/admin/venue-list/venue-list.component.scss")]
+            styles: [__webpack_require__("../../../../../src/app/admin/venue-list/venue-list.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], VenueListComponent);
@@ -390,14 +390,7 @@ exports.VenueListComponent = VenueListComponent;
 
 /***/ }),
 
-/***/ "../../../../../src/app/admin/venue-list/venue-new/venue-new.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<button mat-raised-button [routerLink]=\"['/list_venue']\">\n  <i class=\"material-icons\">&#xE5C4;</i>\n</button>\n<h1>Add a Venue</h1>\n  <form #form (submit)=\"create_venue()\" encType=\"multipart/form-data\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name=\"name\" required maxlength=125 [(ngModel)]=\"new_venue.name\" placeholder=\"Venue Name\">\n    </mat-form-field>\n\n    <!-- Email -->\n    <mat-form-field>\n      <input matInput name=\"email\" required maxlength=250 [(ngModel)]=\"new_venue.email\" placeholder=\"Venue Email\">\n    </mat-form-field>\n\n    <!-- Phone# -->\n    <mat-form-field>\n      <input matInput name=\"phone\" required maxlength=20 [(ngModel)]=\"new_venue.phone\" placeholder=\"Venue Phone #\">\n    </mat-form-field>\n\n    <!-- Website -->\n    <mat-form-field>\n      <input matInput name=\"website\" required maxlength=250 [(ngModel)]=\"new_venue.website\" placeholder=\"Venue Website\">\n    </mat-form-field>\n\n    <!-- Picture -->\n    <div>\n      <input #file type=\"file\" name=\"picture\" [(ngModel)]=\"new_venue.pic_url\">\n    </div>\n\n    <!-- Submit -->\n    <input type=\"submit\" value=\"Submit\">\n  </form>\n  \n  <div>\n    <p class=\"error\" *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/admin/venue-list/venue-new/venue-new.component.scss":
+/***/ "../../../../../src/app/admin/venue-list/venue-new/venue-new.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -405,13 +398,20 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "form {\n  width: 50%;\n  margin: auto;\n  overflow: hidden; }\n  form .mat-form-field {\n    width: 100%; }\n\nh1 {\n  width: 100%;\n  text-align: center; }\n", ""]);
+exports.push([module.i, "form {\n    width:50%;\n    margin: auto;\n    overflow: hidden;\n    .mat-form-field {\n        width: 100%;\n    }\n}\n\nh1 {\n  width:100%;\n  text-align: center;\n}", ""]);
 
 // exports
 
 
 /*** EXPORTS FROM exports-loader ***/
 module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/venue-list/venue-new/venue-new.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<button mat-raised-button [routerLink]=\"['/list_venue']\">\n  <i class=\"material-icons\">&#xE5C4;</i>\n</button>\n<h1>Add a Venue</h1>\n  <form #form (submit)=\"create_venue()\" encType=\"multipart/form-data\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name=\"name\" required maxlength=125 [(ngModel)]=\"new_venue.name\" placeholder=\"Venue Name\">\n    </mat-form-field>\n\n    <!-- Email -->\n    <mat-form-field>\n      <input matInput name=\"email\" required maxlength=250 [(ngModel)]=\"new_venue.email\" placeholder=\"Venue Email\">\n    </mat-form-field>\n\n    <!-- Phone# -->\n    <mat-form-field>\n      <input matInput name=\"phone\" required maxlength=20 [(ngModel)]=\"new_venue.phone\" placeholder=\"Venue Phone #\">\n    </mat-form-field>\n\n    <!-- Website -->\n    <mat-form-field>\n      <input matInput name=\"website\" required maxlength=250 [(ngModel)]=\"new_venue.website\" placeholder=\"Venue Website\">\n    </mat-form-field>\n\n    <!-- Picture -->\n    <div>\n      <input #file type=\"file\" name=\"picture\" [(ngModel)]=\"new_venue.pic_url\">\n    </div>\n\n    <!-- Submit -->\n    <input type=\"submit\" value=\"Submit\">\n  </form>\n  \n  <div>\n    <p class=\"error\" *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n"
 
 /***/ }),
 
@@ -483,7 +483,7 @@ var VenueNewComponent = (function () {
         core_1.Component({
             selector: 'app-venue-new',
             template: __webpack_require__("../../../../../src/app/admin/venue-list/venue-new/venue-new.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/admin/venue-list/venue-new/venue-new.component.scss")]
+            styles: [__webpack_require__("../../../../../src/app/admin/venue-list/venue-new/venue-new.component.css")]
         }),
         __metadata("design:paramtypes", [venue_service_1.VenueService,
             user_service_1.UserService,
@@ -496,14 +496,7 @@ exports.VenueNewComponent = VenueNewComponent;
 
 /***/ }),
 
-/***/ "../../../../../src/app/admin/venue-list/venue-show/venue-show.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<button mat-raised-button [routerLink]=\"['/venue', 'add']\">Add a venue</button>\n<h1>Venues</h1>\n<hr>\n<table>\n    <thead>\n        <tr>\n            <th>Name</th>\n            <th>Email</th>\n            <th>#</th>\n            <th>Website</th>\n            <th>Action</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr *ngFor=\"let v of venue_list\">\n            <td>{{ v.n }}</td>\n            <td>{{ v.e }}</td>\n            <td>{{ v.p }}</td>\n            <td>{{ v.w }}</td>\n            <td>\n                <button  [routerLink]=\"['/venue', 'edit', v._id]\">\n                    <mat-icon aria-hidden=\"true\">\n                        <i class=\"material-icons\">&#xE3C9;</i>\n                    </mat-icon>\n                </button>\n                <button (click)=\"delete(v)\">\n                    <mat-icon aria-hidden=\"true\">\n                        <i class=\"material-icons\">&#xE872;</i>\n                    </mat-icon>\n                </button>\n            </td>\n        </tr>\n    </tbody>\n</table>\n\n\n<!-- <div class=\"container mat-elevation-z8\">\n    <mat-table #table *ngFor=\"let venue of venue_list\">\n\n        <ng-container matColumnDef=\"name\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>\n            <mat-cell *matCellDef=\"let venue\"> {{venue.name}} </mat-cell>\n        </ng-container>\n\n        <ng-container matColumnDef=\"email\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>\n            <mat-cell *matCellDef=\"let venue\"> {{venue.email}} </mat-cell>\n        </ng-container>\n\n        <ng-container matColumnDef=\"phone\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header> # </mat-header-cell>\n            <mat-cell *matCellDef=\"let venue\"> {{venue.phone}} </mat-cell>\n        </ng-container>\n\n        <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\n        <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n    </mat-table>\n</div> -->"
-
-/***/ }),
-
-/***/ "../../../../../src/app/admin/venue-list/venue-show/venue-show.component.scss":
+/***/ "../../../../../src/app/admin/venue-list/venue-show/venue-show.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -511,13 +504,20 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  min-width: 300px; }\n\n.mat-table {\n  overflow: auto;\n  max-height: 500px; }\n\n.mat-header-cell.mat-sort-header-sorted {\n  color: black; }\n\nh1 {\n  width: 100%;\n  text-align: center; }\n\ntable {\n  width: 100%; }\n  table th {\n    border-bottom: 1px solid black; }\n  table td {\n    text-align: center;\n    border-bottom: 1px solid black;\n    border-right: 1px solid black; }\n", ""]);
+exports.push([module.i, ".container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  min-width: 300px;\n}\n\n.mat-table {\n  overflow: auto;\n  max-height: 500px;\n}\n\n.mat-header-cell.mat-sort-header-sorted {\n  color: black;\n}\n\nh1 {\n  width: 100%;\n  text-align: center;\n}\ntable {\n  width: 100%;\n  th {\n    border-bottom: 1px solid black;\n  }\n  td {\n    text-align: center;\n    border-bottom: 1px solid black;\n    border-right: 1px solid black;\n  }\n}", ""]);
 
 // exports
 
 
 /*** EXPORTS FROM exports-loader ***/
 module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/venue-list/venue-show/venue-show.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<button mat-raised-button [routerLink]=\"['/venue', 'add']\">Add a venue</button>\n<h1>Venues</h1>\n<hr>\n<table>\n    <thead>\n        <tr>\n            <th>Name</th>\n            <th>Email</th>\n            <th>#</th>\n            <th>Website</th>\n            <th>Action</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr *ngFor=\"let v of venue_list\">\n            <td>{{ v.n }}</td>\n            <td>{{ v.e }}</td>\n            <td>{{ v.p }}</td>\n            <td>{{ v.w }}</td>\n            <td>\n                <button  [routerLink]=\"['/venue', 'edit', v._id]\">\n                    <mat-icon aria-hidden=\"true\">\n                        <i class=\"material-icons\">&#xE3C9;</i>\n                    </mat-icon>\n                </button>\n                <button (click)=\"delete(v)\">\n                    <mat-icon aria-hidden=\"true\">\n                        <i class=\"material-icons\">&#xE872;</i>\n                    </mat-icon>\n                </button>\n            </td>\n        </tr>\n    </tbody>\n</table>\n\n\n<!-- <div class=\"container mat-elevation-z8\">\n    <mat-table #table *ngFor=\"let venue of venue_list\">\n\n        <ng-container matColumnDef=\"name\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>\n            <mat-cell *matCellDef=\"let venue\"> {{venue.name}} </mat-cell>\n        </ng-container>\n\n        <ng-container matColumnDef=\"email\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>\n            <mat-cell *matCellDef=\"let venue\"> {{venue.email}} </mat-cell>\n        </ng-container>\n\n        <ng-container matColumnDef=\"phone\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header> # </mat-header-cell>\n            <mat-cell *matCellDef=\"let venue\"> {{venue.phone}} </mat-cell>\n        </ng-container>\n\n        <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\n        <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n    </mat-table>\n</div> -->"
 
 /***/ }),
 
@@ -577,7 +577,7 @@ var VenueShowComponent = (function () {
         core_1.Component({
             selector: 'app-venue-show',
             template: __webpack_require__("../../../../../src/app/admin/venue-list/venue-show/venue-show.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/admin/venue-list/venue-show/venue-show.component.scss")]
+            styles: [__webpack_require__("../../../../../src/app/admin/venue-list/venue-show/venue-show.component.css")]
         }),
         __metadata("design:paramtypes", [venue_service_1.VenueService,
             user_service_1.UserService,
@@ -652,14 +652,7 @@ exports.AppRoutingModule = AppRoutingModule;
 
 /***/ }),
 
-/***/ "../../../../../src/app/app.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<router-outlet></router-outlet>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/app.component.scss":
+/***/ "../../../../../src/app/app.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -674,6 +667,13 @@ exports.push([module.i, "", ""]);
 
 /*** EXPORTS FROM exports-loader ***/
 module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/app.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<router-outlet></router-outlet>"
 
 /***/ }),
 
@@ -698,7 +698,7 @@ var AppComponent = (function () {
         core_1.Component({
             selector: 'app-root',
             template: __webpack_require__("../../../../../src/app/app.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/app.component.scss")]
+            styles: [__webpack_require__("../../../../../src/app/app.component.css")]
         })
     ], AppComponent);
     return AppComponent;
@@ -851,14 +851,7 @@ exports.Venue = Venue;
 
 /***/ }),
 
-/***/ "../../../../../src/app/client/client.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<app-nav></app-nav>\n<router-outlet></router-outlet>\n<app-footer></app-footer>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/client/client.component.scss":
+/***/ "../../../../../src/app/client/client.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -873,6 +866,13 @@ exports.push([module.i, "", ""]);
 
 /*** EXPORTS FROM exports-loader ***/
 module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/client/client.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<app-nav></app-nav>\n<router-outlet></router-outlet>\n<app-footer></app-footer>"
 
 /***/ }),
 
@@ -901,7 +901,7 @@ var ClientComponent = (function () {
         core_1.Component({
             selector: 'app-client',
             template: __webpack_require__("../../../../../src/app/client/client.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/client/client.component.scss")]
+            styles: [__webpack_require__("../../../../../src/app/client/client.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], ClientComponent);
@@ -912,14 +912,7 @@ exports.ClientComponent = ClientComponent;
 
 /***/ }),
 
-/***/ "../../../../../src/app/client/dashboard/dashboard.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"header\">\n  <section class=\"mat-typography\">\n    <h1>Tulsa Venues</h1>\n    <!-- <img class=\"img\" src=\"assets/tulsavenus.png\" alt=\"Picture of outlined city\"> -->\n    <h4>Who knows Tulsa better then tulsans?</h4>\n  </section>\n  <div id=\"search-button\">\n    <button mat-raised-button color=\"accent\" routerLink=\"/search\">Find Your Venue Now</button>\n  </div>\n</div>\n<hr>\n<div class=\"movie\">\n  <div class=\"icon\">\n    <i class=\"material-icons\">&#xE04A;</i>\n  </div>\n</div>\n<hr>\n<div>\n  <h2>Preferred Venders</h2>\n</div>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/client/dashboard/dashboard.component.scss":
+/***/ "../../../../../src/app/client/dashboard/dashboard.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -927,13 +920,20 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "body {\n  margin: 0; }\n\ndiv.header {\n  width: 100%; }\n  div.header .img {\n    margin: auto; }\n  div.header h1, div.header h4 {\n    text-align: center; }\n\n#search-button {\n  width: 100%; }\n  #search-button button {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin: auto; }\n\ndiv.movie {\n  width: 25%;\n  height: 10rem;\n  border-right: 1px solid black; }\n\nh2 {\n  text-align: center; }\n", ""]);
+exports.push([module.i, "body {\n    margin:0;\n}\n\ndiv.header {\n    width: 100%;\n}\n\n.img{\n    margin: auto;\n}\n\nh1, h4 {\n    text-align: center;\n}\n#search-button {\n    width: 100%;\n}\nbutton{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin: auto;\n}\n\ndiv.movie {\n    width: 25%;\n    height: 10rem;\n    border-right: 1px solid black;\n\n}\n\nh2 {\n    text-align: center;\n}", ""]);
 
 // exports
 
 
 /*** EXPORTS FROM exports-loader ***/
 module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/client/dashboard/dashboard.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"header\">\n  <section class=\"mat-typography\">\n    <h1>Tulsa Venues</h1>\n    <!-- <img class=\"img\" src=\"assets/tulsavenus.png\" alt=\"Picture of outlined city\"> -->\n    <h4>Who knows Tulsa better then tulsans?</h4>\n  </section>\n  <div id=\"search-button\">\n    <button mat-raised-button color=\"accent\" routerLink=\"/search\">Find Your Venue Now</button>\n  </div>\n</div>\n<hr>\n<div class=\"movie\">\n  <div class=\"icon\">\n    <i class=\"material-icons\">&#xE04A;</i>\n  </div>\n</div>\n<hr>\n<div>\n  <h2>Preferred Venders</h2>\n</div>"
 
 /***/ }),
 
@@ -962,7 +962,7 @@ var DashboardComponent = (function () {
         core_1.Component({
             selector: 'app-dashboard',
             template: __webpack_require__("../../../../../src/app/client/dashboard/dashboard.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/client/dashboard/dashboard.component.scss")]
+            styles: [__webpack_require__("../../../../../src/app/client/dashboard/dashboard.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], DashboardComponent);
@@ -973,14 +973,7 @@ exports.DashboardComponent = DashboardComponent;
 
 /***/ }),
 
-/***/ "../../../../../src/app/client/venue-search/venue-search.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  venue-search works!\n</p>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/client/venue-search/venue-search.component.scss":
+/***/ "../../../../../src/app/client/venue-search/venue-search.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -995,6 +988,13 @@ exports.push([module.i, "", ""]);
 
 /*** EXPORTS FROM exports-loader ***/
 module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/client/venue-search/venue-search.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  venue-search works!\n</p>\n"
 
 /***/ }),
 
@@ -1023,7 +1023,7 @@ var VenueSearchComponent = (function () {
         core_1.Component({
             selector: 'app-venue-search',
             template: __webpack_require__("../../../../../src/app/client/venue-search/venue-search.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/client/venue-search/venue-search.component.scss")]
+            styles: [__webpack_require__("../../../../../src/app/client/venue-search/venue-search.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], VenueSearchComponent);
@@ -1034,14 +1034,7 @@ exports.VenueSearchComponent = VenueSearchComponent;
 
 /***/ }),
 
-/***/ "../../../../../src/app/footer/footer.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<!-- Page Footer -->\n<footer>\n  <div >\n    \n  </div>\n  <div class='copyright'>\n    <p>Copyright\n      <a href=\"https://www.baldridgephotography.com\">&copy; 2018 TulsaVenues, a Baldridge Photography LLC company. All Rights Reserved.</a>\n    </p>\n  </div>\n  <!--/.Copyright-->\n</footer>\n<!-- end-footer -->\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/footer/footer.component.scss":
+/***/ "../../../../../src/app/footer/footer.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -1049,13 +1042,20 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "footer {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  text-align: center;\n  background: gainsboro; }\n", ""]);
+exports.push([module.i, "footer {\n    position: absolute;\n    bottom: 0;\n    width: 100%;\n    text-align: center;\n    background: gainsboro;\n}", ""]);
 
 // exports
 
 
 /*** EXPORTS FROM exports-loader ***/
 module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/footer/footer.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<!-- Page Footer -->\n<footer>\n  <div >\n    \n  </div>\n  <div class='copyright'>\n    <p>Copyright\n      <a href=\"https://www.baldridgephotography.com\">&copy; 2018 TulsaVenues, a Baldridge Photography LLC company. All Rights Reserved.</a>\n    </p>\n  </div>\n  <!--/.Copyright-->\n</footer>\n<!-- end-footer -->\n"
 
 /***/ }),
 
@@ -1084,7 +1084,7 @@ var FooterComponent = (function () {
         core_1.Component({
             selector: 'app-footer',
             template: __webpack_require__("../../../../../src/app/footer/footer.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/footer/footer.component.scss")]
+            styles: [__webpack_require__("../../../../../src/app/footer/footer.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], FooterComponent);
@@ -1095,14 +1095,7 @@ exports.FooterComponent = FooterComponent;
 
 /***/ }),
 
-/***/ "../../../../../src/app/login/login.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container\">\n  <form (submit)=\"loginUser(); loginForm.reset()\" #loginForm=\"ngForm\">\n    <!-- ** EMAIL ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your email\"autocomplete=\"email\" name=\"email\" [formControl]=\"email\" required [(ngModel)]=\"currentUser.email\">\n      <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n    </mat-form-field>\n\n  <!-- **  PASSWORD ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your password\" autocomplete=\"current-password\" name=\"password\" required [(ngModel)]=\"currentUser.password\" [type]=\"hide ? 'password' : 'text'\">\n      <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n    </mat-form-field>\n    <button type=\"submit\" value=\"Login\" [disabled]=\"!currentUser.email\">\n      <h3>Login<i class=\"material-icons\">arrow forward</i></h3>\n    </button>\n  </form>\n  <div>\n    <p *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div> \n\n\n<div class=\"col-4\">\n  <form (submit)=\"createUser()\" class=\"form\"> \n    <div class=\"form-input\">\n      <label>Name</label>\n      <input type=\"text\" name=\"name\" [(ngModel)]=\"newUser.name\">\n    </div>\n    <div class=\"form-input\">\n      <label>Email</label>\n      <input type=\"text\" name=\"email\" [(ngModel)]=\"newUser.email\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password</label>\n      <input type=\"text\" name=\"password\" [(ngModel)]=\"newUser.password\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password Confirmation</label>\n      <input type=\"text\" name=\"password_confirmation\" [(ngModel)]=\"newUser.password_confirmation\">\n    </div>\n    <div>\n      <input class=\"btn btn-primary\" type=\"submit\" value=\"Register\">\n    </div>\n  </form>\n  <div>\n    <p *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/login/login.component.scss":
+/***/ "../../../../../src/app/login/login.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -1110,13 +1103,20 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "form {\n  width: 25%;\n  margin: auto; }\n\n.mat-form-field {\n  display: block; }\n\np {\n  text-align: center;\n  color: red; }\n", ""]);
+exports.push([module.i, "form {\n    width: 25%;\n    margin: auto;\n}\n.mat-form-field {\n    display: block;\n}\n\np {\n    text-align: center;\n    color: red;\n}", ""]);
 
 // exports
 
 
 /*** EXPORTS FROM exports-loader ***/
 module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/login/login.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n  <form (submit)=\"loginUser(); loginForm.reset()\" #loginForm=\"ngForm\">\n    <!-- ** EMAIL ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your email\"autocomplete=\"email\" name=\"email\" [formControl]=\"email\" required [(ngModel)]=\"currentUser.email\">\n      <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n    </mat-form-field>\n\n  <!-- **  PASSWORD ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your password\" autocomplete=\"current-password\" name=\"password\" required [(ngModel)]=\"currentUser.password\" [type]=\"hide ? 'password' : 'text'\">\n      <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n    </mat-form-field>\n    <button type=\"submit\" value=\"Login\" [disabled]=\"!currentUser.email\">\n      <h3>Login<i class=\"material-icons\">arrow forward</i></h3>\n    </button>\n  </form>\n  <div>\n    <p *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div> \n\n\n<div class=\"col-4\">\n  <form (submit)=\"createUser()\" class=\"form\"> \n    <div class=\"form-input\">\n      <label>Name</label>\n      <input type=\"text\" name=\"name\" [(ngModel)]=\"newUser.name\">\n    </div>\n    <div class=\"form-input\">\n      <label>Email</label>\n      <input type=\"text\" name=\"email\" [(ngModel)]=\"newUser.email\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password</label>\n      <input type=\"text\" name=\"password\" [(ngModel)]=\"newUser.password\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password Confirmation</label>\n      <input type=\"text\" name=\"password_confirmation\" [(ngModel)]=\"newUser.password_confirmation\">\n    </div>\n    <div>\n      <input class=\"btn btn-primary\" type=\"submit\" value=\"Register\">\n    </div>\n  </form>\n  <div>\n    <p *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -1198,7 +1198,7 @@ var LoginComponent = (function () {
         core_1.Component({
             selector: 'app-login',
             template: __webpack_require__("../../../../../src/app/login/login.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/login/login.component.scss")]
+            styles: [__webpack_require__("../../../../../src/app/login/login.component.css")]
         }),
         __metadata("design:paramtypes", [user_service_1.UserService,
             router_1.Router])
@@ -1210,14 +1210,7 @@ exports.LoginComponent = LoginComponent;
 
 /***/ }),
 
-/***/ "../../../../../src/app/nav/nav.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <span class=\"spacer\"></span>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/\">Home</button>\n      <button mat-menu-item routerLink=\"/search\">Search</button>\n      <button mat-menu-item>Item 2</button>\n    </mat-menu>\n  </mat-toolbar-row>\n</mat-toolbar>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/nav/nav.component.scss":
+/***/ "../../../../../src/app/nav/nav.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -1225,13 +1218,20 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".spacer {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto; }\n", ""]);
+exports.push([module.i, ".spacer {\n    -webkit-box-flex: 1;\n        -ms-flex: 1 1 auto;\n            flex: 1 1 auto;\n}", ""]);
 
 // exports
 
 
 /*** EXPORTS FROM exports-loader ***/
 module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/nav/nav.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <span class=\"spacer\"></span>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/\">Home</button>\n      <button mat-menu-item routerLink=\"/search\">Search</button>\n      <button mat-menu-item>Item 2</button>\n    </mat-menu>\n  </mat-toolbar-row>\n</mat-toolbar>\n"
 
 /***/ }),
 
@@ -1260,7 +1260,7 @@ var NavComponent = (function () {
         core_1.Component({
             selector: 'app-nav',
             template: __webpack_require__("../../../../../src/app/nav/nav.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/nav/nav.component.scss")]
+            styles: [__webpack_require__("../../../../../src/app/nav/nav.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], NavComponent);

@@ -4,20 +4,21 @@ body {
 
 div.header {
     width: 100%;
-    .img{
-        margin: auto;
-    }
-    h1, h4 {
-        text-align: center;
-    }
 }
 
+.img{
+    margin: auto;
+}
+
+h1, h4 {
+    text-align: center;
+}
 #search-button {
     width: 100%;
-    button{
-        display: flex;
-        margin: auto;
-    }
+}
+button{
+    display: flex;
+    margin: auto;
 }
 
 div.movie {

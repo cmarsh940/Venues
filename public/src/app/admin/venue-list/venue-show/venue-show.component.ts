@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-venue-show',
   templateUrl: './venue-show.component.html',
-  styleUrls: ['./venue-show.component.scss']
+  styleUrls: ['./venue-show.component.css']
 })
 export class VenueShowComponent implements OnInit {
   venue_list: Array<Venue>

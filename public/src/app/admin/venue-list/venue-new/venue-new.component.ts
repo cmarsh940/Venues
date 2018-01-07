@@ -8,7 +8,7 @@ import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/cor
 @Component({
   selector: 'app-venue-new',
   templateUrl: './venue-new.component.html',
-  styleUrls: ['./venue-new.component.scss']
+  styleUrls: ['./venue-new.component.css']
 })
 export class VenueNewComponent implements OnInit {
   new_venue: Venue = new Venue;
