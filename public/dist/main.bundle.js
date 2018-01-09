@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin-nav/admin-nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/dashboard\">Home</button>\n      <button mat-menu-item routerLink=\"/list_venue\">Venues</button>\n      <button mat-menu-item routerLink=\"/list_ammenities\">Ammenities</button>\n    </mat-menu>\n    <span class=\"spacer\"></span>\n    <button mat-icon-button [routerLink]=\"['/']\" (click)='logout()'>\n      <mat-icon aria-label=\"Logout button\">exit_to_app</mat-icon>\n    </button>\n  </mat-toolbar-row>\n</mat-toolbar>\n"
+module.exports = "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/dashboard\">Home</button>\n      <button mat-menu-item routerLink=\"/list_venue\">Venues</button>\n      <button mat-menu-item routerLink=\"/list_ammenity\">Ammenities</button>\n    </mat-menu>\n    <span class=\"spacer\"></span>\n    <button mat-icon-button [routerLink]=\"['/']\" (click)='logout()'>\n      <mat-icon aria-label=\"Logout button\">exit_to_app</mat-icon>\n    </button>\n  </mat-toolbar-row>\n</mat-toolbar>\n"
 
 /***/ }),
 
@@ -375,7 +375,7 @@ var AmmenityEditComponent = (function () {
     };
     AmmenityEditComponent.prototype.update = function (ammenity) {
         this._ammenityService.update_ammenity(this.ammenity);
-        this._router.navigate(["/list_ammenities"]);
+        this._router.navigate(["/list_ammenity"]);
     };
     AmmenityEditComponent = __decorate([
         core_1.Component({
@@ -477,7 +477,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/ammenity-list/ammenity-new/ammenity-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button mat-raised-button [routerLink]=\"['/list_ammenities']\">\n  <i class=\"material-icons\">&#xE5C4;</i>\n</button>\n<h1>Add a ammenity</h1>\n<form #form (submit)=\"create_ammenity()\" encType=\"multipart/form-data\">\n  <!-- Name -->\n  <mat-form-field>\n    <input matInput name=\"name\" required maxlength=125 [(ngModel)]=\"new_ammenity.name\" placeholder=\"Ammenity Name\">\n  </mat-form-field>\n\n  <!-- Submit -->\n  <button mat-raised-button type=\"submit\">Submit</button>\n</form>\n\n<div>\n  <p class=\"error\" *ngFor=\"let error of errors\">{{ error }}</p>\n</div>\n"
+module.exports = "<button mat-raised-button [routerLink]=\"['/list_ammenities']\">\n  <i class=\"material-icons\">&#xE5C4;</i>\n</button>\n<h1>Add a ammenity</h1>\n<form #form (ngSubmit)=\"create_ammenity()\">\n  <!-- Name -->\n  <mat-form-field>\n    <input matInput name=\"name\" required maxlength=125 [(ngModel)]=\"new_ammenity.name\" placeholder=\"Ammenity Name\">\n  </mat-form-field>\n\n  <!-- Submit -->\n  <button mat-raised-button type=\"submit\">Submit</button>\n</form>\n\n<div>\n  <p class=\"error\" *ngFor=\"let error of errors\">{{ error }}</p>\n</div>\n"
 
 /***/ }),
 
@@ -527,7 +527,7 @@ var AmmenityNewComponent = (function () {
             _this.new_ammenity = new ammenity_1.Ammenity();
             console.log("*** About to emit");
             _this.new_ammenity_event.emit();
-            _this._router.navigate(["/list_ammenities"]);
+            _this._router.navigate(["/list_ammenity"]);
         });
     };
     __decorate([
@@ -856,7 +856,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/venue-list/venue-new/venue-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button mat-raised-button [routerLink]=\"['/list_venue']\">\n  <i class=\"material-icons\">&#xE5C4;</i>\n</button>\n<h1>Add a Venue</h1>\n  <form #form (submit)=\"create_venue()\" encType=\"multipart/form-data\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name=\"name\" required maxlength=125 [(ngModel)]=\"new_venue.name\" placeholder=\"Venue Name\">\n    </mat-form-field>\n\n    <!-- Email -->\n    <mat-form-field>\n      <input matInput name=\"email\" required maxlength=250 [(ngModel)]=\"new_venue.email\" placeholder=\"Venue Email\">\n    </mat-form-field>\n\n    <!-- Phone# -->\n    <mat-form-field>\n      <input matInput name=\"phone\" required maxlength=20 [(ngModel)]=\"new_venue.phone\" placeholder=\"Venue Phone #\">\n    </mat-form-field>\n\n    <!-- Address -->\n    <mat-form-field>\n      <input matInput name=\"address\" required maxlength=200 [(ngModel)]=\"new_venue.address\" placeholder=\"Venue Address\">\n    </mat-form-field>\n\n    <!-- Website -->\n    <mat-form-field>\n      <input matInput name=\"website\" required maxlength=250 [(ngModel)]=\"new_venue.website\" placeholder=\"Venue Website\">\n    </mat-form-field>\n\n    <!-- Ammenities -->\n    <!-- <mat-form-field>\n      <mat-select placeholder=\"Ammenities\" [formControl]=\"ammenities\" multiple>\n        <mat-option *ngFor=\"let ammenity of ammenitiesList\" [value]=\"ammenity\">{{ammenities}}</mat-option>\n      </mat-select>\n    </mat-form-field> -->\n\n    <!-- Picture -->\n    <div>\n      <input #file type=\"file\" name=\"picture\" [(ngModel)]=\"new_venue.pic_url\">\n    </div>\n\n    <!-- Submit -->\n    <button mat-raised-button type=\"submit\">Submit</button>\n  </form>\n\n  <div>\n    <p class=\"error\" *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n"
+module.exports = "<button mat-raised-button [routerLink]=\"['/list_venue']\">\n  <i class=\"material-icons\">&#xE5C4;</i>\n</button>\n<h1>Add a Venue</h1>\n  <form #form (submit)=\"create_venue()\" encType=\"multipart/form-data\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name=\"name\" required maxlength=250 [(ngModel)]=\"new_venue.name\" placeholder=\"Venue Name\">\n    </mat-form-field>\n\n    <!-- Email -->\n    <mat-form-field>\n      <input matInput name=\"email\" required maxlength=250 [(ngModel)]=\"new_venue.email\" placeholder=\"Venue Email\">\n    </mat-form-field>\n\n    <!-- Phone# -->\n    <mat-form-field>\n      <input matInput name=\"phone\" required maxlength=20 [(ngModel)]=\"new_venue.phone\" placeholder=\"Venue Phone #\">\n    </mat-form-field>\n\n    <!-- Address -->\n    <mat-form-field>\n      <input matInput name=\"address\" required maxlength=200 [(ngModel)]=\"new_venue.address\" placeholder=\"Venue Address\">\n    </mat-form-field>\n\n    <!-- Website -->\n    <mat-form-field>\n      <input matInput name=\"website\" required maxlength=250 [(ngModel)]=\"new_venue.website\" placeholder=\"Venue Website\">\n    </mat-form-field>\n\n    <!-- Ammenities -->\n    <!-- <mat-form-field>\n      <mat-select placeholder=\"Ammenities\" [formControl]=\"ammenities\" multiple>\n        <mat-option *ngFor=\"let ammenity of ammenitiesList\" [value]=\"ammenity\">{{ammenities}}</mat-option>\n      </mat-select>\n    </mat-form-field> -->\n\n    <!-- Picture -->\n    <div>\n      <input #file type=\"file\" name=\"picture\" [(ngModel)]=\"new_venue.pic_url\">\n    </div>\n\n    <!-- Submit -->\n    <button mat-raised-button type=\"submit\">Submit</button>\n  </form>\n\n  <div>\n    <p class=\"error\" *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n"
 
 /***/ }),
 
@@ -1089,7 +1089,7 @@ var routes = [
             { path: 'list_venue', pathMatch: 'full', component: venue_show_component_1.VenueShowComponent },
             { path: 'venue/add', pathMatch: 'full', component: venue_new_component_1.VenueNewComponent },
             { path: 'venue/edit/:id', pathMatch: 'full', component: venue_edit_component_1.VenueEditComponent },
-            { path: 'list_ammenities', pathMatch: 'full', component: ammenity_show_component_1.AmmenityShowComponent },
+            { path: 'list_ammenity', pathMatch: 'full', component: ammenity_show_component_1.AmmenityShowComponent },
             { path: 'ammenity/add', pathMatch: 'full', component: ammenity_new_component_1.AmmenityNewComponent },
             { path: 'ammenity/edit/:id', pathMatch: 'full', component: ammenity_edit_component_1.AmmenityEditComponent },
         ]
@@ -1244,6 +1244,7 @@ var AppModule = (function () {
                 app_routing_module_1.AppRoutingModule,
                 animations_1.BrowserAnimationsModule,
                 forms_1.FormsModule,
+                forms_1.ReactiveFormsModule,
                 http_1.HttpModule,
                 http_2.HttpClientModule,
                 material_1.MatAutocompleteModule,
@@ -1277,13 +1278,9 @@ var AppModule = (function () {
                 material_1.MatToolbarModule,
                 material_1.MatTooltipModule,
                 material_1.MatStepperModule,
-                forms_1.ReactiveFormsModule,
+                forms_1.ReactiveFormsModule
             ],
-            providers: [
-                user_service_1.UserService,
-                venue_service_1.VenueService,
-                ammenity_service_1.AmmenityService
-            ],
+            providers: [user_service_1.UserService, venue_service_1.VenueService, ammenity_service_1.AmmenityService],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);
@@ -1910,12 +1907,13 @@ var AmmenityService = (function () {
             .toPromise();
     };
     AmmenityService.prototype.post_ammenity = function (form_data) {
-        return this._http.post("/ammenities/add", form_data)
+        console.log("*** Hit ammenity post in service");
+        return this._http.post("/ammenities/create", form_data)
             .map(function (data) { return data.json(); })
             .toPromise();
     };
     AmmenityService.prototype.destroy_ammenity = function (ammenity) {
-        console.log("*** Hit vammenity service");
+        console.log("*** Hit ammenity destroy in service");
         return this._http.post("/ammenities/destroy", ammenity)
             .map(function (data) { return data.json(); })
             .toPromise();

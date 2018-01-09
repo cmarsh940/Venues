@@ -29,7 +29,7 @@ const routes: Routes = [
       { path: 'list_venue', pathMatch: 'full', component: VenueShowComponent },
       { path: 'venue/add', pathMatch: 'full', component: VenueNewComponent },
       { path: 'venue/edit/:id', pathMatch: 'full', component: VenueEditComponent },
-      { path: 'list_ammenities', pathMatch: 'full', component: AmmenityShowComponent },
+      { path: 'list_ammenity', pathMatch: 'full', component: AmmenityShowComponent },
       { path: 'ammenity/add', pathMatch: 'full', component: AmmenityNewComponent },
       { path: 'ammenity/edit/:id', pathMatch: 'full', component: AmmenityEditComponent },
     ]

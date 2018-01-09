@@ -13,13 +13,14 @@ export class AmmenityService {
   }
 
   post_ammenity(form_data) {
-    return this._http.post("/ammenities/add", form_data)
+    console.log("*** Hit ammenity post in service");
+    return this._http.post("/ammenities/create", form_data)
       .map(data => data.json())
       .toPromise();
   }
 
   destroy_ammenity(ammenity) {
-    console.log("*** Hit vammenity service");
+    console.log("*** Hit ammenity destroy in service");
     return this._http.post("/ammenities/destroy", ammenity)
       .map(data => data.json())
       .toPromise();

@@ -2,7 +2,7 @@
   <i class="material-icons">&#xE5C4;</i>
 </button>
 <h1>Add a ammenity</h1>
-<form #form (submit)="create_ammenity()" encType="multipart/form-data">
+<form #form (ngSubmit)="create_ammenity()">
   <!-- Name -->
   <mat-form-field>
     <input matInput name="name" required maxlength=125 [(ngModel)]="new_ammenity.name" placeholder="Ammenity Name">

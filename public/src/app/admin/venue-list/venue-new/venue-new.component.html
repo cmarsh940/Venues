@@ -5,7 +5,7 @@
   <form #form (submit)="create_venue()" encType="multipart/form-data">
     <!-- Name -->
     <mat-form-field>
-      <input matInput name="name" required maxlength=125 [(ngModel)]="new_venue.name" placeholder="Venue Name">
+      <input matInput name="name" required maxlength=250 [(ngModel)]="new_venue.name" placeholder="Venue Name">
     </mat-form-field>
 
     <!-- Email -->

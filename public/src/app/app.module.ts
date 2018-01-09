@@ -57,6 +57,7 @@ import { AmmenityService } from './services/ammenity.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     HttpClientModule,
     MatAutocompleteModule,
@@ -90,13 +91,9 @@ import { AmmenityService } from './services/ammenity.service';
     MatToolbarModule,
     MatTooltipModule,
     MatStepperModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
-  providers: [
-    UserService,
-    VenueService,
-    AmmenityService
-  ],
+  providers: [UserService, VenueService, AmmenityService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -54,6 +54,7 @@ module.exports = {
                 res.status(500).json(err);
             })
     },
+    
     update: (req, res, next) => {
         console.log("*** logging the update req.body", req.body)
         let myVenue = new Venue(req.body)

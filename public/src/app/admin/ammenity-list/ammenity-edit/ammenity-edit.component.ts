@@ -76,6 +76,6 @@ export class AmmenityEditComponent implements OnInit {
   }
   update(ammenity) {
     this._ammenityService.update_ammenity(this.ammenity);
-    this._router.navigate(["/list_ammenities"]);
+    this._router.navigate(["/list_ammenity"]);
   }
 }
