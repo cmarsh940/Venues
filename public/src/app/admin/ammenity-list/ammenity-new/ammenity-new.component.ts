@@ -16,7 +16,6 @@ export class AmmenityNewComponent implements OnInit {
   errors = [];
 
 
-  @ViewChild("file") file_input;
   @ViewChild("form") my_form;
   @Output() new_ammenity_event = new EventEmitter();
 

@@ -42,6 +42,7 @@ export class AdminDashboardComponent implements OnInit {
         this.ammenities = data;
       })
       .catch(err => {
+        console.warn(err.responseText);
         console.log(err);
       });
   }
