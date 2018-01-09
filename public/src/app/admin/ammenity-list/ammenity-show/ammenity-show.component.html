@@ -1,0 +1,32 @@
+<button mat-raised-button [routerLink]="['/ammenity', 'add']">Add a ammenity</button>
+<h1>Ammenities</h1>
+<hr>
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ammenity of ammenities_list; let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{ ammenity.name }}</td>
+        <td>
+          <button [routerLink]="['/ammenity', 'edit', ammenity._id]">
+            <mat-icon aria-hidden="true">
+              <i class="material-icons">&#xE3C9;</i>
+            </mat-icon>
+          </button>
+          <button (click)="delete(ammenity)">
+            <mat-icon aria-hidden="true">
+              <i class="material-icons">&#xE872;</i>
+            </mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

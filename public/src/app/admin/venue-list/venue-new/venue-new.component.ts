@@ -1,9 +1,9 @@
-import { User } from './../../../classes/user';
 import { Router } from '@angular/router';
 import { UserService } from './../../../services/user.service';
 import { VenueService } from './../../../services/venue.service';
-import { Venue } from './../../../classes/venue';
 import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { User } from '../../../models/user';
+import { Venue } from '../../../models/venue';
 
 @Component({
   selector: 'app-venue-new',

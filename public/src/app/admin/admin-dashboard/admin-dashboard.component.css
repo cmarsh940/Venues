@@ -1,0 +1,10 @@
+.header {
+  width:100%;
+}
+h1 {
+  text-align: center;
+}
+
+mat-chip {
+  max-width: 200px;
+}

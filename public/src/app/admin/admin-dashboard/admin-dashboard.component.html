@@ -1,1 +1,17 @@
-<h1>Admin Dashboard</h1>
+<div class="header">
+  <h1>Admin Dashboard</h1>
+</div>
+<div>
+  <mat-chip-list>
+    <mat-chip color="warn" selected="true">Total Venues:
+      <div *ngIf="venues">
+        {{ venues.length }}
+      </div>
+    </mat-chip>
+    <mat-chip color="warn" selected="true">Total Ammenities:
+      <div mat-chip-value *ngIf="ammenities">
+        {{ ammenities.length }}
+      </div>
+    </mat-chip>
+  </mat-chip-list>
+</div>

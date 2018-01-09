@@ -1,0 +1,26 @@
+.header, .search {
+    width: 100%;
+}
+h1, h2, h4 {
+    text-align: center;
+}
+
+[mat-raised-button] {
+  width:100%;
+}
+.mat-sidenav-container {
+  height: 100vh;
+}
+
+.mat-sidenav {
+  width: 320px;
+}
+
+.mat-grid-list {
+  width: 80%;
+  margin: auto;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}

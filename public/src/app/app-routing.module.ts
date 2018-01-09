@@ -9,6 +9,9 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
 import { VenueShowComponent } from './admin/venue-list/venue-show/venue-show.component';
 import { VenueNewComponent } from './admin/venue-list/venue-new/venue-new.component';
 import { VenueEditComponent } from './admin/venue-list/venue-edit/venue-edit.component';
+import { AmmenityShowComponent } from './admin/ammenity-list/ammenity-show/ammenity-show.component';
+import { AmmenityNewComponent } from './admin/ammenity-list/ammenity-new/ammenity-new.component';
+import { AmmenityEditComponent } from './admin/ammenity-list/ammenity-edit/ammenity-edit.component';
 
 const routes: Routes = [
   {
@@ -26,6 +29,9 @@ const routes: Routes = [
       { path: 'list_venue', pathMatch: 'full', component: VenueShowComponent },
       { path: 'venue/add', pathMatch: 'full', component: VenueNewComponent },
       { path: 'venue/edit/:id', pathMatch: 'full', component: VenueEditComponent },
+      { path: 'list_ammenities', pathMatch: 'full', component: AmmenityShowComponent },
+      { path: 'ammenity/add', pathMatch: 'full', component: AmmenityNewComponent },
+      { path: 'ammenity/edit/:id', pathMatch: 'full', component: AmmenityEditComponent },
     ]
   },
   {

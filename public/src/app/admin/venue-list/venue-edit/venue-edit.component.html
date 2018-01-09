@@ -4,25 +4,25 @@
   <form (submit)="update(venue)" #formData="ngForm" class="form">
     <!-- Name -->
     <mat-form-field>
-      <input matInput name='name' [(ngModel)]="venue.n" #name='ngModel' required>
+      <input matInput name='name' [(ngModel)]="venue.n" #name='ngModel' placeholder="name" required>
     </mat-form-field>
   
     <!-- Email -->
     <mat-form-field>
-    <input matInput name='email' [(ngModel)]="venue.e" #email='ngModel' required>
+    <input matInput name='email' [(ngModel)]="venue.e" #email='ngModel' placeholder="Email" required>
     </mat-form-field>
 
     <!-- Phone# -->
     <mat-form-field>
-      <input matInput name='phone' [(ngModel)]="venue.p" #phone='ngModel' required>
+      <input matInput name='phone' [(ngModel)]="venue.p" #phone='ngModel' placeholder="Phone #" required>
     </mat-form-field>
 
     <!-- Website -->
     <mat-form-field>
-      <input matInput name='website' [(ngModel)]="venue.w" #website='ngModel' required>
+      <input matInput name='website' [(ngModel)]="venue.w" #website='ngModel' placeholder="Website" required>
     </mat-form-field>
 
     <!-- Submit -->
-    <input type='submit' [disabled]=!formData.valid>
+    <button mat-raised-button type='submit' [disabled]=!formData.valid>Submit</button>
   </form>
 </div>

@@ -22,12 +22,27 @@ button{
 }
 
 div.movie {
-    width: 25%;
+    width: 20%;
     height: 10rem;
     border-right: 1px solid black;
+}
 
+div.about {
+  width: 70%;
+  height: 10rem;
+}
+
+.movie, .about {
+  display: inline-block;
+  vertical-align: top;
+  padding: 2%;
 }
 
 h2 {
     text-align: center;
+}
+
+
+.spacer {
+    flex: 1 1 auto;
 }

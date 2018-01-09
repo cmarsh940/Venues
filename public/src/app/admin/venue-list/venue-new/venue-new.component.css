@@ -2,9 +2,9 @@ form {
     width:50%;
     margin: auto;
     overflow: hidden;
-    .mat-form-field {
-        width: 100%;
-    }
+}
+.mat-form-field {
+    width: 100%;
 }
 
 h1 {

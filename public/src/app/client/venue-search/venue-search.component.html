@@ -1,3 +1,45 @@
-<p>
-  venue-search works!
-</p>
+<div class="header">
+  <section class="mat-typography">
+    <h1>Tulsa Venues</h1>
+    <h4>Who knows Tulsa better then tulsans?</h4>
+  </section>
+</div>
+<div class="search">
+  <hr>
+  <h2>SEARCH FORM COMING SOON...</h2>
+  <hr>
+</div>
+<div>
+  <mat-sidenav-container>
+    <mat-sidenav align="end" mode="side" #sidenav>
+      <mat-tab-group>
+        <mat-tab>
+          <ng-template mat-tab-label>Details</ng-template>
+          <button mat-raised-button (click)="sidenav.close()" color="warn">CLOSE</button>
+          <p>Name: {{currentVenue.n}}</p>
+          <p>Phone: {{currentVenue.p}}</p>
+          <p>Location: {{currentVenue.a}}</p>
+          <p>Website: <a href="http://{{currentVenue.w}}">{{currentVenue.w}}</a></p>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>Photos</ng-template>
+          <img src="imgs/{{currentVenue.pic_url}}" alt="Venue Picture">
+        </mat-tab>
+      </mat-tab-group>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-grid-list cols="4" rowHeight="200px">
+        <mat-grid-tile *ngFor="let venue of venue_list">
+          <img src="imgs/{{venue.pic_url}}" alt="Venue Picture">
+          <mat-grid-tile-footer>
+            <h3>{{venue.n}}</h3>
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="showVenue(venue)">
+              <mat-icon>info</mat-icon>
+            </button>
+          </mat-grid-tile-footer>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

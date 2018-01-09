@@ -1,8 +1,8 @@
-import { User } from './../classes/user';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/map';
+import { User } from '../models/user';
 
 @Injectable()
 export class UserService {

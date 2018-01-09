@@ -4,15 +4,17 @@
 <table>
     <thead>
         <tr>
+            <th>#</th>
             <th>Name</th>
             <th>Email</th>
-            <th>#</th>
+            <th>Phone</th>
             <th>Website</th>
             <th>Action</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let v of venue_list">
+        <tr *ngFor="let v of venue_list; let i = index">
+            <td>{{i + 1}}</td>
             <td>{{ v.n }}</td>
             <td>{{ v.e }}</td>
             <td>{{ v.p }}</td>

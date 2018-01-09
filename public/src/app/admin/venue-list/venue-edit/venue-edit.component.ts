@@ -1,9 +1,9 @@
 import { VenueService } from './../../../services/venue.service';
-import { Venue } from './../../../classes/venue';
 import { UserService } from './../../../services/user.service';
-import { User } from './../../../classes/user';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from '../../../models/user';
+import { Venue } from '../../../models/venue';
 
 @Component({
   selector: 'app-venue-edit',

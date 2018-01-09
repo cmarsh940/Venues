@@ -24,6 +24,12 @@ import { VenueEditComponent } from './admin/venue-list/venue-edit/venue-edit.com
 import { VenueNewComponent } from './admin/venue-list/venue-new/venue-new.component';
 import { VenueShowComponent } from './admin/venue-list/venue-show/venue-show.component';
 import { VenueService } from './services/venue.service';
+import { VenueComponent } from './client/venue/venue.component';
+import { AmmenityListComponent } from './admin/ammenity-list/ammenity-list.component';
+import { AmmenityNewComponent } from './admin/ammenity-list/ammenity-new/ammenity-new.component';
+import { AmmenityEditComponent } from './admin/ammenity-list/ammenity-edit/ammenity-edit.component';
+import { AmmenityShowComponent } from './admin/ammenity-list/ammenity-show/ammenity-show.component';
+import { AmmenityService } from './services/ammenity.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +45,12 @@ import { VenueService } from './services/venue.service';
     VenueListComponent,
     VenueEditComponent,
     VenueNewComponent,
-    VenueShowComponent
+    VenueShowComponent,
+    VenueComponent,
+    AmmenityListComponent,
+    AmmenityNewComponent,
+    AmmenityEditComponent,
+    AmmenityShowComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +94,8 @@ import { VenueService } from './services/venue.service';
   ],
   providers: [
     UserService,
-    VenueService
+    VenueService,
+    AmmenityService
   ],
   bootstrap: [AppComponent]
 })

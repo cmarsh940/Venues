@@ -25,7 +25,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".spacer {\n    -webkit-box-flex: 1;\n        -ms-flex: 1 1 auto;\n            flex: 1 1 auto;\n}", ""]);
+exports.push([module.i, ".spacer {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto;\n}\n", ""]);
 
 // exports
 
@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin-nav/admin-nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/dashboard\">Home</button>\n      <button mat-menu-item routerLink=\"/list_venue\">Venues</button>\n    </mat-menu>\n    <span class=\"spacer\"></span>\n    <button mat-icon-button [routerLink]=\"['/']\" (click)='logout()'>\n      <mat-icon aria-label=\"Logout button\">exit_to_app</mat-icon>\n    </button>\n  </mat-toolbar-row>\n</mat-toolbar>"
+module.exports = "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/dashboard\">Home</button>\n      <button mat-menu-item routerLink=\"/list_venue\">Venues</button>\n      <button mat-menu-item routerLink=\"/list_ammenities\">Ammenities</button>\n    </mat-menu>\n    <span class=\"spacer\"></span>\n    <button mat-icon-button [routerLink]=\"['/']\" (click)='logout()'>\n      <mat-icon aria-label=\"Logout button\">exit_to_app</mat-icon>\n    </button>\n  </mat-toolbar-row>\n</mat-toolbar>\n"
 
 /***/ }),
 
@@ -90,7 +90,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".header {\n  width:100%;\n}\nh1 {\n  text-align: center;\n}\n\nmat-chip {\n  max-width: 200px;\n}\n", ""]);
 
 // exports
 
@@ -103,7 +103,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/admin-dashboard/admin-dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Admin Dashboard</h1>"
+module.exports = "<div class=\"header\">\n  <h1>Admin Dashboard</h1>\n</div>\n<div>\n  <mat-chip-list>\n    <mat-chip color=\"warn\" selected=\"true\">Total Venues:\n      <div *ngIf=\"venues\">\n        {{ venues.length }}\n      </div>\n    </mat-chip>\n    <mat-chip color=\"warn\" selected=\"true\">Total Ammenities:\n      <div mat-chip-value *ngIf=\"ammenities\">\n        {{ ammenities.length }}\n      </div>\n    </mat-chip>\n  </mat-chip-list>\n</div>\n"
 
 /***/ }),
 
@@ -125,20 +125,48 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var router_1 = __webpack_require__("../../../router/esm5/router.js");
 var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
+var ammenity_service_1 = __webpack_require__("../../../../../src/app/services/ammenity.service.ts");
 var AdminDashboardComponent = (function () {
-    function AdminDashboardComponent(_userService, _router) {
+    function AdminDashboardComponent(_userService, _venueService, _ammenityService, _router) {
         this._userService = _userService;
+        this._venueService = _venueService;
+        this._ammenityService = _ammenityService;
         this._router = _router;
     }
     AdminDashboardComponent.prototype.ngOnInit = function () {
+        this.getVenues();
+        this.getAmmenities();
+    };
+    AdminDashboardComponent.prototype.getVenues = function () {
+        var _this = this;
+        this._venueService.get_venues()
+            .then(function (data) {
+            _this.venues = data;
+        })
+            .catch(function (err) {
+            console.log(err);
+        });
+    };
+    AdminDashboardComponent.prototype.getAmmenities = function () {
+        var _this = this;
+        this._ammenityService.get_ammenities()
+            .then(function (data) {
+            _this.ammenities = data;
+        })
+            .catch(function (err) {
+            console.log(err);
+        });
     };
     AdminDashboardComponent = __decorate([
         core_1.Component({
-            selector: 'app-admin-dashboard',
+            selector: "app-admin-dashboard",
             template: __webpack_require__("../../../../../src/app/admin/admin-dashboard/admin-dashboard.component.html"),
             styles: [__webpack_require__("../../../../../src/app/admin/admin-dashboard/admin-dashboard.component.css")]
         }),
         __metadata("design:paramtypes", [user_service_1.UserService,
+            venue_service_1.VenueService,
+            ammenity_service_1.AmmenityService,
             router_1.Router])
     ], AdminDashboardComponent);
     return AdminDashboardComponent;
@@ -224,6 +252,377 @@ exports.AdminComponent = AdminComponent;
 
 /***/ }),
 
+/***/ "../../../../../src/app/admin/ammenity-list/ammenity-edit/ammenity-edit.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "h1 {\n    width: 100%;\n    text-align: center;\n}\n\nform {\n    width:50%;\n    margin: auto;\n    overflow: hidden;\n}\n\n.mat-form-field {\n    width: 100%;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/ammenity-list/ammenity-edit/ammenity-edit.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<button mat-raised-button [routerLink]=\"['/list_ammenities']\">Cancel</button>\n<h1 class=\"text-center\">Edit {{ammenity.name}} </h1>\n<div class=\"container\">\n  <form (submit)=\"update(ammenity)\" #formData=\"ngForm\" class=\"form\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name='name' [(ngModel)]=\"ammenity.name\" #name='ngModel' placeholder=\"name\" required>\n    </mat-form-field>\n\n    <!-- Submit -->\n    <button mat-raised-button type='submit' [disabled]=!formData.valid>Submit</button>\n  </form>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/ammenity-list/ammenity-edit/ammenity-edit.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var router_1 = __webpack_require__("../../../router/esm5/router.js");
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
+var ammenity_service_1 = __webpack_require__("../../../../../src/app/services/ammenity.service.ts");
+var ammenity_1 = __webpack_require__("../../../../../src/app/models/ammenity.ts");
+var AmmenityEditComponent = (function () {
+    function AmmenityEditComponent(_route, _ammenityService, _userService, _router) {
+        this._route = _route;
+        this._ammenityService = _ammenityService;
+        this._userService = _userService;
+        this._router = _router;
+        this.ammenity = new ammenity_1.Ammenity();
+    }
+    AmmenityEditComponent.prototype.ngOnInit = function () {
+        this.isLoggedIn();
+        this.getAmmenities();
+        this.getRouteParams();
+    };
+    AmmenityEditComponent.prototype.isLoggedIn = function () {
+        if (this._userService.getCurrentUser() == null) {
+            this._router.navigateByUrl("/");
+        }
+    };
+    AmmenityEditComponent.prototype.getAmmenities = function () {
+        var _this = this;
+        this._ammenityService.get_ammenities()
+            .then(function (data) {
+            _this.ammenities_list = data;
+        })
+            .catch(function (err) {
+            console.log(err);
+        });
+    };
+    AmmenityEditComponent.prototype.getRouteParams = function () {
+        var _this = this;
+        this._route.params.subscribe(function (param) {
+            console.log("*** Request to get one ammenity from client");
+            console.log("*** Param id is:", param.id);
+            _this._ammenityService.get_one(param.id)
+                .then(function (data) {
+                _this.ammenity = data;
+            })
+                .catch(function (err) {
+                console.log(err);
+            });
+        });
+    };
+    AmmenityEditComponent.prototype.update = function (ammenity) {
+        this._ammenityService.update_ammenity(this.ammenity);
+        this._router.navigate(["/list_ammenities"]);
+    };
+    AmmenityEditComponent = __decorate([
+        core_1.Component({
+            selector: "app-ammenity-edit",
+            template: __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-edit/ammenity-edit.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-edit/ammenity-edit.component.css")]
+        }),
+        __metadata("design:paramtypes", [router_1.ActivatedRoute,
+            ammenity_service_1.AmmenityService,
+            user_service_1.UserService,
+            router_1.Router])
+    ], AmmenityEditComponent);
+    return AmmenityEditComponent;
+}());
+exports.AmmenityEditComponent = AmmenityEditComponent;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/ammenity-list/ammenity-list.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/ammenity-list/ammenity-list.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  ammenity-list works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/ammenity-list/ammenity-list.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var AmmenityListComponent = (function () {
+    function AmmenityListComponent() {
+    }
+    AmmenityListComponent.prototype.ngOnInit = function () {
+    };
+    AmmenityListComponent = __decorate([
+        core_1.Component({
+            selector: 'app-ammenity-list',
+            template: __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-list.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-list.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], AmmenityListComponent);
+    return AmmenityListComponent;
+}());
+exports.AmmenityListComponent = AmmenityListComponent;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/ammenity-list/ammenity-new/ammenity-new.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "form {\n    width:50%;\n    margin: auto;\n    overflow: hidden;\n}\n.mat-form-field {\n    width: 100%;\n}\n\nh1 {\n  width:100%;\n  text-align: center;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/ammenity-list/ammenity-new/ammenity-new.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<button mat-raised-button [routerLink]=\"['/list_ammenities']\">\n  <i class=\"material-icons\">&#xE5C4;</i>\n</button>\n<h1>Add a ammenity</h1>\n<form #form (submit)=\"create_ammenity()\" encType=\"multipart/form-data\">\n  <!-- Name -->\n  <mat-form-field>\n    <input matInput name=\"name\" required maxlength=125 [(ngModel)]=\"new_ammenity.name\" placeholder=\"Ammenity Name\">\n  </mat-form-field>\n\n  <!-- Submit -->\n  <button mat-raised-button type=\"submit\">Submit</button>\n</form>\n\n<div>\n  <p class=\"error\" *ngFor=\"let error of errors\">{{ error }}</p>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/ammenity-list/ammenity-new/ammenity-new.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var router_1 = __webpack_require__("../../../router/esm5/router.js");
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var ammenity_service_1 = __webpack_require__("../../../../../src/app/services/ammenity.service.ts");
+var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
+var ammenity_1 = __webpack_require__("../../../../../src/app/models/ammenity.ts");
+var AmmenityNewComponent = (function () {
+    function AmmenityNewComponent(_ammenityService, _userService, _router) {
+        this._ammenityService = _ammenityService;
+        this._userService = _userService;
+        this._router = _router;
+        this.new_ammenity = new ammenity_1.Ammenity();
+        this.errors = [];
+        this.new_ammenity_event = new core_1.EventEmitter();
+    }
+    AmmenityNewComponent.prototype.ngOnInit = function () {
+        this.isLoggedIn();
+    };
+    AmmenityNewComponent.prototype.isLoggedIn = function () {
+        if (this._userService.getCurrentUser() == null) {
+            this._router.navigateByUrl("/");
+        }
+    };
+    AmmenityNewComponent.prototype.create_ammenity = function () {
+        var _this = this;
+        var form_data = new FormData(this.my_form.nativeElement);
+        console.log("*** This is the form data", form_data);
+        this._ammenityService.post_ammenity(form_data).then(function () {
+            console.log("*** Setting new ammenity");
+            _this.new_ammenity = new ammenity_1.Ammenity();
+            console.log("*** About to emit");
+            _this.new_ammenity_event.emit();
+            _this._router.navigate(["/list_ammenities"]);
+        });
+    };
+    __decorate([
+        core_1.ViewChild("file"),
+        __metadata("design:type", Object)
+    ], AmmenityNewComponent.prototype, "file_input", void 0);
+    __decorate([
+        core_1.ViewChild("form"),
+        __metadata("design:type", Object)
+    ], AmmenityNewComponent.prototype, "my_form", void 0);
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", Object)
+    ], AmmenityNewComponent.prototype, "new_ammenity_event", void 0);
+    AmmenityNewComponent = __decorate([
+        core_1.Component({
+            selector: "app-ammenity-new",
+            template: __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-new/ammenity-new.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-new/ammenity-new.component.css")]
+        }),
+        __metadata("design:paramtypes", [ammenity_service_1.AmmenityService,
+            user_service_1.UserService,
+            router_1.Router])
+    ], AmmenityNewComponent);
+    return AmmenityNewComponent;
+}());
+exports.AmmenityNewComponent = AmmenityNewComponent;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/ammenity-list/ammenity-show/ammenity-show.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  min-width: 300px;\n}\n\nh1 {\n  width: 100%;\n  text-align: center;\n}\ntable {\n  width: 100%;\n}\n\nth {\n  border-bottom: 1px solid black;\n}\n\ntd {\n  text-align: center;\n  border-bottom: 1px solid black;\n  border-right: 1px solid black;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/ammenity-list/ammenity-show/ammenity-show.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<button mat-raised-button [routerLink]=\"['/ammenity', 'add']\">Add a ammenity</button>\n<h1>Ammenities</h1>\n<hr>\n<div class=\"container\">\n  <table>\n    <thead>\n      <tr>\n        <th>#</th>\n        <th>Name</th>\n        <th>Action</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let ammenity of ammenities_list; let i = index\">\n        <td>{{i + 1}}</td>\n        <td>{{ ammenity.name }}</td>\n        <td>\n          <button [routerLink]=\"['/ammenity', 'edit', ammenity._id]\">\n            <mat-icon aria-hidden=\"true\">\n              <i class=\"material-icons\">&#xE3C9;</i>\n            </mat-icon>\n          </button>\n          <button (click)=\"delete(ammenity)\">\n            <mat-icon aria-hidden=\"true\">\n              <i class=\"material-icons\">&#xE872;</i>\n            </mat-icon>\n          </button>\n        </td>\n      </tr>\n    </tbody>\n  </table>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/ammenity-list/ammenity-show/ammenity-show.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var router_1 = __webpack_require__("../../../router/esm5/router.js");
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
+var ammenity_service_1 = __webpack_require__("../../../../../src/app/services/ammenity.service.ts");
+var AmmenityShowComponent = (function () {
+    function AmmenityShowComponent(_ammenityService, _userService, _router) {
+        this._ammenityService = _ammenityService;
+        this._userService = _userService;
+        this._router = _router;
+        this.search_text = "";
+    }
+    AmmenityShowComponent.prototype.ngOnInit = function () {
+        this.isLoggedIn();
+        this.getAmmenities();
+    };
+    AmmenityShowComponent.prototype.isLoggedIn = function () {
+        if (this._userService.getCurrentUser() == null) {
+            this._router.navigateByUrl("/");
+        }
+    };
+    AmmenityShowComponent.prototype.getAmmenities = function () {
+        var _this = this;
+        this._ammenityService.get_ammenities()
+            .then(function (data) {
+            _this.ammenities_list = data;
+        })
+            .catch(function (err) {
+            console.log(err);
+        });
+    };
+    AmmenityShowComponent.prototype.delete = function (ammenity) {
+        var _this = this;
+        this._ammenityService
+            .destroy_ammenity(ammenity)
+            .then(function () {
+            _this.getAmmenities();
+        })
+            .catch(function (err) {
+            console.log("the error is: ", err);
+        });
+    };
+    AmmenityShowComponent = __decorate([
+        core_1.Component({
+            selector: "app-ammenity-show",
+            template: __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-show/ammenity-show.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-show/ammenity-show.component.css")]
+        }),
+        __metadata("design:paramtypes", [ammenity_service_1.AmmenityService,
+            user_service_1.UserService,
+            router_1.Router])
+    ], AmmenityShowComponent);
+    return AmmenityShowComponent;
+}());
+exports.AmmenityShowComponent = AmmenityShowComponent;
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -232,7 +631,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "h1 {\n    width: 100%;\n    text-align: center;\n}\n\nform {\n    width:50%;\n    margin: auto;\n    overflow: hidden;\n    .mat-form-field {\n        width: 100%;\n    }\n}", ""]);
+exports.push([module.i, "h1 {\n    width: 100%;\n    text-align: center;\n}\n\nform {\n    width:50%;\n    margin: auto;\n    overflow: hidden;\n}\n\n.mat-form-field {\n    width: 100%;\n}", ""]);
 
 // exports
 
@@ -245,7 +644,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button mat-raised-button [routerLink]=\"['/list_venue']\">Cancel</button>\n<h1 class=\"text-center\">Edit {{venue.n}} venue</h1>\n<div class=\"container\">\n  <form (submit)=\"update(venue)\" #formData=\"ngForm\" class=\"form\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name='name' [(ngModel)]=\"venue.n\" #name='ngModel' required>\n    </mat-form-field>\n  \n    <!-- Email -->\n    <mat-form-field>\n    <input matInput name='email' [(ngModel)]=\"venue.e\" #email='ngModel' required>\n    </mat-form-field>\n\n    <!-- Phone# -->\n    <mat-form-field>\n      <input matInput name='phone' [(ngModel)]=\"venue.p\" #phone='ngModel' required>\n    </mat-form-field>\n\n    <!-- Website -->\n    <mat-form-field>\n      <input matInput name='website' [(ngModel)]=\"venue.w\" #website='ngModel' required>\n    </mat-form-field>\n\n    <!-- Submit -->\n    <input type='submit' [disabled]=!formData.valid>\n  </form>\n</div>"
+module.exports = "<button mat-raised-button [routerLink]=\"['/list_venue']\">Cancel</button>\n<h1 class=\"text-center\">Edit {{venue.n}} venue</h1>\n<div class=\"container\">\n  <form (submit)=\"update(venue)\" #formData=\"ngForm\" class=\"form\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name='name' [(ngModel)]=\"venue.n\" #name='ngModel' placeholder=\"name\" required>\n    </mat-form-field>\n  \n    <!-- Email -->\n    <mat-form-field>\n    <input matInput name='email' [(ngModel)]=\"venue.e\" #email='ngModel' placeholder=\"Email\" required>\n    </mat-form-field>\n\n    <!-- Phone# -->\n    <mat-form-field>\n      <input matInput name='phone' [(ngModel)]=\"venue.p\" #phone='ngModel' placeholder=\"Phone #\" required>\n    </mat-form-field>\n\n    <!-- Website -->\n    <mat-form-field>\n      <input matInput name='website' [(ngModel)]=\"venue.w\" #website='ngModel' placeholder=\"Website\" required>\n    </mat-form-field>\n\n    <!-- Submit -->\n    <button mat-raised-button type='submit' [disabled]=!formData.valid>Submit</button>\n  </form>\n</div>"
 
 /***/ }),
 
@@ -265,10 +664,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
-var venue_1 = __webpack_require__("../../../../../src/app/classes/venue.ts");
 var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var router_1 = __webpack_require__("../../../router/esm5/router.js");
+var venue_1 = __webpack_require__("../../../../../src/app/models/venue.ts");
 var VenueEditComponent = (function () {
     function VenueEditComponent(_route, _venueService, _userService, _router) {
         this._route = _route;
@@ -398,7 +797,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "form {\n    width:50%;\n    margin: auto;\n    overflow: hidden;\n    .mat-form-field {\n        width: 100%;\n    }\n}\n\nh1 {\n  width:100%;\n  text-align: center;\n}", ""]);
+exports.push([module.i, "form {\n    width:50%;\n    margin: auto;\n    overflow: hidden;\n}\n.mat-form-field {\n    width: 100%;\n}\n\nh1 {\n  width:100%;\n  text-align: center;\n}", ""]);
 
 // exports
 
@@ -411,7 +810,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/venue-list/venue-new/venue-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button mat-raised-button [routerLink]=\"['/list_venue']\">\n  <i class=\"material-icons\">&#xE5C4;</i>\n</button>\n<h1>Add a Venue</h1>\n  <form #form (submit)=\"create_venue()\" encType=\"multipart/form-data\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name=\"name\" required maxlength=125 [(ngModel)]=\"new_venue.name\" placeholder=\"Venue Name\">\n    </mat-form-field>\n\n    <!-- Email -->\n    <mat-form-field>\n      <input matInput name=\"email\" required maxlength=250 [(ngModel)]=\"new_venue.email\" placeholder=\"Venue Email\">\n    </mat-form-field>\n\n    <!-- Phone# -->\n    <mat-form-field>\n      <input matInput name=\"phone\" required maxlength=20 [(ngModel)]=\"new_venue.phone\" placeholder=\"Venue Phone #\">\n    </mat-form-field>\n\n    <!-- Website -->\n    <mat-form-field>\n      <input matInput name=\"website\" required maxlength=250 [(ngModel)]=\"new_venue.website\" placeholder=\"Venue Website\">\n    </mat-form-field>\n\n    <!-- Picture -->\n    <div>\n      <input #file type=\"file\" name=\"picture\" [(ngModel)]=\"new_venue.pic_url\">\n    </div>\n\n    <!-- Submit -->\n    <input type=\"submit\" value=\"Submit\">\n  </form>\n  \n  <div>\n    <p class=\"error\" *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n"
+module.exports = "<button mat-raised-button [routerLink]=\"['/list_venue']\">\n  <i class=\"material-icons\">&#xE5C4;</i>\n</button>\n<h1>Add a Venue</h1>\n  <form #form (submit)=\"create_venue()\" encType=\"multipart/form-data\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name=\"name\" required maxlength=125 [(ngModel)]=\"new_venue.name\" placeholder=\"Venue Name\">\n    </mat-form-field>\n\n    <!-- Email -->\n    <mat-form-field>\n      <input matInput name=\"email\" required maxlength=250 [(ngModel)]=\"new_venue.email\" placeholder=\"Venue Email\">\n    </mat-form-field>\n\n    <!-- Phone# -->\n    <mat-form-field>\n      <input matInput name=\"phone\" required maxlength=20 [(ngModel)]=\"new_venue.phone\" placeholder=\"Venue Phone #\">\n    </mat-form-field>\n\n    <!-- Address -->\n    <mat-form-field>\n      <input matInput name=\"address\" required maxlength=200 [(ngModel)]=\"new_venue.address\" placeholder=\"Venue Address\">\n    </mat-form-field>\n\n    <!-- Website -->\n    <mat-form-field>\n      <input matInput name=\"website\" required maxlength=250 [(ngModel)]=\"new_venue.website\" placeholder=\"Venue Website\">\n    </mat-form-field>\n\n    <!-- Ammenities -->\n    <!-- <mat-form-field>\n      <mat-select placeholder=\"Ammenities\" [formControl]=\"ammenities\" multiple>\n        <mat-option *ngFor=\"let ammenity of ammenitiesList\" [value]=\"ammenity\">{{ammenities}}</mat-option>\n      </mat-select>\n    </mat-form-field> -->\n\n    <!-- Picture -->\n    <div>\n      <input #file type=\"file\" name=\"picture\" [(ngModel)]=\"new_venue.pic_url\">\n    </div>\n\n    <!-- Submit -->\n    <button mat-raised-button type=\"submit\">Submit</button>\n  </form>\n\n  <div>\n    <p class=\"error\" *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n"
 
 /***/ }),
 
@@ -433,8 +832,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var router_1 = __webpack_require__("../../../router/esm5/router.js");
 var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
 var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
-var venue_1 = __webpack_require__("../../../../../src/app/classes/venue.ts");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var venue_1 = __webpack_require__("../../../../../src/app/models/venue.ts");
 var VenueNewComponent = (function () {
     function VenueNewComponent(_venueService, _userService, _router) {
         this._venueService = _venueService;
@@ -504,7 +903,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  min-width: 300px;\n}\n\n.mat-table {\n  overflow: auto;\n  max-height: 500px;\n}\n\n.mat-header-cell.mat-sort-header-sorted {\n  color: black;\n}\n\nh1 {\n  width: 100%;\n  text-align: center;\n}\ntable {\n  width: 100%;\n  th {\n    border-bottom: 1px solid black;\n  }\n  td {\n    text-align: center;\n    border-bottom: 1px solid black;\n    border-right: 1px solid black;\n  }\n}", ""]);
+exports.push([module.i, ".container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  min-width: 300px;\n}\n\n.mat-table {\n  overflow: auto;\n  max-height: 500px;\n}\n\n.mat-header-cell.mat-sort-header-sorted {\n  color: black;\n}\n\nh1 {\n  width: 100%;\n  text-align: center;\n}\ntable {\n  width: 100%;\n}\nth {\n  border-bottom: 1px solid black;\n}\n\ntd {\n  text-align: center;\n  border-bottom: 1px solid black;\n  border-right: 1px solid black;\n}", ""]);
 
 // exports
 
@@ -517,7 +916,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/venue-list/venue-show/venue-show.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button mat-raised-button [routerLink]=\"['/venue', 'add']\">Add a venue</button>\n<h1>Venues</h1>\n<hr>\n<table>\n    <thead>\n        <tr>\n            <th>Name</th>\n            <th>Email</th>\n            <th>#</th>\n            <th>Website</th>\n            <th>Action</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr *ngFor=\"let v of venue_list\">\n            <td>{{ v.n }}</td>\n            <td>{{ v.e }}</td>\n            <td>{{ v.p }}</td>\n            <td>{{ v.w }}</td>\n            <td>\n                <button  [routerLink]=\"['/venue', 'edit', v._id]\">\n                    <mat-icon aria-hidden=\"true\">\n                        <i class=\"material-icons\">&#xE3C9;</i>\n                    </mat-icon>\n                </button>\n                <button (click)=\"delete(v)\">\n                    <mat-icon aria-hidden=\"true\">\n                        <i class=\"material-icons\">&#xE872;</i>\n                    </mat-icon>\n                </button>\n            </td>\n        </tr>\n    </tbody>\n</table>\n\n\n<!-- <div class=\"container mat-elevation-z8\">\n    <mat-table #table *ngFor=\"let venue of venue_list\">\n\n        <ng-container matColumnDef=\"name\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>\n            <mat-cell *matCellDef=\"let venue\"> {{venue.name}} </mat-cell>\n        </ng-container>\n\n        <ng-container matColumnDef=\"email\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>\n            <mat-cell *matCellDef=\"let venue\"> {{venue.email}} </mat-cell>\n        </ng-container>\n\n        <ng-container matColumnDef=\"phone\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header> # </mat-header-cell>\n            <mat-cell *matCellDef=\"let venue\"> {{venue.phone}} </mat-cell>\n        </ng-container>\n\n        <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\n        <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n    </mat-table>\n</div> -->"
+module.exports = "<button mat-raised-button [routerLink]=\"['/venue', 'add']\">Add a venue</button>\n<h1>Venues</h1>\n<hr>\n<table>\n    <thead>\n        <tr>\n            <th>#</th>\n            <th>Name</th>\n            <th>Email</th>\n            <th>Phone</th>\n            <th>Website</th>\n            <th>Action</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr *ngFor=\"let v of venue_list; let i = index\">\n            <td>{{i + 1}}</td>\n            <td>{{ v.n }}</td>\n            <td>{{ v.e }}</td>\n            <td>{{ v.p }}</td>\n            <td>{{ v.w }}</td>\n            <td>\n                <button  [routerLink]=\"['/venue', 'edit', v._id]\">\n                    <mat-icon aria-hidden=\"true\">\n                        <i class=\"material-icons\">&#xE3C9;</i>\n                    </mat-icon>\n                </button>\n                <button (click)=\"delete(v)\">\n                    <mat-icon aria-hidden=\"true\">\n                        <i class=\"material-icons\">&#xE872;</i>\n                    </mat-icon>\n                </button>\n            </td>\n        </tr>\n    </tbody>\n</table>\n\n\n<!-- <div class=\"container mat-elevation-z8\">\n    <mat-table #table *ngFor=\"let venue of venue_list\">\n\n        <ng-container matColumnDef=\"name\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>\n            <mat-cell *matCellDef=\"let venue\"> {{venue.name}} </mat-cell>\n        </ng-container>\n\n        <ng-container matColumnDef=\"email\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>\n            <mat-cell *matCellDef=\"let venue\"> {{venue.email}} </mat-cell>\n        </ng-container>\n\n        <ng-container matColumnDef=\"phone\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header> # </mat-header-cell>\n            <mat-cell *matCellDef=\"let venue\"> {{venue.phone}} </mat-cell>\n        </ng-container>\n\n        <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\n        <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n    </mat-table>\n</div> -->\n"
 
 /***/ }),
 
@@ -548,11 +947,8 @@ var VenueShowComponent = (function () {
         this.search_text = "";
     }
     VenueShowComponent.prototype.ngOnInit = function () {
-        var _this = this;
         this.isLoggedIn();
-        this._venueService.get_venues()
-            .then(function (data) { return _this.venue_list = data; })
-            .catch(function (err) { return console.log(err); });
+        this.getVenues();
     };
     VenueShowComponent.prototype.isLoggedIn = function () {
         if (this._userService.getCurrentUser() == null) {
@@ -613,6 +1009,9 @@ var admin_dashboard_component_1 = __webpack_require__("../../../../../src/app/ad
 var venue_show_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-show/venue-show.component.ts");
 var venue_new_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-new/venue-new.component.ts");
 var venue_edit_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.ts");
+var ammenity_show_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-show/ammenity-show.component.ts");
+var ammenity_new_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-new/ammenity-new.component.ts");
+var ammenity_edit_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-edit/ammenity-edit.component.ts");
 var routes = [
     {
         path: '', component: client_component_1.ClientComponent,
@@ -629,6 +1028,9 @@ var routes = [
             { path: 'list_venue', pathMatch: 'full', component: venue_show_component_1.VenueShowComponent },
             { path: 'venue/add', pathMatch: 'full', component: venue_new_component_1.VenueNewComponent },
             { path: 'venue/edit/:id', pathMatch: 'full', component: venue_edit_component_1.VenueEditComponent },
+            { path: 'list_ammenities', pathMatch: 'full', component: ammenity_show_component_1.AmmenityShowComponent },
+            { path: 'ammenity/add', pathMatch: 'full', component: ammenity_new_component_1.AmmenityNewComponent },
+            { path: 'ammenity/edit/:id', pathMatch: 'full', component: ammenity_edit_component_1.AmmenityEditComponent },
         ]
     },
     {
@@ -744,6 +1146,12 @@ var venue_edit_component_1 = __webpack_require__("../../../../../src/app/admin/v
 var venue_new_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-new/venue-new.component.ts");
 var venue_show_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-show/venue-show.component.ts");
 var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
+var venue_component_1 = __webpack_require__("../../../../../src/app/client/venue/venue.component.ts");
+var ammenity_list_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-list.component.ts");
+var ammenity_new_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-new/ammenity-new.component.ts");
+var ammenity_edit_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-edit/ammenity-edit.component.ts");
+var ammenity_show_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-show/ammenity-show.component.ts");
+var ammenity_service_1 = __webpack_require__("../../../../../src/app/services/ammenity.service.ts");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -763,7 +1171,12 @@ var AppModule = (function () {
                 venue_list_component_1.VenueListComponent,
                 venue_edit_component_1.VenueEditComponent,
                 venue_new_component_1.VenueNewComponent,
-                venue_show_component_1.VenueShowComponent
+                venue_show_component_1.VenueShowComponent,
+                venue_component_1.VenueComponent,
+                ammenity_list_component_1.AmmenityListComponent,
+                ammenity_new_component_1.AmmenityNewComponent,
+                ammenity_edit_component_1.AmmenityEditComponent,
+                ammenity_show_component_1.AmmenityShowComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -807,7 +1220,8 @@ var AppModule = (function () {
             ],
             providers: [
                 user_service_1.UserService,
-                venue_service_1.VenueService
+                venue_service_1.VenueService,
+                ammenity_service_1.AmmenityService
             ],
             bootstrap: [app_component_1.AppComponent]
         })
@@ -815,38 +1229,6 @@ var AppModule = (function () {
     return AppModule;
 }());
 exports.AppModule = AppModule;
-
-
-/***/ }),
-
-/***/ "../../../../../src/app/classes/user.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var User = (function () {
-    function User() {
-    }
-    return User;
-}());
-exports.User = User;
-
-
-/***/ }),
-
-/***/ "../../../../../src/app/classes/venue.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var Venue = (function () {
-    function Venue() {
-    }
-    return Venue;
-}());
-exports.Venue = Venue;
 
 
 /***/ }),
@@ -920,7 +1302,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "body {\n    margin:0;\n}\n\ndiv.header {\n    width: 100%;\n}\n\n.img{\n    margin: auto;\n}\n\nh1, h4 {\n    text-align: center;\n}\n#search-button {\n    width: 100%;\n}\nbutton{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin: auto;\n}\n\ndiv.movie {\n    width: 25%;\n    height: 10rem;\n    border-right: 1px solid black;\n\n}\n\nh2 {\n    text-align: center;\n}", ""]);
+exports.push([module.i, "body {\n    margin:0;\n}\n\ndiv.header {\n    width: 100%;\n}\n\n.img{\n    margin: auto;\n}\n\nh1, h4 {\n    text-align: center;\n}\n#search-button {\n    width: 100%;\n}\nbutton{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin: auto;\n}\n\ndiv.movie {\n    width: 20%;\n    height: 10rem;\n    border-right: 1px solid black;\n}\n\ndiv.about {\n  width: 70%;\n  height: 10rem;\n}\n\n.movie, .about {\n  display: inline-block;\n  vertical-align: top;\n  padding: 2%;\n}\n\nh2 {\n    text-align: center;\n}\n\n\n.spacer {\n    -webkit-box-flex: 1;\n        -ms-flex: 1 1 auto;\n            flex: 1 1 auto;\n}\n", ""]);
 
 // exports
 
@@ -933,7 +1315,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/client/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\n  <section class=\"mat-typography\">\n    <h1>Tulsa Venues</h1>\n    <!-- <img class=\"img\" src=\"assets/tulsavenus.png\" alt=\"Picture of outlined city\"> -->\n    <h4>Who knows Tulsa better then tulsans?</h4>\n  </section>\n  <div id=\"search-button\">\n    <button mat-raised-button color=\"accent\" routerLink=\"/search\">Find Your Venue Now</button>\n  </div>\n</div>\n<hr>\n<div class=\"movie\">\n  <div class=\"icon\">\n    <i class=\"material-icons\">&#xE04A;</i>\n  </div>\n</div>\n<hr>\n<div>\n  <h2>Preferred Venders</h2>\n</div>"
+module.exports = "<div class=\"header\">\n  <section class=\"mat-typography\">\n    <h1>Tulsa Venues</h1>\n    <!-- <img class=\"img\" src=\"assets/tulsavenus.png\" alt=\"Picture of outlined city\"> -->\n    <h4>Who knows Tulsa better then tulsans?</h4>\n  </section>\n  <div id=\"search-button\">\n    <button mat-raised-button color=\"accent\" routerLink=\"/search\">Find Your Venue Now</button>\n  </div>\n</div>\n<hr>\n<div class=\"movie\">\n  <div class=\"icon\">\n    <i class=\"material-icons\">&#xE04A;</i>\n  </div>\n</div>\n<div class=\"about\">\n  <h2>OUR STORY</h2>\n  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo dolorem, quibusdam eaque explicabo iste possimus aliquam perferendis in voluptatum quam, molestias architecto cumque. Perspiciatis, debitis. Id fuga quam soluta dicta?</p>\n</div>\n<hr>\n<div>\n  <h2>Preferred Venders</h2>\n</div>\n\n"
 
 /***/ }),
 
@@ -952,19 +1334,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
+var router_1 = __webpack_require__("../../../router/esm5/router.js");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var DashboardComponent = (function () {
-    function DashboardComponent() {
+    function DashboardComponent(_venueService, _router) {
+        this._venueService = _venueService;
+        this._router = _router;
     }
     DashboardComponent.prototype.ngOnInit = function () {
+        this.getVenues();
+    };
+    DashboardComponent.prototype.getVenues = function () {
+        var _this = this;
+        this._venueService.get_venues()
+            .then(function (data) {
+            _this.venue_list = data;
+        })
+            .catch(function (err) {
+            console.log(err);
+        });
     };
     DashboardComponent = __decorate([
         core_1.Component({
-            selector: 'app-dashboard',
+            selector: "app-dashboard",
             template: __webpack_require__("../../../../../src/app/client/dashboard/dashboard.component.html"),
             styles: [__webpack_require__("../../../../../src/app/client/dashboard/dashboard.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [venue_service_1.VenueService,
+            router_1.Router])
     ], DashboardComponent);
     return DashboardComponent;
 }());
@@ -981,7 +1379,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".header, .search {\n    width: 100%;\n}\nh1, h2, h4 {\n    text-align: center;\n}\n\n[mat-raised-button] {\n  width:100%;\n}\n.mat-sidenav-container {\n  height: 100vh;\n}\n\n.mat-sidenav {\n  width: 320px;\n}\n\n.mat-grid-list {\n  width: 80%;\n  margin: auto;\n}\n\n.spacer {\n    -webkit-box-flex: 1;\n        -ms-flex: 1 1 auto;\n            flex: 1 1 auto;\n}\n", ""]);
 
 // exports
 
@@ -994,7 +1392,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/client/venue-search/venue-search.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  venue-search works!\n</p>\n"
+module.exports = "<div class=\"header\">\n  <section class=\"mat-typography\">\n    <h1>Tulsa Venues</h1>\n    <h4>Who knows Tulsa better then tulsans?</h4>\n  </section>\n</div>\n<div class=\"search\">\n  <hr>\n  <h2>SEARCH FORM COMING SOON...</h2>\n  <hr>\n</div>\n<div>\n  <mat-sidenav-container>\n    <mat-sidenav align=\"end\" mode=\"side\" #sidenav>\n      <mat-tab-group>\n        <mat-tab>\n          <ng-template mat-tab-label>Details</ng-template>\n          <button mat-raised-button (click)=\"sidenav.close()\" color=\"warn\">CLOSE</button>\n          <p>Name: {{currentVenue.n}}</p>\n          <p>Phone: {{currentVenue.p}}</p>\n          <p>Location: {{currentVenue.a}}</p>\n          <p>Website: <a href=\"http://{{currentVenue.w}}\">{{currentVenue.w}}</a></p>\n        </mat-tab>\n        <mat-tab>\n          <ng-template mat-tab-label>Photos</ng-template>\n          <img src=\"imgs/{{currentVenue.pic_url}}\" alt=\"Venue Picture\">\n        </mat-tab>\n      </mat-tab-group>\n    </mat-sidenav>\n    <mat-sidenav-content>\n      <mat-grid-list cols=\"4\" rowHeight=\"200px\">\n        <mat-grid-tile *ngFor=\"let venue of venue_list\">\n          <img src=\"imgs/{{venue.pic_url}}\" alt=\"Venue Picture\">\n          <mat-grid-tile-footer>\n            <h3>{{venue.n}}</h3>\n            <span class=\"spacer\"></span>\n            <button mat-icon-button (click)=\"showVenue(venue)\">\n              <mat-icon>info</mat-icon>\n            </button>\n          </mat-grid-tile-footer>\n        </mat-grid-tile>\n      </mat-grid-list>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>\n"
 
 /***/ }),
 
@@ -1013,23 +1411,111 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var router_1 = __webpack_require__("../../../router/esm5/router.js");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
+var material_1 = __webpack_require__("../../../material/esm5/material.es5.js");
 var VenueSearchComponent = (function () {
-    function VenueSearchComponent() {
+    function VenueSearchComponent(_venueService, _router) {
+        this._venueService = _venueService;
+        this._router = _router;
+        this.currentVenue = [];
     }
     VenueSearchComponent.prototype.ngOnInit = function () {
+        this.getVenues();
     };
+    VenueSearchComponent.prototype.getVenues = function () {
+        var _this = this;
+        this._venueService
+            .get_venues()
+            .then(function (data) {
+            _this.venue_list = data;
+        })
+            .catch(function (err) {
+            console.log(err);
+        });
+    };
+    VenueSearchComponent.prototype.showVenue = function (venue) {
+        this.currentVenue = venue;
+        this.sidenav.open();
+    };
+    __decorate([
+        core_1.ViewChild('sidenav'),
+        __metadata("design:type", material_1.MatSidenav)
+    ], VenueSearchComponent.prototype, "sidenav", void 0);
     VenueSearchComponent = __decorate([
         core_1.Component({
-            selector: 'app-venue-search',
+            selector: "app-venue-search",
             template: __webpack_require__("../../../../../src/app/client/venue-search/venue-search.component.html"),
             styles: [__webpack_require__("../../../../../src/app/client/venue-search/venue-search.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [venue_service_1.VenueService,
+            router_1.Router])
     ], VenueSearchComponent);
     return VenueSearchComponent;
 }());
 exports.VenueSearchComponent = VenueSearchComponent;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/client/venue/venue.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/client/venue/venue.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  venue works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/client/venue/venue.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var VenueComponent = (function () {
+    function VenueComponent() {
+    }
+    VenueComponent.prototype.ngOnInit = function () {
+    };
+    VenueComponent = __decorate([
+        core_1.Component({
+            selector: 'app-venue',
+            template: __webpack_require__("../../../../../src/app/client/venue/venue.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/client/venue/venue.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], VenueComponent);
+    return VenueComponent;
+}());
+exports.VenueComponent = VenueComponent;
 
 
 /***/ }),
@@ -1042,7 +1528,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "footer {\n    position: absolute;\n    bottom: 0;\n    width: 100%;\n    text-align: center;\n    background: gainsboro;\n}", ""]);
+exports.push([module.i, "footer {\n    width: 100%;\n    text-align: center;\n    background: gainsboro;\n    margin-top: 5%;\n}\n", ""]);
 
 // exports
 
@@ -1116,7 +1602,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <form (submit)=\"loginUser(); loginForm.reset()\" #loginForm=\"ngForm\">\n    <!-- ** EMAIL ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your email\"autocomplete=\"email\" name=\"email\" [formControl]=\"email\" required [(ngModel)]=\"currentUser.email\">\n      <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n    </mat-form-field>\n\n  <!-- **  PASSWORD ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your password\" autocomplete=\"current-password\" name=\"password\" required [(ngModel)]=\"currentUser.password\" [type]=\"hide ? 'password' : 'text'\">\n      <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n    </mat-form-field>\n    <button type=\"submit\" value=\"Login\" [disabled]=\"!currentUser.email\">\n      <h3>Login<i class=\"material-icons\">arrow forward</i></h3>\n    </button>\n  </form>\n  <div>\n    <p *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div> \n\n\n<div class=\"col-4\">\n  <form (submit)=\"createUser()\" class=\"form\"> \n    <div class=\"form-input\">\n      <label>Name</label>\n      <input type=\"text\" name=\"name\" [(ngModel)]=\"newUser.name\">\n    </div>\n    <div class=\"form-input\">\n      <label>Email</label>\n      <input type=\"text\" name=\"email\" [(ngModel)]=\"newUser.email\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password</label>\n      <input type=\"text\" name=\"password\" [(ngModel)]=\"newUser.password\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password Confirmation</label>\n      <input type=\"text\" name=\"password_confirmation\" [(ngModel)]=\"newUser.password_confirmation\">\n    </div>\n    <div>\n      <input class=\"btn btn-primary\" type=\"submit\" value=\"Register\">\n    </div>\n  </form>\n  <div>\n    <p *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div>"
+module.exports = "<div class=\"container\">\n  <form (submit)=\"loginUser(); loginForm.reset()\" #loginForm=\"ngForm\">\n    <!-- ** EMAIL ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your email\"autocomplete=\"email\" name=\"email\" [formControl]=\"email\" required [(ngModel)]=\"currentUser.email\">\n      <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n    </mat-form-field>\n\n  <!-- **  PASSWORD ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your password\" autocomplete=\"current-password\" name=\"password\" required [(ngModel)]=\"currentUser.password\" [type]=\"hide ? 'password' : 'text'\">\n      <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n    </mat-form-field>\n    <button type=\"submit\" value=\"Login\" [disabled]=\"!currentUser.email\">\n      <h3>Login<i class=\"material-icons\">arrow forward</i></h3>\n    </button>\n  </form>\n  <div>\n    <p *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div> \n\n<!-- \n<div class=\"col-4\">\n  <form (submit)=\"createUser()\" class=\"form\"> \n    <div class=\"form-input\">\n      <label>Name</label>\n      <input type=\"text\" name=\"name\" [(ngModel)]=\"newUser.name\">\n    </div>\n    <div class=\"form-input\">\n      <label>Email</label>\n      <input type=\"text\" name=\"email\" [(ngModel)]=\"newUser.email\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password</label>\n      <input type=\"text\" name=\"password\" [(ngModel)]=\"newUser.password\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password Confirmation</label>\n      <input type=\"text\" name=\"password_confirmation\" [(ngModel)]=\"newUser.password_confirmation\">\n    </div>\n    <div>\n      <input class=\"btn btn-primary\" type=\"submit\" value=\"Register\">\n    </div>\n  </form>\n  <div>\n    <p *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div> -->"
 
 /***/ }),
 
@@ -1136,10 +1622,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
-var user_1 = __webpack_require__("../../../../../src/app/classes/user.ts");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var router_1 = __webpack_require__("../../../router/esm5/router.js");
 var forms_1 = __webpack_require__("../../../forms/esm5/forms.js");
+var user_1 = __webpack_require__("../../../../../src/app/models/user.ts");
 var LoginComponent = (function () {
     function LoginComponent(_userService, _router) {
         this._userService = _userService;
@@ -1210,6 +1696,54 @@ exports.LoginComponent = LoginComponent;
 
 /***/ }),
 
+/***/ "../../../../../src/app/models/ammenity.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Ammenity = (function () {
+    function Ammenity() {
+    }
+    return Ammenity;
+}());
+exports.Ammenity = Ammenity;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/models/user.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var User = (function () {
+    function User() {
+    }
+    return User;
+}());
+exports.User = User;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/models/venue.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Venue = (function () {
+    function Venue() {
+    }
+    return Venue;
+}());
+exports.Venue = Venue;
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/nav/nav.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1231,7 +1765,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <span class=\"spacer\"></span>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/\">Home</button>\n      <button mat-menu-item routerLink=\"/search\">Search</button>\n      <button mat-menu-item>Item 2</button>\n    </mat-menu>\n  </mat-toolbar-row>\n</mat-toolbar>\n"
+module.exports = "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <span class=\"spacer\"></span>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/\">Home</button>\n      <button mat-menu-item routerLink=\"/search\">Search</button>\n    </mat-menu>\n  </mat-toolbar-row>\n</mat-toolbar>\n"
 
 /***/ }),
 
@@ -1267,6 +1801,70 @@ var NavComponent = (function () {
     return NavComponent;
 }());
 exports.NavComponent = NavComponent;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/ammenity.service.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var http_1 = __webpack_require__("../../../http/esm5/http.js");
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var AmmenityService = (function () {
+    function AmmenityService(_http) {
+        this._http = _http;
+    }
+    AmmenityService.prototype.get_ammenities = function () {
+        return this._http
+            .get("/ammenities")
+            .map(function (data) { return data.json(); })
+            .toPromise();
+    };
+    AmmenityService.prototype.post_ammenity = function (form_data) {
+        return this._http
+            .post("/ammenities/add", form_data)
+            .map(function (data) { return data.json(); })
+            .toPromise();
+    };
+    AmmenityService.prototype.destroy_ammenity = function (ammenity) {
+        console.log("*** Hit vammenity service");
+        return this._http
+            .post("/ammenities/destroy", ammenity)
+            .map(function (data) { return data.json(); })
+            .toPromise();
+    };
+    AmmenityService.prototype.update_ammenity = function (ammenity) {
+        return this._http
+            .post("/ammenities/update", ammenity)
+            .map(function (data) { return data.json(); })
+            .toPromise();
+    };
+    AmmenityService.prototype.get_one = function (ammenity_id) {
+        console.log("ammenity_id from service", ammenity_id);
+        return this._http
+            .post("/ammenities/id", { ammenity_id: ammenity_id })
+            .map(function (data) { return data.json(); })
+            .toPromise();
+    };
+    AmmenityService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.Http])
+    ], AmmenityService);
+    return AmmenityService;
+}());
+exports.AmmenityService = AmmenityService;
 
 
 /***/ }),

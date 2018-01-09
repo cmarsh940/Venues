@@ -1,9 +1,9 @@
 import { Router } from '@angular/router';
-import { Venue } from './../../../classes/venue';
 import { VenueService } from './../../../services/venue.service';
-import { User } from './../../../classes/user';
 import { UserService } from './../../../services/user.service';
 import { Component, OnInit } from '@angular/core';
+import { User } from '../../../models/user';
+import { Venue } from '../../../models/venue';
 
 @Component({
   selector: 'app-venue-show',
@@ -23,10 +23,7 @@ export class VenueShowComponent implements OnInit {
 
   ngOnInit() {
     this.isLoggedIn();
-
-    this._venueService.get_venues()
-      .then(data => this.venue_list = data)
-      .catch(err => console.log(err))
+    this.getVenues();
   }
 
   isLoggedIn() {

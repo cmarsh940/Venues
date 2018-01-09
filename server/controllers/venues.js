@@ -61,9 +61,10 @@ module.exports = {
             .then((venue) => {
                 console.log('*** successfully found one')
                 venue.name = myVenue.name
-                venue.title = myVenue.title
-                venue.description = myVenue.description
-                venue.accomplishments = myVenue.accomplishments
+                venue.email = myVenue.email
+                venue.phone = myVenue.phone
+                venue.address = myVenue.address
+                venue.website = myVenue.website
                 venue.save()
                     .then(() => { res.json(true) })
                     .catch((err) => { res.status(500).json(err) })
@@ -72,6 +73,7 @@ module.exports = {
                 res.status(500).json(err);
             })
     },
+
     getOne: (req, res, next) => {
         console.log('*** logging the body for getting one venue', req.body)
         Venue.findOne({ _id: req.body.venue_id })

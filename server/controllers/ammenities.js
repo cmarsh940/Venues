@@ -1,32 +1,33 @@
 const path = require("path")
 
 const mongoose = require("mongoose")
-const City = mongoose.model("City")
+const Ammenity = mongoose.model("Ammenity")
 
 mongoose.Promise = global.Promise;
 module.exports = {
     index: (req, res, next) => {
-        City.find()
+        Ammenity.find()
             .then(data => res.json(data))
             .catch(err => { res.status(500).json(err) })
     },
-    upload: (req, res) => {
 
-        let new_city = new City(req.body)
-        new_city.save()
+    upload: (req, res) => {
+        let new_ammenity = new Ammenity(req.body)
+        new_ammenity.save()
             .then(() => {
-                return res.json(new_city)
+                return res.json(new_ammenity)
             })
             .catch(err => {
-                console.log("*** my_city save error", err)
+                console.log("*** my_ammenity save error", err)
                 return res.json(err)
             })
     },
+
     destroy: (req, res, next) => {
         console.log('logging the req.body', req.body)
-        let city = new City(req.body);
-        console.log("logging the new city to be destroyed", city)
-        City.remove({ _id: city._id })
+        let ammenity = new Ammenity(req.body);
+        console.log("logging the new ammenity to be destroyed", ammenity)
+        Ammenity.remove({ _id: ammenity._id })
             .then(() => {
                 res.json(true);
             })
@@ -34,14 +35,15 @@ module.exports = {
                 res.status(500).json(err);
             })
     },
+
     update: (req, res, next) => {
         console.log("logging the update req.body", req.body)
-        let myCity = new City(req.body)
-        City.findOne({ _id: myCity._id }) //update makes you find one
-            .then((doctor) => {
+        let myAmmenity = new Ammenity(req.body)
+        Ammenity.findOne({ _id: myAmmenity._id }) //update makes you find one
+            .then((ammenity) => {
                 console.log('successfully found one')
-                city.name = myCity.name
-                city.save()
+                ammenity.name = myAmmenity.name
+                ammenity.save()
                     .then(() => { res.json(true) })
                     .catch((err) => { res.status(500).json(err) })
             })
@@ -49,16 +51,16 @@ module.exports = {
                 res.status(500).json(err);
             })
     },
+
     getOne: (req, res, next) => {
-        console.log('logging the body for getting one city', req.body)
-        City.findOne({ _id: req.body.city_id })
-            .then((city) => {
-                console.log('found me a city', city)
-                res.json(city)
+        console.log('logging the body for getting one ammenity', req.body)
+        Ammenity.findOne({ _id: req.body.ammenity_id })
+            .then((ammenity) => {
+                console.log('found me a ammenity', ammenity)
+                res.json(ammenity)
             })
             .catch((err) => {
                 res.status(500).json(err);
             })
-
     }
 }
