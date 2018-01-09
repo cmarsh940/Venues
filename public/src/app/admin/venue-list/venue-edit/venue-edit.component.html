@@ -1,25 +1,30 @@
 <button mat-raised-button [routerLink]="['/list_venue']">Cancel</button>
-<h1 class="text-center">Edit {{venue.n}} venue</h1>
+<h1 class="text-center">Edit {{venue.name}} venue</h1>
 <div class="container">
   <form (submit)="update(venue)" #formData="ngForm" class="form">
     <!-- Name -->
     <mat-form-field>
-      <input matInput name='name' [(ngModel)]="venue.n" #name='ngModel' placeholder="name" required>
+      <input matInput name='name' [(ngModel)]="venue.name" #name='ngModel' placeholder="name" required>
     </mat-form-field>
-  
+
     <!-- Email -->
     <mat-form-field>
-    <input matInput name='email' [(ngModel)]="venue.e" #email='ngModel' placeholder="Email" required>
+    <input matInput name='email' [(ngModel)]="venue.email" #email='ngModel' placeholder="Email" required>
     </mat-form-field>
 
     <!-- Phone# -->
     <mat-form-field>
-      <input matInput name='phone' [(ngModel)]="venue.p" #phone='ngModel' placeholder="Phone #" required>
+      <input matInput name='phone' [(ngModel)]="venue.phone" #phone='ngModel' placeholder="Phone #" required>
+    </mat-form-field>
+
+    <!-- Address -->
+    <mat-form-field>
+      <input matInput name='address' [(ngModel)]="venue.address" #address='ngModel' placeholder="Address" required>
     </mat-form-field>
 
     <!-- Website -->
     <mat-form-field>
-      <input matInput name='website' [(ngModel)]="venue.w" #website='ngModel' placeholder="Website" required>
+      <input matInput name='website' [(ngModel)]="venue.website" #website='ngModel' placeholder="Website" required>
     </mat-form-field>
 
     <!-- Submit -->

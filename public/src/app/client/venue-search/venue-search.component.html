@@ -16,10 +16,10 @@
         <mat-tab>
           <ng-template mat-tab-label>Details</ng-template>
           <button mat-raised-button (click)="sidenav.close()" color="warn">CLOSE</button>
-          <p>Name: {{currentVenue.n}}</p>
-          <p>Phone: {{currentVenue.p}}</p>
-          <p>Location: {{currentVenue.a}}</p>
-          <p>Website: <a href="http://{{currentVenue.w}}">{{currentVenue.w}}</a></p>
+          <p>Name: {{currentVenue.name}}</p>
+          <p>Phone: {{currentVenue.phone}}</p>
+          <p>Location: {{currentVenue.address}}</p>
+          <p>Website: <a href="http://{{currentVenue.website}}">{{currentVenue.website}}</a></p>
         </mat-tab>
         <mat-tab>
           <ng-template mat-tab-label>Photos</ng-template>
@@ -32,7 +32,7 @@
         <mat-grid-tile *ngFor="let venue of venue_list">
           <img src="imgs/{{venue.pic_url}}" alt="Venue Picture">
           <mat-grid-tile-footer>
-            <h3>{{venue.n}}</h3>
+            <h3>{{venue.name}}</h3>
             <span class="spacer"></span>
             <button mat-icon-button (click)="showVenue(venue)">
               <mat-icon>info</mat-icon>

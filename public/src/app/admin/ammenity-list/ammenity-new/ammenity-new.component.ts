@@ -13,8 +13,7 @@ import { Ammenity } from '../../../models/ammenity';
 export class AmmenityNewComponent implements OnInit {
   new_ammenity: Ammenity = new Ammenity();
   current_user: User;
-  errors = [];
-
+  errors: string[] = [];
 
   @ViewChild("form") my_form;
   @Output() new_ammenity_event = new EventEmitter();

@@ -8,6 +8,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
+            <th>Address</th>
             <th>Website</th>
             <th>Action</th>
         </tr>
@@ -15,10 +16,11 @@
     <tbody>
         <tr *ngFor="let v of venue_list; let i = index">
             <td>{{i + 1}}</td>
-            <td>{{ v.n }}</td>
-            <td>{{ v.e }}</td>
-            <td>{{ v.p }}</td>
-            <td>{{ v.w }}</td>
+            <td>{{ v.name }}</td>
+            <td>{{ v.email }}</td>
+            <td>{{ v.phone }}</td>
+            <td>{{ v.address }}</td>
+            <td>{{ v.website }}</td>
             <td>
                 <button  [routerLink]="['/venue', 'edit', v._id]">
                     <mat-icon aria-hidden="true">
@@ -34,27 +36,3 @@
         </tr>
     </tbody>
 </table>
-
-
-<!-- <div class="container mat-elevation-z8">
-    <mat-table #table *ngFor="let venue of venue_list">
-
-        <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-            <mat-cell *matCellDef="let venue"> {{venue.name}} </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="email">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
-            <mat-cell *matCellDef="let venue"> {{venue.email}} </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="phone">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> # </mat-header-cell>
-            <mat-cell *matCellDef="let venue"> {{venue.phone}} </mat-cell>
-        </ng-container>
-
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-</div> -->

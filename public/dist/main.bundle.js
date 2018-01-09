@@ -145,7 +145,15 @@ var AdminDashboardComponent = (function () {
             _this.venues = data;
         })
             .catch(function (err) {
-            console.log(err);
+            if (err.error instanceof Error) {
+                // A client-side or network error occurred. Handle it accordingly.
+                console.log("An error occurred:", err.error.message);
+            }
+            else {
+                // The backend returned an unsuccessful response code.
+                // The response body may contain clues as to what went wrong,
+                console.log("Backend returned code " + err.status + ", body was: " + err.error);
+            }
         });
     };
     AdminDashboardComponent.prototype.getAmmenities = function () {
@@ -155,7 +163,15 @@ var AdminDashboardComponent = (function () {
             _this.ammenities = data;
         })
             .catch(function (err) {
-            console.log(err);
+            if (err.error instanceof Error) {
+                // A client-side or network error occurred. Handle it accordingly.
+                console.log("An error occurred:", err.error.message);
+            }
+            else {
+                // The backend returned an unsuccessful response code.
+                // The response body may contain clues as to what went wrong,
+                console.log("Backend returned code " + err.status + ", body was: " + err.error);
+            }
         });
     };
     AdminDashboardComponent = __decorate([
@@ -317,12 +333,21 @@ var AmmenityEditComponent = (function () {
     };
     AmmenityEditComponent.prototype.getAmmenities = function () {
         var _this = this;
-        this._ammenityService.get_ammenities()
+        this._ammenityService
+            .get_ammenities()
             .then(function (data) {
             _this.ammenities_list = data;
         })
             .catch(function (err) {
-            console.log(err);
+            if (err.error instanceof Error) {
+                // A client-side or network error occurred. Handle it accordingly.
+                console.log("An error occurred:", err.error.message);
+            }
+            else {
+                // The backend returned an unsuccessful response code.
+                // The response body may contain clues as to what went wrong,
+                console.log("Backend returned code " + err.status + ", body was: " + err.error);
+            }
         });
     };
     AmmenityEditComponent.prototype.getRouteParams = function () {
@@ -330,12 +355,21 @@ var AmmenityEditComponent = (function () {
         this._route.params.subscribe(function (param) {
             console.log("*** Request to get one ammenity from client");
             console.log("*** Param id is:", param.id);
-            _this._ammenityService.get_one(param.id)
+            _this._ammenityService
+                .get_one(param.id)
                 .then(function (data) {
                 _this.ammenity = data;
             })
                 .catch(function (err) {
-                console.log(err);
+                if (err.error instanceof Error) {
+                    // A client-side or network error occurred. Handle it accordingly.
+                    console.log("An error occurred:", err.error.message);
+                }
+                else {
+                    // The backend returned an unsuccessful response code.
+                    // The response body may contain clues as to what went wrong,
+                    console.log("Backend returned code " + err.status + ", body was: " + err.error);
+                }
             });
         });
     };
@@ -382,7 +416,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/ammenity-list/ammenity-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  ammenity-list works!\n</p>\n"
+module.exports = "\n"
 
 /***/ }),
 
@@ -497,10 +531,6 @@ var AmmenityNewComponent = (function () {
         });
     };
     __decorate([
-        core_1.ViewChild("file"),
-        __metadata("design:type", Object)
-    ], AmmenityNewComponent.prototype, "file_input", void 0);
-    __decorate([
         core_1.ViewChild("form"),
         __metadata("design:type", Object)
     ], AmmenityNewComponent.prototype, "my_form", void 0);
@@ -592,7 +622,15 @@ var AmmenityShowComponent = (function () {
             _this.ammenities_list = data;
         })
             .catch(function (err) {
-            console.log(err);
+            if (err.error instanceof Error) {
+                // A client-side or network error occurred. Handle it accordingly.
+                console.log("An error occurred:", err.error.message);
+            }
+            else {
+                // The backend returned an unsuccessful response code.
+                // The response body may contain clues as to what went wrong,
+                console.log("Backend returned code " + err.status + ", body was: " + err.error);
+            }
         });
     };
     AmmenityShowComponent.prototype.delete = function (ammenity) {
@@ -603,7 +641,15 @@ var AmmenityShowComponent = (function () {
             _this.getAmmenities();
         })
             .catch(function (err) {
-            console.log("the error is: ", err);
+            if (err.error instanceof Error) {
+                // A client-side or network error occurred. Handle it accordingly.
+                console.log("An error occurred:", err.error.message);
+            }
+            else {
+                // The backend returned an unsuccessful response code.
+                // The response body may contain clues as to what went wrong,
+                console.log("Backend returned code " + err.status + ", body was: " + err.error);
+            }
         });
     };
     AmmenityShowComponent = __decorate([
@@ -644,7 +690,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button mat-raised-button [routerLink]=\"['/list_venue']\">Cancel</button>\n<h1 class=\"text-center\">Edit {{venue.n}} venue</h1>\n<div class=\"container\">\n  <form (submit)=\"update(venue)\" #formData=\"ngForm\" class=\"form\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name='name' [(ngModel)]=\"venue.n\" #name='ngModel' placeholder=\"name\" required>\n    </mat-form-field>\n  \n    <!-- Email -->\n    <mat-form-field>\n    <input matInput name='email' [(ngModel)]=\"venue.e\" #email='ngModel' placeholder=\"Email\" required>\n    </mat-form-field>\n\n    <!-- Phone# -->\n    <mat-form-field>\n      <input matInput name='phone' [(ngModel)]=\"venue.p\" #phone='ngModel' placeholder=\"Phone #\" required>\n    </mat-form-field>\n\n    <!-- Website -->\n    <mat-form-field>\n      <input matInput name='website' [(ngModel)]=\"venue.w\" #website='ngModel' placeholder=\"Website\" required>\n    </mat-form-field>\n\n    <!-- Submit -->\n    <button mat-raised-button type='submit' [disabled]=!formData.valid>Submit</button>\n  </form>\n</div>"
+module.exports = "<button mat-raised-button [routerLink]=\"['/list_venue']\">Cancel</button>\n<h1 class=\"text-center\">Edit {{venue.name}} venue</h1>\n<div class=\"container\">\n  <form (submit)=\"update(venue)\" #formData=\"ngForm\" class=\"form\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name='name' [(ngModel)]=\"venue.name\" #name='ngModel' placeholder=\"name\" required>\n    </mat-form-field>\n\n    <!-- Email -->\n    <mat-form-field>\n    <input matInput name='email' [(ngModel)]=\"venue.email\" #email='ngModel' placeholder=\"Email\" required>\n    </mat-form-field>\n\n    <!-- Phone# -->\n    <mat-form-field>\n      <input matInput name='phone' [(ngModel)]=\"venue.phone\" #phone='ngModel' placeholder=\"Phone #\" required>\n    </mat-form-field>\n\n    <!-- Address -->\n    <mat-form-field>\n      <input matInput name='address' [(ngModel)]=\"venue.address\" #address='ngModel' placeholder=\"Address\" required>\n    </mat-form-field>\n\n    <!-- Website -->\n    <mat-form-field>\n      <input matInput name='website' [(ngModel)]=\"venue.website\" #website='ngModel' placeholder=\"Website\" required>\n    </mat-form-field>\n\n    <!-- Submit -->\n    <button mat-raised-button type='submit' [disabled]=!formData.valid>Submit</button>\n  </form>\n</div>\n"
 
 /***/ }),
 
@@ -916,7 +962,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/venue-list/venue-show/venue-show.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button mat-raised-button [routerLink]=\"['/venue', 'add']\">Add a venue</button>\n<h1>Venues</h1>\n<hr>\n<table>\n    <thead>\n        <tr>\n            <th>#</th>\n            <th>Name</th>\n            <th>Email</th>\n            <th>Phone</th>\n            <th>Website</th>\n            <th>Action</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr *ngFor=\"let v of venue_list; let i = index\">\n            <td>{{i + 1}}</td>\n            <td>{{ v.n }}</td>\n            <td>{{ v.e }}</td>\n            <td>{{ v.p }}</td>\n            <td>{{ v.w }}</td>\n            <td>\n                <button  [routerLink]=\"['/venue', 'edit', v._id]\">\n                    <mat-icon aria-hidden=\"true\">\n                        <i class=\"material-icons\">&#xE3C9;</i>\n                    </mat-icon>\n                </button>\n                <button (click)=\"delete(v)\">\n                    <mat-icon aria-hidden=\"true\">\n                        <i class=\"material-icons\">&#xE872;</i>\n                    </mat-icon>\n                </button>\n            </td>\n        </tr>\n    </tbody>\n</table>\n\n\n<!-- <div class=\"container mat-elevation-z8\">\n    <mat-table #table *ngFor=\"let venue of venue_list\">\n\n        <ng-container matColumnDef=\"name\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>\n            <mat-cell *matCellDef=\"let venue\"> {{venue.name}} </mat-cell>\n        </ng-container>\n\n        <ng-container matColumnDef=\"email\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>\n            <mat-cell *matCellDef=\"let venue\"> {{venue.email}} </mat-cell>\n        </ng-container>\n\n        <ng-container matColumnDef=\"phone\">\n            <mat-header-cell *matHeaderCellDef mat-sort-header> # </mat-header-cell>\n            <mat-cell *matCellDef=\"let venue\"> {{venue.phone}} </mat-cell>\n        </ng-container>\n\n        <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\n        <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n    </mat-table>\n</div> -->\n"
+module.exports = "<button mat-raised-button [routerLink]=\"['/venue', 'add']\">Add a venue</button>\n<h1>Venues</h1>\n<hr>\n<table>\n    <thead>\n        <tr>\n            <th>#</th>\n            <th>Name</th>\n            <th>Email</th>\n            <th>Phone</th>\n            <th>Address</th>\n            <th>Website</th>\n            <th>Action</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr *ngFor=\"let v of venue_list; let i = index\">\n            <td>{{i + 1}}</td>\n            <td>{{ v.name }}</td>\n            <td>{{ v.email }}</td>\n            <td>{{ v.phone }}</td>\n            <td>{{ v.address }}</td>\n            <td>{{ v.website }}</td>\n            <td>\n                <button  [routerLink]=\"['/venue', 'edit', v._id]\">\n                    <mat-icon aria-hidden=\"true\">\n                        <i class=\"material-icons\">&#xE3C9;</i>\n                    </mat-icon>\n                </button>\n                <button (click)=\"delete(v)\">\n                    <mat-icon aria-hidden=\"true\">\n                        <i class=\"material-icons\">&#xE872;</i>\n                    </mat-icon>\n                </button>\n            </td>\n        </tr>\n    </tbody>\n</table>\n"
 
 /***/ }),
 
@@ -952,7 +998,7 @@ var VenueShowComponent = (function () {
     };
     VenueShowComponent.prototype.isLoggedIn = function () {
         if (this._userService.getCurrentUser() == null) {
-            this._router.navigateByUrl('/');
+            this._router.navigateByUrl("/");
         }
     };
     VenueShowComponent.prototype.getVenues = function () {
@@ -961,17 +1007,32 @@ var VenueShowComponent = (function () {
             .then(function (data) {
             _this.venue_list = data;
         })
-            .catch(function (err) { console.log(err); });
+            .catch(function (err) {
+            if (err.error instanceof Error) {
+                // A client-side or network error occurred. Handle it accordingly.
+                console.log("An error occurred:", err.error.message);
+            }
+            else {
+                // The backend returned an unsuccessful response code.
+                // The response body may contain clues as to what went wrong,
+                console.log("Backend returned code " + err.status + ", body was: " + err.error);
+            }
+        });
     };
     VenueShowComponent.prototype.delete = function (venue) {
         var _this = this;
-        this._venueService.destroy_venue(venue)
-            .then(function () { _this.getVenues(); })
-            .catch(function (err) { console.log("the error is: ", err); });
+        this._venueService
+            .destroy_venue(venue)
+            .then(function () {
+            _this.getVenues();
+        })
+            .catch(function (err) {
+            console.log("the error is: ", err);
+        });
     };
     VenueShowComponent = __decorate([
         core_1.Component({
-            selector: 'app-venue-show',
+            selector: "app-venue-show",
             template: __webpack_require__("../../../../../src/app/admin/venue-list/venue-show/venue-show.component.html"),
             styles: [__webpack_require__("../../../../../src/app/admin/venue-list/venue-show/venue-show.component.css")]
         }),
@@ -1392,7 +1453,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/client/venue-search/venue-search.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\n  <section class=\"mat-typography\">\n    <h1>Tulsa Venues</h1>\n    <h4>Who knows Tulsa better then tulsans?</h4>\n  </section>\n</div>\n<div class=\"search\">\n  <hr>\n  <h2>SEARCH FORM COMING SOON...</h2>\n  <hr>\n</div>\n<div>\n  <mat-sidenav-container>\n    <mat-sidenav align=\"end\" mode=\"side\" #sidenav>\n      <mat-tab-group>\n        <mat-tab>\n          <ng-template mat-tab-label>Details</ng-template>\n          <button mat-raised-button (click)=\"sidenav.close()\" color=\"warn\">CLOSE</button>\n          <p>Name: {{currentVenue.n}}</p>\n          <p>Phone: {{currentVenue.p}}</p>\n          <p>Location: {{currentVenue.a}}</p>\n          <p>Website: <a href=\"http://{{currentVenue.w}}\">{{currentVenue.w}}</a></p>\n        </mat-tab>\n        <mat-tab>\n          <ng-template mat-tab-label>Photos</ng-template>\n          <img src=\"imgs/{{currentVenue.pic_url}}\" alt=\"Venue Picture\">\n        </mat-tab>\n      </mat-tab-group>\n    </mat-sidenav>\n    <mat-sidenav-content>\n      <mat-grid-list cols=\"4\" rowHeight=\"200px\">\n        <mat-grid-tile *ngFor=\"let venue of venue_list\">\n          <img src=\"imgs/{{venue.pic_url}}\" alt=\"Venue Picture\">\n          <mat-grid-tile-footer>\n            <h3>{{venue.n}}</h3>\n            <span class=\"spacer\"></span>\n            <button mat-icon-button (click)=\"showVenue(venue)\">\n              <mat-icon>info</mat-icon>\n            </button>\n          </mat-grid-tile-footer>\n        </mat-grid-tile>\n      </mat-grid-list>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>\n"
+module.exports = "<div class=\"header\">\n  <section class=\"mat-typography\">\n    <h1>Tulsa Venues</h1>\n    <h4>Who knows Tulsa better then tulsans?</h4>\n  </section>\n</div>\n<div class=\"search\">\n  <hr>\n  <h2>SEARCH FORM COMING SOON...</h2>\n  <hr>\n</div>\n<div>\n  <mat-sidenav-container>\n    <mat-sidenav align=\"end\" mode=\"side\" #sidenav>\n      <mat-tab-group>\n        <mat-tab>\n          <ng-template mat-tab-label>Details</ng-template>\n          <button mat-raised-button (click)=\"sidenav.close()\" color=\"warn\">CLOSE</button>\n          <p>Name: {{currentVenue.name}}</p>\n          <p>Phone: {{currentVenue.phone}}</p>\n          <p>Location: {{currentVenue.address}}</p>\n          <p>Website: <a href=\"http://{{currentVenue.website}}\">{{currentVenue.website}}</a></p>\n        </mat-tab>\n        <mat-tab>\n          <ng-template mat-tab-label>Photos</ng-template>\n          <img src=\"imgs/{{currentVenue.pic_url}}\" alt=\"Venue Picture\">\n        </mat-tab>\n      </mat-tab-group>\n    </mat-sidenav>\n    <mat-sidenav-content>\n      <mat-grid-list cols=\"4\" rowHeight=\"200px\">\n        <mat-grid-tile *ngFor=\"let venue of venue_list\">\n          <img src=\"imgs/{{venue.pic_url}}\" alt=\"Venue Picture\">\n          <mat-grid-tile-footer>\n            <h3>{{venue.name}}</h3>\n            <span class=\"spacer\"></span>\n            <button mat-icon-button (click)=\"showVenue(venue)\">\n              <mat-icon>info</mat-icon>\n            </button>\n          </mat-grid-tile-footer>\n        </mat-grid-tile>\n      </mat-grid-list>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>\n"
 
 /***/ }),
 
@@ -1426,15 +1487,31 @@ var VenueSearchComponent = (function () {
     };
     VenueSearchComponent.prototype.getVenues = function () {
         var _this = this;
-        this._venueService
-            .get_venues()
+        this._venueService.get_venues()
             .then(function (data) {
             _this.venue_list = data;
         })
             .catch(function (err) {
-            console.log(err);
+            if (err.error instanceof Error) {
+                // A client-side or network error occurred. Handle it accordingly.
+                console.log('An error occurred:', err.error.message);
+            }
+            else {
+                // The backend returned an unsuccessful response code.
+                // The response body may contain clues as to what went wrong,
+                console.log("Backend returned code " + err.status + ", body was: " + err.error);
+            }
         });
     };
+    // getVenues(): void {
+    //   this._venueService.get_venues()
+    //     .then(data => {
+    //       this.venue_list = data;
+    //     })
+    //     .catch(err => {
+    //       console.log(err);
+    //     });
+    // }
     VenueSearchComponent.prototype.showVenue = function (venue) {
         this.currentVenue = venue;
         this.sidenav.open();
@@ -1822,39 +1899,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var http_1 = __webpack_require__("../../../http/esm5/http.js");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
+__webpack_require__("../../../../rxjs/Rx.js");
 var AmmenityService = (function () {
     function AmmenityService(_http) {
         this._http = _http;
     }
     AmmenityService.prototype.get_ammenities = function () {
-        return this._http
-            .get("/ammenities")
+        return this._http.get("/ammenities")
             .map(function (data) { return data.json(); })
             .toPromise();
     };
     AmmenityService.prototype.post_ammenity = function (form_data) {
-        return this._http
-            .post("/ammenities/add", form_data)
+        return this._http.post("/ammenities/add", form_data)
             .map(function (data) { return data.json(); })
             .toPromise();
     };
     AmmenityService.prototype.destroy_ammenity = function (ammenity) {
         console.log("*** Hit vammenity service");
-        return this._http
-            .post("/ammenities/destroy", ammenity)
+        return this._http.post("/ammenities/destroy", ammenity)
             .map(function (data) { return data.json(); })
             .toPromise();
     };
     AmmenityService.prototype.update_ammenity = function (ammenity) {
-        return this._http
-            .post("/ammenities/update", ammenity)
+        return this._http.post("/ammenities/update", ammenity)
             .map(function (data) { return data.json(); })
             .toPromise();
     };
     AmmenityService.prototype.get_one = function (ammenity_id) {
         console.log("ammenity_id from service", ammenity_id);
-        return this._http
-            .post("/ammenities/id", { ammenity_id: ammenity_id })
+        return this._http.post("/ammenities/id", { ammenity_id: ammenity_id })
             .map(function (data) { return data.json(); })
             .toPromise();
     };
