@@ -14,7 +14,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class VenueSearchComponent implements OnInit {
   venue_list: Array<Venue>;
   currentVenue = []
-  // currentVenue = [name:String, email:String, phone:Number, address:String, website:String, pic_url:[any]]
 
   @ViewChild('sidenav') sidenav: MatSidenav
 
@@ -53,7 +52,7 @@ export class VenueSearchComponent implements OnInit {
   //     });
   // }
 
-  showVenue(venue): void {
+  showVenue(venue) {
     this.currentVenue = venue;
     this.sidenav.open();
   }
