@@ -2,7 +2,7 @@
   <form (submit)="loginUser(); loginForm.reset()" #loginForm="ngForm">
     <!-- ** EMAIL ** -->
     <mat-form-field>
-      <input matInput placeholder="Enter your email"autocomplete="email" name="email" [formControl]="email" required [(ngModel)]="currentUser.email">
+      <input matInput placeholder="Enter your email" autocomplete="email" name="email" [formControl]="email" required [(ngModel)]="currentUser.email">
       <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field>
 
@@ -18,11 +18,11 @@
   <div>
     <p *ngFor="let error of errors">{{ error }}</p>
   </div>
-</div> 
+</div>
 
-<!-- 
+<!--
 <div class="col-4">
-  <form (submit)="createUser()" class="form"> 
+  <form (submit)="createUser()" class="form">
     <div class="form-input">
       <label>Name</label>
       <input type="text" name="name" [(ngModel)]="newUser.name">

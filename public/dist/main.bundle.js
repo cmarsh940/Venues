@@ -1676,7 +1676,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <form (submit)=\"loginUser(); loginForm.reset()\" #loginForm=\"ngForm\">\n    <!-- ** EMAIL ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your email\"autocomplete=\"email\" name=\"email\" [formControl]=\"email\" required [(ngModel)]=\"currentUser.email\">\n      <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n    </mat-form-field>\n\n  <!-- **  PASSWORD ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your password\" autocomplete=\"current-password\" name=\"password\" required [(ngModel)]=\"currentUser.password\" [type]=\"hide ? 'password' : 'text'\">\n      <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n    </mat-form-field>\n    <button type=\"submit\" value=\"Login\" [disabled]=\"!currentUser.email\">\n      <h3>Login<i class=\"material-icons\">arrow forward</i></h3>\n    </button>\n  </form>\n  <div>\n    <p *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div> \n\n<!-- \n<div class=\"col-4\">\n  <form (submit)=\"createUser()\" class=\"form\"> \n    <div class=\"form-input\">\n      <label>Name</label>\n      <input type=\"text\" name=\"name\" [(ngModel)]=\"newUser.name\">\n    </div>\n    <div class=\"form-input\">\n      <label>Email</label>\n      <input type=\"text\" name=\"email\" [(ngModel)]=\"newUser.email\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password</label>\n      <input type=\"text\" name=\"password\" [(ngModel)]=\"newUser.password\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password Confirmation</label>\n      <input type=\"text\" name=\"password_confirmation\" [(ngModel)]=\"newUser.password_confirmation\">\n    </div>\n    <div>\n      <input class=\"btn btn-primary\" type=\"submit\" value=\"Register\">\n    </div>\n  </form>\n  <div>\n    <p *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div> -->"
+module.exports = "<div class=\"container\">\n  <form (submit)=\"loginUser(); loginForm.reset()\" #loginForm=\"ngForm\">\n    <!-- ** EMAIL ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your email\" autocomplete=\"email\" name=\"email\" [formControl]=\"email\" required [(ngModel)]=\"currentUser.email\">\n      <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n    </mat-form-field>\n\n  <!-- **  PASSWORD ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your password\" autocomplete=\"current-password\" name=\"password\" required [(ngModel)]=\"currentUser.password\" [type]=\"hide ? 'password' : 'text'\">\n      <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n    </mat-form-field>\n    <button type=\"submit\" value=\"Login\" [disabled]=\"!currentUser.email\">\n      <h3>Login<i class=\"material-icons\">arrow forward</i></h3>\n    </button>\n  </form>\n  <div>\n    <p *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div>\n\n<!--\n<div class=\"col-4\">\n  <form (submit)=\"createUser()\" class=\"form\">\n    <div class=\"form-input\">\n      <label>Name</label>\n      <input type=\"text\" name=\"name\" [(ngModel)]=\"newUser.name\">\n    </div>\n    <div class=\"form-input\">\n      <label>Email</label>\n      <input type=\"text\" name=\"email\" [(ngModel)]=\"newUser.email\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password</label>\n      <input type=\"text\" name=\"password\" [(ngModel)]=\"newUser.password\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password Confirmation</label>\n      <input type=\"text\" name=\"password_confirmation\" [(ngModel)]=\"newUser.password_confirmation\">\n    </div>\n    <div>\n      <input class=\"btn btn-primary\" type=\"submit\" value=\"Register\">\n    </div>\n  </form>\n  <div>\n    <p *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div> -->\n"
 
 /***/ }),
 
@@ -1716,6 +1716,9 @@ var LoginComponent = (function () {
                 '';
     };
     LoginComponent.prototype.ngOnInit = function () {
+        this.currentUser.email = 'test@test.test';
+        this.currentUser.password = 'Marshal1';
+        this.loginUser();
     };
     LoginComponent.prototype.loginUser = function () {
         var _this = this;
@@ -1896,7 +1899,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var http_1 = __webpack_require__("../../../http/esm5/http.js");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
-__webpack_require__("../../../../rxjs/Rx.js");
+__webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
 var AmmenityService = (function () {
     function AmmenityService(_http) {
         this._http = _http;
@@ -1912,20 +1915,29 @@ var AmmenityService = (function () {
             .map(function (data) { return data.json(); })
             .toPromise();
     };
+    // post_ammenity(form_data: Ammenity, callback) {
+    //   this._http.post("/ammenities/add", form_data).subscribe(
+    //     res => callback(res.json()),
+    //     err => console.error(err)
+    //   );
+    // }
     AmmenityService.prototype.destroy_ammenity = function (ammenity) {
         console.log("*** Hit ammenity destroy in service");
-        return this._http.post("/ammenities/destroy", ammenity)
+        return this._http
+            .post("/ammenities/destroy", ammenity)
             .map(function (data) { return data.json(); })
             .toPromise();
     };
     AmmenityService.prototype.update_ammenity = function (ammenity) {
-        return this._http.post("/ammenities/update", ammenity)
+        return this._http
+            .post("/ammenities/update", ammenity)
             .map(function (data) { return data.json(); })
             .toPromise();
     };
     AmmenityService.prototype.get_one = function (ammenity_id) {
         console.log("ammenity_id from service", ammenity_id);
-        return this._http.post("/ammenities/id", { ammenity_id: ammenity_id })
+        return this._http
+            .post("/ammenities/id", { ammenity_id: ammenity_id })
             .map(function (data) { return data.json(); })
             .toPromise();
     };
