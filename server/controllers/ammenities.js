@@ -12,16 +12,14 @@ module.exports = {
             res.status(500).json(err);
         });
     },
-    upload: (req, res) => {
-        let new_ammenity = new Ammenity(req.body);
-        new_ammenity.save()
-            .then(() => {
-                return res.json(new_ammenity);
-            })
-            .catch(err => {
-                console.log("*** new_ammenity save error", err);
+
+    upload(req, res){
+        Ammenity.create(req.body, (err, ammenity) => {
+            if (err) {
                 return res.json(err);
-            });
+            }
+            return res.json(ammenity);
+        });
     },
 
     destroy: (req, res, next) => {
@@ -44,8 +42,7 @@ module.exports = {
         .then(ammenity => {
             console.log("successfully found one");
             ammenity.name = myAmmenity.name;
-            ammenity
-            .save()
+            ammenity.save()
             .then(() => {
                 res.json(true);
             })

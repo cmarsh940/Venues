@@ -18,7 +18,7 @@ module.exports = function (app) {
 
     // AMMENITIES
     app.get("/ammenities", ammenities.index);
-    app.post("/ammenities/create", ammenities.upload);
+    app.post("/ammenities/add", ammenities.upload);
     app.post("/ammenities/destroy", ammenities.destroy);
     app.post("/ammenities/update", ammenities.update);
     app.post("/ammenities/id", ammenities.getOne);

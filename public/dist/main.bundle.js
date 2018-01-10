@@ -1908,7 +1908,7 @@ var AmmenityService = (function () {
     };
     AmmenityService.prototype.post_ammenity = function (form_data) {
         console.log("*** Hit ammenity post in service");
-        return this._http.post("/ammenities/create", form_data)
+        return this._http.post("/ammenities/add", form_data)
             .map(function (data) { return data.json(); })
             .toPromise();
     };
