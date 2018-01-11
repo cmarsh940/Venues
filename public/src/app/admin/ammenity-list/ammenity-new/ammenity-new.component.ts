@@ -34,15 +34,15 @@ export class AmmenityNewComponent implements OnInit {
     }
   }
 
-  create_ammenity() {
-    let form_data = new FormData(this.my_form.nativeElement);
-    console.log("*** This is the form data", form_data);
-    this._ammenityService.post_ammenity(form_data).then(() => {
-      console.log("*** Setting new ammenity");
-      this.new_ammenity = new Ammenity();
-      console.log("*** About to emit");
-      this.new_ammenity_event.emit();
-      this._router.navigate(["/list_ammenity"]);
-    });
-  }
+  // create_ammenity() {
+  //   let form_data = new FormData(this.my_form.nativeElement);
+  //   console.log("*** This is the form data", form_data);
+  //   this._ammenityService.post_ammenity(form_data).then(() => {
+  //     console.log("*** Setting new ammenity");
+  //     this.new_ammenity = new Ammenity();
+  //     console.log("*** About to emit");
+  //     this.new_ammenity_event.emit();
+  //     this._router.navigate(["/list_ammenity"]);
+  //   });
+  // }
 }

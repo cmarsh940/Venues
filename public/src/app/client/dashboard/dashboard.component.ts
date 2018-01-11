@@ -9,24 +9,26 @@ import { Venue } from '../../models/venue';
   styleUrls: ["./dashboard.component.css"]
 })
 export class DashboardComponent implements OnInit {
-  venue_list: Array<Venue>;
+  venues: Venue[] = [];
 
-  constructor(
-    private _venueService: VenueService,
-    private _router: Router
-  ) {}
+  constructor(private _venueService: VenueService, private _router: Router) {}
 
   ngOnInit() {
     this.getVenues();
   }
 
-  getVenues() {
-    this._venueService.get_venues()
-      .then(data => {
-        this.venue_list = data;
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  // getVenues() {
+  //   this._venueService.get_venues()
+  //     .then(data => {
+  //       this.venue_list = data;
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // }
+  getVenues(): void {
+    this._venueService
+      .get_venues()
+      .subscribe(venues => (this.venues = venues.slice(1, 5)));
   }
 }

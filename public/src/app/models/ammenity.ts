@@ -1,5 +1,5 @@
 export class Ammenity {
-  _id: string;
+  _id: number;
   name: string;
   createdAt: any;
   updatedAt: any;

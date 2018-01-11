@@ -1,4 +1,4 @@
-<button mat-raised-button [routerLink]="['/list_venue']">Cancel</button>
+<button mat-raised-button (click)="goBack()">Cancel</button>
 <h1 class="text-center">Edit {{venue.name}} venue</h1>
 <div class="container">
   <form (submit)="update(venue)" #formData="ngForm" class="form">

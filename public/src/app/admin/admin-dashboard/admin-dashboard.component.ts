@@ -13,8 +13,8 @@ import { Ammenity } from '../../models/ammenity';
   styleUrls: ["./admin-dashboard.component.css"]
 })
 export class AdminDashboardComponent implements OnInit {
-  venues: Array<Venue>
-  ammenities: Array<Ammenity>
+  venues: Array<Venue>;
+  ammenities: Array<Ammenity>;
 
   constructor(
     private _userService: UserService,
@@ -28,36 +28,11 @@ export class AdminDashboardComponent implements OnInit {
     this.getAmmenities();
   }
 
-  getVenues() {
-    this._venueService.get_venues()
-      .then(data => {
-        this.venues = data;
-      })
-      .catch((err: HttpErrorResponse) => {
-        if (err.error instanceof Error) {
-          // A client-side or network error occurred. Handle it accordingly.
-          console.log("An error occurred:", err.error.message);
-        } else {
-          // The backend returned an unsuccessful response code.
-          // The response body may contain clues as to what went wrong,
-          console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
-        }
-      });
+  getVenues(): void {
+    this._venueService.get_venues().subscribe(venues => (this.venues = venues));
   }
-  getAmmenities() {
-    this._ammenityService.get_ammenities()
-      .then(data => {
-        this.ammenities = data;
-      })
-      .catch((err: HttpErrorResponse) => {
-        if (err.error instanceof Error) {
-          // A client-side or network error occurred. Handle it accordingly.
-          console.log("An error occurred:", err.error.message);
-        } else {
-          // The backend returned an unsuccessful response code.
-          // The response body may contain clues as to what went wrong,
-          console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
-        }
-      });
+
+  getAmmenities(): void {
+    this._ammenityService.get_ammenities().subscribe(ammenities => (this.ammenities = ammenities));
   }
 }

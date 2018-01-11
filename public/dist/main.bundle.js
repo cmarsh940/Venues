@@ -103,7 +103,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/admin-dashboard/admin-dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\n  <h1>Admin Dashboard</h1>\n</div>\n<div>\n  <mat-chip-list>\n    <mat-chip color=\"warn\" selected=\"true\">Total Venues:\n      <div *ngIf=\"venues\">\n        {{ venues.length }}\n      </div>\n    </mat-chip>\n    <mat-chip color=\"warn\" selected=\"true\">Total Ammenities:\n      <div mat-chip-value *ngIf=\"ammenities\">\n        {{ ammenities.length }}\n      </div>\n    </mat-chip>\n  </mat-chip-list>\n</div>\n"
+module.exports = "<div class=\"header\">\n  <h1>Admin Dashboard</h1>\n</div>\n<div>\n  <mat-chip-list>\n    <mat-chip color=\"plain\" selected=\"true\">Total Venues:\n      <div *ngIf=\"venues\">\n        {{ venues.length }}\n      </div>\n    </mat-chip>\n    <mat-chip color=\"plain\" selected=\"true\">Total Ammenities:\n      <div mat-chip-value *ngIf=\"ammenities\">\n        {{ ammenities.length }}\n      </div>\n    </mat-chip>\n  </mat-chip-list>\n</div>\n"
 
 /***/ }),
 
@@ -140,39 +140,11 @@ var AdminDashboardComponent = (function () {
     };
     AdminDashboardComponent.prototype.getVenues = function () {
         var _this = this;
-        this._venueService.get_venues()
-            .then(function (data) {
-            _this.venues = data;
-        })
-            .catch(function (err) {
-            if (err.error instanceof Error) {
-                // A client-side or network error occurred. Handle it accordingly.
-                console.log("An error occurred:", err.error.message);
-            }
-            else {
-                // The backend returned an unsuccessful response code.
-                // The response body may contain clues as to what went wrong,
-                console.log("Backend returned code " + err.status + ", body was: " + err.error);
-            }
-        });
+        this._venueService.get_venues().subscribe(function (venues) { return (_this.venues = venues); });
     };
     AdminDashboardComponent.prototype.getAmmenities = function () {
         var _this = this;
-        this._ammenityService.get_ammenities()
-            .then(function (data) {
-            _this.ammenities = data;
-        })
-            .catch(function (err) {
-            if (err.error instanceof Error) {
-                // A client-side or network error occurred. Handle it accordingly.
-                console.log("An error occurred:", err.error.message);
-            }
-            else {
-                // The backend returned an unsuccessful response code.
-                // The response body may contain clues as to what went wrong,
-                console.log("Backend returned code " + err.status + ", body was: " + err.error);
-            }
-        });
+        this._ammenityService.get_ammenities().subscribe(function (ammenities) { return (_this.ammenities = ammenities); });
     };
     AdminDashboardComponent = __decorate([
         core_1.Component({
@@ -213,7 +185,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/admin.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-admin-nav></app-admin-nav>\n<router-outlet></router-outlet>"
+module.exports = "<app-admin-nav></app-admin-nav>\n<router-outlet></router-outlet>\n<app-messages></app-messages>\n"
 
 /***/ }),
 
@@ -289,7 +261,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/ammenity-list/ammenity-edit/ammenity-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button mat-raised-button [routerLink]=\"['/list_ammenities']\">Cancel</button>\n<h1 class=\"text-center\">Edit {{ammenity.name}} </h1>\n<div class=\"container\">\n  <form (submit)=\"update(ammenity)\" #formData=\"ngForm\" class=\"form\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name='name' [(ngModel)]=\"ammenity.name\" #name='ngModel' placeholder=\"name\" required>\n    </mat-form-field>\n\n    <!-- Submit -->\n    <button mat-raised-button type='submit' [disabled]=!formData.valid>Submit</button>\n  </form>\n</div>\n"
+module.exports = "<button mat-raised-button [routerLink]=\"['/list_ammenity']\">Cancel</button>\n<h1 class=\"text-center\">Edit {{ammenity.name}} </h1>\n<div class=\"container\">\n  <form (submit)=\"update(ammenity)\" #formData=\"ngForm\" class=\"form\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name='name' [(ngModel)]=\"ammenity.name\" #name='ngModel' placeholder=\"name\" required>\n    </mat-form-field>\n\n    <!-- Submit -->\n    <button mat-raised-button type='submit' [disabled]=!formData.valid>Submit</button>\n  </form>\n</div>\n"
 
 /***/ }),
 
@@ -323,7 +295,7 @@ var AmmenityEditComponent = (function () {
     }
     AmmenityEditComponent.prototype.ngOnInit = function () {
         this.isLoggedIn();
-        this.getAmmenities();
+        // this.getAmmenities();
         this.getRouteParams();
     };
     AmmenityEditComponent.prototype.isLoggedIn = function () {
@@ -331,25 +303,23 @@ var AmmenityEditComponent = (function () {
             this._router.navigateByUrl("/");
         }
     };
-    AmmenityEditComponent.prototype.getAmmenities = function () {
-        var _this = this;
-        this._ammenityService
-            .get_ammenities()
-            .then(function (data) {
-            _this.ammenities_list = data;
-        })
-            .catch(function (err) {
-            if (err.error instanceof Error) {
-                // A client-side or network error occurred. Handle it accordingly.
-                console.log("An error occurred:", err.error.message);
-            }
-            else {
-                // The backend returned an unsuccessful response code.
-                // The response body may contain clues as to what went wrong,
-                console.log("Backend returned code " + err.status + ", body was: " + err.error);
-            }
-        });
-    };
+    // getAmmenities() {
+    //   this._ammenityService
+    //     .get_ammenities()
+    //     .then(data => {
+    //       this.ammenities_list = data;
+    //     })
+    //     .catch((err: HttpErrorResponse) => {
+    //       if (err.error instanceof Error) {
+    //         // A client-side or network error occurred. Handle it accordingly.
+    //         console.log("An error occurred:", err.error.message);
+    //       } else {
+    //         // The backend returned an unsuccessful response code.
+    //         // The response body may contain clues as to what went wrong,
+    //         console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+    //       }
+    //     });
+    // }
     AmmenityEditComponent.prototype.getRouteParams = function () {
         var _this = this;
         this._route.params.subscribe(function (param) {
@@ -477,7 +447,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/ammenity-list/ammenity-new/ammenity-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button mat-raised-button [routerLink]=\"['/list_ammenities']\">\n  <i class=\"material-icons\">&#xE5C4;</i>\n</button>\n<h1>Add a ammenity</h1>\n<form #form (ngSubmit)=\"create_ammenity()\">\n  <!-- Name -->\n  <mat-form-field>\n    <input matInput name=\"name\" required maxlength=125 [(ngModel)]=\"new_ammenity.name\" placeholder=\"Ammenity Name\">\n  </mat-form-field>\n\n  <!-- Submit -->\n  <button mat-raised-button type=\"submit\">Submit</button>\n</form>\n\n<div>\n  <p class=\"error\" *ngFor=\"let error of errors\">{{ error }}</p>\n</div>\n"
+module.exports = "<!-- <button mat-raised-button [routerLink]=\"['/list_ammenities']\">\n  <i class=\"material-icons\">&#xE5C4;</i>\n</button>\n<h1>Add a ammenity</h1>\n<form #form (ngSubmit)=\"create_ammenity()\">\n  <!-- Name -->\n  <!-- <mat-form-field>\n    <input matInput name=\"name\" required maxlength=125 [(ngModel)]=\"new_ammenity.name\" placeholder=\"Ammenity Name\">\n  </mat-form-field> -->\n\n  <!-- Submit -->\n  <!-- <button mat-raised-button type=\"submit\">Submit</button>\n</form> -->\n\n<!-- <div>\n  <p class=\"error\" *ngFor=\"let error of errors\">{{ error }}</p>\n</div> --> -->\n"
 
 /***/ }),
 
@@ -518,18 +488,6 @@ var AmmenityNewComponent = (function () {
             this._router.navigateByUrl("/");
         }
     };
-    AmmenityNewComponent.prototype.create_ammenity = function () {
-        var _this = this;
-        var form_data = new FormData(this.my_form.nativeElement);
-        console.log("*** This is the form data", form_data);
-        this._ammenityService.post_ammenity(form_data).then(function () {
-            console.log("*** Setting new ammenity");
-            _this.new_ammenity = new ammenity_1.Ammenity();
-            console.log("*** About to emit");
-            _this.new_ammenity_event.emit();
-            _this._router.navigate(["/list_ammenity"]);
-        });
-    };
     __decorate([
         core_1.ViewChild("form"),
         __metadata("design:type", Object)
@@ -563,7 +521,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  min-width: 300px;\n}\n\nh1 {\n  width: 100%;\n  text-align: center;\n}\ntable {\n  width: 100%;\n}\n\nth {\n  border-bottom: 1px solid black;\n}\n\ntd {\n  text-align: center;\n  border-bottom: 1px solid black;\n  border-right: 1px solid black;\n}\n", ""]);
+exports.push([module.i, ".container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  min-width: 300px;\n}\n\nh1 {\n  width: 100%;\n  text-align: center;\n}\ntable {\n  width: 100%;\n}\n\nth {\n  border-bottom: 1px solid black;\n}\n\ntd {\n  text-align: center;\n  border-bottom: 1px solid black;\n  background-color: #EEE;\n}\n\n\n\n/*  */\n\n\n\n/* HeroesComponent's private CSS styles */\n.ammenities {\n  padding: 0;\n}\n.ammenities td {\n  background-color: #EEE;\n  margin: .5em;\n  padding: .3em 0;\n  height: 1.6em;\n}\n\n.ammenities .main {\n  cursor: pointer;\n}\n\ntr:hover {\n  color: #607D8B;\n  background-color: #DDD;\n  cursor: pointer;\n}\n\ntd a {\n  color: #888;\n  text-decoration: none;\n}\n\n.ammenities a:hover {\n  color:red;\n}\n\n.ammenities .badge {\n  font-size: small;\n  color: white;\n  background-color: #607D8B;\n}\n\n.material-icons {\n  border: none;\n}\n", ""]);
 
 // exports
 
@@ -576,7 +534,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/ammenity-list/ammenity-show/ammenity-show.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button mat-raised-button [routerLink]=\"['/ammenity', 'add']\">Add a ammenity</button>\n<h1>Ammenities</h1>\n<hr>\n<div class=\"container\">\n  <table>\n    <thead>\n      <tr>\n        <th>#</th>\n        <th>Name</th>\n        <th>Action</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let ammenity of ammenities_list; let i = index\">\n        <td>{{i + 1}}</td>\n        <td>{{ ammenity.name }}</td>\n        <td>\n          <button [routerLink]=\"['/ammenity', 'edit', ammenity._id]\">\n            <mat-icon aria-hidden=\"true\">\n              <i class=\"material-icons\">&#xE3C9;</i>\n            </mat-icon>\n          </button>\n          <button (click)=\"delete(ammenity)\">\n            <mat-icon aria-hidden=\"true\">\n              <i class=\"material-icons\">&#xE872;</i>\n            </mat-icon>\n          </button>\n        </td>\n      </tr>\n    </tbody>\n  </table>\n</div>\n"
+module.exports = "<!-- <button mat-raised-button [routerLink]=\"['/ammenity', 'add']\">Add a ammenity</button> -->\n\n<h1>Ammenities</h1>\n\n<div>\n  <form>\n    <mat-form-field>\n      <mat-label>Ammenity name:</mat-label>\n      <input matInput #ammenityName  placeholder=\"Name\" required>\n    </mat-form-field>\n    <!-- (click) passes input value to add() and then clears the input -->\n    <button (click)=\"add(ammenityName.value); ammenityName.value=''\">\n      <i class=\"material-icons\">&#xE148;</i>\n    </button>\n  </form>\n</div>\n\n<hr>\n<div class=\"container\">\n  <table>\n    <thead>\n      <tr>\n        <th>#</th>\n        <th>Name</th>\n        <th>Action</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr class=\"ammenities\" *ngFor=\"let ammenity of ammenities; let i = index\">\n        <td class=\"badge\">{{ i + 1 }}</td>\n        <td class=\"main\">\n          <a [routerLink]=\"['/ammenity', 'edit', ammenity._id]\">{{ ammenity.name }}</a>\n        </td>\n        <td class=\"delete\">\n          <button mat-icon-button color=\"warn\" (click)=\"delete(ammenity)\">\n            <mat-icon aria-label=\"icon-button to delete venue\"><i class=\"material-icons\">&#xE872;</i></mat-icon>\n          </button>\n        </td>\n      </tr>\n    </tbody>\n  </table>\n</div>\n"
 
 /***/ }),
 
@@ -617,26 +575,29 @@ var AmmenityShowComponent = (function () {
     };
     AmmenityShowComponent.prototype.getAmmenities = function () {
         var _this = this;
-        this._ammenityService.get_ammenities()
-            .then(function (data) {
-            _this.ammenities_list = data;
-        })
-            .catch(function (err) {
-            if (err.error instanceof Error) {
-                // A client-side or network error occurred. Handle it accordingly.
-                console.log("An error occurred:", err.error.message);
-            }
-            else {
-                // The backend returned an unsuccessful response code.
-                // The response body may contain clues as to what went wrong,
-                console.log("Backend returned code " + err.status + ", body was: " + err.error);
-            }
+        this._ammenityService
+            .get_ammenities()
+            .subscribe(function (ammenities) { return (_this.ammenities = ammenities); });
+    };
+    AmmenityShowComponent.prototype.add = function (name) {
+        var _this = this;
+        name = name.trim();
+        if (!name) {
+            return;
+        }
+        this._ammenityService
+            .post_ammenity({ name: name })
+            .subscribe(function (ammenity) {
+            _this.ammenities.push(ammenity);
         });
     };
+    // delete(ammenity: Ammenity): void {
+    //   this.ammenities = this.ammenities.filter(a => a !== ammenity);
+    //   this._ammenityService.delete_ammenity(ammenity).subscribe();
+    // }
     AmmenityShowComponent.prototype.delete = function (ammenity) {
         var _this = this;
-        this._ammenityService
-            .destroy_ammenity(ammenity)
+        this._ammenityService.destroy_ammenity(ammenity)
             .then(function () {
             _this.getAmmenities();
         })
@@ -690,7 +651,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button mat-raised-button [routerLink]=\"['/list_venue']\">Cancel</button>\n<h1 class=\"text-center\">Edit {{venue.name}} venue</h1>\n<div class=\"container\">\n  <form (submit)=\"update(venue)\" #formData=\"ngForm\" class=\"form\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name='name' [(ngModel)]=\"venue.name\" #name='ngModel' placeholder=\"name\" required>\n    </mat-form-field>\n\n    <!-- Email -->\n    <mat-form-field>\n    <input matInput name='email' [(ngModel)]=\"venue.email\" #email='ngModel' placeholder=\"Email\" required>\n    </mat-form-field>\n\n    <!-- Phone# -->\n    <mat-form-field>\n      <input matInput name='phone' [(ngModel)]=\"venue.phone\" #phone='ngModel' placeholder=\"Phone #\" required>\n    </mat-form-field>\n\n    <!-- Address -->\n    <mat-form-field>\n      <input matInput name='address' [(ngModel)]=\"venue.address\" #address='ngModel' placeholder=\"Address\" required>\n    </mat-form-field>\n\n    <!-- Website -->\n    <mat-form-field>\n      <input matInput name='website' [(ngModel)]=\"venue.website\" #website='ngModel' placeholder=\"Website\" required>\n    </mat-form-field>\n\n    <!-- Submit -->\n    <button mat-raised-button type='submit' [disabled]=!formData.valid>Submit</button>\n  </form>\n</div>\n"
+module.exports = "<button mat-raised-button (click)=\"goBack()\">Cancel</button>\n<h1 class=\"text-center\">Edit {{venue.name}} venue</h1>\n<div class=\"container\">\n  <form (submit)=\"update(venue)\" #formData=\"ngForm\" class=\"form\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name='name' [(ngModel)]=\"venue.name\" #name='ngModel' placeholder=\"name\" required>\n    </mat-form-field>\n\n    <!-- Email -->\n    <mat-form-field>\n    <input matInput name='email' [(ngModel)]=\"venue.email\" #email='ngModel' placeholder=\"Email\" required>\n    </mat-form-field>\n\n    <!-- Phone# -->\n    <mat-form-field>\n      <input matInput name='phone' [(ngModel)]=\"venue.phone\" #phone='ngModel' placeholder=\"Phone #\" required>\n    </mat-form-field>\n\n    <!-- Address -->\n    <mat-form-field>\n      <input matInput name='address' [(ngModel)]=\"venue.address\" #address='ngModel' placeholder=\"Address\" required>\n    </mat-form-field>\n\n    <!-- Website -->\n    <mat-form-field>\n      <input matInput name='website' [(ngModel)]=\"venue.website\" #website='ngModel' placeholder=\"Website\" required>\n    </mat-form-field>\n\n    <!-- Submit -->\n    <button mat-raised-button type='submit' [disabled]=!formData.valid>Submit</button>\n  </form>\n</div>\n"
 
 /***/ }),
 
@@ -713,14 +674,18 @@ var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue
 var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var router_1 = __webpack_require__("../../../router/esm5/router.js");
+var common_1 = __webpack_require__("../../../common/esm5/common.js");
 var venue_1 = __webpack_require__("../../../../../src/app/models/venue.ts");
 var VenueEditComponent = (function () {
-    function VenueEditComponent(_route, _venueService, _userService, _router) {
+    // venues: Venue[];
+    // @Input() venue: Venue;
+    function VenueEditComponent(_route, _venueService, _userService, _router, location) {
         this._route = _route;
         this._venueService = _venueService;
         this._userService = _userService;
         this._router = _router;
-        this.venue = new venue_1.Venue;
+        this.location = location;
+        this.venue = new venue_1.Venue();
     }
     VenueEditComponent.prototype.ngOnInit = function () {
         this.isLoggedIn();
@@ -729,43 +694,60 @@ var VenueEditComponent = (function () {
     };
     VenueEditComponent.prototype.isLoggedIn = function () {
         if (this._userService.getCurrentUser() == null) {
-            this._router.navigateByUrl('/');
+            this._router.navigateByUrl("/");
         }
     };
+    // getVenue(): void {
+    //   const id = +this._route.snapshot.paramMap.get("id");
+    //   this._venueService.get_one(id).subscribe(venue => (this.venue = venue));
+    // }
     VenueEditComponent.prototype.getVenues = function () {
         var _this = this;
-        this._venueService.get_venues()
+        this._venueService
+            .get_all_venues()
             .then(function (data) {
             _this.venue_list = data;
         })
-            .catch(function (err) { console.log(err); });
+            .catch(function (err) {
+            console.log(err);
+        });
     };
+    // getVenues(): void {
+    //   this._venueService.get_venues().subscribe(venues => (this.venues = venues));
+    // }
     VenueEditComponent.prototype.getRouteParams = function () {
         var _this = this;
         this._route.params.subscribe(function (param) {
-            console.log('request to get one venue from client');
+            console.log("request to get one venue from client");
             console.log(param.id);
-            _this._venueService.get_one(param.id)
+            _this._venueService
+                .get_one(param.id)
                 .then(function (data) {
                 _this.venue = data;
             })
-                .catch(function (err) { console.log(err); });
+                .catch(function (err) {
+                console.log(err);
+            });
         });
     };
     VenueEditComponent.prototype.update = function (venue) {
         this._venueService.update_venue(this.venue);
-        this._router.navigate(['/list_venue']);
+        this._router.navigate(["/list_venue"]);
+    };
+    VenueEditComponent.prototype.goBack = function () {
+        this.location.back();
     };
     VenueEditComponent = __decorate([
         core_1.Component({
-            selector: 'app-venue-edit',
+            selector: "app-venue-edit",
             template: __webpack_require__("../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.html"),
             styles: [__webpack_require__("../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.css")]
         }),
         __metadata("design:paramtypes", [router_1.ActivatedRoute,
             venue_service_1.VenueService,
             user_service_1.UserService,
-            router_1.Router])
+            router_1.Router,
+            common_1.Location])
     ], VenueEditComponent);
     return VenueEditComponent;
 }());
@@ -962,7 +944,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/venue-list/venue-show/venue-show.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button mat-raised-button [routerLink]=\"['/venue', 'add']\">Add a venue</button>\n<h1>Venues</h1>\n<hr>\n<table>\n    <thead>\n        <tr>\n            <th>#</th>\n            <th>Name</th>\n            <th>Email</th>\n            <th>Phone</th>\n            <th>Address</th>\n            <th>Website</th>\n            <th>Action</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr *ngFor=\"let v of venue_list; let i = index\">\n            <td>{{i + 1}}</td>\n            <td>{{ v.name }}</td>\n            <td>{{ v.email }}</td>\n            <td>{{ v.phone }}</td>\n            <td>{{ v.address }}</td>\n            <td>{{ v.website }}</td>\n            <td>\n                <button  [routerLink]=\"['/venue', 'edit', v._id]\">\n                    <mat-icon aria-hidden=\"true\">\n                        <i class=\"material-icons\">&#xE3C9;</i>\n                    </mat-icon>\n                </button>\n                <button (click)=\"delete(v)\">\n                    <mat-icon aria-hidden=\"true\">\n                        <i class=\"material-icons\">&#xE872;</i>\n                    </mat-icon>\n                </button>\n            </td>\n        </tr>\n    </tbody>\n</table>\n"
+module.exports = "<button mat-raised-button color=\"accent\" [routerLink]=\"['/venue', 'add']\">Add a venue</button>\n<h1>Venues</h1>\n<hr>\n<table>\n    <thead>\n        <tr>\n            <th>#</th>\n            <th>Name</th>\n            <th>Email</th>\n            <th>Phone</th>\n            <th>Address</th>\n            <th>Website</th>\n            <th>Action</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr *ngFor=\"let venue of venues; let i = index\">\n            <td>{{i + 1}}</td>\n            <td>{{ venue.name }}</td>\n            <td>{{ venue.email }}</td>\n            <td>{{ venue.phone }}</td>\n            <td>{{ venue.address }}</td>\n            <td>{{ venue.website }}</td>\n            <td>\n                <button  mat-icon-button color=\"accent\" [routerLink]=\"['/venue', 'edit', venue._id]\">\n                    <mat-icon aria-label=\"icon-button to edit venue\"><i class=\"material-icons\">&#xE3C9;</i></mat-icon>\n                </button>\n                <button mat-icon-button color=\"warn\" (click)=\"delete(venue)\">\n                  <mat-icon aria-label=\"icon-button to delete venue\"><i class=\"material-icons\">&#xE872;</i></mat-icon>\n                </button>\n            </td>\n        </tr>\n    </tbody>\n</table>\n"
 
 /***/ }),
 
@@ -1001,23 +983,27 @@ var VenueShowComponent = (function () {
             this._router.navigateByUrl("/");
         }
     };
+    // getVenues() {
+    //   this._venueService.get_venues()
+    //     .then(data => {
+    //       this.venue_list = data;
+    //     })
+    //     .catch((err: HttpErrorResponse) => {
+    //       if (err.error instanceof Error) {
+    //         // A client-side or network error occurred. Handle it accordingly.
+    //         console.log("An error occurred:", err.error.message);
+    //       } else {
+    //         // The backend returned an unsuccessful response code.
+    //         // The response body may contain clues as to what went wrong,
+    //         console.log(
+    //           `Backend returned code ${err.status}, body was: ${err.error}`
+    //         );
+    //       }
+    //     });
+    // }
     VenueShowComponent.prototype.getVenues = function () {
         var _this = this;
-        this._venueService.get_venues()
-            .then(function (data) {
-            _this.venue_list = data;
-        })
-            .catch(function (err) {
-            if (err.error instanceof Error) {
-                // A client-side or network error occurred. Handle it accordingly.
-                console.log("An error occurred:", err.error.message);
-            }
-            else {
-                // The backend returned an unsuccessful response code.
-                // The response body may contain clues as to what went wrong,
-                console.log("Backend returned code " + err.status + ", body was: " + err.error);
-            }
-        });
+        this._venueService.get_venues().subscribe(function (venues) { return (_this.venues = venues); });
     };
     VenueShowComponent.prototype.delete = function (venue) {
         var _this = this;
@@ -1183,22 +1169,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
 var platform_browser_1 = __webpack_require__("../../../platform-browser/esm5/platform-browser.js");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var app_routing_module_1 = __webpack_require__("../../../../../src/app/app-routing.module.ts");
-var app_component_1 = __webpack_require__("../../../../../src/app/app.component.ts");
 var animations_1 = __webpack_require__("../../../platform-browser/esm5/animations.js");
-var material_1 = __webpack_require__("../../../material/esm5/material.es5.js");
+var forms_1 = __webpack_require__("../../../forms/esm5/forms.js");
+var http_1 = __webpack_require__("../../../http/esm5/http.js");
+var http_2 = __webpack_require__("../../../common/esm5/http.js");
+var app_component_1 = __webpack_require__("../../../../../src/app/app.component.ts");
 var admin_component_1 = __webpack_require__("../../../../../src/app/admin/admin.component.ts");
 var client_component_1 = __webpack_require__("../../../../../src/app/client/client.component.ts");
 var footer_component_1 = __webpack_require__("../../../../../src/app/footer/footer.component.ts");
 var nav_component_1 = __webpack_require__("../../../../../src/app/nav/nav.component.ts");
 var login_component_1 = __webpack_require__("../../../../../src/app/login/login.component.ts");
 var dashboard_component_1 = __webpack_require__("../../../../../src/app/client/dashboard/dashboard.component.ts");
-var forms_1 = __webpack_require__("../../../forms/esm5/forms.js");
-var http_1 = __webpack_require__("../../../http/esm5/http.js");
-var http_2 = __webpack_require__("../../../common/esm5/http.js");
 var admin_dashboard_component_1 = __webpack_require__("../../../../../src/app/admin/admin-dashboard/admin-dashboard.component.ts");
 var admin_nav_component_1 = __webpack_require__("../../../../../src/app/admin-nav/admin-nav.component.ts");
 var venue_search_component_1 = __webpack_require__("../../../../../src/app/client/venue-search/venue-search.component.ts");
@@ -1206,13 +1190,17 @@ var venue_list_component_1 = __webpack_require__("../../../../../src/app/admin/v
 var venue_edit_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.ts");
 var venue_new_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-new/venue-new.component.ts");
 var venue_show_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-show/venue-show.component.ts");
-var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
 var venue_component_1 = __webpack_require__("../../../../../src/app/client/venue/venue.component.ts");
 var ammenity_list_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-list.component.ts");
 var ammenity_new_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-new/ammenity-new.component.ts");
 var ammenity_edit_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-edit/ammenity-edit.component.ts");
 var ammenity_show_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-show/ammenity-show.component.ts");
+var messages_component_1 = __webpack_require__("../../../../../src/app/messages/messages.component.ts");
 var ammenity_service_1 = __webpack_require__("../../../../../src/app/services/ammenity.service.ts");
+var message_service_1 = __webpack_require__("../../../../../src/app/services/message.service.ts");
+var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
+var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
+var material_1 = __webpack_require__("../../../material/esm5/material.es5.js");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -1237,7 +1225,8 @@ var AppModule = (function () {
                 ammenity_list_component_1.AmmenityListComponent,
                 ammenity_new_component_1.AmmenityNewComponent,
                 ammenity_edit_component_1.AmmenityEditComponent,
-                ammenity_show_component_1.AmmenityShowComponent
+                ammenity_show_component_1.AmmenityShowComponent,
+                messages_component_1.MessagesComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -1280,7 +1269,12 @@ var AppModule = (function () {
                 material_1.MatStepperModule,
                 forms_1.ReactiveFormsModule
             ],
-            providers: [user_service_1.UserService, venue_service_1.VenueService, ammenity_service_1.AmmenityService],
+            providers: [
+                user_service_1.UserService,
+                venue_service_1.VenueService,
+                ammenity_service_1.AmmenityService,
+                message_service_1.MessageService
+            ],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);
@@ -1399,19 +1393,25 @@ var DashboardComponent = (function () {
     function DashboardComponent(_venueService, _router) {
         this._venueService = _venueService;
         this._router = _router;
+        this.venues = [];
     }
     DashboardComponent.prototype.ngOnInit = function () {
         this.getVenues();
     };
+    // getVenues() {
+    //   this._venueService.get_venues()
+    //     .then(data => {
+    //       this.venue_list = data;
+    //     })
+    //     .catch(err => {
+    //       console.log(err);
+    //     });
+    // }
     DashboardComponent.prototype.getVenues = function () {
         var _this = this;
-        this._venueService.get_venues()
-            .then(function (data) {
-            _this.venue_list = data;
-        })
-            .catch(function (err) {
-            console.log(err);
-        });
+        this._venueService
+            .get_venues()
+            .subscribe(function (venues) { return (_this.venues = venues.slice(1, 5)); });
     };
     DashboardComponent = __decorate([
         core_1.Component({
@@ -1419,8 +1419,7 @@ var DashboardComponent = (function () {
             template: __webpack_require__("../../../../../src/app/client/dashboard/dashboard.component.html"),
             styles: [__webpack_require__("../../../../../src/app/client/dashboard/dashboard.component.css")]
         }),
-        __metadata("design:paramtypes", [venue_service_1.VenueService,
-            router_1.Router])
+        __metadata("design:paramtypes", [venue_service_1.VenueService, router_1.Router])
     ], DashboardComponent);
     return DashboardComponent;
 }());
@@ -1478,28 +1477,31 @@ var VenueSearchComponent = (function () {
         this._venueService = _venueService;
         this._router = _router;
         this.currentVenue = [];
+        this.venues = [];
     }
     VenueSearchComponent.prototype.ngOnInit = function () {
         this.getVenues();
     };
     VenueSearchComponent.prototype.getVenues = function () {
         var _this = this;
-        this._venueService.get_venues()
-            .then(function (data) {
-            _this.venue_list = data;
-        })
-            .catch(function (err) {
-            if (err.error instanceof Error) {
-                // A client-side or network error occurred. Handle it accordingly.
-                console.log('An error occurred:', err.error.message);
-            }
-            else {
-                // The backend returned an unsuccessful response code.
-                // The response body may contain clues as to what went wrong,
-                console.log("Backend returned code " + err.status + ", body was: " + err.error);
-            }
-        });
+        this._venueService.get_venues().subscribe(function (venues) { return (_this.venues = venues.slice(1, 5)); });
     };
+    // getVenues() {
+    //   this._venueService.get_venues()
+    //     .then(data => {
+    //       this.venue_list = data;
+    //     })
+    //     .catch((err: HttpErrorResponse) => {
+    //       if (err.error instanceof Error) {
+    //         // A client-side or network error occurred. Handle it accordingly.
+    //         console.log('An error occurred:', err.error.message);
+    //       } else {
+    //         // The backend returned an unsuccessful response code.
+    //         // The response body may contain clues as to what went wrong,
+    //         console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+    //       }
+    //     })
+    // }
     // getVenues(): void {
     //   this._venueService.get_venues()
     //     .then(data => {
@@ -1514,7 +1516,7 @@ var VenueSearchComponent = (function () {
         this.sidenav.open();
     };
     __decorate([
-        core_1.ViewChild('sidenav'),
+        core_1.ViewChild("sidenav"),
         __metadata("design:type", material_1.MatSidenav)
     ], VenueSearchComponent.prototype, "sidenav", void 0);
     VenueSearchComponent = __decorate([
@@ -1523,8 +1525,7 @@ var VenueSearchComponent = (function () {
             template: __webpack_require__("../../../../../src/app/client/venue-search/venue-search.component.html"),
             styles: [__webpack_require__("../../../../../src/app/client/venue-search/venue-search.component.css")]
         }),
-        __metadata("design:paramtypes", [venue_service_1.VenueService,
-            router_1.Router])
+        __metadata("design:paramtypes", [venue_service_1.VenueService, router_1.Router])
     ], VenueSearchComponent);
     return VenueSearchComponent;
 }());
@@ -1773,6 +1774,68 @@ exports.LoginComponent = LoginComponent;
 
 /***/ }),
 
+/***/ "../../../../../src/app/messages/messages.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "/* MessagesComponent's private CSS styles */\n.container {\n  width:100%;\n  margin: 2em;\n}\n\nh2 {\n  color: red;\n  font-family: Arial, Helvetica, sans-serif;\n  font-weight: lighter;\n  text-align: center;\n}\nbody {\n  margin: 2em;\n}\nbody, input[text], button {\n  color: crimson;\n  font-family: Cambria, Georgia;\n}\n\nbutton.clear {\n  font-family: Arial;\n  cursor: hand;\n  margin-bottom: 12px;\n}\nbutton:hover {\n  background-color: #cfd8dc;\n}\nbutton:disabled {\n  background-color: #eee;\n  color: #aaa;\n  cursor: auto;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/messages/messages.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\" *ngIf=\"messageService.messages.length\">\n  <h2>Messages</h2>\n  <button mat-mini-fab color=\"warn\" class=\"clear\" (click)=\"messageService.clear()\">clear</button>\n  <div *ngFor='let message of messageService.messages'> {{message}} </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/messages/messages.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var message_service_1 = __webpack_require__("../../../../../src/app/services/message.service.ts");
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var MessagesComponent = (function () {
+    function MessagesComponent(messageService) {
+        this.messageService = messageService;
+    }
+    MessagesComponent.prototype.ngOnInit = function () { };
+    MessagesComponent = __decorate([
+        core_1.Component({
+            selector: "app-messages",
+            template: __webpack_require__("../../../../../src/app/messages/messages.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/messages/messages.component.css")]
+        }),
+        __metadata("design:paramtypes", [message_service_1.MessageService])
+    ], MessagesComponent);
+    return MessagesComponent;
+}());
+exports.MessagesComponent = MessagesComponent;
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/models/ammenity.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1897,29 +1960,57 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var http_1 = __webpack_require__("../../../http/esm5/http.js");
+var http_1 = __webpack_require__("../../../common/esm5/http.js");
+var http_2 = __webpack_require__("../../../http/esm5/http.js");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
-__webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
+var message_service_1 = __webpack_require__("../../../../../src/app/services/message.service.ts");
+var of_1 = __webpack_require__("../../../../rxjs/_esm5/observable/of.js");
+var operators_1 = __webpack_require__("../../../../rxjs/_esm5/operators.js");
 var AmmenityService = (function () {
-    function AmmenityService(_http) {
+    function AmmenityService(_http, _httpClient, _messageService) {
         this._http = _http;
+        this._httpClient = _httpClient;
+        this._messageService = _messageService;
     }
     AmmenityService.prototype.get_ammenities = function () {
-        return this._http.get("/ammenities")
-            .map(function (data) { return data.json(); })
-            .toPromise();
+        var _this = this;
+        return this._httpClient
+            .get("/ammenities")
+            .pipe(operators_1.tap(function (ammenities) { return _this.log("fetched ammenities"); }), operators_1.catchError(this.handleError("getAmmenities", [])));
     };
-    AmmenityService.prototype.post_ammenity = function (form_data) {
-        console.log("*** Hit ammenity post in service");
-        return this._http.post("/ammenities/add", form_data)
-            .map(function (data) { return data.json(); })
-            .toPromise();
+    // get_ammenities() {
+    //   return this._http.get("/ammenities")
+    //     .map(data => data.json())
+    //     .toPromise();
+    // }
+    AmmenityService.prototype.post_ammenity = function (ammenity) {
+        var _this = this;
+        return this._httpClient
+            .post("/ammenities/add", ammenity)
+            .pipe(operators_1.tap(function (ammenity) {
+            return _this.log("added ammenity w/ id=" + ammenity._id);
+        }), operators_1.catchError(this.handleError("addAmmenity")));
     };
+    // post_ammenity(form_data) {
+    //   console.log("*** Hit ammenity post in service");
+    //   return this._http
+    //     .post("/ammenities/add", form_data)
+    //     .map(data => data.json())
+    //     .toPromise();
+    // }
     // post_ammenity(form_data: Ammenity, callback) {
     //   this._http.post("/ammenities/add", form_data).subscribe(
     //     res => callback(res.json()),
     //     err => console.error(err)
     //   );
+    // }
+    // delete_ammenity(ammenity: Ammenity | number): Observable<Ammenity> {
+    //   const id = typeof ammenity === "number" ? ammenity : ammenity._id;
+    //   return this._httpClient.delete<Ammenity>("/ammenities/destroy")
+    //     .pipe(
+    //       tap(_ => this.log(`deleted ammenity id=${id}`)),
+    //       catchError(this.handleError<Ammenity>("deleteAmmenity"))
+    //     );
     // }
     AmmenityService.prototype.destroy_ammenity = function (ammenity) {
         console.log("*** Hit ammenity destroy in service");
@@ -1941,13 +2032,70 @@ var AmmenityService = (function () {
             .map(function (data) { return data.json(); })
             .toPromise();
     };
+    /**
+     * Handle Http operation that failed.
+     * Let the app continue.
+     * @param operation - name of the operation that failed
+     * @param result - optional value to return as the observable result
+     */
+    AmmenityService.prototype.handleError = function (operation, result) {
+        var _this = this;
+        if (operation === void 0) { operation = "operation"; }
+        return function (error) {
+            // TODO: send the error to remote logging infrastructure
+            console.error(error); // log to console instead
+            // TODO: better job of transforming error for user consumption
+            _this.log(operation + " failed: " + error.message);
+            // Let the app keep running by returning an empty result.
+            return of_1.of(result);
+        };
+    };
+    /** Log a HeroService message with the MessageService */
+    AmmenityService.prototype.log = function (message) {
+        this._messageService.add("AmmenityService: " + message);
+    };
     AmmenityService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [http_1.Http])
+        __metadata("design:paramtypes", [http_2.Http,
+            http_1.HttpClient,
+            message_service_1.MessageService])
     ], AmmenityService);
     return AmmenityService;
 }());
 exports.AmmenityService = AmmenityService;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/message.service.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var MessageService = (function () {
+    function MessageService() {
+        this.messages = [];
+    }
+    MessageService.prototype.add = function (message) {
+        this.messages.push(message);
+    };
+    MessageService.prototype.clear = function () {
+        this.messages = [];
+    };
+    MessageService = __decorate([
+        core_1.Injectable()
+    ], MessageService);
+    return MessageService;
+}());
+exports.MessageService = MessageService;
 
 
 /***/ }),
@@ -2044,41 +2192,92 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var http_1 = __webpack_require__("../../../http/esm5/http.js");
-__webpack_require__("../../../../rxjs/Rx.js");
+var http_2 = __webpack_require__("../../../common/esm5/http.js");
+var of_1 = __webpack_require__("../../../../rxjs/_esm5/observable/of.js");
+var operators_1 = __webpack_require__("../../../../rxjs/_esm5/operators.js");
+var message_service_1 = __webpack_require__("../../../../../src/app/services/message.service.ts");
 var VenueService = (function () {
-    function VenueService(_http) {
+    function VenueService(_http, _httpClient, _messageService) {
         this._http = _http;
+        this._httpClient = _httpClient;
+        this._messageService = _messageService;
     }
-    VenueService.prototype.get_venues = function () {
+    VenueService.prototype.get_all_venues = function () {
         return this._http.get('/venues')
             .map(function (data) { return data.json(); })
             .toPromise();
     };
+    VenueService.prototype.get_venues = function () {
+        var _this = this;
+        return this._httpClient
+            .get("/venues")
+            .pipe(operators_1.tap(function (ammenities) { return _this.log("fetched ammenities"); }), operators_1.catchError(this.handleError("getAmmenities", [])));
+    };
     VenueService.prototype.post_venue = function (form_data) {
-        return this._http.post("/venues/add", form_data)
+        return this._http
+            .post("/venues/add", form_data)
             .map(function (data) { return data.json(); })
             .toPromise();
     };
     VenueService.prototype.destroy_venue = function (venue) {
         console.log("*** Hit venues service");
-        return this._http.post('/venues/destroy', venue)
+        return this._http
+            .post("/venues/destroy", venue)
             .map(function (data) { return data.json(); })
             .toPromise();
     };
     VenueService.prototype.update_venue = function (venue) {
-        return this._http.post('/venues/update', venue)
+        return this._http
+            .post("/venues/update", venue)
             .map(function (data) { return data.json(); })
             .toPromise();
     };
+    // get_venue<Data>(id: number): Observable<Venue> {
+    //   return this._httpClient
+    //     .get<Venue[]>("/venues/id", { Data })
+    //     .pipe(
+    //       map(venues => venues[0]), // returns a {0|1} element array
+    //       tap(v => {
+    //         const outcome = v ? `fetched` : `did not find`;
+    //         this.log(`${outcome} venue id=${id}`);
+    //       }),
+    //       catchError(this.handleError<Venue>(`getVenue id=${id}`))
+    //     );
+    // }
     VenueService.prototype.get_one = function (venue_id) {
         console.log("venue_id from service", venue_id);
-        return this._http.post('/venues/id', { venue_id: venue_id })
+        return this._http
+            .post("/venues/id", { venue_id: venue_id })
             .map(function (data) { return data.json(); })
             .toPromise();
+    };
+    /**
+     * Handle Http operation that failed.
+     * Let the app continue.
+     * @param operation - name of the operation that failed
+     * @param result - optional value to return as the observable result
+     */
+    VenueService.prototype.handleError = function (operation, result) {
+        var _this = this;
+        if (operation === void 0) { operation = "operation"; }
+        return function (error) {
+            // TODO: send the error to remote logging infrastructure
+            console.error(error); // log to console instead
+            // TODO: better job of transforming error for user consumption
+            _this.log(operation + " failed: " + error.message);
+            // Let the app keep running by returning an empty result.
+            return of_1.of(result);
+        };
+    };
+    /** Log a HeroService message with the MessageService */
+    VenueService.prototype.log = function (message) {
+        this._messageService.add("VenueService: " + message);
     };
     VenueService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [http_1.Http])
+        __metadata("design:paramtypes", [http_1.Http,
+            http_2.HttpClient,
+            message_service_1.MessageService])
     ], VenueService);
     return VenueService;
 }());

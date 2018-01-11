@@ -13,6 +13,8 @@ import { Ammenity } from '../../../models/ammenity';
 })
 export class AmmenityShowComponent implements OnInit {
   ammenities_list: Array<Ammenity>;
+  ammenities: Ammenity[];
+  // ammenityName = [];
   current_user: User;
   search_text: String = "";
 
@@ -33,26 +35,31 @@ export class AmmenityShowComponent implements OnInit {
     }
   }
 
-  getAmmenities() {
-    this._ammenityService.get_ammenities()
-      .then(data => {
-        this.ammenities_list = data;
-      })
-      .catch((err: HttpErrorResponse) => {
-        if (err.error instanceof Error) {
-          // A client-side or network error occurred. Handle it accordingly.
-          console.log("An error occurred:", err.error.message);
-        } else {
-          // The backend returned an unsuccessful response code.
-          // The response body may contain clues as to what went wrong,
-          console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
-        }
+  getAmmenities(): void {
+    this._ammenityService
+      .get_ammenities()
+      .subscribe(ammenities => (this.ammenities = ammenities));
+  }
+
+  add(name: string): void {
+    name = name.trim();
+    if (!name) {
+      return;
+    }
+    this._ammenityService
+      .post_ammenity({ name } as Ammenity)
+      .subscribe(ammenity => {
+        this.ammenities.push(ammenity);
       });
   }
 
+  // delete(ammenity: Ammenity): void {
+  //   this.ammenities = this.ammenities.filter(a => a !== ammenity);
+  //   this._ammenityService.delete_ammenity(ammenity).subscribe();
+  // }
+
   delete(ammenity) {
-    this._ammenityService
-      .destroy_ammenity(ammenity)
+    this._ammenityService.destroy_ammenity(ammenity)
       .then(() => {
         this.getAmmenities();
       })
@@ -63,7 +70,9 @@ export class AmmenityShowComponent implements OnInit {
         } else {
           // The backend returned an unsuccessful response code.
           // The response body may contain clues as to what went wrong,
-          console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+          console.log(
+            `Backend returned code ${err.status}, body was: ${err.error}`
+          );
         }
       });
   }

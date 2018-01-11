@@ -12,7 +12,7 @@ import { Venue } from '../../../models/venue';
   styleUrls: ["./venue-show.component.css"]
 })
 export class VenueShowComponent implements OnInit {
-  venue_list: Array<Venue>;
+  venues: Venue[];
   current_user: User;
   search_text: String = "";
 
@@ -33,23 +33,29 @@ export class VenueShowComponent implements OnInit {
     }
   }
 
-  getVenues() {
-    this._venueService.get_venues()
-      .then(data => {
-        this.venue_list = data;
-      })
-      .catch((err: HttpErrorResponse) => {
-        if (err.error instanceof Error) {
-          // A client-side or network error occurred. Handle it accordingly.
-          console.log("An error occurred:", err.error.message);
-        } else {
-          // The backend returned an unsuccessful response code.
-          // The response body may contain clues as to what went wrong,
-          console.log(
-            `Backend returned code ${err.status}, body was: ${err.error}`
-          );
-        }
-      });
+  // getVenues() {
+  //   this._venueService.get_venues()
+  //     .then(data => {
+  //       this.venue_list = data;
+  //     })
+  //     .catch((err: HttpErrorResponse) => {
+  //       if (err.error instanceof Error) {
+  //         // A client-side or network error occurred. Handle it accordingly.
+  //         console.log("An error occurred:", err.error.message);
+  //       } else {
+  //         // The backend returned an unsuccessful response code.
+  //         // The response body may contain clues as to what went wrong,
+  //         console.log(
+  //           `Backend returned code ${err.status}, body was: ${err.error}`
+  //         );
+  //       }
+  //     });
+  // }
+
+  getVenues(): void {
+    this._venueService.get_venues().subscribe(
+      venues => (this.venues = venues)
+    );
   }
 
   delete(venue) {
