@@ -2215,10 +2215,16 @@ var VenueService = (function () {
     };
     VenueService.prototype.post_venue = function (form_data) {
         return this._http
-            .post("/venues/add", form_data)
+            .post("/venues/upload", form_data)
             .map(function (data) { return data.json(); })
             .toPromise();
     };
+    // post_venue(form_data) {
+    //   return this._http
+    //     .post("/venues/add", form_data)
+    //     .map(data => data.json())
+    //     .toPromise();
+    // }
     VenueService.prototype.destroy_venue = function (venue) {
         console.log("*** Hit venues service");
         return this._http

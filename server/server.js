@@ -10,7 +10,7 @@ const port = 8000;
 const app = express();
 
 // app.use(express.static(path.join(__dirname, "./static")));
-app.use(express.static(path.join(__dirname + '/public/dist')));
+app.use(express.static(path.join(__dirname + "../public/dist")));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -29,11 +29,12 @@ app.use(
 //     preserveExtension: true
 // }));
 
-require("./server/config/mongoose");
+require("./config/mongoose");
 
-require("./server/config/api/routes")(app);
+require("./config/api/routes")(app);
+// require("./server/config/routes/api/routes")(app);
 
-app.listen(port, err => {
+app.listen(port, "0.0.0.0", err => {
   if (err) {
     console.log(err);
   }

@@ -10,11 +10,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.180.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
+    "busboy": "^0.2.14",
+    "busboy-body-parser": "^0.3.1",
+    "connect-busboy": "0.0.2",
     "express": "^4.16.2",
     "express-fileupload": "^0.3.0",
     "express-session": "^1.15.6",
-    "mongoose": "^5.0.0-rc1"
+    "mongoose": "^5.0.0-rc1",
+    "nodemon": "^1.14.11"
   }
 }
