@@ -1,4 +1,5 @@
 # dependencies
+/server/config
 /node_modules
 
 # IDEs and editors
