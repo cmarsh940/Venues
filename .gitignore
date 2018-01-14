@@ -1,4 +1,5 @@
 # dependencies
+/dist
 /server/config
 /node_modules
 

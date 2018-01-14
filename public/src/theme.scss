@@ -11,11 +11,11 @@ $custom-theme: mat-light-theme($custom-primary, $custom-accent, $custom-warn);
 
 // ALTERNATIVE THEME
 
-$alt-primary: mat-palette($mat-yellow);
-$alt-accent:  mat-palette($mat-grey, 200);
+// $alt-primary: mat-palette($mat-yellow);
+// $alt-accent:  mat-palette($mat-grey, 200);
 
-$alt-theme: mat-dark-theme($alt-primary, $alt-accent);
+// $alt-theme: mat-dark-theme($alt-primary, $alt-accent);
 
-.alternative {
-    @include angular-material-theme($alt-theme);
-}
+// .alternative {
+//     @include angular-material-theme($alt-theme);
+// }
