@@ -5,6 +5,7 @@ export class Venue {
   phone: number;
   address: string;
   website: string;
+  static_pic_url: any;
   pic_url: any;
   Ammenity: any;
   createdAt: any;

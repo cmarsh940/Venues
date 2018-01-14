@@ -7,9 +7,9 @@ import { User } from '../../../models/user';
 import { Ammenity } from '../../../models/ammenity';
 
 @Component({
-  selector: "app-ammenity-edit",
-  templateUrl: "./ammenity-edit.component.html",
-  styleUrls: ["./ammenity-edit.component.css"]
+  selector: 'app-ammenity-edit',
+  templateUrl: './ammenity-edit.component.html',
+  styleUrls: ['./ammenity-edit.component.css']
 })
 export class AmmenityEditComponent implements OnInit {
   ammenity = new Ammenity();
@@ -31,7 +31,7 @@ export class AmmenityEditComponent implements OnInit {
 
   isLoggedIn() {
     if (this._userService.getCurrentUser() == null) {
-      this._router.navigateByUrl("/");
+      this._router.navigateByUrl('/');
     }
   }
 
@@ -76,6 +76,6 @@ export class AmmenityEditComponent implements OnInit {
   }
   update(ammenity) {
     this._ammenityService.update_ammenity(this.ammenity);
-    this._router.navigate(["/list_ammenity"]);
+    this._router.navigate(['/list_ammenity']);
   }
 }

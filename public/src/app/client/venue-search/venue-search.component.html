@@ -23,14 +23,20 @@
         </mat-tab>
         <mat-tab>
           <ng-template mat-tab-label>Photos</ng-template>
-          <img src="https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{currentVenue.pic_url}}" alt="Venue Picture">
+          <div *ngIf='!currentVenue.pic_url'>
+            <h2>There are currently no pictures of this venue.</h2>
+          </div>
+          <div *ngIf='currentVenue.pic_url'>
+            <img src='https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{currentVenue.pic_url}}' alt="Venue Picture">
+          </div>
         </mat-tab>
       </mat-tab-group>
     </mat-sidenav>
     <mat-sidenav-content>
       <mat-grid-list cols="4" rowHeight="200px">
         <mat-grid-tile *ngFor="let venue of venue_list">
-          <img src='https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{venue.pic_url}}' alt="Venue Picture">          <mat-grid-tile-footer>
+          <img src='imgs/{{currentVenue.static_pic_url}}' alt="Venue Picture">
+          <mat-grid-tile-footer>
             <h3>{{venue.name}}</h3>
             <span class="spacer"></span>
             <button mat-icon-button (click)="showVenue(venue)">

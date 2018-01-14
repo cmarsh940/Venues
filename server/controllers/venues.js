@@ -89,36 +89,35 @@ module.exports = {
     let new_venue = new Venue(req.body);
     let busboy = new Busboy({ headers: req.headers });
     if (req.files.picture) {
-      let file = req.files.picture
-      console.log("*** server recieved file named:", file)
-      let file_type = file.mimetype.match(/image\/(\w+)/)
-      console.log("*** server file type", file_type)
-      let new_file_name = file.name
+      let file = req.files.picture;
+      console.log("*** server recieved file named:", file);
+      let file_type = file.mimetype.match(/image\/(\w+)/);
+      console.log("*** server file type", file_type);
+      let new_file_name = file.name;
 
       if (file_type) {
-        new_venue.pic_url = new_file_name
-        busboy.on("finish", function () {
+        new_venue.pic_url = new_file_name;
+        busboy.on("finish", function() {
           const file = req.files.picture;
           console.log("Done parsing form!");
           console.log(file);
           uploadToS3(file);
         });
         req.pipe(busboy);
-          console.log("*** Files is now uploaded")
+        console.log("*** Files is now uploaded");
       }
     }
 
-    new_venue.save()
+    new_venue
+      .save()
       .then(() => {
-          return res.json(new_venue)
+        return res.json(new_venue);
       })
       .catch(err => {
-          console.log("*** my_venue save error", err)
-          return res.json(err)
-      })
+        console.log("*** my_venue save error", err);
+        return res.json(err);
+      });
   },
-
-
 
   // OLD SEND TO AWS S3
   // upload: (req, res, next) => {
@@ -134,41 +133,40 @@ module.exports = {
   //   req.pipe(busboy);
   // },
 
+  add: (req, res) => {
+    console.log("*** hit server for creating a venue");
+    let new_venue = new Venue(req.body);
+    console.log(new_venue);
+    if (req.files.picture) {
+      let file = req.files.picture;
+      console.log("*** server recieved file named:", file);
+      let file_type = file.mimetype.match(/image\/(\w+)/);
+      console.log("*** server file type", file_type);
+      let new_file_name = "";
+      console.log("*** Renaming file");
+      if (file_type) {
+        let new_file_name = `${new Date().getTime()}.${file_type[1]}`;
+        console.log("*** Files new name is:", new_file_name);
+        file.mv(path.resolve(__dirname, "../../static/imgs/", new_file_name), err => {
+          if (err) {
+            console.log("*** file move error", err);
+          }
+        });
+        console.log("*** Files is now moved to uploads folder");
+        new_venue.static_pic_url = new_file_name;
+      }
+    }
 
+    new_venue.save()
+      .then(() => {
+        return res.json(new_venue);
+      })
+      .catch(err => {
+        console.log("*** my_venue save error", err);
+        return res.json(err);
+      });
+  },
 
-  // OLD SEND TO STATIC FOLDER
-  // upload: (req, res) => {
-  //     console.log("*** hit server for creating a venue")
-  //     let new_venue = new Venue(req.body)
-  //     console.log(new_venue)
-  //     if (req.files.picture) {
-  //         let file = req.files.picture
-  //         console.log("*** server recieved file named:", file)
-  //         let file_type = file.mimetype.match(/image\/(\w+)/)
-  //         console.log("*** server file type", file_type)
-  //         let new_file_name = ""
-  //         console.log("*** Renaming file")
-
-  //         if (file_type) {
-  //             let new_file_name = `${new Date().getTime()}.${file_type[1]}`
-  //             console.log("*** Files new name is:", new_file_name)
-  //             file.mv(path.resolve(__dirname, "../../static/imgs/", new_file_name), err => {
-  //                 if (err) { console.log("*** file move error", err) }
-  //             })
-  //             console.log("*** Files is now moved to uploads folder")
-  //             new_venue.pic_url = new_file_name
-  //         }
-  //     }
-
-  //     new_venue.save()
-  //         .then(() => {
-  //             return res.json(new_venue)
-  //         })
-  //         .catch(err => {
-  //             console.log("*** my_venue save error", err)
-  //             return res.json(err)
-  //         })
-  // },
   destroy: (req, res, next) => {
     console.log("*** logging the req.body", req.body);
     let venue = new Venue(req.body);
@@ -193,7 +191,8 @@ module.exports = {
         venue.phone = myVenue.phone;
         venue.address = myVenue.address;
         venue.website = myVenue.website;
-        venue.save()
+        venue
+          .save()
           .then(() => {
             res.json(true);
           })

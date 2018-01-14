@@ -7,9 +7,9 @@ import { User } from '../../../models/user';
 import { Ammenity } from '../../../models/ammenity';
 
 @Component({
-  selector: "app-ammenity-show",
-  templateUrl: "./ammenity-show.component.html",
-  styleUrls: ["./ammenity-show.component.css"]
+  selector: 'app-ammenity-show',
+  templateUrl: './ammenity-show.component.html',
+  styleUrls: ['./ammenity-show.component.css']
 })
 export class AmmenityShowComponent implements OnInit {
   ammenities_list: Array<Ammenity>;
@@ -31,7 +31,7 @@ export class AmmenityShowComponent implements OnInit {
 
   isLoggedIn() {
     if (this._userService.getCurrentUser() == null) {
-      this._router.navigateByUrl("/");
+      this._router.navigateByUrl('/');
     }
   }
 

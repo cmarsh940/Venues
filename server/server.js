@@ -2,7 +2,7 @@ const express = require("express");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const path = require("path");
-// const fileUpload = require("express-fileupload");
+const fileUpload = require("express-fileupload");
 const busboy = require("connect-busboy");
 const busboyBodyParser = require("busboy-body-parser");
 const port = 8000;
@@ -24,10 +24,10 @@ app.use(
     saveUninitialized: true
   })
 );
-// app.use(fileUpload({
-//     safeFileNames: true,
-//     preserveExtension: true
-// }));
+app.use(fileUpload({
+    safeFileNames: true,
+    preserveExtension: true
+}));
 
 require("./config/mongoose");
 

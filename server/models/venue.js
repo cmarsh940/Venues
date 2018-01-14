@@ -24,6 +24,10 @@ const VenueSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Website cannot be blank.'],
     },
+    static_pic_url: {
+      type: String,
+      required: true
+    },
     pic_url: {
       type: String,
       required: false

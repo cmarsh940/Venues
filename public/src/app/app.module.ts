@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpModule } from "@angular/http";
-import { HttpClientModule } from "@angular/common/http";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AdminComponent } from './admin/admin.component';
@@ -25,12 +25,12 @@ import { AmmenityListComponent } from './admin/ammenity-list/ammenity-list.compo
 import { AmmenityNewComponent } from './admin/ammenity-list/ammenity-new/ammenity-new.component';
 import { AmmenityEditComponent } from './admin/ammenity-list/ammenity-edit/ammenity-edit.component';
 import { AmmenityShowComponent } from './admin/ammenity-list/ammenity-show/ammenity-show.component';
-import { MessagesComponent } from "./messages/messages.component";
+import { MessagesComponent } from './messages/messages.component';
 
 import { AmmenityService } from './services/ammenity.service';
 import { MessageService } from './services/message.service';
-import { UserService } from "./services/user.service";
-import { VenueService } from "./services/venue.service";
+import { UserService } from './services/user.service';
+import { VenueService } from './services/venue.service';
 
 import {
   MatButtonModule,
@@ -64,7 +64,7 @@ import {
   MatTabsModule,
   MatTooltipModule,
   MatStepperModule
-} from "@angular/material";
+} from '@angular/material';
 
 import { UploadComponent } from './admin/upload/upload.component';
 import { FileDropDirective } from './admin/upload/file-drop.directive';

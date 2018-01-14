@@ -42,14 +42,14 @@ export class UserService {
   }
 
   updateUser(user) {
-    this.observedUser.next(user)
+    this.observedUser.next(user);
   }
 
   getUsers() {
-    console.log(" Service get users service")
+    console.log("Service get users service");
     return this._http.get('/get_users')
       .map(data => data.json())
-      .toPromise()
+      .toPromise();
   }
 
   logout(callback) {
@@ -61,13 +61,13 @@ export class UserService {
   get_all_users() {
     return this._http.get('/all_users')
       .map(data => data.json())
-      .toPromise()
+      .toPromise();
   }
 
   get_logged_in_user() {
     return this._http.get('/get_logged_in_user')
       .map(data => data.json())
-      .toPromise()
+      .toPromise();
   }
 }
 

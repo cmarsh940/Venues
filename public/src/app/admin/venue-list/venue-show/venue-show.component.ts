@@ -7,9 +7,9 @@ import { User } from '../../../models/user';
 import { Venue } from '../../../models/venue';
 
 @Component({
-  selector: "app-venue-show",
-  templateUrl: "./venue-show.component.html",
-  styleUrls: ["./venue-show.component.css"]
+  selector: 'app-venue-show',
+  templateUrl: './venue-show.component.html',
+  styleUrls: ['./venue-show.component.css']
 })
 export class VenueShowComponent implements OnInit {
   venues: Venue[];
@@ -29,7 +29,7 @@ export class VenueShowComponent implements OnInit {
 
   isLoggedIn() {
     if (this._userService.getCurrentUser() == null) {
-      this._router.navigateByUrl("/");
+      this._router.navigateByUrl('/');
     }
   }
 

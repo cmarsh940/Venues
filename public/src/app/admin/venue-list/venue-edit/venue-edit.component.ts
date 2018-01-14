@@ -2,14 +2,14 @@ import { VenueService } from './../../../services/venue.service';
 import { UserService } from './../../../services/user.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from "@angular/common";
+import { Location } from '@angular/common';
 import { User } from '../../../models/user';
 import { Venue } from '../../../models/venue';
 
 @Component({
-  selector: "app-venue-edit",
-  templateUrl: "./venue-edit.component.html",
-  styleUrls: ["./venue-edit.component.css"]
+  selector: 'app-venue-edit',
+  templateUrl: './venue-edit.component.html',
+  styleUrls: ['./venue-edit.component.css']
 })
 export class VenueEditComponent implements OnInit {
   venue = new Venue();
@@ -36,7 +36,7 @@ export class VenueEditComponent implements OnInit {
 
   isLoggedIn() {
     if (this._userService.getCurrentUser() == null) {
-      this._router.navigateByUrl("/");
+      this._router.navigateByUrl('/');
     }
   }
 
@@ -76,7 +76,7 @@ export class VenueEditComponent implements OnInit {
   }
   update(venue) {
     this._venueService.update_venue(this.venue);
-    this._router.navigate(["/list_venue"]);
+    this._router.navigate(['/list_venue']);
   }
 
   goBack(): void {

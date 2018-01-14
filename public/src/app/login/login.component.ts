@@ -56,8 +56,8 @@ export class LoginComponent implements OnInit {
       .then(user => {
         console.log(user);
         if (user.errors) {
-          for (let key in user.errors) {
-            let error = user.error[key];
+          for (const key in user.errors) {
+            const error = user.error[key];
             this.errors.push(error.message);
           }
         } else {

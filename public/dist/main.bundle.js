@@ -148,7 +148,7 @@ var AdminDashboardComponent = (function () {
     };
     AdminDashboardComponent = __decorate([
         core_1.Component({
-            selector: "app-admin-dashboard",
+            selector: 'app-admin-dashboard',
             template: __webpack_require__("../../../../../src/app/admin/admin-dashboard/admin-dashboard.component.html"),
             styles: [__webpack_require__("../../../../../src/app/admin/admin-dashboard/admin-dashboard.component.css")]
         }),
@@ -300,7 +300,7 @@ var AmmenityEditComponent = (function () {
     };
     AmmenityEditComponent.prototype.isLoggedIn = function () {
         if (this._userService.getCurrentUser() == null) {
-            this._router.navigateByUrl("/");
+            this._router.navigateByUrl('/');
         }
     };
     // getAmmenities() {
@@ -345,11 +345,11 @@ var AmmenityEditComponent = (function () {
     };
     AmmenityEditComponent.prototype.update = function (ammenity) {
         this._ammenityService.update_ammenity(this.ammenity);
-        this._router.navigate(["/list_ammenity"]);
+        this._router.navigate(['/list_ammenity']);
     };
     AmmenityEditComponent = __decorate([
         core_1.Component({
-            selector: "app-ammenity-edit",
+            selector: 'app-ammenity-edit',
             template: __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-edit/ammenity-edit.component.html"),
             styles: [__webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-edit/ammenity-edit.component.css")]
         }),
@@ -447,7 +447,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/ammenity-list/ammenity-new/ammenity-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <button mat-raised-button [routerLink]=\"['/list_ammenities']\">\n  <i class=\"material-icons\">&#xE5C4;</i>\n</button>\n<h1>Add a ammenity</h1>\n<form #form (ngSubmit)=\"create_ammenity()\">\n  <!-- Name -->\n  <!-- <mat-form-field>\n    <input matInput name=\"name\" required maxlength=125 [(ngModel)]=\"new_ammenity.name\" placeholder=\"Ammenity Name\">\n  </mat-form-field> -->\n\n  <!-- Submit -->\n  <!-- <button mat-raised-button type=\"submit\">Submit</button>\n</form> -->\n\n<!-- <div>\n  <p class=\"error\" *ngFor=\"let error of errors\">{{ error }}</p>\n</div> --> -->\n"
+module.exports = " <button mat-raised-button [routerLink]=\"['/list_ammenities']\">\n  <i class=\"material-icons\">&#xE5C4;</i>\n</button>\n<h1>Add a ammenity</h1>\n<form #form (ngSubmit)=\"create_ammenity()\">\n   Name\n  <mat-form-field>\n    <input matInput name=\"name\" required maxlength=125 [(ngModel)]=\"new_ammenity.name\" placeholder=\"Ammenity Name\">\n  </mat-form-field>\n\n   Submit\n  <button mat-raised-button type=\"submit\">Submit</button>\n</form>\n\n<div>\n  <p class=\"error\" *ngFor=\"let error of errors\">{{ error }}</p>\n</div>\n"
 
 /***/ }),
 
@@ -485,11 +485,11 @@ var AmmenityNewComponent = (function () {
     };
     AmmenityNewComponent.prototype.isLoggedIn = function () {
         if (this._userService.getCurrentUser() == null) {
-            this._router.navigateByUrl("/");
+            this._router.navigateByUrl('/');
         }
     };
     __decorate([
-        core_1.ViewChild("form"),
+        core_1.ViewChild('form'),
         __metadata("design:type", Object)
     ], AmmenityNewComponent.prototype, "my_form", void 0);
     __decorate([
@@ -498,7 +498,7 @@ var AmmenityNewComponent = (function () {
     ], AmmenityNewComponent.prototype, "new_ammenity_event", void 0);
     AmmenityNewComponent = __decorate([
         core_1.Component({
-            selector: "app-ammenity-new",
+            selector: 'app-ammenity-new',
             template: __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-new/ammenity-new.component.html"),
             styles: [__webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-new/ammenity-new.component.css")]
         }),
@@ -570,7 +570,7 @@ var AmmenityShowComponent = (function () {
     };
     AmmenityShowComponent.prototype.isLoggedIn = function () {
         if (this._userService.getCurrentUser() == null) {
-            this._router.navigateByUrl("/");
+            this._router.navigateByUrl('/');
         }
     };
     AmmenityShowComponent.prototype.getAmmenities = function () {
@@ -615,7 +615,7 @@ var AmmenityShowComponent = (function () {
     };
     AmmenityShowComponent = __decorate([
         core_1.Component({
-            selector: "app-ammenity-show",
+            selector: 'app-ammenity-show',
             template: __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-show/ammenity-show.component.html"),
             styles: [__webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-show/ammenity-show.component.css")]
         }),
@@ -905,7 +905,7 @@ var VenueEditComponent = (function () {
     };
     VenueEditComponent.prototype.isLoggedIn = function () {
         if (this._userService.getCurrentUser() == null) {
-            this._router.navigateByUrl("/");
+            this._router.navigateByUrl('/');
         }
     };
     // getVenue(): void {
@@ -943,14 +943,14 @@ var VenueEditComponent = (function () {
     };
     VenueEditComponent.prototype.update = function (venue) {
         this._venueService.update_venue(this.venue);
-        this._router.navigate(["/list_venue"]);
+        this._router.navigate(['/list_venue']);
     };
     VenueEditComponent.prototype.goBack = function () {
         this.location.back();
     };
     VenueEditComponent = __decorate([
         core_1.Component({
-            selector: "app-venue-edit",
+            selector: 'app-venue-edit',
             template: __webpack_require__("../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.html"),
             styles: [__webpack_require__("../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.css")]
         }),
@@ -1049,7 +1049,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/venue-list/venue-new/venue-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button mat-raised-button [routerLink]=\"['/list_venue']\">\n  <i class=\"material-icons\">&#xE5C4;</i>\n</button>\n<h1>Add a Venue</h1>\n  <form #form (submit)=\"create_venue()\" encType=\"multipart/form-data\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name=\"name\" required maxlength=250 [(ngModel)]=\"new_venue.name\" placeholder=\"Venue Name\">\n    </mat-form-field>\n\n    <!-- Email -->\n    <mat-form-field>\n      <input matInput name=\"email\" required maxlength=250 [(ngModel)]=\"new_venue.email\" placeholder=\"Venue Email\">\n    </mat-form-field>\n\n    <!-- Phone# -->\n    <mat-form-field>\n      <input matInput name=\"phone\" required maxlength=20 [(ngModel)]=\"new_venue.phone\" placeholder=\"Venue Phone #\">\n    </mat-form-field>\n\n    <!-- Address -->\n    <mat-form-field>\n      <input matInput name=\"address\" required maxlength=200 [(ngModel)]=\"new_venue.address\" placeholder=\"Venue Address\">\n    </mat-form-field>\n\n    <!-- Website -->\n    <mat-form-field>\n      <input matInput name=\"website\" required maxlength=250 [(ngModel)]=\"new_venue.website\" placeholder=\"Venue Website\">\n    </mat-form-field>\n\n    <!-- Ammenities -->\n    <!-- <mat-form-field>\n      <mat-select placeholder=\"Ammenities\" [formControl]=\"ammenities\" multiple>\n        <mat-option *ngFor=\"let ammenity of ammenitiesList\" [value]=\"ammenity\">{{ammenities}}</mat-option>\n      </mat-select>\n    </mat-form-field> -->\n\n    <!-- Picture -->\n    <div>\n      <input #file type=\"file\" name=\"picture\" [(ngModel)]=\"new_venue.pic_url\">\n    </div>\n\n    <!-- Submit -->\n    <button mat-raised-button type=\"submit\">Submit</button>\n  </form>\n\n  <div>\n    <p class=\"error\" *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n"
+module.exports = "<button mat-raised-button [routerLink]=\"['/list_venue']\">\n  <i class=\"material-icons\">&#xE5C4;</i>\n</button>\n<h1>Add a Venue</h1>\n  <form #form (submit)=\"create_venue()\" encType=\"multipart/form-data\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name=\"name\" required maxlength=250 [(ngModel)]=\"new_venue.name\" placeholder=\"Venue Name\">\n    </mat-form-field>\n\n    <!-- Email -->\n    <mat-form-field>\n      <input matInput name=\"email\" required maxlength=250 [(ngModel)]=\"new_venue.email\" placeholder=\"Venue Email\">\n    </mat-form-field>\n\n    <!-- Phone# -->\n    <mat-form-field>\n      <input matInput name=\"phone\" required maxlength=20 [(ngModel)]=\"new_venue.phone\" placeholder=\"Venue Phone #\">\n    </mat-form-field>\n\n    <!-- Address -->\n    <mat-form-field>\n      <input matInput name=\"address\" required maxlength=200 [(ngModel)]=\"new_venue.address\" placeholder=\"Venue Address\">\n    </mat-form-field>\n\n    <!-- Website -->\n    <mat-form-field>\n      <input matInput name=\"website\" required maxlength=250 [(ngModel)]=\"new_venue.website\" placeholder=\"Venue Website\">\n    </mat-form-field>\n\n    <!-- Ammenities -->\n    <!-- <mat-form-field>\n      <mat-select placeholder=\"Ammenities\" [formControl]=\"ammenities\" multiple>\n        <mat-option *ngFor=\"let ammenity of ammenitiesList\" [value]=\"ammenity\">{{ammenities}}</mat-option>\n      </mat-select>\n    </mat-form-field> -->\n\n    <!-- Picture -->\n    <div>\n      <input #file type=\"file\" name=\"picture\" [(ngModel)]=\"new_venue.static_pic_url\">\n    </div>\n\n    <!-- Submit -->\n    <button mat-raised-button type=\"submit\">Submit</button>\n  </form>\n\n  <div>\n    <p class=\"error\" *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n"
 
 /***/ }),
 
@@ -1078,9 +1078,9 @@ var VenueNewComponent = (function () {
         this._venueService = _venueService;
         this._userService = _userService;
         this._router = _router;
-        this.new_venue = new venue_1.Venue;
+        this.new_venue = new venue_1.Venue();
         this.errors = [];
-        this.new_venue_event = new core_1.EventEmitter;
+        this.new_venue_event = new core_1.EventEmitter();
     }
     VenueNewComponent.prototype.ngOnInit = function () {
         this.isLoggedIn();
@@ -1094,23 +1094,22 @@ var VenueNewComponent = (function () {
         var _this = this;
         var form_data = new FormData(this.my_form.nativeElement);
         console.log("*** This is the form data", form_data);
-        this._venueService.post_venue(form_data)
-            .then(function () {
+        this._venueService.post_venue(form_data).then(function () {
             console.log("*** Setting new venue");
-            _this.new_venue = new venue_1.Venue;
+            _this.new_venue = new venue_1.Venue();
             console.log("*** Setting file value");
             _this.file_input.nativeElement.value = "";
             console.log("*** About to emit");
             _this.new_venue_event.emit();
-            _this._router.navigate(["/list_venue"]);
+            _this._router.navigate(['/list_venue']);
         });
     };
     __decorate([
-        core_1.ViewChild("file"),
+        core_1.ViewChild('file'),
         __metadata("design:type", Object)
     ], VenueNewComponent.prototype, "file_input", void 0);
     __decorate([
-        core_1.ViewChild("form"),
+        core_1.ViewChild('form'),
         __metadata("design:type", Object)
     ], VenueNewComponent.prototype, "my_form", void 0);
     __decorate([
@@ -1155,7 +1154,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/venue-list/venue-show/venue-show.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button mat-raised-button color=\"accent\" [routerLink]=\"['/venue', 'add']\">Add a venue</button>\n<h1>Venues</h1>\n<hr>\n<table>\n    <thead>\n        <tr>\n            <th>#</th>\n            <th>Name</th>\n            <th>Email</th>\n            <th>Phone</th>\n            <th>Address</th>\n            <th>Website</th>\n            <th>Pic_URL</th>\n            <th>Action</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr *ngFor=\"let venue of venues; let i = index\">\n            <td>{{i + 1}}</td>\n            <td>{{ venue.name }}</td>\n            <td>{{ venue.email }}</td>\n            <td>{{ venue.phone }}</td>\n            <td>{{ venue.address }}</td>\n            <td>{{ venue.website }}</td>\n            <td>{{ venue.pic_url }}</td>\n            <td>\n                <button  mat-icon-button color=\"accent\" [routerLink]=\"['/venue', 'edit', venue._id]\">\n                    <mat-icon aria-label=\"icon-button to edit venue\"><i class=\"material-icons\">&#xE3C9;</i></mat-icon>\n                </button>\n                <button mat-icon-button color=\"warn\" (click)=\"delete(venue)\">\n                  <mat-icon aria-label=\"icon-button to delete venue\"><i class=\"material-icons\">&#xE872;</i></mat-icon>\n                </button>\n            </td>\n        </tr>\n    </tbody>\n</table>\n"
+module.exports = "<button mat-raised-button color=\"accent\" [routerLink]=\"['/venue', 'add']\">Add a venue</button>\n<h1>Venues</h1>\n<hr>\n<table>\n    <thead>\n        <tr>\n            <th>#</th>\n            <th>Name</th>\n            <th>Email</th>\n            <th>Phone</th>\n            <th>Address</th>\n            <th>Website</th>\n            <th>Pic_URL</th>\n            <th>Action</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr *ngFor=\"let venue of venues; let i = index\">\n            <td>{{i + 1}}</td>\n            <td>{{ venue.name }}</td>\n            <td>{{ venue.email }}</td>\n            <td>{{ venue.phone }}</td>\n            <td>{{ venue.address }}</td>\n            <td>{{ venue.website }}</td>\n            <td>{{ venue.static_pic_url }}</td>\n            <td>\n                <button  mat-icon-button color=\"accent\" [routerLink]=\"['/venue', 'edit', venue._id]\">\n                    <mat-icon aria-label=\"icon-button to edit venue\"><i class=\"material-icons\">&#xE3C9;</i></mat-icon>\n                </button>\n                <button mat-icon-button color=\"warn\" (click)=\"delete(venue)\">\n                  <mat-icon aria-label=\"icon-button to delete venue\"><i class=\"material-icons\">&#xE872;</i></mat-icon>\n                </button>\n            </td>\n        </tr>\n    </tbody>\n</table>\n"
 
 /***/ }),
 
@@ -1191,7 +1190,7 @@ var VenueShowComponent = (function () {
     };
     VenueShowComponent.prototype.isLoggedIn = function () {
         if (this._userService.getCurrentUser() == null) {
-            this._router.navigateByUrl("/");
+            this._router.navigateByUrl('/');
         }
     };
     // getVenues() {
@@ -1229,7 +1228,7 @@ var VenueShowComponent = (function () {
     };
     VenueShowComponent = __decorate([
         core_1.Component({
-            selector: "app-venue-show",
+            selector: 'app-venue-show',
             template: __webpack_require__("../../../../../src/app/admin/venue-list/venue-show/venue-show.component.html"),
             styles: [__webpack_require__("../../../../../src/app/admin/venue-list/venue-show/venue-show.component.css")]
         }),
@@ -1668,7 +1667,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/client/venue-search/venue-search.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\n  <section class=\"mat-typography\">\n    <h1>Tulsa Venues</h1>\n    <h4>Who knows Tulsa better then tulsans?</h4>\n  </section>\n</div>\n<div class=\"search\">\n  <hr>\n  <h2>SEARCH FORM COMING SOON...</h2>\n  <hr>\n</div>\n<div>\n  <mat-sidenav-container>\n    <mat-sidenav align=\"end\" mode=\"side\" #sidenav>\n      <mat-tab-group>\n        <mat-tab>\n          <ng-template mat-tab-label>Details</ng-template>\n          <button mat-raised-button (click)=\"sidenav.close()\" color=\"warn\">CLOSE</button>\n          <p>Name: {{currentVenue.name}}</p>\n          <p>Phone: {{currentVenue.phone}}</p>\n          <p>Location: {{currentVenue.address}}</p>\n          <p>Website: <a href=\"http://{{currentVenue.website}}\">{{currentVenue.website}}</a></p>\n        </mat-tab>\n        <mat-tab>\n          <ng-template mat-tab-label>Photos</ng-template>\n          <img src=\"https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{currentVenue.pic_url}}\" alt=\"Venue Picture\">\n        </mat-tab>\n      </mat-tab-group>\n    </mat-sidenav>\n    <mat-sidenav-content>\n      <mat-grid-list cols=\"4\" rowHeight=\"200px\">\n        <mat-grid-tile *ngFor=\"let venue of venue_list\">\n          <img src='https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{venue.pic_url}}' alt=\"Venue Picture\">          <mat-grid-tile-footer>\n            <h3>{{venue.name}}</h3>\n            <span class=\"spacer\"></span>\n            <button mat-icon-button (click)=\"showVenue(venue)\">\n              <mat-icon>info</mat-icon>\n            </button>\n          </mat-grid-tile-footer>\n        </mat-grid-tile>\n      </mat-grid-list>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>\n"
+module.exports = "<div class=\"header\">\n  <section class=\"mat-typography\">\n    <h1>Tulsa Venues</h1>\n    <h4>Who knows Tulsa better then tulsans?</h4>\n  </section>\n</div>\n<div class=\"search\">\n  <hr>\n  <h2>SEARCH FORM COMING SOON...</h2>\n  <hr>\n</div>\n<div>\n  <mat-sidenav-container>\n    <mat-sidenav align=\"end\" mode=\"side\" #sidenav>\n      <mat-tab-group>\n        <mat-tab>\n          <ng-template mat-tab-label>Details</ng-template>\n          <button mat-raised-button (click)=\"sidenav.close()\" color=\"warn\">CLOSE</button>\n          <p>Name: {{currentVenue.name}}</p>\n          <p>Phone: {{currentVenue.phone}}</p>\n          <p>Location: {{currentVenue.address}}</p>\n          <p>Website: <a href=\"http://{{currentVenue.website}}\">{{currentVenue.website}}</a></p>\n        </mat-tab>\n        <mat-tab>\n          <ng-template mat-tab-label>Photos</ng-template>\n          <div *ngIf='!currentVenue.pic_url'>\n            <h2>There are currently no pictures of this venue.</h2>\n          </div>\n          <div *ngIf='currentVenue.pic_url'>\n            <img src='https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{currentVenue.pic_url}}' alt=\"Venue Picture\">\n          </div>\n        </mat-tab>\n      </mat-tab-group>\n    </mat-sidenav>\n    <mat-sidenav-content>\n      <mat-grid-list cols=\"4\" rowHeight=\"200px\">\n        <mat-grid-tile *ngFor=\"let venue of venue_list\">\n          <img src='imgs/{{currentVenue.static_pic_url}}' alt=\"Venue Picture\">\n          <mat-grid-tile-footer>\n            <h3>{{venue.name}}</h3>\n            <span class=\"spacer\"></span>\n            <button mat-icon-button (click)=\"showVenue(venue)\">\n              <mat-icon>info</mat-icon>\n            </button>\n          </mat-grid-tile-footer>\n        </mat-grid-tile>\n      </mat-grid-list>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>\n"
 
 /***/ }),
 
@@ -1725,26 +1724,17 @@ var VenueSearchComponent = (function () {
             }
         });
     };
-    // getVenues(): void {
-    //   this._venueService.get_venues()
-    //     .then(data => {
-    //       this.venue_list = data;
-    //     })
-    //     .catch(err => {
-    //       console.log(err);
-    //     });
-    // }
     VenueSearchComponent.prototype.showVenue = function (venue) {
         this.currentVenue = venue;
         this.sidenav.open();
     };
     __decorate([
-        core_1.ViewChild("sidenav"),
+        core_1.ViewChild('sidenav'),
         __metadata("design:type", material_1.MatSidenav)
     ], VenueSearchComponent.prototype, "sidenav", void 0);
     VenueSearchComponent = __decorate([
         core_1.Component({
-            selector: "app-venue-search",
+            selector: 'app-venue-search',
             template: __webpack_require__("../../../../../src/app/client/venue-search/venue-search.component.html"),
             styles: [__webpack_require__("../../../../../src/app/client/venue-search/venue-search.component.css")]
         }),
@@ -2047,7 +2037,7 @@ var MessagesComponent = (function () {
     MessagesComponent.prototype.ngOnInit = function () { };
     MessagesComponent = __decorate([
         core_1.Component({
-            selector: "app-messages",
+            selector: 'app-messages',
             template: __webpack_require__("../../../../../src/app/messages/messages.component.html"),
             styles: [__webpack_require__("../../../../../src/app/messages/messages.component.css")]
         }),
@@ -2217,8 +2207,8 @@ var AmmenityService = (function () {
     AmmenityService.prototype.get_ammenities = function () {
         var _this = this;
         return this._httpClient
-            .get("/ammenities")
-            .pipe(operators_1.tap(function (ammenities) { return _this.log("fetched ammenities"); }), operators_1.catchError(this.handleError("getAmmenities", [])));
+            .get('/ammenities')
+            .pipe(operators_1.tap(function (ammenities) { return _this.log("fetched ammenities"); }), operators_1.catchError(this.handleError('getAmmenities', [])));
     };
     // get_ammenities() {
     //   return this._http.get("/ammenities")
@@ -2228,49 +2218,51 @@ var AmmenityService = (function () {
     AmmenityService.prototype.post_ammenity = function (ammenity) {
         var _this = this;
         return this._httpClient
-            .post("/ammenities/add", ammenity)
-            .pipe(operators_1.tap(function (ammenity) {
+            .post('/ammenities/add', ammenity)
+            .pipe(
+        // tslint:disable-next-line:no-shadowed-variable
+        operators_1.tap(function (ammenity) {
             return _this.log("added ammenity w/ id=" + ammenity._id);
-        }), operators_1.catchError(this.handleError("addAmmenity")));
+        }), operators_1.catchError(this.handleError('addAmmenity')));
     };
     // post_ammenity(form_data) {
     //   console.log("*** Hit ammenity post in service");
     //   return this._http
-    //     .post("/ammenities/add", form_data)
+    //     .post('/ammenities/add', form_data)
     //     .map(data => data.json())
     //     .toPromise();
     // }
     // post_ammenity(form_data: Ammenity, callback) {
-    //   this._http.post("/ammenities/add", form_data).subscribe(
+    //   this._http.post('/ammenities/add', form_data).subscribe(
     //     res => callback(res.json()),
     //     err => console.error(err)
     //   );
     // }
     // delete_ammenity(ammenity: Ammenity | number): Observable<Ammenity> {
     //   const id = typeof ammenity === "number" ? ammenity : ammenity._id;
-    //   return this._httpClient.delete<Ammenity>("/ammenities/destroy")
+    //   return this._httpClient.delete<Ammenity>('/ammenities/destroy')
     //     .pipe(
     //       tap(_ => this.log(`deleted ammenity id=${id}`)),
-    //       catchError(this.handleError<Ammenity>("deleteAmmenity"))
+    //       catchError(this.handleError<Ammenity>('deleteAmmenity'))
     //     );
     // }
     AmmenityService.prototype.destroy_ammenity = function (ammenity) {
         console.log("*** Hit ammenity destroy in service");
         return this._http
-            .post("/ammenities/destroy", ammenity)
+            .post('/ammenities/destroy', ammenity)
             .map(function (data) { return data.json(); })
             .toPromise();
     };
     AmmenityService.prototype.update_ammenity = function (ammenity) {
         return this._http
-            .post("/ammenities/update", ammenity)
+            .post('/ammenities/update', ammenity)
             .map(function (data) { return data.json(); })
             .toPromise();
     };
     AmmenityService.prototype.get_one = function (ammenity_id) {
         console.log("ammenity_id from service", ammenity_id);
         return this._http
-            .post("/ammenities/id", { ammenity_id: ammenity_id })
+            .post('/ammenities/id', { ammenity_id: ammenity_id })
             .map(function (data) { return data.json(); })
             .toPromise();
     };
@@ -2282,7 +2274,7 @@ var AmmenityService = (function () {
      */
     AmmenityService.prototype.handleError = function (operation, result) {
         var _this = this;
-        if (operation === void 0) { operation = "operation"; }
+        if (operation === void 0) { operation = 'operation'; }
         return function (error) {
             // TODO: send the error to remote logging infrastructure
             console.error(error); // log to console instead
@@ -2362,26 +2354,27 @@ var UploadService = (function () {
     function UploadService() {
     }
     UploadService.prototype.pushUpload = function (upload) {
+        console.log("*** YOU NEED TO WRITE THE FUNCTION IN UPLOAD SERVICE");
         // let storageRef = this.storage().ref();
         // let uploadTask = storageRef
-        // .child(`uploads/${upload.file.name}`)
-        // .put(upload.file);
+        //   .child(`uploads/${upload.file.name}`)
+        //   .put(upload.file);
         // uploadTask.on(
-        // firebase.storage.TaskEvent.STATE_CHANGED,
-        // snapshot => {
-        // upload in progress
-        //   upload.progress = snapshot.bytesTransferred / snapshot.totalBytes * 100;
-        // },
-        // error => {
-        // upload failed
-        //   console.log(error);
-        // },
-        // () => {
-        // upload success
-        // upload.url = uploadTask.snapshot.downloadURL;
-        // upload.name = upload.file.name;
-        // this.saveFileData(upload);
-        // }
+        //   firebase.storage.TaskEvent.STATE_CHANGED,
+        //   snapshot => {
+        //     upload in progress
+        //     upload.progress = snapshot.bytesTransferred / snapshot.totalBytes * 100;
+        //   },
+        //   error => {
+        //     upload failed
+        //     console.log(error);
+        //   },
+        //   () => {
+        //     upload success
+        //     upload.url = uploadTask.snapshot.downloadURL;
+        //     upload.name = upload.file.name;
+        //     this.saveFileData(upload);
+        //   }
         // );
     };
     UploadService = __decorate([
@@ -2441,7 +2434,7 @@ var UserService = (function () {
         this.observedUser.next(user);
     };
     UserService.prototype.getUsers = function () {
-        console.log(" Service get users service");
+        console.log("Service get users service");
         return this._http.get('/get_users')
             .map(function (data) { return data.json(); })
             .toPromise();
@@ -2498,44 +2491,45 @@ var VenueService = (function () {
         this._messageService = _messageService;
     }
     VenueService.prototype.get_all_venues = function () {
-        return this._http.get('/venues')
+        return this._http
+            .get('/venues')
             .map(function (data) { return data.json(); })
             .toPromise();
     };
     VenueService.prototype.get_venues = function () {
         var _this = this;
         return this._httpClient
-            .get("/venues")
-            .pipe(operators_1.tap(function (venues) { return _this.log("fetched venues"); }), operators_1.catchError(this.handleError("getVenues", [])));
+            .get('/venues')
+            .pipe(operators_1.tap(function (venues) { return _this.log("fetched venues"); }), operators_1.catchError(this.handleError('getVenues', [])));
     };
     VenueService.prototype.post_venue = function (form_data) {
         return this._http
-            .post("/venues/upload", form_data)
+            .post('/venues/add', form_data)
             .map(function (data) { return data.json(); })
             .toPromise();
     };
-    // post_venue(form_data) {
-    //   return this._http
-    //     .post("/venues/add", form_data)
-    //     .map(data => data.json())
-    //     .toPromise();
-    // }
-    VenueService.prototype.destroy_venue = function (venue) {
-        console.log("*** Hit venues service");
+    VenueService.prototype.post_to_s3 = function (form_data) {
         return this._http
-            .post("/venues/destroy", venue)
+            .post('/venues/upload', form_data)
+            .map(function (data) { return data.json(); })
+            .toPromise();
+    };
+    VenueService.prototype.destroy_venue = function (venue) {
+        console.log('*** Hit venues service');
+        return this._http
+            .post('/venues/destroy', venue)
             .map(function (data) { return data.json(); })
             .toPromise();
     };
     VenueService.prototype.update_venue = function (venue) {
         return this._http
-            .post("/venues/update", venue)
+            .post('/venues/update', venue)
             .map(function (data) { return data.json(); })
             .toPromise();
     };
     // get_venue<Data>(id: number): Observable<Venue> {
     //   return this._httpClient
-    //     .get<Venue[]>("/venues/id", { Data })
+    //     .get<Venue[]>('/venues/id', { Data })
     //     .pipe(
     //       map(venues => venues[0]), // returns a {0|1} element array
     //       tap(v => {
@@ -2546,9 +2540,9 @@ var VenueService = (function () {
     //     );
     // }
     VenueService.prototype.get_one = function (venue_id) {
-        console.log("venue_id from service", venue_id);
+        console.log('venue_id from service', venue_id);
         return this._http
-            .post("/venues/id", { venue_id: venue_id })
+            .post('/venues/id', { venue_id: venue_id })
             .map(function (data) { return data.json(); })
             .toPromise();
     };
@@ -2560,7 +2554,7 @@ var VenueService = (function () {
      */
     VenueService.prototype.handleError = function (operation, result) {
         var _this = this;
-        if (operation === void 0) { operation = "operation"; }
+        if (operation === void 0) { operation = 'operation'; }
         return function (error) {
             // TODO: send the error to remote logging infrastructure
             console.error(error); // log to console instead
@@ -2572,7 +2566,7 @@ var VenueService = (function () {
     };
     /** Log a HeroService message with the MessageService */
     VenueService.prototype.log = function (message) {
-        this._messageService.add("VenueService: " + message);
+        this._messageService.add('VenueService: ' + message);
     };
     VenueService = __decorate([
         core_1.Injectable(),
