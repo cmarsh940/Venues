@@ -66,6 +66,11 @@ import {
   MatStepperModule
 } from "@angular/material";
 
+import { UploadComponent } from './admin/upload/upload.component';
+import { FileDropDirective } from './admin/upload/file-drop.directive';
+import { UploadService } from './services/upload.service';
+import { UploadFormComponent } from './admin/upload/upload-form/upload-form.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,7 +92,10 @@ import {
     AmmenityNewComponent,
     AmmenityEditComponent,
     AmmenityShowComponent,
-    MessagesComponent
+    MessagesComponent,
+    UploadFormComponent,
+    UploadComponent,
+    FileDropDirective
   ],
   imports: [
     BrowserModule,
@@ -134,7 +142,8 @@ import {
     UserService,
     VenueService,
     AmmenityService,
-    MessageService
+    MessageService,
+    UploadService
   ],
   bootstrap: [AppComponent]
 })

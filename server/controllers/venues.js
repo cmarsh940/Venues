@@ -21,7 +21,7 @@ function uploadToS3(file) {
   s3bucket.createBucket(function() {
     var params = {
       Bucket: BUCKET_NAME,
-      Key: file.name,
+      Key: `Venues/${file.name}`,
       Body: file.data
     };
     s3bucket.upload(params, function(err, data) {
@@ -36,7 +36,47 @@ function uploadToS3(file) {
 }
 
 mongoose.Promise = global.Promise;
+
 module.exports = {
+  // index: (req, res, next) => {
+  //   const DOWNLOAD = false;
+
+  //   const {
+  //     pic_url,
+  //   } = req.query;
+  //   // id would be keithweaver_ (so ?id=keithweaver_)
+
+  //   // Now retrieve the S3 key
+  //   const s3Key = pic_url;
+  //   // I assume you have installed the AWS SDK
+  //   let s3bucket = new AWS.S3({
+  //     accessKeyId: IAM_USER_KEY,
+  //     secretAccessKey: IAM_USER_SECRET,
+  //     Bucket: BUCKET_NAME
+  //   });
+  //   s3bucket.createBucket(() => {
+  //     s3bucket.getObject({
+  //       Bucket: BUCKET_NAME,
+  //       Key: s3Key
+  //     }, (err, data) => {
+  //       if (DOWNLOAD) { // This is hardcoded to download in browser
+  //         res.setHeader('Content-disposition', 'attachment; filename=' + s3Key);
+  //         res.setHeader('Content-length', data.ContentLength);
+  //         res.end(data.Body);
+  //       } else {
+
+  //         // res.setHeader("Content-Type: {$result['ContentType']}");
+  //         res.setHeader('Content-disposition', 'attachment; filename=' + s3Key);
+  //         res.end(data.Body);
+  //       }
+  //     }); // end of getObject
+  //   }); // end of create Bucket
+  //   Venue.find()
+  //     .then(data => res.json(data))
+  //     .catch(err => {
+  //       res.status(500).json(err);
+  //     });
+  // },
   index: (req, res, next) => {
     Venue.find()
       .then(data => res.json(data))
@@ -44,18 +84,59 @@ module.exports = {
         res.status(500).json(err);
       });
   },
+
   upload: (req, res, next) => {
-    const new_venue = new Venue(req.body);
-    var busboy = new Busboy({ headers: req.headers });
-    // The file upload has completed
-    busboy.on("finish", function() {
-      console.log("Upload finished");
-      const file = req.files.picture;
-      console.log(file);
-      uploadToS3(file);
-    });
-    req.pipe(busboy);
+    let new_venue = new Venue(req.body);
+    let busboy = new Busboy({ headers: req.headers });
+    if (req.files.picture) {
+      let file = req.files.picture
+      console.log("*** server recieved file named:", file)
+      let file_type = file.mimetype.match(/image\/(\w+)/)
+      console.log("*** server file type", file_type)
+      let new_file_name = file.name
+
+      if (file_type) {
+        new_venue.pic_url = new_file_name
+        busboy.on("finish", function () {
+          const file = req.files.picture;
+          console.log("Done parsing form!");
+          console.log(file);
+          uploadToS3(file);
+        });
+        req.pipe(busboy);
+          console.log("*** Files is now uploaded")
+      }
+    }
+
+    new_venue.save()
+      .then(() => {
+          return res.json(new_venue)
+      })
+      .catch(err => {
+          console.log("*** my_venue save error", err)
+          return res.json(err)
+      })
   },
+
+
+
+  // OLD SEND TO AWS S3
+  // upload: (req, res, next) => {
+  //   const new_venue = new Venue(req.body);
+  //   var busboy = new Busboy({ headers: req.headers });
+  //   // The file upload has completed
+  //   busboy.on("finish", function() {
+  //     console.log("Upload finished");
+  //     const file = req.files.picture;
+  //     console.log(file);
+  //     uploadToS3(file);
+  //   });
+  //   req.pipe(busboy);
+  // },
+
+
+
+  // OLD SEND TO STATIC FOLDER
   // upload: (req, res) => {
   //     console.log("*** hit server for creating a venue")
   //     let new_venue = new Venue(req.body)
@@ -112,8 +193,7 @@ module.exports = {
         venue.phone = myVenue.phone;
         venue.address = myVenue.address;
         venue.website = myVenue.website;
-        venue
-          .save()
+        venue.save()
           .then(() => {
             res.json(true);
           })

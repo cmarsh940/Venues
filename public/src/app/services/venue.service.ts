@@ -26,8 +26,8 @@ export class VenueService {
     return this._httpClient
       .get<Venue[]>("/venues")
       .pipe(
-        tap(ammenities => this.log(`fetched ammenities`)),
-        catchError(this.handleError("getAmmenities", []))
+        tap(venues => this.log(`fetched venues`)),
+        catchError(this.handleError("getVenues", []))
       );
   }
 

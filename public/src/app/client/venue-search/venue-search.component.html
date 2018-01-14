@@ -23,15 +23,14 @@
         </mat-tab>
         <mat-tab>
           <ng-template mat-tab-label>Photos</ng-template>
-          <img src="imgs/{{currentVenue.pic_url}}" alt="Venue Picture">
+          <img src="https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{currentVenue.pic_url}}" alt="Venue Picture">
         </mat-tab>
       </mat-tab-group>
     </mat-sidenav>
     <mat-sidenav-content>
       <mat-grid-list cols="4" rowHeight="200px">
         <mat-grid-tile *ngFor="let venue of venue_list">
-          <img src="imgs/{{venue.pic_url}}" alt="Venue Picture">
-          <mat-grid-tile-footer>
+          <img src='https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{venue.pic_url}}' alt="Venue Picture">          <mat-grid-tile-footer>
             <h3>{{venue.name}}</h3>
             <span class="spacer"></span>
             <button mat-icon-button (click)="showVenue(venue)">

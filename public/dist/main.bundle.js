@@ -630,6 +630,217 @@ exports.AmmenityShowComponent = AmmenityShowComponent;
 
 /***/ }),
 
+/***/ "../../../../../src/app/admin/upload/file-drop.directive.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var FileDropDirective = (function () {
+    function FileDropDirective() {
+        this.filesDropped = new core_1.EventEmitter();
+        this.filesHovered = new core_1.EventEmitter();
+    }
+    FileDropDirective.prototype.onDrop = function ($event) {
+        $event.preventDefault();
+        var transfer = $event.dataTransfer;
+        this.filesDropped.emit(transfer.files);
+        this.filesHovered.emit(false);
+    };
+    FileDropDirective.prototype.onDragOver = function ($event) {
+        event.preventDefault();
+        this.filesHovered.emit(true);
+    };
+    FileDropDirective.prototype.onDragLeave = function ($event) {
+        this.filesHovered.emit(false);
+    };
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", Object)
+    ], FileDropDirective.prototype, "filesDropped", void 0);
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", Object)
+    ], FileDropDirective.prototype, "filesHovered", void 0);
+    __decorate([
+        core_1.HostListener('drop', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], FileDropDirective.prototype, "onDrop", null);
+    __decorate([
+        core_1.HostListener('dragover', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], FileDropDirective.prototype, "onDragOver", null);
+    __decorate([
+        core_1.HostListener('dragleave', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], FileDropDirective.prototype, "onDragLeave", null);
+    FileDropDirective = __decorate([
+        core_1.Directive({
+            // tslint:disable-next-line:directive-selector
+            selector: '[fileDrop]'
+        }),
+        __metadata("design:paramtypes", [])
+    ], FileDropDirective);
+    return FileDropDirective;
+}());
+exports.FileDropDirective = FileDropDirective;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/upload/upload-form/upload-form.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".box {\n  width:80;\n  margin: auto;\n  border: 1px dotted blue;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/upload/upload-form/upload-form.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf=\"currentUpload\">\n  <progress class=\"progress is-success\" min=1 max=100 value=\"{{ currentUpload?.progress }}\"></progress>\n  Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete\n</div>\n<div class=\"box\">\n  <h2>Drop File</h2>\n  <div class=\"dropzone\" fileDrop (filesDropped)=\"handleDrop($event)\" (filesHovered)=\"dropzoneState($event)\" [ngClass]=\"{'active': dropzoneActive}\">\n    <i class=\"fa fa-cloud-upload fa-2x\"></i>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/upload/upload-form/upload-form.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var upload_1 = __webpack_require__("../../../../../src/app/models/upload.ts");
+var upload_service_1 = __webpack_require__("../../../../../src/app/services/upload.service.ts");
+var _ = __webpack_require__("../../../../lodash/lodash.js");
+var UploadFormComponent = (function () {
+    function UploadFormComponent(upSvc) {
+        this.upSvc = upSvc;
+    }
+    UploadFormComponent.prototype.dropzoneState = function ($event) {
+        this.dropzoneActive = $event;
+    };
+    UploadFormComponent.prototype.ngOnInit = function (dropzoneActive) {
+        if (dropzoneActive === void 0) { dropzoneActive = false; }
+    };
+    UploadFormComponent.prototype.handleDrop = function (fileList) {
+        var _this = this;
+        var filesIndex = _.range(fileList.length);
+        _.each(filesIndex, function (idx) {
+            _this.currentUpload = new upload_1.Upload(fileList[idx]);
+            _this.upSvc.pushUpload(_this.currentUpload);
+        });
+    };
+    UploadFormComponent = __decorate([
+        core_1.Component({
+            selector: 'app-upload-form',
+            template: __webpack_require__("../../../../../src/app/admin/upload/upload-form/upload-form.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/admin/upload/upload-form/upload-form.component.css")]
+        }),
+        __metadata("design:paramtypes", [upload_service_1.UploadService])
+    ], UploadFormComponent);
+    return UploadFormComponent;
+}());
+exports.UploadFormComponent = UploadFormComponent;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/upload/upload.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/upload/upload.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/upload/upload.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var UploadComponent = (function () {
+    function UploadComponent() {
+    }
+    UploadComponent.prototype.ngOnInit = function () { };
+    UploadComponent = __decorate([
+        core_1.Component({
+            selector: 'app-upload',
+            template: __webpack_require__("../../../../../src/app/admin/upload/upload.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/admin/upload/upload.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], UploadComponent);
+    return UploadComponent;
+}());
+exports.UploadComponent = UploadComponent;
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -651,7 +862,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button mat-raised-button (click)=\"goBack()\">Cancel</button>\n<h1 class=\"text-center\">Edit {{venue.name}} venue</h1>\n<div class=\"container\">\n  <form (submit)=\"update(venue)\" #formData=\"ngForm\" class=\"form\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name='name' [(ngModel)]=\"venue.name\" #name='ngModel' placeholder=\"name\" required>\n    </mat-form-field>\n\n    <!-- Email -->\n    <mat-form-field>\n    <input matInput name='email' [(ngModel)]=\"venue.email\" #email='ngModel' placeholder=\"Email\" required>\n    </mat-form-field>\n\n    <!-- Phone# -->\n    <mat-form-field>\n      <input matInput name='phone' [(ngModel)]=\"venue.phone\" #phone='ngModel' placeholder=\"Phone #\" required>\n    </mat-form-field>\n\n    <!-- Address -->\n    <mat-form-field>\n      <input matInput name='address' [(ngModel)]=\"venue.address\" #address='ngModel' placeholder=\"Address\" required>\n    </mat-form-field>\n\n    <!-- Website -->\n    <mat-form-field>\n      <input matInput name='website' [(ngModel)]=\"venue.website\" #website='ngModel' placeholder=\"Website\" required>\n    </mat-form-field>\n\n    <!-- Submit -->\n    <button mat-raised-button type='submit' [disabled]=!formData.valid>Submit</button>\n  </form>\n</div>\n"
+module.exports = "<button mat-raised-button (click)=\"goBack()\">Cancel</button>\n<h1 class=\"text-center\">Edit {{venue.name}} venue</h1>\n<div class=\"container\">\n  <form (submit)=\"update(venue)\" #formData=\"ngForm\" class=\"form\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name='name' [(ngModel)]=\"venue.name\" #name='ngModel' placeholder=\"name\" required>\n    </mat-form-field>\n\n    <!-- Email -->\n    <mat-form-field>\n    <input matInput name='email' [(ngModel)]=\"venue.email\" #email='ngModel' placeholder=\"Email\" required>\n    </mat-form-field>\n\n    <!-- Phone# -->\n    <mat-form-field>\n      <input matInput name='phone' [(ngModel)]=\"venue.phone\" #phone='ngModel' placeholder=\"Phone #\" required>\n    </mat-form-field>\n\n    <!-- Address -->\n    <mat-form-field>\n      <input matInput name='address' [(ngModel)]=\"venue.address\" #address='ngModel' placeholder=\"Address\" required>\n    </mat-form-field>\n\n    <!-- Website -->\n    <mat-form-field>\n      <input matInput name='website' [(ngModel)]=\"venue.website\" #website='ngModel' placeholder=\"Website\" required>\n    </mat-form-field>\n\n    <!-- Submit -->\n    <button mat-raised-button type='submit' [disabled]=!formData.valid>Submit</button>\n  </form>\n</div>\n<app-upload-form></app-upload-form>\n"
 
 /***/ }),
 
@@ -944,7 +1155,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/venue-list/venue-show/venue-show.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button mat-raised-button color=\"accent\" [routerLink]=\"['/venue', 'add']\">Add a venue</button>\n<h1>Venues</h1>\n<hr>\n<table>\n    <thead>\n        <tr>\n            <th>#</th>\n            <th>Name</th>\n            <th>Email</th>\n            <th>Phone</th>\n            <th>Address</th>\n            <th>Website</th>\n            <th>Action</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr *ngFor=\"let venue of venues; let i = index\">\n            <td>{{i + 1}}</td>\n            <td>{{ venue.name }}</td>\n            <td>{{ venue.email }}</td>\n            <td>{{ venue.phone }}</td>\n            <td>{{ venue.address }}</td>\n            <td>{{ venue.website }}</td>\n            <td>\n                <button  mat-icon-button color=\"accent\" [routerLink]=\"['/venue', 'edit', venue._id]\">\n                    <mat-icon aria-label=\"icon-button to edit venue\"><i class=\"material-icons\">&#xE3C9;</i></mat-icon>\n                </button>\n                <button mat-icon-button color=\"warn\" (click)=\"delete(venue)\">\n                  <mat-icon aria-label=\"icon-button to delete venue\"><i class=\"material-icons\">&#xE872;</i></mat-icon>\n                </button>\n            </td>\n        </tr>\n    </tbody>\n</table>\n"
+module.exports = "<button mat-raised-button color=\"accent\" [routerLink]=\"['/venue', 'add']\">Add a venue</button>\n<h1>Venues</h1>\n<hr>\n<table>\n    <thead>\n        <tr>\n            <th>#</th>\n            <th>Name</th>\n            <th>Email</th>\n            <th>Phone</th>\n            <th>Address</th>\n            <th>Website</th>\n            <th>Pic_URL</th>\n            <th>Action</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr *ngFor=\"let venue of venues; let i = index\">\n            <td>{{i + 1}}</td>\n            <td>{{ venue.name }}</td>\n            <td>{{ venue.email }}</td>\n            <td>{{ venue.phone }}</td>\n            <td>{{ venue.address }}</td>\n            <td>{{ venue.website }}</td>\n            <td>{{ venue.pic_url }}</td>\n            <td>\n                <button  mat-icon-button color=\"accent\" [routerLink]=\"['/venue', 'edit', venue._id]\">\n                    <mat-icon aria-label=\"icon-button to edit venue\"><i class=\"material-icons\">&#xE3C9;</i></mat-icon>\n                </button>\n                <button mat-icon-button color=\"warn\" (click)=\"delete(venue)\">\n                  <mat-icon aria-label=\"icon-button to delete venue\"><i class=\"material-icons\">&#xE872;</i></mat-icon>\n                </button>\n            </td>\n        </tr>\n    </tbody>\n</table>\n"
 
 /***/ }),
 
@@ -1201,6 +1412,10 @@ var message_service_1 = __webpack_require__("../../../../../src/app/services/mes
 var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
 var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
 var material_1 = __webpack_require__("../../../material/esm5/material.es5.js");
+var upload_component_1 = __webpack_require__("../../../../../src/app/admin/upload/upload.component.ts");
+var file_drop_directive_1 = __webpack_require__("../../../../../src/app/admin/upload/file-drop.directive.ts");
+var upload_service_1 = __webpack_require__("../../../../../src/app/services/upload.service.ts");
+var upload_form_component_1 = __webpack_require__("../../../../../src/app/admin/upload/upload-form/upload-form.component.ts");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -1226,7 +1441,10 @@ var AppModule = (function () {
                 ammenity_new_component_1.AmmenityNewComponent,
                 ammenity_edit_component_1.AmmenityEditComponent,
                 ammenity_show_component_1.AmmenityShowComponent,
-                messages_component_1.MessagesComponent
+                messages_component_1.MessagesComponent,
+                upload_form_component_1.UploadFormComponent,
+                upload_component_1.UploadComponent,
+                file_drop_directive_1.FileDropDirective
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -1273,7 +1491,8 @@ var AppModule = (function () {
                 user_service_1.UserService,
                 venue_service_1.VenueService,
                 ammenity_service_1.AmmenityService,
-                message_service_1.MessageService
+                message_service_1.MessageService,
+                upload_service_1.UploadService
             ],
             bootstrap: [app_component_1.AppComponent]
         })
@@ -1449,7 +1668,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/client/venue-search/venue-search.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\n  <section class=\"mat-typography\">\n    <h1>Tulsa Venues</h1>\n    <h4>Who knows Tulsa better then tulsans?</h4>\n  </section>\n</div>\n<div class=\"search\">\n  <hr>\n  <h2>SEARCH FORM COMING SOON...</h2>\n  <hr>\n</div>\n<div>\n  <mat-sidenav-container>\n    <mat-sidenav align=\"end\" mode=\"side\" #sidenav>\n      <mat-tab-group>\n        <mat-tab>\n          <ng-template mat-tab-label>Details</ng-template>\n          <button mat-raised-button (click)=\"sidenav.close()\" color=\"warn\">CLOSE</button>\n          <p>Name: {{currentVenue.name}}</p>\n          <p>Phone: {{currentVenue.phone}}</p>\n          <p>Location: {{currentVenue.address}}</p>\n          <p>Website: <a href=\"http://{{currentVenue.website}}\">{{currentVenue.website}}</a></p>\n        </mat-tab>\n        <mat-tab>\n          <ng-template mat-tab-label>Photos</ng-template>\n          <img src=\"imgs/{{currentVenue.pic_url}}\" alt=\"Venue Picture\">\n        </mat-tab>\n      </mat-tab-group>\n    </mat-sidenav>\n    <mat-sidenav-content>\n      <mat-grid-list cols=\"4\" rowHeight=\"200px\">\n        <mat-grid-tile *ngFor=\"let venue of venue_list\">\n          <img src=\"imgs/{{venue.pic_url}}\" alt=\"Venue Picture\">\n          <mat-grid-tile-footer>\n            <h3>{{venue.name}}</h3>\n            <span class=\"spacer\"></span>\n            <button mat-icon-button (click)=\"showVenue(venue)\">\n              <mat-icon>info</mat-icon>\n            </button>\n          </mat-grid-tile-footer>\n        </mat-grid-tile>\n      </mat-grid-list>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>\n"
+module.exports = "<div class=\"header\">\n  <section class=\"mat-typography\">\n    <h1>Tulsa Venues</h1>\n    <h4>Who knows Tulsa better then tulsans?</h4>\n  </section>\n</div>\n<div class=\"search\">\n  <hr>\n  <h2>SEARCH FORM COMING SOON...</h2>\n  <hr>\n</div>\n<div>\n  <mat-sidenav-container>\n    <mat-sidenav align=\"end\" mode=\"side\" #sidenav>\n      <mat-tab-group>\n        <mat-tab>\n          <ng-template mat-tab-label>Details</ng-template>\n          <button mat-raised-button (click)=\"sidenav.close()\" color=\"warn\">CLOSE</button>\n          <p>Name: {{currentVenue.name}}</p>\n          <p>Phone: {{currentVenue.phone}}</p>\n          <p>Location: {{currentVenue.address}}</p>\n          <p>Website: <a href=\"http://{{currentVenue.website}}\">{{currentVenue.website}}</a></p>\n        </mat-tab>\n        <mat-tab>\n          <ng-template mat-tab-label>Photos</ng-template>\n          <img src=\"https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{currentVenue.pic_url}}\" alt=\"Venue Picture\">\n        </mat-tab>\n      </mat-tab-group>\n    </mat-sidenav>\n    <mat-sidenav-content>\n      <mat-grid-list cols=\"4\" rowHeight=\"200px\">\n        <mat-grid-tile *ngFor=\"let venue of venue_list\">\n          <img src='https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{venue.pic_url}}' alt=\"Venue Picture\">          <mat-grid-tile-footer>\n            <h3>{{venue.name}}</h3>\n            <span class=\"spacer\"></span>\n            <button mat-icon-button (click)=\"showVenue(venue)\">\n              <mat-icon>info</mat-icon>\n            </button>\n          </mat-grid-tile-footer>\n        </mat-grid-tile>\n      </mat-grid-list>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>\n"
 
 /***/ }),
 
@@ -1476,32 +1695,36 @@ var VenueSearchComponent = (function () {
     function VenueSearchComponent(_venueService, _router) {
         this._venueService = _venueService;
         this._router = _router;
-        this.currentVenue = [];
         this.venues = [];
+        this.currentVenue = [];
     }
     VenueSearchComponent.prototype.ngOnInit = function () {
         this.getVenues();
     };
+    // getVenues(): void {
+    // this._venueService.get_venues().subscribe(
+    // venues => (this.venues = venues)
+    // venues => (this.venues = venues.slice(1, 5)
+    // );
+    // }
     VenueSearchComponent.prototype.getVenues = function () {
         var _this = this;
-        this._venueService.get_venues().subscribe(function (venues) { return (_this.venues = venues.slice(1, 5)); });
+        this._venueService.get_all_venues()
+            .then(function (data) {
+            _this.venue_list = data;
+        })
+            .catch(function (err) {
+            if (err.error instanceof Error) {
+                // A client-side or network error occurred. Handle it accordingly.
+                console.log('An error occurred:', err.error.message);
+            }
+            else {
+                // The backend returned an unsuccessful response code.
+                // The response body may contain clues as to what went wrong,
+                console.log("Backend returned code " + err.status + ", body was: " + err.error);
+            }
+        });
     };
-    // getVenues() {
-    //   this._venueService.get_venues()
-    //     .then(data => {
-    //       this.venue_list = data;
-    //     })
-    //     .catch((err: HttpErrorResponse) => {
-    //       if (err.error instanceof Error) {
-    //         // A client-side or network error occurred. Handle it accordingly.
-    //         console.log('An error occurred:', err.error.message);
-    //       } else {
-    //         // The backend returned an unsuccessful response code.
-    //         // The response body may contain clues as to what went wrong,
-    //         console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
-    //       }
-    //     })
-    // }
     // getVenues(): void {
     //   this._venueService.get_venues()
     //     .then(data => {
@@ -1525,7 +1748,8 @@ var VenueSearchComponent = (function () {
             template: __webpack_require__("../../../../../src/app/client/venue-search/venue-search.component.html"),
             styles: [__webpack_require__("../../../../../src/app/client/venue-search/venue-search.component.css")]
         }),
-        __metadata("design:paramtypes", [venue_service_1.VenueService, router_1.Router])
+        __metadata("design:paramtypes", [venue_service_1.VenueService,
+            router_1.Router])
     ], VenueSearchComponent);
     return VenueSearchComponent;
 }());
@@ -1852,6 +2076,24 @@ exports.Ammenity = Ammenity;
 
 /***/ }),
 
+/***/ "../../../../../src/app/models/upload.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Upload = (function () {
+    function Upload(file) {
+        this.createdAt = new Date();
+        this.file = file;
+    }
+    return Upload;
+}());
+exports.Upload = Upload;
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/models/user.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2100,6 +2342,59 @@ exports.MessageService = MessageService;
 
 /***/ }),
 
+/***/ "../../../../../src/app/services/upload.service.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var UploadService = (function () {
+    function UploadService() {
+    }
+    UploadService.prototype.pushUpload = function (upload) {
+        // let storageRef = this.storage().ref();
+        // let uploadTask = storageRef
+        // .child(`uploads/${upload.file.name}`)
+        // .put(upload.file);
+        // uploadTask.on(
+        // firebase.storage.TaskEvent.STATE_CHANGED,
+        // snapshot => {
+        // upload in progress
+        //   upload.progress = snapshot.bytesTransferred / snapshot.totalBytes * 100;
+        // },
+        // error => {
+        // upload failed
+        //   console.log(error);
+        // },
+        // () => {
+        // upload success
+        // upload.url = uploadTask.snapshot.downloadURL;
+        // upload.name = upload.file.name;
+        // this.saveFileData(upload);
+        // }
+        // );
+    };
+    UploadService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [])
+    ], UploadService);
+    return UploadService;
+}());
+exports.UploadService = UploadService;
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/services/user.service.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2211,7 +2506,7 @@ var VenueService = (function () {
         var _this = this;
         return this._httpClient
             .get("/venues")
-            .pipe(operators_1.tap(function (ammenities) { return _this.log("fetched ammenities"); }), operators_1.catchError(this.handleError("getAmmenities", [])));
+            .pipe(operators_1.tap(function (venues) { return _this.log("fetched venues"); }), operators_1.catchError(this.handleError("getVenues", [])));
     };
     VenueService.prototype.post_venue = function (form_data) {
         return this._http
