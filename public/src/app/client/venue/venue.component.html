@@ -1,3 +1,23 @@
-<p>
-  venue works!
-</p>
+<div>
+  <mat-sidenav-container>
+    <mat-sidenav align="end" mode="side" opened="true" disableClose="true" #sidenav>
+      <mat-tab-group>
+        <mat-tab>
+          <ng-template mat-tab-label>Details</ng-template>
+          <p>Name: {{venue.name}}</p>
+          <p>Phone: {{venue.phone}}</p>
+          <p>Location: {{venue.address}}</p>
+          <p>Website:
+            <a href="http://{{venue.website}}">{{venue.website}}</a>
+          </p>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-sidenav>
+    <mat-sidenav-content role="venue">
+      <div>
+        <h1>{{venue.name}}</h1>
+        <img src='imgs/{{venue.static_pic_url}}' alt="Venue Picture">
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
