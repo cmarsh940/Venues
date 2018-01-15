@@ -1,3 +1,5 @@
+import { environment } from './../environments/environment.prod';
+import { VenueShowComponent } from './admin/venue-list/venue-show/venue-show.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -5,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
 import { AdminComponent } from './admin/admin.component';
@@ -19,7 +22,6 @@ import { VenueSearchComponent } from './client/venue-search/venue-search.compone
 import { VenueListComponent } from './admin/venue-list/venue-list.component';
 import { VenueEditComponent } from './admin/venue-list/venue-edit/venue-edit.component';
 import { VenueNewComponent } from './admin/venue-list/venue-new/venue-new.component';
-import { VenueShowComponent } from './admin/venue-list/venue-show/venue-show.component';
 import { VenueComponent } from './client/venue/venue.component';
 import { AmmenityListComponent } from './admin/ammenity-list/ammenity-list.component';
 import { AmmenityNewComponent } from './admin/ammenity-list/ammenity-new/ammenity-new.component';
@@ -70,6 +72,8 @@ import { UploadComponent } from './admin/upload/upload.component';
 import { FileDropDirective } from './admin/upload/file-drop.directive';
 import { UploadService } from './services/upload.service';
 import { UploadFormComponent } from './admin/upload/upload-form/upload-form.component';
+import { DialogService } from './services/dialog.service';
+import { GoogleMapComponent } from './client/google-map/google-map.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +99,8 @@ import { UploadFormComponent } from './admin/upload/upload-form/upload-form.comp
     MessagesComponent,
     UploadFormComponent,
     UploadComponent,
-    FileDropDirective
+    FileDropDirective,
+    GoogleMapComponent
   ],
   imports: [
     BrowserModule,
@@ -136,9 +141,14 @@ import { UploadFormComponent } from './admin/upload/upload-form/upload-form.comp
     MatToolbarModule,
     MatTooltipModule,
     MatStepperModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: environment.googleMapsKey
+    })
   ],
+  entryComponents: [],
   providers: [
+    DialogService,
     UserService,
     VenueService,
     AmmenityService,

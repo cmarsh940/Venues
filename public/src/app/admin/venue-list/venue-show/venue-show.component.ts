@@ -1,8 +1,9 @@
+import { DialogService } from './../../../services/dialog.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { VenueService } from './../../../services/venue.service';
 import { UserService } from './../../../services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { User } from '../../../models/user';
 import { Venue } from '../../../models/venue';
 
@@ -14,7 +15,7 @@ import { Venue } from '../../../models/venue';
 export class VenueShowComponent implements OnInit {
   venues: Venue[];
   current_user: User;
-  search_text: String = "";
+  search_text: String = '';
 
   constructor(
     private _venueService: VenueService,
@@ -32,6 +33,7 @@ export class VenueShowComponent implements OnInit {
       this._router.navigateByUrl('/');
     }
   }
+
 
   // getVenues() {
   //   this._venueService.get_venues()
@@ -53,9 +55,7 @@ export class VenueShowComponent implements OnInit {
   // }
 
   getVenues(): void {
-    this._venueService.get_venues().subscribe(
-      venues => (this.venues = venues)
-    );
+    this._venueService.get_venues().subscribe(venues => (this.venues = venues));
   }
 
   delete(venue) {
@@ -65,7 +65,9 @@ export class VenueShowComponent implements OnInit {
         this.getVenues();
       })
       .catch(err => {
-        console.log("the error is: ", err);
+        console.log('the error is: ', err);
       });
   }
 }
+
+

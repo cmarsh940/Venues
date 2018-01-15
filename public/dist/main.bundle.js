@@ -1182,7 +1182,7 @@ var VenueShowComponent = (function () {
         this._venueService = _venueService;
         this._userService = _userService;
         this._router = _router;
-        this.search_text = "";
+        this.search_text = '';
     }
     VenueShowComponent.prototype.ngOnInit = function () {
         this.isLoggedIn();
@@ -1223,7 +1223,7 @@ var VenueShowComponent = (function () {
             _this.getVenues();
         })
             .catch(function (err) {
-            console.log("the error is: ", err);
+            console.log('the error is: ', err);
         });
     };
     VenueShowComponent = __decorate([
@@ -1379,6 +1379,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var environment_prod_1 = __webpack_require__("../../../../../src/environments/environment.prod.ts");
+var venue_show_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-show/venue-show.component.ts");
 var platform_browser_1 = __webpack_require__("../../../platform-browser/esm5/platform-browser.js");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var app_routing_module_1 = __webpack_require__("../../../../../src/app/app-routing.module.ts");
@@ -1386,6 +1388,7 @@ var animations_1 = __webpack_require__("../../../platform-browser/esm5/animation
 var forms_1 = __webpack_require__("../../../forms/esm5/forms.js");
 var http_1 = __webpack_require__("../../../http/esm5/http.js");
 var http_2 = __webpack_require__("../../../common/esm5/http.js");
+var core_2 = __webpack_require__("../../../../@agm/core/index.js");
 var app_component_1 = __webpack_require__("../../../../../src/app/app.component.ts");
 var admin_component_1 = __webpack_require__("../../../../../src/app/admin/admin.component.ts");
 var client_component_1 = __webpack_require__("../../../../../src/app/client/client.component.ts");
@@ -1399,7 +1402,6 @@ var venue_search_component_1 = __webpack_require__("../../../../../src/app/clien
 var venue_list_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-list.component.ts");
 var venue_edit_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.ts");
 var venue_new_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-new/venue-new.component.ts");
-var venue_show_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-show/venue-show.component.ts");
 var venue_component_1 = __webpack_require__("../../../../../src/app/client/venue/venue.component.ts");
 var ammenity_list_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-list.component.ts");
 var ammenity_new_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-new/ammenity-new.component.ts");
@@ -1415,6 +1417,8 @@ var upload_component_1 = __webpack_require__("../../../../../src/app/admin/uploa
 var file_drop_directive_1 = __webpack_require__("../../../../../src/app/admin/upload/file-drop.directive.ts");
 var upload_service_1 = __webpack_require__("../../../../../src/app/services/upload.service.ts");
 var upload_form_component_1 = __webpack_require__("../../../../../src/app/admin/upload/upload-form/upload-form.component.ts");
+var dialog_service_1 = __webpack_require__("../../../../../src/app/services/dialog.service.ts");
+var google_map_component_1 = __webpack_require__("../../../../../src/app/client/google-map/google-map.component.ts");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -1443,7 +1447,8 @@ var AppModule = (function () {
                 messages_component_1.MessagesComponent,
                 upload_form_component_1.UploadFormComponent,
                 upload_component_1.UploadComponent,
-                file_drop_directive_1.FileDropDirective
+                file_drop_directive_1.FileDropDirective,
+                google_map_component_1.GoogleMapComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -1484,9 +1489,14 @@ var AppModule = (function () {
                 material_1.MatToolbarModule,
                 material_1.MatTooltipModule,
                 material_1.MatStepperModule,
-                forms_1.ReactiveFormsModule
+                forms_1.ReactiveFormsModule,
+                core_2.AgmCoreModule.forRoot({
+                    apiKey: environment_prod_1.environment.googleMapsKey
+                })
             ],
+            entryComponents: [],
             providers: [
+                dialog_service_1.DialogService,
                 user_service_1.UserService,
                 venue_service_1.VenueService,
                 ammenity_service_1.AmmenityService,
@@ -1646,6 +1656,77 @@ exports.DashboardComponent = DashboardComponent;
 
 /***/ }),
 
+/***/ "../../../../../src/app/client/google-map/google-map.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "agm-map {\n  width: 100vh;\n  height: 100vw;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/client/google-map/google-map.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf='lat' && 'lng'>\n  <agm-map [latitude]='lat' [longitude]='lng'>\n    <agm-marker [latitude]='lat' [longitude]='lng'>\n      <agm-info-window>\n        <h3><strong>Howdy!</strong></h3>\n        <p>You are here!</p>\n      </agm-info-window>\n    </agm-marker>\n  </agm-map>\n\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/client/google-map/google-map.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var GoogleMapComponent = (function () {
+    function GoogleMapComponent() {
+    }
+    GoogleMapComponent.prototype.ngOnInit = function () {
+        this.getUserLocation();
+    };
+    GoogleMapComponent.prototype.getUserLocation = function () {
+        var _this = this;
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                _this.lat = position.coords.latitude;
+                _this.lng = position.coords.longitude;
+            });
+        }
+    };
+    GoogleMapComponent = __decorate([
+        core_1.Component({
+            selector: 'app-google-map',
+            template: __webpack_require__("../../../../../src/app/client/google-map/google-map.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/client/google-map/google-map.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], GoogleMapComponent);
+    return GoogleMapComponent;
+}());
+exports.GoogleMapComponent = GoogleMapComponent;
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/client/venue-search/venue-search.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1667,7 +1748,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/client/venue-search/venue-search.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\n  <section class=\"mat-typography\">\n    <h1>Tulsa Venues</h1>\n    <h4>Who knows Tulsa better then tulsans?</h4>\n  </section>\n</div>\n<div class=\"search\">\n  <hr>\n  <h2>SEARCH FORM COMING SOON...</h2>\n  <hr>\n</div>\n<div>\n  <mat-sidenav-container>\n    <mat-sidenav align=\"end\" mode=\"side\" #sidenav>\n      <mat-tab-group>\n        <mat-tab>\n          <ng-template mat-tab-label>Details</ng-template>\n          <button mat-raised-button (click)=\"sidenav.close()\" color=\"warn\">CLOSE</button>\n          <p>Name: {{currentVenue.name}}</p>\n          <p>Phone: {{currentVenue.phone}}</p>\n          <p>Location: {{currentVenue.address}}</p>\n          <p>Website: <a href=\"http://{{currentVenue.website}}\">{{currentVenue.website}}</a></p>\n        </mat-tab>\n        <mat-tab>\n          <ng-template mat-tab-label>Photos</ng-template>\n          <div *ngIf='!currentVenue.pic_url'>\n            <h2>There are currently no pictures of this venue.</h2>\n          </div>\n          <div *ngIf='currentVenue.pic_url'>\n            <img src='https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{currentVenue.pic_url}}' alt=\"Venue Picture\">\n          </div>\n        </mat-tab>\n      </mat-tab-group>\n    </mat-sidenav>\n    <mat-sidenav-content>\n      <mat-grid-list cols=\"4\" rowHeight=\"200px\">\n        <mat-grid-tile *ngFor=\"let venue of venue_list\">\n          <img class='imageGrid' src='imgs/{{currentVenue.static_pic_url}}' alt=\"Venue Picture\">\n          <mat-grid-tile-footer>\n            <h3>{{venue.name}}</h3>\n            <span class=\"spacer\"></span>\n            <button mat-icon-button (click)=\"showVenue(venue)\">\n              <mat-icon>info</mat-icon>\n            </button>\n          </mat-grid-tile-footer>\n        </mat-grid-tile>\n      </mat-grid-list>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>\n"
+module.exports = "<div class=\"header\">\n  <section class=\"mat-typography\">\n    <h1>Tulsa Venues</h1>\n    <h4>Who knows Tulsa better then tulsans?</h4>\n  </section>\n</div>\n<div class=\"search\">\n  <hr>\n  <h2>SEARCH FORM COMING SOON...</h2>\n  <hr>\n</div>\n\n<app-google-map></app-google-map>\n\n<div>\n  <mat-sidenav-container>\n    <mat-sidenav align=\"end\" mode=\"side\" #sidenav>\n      <mat-tab-group>\n        <mat-tab>\n          <ng-template mat-tab-label>Details</ng-template>\n          <button mat-raised-button (click)=\"sidenav.close()\" color=\"warn\">CLOSE</button>\n          <p>Name: {{currentVenue.name}}</p>\n          <p>Phone: {{currentVenue.phone}}</p>\n          <p>Location: {{currentVenue.address}}</p>\n          <p>Website: <a href=\"http://{{currentVenue.website}}\">{{currentVenue.website}}</a></p>\n        </mat-tab>\n        <mat-tab>\n          <ng-template mat-tab-label>Photos</ng-template>\n          <div *ngIf='!currentVenue.pic_url'>\n            <h2>There are currently no pictures of this venue.</h2>\n          </div>\n          <div *ngIf='currentVenue.pic_url'>\n            <img src='https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{currentVenue.pic_url}}' alt=\"Venue Picture\">\n          </div>\n        </mat-tab>\n      </mat-tab-group>\n    </mat-sidenav>\n    <mat-sidenav-content>\n      <mat-grid-list cols=\"4\" rowHeight=\"200px\">\n        <mat-grid-tile *ngFor=\"let venue of venue_list\">\n          <img class='imageGrid' src='imgs/{{currentVenue.static_pic_url}}' alt=\"Venue Picture\">\n          <mat-grid-tile-footer>\n            <h3>{{venue.name}}</h3>\n            <span class=\"spacer\"></span>\n            <button mat-icon-button (click)=\"showVenue(venue)\">\n              <mat-icon>info</mat-icon>\n            </button>\n          </mat-grid-tile-footer>\n        </mat-grid-tile>\n      </mat-grid-list>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>\n"
 
 /***/ }),
 
@@ -1891,7 +1972,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <form (submit)=\"loginUser(); loginForm.reset()\" #loginForm=\"ngForm\">\n    <!-- ** EMAIL ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your email\" autocomplete=\"email\" name=\"email\" [formControl]=\"email\" required [(ngModel)]=\"currentUser.email\">\n      <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n    </mat-form-field>\n\n  <!-- **  PASSWORD ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your password\" autocomplete=\"current-password\" name=\"password\" required [(ngModel)]=\"currentUser.password\" [type]=\"hide ? 'password' : 'text'\">\n      <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n    </mat-form-field>\n    <button type=\"submit\" value=\"Login\" [disabled]=\"!currentUser.email\">\n      <h3>Login<i class=\"material-icons\">arrow forward</i></h3>\n    </button>\n  </form>\n  <div>\n    <p *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div>\n\n\n<div class=\"col-4\">\n  <form (submit)=\"createUser()\" class=\"form\">\n    <div class=\"form-input\">\n      <label>Name</label>\n      <input type=\"text\" name=\"name\" [(ngModel)]=\"newUser.name\">\n    </div>\n    <div class=\"form-input\">\n      <label>Email</label>\n      <input type=\"text\" name=\"email\" [(ngModel)]=\"newUser.email\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password</label>\n      <input type=\"text\" name=\"password\" [(ngModel)]=\"newUser.password\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password Confirmation</label>\n      <input type=\"text\" name=\"password_confirmation\" [(ngModel)]=\"newUser.password_confirmation\">\n    </div>\n    <div>\n      <input class=\"btn btn-primary\" type=\"submit\" value=\"Register\">\n    </div>\n  </form>\n  <div>\n    <p *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <form (submit)=\"loginUser(); loginForm.reset()\" #loginForm=\"ngForm\">\n    <!-- ** EMAIL ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your email\" autocomplete=\"email\" name=\"email\" [formControl]=\"email\" required [(ngModel)]=\"currentUser.email\">\n      <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n    </mat-form-field>\n\n  <!-- **  PASSWORD ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your password\" autocomplete=\"current-password\" name=\"password\" required [(ngModel)]=\"currentUser.password\" [type]=\"hide ? 'password' : 'text'\">\n      <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n    </mat-form-field>\n    <button type=\"submit\" value=\"Login\" [disabled]=\"!currentUser.email\">\n      <h3>Login<i class=\"material-icons\">arrow forward</i></h3>\n    </button>\n  </form>\n  <div>\n    <p *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div>\n\n\n<!-- <div class=\"col-4\">\n  <form (submit)=\"createUser()\" class=\"form\">\n    <div class=\"form-input\">\n      <label>Name</label>\n      <input type=\"text\" name=\"name\" [(ngModel)]=\"newUser.name\">\n    </div>\n    <div class=\"form-input\">\n      <label>Email</label>\n      <input type=\"text\" name=\"email\" [(ngModel)]=\"newUser.email\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password</label>\n      <input type=\"text\" name=\"password\" [(ngModel)]=\"newUser.password\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password Confirmation</label>\n      <input type=\"text\" name=\"password_confirmation\" [(ngModel)]=\"newUser.password_confirmation\">\n    </div>\n    <div>\n      <input class=\"btn btn-primary\" type=\"submit\" value=\"Register\">\n    </div>\n  </form>\n  <div>\n    <p *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div> -->\n"
 
 /***/ }),
 
@@ -2301,6 +2382,37 @@ exports.AmmenityService = AmmenityService;
 
 /***/ }),
 
+/***/ "../../../../../src/app/services/dialog.service.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var DialogService = (function () {
+    // tslint:disable-next-line:one-line
+    function DialogService() {
+    }
+    DialogService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [])
+    ], DialogService);
+    return DialogService;
+}());
+exports.DialogService = DialogService;
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/services/message.service.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2581,6 +2693,20 @@ exports.VenueService = VenueService;
 
 /***/ }),
 
+/***/ "../../../../../src/environments/environment.prod.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.environment = {
+    production: true,
+    googleMapsKey: 'AIzaSyCCYbtEzTOU2_9r90f2H1q5oOaSOd5w1aE',
+};
+
+
+/***/ }),
+
 /***/ "../../../../../src/environments/environment.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2592,7 +2718,8 @@ exports.VenueService = VenueService;
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.environment = {
-    production: false
+    production: false,
+    googleMapsKey: 'AIzaSyCCYbtEzTOU2_9r90f2H1q5oOaSOd5w1aE',
 };
 
 
