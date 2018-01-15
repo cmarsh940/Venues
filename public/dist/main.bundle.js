@@ -1582,7 +1582,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "body {\n    margin:0;\n}\n\ndiv.header {\n    width: 100%;\n}\n\n.img{\n    margin: auto;\n}\n\nh1, h4 {\n    text-align: center;\n}\n#search-button {\n    width: 100%;\n}\nbutton{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin: auto;\n}\n\ndiv.movie {\n    width: 20%;\n    height: 10rem;\n    border-right: 1px solid black;\n}\n\ndiv.about {\n  width: 70%;\n  height: 10rem;\n}\n\n.movie, .about {\n  display: inline-block;\n  vertical-align: top;\n  padding: 2%;\n}\n\nh2 {\n    text-align: center;\n}\n\n\n.spacer {\n    -webkit-box-flex: 1;\n        -ms-flex: 1 1 auto;\n            flex: 1 1 auto;\n}\n", ""]);
+exports.push([module.i, "body {\n    margin:0;\n}\n\ndiv.header {\n    width: 100%;\n}\n\n.img{\n    max-width: 50%;\n    min-width: 50%;\n    display: block;\n    margin: auto;\n}\n\nh2 {\n    text-align: center;\n}\n#search-button {\n    width: 100%;\n}\nbutton{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin: auto;\n}\n\ndiv.movie {\n    width: 20%;\n    height: 10rem;\n    border-right: 1px solid black;\n}\n\ndiv.about {\n  width: 70%;\n  height: 10rem;\n}\n\n.movie, .about {\n  display: inline-block;\n  vertical-align: top;\n  padding: 2%;\n}\n\nh2 {\n    text-align: center;\n}\n\n\n.spacer {\n    -webkit-box-flex: 1;\n        -ms-flex: 1 1 auto;\n            flex: 1 1 auto;\n}\n", ""]);
 
 // exports
 
@@ -1595,7 +1595,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/client/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\n  <section class=\"mat-typography\">\n    <h1>Tulsa Venues</h1>\n    <!-- <img class=\"img\" src=\"assets/tulsavenus.png\" alt=\"Picture of outlined city\"> -->\n    <h4>Who knows Tulsa better then tulsans?</h4>\n  </section>\n  <div id=\"search-button\">\n    <button mat-raised-button color=\"accent\" routerLink=\"/search\">Find Your Venue Now</button>\n  </div>\n</div>\n<hr>\n<div class=\"movie\">\n  <div class=\"icon\">\n    <i class=\"material-icons\">&#xE04A;</i>\n  </div>\n</div>\n<div class=\"about\">\n  <h2>OUR STORY</h2>\n  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo dolorem, quibusdam eaque explicabo iste possimus aliquam perferendis in voluptatum quam, molestias architecto cumque. Perspiciatis, debitis. Id fuga quam soluta dicta?</p>\n</div>\n<hr>\n<div>\n  <h2>Preferred Venders</h2>\n</div>\n\n"
+module.exports = "<div class=\"header\">\n  <section>\n    <img class=\"img\" src=\"assets/tulsavenus.png\" alt=\"Picture of outlined city\">\n    <h2>Who knows Tulsa better then tulsans?</h2>\n  </section>\n  <div id=\"search-button\">\n    <button mat-raised-button color=\"accent\" routerLink=\"/search\">Find Your Venue Now</button>\n  </div>\n</div>\n<hr>\n<div class=\"movie\">\n  <div class=\"icon\">\n    <i class=\"material-icons\">&#xE04A;</i>\n  </div>\n</div>\n<div class=\"about\">\n  <h2>OUR STORY</h2>\n  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo dolorem, quibusdam eaque explicabo iste possimus aliquam perferendis in voluptatum quam, molestias architecto cumque. Perspiciatis, debitis. Id fuga quam soluta dicta?</p>\n</div>\n<hr>\n<div>\n  <h2>Preferred Venders</h2>\n</div>\n\n"
 
 /***/ }),
 
@@ -1664,7 +1664,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "agm-map {\n  width: 100vh;\n  height: 100vw;\n}\n", ""]);
+exports.push([module.i, "agm-map {\n  width: 100%;\n  height: 25vw;\n  overflow: hidden;\n}\n", ""]);
 
 // exports
 
@@ -1677,7 +1677,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/client/google-map/google-map.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf='lat' && 'lng'>\n  <agm-map [latitude]='lat' [longitude]='lng'>\n    <agm-marker [latitude]='lat' [longitude]='lng'>\n      <agm-info-window>\n        <h3><strong>Howdy!</strong></h3>\n        <p>You are here!</p>\n      </agm-info-window>\n    </agm-marker>\n  </agm-map>\n\n"
+module.exports = "<div *ngIf='lat && lng'>\n  <agm-map [latitude]='lat' [longitude]='lng'>\n    <agm-marker [latitude]='lat' [longitude]='lng'>\n      <agm-info-window>\n        <h3>\n          <strong>Howdy!</strong>\n        </h3>\n        <p>You are here!</p>\n      </agm-info-window>\n    </agm-marker>\n  </agm-map>\n</div>"
 
 /***/ }),
 
@@ -1748,7 +1748,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/client/venue-search/venue-search.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\n  <section class=\"mat-typography\">\n    <h1>Tulsa Venues</h1>\n    <h4>Who knows Tulsa better then tulsans?</h4>\n  </section>\n</div>\n<div class=\"search\">\n  <hr>\n  <h2>SEARCH FORM COMING SOON...</h2>\n  <hr>\n</div>\n\n<app-google-map></app-google-map>\n\n<div>\n  <mat-sidenav-container>\n    <mat-sidenav align=\"end\" mode=\"side\" #sidenav>\n      <mat-tab-group>\n        <mat-tab>\n          <ng-template mat-tab-label>Details</ng-template>\n          <button mat-raised-button (click)=\"sidenav.close()\" color=\"warn\">CLOSE</button>\n          <p>Name: {{currentVenue.name}}</p>\n          <p>Phone: {{currentVenue.phone}}</p>\n          <p>Location: {{currentVenue.address}}</p>\n          <p>Website: <a href=\"http://{{currentVenue.website}}\">{{currentVenue.website}}</a></p>\n        </mat-tab>\n        <mat-tab>\n          <ng-template mat-tab-label>Photos</ng-template>\n          <div *ngIf='!currentVenue.pic_url'>\n            <h2>There are currently no pictures of this venue.</h2>\n          </div>\n          <div *ngIf='currentVenue.pic_url'>\n            <img src='https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{currentVenue.pic_url}}' alt=\"Venue Picture\">\n          </div>\n        </mat-tab>\n      </mat-tab-group>\n    </mat-sidenav>\n    <mat-sidenav-content>\n      <mat-grid-list cols=\"4\" rowHeight=\"200px\">\n        <mat-grid-tile *ngFor=\"let venue of venue_list\">\n          <img class='imageGrid' src='imgs/{{currentVenue.static_pic_url}}' alt=\"Venue Picture\">\n          <mat-grid-tile-footer>\n            <h3>{{venue.name}}</h3>\n            <span class=\"spacer\"></span>\n            <button mat-icon-button (click)=\"showVenue(venue)\">\n              <mat-icon>info</mat-icon>\n            </button>\n          </mat-grid-tile-footer>\n        </mat-grid-tile>\n      </mat-grid-list>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>\n"
+module.exports = "<div class=\"search\">\n  <h2>SEARCH FORM COMING SOON...</h2>\n</div>\n<hr>\n<app-google-map></app-google-map>\n<hr>\n<div>\n  <mat-sidenav-container>\n    <mat-sidenav align=\"end\" mode=\"side\" #sidenav>\n      <mat-tab-group>\n        <mat-tab>\n          <ng-template mat-tab-label>Details</ng-template>\n          <button mat-raised-button (click)=\"sidenav.close()\" color=\"warn\">CLOSE</button>\n          <p>Name: {{currentVenue.name}}</p>\n          <p>Phone: {{currentVenue.phone}}</p>\n          <p>Location: {{currentVenue.address}}</p>\n          <p>Website: <a href=\"http://{{currentVenue.website}}\">{{currentVenue.website}}</a></p>\n        </mat-tab>\n        <mat-tab>\n          <ng-template mat-tab-label>Photos</ng-template>\n          <div *ngIf='!currentVenue.pic_url'>\n            <h2>There are currently no pictures of this venue.</h2>\n          </div>\n          <div *ngIf='currentVenue.pic_url'>\n            <img src='https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{currentVenue.pic_url}}' alt=\"Venue Picture\">\n          </div>\n        </mat-tab>\n      </mat-tab-group>\n    </mat-sidenav>\n    <mat-sidenav-content>\n      <mat-grid-list cols=\"4\" rowHeight=\"200px\">\n        <mat-grid-tile *ngFor=\"let venue of venue_list\">\n          <img class='imageGrid' src='imgs/{{currentVenue.static_pic_url}}' alt=\"Venue Picture\">\n          <mat-grid-tile-footer>\n            <h3>{{venue.name}}</h3>\n            <span class=\"spacer\"></span>\n            <button mat-icon-button (click)=\"showVenue(venue)\">\n              <mat-icon>info</mat-icon>\n            </button>\n          </mat-grid-tile-footer>\n        </mat-grid-tile>\n      </mat-grid-list>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>\n"
 
 /***/ }),
 
@@ -2205,7 +2205,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".spacer {\n    -webkit-box-flex: 1;\n        -ms-flex: 1 1 auto;\n            flex: 1 1 auto;\n}", ""]);
+exports.push([module.i, "mat-toolbar {\n    width: 100%;\n}\n\n.spacer {\n    -webkit-box-flex: 1;\n        -ms-flex: 1 1 auto;\n            flex: 1 1 auto;\n}\n\n.header {\n    width:100%;\n    text-align: center;\n    margin-left: 5%;\n    color: #fff;\n}\n", ""]);
 
 // exports
 
@@ -2218,7 +2218,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <span class=\"spacer\"></span>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/\">Home</button>\n      <button mat-menu-item routerLink=\"/search\">Search</button>\n    </mat-menu>\n  </mat-toolbar-row>\n</mat-toolbar>\n"
+module.exports = "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <h1 class=\"header\">Tulsa Venues</h1>\n    <span class=\"spacer\"></span>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#fff\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/\">Home</button>\n      <button mat-menu-item routerLink=\"/search\">Search</button>\n    </mat-menu>\n  </mat-toolbar-row>\n</mat-toolbar>\n"
 
 /***/ }),
 
