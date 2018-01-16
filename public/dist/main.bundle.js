@@ -2757,7 +2757,7 @@ exports.VenueService = VenueService;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.environment = {
     production: true,
-    googleMapsKey: 'AIzaSyCCYbtEzTOU2_9r90f2H1q5oOaSOd5w1aE',
+    googleMapsKey: '***',
 };
 
 
@@ -2775,7 +2775,7 @@ exports.environment = {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.environment = {
     production: false,
-    googleMapsKey: 'AIzaSyCCYbtEzTOU2_9r90f2H1q5oOaSOd5w1aE',
+    googleMapsKey: '***',
 };
 
 
