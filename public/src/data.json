@@ -1,0 +1,33 @@
+{
+    "screenshots": [
+        {
+            "img": "assets/images/ballroom.png",
+            "description": "Ballroom"
+        },
+        {
+            "img": "assets/images/barn.png",
+            "description": "Barn"
+        },
+        {
+            "img": "assets/images/chaple.png",
+            "description": "Chaple"
+        },
+        {
+            "img": "assets/images/countryclub.png",
+            "description": "Country club"
+        },
+        {
+            "img": "assets/images/eventcenter.png",
+            "description": "Event Center"
+        },
+        {
+            "img": "assets/images/garden.png",
+            "description": "Garden"
+        },
+        {
+            "img": "assets/images/lodge.png",
+            "description": "Lodge"
+        }
+        
+    ]
+}

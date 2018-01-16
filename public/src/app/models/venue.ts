@@ -5,6 +5,10 @@ export class Venue {
   phone: number;
   address: string;
   website: string;
+  minAmmount: number;
+  maxAmmount: number;
+  lat: number;
+  lng: number;
   static_pic_url: any;
   pic_url: any;
   Ammenity: any;
