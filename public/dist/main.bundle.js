@@ -1679,7 +1679,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/client/google-map/google-map.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf='lat && lng'>\n  <agm-map [latitude]='lat' [longitude]='lng'>\n    <agm-marker [latitude]='lat' [longitude]='lng'>\n      <agm-info-window>\n        <h3>\n          <strong>Howdy!</strong>\n        </h3>\n        <p>You are here!</p>\n      </agm-info-window>\n    </agm-marker>\n  </agm-map>\n</div>"
+module.exports = "<div *ngIf='lat && lng'>\n  <agm-map [latitude]='lat' [longitude]='lng' [zoom]=\"zoom\" [disableDefaultUI]=\"false\" [zoomControl]=\"false\">\n    <agm-marker [latitude]='lat' [longitude]='lng'>\n      <agm-info-window>\n        <h3>\n          <strong>Welcome!</strong>\n        </h3>\n        <p>Venues around Tulsa!</p>\n      </agm-info-window>\n    </agm-marker>\n  </agm-map>\n</div>"
 
 /***/ }),
 
@@ -1701,18 +1701,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var GoogleMapComponent = (function () {
     function GoogleMapComponent() {
+        // google maps zoom level
+        this.zoom = 8;
+        // initial center position for the map
+        this.lat = 36.153883;
+        this.lng = -95.990629;
     }
     GoogleMapComponent.prototype.ngOnInit = function () {
-        this.getUserLocation();
-    };
-    GoogleMapComponent.prototype.getUserLocation = function () {
-        var _this = this;
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                _this.lat = position.coords.latitude;
-                _this.lng = position.coords.longitude;
-            });
-        }
+        // this.getUserLocation();
     };
     GoogleMapComponent = __decorate([
         core_1.Component({
