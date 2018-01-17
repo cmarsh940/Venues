@@ -24,7 +24,6 @@ import { VenueEditComponent } from './admin/venue-list/venue-edit/venue-edit.com
 import { VenueNewComponent } from './admin/venue-list/venue-new/venue-new.component';
 import { VenueComponent } from './client/venue/venue.component';
 import { AmmenityListComponent } from './admin/ammenity-list/ammenity-list.component';
-import { AmmenityNewComponent } from './admin/ammenity-list/ammenity-new/ammenity-new.component';
 import { AmmenityEditComponent } from './admin/ammenity-list/ammenity-edit/ammenity-edit.component';
 import { AmmenityShowComponent } from './admin/ammenity-list/ammenity-show/ammenity-show.component';
 import { MessagesComponent } from './messages/messages.component';
@@ -72,8 +71,8 @@ import { UploadComponent } from './admin/upload/upload.component';
 import { FileDropDirective } from './admin/upload/file-drop.directive';
 import { UploadService } from './services/upload.service';
 import { UploadFormComponent } from './admin/upload/upload-form/upload-form.component';
-import { DialogService } from './services/dialog.service';
 import { GoogleMapComponent } from './client/google-map/google-map.component';
+import { Dialog } from './admin/popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -93,14 +92,14 @@ import { GoogleMapComponent } from './client/google-map/google-map.component';
     VenueShowComponent,
     VenueComponent,
     AmmenityListComponent,
-    AmmenityNewComponent,
     AmmenityEditComponent,
     AmmenityShowComponent,
     MessagesComponent,
     UploadFormComponent,
     UploadComponent,
     FileDropDirective,
-    GoogleMapComponent
+    GoogleMapComponent,
+    Dialog
   ],
   imports: [
     BrowserModule,
@@ -146,9 +145,8 @@ import { GoogleMapComponent } from './client/google-map/google-map.component';
       apiKey: environment.googleMapsKey
     })
   ],
-  entryComponents: [],
+  entryComponents: [Dialog],
   providers: [
-    DialogService,
     UserService,
     VenueService,
     AmmenityService,

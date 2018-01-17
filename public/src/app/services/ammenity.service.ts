@@ -25,11 +25,6 @@ export class AmmenityService {
         catchError(this.handleError('getAmmenities', []))
       );
   }
-  // get_ammenities() {
-  //   return this._http.get("/ammenities")
-  //     .map(data => data.json())
-  //     .toPromise();
-  // }
 
   post_ammenity(ammenity: Ammenity): Observable<Ammenity> {
     return this._httpClient
@@ -43,30 +38,6 @@ export class AmmenityService {
       );
   }
 
-  // post_ammenity(form_data) {
-  //   console.log("*** Hit ammenity post in service");
-  //   return this._http
-  //     .post('/ammenities/add', form_data)
-  //     .map(data => data.json())
-  //     .toPromise();
-  // }
-
-  // post_ammenity(form_data: Ammenity, callback) {
-  //   this._http.post('/ammenities/add', form_data).subscribe(
-  //     res => callback(res.json()),
-  //     err => console.error(err)
-  //   );
-  // }
-
-  // delete_ammenity(ammenity: Ammenity | number): Observable<Ammenity> {
-  //   const id = typeof ammenity === "number" ? ammenity : ammenity._id;
-
-  //   return this._httpClient.delete<Ammenity>('/ammenities/destroy')
-  //     .pipe(
-  //       tap(_ => this.log(`deleted ammenity id=${id}`)),
-  //       catchError(this.handleError<Ammenity>('deleteAmmenity'))
-  //     );
-  // }
   destroy_ammenity(ammenity) {
     console.log("*** Hit ammenity destroy in service");
     return this._http

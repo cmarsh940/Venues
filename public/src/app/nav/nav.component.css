@@ -1,5 +1,6 @@
 mat-toolbar {
     width: 100%;
+    border-bottom: 1px solid #00B8D4;
 }
 
 .spacer {
@@ -12,5 +13,5 @@ mat-toolbar {
     width:100%;
     text-align: center;
     margin-left: 5%;
-    color: #fff;
+    color: #00B8D4;
 }

@@ -1,9 +1,12 @@
+import { AmmenityService } from './../../../services/ammenity.service';
 import { Router } from '@angular/router';
 import { UserService } from './../../../services/user.service';
 import { VenueService } from './../../../services/venue.service';
 import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { User } from '../../../models/user';
 import { Venue } from '../../../models/venue';
+import { Ammenity } from '../../../models/ammenity';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-venue-new',
@@ -13,6 +16,8 @@ import { Venue } from '../../../models/venue';
 export class VenueNewComponent implements OnInit {
   new_venue: Venue = new Venue();
   current_user: User;
+  ammenitiesControl = new FormControl();
+  ammenitiesList: Array<Ammenity>;
   errors = [];
 
   @ViewChild('file') file_input;
@@ -22,17 +27,25 @@ export class VenueNewComponent implements OnInit {
   constructor(
     private _venueService: VenueService,
     private _userService: UserService,
+    private _ammenityService: AmmenityService,
     private _router: Router
   ) {}
 
   ngOnInit() {
     this.isLoggedIn();
+    this.getAmmenities();
   }
 
   isLoggedIn() {
     if (this._userService.getCurrentUser() == null) {
       this._router.navigateByUrl('/');
     }
+  }
+
+  getAmmenities(): void {
+    this._ammenityService
+      .get_ammenities()
+      .subscribe(ammenities => (this.ammenitiesList = ammenities));
   }
 
   create_venue() {

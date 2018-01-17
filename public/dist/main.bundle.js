@@ -295,7 +295,6 @@ var AmmenityEditComponent = (function () {
     }
     AmmenityEditComponent.prototype.ngOnInit = function () {
         this.isLoggedIn();
-        // this.getAmmenities();
         this.getRouteParams();
     };
     AmmenityEditComponent.prototype.isLoggedIn = function () {
@@ -303,23 +302,6 @@ var AmmenityEditComponent = (function () {
             this._router.navigateByUrl('/');
         }
     };
-    // getAmmenities() {
-    //   this._ammenityService
-    //     .get_ammenities()
-    //     .then(data => {
-    //       this.ammenities_list = data;
-    //     })
-    //     .catch((err: HttpErrorResponse) => {
-    //       if (err.error instanceof Error) {
-    //         // A client-side or network error occurred. Handle it accordingly.
-    //         console.log("An error occurred:", err.error.message);
-    //       } else {
-    //         // The backend returned an unsuccessful response code.
-    //         // The response body may contain clues as to what went wrong,
-    //         console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
-    //       }
-    //     });
-    // }
     AmmenityEditComponent.prototype.getRouteParams = function () {
         var _this = this;
         this._route.params.subscribe(function (param) {
@@ -422,93 +404,6 @@ var AmmenityListComponent = (function () {
     return AmmenityListComponent;
 }());
 exports.AmmenityListComponent = AmmenityListComponent;
-
-
-/***/ }),
-
-/***/ "../../../../../src/app/admin/ammenity-list/ammenity-new/ammenity-new.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "form {\n    width:50%;\n    margin: auto;\n    overflow: hidden;\n}\n.mat-form-field {\n    width: 100%;\n}\n\nh1 {\n  width:100%;\n  text-align: center;\n}\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/admin/ammenity-list/ammenity-new/ammenity-new.component.html":
-/***/ (function(module, exports) {
-
-module.exports = " <button mat-raised-button [routerLink]=\"['/list_ammenities']\">\n  <i class=\"material-icons\">&#xE5C4;</i>\n</button>\n<h1>Add a ammenity</h1>\n<form #form (ngSubmit)=\"create_ammenity()\">\n   Name\n  <mat-form-field>\n    <input matInput name=\"name\" required maxlength=125 [(ngModel)]=\"new_ammenity.name\" placeholder=\"Ammenity Name\">\n  </mat-form-field>\n\n   Submit\n  <button mat-raised-button type=\"submit\">Submit</button>\n</form>\n\n<div>\n  <p class=\"error\" *ngFor=\"let error of errors\">{{ error }}</p>\n</div>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/admin/ammenity-list/ammenity-new/ammenity-new.component.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var router_1 = __webpack_require__("../../../router/esm5/router.js");
-var core_1 = __webpack_require__("../../../core/esm5/core.js");
-var ammenity_service_1 = __webpack_require__("../../../../../src/app/services/ammenity.service.ts");
-var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
-var ammenity_1 = __webpack_require__("../../../../../src/app/models/ammenity.ts");
-var AmmenityNewComponent = (function () {
-    function AmmenityNewComponent(_ammenityService, _userService, _router) {
-        this._ammenityService = _ammenityService;
-        this._userService = _userService;
-        this._router = _router;
-        this.new_ammenity = new ammenity_1.Ammenity();
-        this.errors = [];
-        this.new_ammenity_event = new core_1.EventEmitter();
-    }
-    AmmenityNewComponent.prototype.ngOnInit = function () {
-        this.isLoggedIn();
-    };
-    AmmenityNewComponent.prototype.isLoggedIn = function () {
-        if (this._userService.getCurrentUser() == null) {
-            this._router.navigateByUrl('/');
-        }
-    };
-    __decorate([
-        core_1.ViewChild('form'),
-        __metadata("design:type", Object)
-    ], AmmenityNewComponent.prototype, "my_form", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", Object)
-    ], AmmenityNewComponent.prototype, "new_ammenity_event", void 0);
-    AmmenityNewComponent = __decorate([
-        core_1.Component({
-            selector: 'app-ammenity-new',
-            template: __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-new/ammenity-new.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-new/ammenity-new.component.css")]
-        }),
-        __metadata("design:paramtypes", [ammenity_service_1.AmmenityService,
-            user_service_1.UserService,
-            router_1.Router])
-    ], AmmenityNewComponent);
-    return AmmenityNewComponent;
-}());
-exports.AmmenityNewComponent = AmmenityNewComponent;
 
 
 /***/ }),
@@ -626,6 +521,75 @@ var AmmenityShowComponent = (function () {
     return AmmenityShowComponent;
 }());
 exports.AmmenityShowComponent = AmmenityShowComponent;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/popup/popup.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/popup/popup.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<h1 mat-dialog-title>Delete Venue</h1>\n<div mat-dialog-content>\n  <p>Are you sure?</p>\n</div>\n<div mat-dialog-actions>\n  <button mat-button [mat-dialog-close]=\"data\">CANCEL</button>\n  <button mat-button (click)=\"delete(venue)\" cdkFocusInitial>YES</button>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/popup/popup.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var material_1 = __webpack_require__("../../../material/esm5/material.es5.js");
+var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
+var Dialog = (function () {
+    function Dialog(_venueService, dialogRef, data) {
+        this._venueService = _venueService;
+        this.dialogRef = dialogRef;
+        this.data = data;
+    }
+    Dialog = __decorate([
+        core_1.Component({
+            selector: 'app-popup',
+            template: __webpack_require__("../../../../../src/app/admin/popup/popup.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/admin/popup/popup.component.css")]
+        }),
+        __param(2, core_1.Inject(material_1.MAT_DIALOG_DATA)),
+        __metadata("design:paramtypes", [venue_service_1.VenueService,
+            material_1.MatDialogRef, Object])
+    ], Dialog);
+    return Dialog;
+}());
+exports.Dialog = Dialog;
 
 
 /***/ }),
@@ -1049,7 +1013,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/venue-list/venue-new/venue-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button mat-raised-button [routerLink]=\"['/list_venue']\">\n  <i class=\"material-icons\">&#xE5C4;</i>\n</button>\n<h1>Add a Venue</h1>\n  <form #form (submit)=\"create_venue()\" encType=\"multipart/form-data\">\n    <!-- Name -->\n    <mat-form-field>\n      <input \n        matInput name=\"name\" \n        required \n        maxlength=250 \n        [(ngModel)]=\"new_venue.name\" \n        placeholder=\"Venue Name\"\n      />\n    </mat-form-field>\n\n    <!-- Email -->\n    <mat-form-field>\n      <input \n        matInput \n        name=\"email\" \n        required \n        maxlength=250 \n        [(ngModel)]=\"new_venue.email\" \n        placeholder=\"Venue Email\"\n      />\n    </mat-form-field>\n\n    <!-- Phone# -->\n    <mat-form-field>\n      <input \n        matInput \n        name=\"phone\" \n        required \n        maxlength=20 \n        [(ngModel)]=\"new_venue.phone\"  \n        placeholder=\"Venue Phone #\"\n      />\n      <mat-hint>no spaces EX: 1234567899 </mat-hint>\n    </mat-form-field>\n\n    <!-- Address -->\n    <mat-form-field>\n      <input \n        matInput \n        name=\"address\" \n        required \n        maxlength=200 \n        [(ngModel)]=\"new_venue.address\" \n        placeholder=\"Venue Address\"\n      />\n    </mat-form-field>\n\n    <!-- Website -->\n    <mat-form-field>\n      <input \n        matInput \n        name=\"website\" \n        required \n        maxlength=250 \n        [(ngModel)]=\"new_venue.website\" \n        placeholder=\"Venue Website\" \n      />\n      <mat-hint>EX: www.example.com</mat-hint>\n    </mat-form-field>\n\n    <!-- Label -->\n    <mat-label class=\"form-label\">Latitude and Longitude used for map placement</mat-label>\n\n    <!-- Location for maps -->\n    <div class=\"input-container\">\n      <!-- Lattitude -->\n      <mat-form-field>\n        <input \n          matInput \n          name=\"lat\" \n          required \n          maxlength=50 \n          [(ngModel)]=\"new_venue.lat\" \n          placeholder=\"Latitude\" \n        />\n        <mat-hint>EX: 36.153883</mat-hint>\n      </mat-form-field>\n\n      <!-- Longitude -->\n      <mat-form-field>\n        <input \n          matInput \n          name=\"lng\" \n          required \n          maxlength=50 \n          [(ngModel)]=\"new_venue.lng\" \n          placeholder=\"Longitude\" \n        />\n        <mat-hint>EX: -95.990629</mat-hint>\n      </mat-form-field>\n    </div>\n    <!-- $$$$ -->\n    <div class=\"input-container\">\n      <!-- MinAmmount -->\n      <mat-form-field>\n        <span matPrefix>$&nbsp;</span>\n        <input \n          matInput \n          type=\"number\" \n          name=\"minAmmount\" \n          required maxlength=250 \n          [(ngModel)]=\"new_venue.minAmmount\" \n          placeholder=\"Min-ammount\" \n          class=\"right-align\"\n          >\n        <span matSuffix>.00</span>\n      </mat-form-field>\n\n      <!-- MaxAmmount -->\n      <mat-form-field>\n        <span matPrefix>$&nbsp;</span>\n        <input \n          matInput \n          type=\"number\" \n          name=\"maxAmmount\" \n          required maxlength=250 \n          [(ngModel)]=\"new_venue.maxAmmount\" \n          placeholder=\"Max-ammount\" \n          class=\"right-align\"\n          >\n        <span matSuffix>.00</span>\n      </mat-form-field>\n    </div>\n\n\n    <!-- Ammenities -->\n    <!-- <mat-form-field>\n      <mat-select placeholder=\"Ammenities\" [formControl]=\"ammenities\" multiple>\n        <mat-option *ngFor=\"let ammenity of ammenitiesList\" [value]=\"ammenity\">{{ammenities}}</mat-option>\n      </mat-select>\n    </mat-form-field> -->\n\n    <!-- Picture -->\n    <div class=\"file-upload\">\n      <input #file type=\"file\" name=\"picture\" [(ngModel)]=\"new_venue.static_pic_url\">\n    </div>\n\n    <div class=\"submit-button\">\n      <!-- Submit -->\n      <button mat-raised-button type=\"submit\" color=\"accent\">Submit</button>\n    </div>\n  </form>\n\n  <div>\n    <p class=\"error\" *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n"
+module.exports = "<button mat-raised-button [routerLink]=\"['/list_venue']\">\n  <i class=\"material-icons\">&#xE5C4;</i>\n</button>\n<h1>Add a Venue</h1>\n  <form #form (submit)=\"create_venue()\" encType=\"multipart/form-data\">\n    <!-- Name -->\n    <mat-form-field>\n      <input \n        matInput \n        name=\"name\" \n        required \n        maxlength=250 \n        [(ngModel)]=\"new_venue.name\" \n        placeholder=\"Venue Name\"\n      />\n    </mat-form-field>\n\n    <!-- Email -->\n    <mat-form-field>\n      <input \n        matInput \n        name=\"email\" \n        required \n        maxlength=250 \n        [(ngModel)]=\"new_venue.email\" \n        placeholder=\"Venue Email\"\n      />\n    </mat-form-field>\n\n    <!-- Phone# -->\n    <mat-form-field>\n      <input \n        matInput \n        name=\"phone\" \n        required \n        maxlength=20 \n        [(ngModel)]=\"new_venue.phone\"  \n        placeholder=\"Venue Phone #\"\n      />\n      <mat-hint>no spaces EX: 1234567899 </mat-hint>\n    </mat-form-field>\n\n    <!-- Address -->\n    <mat-form-field>\n      <input \n        matInput \n        name=\"address\" \n        required \n        maxlength=200 \n        [(ngModel)]=\"new_venue.address\" \n        placeholder=\"Venue Address\"\n      />\n    </mat-form-field>\n\n    <!-- Website -->\n    <mat-form-field>\n      <input \n        matInput \n        name=\"website\" \n        required \n        maxlength=250 \n        [(ngModel)]=\"new_venue.website\" \n        placeholder=\"Venue Website\" \n      />\n      <mat-hint>EX: www.example.com</mat-hint>\n    </mat-form-field>\n\n    <!-- Label -->\n    <mat-label class=\"form-label\">Latitude and Longitude used for map placement</mat-label>\n\n    <!-- Location for maps -->\n    <div class=\"input-container\">\n      <!-- Lattitude -->\n      <mat-form-field>\n        <input \n          matInput \n          name=\"lat\" \n          required \n          maxlength=50 \n          [(ngModel)]=\"new_venue.lat\" \n          placeholder=\"Latitude\" \n        />\n        <mat-hint>EX: 36.153883</mat-hint>\n      </mat-form-field>\n\n      <!-- Longitude -->\n      <mat-form-field>\n        <input \n          matInput \n          name=\"lng\" \n          required \n          maxlength=50 \n          [(ngModel)]=\"new_venue.lng\" \n          placeholder=\"Longitude\" \n        />\n        <mat-hint>EX: -95.990629</mat-hint>\n      </mat-form-field>\n    </div>\n    <!-- $$$$ -->\n    <div class=\"input-container\">\n      <!-- MinAmmount -->\n      <mat-form-field>\n        <span matPrefix>$&nbsp;</span>\n        <input \n          matInput \n          type=\"number\" \n          name=\"minAmmount\" \n          required maxlength=250 \n          [(ngModel)]=\"new_venue.minAmmount\" \n          placeholder=\"Min-ammount\" \n          class=\"right-align\"\n        />\n        <span matSuffix>.00</span>\n      </mat-form-field>\n\n      <!-- MaxAmmount -->\n      <mat-form-field>\n        <span matPrefix>$&nbsp;</span>\n        <input \n          matInput \n          type=\"number\" \n          name=\"maxAmmount\" \n          required maxlength=250 \n          [(ngModel)]=\"new_venue.maxAmmount\" \n          placeholder=\"Max-ammount\" \n          class=\"right-align\"\n        />\n        <span matSuffix>.00</span>\n      </mat-form-field>\n    </div>\n\n\n    <!-- Ammenities -->\n    <!-- <mat-form-field>\n      <mat-select placeholder=\"Select\" [formControl]=\"ammenitiesControl\" multiple>\n        <mat-option *ngFor=\"let ammenity of ammenitiesList; let i = index\" name=\"\" [value]=\"ammenity\" [(ngModel)]=\"new_venue.ammenities\">{{ammenity.name}}</mat-option>\n      </mat-select>\n    </mat-form-field> -->\n\n    <!-- Picture -->\n    <div class=\"file-upload\">\n      <input #file type=\"file\" name=\"picture\" [(ngModel)]=\"new_venue.static_pic_url\">\n    </div>\n\n    <div class=\"submit-button\">\n      <!-- Submit -->\n      <button mat-raised-button type=\"submit\" color=\"accent\">Submit</button>\n    </div>\n  </form>\n\n  <div>\n    <p class=\"error\" *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n"
 
 /***/ }),
 
@@ -1068,27 +1032,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var ammenity_service_1 = __webpack_require__("../../../../../src/app/services/ammenity.service.ts");
 var router_1 = __webpack_require__("../../../router/esm5/router.js");
 var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
 var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var venue_1 = __webpack_require__("../../../../../src/app/models/venue.ts");
+var forms_1 = __webpack_require__("../../../forms/esm5/forms.js");
 var VenueNewComponent = (function () {
-    function VenueNewComponent(_venueService, _userService, _router) {
+    function VenueNewComponent(_venueService, _userService, _ammenityService, _router) {
         this._venueService = _venueService;
         this._userService = _userService;
+        this._ammenityService = _ammenityService;
         this._router = _router;
         this.new_venue = new venue_1.Venue();
+        this.ammenitiesControl = new forms_1.FormControl();
         this.errors = [];
         this.new_venue_event = new core_1.EventEmitter();
     }
     VenueNewComponent.prototype.ngOnInit = function () {
         this.isLoggedIn();
+        this.getAmmenities();
     };
     VenueNewComponent.prototype.isLoggedIn = function () {
         if (this._userService.getCurrentUser() == null) {
             this._router.navigateByUrl('/');
         }
+    };
+    VenueNewComponent.prototype.getAmmenities = function () {
+        var _this = this;
+        this._ammenityService
+            .get_ammenities()
+            .subscribe(function (ammenities) { return (_this.ammenitiesList = ammenities); });
     };
     VenueNewComponent.prototype.create_venue = function () {
         var _this = this;
@@ -1124,6 +1099,7 @@ var VenueNewComponent = (function () {
         }),
         __metadata("design:paramtypes", [venue_service_1.VenueService,
             user_service_1.UserService,
+            ammenity_service_1.AmmenityService,
             router_1.Router])
     ], VenueNewComponent);
     return VenueNewComponent;
@@ -1177,10 +1153,12 @@ var router_1 = __webpack_require__("../../../router/esm5/router.js");
 var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
 var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var material_1 = __webpack_require__("../../../material/esm5/material.es5.js");
 var VenueShowComponent = (function () {
-    function VenueShowComponent(_venueService, _userService, _router) {
+    function VenueShowComponent(_venueService, _userService, dialog, _router) {
         this._venueService = _venueService;
         this._userService = _userService;
+        this.dialog = dialog;
         this._router = _router;
         this.search_text = '';
     }
@@ -1217,13 +1195,20 @@ var VenueShowComponent = (function () {
     };
     VenueShowComponent.prototype.delete = function (venue) {
         var _this = this;
-        this._venueService
-            .destroy_venue(venue)
+        this._venueService.destroy_venue(venue)
             .then(function () {
             _this.getVenues();
         })
             .catch(function (err) {
-            console.log('the error is: ', err);
+            if (err.error instanceof Error) {
+                // A client-side or network error occurred. Handle it accordingly.
+                console.log("An error occurred:", err.error.message);
+            }
+            else {
+                // The backend returned an unsuccessful response code.
+                // The response body may contain clues as to what went wrong,
+                console.log("Backend returned code " + err.status + ", body was: " + err.error);
+            }
         });
     };
     VenueShowComponent = __decorate([
@@ -1234,6 +1219,7 @@ var VenueShowComponent = (function () {
         }),
         __metadata("design:paramtypes", [venue_service_1.VenueService,
             user_service_1.UserService,
+            material_1.MatDialog,
             router_1.Router])
     ], VenueShowComponent);
     return VenueShowComponent;
@@ -1268,7 +1254,6 @@ var venue_show_component_1 = __webpack_require__("../../../../../src/app/admin/v
 var venue_new_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-new/venue-new.component.ts");
 var venue_edit_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.ts");
 var ammenity_show_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-show/ammenity-show.component.ts");
-var ammenity_new_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-new/ammenity-new.component.ts");
 var ammenity_edit_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-edit/ammenity-edit.component.ts");
 var routes = [
     {
@@ -1288,7 +1273,6 @@ var routes = [
             { path: 'venue/add', pathMatch: 'full', component: venue_new_component_1.VenueNewComponent },
             { path: 'venue/edit/:id', pathMatch: 'full', component: venue_edit_component_1.VenueEditComponent },
             { path: 'list_ammenity', pathMatch: 'full', component: ammenity_show_component_1.AmmenityShowComponent },
-            { path: 'ammenity/add', pathMatch: 'full', component: ammenity_new_component_1.AmmenityNewComponent },
             { path: 'ammenity/edit/:id', pathMatch: 'full', component: ammenity_edit_component_1.AmmenityEditComponent },
         ]
     },
@@ -1406,7 +1390,6 @@ var venue_edit_component_1 = __webpack_require__("../../../../../src/app/admin/v
 var venue_new_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-new/venue-new.component.ts");
 var venue_component_1 = __webpack_require__("../../../../../src/app/client/venue/venue.component.ts");
 var ammenity_list_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-list.component.ts");
-var ammenity_new_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-new/ammenity-new.component.ts");
 var ammenity_edit_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-edit/ammenity-edit.component.ts");
 var ammenity_show_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-show/ammenity-show.component.ts");
 var messages_component_1 = __webpack_require__("../../../../../src/app/messages/messages.component.ts");
@@ -1419,8 +1402,8 @@ var upload_component_1 = __webpack_require__("../../../../../src/app/admin/uploa
 var file_drop_directive_1 = __webpack_require__("../../../../../src/app/admin/upload/file-drop.directive.ts");
 var upload_service_1 = __webpack_require__("../../../../../src/app/services/upload.service.ts");
 var upload_form_component_1 = __webpack_require__("../../../../../src/app/admin/upload/upload-form/upload-form.component.ts");
-var dialog_service_1 = __webpack_require__("../../../../../src/app/services/dialog.service.ts");
 var google_map_component_1 = __webpack_require__("../../../../../src/app/client/google-map/google-map.component.ts");
+var popup_component_1 = __webpack_require__("../../../../../src/app/admin/popup/popup.component.ts");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -1443,14 +1426,14 @@ var AppModule = (function () {
                 venue_show_component_1.VenueShowComponent,
                 venue_component_1.VenueComponent,
                 ammenity_list_component_1.AmmenityListComponent,
-                ammenity_new_component_1.AmmenityNewComponent,
                 ammenity_edit_component_1.AmmenityEditComponent,
                 ammenity_show_component_1.AmmenityShowComponent,
                 messages_component_1.MessagesComponent,
                 upload_form_component_1.UploadFormComponent,
                 upload_component_1.UploadComponent,
                 file_drop_directive_1.FileDropDirective,
-                google_map_component_1.GoogleMapComponent
+                google_map_component_1.GoogleMapComponent,
+                popup_component_1.Dialog
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -1496,9 +1479,8 @@ var AppModule = (function () {
                     apiKey: environment_prod_1.environment.googleMapsKey
                 })
             ],
-            entryComponents: [],
+            entryComponents: [popup_component_1.Dialog],
             providers: [
-                dialog_service_1.DialogService,
                 user_service_1.UserService,
                 venue_service_1.VenueService,
                 ammenity_service_1.AmmenityService,
@@ -1584,7 +1566,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "body {\n    margin:0;\n}\n\ndiv.header {\n    width: 100%;\n}\n\n.img{\n    max-width: 50%;\n    min-width: 50%;\n    display: block;\n    margin: auto;\n}\n\nh2 {\n    text-align: center;\n}\n#search-button {\n    width: 100%;\n}\nbutton{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin: auto;\n}\n\ndiv.movie {\n    width: 20%;\n    height: 10rem;\n    border-right: 1px solid black;\n}\n\ndiv.about {\n  width: 70%;\n  height: 10rem;\n}\n\n.movie, .about {\n  display: inline-block;\n  vertical-align: top;\n  padding: 2%;\n}\n\nh2 {\n    text-align: center;\n}\n\n.spacer {\n    -webkit-box-flex: 1;\n    -ms-flex: 1 1 auto;\n    flex: 1 1 auto;\n}\n", ""]);
+exports.push([module.i, "/* Large desktops and laptops */\n@media screen and (min-width: 1280px) {\n    /******* Body ********/\n    div.movie-3d {\n        width: 100%;\n        overflow: hidden;\n    }\n\n    iframe {\n        width:1280px;\n        height: 720px;\n        margin: auto;\n    }\n}\n  \n/* Landscape tablets and medium desktops */\n@media screen and (min-width: 992px) and (max-width: 1279px) {\n    /******* Body ********/\n    div.movie-3d {\n        width: 100%;\n        overflow: hidden;\n    }\n\n    iframe {\n        width:853px;\n        height: 480px;\n        margin: auto;\n    }\n   \n}\n\n/* Portrait tablets and small desktops */\n@media screen and (min-width: 815px) and (max-width: 1199px) {\n    /******* Body ********/\n    div.movie-3d {\n        width: 100%;\n        overflow: hidden;\n    }\n\n    iframe {\n        width:640px;\n        height: 360px;\n        margin: auto;\n    }\n}\n\n@media screen and (min-width: 768px) and (max-width: 814px) {\n    /******* Body ********/\n        div.movie-3d {\n        width: 100%;\n        overflow: hidden;\n    }\n\n    iframe {\n        width:640px;\n        height: 360px;\n        margin: auto;\n    }\n\n}\n\n\n/* Landscape phones and portrait tablets */\n@media screen and (max-width: 767px) {\n    /******* Body ********/\n    div.movie-3d {\n        width: 100%;\n        overflow: hidden;\n    }\n\n    iframe {\n        width:100%;\n        margin: auto;\n    }\n}\n\n/* Portrait phones and smaller */\n@media screen and (max-width: 480px) {\n    /******* Body ********/\n    div.movie-3d {\n        width: 100%;\n        overflow: hidden;\n    }\n\n    iframe {\n        width:100%;\n        margin: auto;\n    }\n}\n\nbody {\n    margin:0;\n}\n\ndiv.header {\n    width: 100%;\n    margin: 0;\n    padding: 0;\n    background-image: url(/assets/images/texture.png);\n    background-position: center, center;\n    background-size: cover;\n}\n\n.img{\n    max-width: 50%;\n    min-width: 50%;\n    display: block;\n    margin: auto;\n}\n\nh2 {\n    text-align: center;\n}\n\n#search-button {\n    width: 100%;\n}\n\nbutton{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin: auto;\n}\n\ndiv.movie {\n    width: 20%;\n    height: 10rem;\n    border-right: 1px solid black;\n}\n\ndiv.about {\n  width: 70%;\n  height: 10rem;\n}\n\n.movie, .about {\n  display: inline-block;\n  vertical-align: top;\n  padding: 2%;\n}\n\nh2 {\n    text-align: center;\n}\n\n.spacer {\n    -webkit-box-flex: 1;\n    -ms-flex: 1 1 auto;\n    flex: 1 1 auto;\n}\n", ""]);
 
 // exports
 
@@ -1835,7 +1817,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".mat-sidenav {\n  width: 320px;\n  height: 100%;\n}", ""]);
+exports.push([module.i, ".mat-sidenav {\n  width: 500px;\n  height: 100%;\n}\n\nh1 {\n  width: 100%;\n  text-align: center;\n}\n\nimg {\n  -ms-flex-line-pack: center;\n      align-content: center;\n}", ""]);
 
 // exports
 
@@ -1848,7 +1830,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/client/venue/venue.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <mat-sidenav-container>\n    <mat-sidenav align=\"end\" mode=\"side\" opened=\"true\" disableClose=\"true\" #sidenav>\n      <mat-tab-group>\n        <mat-tab>\n          <ng-template mat-tab-label>Details</ng-template>\n          <p>Name: {{venue.name}}</p>\n          <p>Phone: {{venue.phone}}</p>\n          <p>Location: {{venue.address}}</p>\n          <p>Website:\n            <a href=\"http://{{venue.website}}\">{{venue.website}}</a>\n          </p>\n        </mat-tab>\n      </mat-tab-group>\n    </mat-sidenav>\n    <mat-sidenav-content role=\"venue\">\n      <div>\n        <h1>{{venue.name}}</h1>\n        <img src='imgs/{{venue.static_pic_url}}' alt=\"Venue Picture\">\n      </div>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>"
+module.exports = "<div>\n  <mat-sidenav-container>\n    <mat-sidenav align=\"end\" mode=\"side\" opened=\"true\" disableClose=\"true\" #sidenav>\n      <mat-tab-group>\n        <mat-tab>\n          <ng-template mat-tab-label>Details</ng-template>\n          <p>Name: {{venue.name}}</p>\n          <p>Phone: {{venue.phone}}</p>\n          <p>Location: {{venue.address}}</p>\n          <p>Website:\n            <a href=\"http://{{venue.website}}\">{{venue.website}}</a>\n          </p>\n        </mat-tab>\n      </mat-tab-group>\n    </mat-sidenav>\n    <mat-sidenav-content role=\"venue\">\n      <div>\n        <h1>{{venue.name}}</h1>\n        <img src='imgs/{{venue.static_pic_url}}' alt=\"Venue Picture\">\n      </div>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>\n<iframe width=\"100%\" height=\"720\" src=\"https://www.transported.co/t/dRMGKQzj?embeddable=true\" frameborder=\"0\" scrolling=\"no\"\n  allowfullscreen></iframe>"
 
 /***/ }),
 
@@ -2257,7 +2239,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "mat-toolbar {\n    width: 100%;\n}\n\n.spacer {\n    -webkit-box-flex: 1;\n    -ms-flex: 1 1 auto;\n    flex: 1 1 auto;\n}\n\n.header {\n    width:100%;\n    text-align: center;\n    margin-left: 5%;\n    color: #fff;\n}\n", ""]);
+exports.push([module.i, "mat-toolbar {\n    width: 100%;\n    border-bottom: 1px solid #00B8D4;\n}\n\n.spacer {\n    -webkit-box-flex: 1;\n    -ms-flex: 1 1 auto;\n    flex: 1 1 auto;\n}\n\n.header {\n    width:100%;\n    text-align: center;\n    margin-left: 5%;\n    color: #00B8D4;\n}", ""]);
 
 // exports
 
@@ -2270,7 +2252,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <h1 class=\"header\">Tulsa Venues</h1>\n    <span class=\"spacer\"></span>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#fff\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/\">Home</button>\n      <button mat-menu-item routerLink=\"/search\">Search</button>\n    </mat-menu>\n  </mat-toolbar-row>\n</mat-toolbar>\n"
+module.exports = "<mat-toolbar>\n  <mat-toolbar-row>\n    <h1 class=\"header\" color=\"primary\">Tulsa Venues</h1>\n    <span class=\"spacer\"></span>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#00B8D4\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/\">Home</button>\n      <button mat-menu-item routerLink=\"/search\">Search</button>\n    </mat-menu>\n  </mat-toolbar-row>\n</mat-toolbar>\n"
 
 /***/ }),
 
@@ -2343,11 +2325,6 @@ var AmmenityService = (function () {
             .get('/ammenities')
             .pipe(operators_1.tap(function (ammenities) { return _this.log("fetched ammenities"); }), operators_1.catchError(this.handleError('getAmmenities', [])));
     };
-    // get_ammenities() {
-    //   return this._http.get("/ammenities")
-    //     .map(data => data.json())
-    //     .toPromise();
-    // }
     AmmenityService.prototype.post_ammenity = function (ammenity) {
         var _this = this;
         return this._httpClient
@@ -2358,27 +2335,6 @@ var AmmenityService = (function () {
             return _this.log("added ammenity w/ id=" + ammenity._id);
         }), operators_1.catchError(this.handleError('addAmmenity')));
     };
-    // post_ammenity(form_data) {
-    //   console.log("*** Hit ammenity post in service");
-    //   return this._http
-    //     .post('/ammenities/add', form_data)
-    //     .map(data => data.json())
-    //     .toPromise();
-    // }
-    // post_ammenity(form_data: Ammenity, callback) {
-    //   this._http.post('/ammenities/add', form_data).subscribe(
-    //     res => callback(res.json()),
-    //     err => console.error(err)
-    //   );
-    // }
-    // delete_ammenity(ammenity: Ammenity | number): Observable<Ammenity> {
-    //   const id = typeof ammenity === "number" ? ammenity : ammenity._id;
-    //   return this._httpClient.delete<Ammenity>('/ammenities/destroy')
-    //     .pipe(
-    //       tap(_ => this.log(`deleted ammenity id=${id}`)),
-    //       catchError(this.handleError<Ammenity>('deleteAmmenity'))
-    //     );
-    // }
     AmmenityService.prototype.destroy_ammenity = function (ammenity) {
         console.log("*** Hit ammenity destroy in service");
         return this._http
@@ -2430,37 +2386,6 @@ var AmmenityService = (function () {
     return AmmenityService;
 }());
 exports.AmmenityService = AmmenityService;
-
-
-/***/ }),
-
-/***/ "../../../../../src/app/services/dialog.service.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("../../../core/esm5/core.js");
-var DialogService = (function () {
-    // tslint:disable-next-line:one-line
-    function DialogService() {
-    }
-    DialogService = __decorate([
-        core_1.Injectable(),
-        __metadata("design:paramtypes", [])
-    ], DialogService);
-    return DialogService;
-}());
-exports.DialogService = DialogService;
 
 
 /***/ }),
@@ -2680,8 +2605,7 @@ var VenueService = (function () {
     // }
     VenueService.prototype.destroy_venue = function (venue) {
         console.log('*** Hit venues service');
-        return this._http
-            .post('/venues/destroy', venue)
+        return this._http.post('/venues/destroy', venue)
             .map(function (data) { return data.json(); })
             .toPromise();
     };

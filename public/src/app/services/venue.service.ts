@@ -47,8 +47,7 @@ export class VenueService {
 
   destroy_venue(venue) {
     console.log('*** Hit venues service');
-    return this._http
-      .post('/venues/destroy', venue)
+    return this._http.post('/venues/destroy', venue)
       .map(data => data.json())
       .toPromise();
   }

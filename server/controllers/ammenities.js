@@ -38,19 +38,6 @@ module.exports = {
     });
   },
 
-  // destroy: (req, res, next) => {
-  //   console.log("logging the req.body", req.body);
-  //   let ammenity = new Ammenity(req.body);
-  //   console.log("logging the new ammenity we're gonna destroy haha", ammenity);
-  //   Ammenity.remove({ _id: ammenity._id })
-  //     .then(() => {
-  //       res.json(true);
-  //     })
-  //     .catch(err => {
-  //       res.status(500).json(err);
-  //     });
-  // },
-
   update: (req, res, next) => {
     console.log("logging the update req.body", req.body);
     let myAmmenity = new Ammenity(req.body);

@@ -1,9 +1,104 @@
+/* Large desktops and laptops */
+@media screen and (min-width: 1280px) {
+    /******* Body ********/
+    div.movie-3d {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    iframe {
+        width:1280px;
+        height: 720px;
+        margin: auto;
+    }
+}
+  
+/* Landscape tablets and medium desktops */
+@media screen and (min-width: 992px) and (max-width: 1279px) {
+    /******* Body ********/
+    div.movie-3d {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    iframe {
+        width:853px;
+        height: 480px;
+        margin: auto;
+    }
+   
+}
+
+/* Portrait tablets and small desktops */
+@media screen and (min-width: 815px) and (max-width: 1199px) {
+    /******* Body ********/
+    div.movie-3d {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    iframe {
+        width:640px;
+        height: 360px;
+        margin: auto;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 814px) {
+    /******* Body ********/
+        div.movie-3d {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    iframe {
+        width:640px;
+        height: 360px;
+        margin: auto;
+    }
+
+}
+
+
+/* Landscape phones and portrait tablets */
+@media screen and (max-width: 767px) {
+    /******* Body ********/
+    div.movie-3d {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    iframe {
+        width:100%;
+        margin: auto;
+    }
+}
+
+/* Portrait phones and smaller */
+@media screen and (max-width: 480px) {
+    /******* Body ********/
+    div.movie-3d {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    iframe {
+        width:100%;
+        margin: auto;
+    }
+}
+
 body {
     margin:0;
 }
 
 div.header {
     width: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url(/assets/images/texture.png);
+    background-position: center, center;
+    background-size: cover;
 }
 
 .img{
@@ -16,9 +111,11 @@ div.header {
 h2 {
     text-align: center;
 }
+
 #search-button {
     width: 100%;
 }
+
 button{
     display: flex;
     margin: auto;

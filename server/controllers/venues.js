@@ -170,15 +170,18 @@ module.exports = {
   destroy: (req, res, next) => {
     console.log("*** logging the req.body", req.body);
     let venue = new Venue(req.body);
-    console.log("*** logging the venue that is going to be destroid", venue);
-    Venue.remove({ _id: venue._id })
-      .then(() => {
-        res.json(true);
-      })
-      .catch(err => {
-        res.status(500).json(err);
-      });
+    console.log("*** logging the new venue to be deleted", venue);
+    Venue.findByIdAndRemove({ _id: venue._id }, (err, venue) => {
+      if (err) {
+        return next(err);
+      }
+      console.log("*** Deleted venue")
+      return res.json(true);
+    });
   },
+
+
+
 
   update: (req, res, next) => {
     console.log("*** logging the update req.body", req.body);

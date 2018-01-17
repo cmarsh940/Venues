@@ -6,7 +6,8 @@
     <!-- Name -->
     <mat-form-field>
       <input 
-        matInput name="name" 
+        matInput 
+        name="name" 
         required 
         maxlength=250 
         [(ngModel)]="new_venue.name" 
@@ -108,7 +109,7 @@
           [(ngModel)]="new_venue.minAmmount" 
           placeholder="Min-ammount" 
           class="right-align"
-          >
+        />
         <span matSuffix>.00</span>
       </mat-form-field>
 
@@ -123,7 +124,7 @@
           [(ngModel)]="new_venue.maxAmmount" 
           placeholder="Max-ammount" 
           class="right-align"
-          >
+        />
         <span matSuffix>.00</span>
       </mat-form-field>
     </div>
@@ -131,8 +132,8 @@
 
     <!-- Ammenities -->
     <!-- <mat-form-field>
-      <mat-select placeholder="Ammenities" [formControl]="ammenities" multiple>
-        <mat-option *ngFor="let ammenity of ammenitiesList" [value]="ammenity">{{ammenities}}</mat-option>
+      <mat-select placeholder="Select" [formControl]="ammenitiesControl" multiple>
+        <mat-option *ngFor="let ammenity of ammenitiesList; let i = index" name="" [value]="ammenity" [(ngModel)]="new_venue.ammenities">{{ammenity.name}}</mat-option>
       </mat-select>
     </mat-form-field> -->
 
