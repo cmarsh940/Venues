@@ -34,16 +34,16 @@ export class VenueService {
 
   post_venue(form_data) {
     return this._http
-      .post('/venues/add', form_data)
+      .post('/venues/create', form_data)
       .map(data => data.json())
       .toPromise();
   }
-  post_to_s3(form_data) {
-    return this._http
-      .post('/venues/upload', form_data)
-      .map(data => data.json())
-      .toPromise();
-  }
+  // post_to_s3(form_data) {
+  //   return this._http
+  //     .post('/venues/upload', form_data)
+  //     .map(data => data.json())
+  //     .toPromise();
+  // }
 
   destroy_venue(venue) {
     console.log('*** Hit venues service');

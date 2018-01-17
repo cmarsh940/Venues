@@ -43,7 +43,7 @@ module.exports = app => {
     // VENUES
     app.get("/venues", venues.index);
     app.post("/venues/upload", venues.upload);
-    app.post("/venues/add", venues.add);
+    app.post("/venues/create", venues.create);
     app.post("/venues/destroy", venues.destroy);
     app.post("/venues/update", venues.update);
     app.post("/venues/id", venues.getOne);

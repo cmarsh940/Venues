@@ -20,7 +20,7 @@ const routes: Routes = [
     children: [
       { path: '', pathMatch: 'full', component: DashboardComponent },
       { path: 'search', pathMatch: 'full', component: VenueSearchComponent },
-      { path: 'venue/:id', pathMatch: 'full', component: VenueComponent },
+      { path: 'venue/display/:id', pathMatch: 'full', component: VenueComponent },
     ]
   },
   { path: 'admin', pathMatch: 'full', component: LoginComponent },

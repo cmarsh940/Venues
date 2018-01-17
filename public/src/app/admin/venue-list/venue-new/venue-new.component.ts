@@ -49,20 +49,4 @@ export class VenueNewComponent implements OnInit {
       this._router.navigate(['/list_venue']);
     });
   }
-
-  // create_venue() {
-  //   const form_data = new FormData(this.my_form.nativeElement);
-
-  //   console.log("*** This is the form data", form_data);
-  //   this._venueService.post_venue(form_data)
-  //     .then(() => {
-  //       console.log("*** Setting new venue");
-  //       this.new_venue = new Venue;
-  //       console.log("*** Setting file value");
-  //       this.file_input.nativeElement.value = "";
-  //       console.log("*** About to emit");
-  //       this.new_venue_event.emit();
-  //       this._router.navigate(['/list_venue']);
-  //     });
-  // }
 }

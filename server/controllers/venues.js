@@ -133,7 +133,7 @@ module.exports = {
   //   req.pipe(busboy);
   // },
 
-  add: (req, res) => {
+  create: (req, res) => {
     console.log("*** hit server for creating a venue");
     let new_venue = new Venue(req.body);
     console.log(new_venue);
@@ -191,6 +191,10 @@ module.exports = {
         venue.phone = myVenue.phone;
         venue.address = myVenue.address;
         venue.website = myVenue.website;
+        venue.lat = myVenue.lat;
+        venue.lng = myVenue.lng;
+        venue.minAmmount = myVenue.minAmmount;
+        venue.maxAmmount = myVenue.maxAmmount;
         venue
           .save()
           .then(() => {

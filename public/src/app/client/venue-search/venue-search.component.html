@@ -15,7 +15,7 @@
           <p>Phone: {{currentVenue.phone}}</p>
           <p>Location: {{currentVenue.address}}</p>
           <p>Website: <a href="http://{{currentVenue.website}}">{{currentVenue.website}}</a></p>
-          <button mat-raised-button [routerLink]="['/venue', currentVenue._id]" color="accent">View More Details</button>
+          <button mat-raised-button [routerLink]="['/venue', 'display', currentVenue._id]" color="accent">View More Details</button>
         </mat-tab>
         <mat-tab>
           <ng-template mat-tab-label>Photos</ng-template>
