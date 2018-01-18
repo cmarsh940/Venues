@@ -17,71 +17,6 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_lazy_route_resource lazy re
 
 /***/ }),
 
-/***/ "../../../../../src/app/admin-nav/admin-nav.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".spacer {\n  -webkit-box-flex: 1;\n  -ms-flex: 1 1 auto;\n  flex: 1 1 auto;\n}\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/admin-nav/admin-nav.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/dashboard\">Home</button>\n      <button mat-menu-item routerLink=\"/list_venue\">Venues</button>\n      <button mat-menu-item routerLink=\"/list_ammenity\">Ammenities</button>\n    </mat-menu>\n    <span class=\"spacer\"></span>\n    <button mat-icon-button [routerLink]=\"['/']\" (click)='logout()'>\n      <mat-icon aria-label=\"Logout button\">exit_to_app</mat-icon>\n    </button>\n  </mat-toolbar-row>\n</mat-toolbar>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/admin-nav/admin-nav.component.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("../../../core/esm5/core.js");
-var AdminNavComponent = (function () {
-    function AdminNavComponent() {
-    }
-    AdminNavComponent.prototype.ngOnInit = function () {
-    };
-    AdminNavComponent.prototype.logout = function () {
-        console.log("you are logged out");
-        sessionStorage.removeItem('currentUser');
-    };
-    AdminNavComponent = __decorate([
-        core_1.Component({
-            selector: 'app-admin-nav',
-            template: __webpack_require__("../../../../../src/app/admin-nav/admin-nav.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/admin-nav/admin-nav.component.css")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], AdminNavComponent);
-    return AdminNavComponent;
-}());
-exports.AdminNavComponent = AdminNavComponent;
-
-
-/***/ }),
-
 /***/ "../../../../../src/app/admin/admin-dashboard/admin-dashboard.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -521,75 +456,6 @@ var AmmenityShowComponent = (function () {
     return AmmenityShowComponent;
 }());
 exports.AmmenityShowComponent = AmmenityShowComponent;
-
-
-/***/ }),
-
-/***/ "../../../../../src/app/admin/popup/popup.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/admin/popup/popup.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<h1 mat-dialog-title>Delete Venue</h1>\n<div mat-dialog-content>\n  <p>Are you sure?</p>\n</div>\n<div mat-dialog-actions>\n  <button mat-button [mat-dialog-close]=\"data\">CANCEL</button>\n  <button mat-button (click)=\"delete(venue)\" cdkFocusInitial>YES</button>\n</div>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/admin/popup/popup.component.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("../../../core/esm5/core.js");
-var material_1 = __webpack_require__("../../../material/esm5/material.es5.js");
-var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
-var Dialog = (function () {
-    function Dialog(_venueService, dialogRef, data) {
-        this._venueService = _venueService;
-        this.dialogRef = dialogRef;
-        this.data = data;
-    }
-    Dialog = __decorate([
-        core_1.Component({
-            selector: 'app-popup',
-            template: __webpack_require__("../../../../../src/app/admin/popup/popup.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/admin/popup/popup.component.css")]
-        }),
-        __param(2, core_1.Inject(material_1.MAT_DIALOG_DATA)),
-        __metadata("design:paramtypes", [venue_service_1.VenueService,
-            material_1.MatDialogRef, Object])
-    ], Dialog);
-    return Dialog;
-}());
-exports.Dialog = Dialog;
 
 
 /***/ }),
@@ -1242,7 +1108,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var venue_component_1 = __webpack_require__("../../../../../src/app/client/venue/venue.component.ts");
-var login_component_1 = __webpack_require__("../../../../../src/app/login/login.component.ts");
+var login_component_1 = __webpack_require__("../../../../../src/app/auth/login/login.component.ts");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var router_1 = __webpack_require__("../../../router/esm5/router.js");
 var client_component_1 = __webpack_require__("../../../../../src/app/client/client.component.ts");
@@ -1255,6 +1121,7 @@ var venue_new_component_1 = __webpack_require__("../../../../../src/app/admin/ve
 var venue_edit_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.ts");
 var ammenity_show_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-show/ammenity-show.component.ts");
 var ammenity_edit_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-edit/ammenity-edit.component.ts");
+var rights_component_1 = __webpack_require__("../../../../../src/app/structure/footer/rights/rights.component.ts");
 var routes = [
     {
         path: '', component: client_component_1.ClientComponent,
@@ -1262,6 +1129,7 @@ var routes = [
             { path: '', pathMatch: 'full', component: dashboard_component_1.DashboardComponent },
             { path: 'search', pathMatch: 'full', component: venue_search_component_1.VenueSearchComponent },
             { path: 'venue/display/:id', pathMatch: 'full', component: venue_component_1.VenueComponent },
+            { path: 'rights', pathMatch: 'full', component: rights_component_1.Rights }
         ]
     },
     { path: 'admin', pathMatch: 'full', component: login_component_1.LoginComponent },
@@ -1378,12 +1246,12 @@ var core_2 = __webpack_require__("../../../../@agm/core/index.js");
 var app_component_1 = __webpack_require__("../../../../../src/app/app.component.ts");
 var admin_component_1 = __webpack_require__("../../../../../src/app/admin/admin.component.ts");
 var client_component_1 = __webpack_require__("../../../../../src/app/client/client.component.ts");
-var footer_component_1 = __webpack_require__("../../../../../src/app/footer/footer.component.ts");
-var nav_component_1 = __webpack_require__("../../../../../src/app/nav/nav.component.ts");
-var login_component_1 = __webpack_require__("../../../../../src/app/login/login.component.ts");
+var footer_component_1 = __webpack_require__("../../../../../src/app/structure/footer/footer.component.ts");
+var nav_component_1 = __webpack_require__("../../../../../src/app/structure/nav/nav.component.ts");
+var login_component_1 = __webpack_require__("../../../../../src/app/auth/login/login.component.ts");
 var dashboard_component_1 = __webpack_require__("../../../../../src/app/client/dashboard/dashboard.component.ts");
 var admin_dashboard_component_1 = __webpack_require__("../../../../../src/app/admin/admin-dashboard/admin-dashboard.component.ts");
-var admin_nav_component_1 = __webpack_require__("../../../../../src/app/admin-nav/admin-nav.component.ts");
+var admin_nav_component_1 = __webpack_require__("../../../../../src/app/structure/admin-nav/admin-nav.component.ts");
 var venue_search_component_1 = __webpack_require__("../../../../../src/app/client/venue-search/venue-search.component.ts");
 var venue_list_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-list.component.ts");
 var venue_edit_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.ts");
@@ -1393,17 +1261,18 @@ var ammenity_list_component_1 = __webpack_require__("../../../../../src/app/admi
 var ammenity_edit_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-edit/ammenity-edit.component.ts");
 var ammenity_show_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-show/ammenity-show.component.ts");
 var messages_component_1 = __webpack_require__("../../../../../src/app/messages/messages.component.ts");
-var ammenity_service_1 = __webpack_require__("../../../../../src/app/services/ammenity.service.ts");
-var message_service_1 = __webpack_require__("../../../../../src/app/services/message.service.ts");
-var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
-var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
-var material_1 = __webpack_require__("../../../material/esm5/material.es5.js");
 var upload_component_1 = __webpack_require__("../../../../../src/app/admin/upload/upload.component.ts");
 var file_drop_directive_1 = __webpack_require__("../../../../../src/app/admin/upload/file-drop.directive.ts");
 var upload_service_1 = __webpack_require__("../../../../../src/app/services/upload.service.ts");
 var upload_form_component_1 = __webpack_require__("../../../../../src/app/admin/upload/upload-form/upload-form.component.ts");
 var google_map_component_1 = __webpack_require__("../../../../../src/app/client/google-map/google-map.component.ts");
-var popup_component_1 = __webpack_require__("../../../../../src/app/admin/popup/popup.component.ts");
+var popup_component_1 = __webpack_require__("../../../../../src/app/messages/popup/popup.component.ts");
+var rights_component_1 = __webpack_require__("../../../../../src/app/structure/footer/rights/rights.component.ts");
+var ammenity_service_1 = __webpack_require__("../../../../../src/app/services/ammenity.service.ts");
+var message_service_1 = __webpack_require__("../../../../../src/app/services/message.service.ts");
+var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
+var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
+var material_1 = __webpack_require__("../../../material/esm5/material.es5.js");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -1433,7 +1302,8 @@ var AppModule = (function () {
                 upload_component_1.UploadComponent,
                 file_drop_directive_1.FileDropDirective,
                 google_map_component_1.GoogleMapComponent,
-                popup_component_1.Dialog
+                popup_component_1.Dialog,
+                rights_component_1.Rights
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -1493,6 +1363,124 @@ var AppModule = (function () {
     return AppModule;
 }());
 exports.AppModule = AppModule;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/auth/login/login.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "form {\n    width: 25%;\n    margin: auto;\n}\n.mat-form-field {\n    display: block;\n}\n\np {\n    text-align: center;\n    color: red;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/auth/login/login.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n  <form (submit)=\"loginUser(); loginForm.reset()\" #loginForm=\"ngForm\">\n    <!-- ** EMAIL ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your email\" autocomplete=\"email\" name=\"email\" [formControl]=\"email\" required [(ngModel)]=\"currentUser.email\">\n      <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n    </mat-form-field>\n\n  <!-- **  PASSWORD ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your password\" autocomplete=\"current-password\" name=\"password\" required [(ngModel)]=\"currentUser.password\" [type]=\"hide ? 'password' : 'text'\">\n      <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n    </mat-form-field>\n    <button type=\"submit\" value=\"Login\" [disabled]=\"!currentUser.email\">\n      <h3>Login<i class=\"material-icons\">arrow forward</i></h3>\n    </button>\n  </form>\n  <div>\n    <p *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div>\n\n\n<!-- <div class=\"col-4\">\n  <form (submit)=\"createUser()\" class=\"form\">\n    <div class=\"form-input\">\n      <label>Name</label>\n      <input type=\"text\" name=\"name\" [(ngModel)]=\"newUser.name\">\n    </div>\n    <div class=\"form-input\">\n      <label>Email</label>\n      <input type=\"text\" name=\"email\" [(ngModel)]=\"newUser.email\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password</label>\n      <input type=\"text\" name=\"password\" [(ngModel)]=\"newUser.password\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password Confirmation</label>\n      <input type=\"text\" name=\"password_confirmation\" [(ngModel)]=\"newUser.password_confirmation\">\n    </div>\n    <div>\n      <input class=\"btn btn-primary\" type=\"submit\" value=\"Register\">\n    </div>\n  </form>\n  <div>\n    <p *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div> -->\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/auth/login/login.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var router_1 = __webpack_require__("../../../router/esm5/router.js");
+var forms_1 = __webpack_require__("../../../forms/esm5/forms.js");
+var user_1 = __webpack_require__("../../../../../src/app/models/user.ts");
+var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
+var LoginComponent = (function () {
+    function LoginComponent(_userService, _router) {
+        this._userService = _userService;
+        this._router = _router;
+        this.currentUser = new user_1.User();
+        this.newUser = new user_1.User();
+        this.errors = [];
+        this.hide = true;
+        this.email = new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.email]);
+    }
+    LoginComponent.prototype.getErrorMessage = function () {
+        return this.email.hasError('required') ? 'You must enter a value' :
+            this.email.hasError('email') ? 'Not a valid email' :
+                '';
+    };
+    LoginComponent.prototype.ngOnInit = function () {
+        this.currentUser.email = 'test@test.test';
+        this.currentUser.password = 'Marshal1';
+        this.loginUser();
+    };
+    LoginComponent.prototype.loginUser = function () {
+        var _this = this;
+        this.errors = [];
+        this._userService.authenticate(this.currentUser, function (user) {
+            console.log(user);
+            if (user.errors) {
+                for (var _i = 0, _a = Object.keys(user.errors); _i < _a.length; _i++) {
+                    var key = _a[_i];
+                    var error = user.errors[key];
+                    _this.errors.push(error.message);
+                }
+            }
+            else {
+                _this._userService.setCurrentUser(user);
+                _this._router.navigateByUrl('/dashboard');
+            }
+        });
+    };
+    LoginComponent.prototype.createUser = function () {
+        var _this = this;
+        this.errors = [];
+        return this._userService.createUser(this.newUser)
+            .then(function (user) {
+            console.log(user);
+            if (user.errors) {
+                for (var key in user.errors) {
+                    var error = user.error[key];
+                    _this.errors.push(error.message);
+                }
+            }
+            else {
+                _this._userService.setCurrentUser(user);
+                _this._router.navigateByUrl('/dashboard');
+            }
+        })
+            .catch(function (err) { return console.log(err); });
+    };
+    LoginComponent = __decorate([
+        core_1.Component({
+            selector: 'app-login',
+            template: __webpack_require__("../../../../../src/app/auth/login/login.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/auth/login/login.component.css")]
+        }),
+        __metadata("design:paramtypes", [user_service_1.UserService,
+            router_1.Router])
+    ], LoginComponent);
+    return LoginComponent;
+}());
+exports.LoginComponent = LoginComponent;
 
 
 /***/ }),
@@ -1685,9 +1673,6 @@ var GoogleMapComponent = (function () {
     function GoogleMapComponent() {
         // google maps zoom level
         this.zoom = 8;
-        // initial center position for the map
-        this.lat = 36.153883;
-        this.lng = -95.990629;
     }
     GoogleMapComponent.prototype.ngOnInit = function () {
         // this.getUserLocation();
@@ -1924,185 +1909,6 @@ exports.VenueComponent = VenueComponent;
 
 /***/ }),
 
-/***/ "../../../../../src/app/footer/footer.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "footer {\n    width: 100%;\n    text-align: center;\n    background: gainsboro;\n    margin-top: 5%;\n}\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/footer/footer.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<!-- Page Footer -->\n<footer>\n  <div >\n    \n  </div>\n  <div class='copyright'>\n    <p>Copyright\n      <a href=\"https://www.baldridgephotography.com\">&copy; 2018 TulsaVenues, a Baldridge Photography LLC company. All Rights Reserved.</a>\n    </p>\n  </div>\n  <!--/.Copyright-->\n</footer>\n<!-- end-footer -->\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/footer/footer.component.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("../../../core/esm5/core.js");
-var FooterComponent = (function () {
-    function FooterComponent() {
-    }
-    FooterComponent.prototype.ngOnInit = function () {
-    };
-    FooterComponent = __decorate([
-        core_1.Component({
-            selector: 'app-footer',
-            template: __webpack_require__("../../../../../src/app/footer/footer.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/footer/footer.component.css")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], FooterComponent);
-    return FooterComponent;
-}());
-exports.FooterComponent = FooterComponent;
-
-
-/***/ }),
-
-/***/ "../../../../../src/app/login/login.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "form {\n    width: 25%;\n    margin: auto;\n}\n.mat-form-field {\n    display: block;\n}\n\np {\n    text-align: center;\n    color: red;\n}", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/login/login.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container\">\n  <form (submit)=\"loginUser(); loginForm.reset()\" #loginForm=\"ngForm\">\n    <!-- ** EMAIL ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your email\" autocomplete=\"email\" name=\"email\" [formControl]=\"email\" required [(ngModel)]=\"currentUser.email\">\n      <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n    </mat-form-field>\n\n  <!-- **  PASSWORD ** -->\n    <mat-form-field>\n      <input matInput placeholder=\"Enter your password\" autocomplete=\"current-password\" name=\"password\" required [(ngModel)]=\"currentUser.password\" [type]=\"hide ? 'password' : 'text'\">\n      <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n    </mat-form-field>\n    <button type=\"submit\" value=\"Login\" [disabled]=\"!currentUser.email\">\n      <h3>Login<i class=\"material-icons\">arrow forward</i></h3>\n    </button>\n  </form>\n  <div>\n    <p *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div>\n\n\n<!-- <div class=\"col-4\">\n  <form (submit)=\"createUser()\" class=\"form\">\n    <div class=\"form-input\">\n      <label>Name</label>\n      <input type=\"text\" name=\"name\" [(ngModel)]=\"newUser.name\">\n    </div>\n    <div class=\"form-input\">\n      <label>Email</label>\n      <input type=\"text\" name=\"email\" [(ngModel)]=\"newUser.email\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password</label>\n      <input type=\"text\" name=\"password\" [(ngModel)]=\"newUser.password\">\n    </div>\n    <div class=\"form-input\">\n      <label>Password Confirmation</label>\n      <input type=\"text\" name=\"password_confirmation\" [(ngModel)]=\"newUser.password_confirmation\">\n    </div>\n    <div>\n      <input class=\"btn btn-primary\" type=\"submit\" value=\"Register\">\n    </div>\n  </form>\n  <div>\n    <p *ngFor=\"let error of errors\">{{ error }}</p>\n  </div>\n</div> -->\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/login/login.component.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
-var core_1 = __webpack_require__("../../../core/esm5/core.js");
-var router_1 = __webpack_require__("../../../router/esm5/router.js");
-var forms_1 = __webpack_require__("../../../forms/esm5/forms.js");
-var user_1 = __webpack_require__("../../../../../src/app/models/user.ts");
-var LoginComponent = (function () {
-    function LoginComponent(_userService, _router) {
-        this._userService = _userService;
-        this._router = _router;
-        this.currentUser = new user_1.User();
-        this.newUser = new user_1.User();
-        this.errors = [];
-        this.hide = true;
-        this.email = new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.email]);
-    }
-    LoginComponent.prototype.getErrorMessage = function () {
-        return this.email.hasError('required') ? 'You must enter a value' :
-            this.email.hasError('email') ? 'Not a valid email' :
-                '';
-    };
-    LoginComponent.prototype.ngOnInit = function () {
-        this.currentUser.email = 'test@test.test';
-        this.currentUser.password = 'Marshal1';
-        this.loginUser();
-    };
-    LoginComponent.prototype.loginUser = function () {
-        var _this = this;
-        this.errors = [];
-        this._userService.authenticate(this.currentUser, function (user) {
-            console.log(user);
-            if (user.errors) {
-                for (var _i = 0, _a = Object.keys(user.errors); _i < _a.length; _i++) {
-                    var key = _a[_i];
-                    var error = user.errors[key];
-                    _this.errors.push(error.message);
-                }
-            }
-            else {
-                _this._userService.setCurrentUser(user);
-                _this._router.navigateByUrl('/dashboard');
-            }
-        });
-    };
-    LoginComponent.prototype.createUser = function () {
-        var _this = this;
-        this.errors = [];
-        return this._userService.createUser(this.newUser)
-            .then(function (user) {
-            console.log(user);
-            if (user.errors) {
-                for (var key in user.errors) {
-                    var error = user.error[key];
-                    _this.errors.push(error.message);
-                }
-            }
-            else {
-                _this._userService.setCurrentUser(user);
-                _this._router.navigateByUrl('/dashboard');
-            }
-        })
-            .catch(function (err) { return console.log(err); });
-    };
-    LoginComponent = __decorate([
-        core_1.Component({
-            selector: 'app-login',
-            template: __webpack_require__("../../../../../src/app/login/login.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/login/login.component.css")]
-        }),
-        __metadata("design:paramtypes", [user_service_1.UserService,
-            router_1.Router])
-    ], LoginComponent);
-    return LoginComponent;
-}());
-exports.LoginComponent = LoginComponent;
-
-
-/***/ }),
-
 /***/ "../../../../../src/app/messages/messages.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2161,6 +1967,75 @@ var MessagesComponent = (function () {
     return MessagesComponent;
 }());
 exports.MessagesComponent = MessagesComponent;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/messages/popup/popup.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/messages/popup/popup.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<h1 mat-dialog-title>Delete Venue</h1>\n<div mat-dialog-content>\n  <p>Are you sure?</p>\n</div>\n<div mat-dialog-actions>\n  <button mat-button [mat-dialog-close]=\"data\">CANCEL</button>\n  <button mat-button (click)=\"delete(venue)\" cdkFocusInitial>YES</button>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/messages/popup/popup.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var material_1 = __webpack_require__("../../../material/esm5/material.es5.js");
+var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
+var Dialog = (function () {
+    function Dialog(_venueService, dialogRef, data) {
+        this._venueService = _venueService;
+        this.dialogRef = dialogRef;
+        this.data = data;
+    }
+    Dialog = __decorate([
+        core_1.Component({
+            selector: 'app-popup',
+            template: __webpack_require__("../../../../../src/app/messages/popup/popup.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/messages/popup/popup.component.css")]
+        }),
+        __param(2, core_1.Inject(material_1.MAT_DIALOG_DATA)),
+        __metadata("design:paramtypes", [venue_service_1.VenueService,
+            material_1.MatDialogRef, Object])
+    ], Dialog);
+    return Dialog;
+}());
+exports.Dialog = Dialog;
 
 
 /***/ }),
@@ -2227,67 +2102,6 @@ var Venue = (function () {
     return Venue;
 }());
 exports.Venue = Venue;
-
-
-/***/ }),
-
-/***/ "../../../../../src/app/nav/nav.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "mat-toolbar {\n    width: 100%;\n    border-bottom: 1px solid #00B8D4;\n}\n\n.spacer {\n    -webkit-box-flex: 1;\n    -ms-flex: 1 1 auto;\n    flex: 1 1 auto;\n}\n\n.header {\n    width:100%;\n    text-align: center;\n    margin-left: 5%;\n    color: #00B8D4;\n}", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/nav/nav.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<mat-toolbar>\n  <mat-toolbar-row>\n    <h1 class=\"header\" color=\"primary\">Tulsa Venues</h1>\n    <span class=\"spacer\"></span>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#00B8D4\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/\">Home</button>\n      <button mat-menu-item routerLink=\"/search\">Search</button>\n    </mat-menu>\n  </mat-toolbar-row>\n</mat-toolbar>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/nav/nav.component.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("../../../core/esm5/core.js");
-var NavComponent = (function () {
-    function NavComponent() {
-    }
-    NavComponent.prototype.ngOnInit = function () {
-    };
-    NavComponent = __decorate([
-        core_1.Component({
-            selector: 'app-nav',
-            template: __webpack_require__("../../../../../src/app/nav/nav.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/nav/nav.component.css")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], NavComponent);
-    return NavComponent;
-}());
-exports.NavComponent = NavComponent;
 
 
 /***/ }),
@@ -2665,6 +2479,252 @@ var VenueService = (function () {
     return VenueService;
 }());
 exports.VenueService = VenueService;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/structure/admin-nav/admin-nav.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".spacer {\n  -webkit-box-flex: 1;\n  -ms-flex: 1 1 auto;\n  flex: 1 1 auto;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/structure/admin-nav/admin-nav.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/dashboard\">Home</button>\n      <button mat-menu-item routerLink=\"/list_venue\">Venues</button>\n      <button mat-menu-item routerLink=\"/list_ammenity\">Ammenities</button>\n    </mat-menu>\n    <span class=\"spacer\"></span>\n    <button mat-icon-button [routerLink]=\"['/']\" (click)='logout()'>\n      <mat-icon aria-label=\"Logout button\">exit_to_app</mat-icon>\n    </button>\n  </mat-toolbar-row>\n</mat-toolbar>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/structure/admin-nav/admin-nav.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var AdminNavComponent = (function () {
+    function AdminNavComponent() {
+    }
+    AdminNavComponent.prototype.ngOnInit = function () {
+    };
+    AdminNavComponent.prototype.logout = function () {
+        console.log("you are logged out");
+        sessionStorage.removeItem('currentUser');
+    };
+    AdminNavComponent = __decorate([
+        core_1.Component({
+            selector: 'app-admin-nav',
+            template: __webpack_require__("../../../../../src/app/structure/admin-nav/admin-nav.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/structure/admin-nav/admin-nav.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], AdminNavComponent);
+    return AdminNavComponent;
+}());
+exports.AdminNavComponent = AdminNavComponent;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/structure/footer/footer.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "footer {\n    width: 100%;\n    text-align: center;\n    background: gainsboro;\n    margin-top: 5%;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/structure/footer/footer.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<!-- Page Footer -->\n<footer>\n  <div >\n    \n  </div>\n  <div class='copyright'>\n    <p>Copyright\n      <a routerLink=\"/rights\">&copy; 2018 TulsaVenues. All Rights Reserved.</a>\n    </p>\n  </div>\n  <!--/.Copyright-->\n</footer>\n<!-- end-footer -->\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/structure/footer/footer.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var FooterComponent = (function () {
+    function FooterComponent() {
+    }
+    FooterComponent.prototype.ngOnInit = function () {
+    };
+    FooterComponent = __decorate([
+        core_1.Component({
+            selector: 'app-footer',
+            template: __webpack_require__("../../../../../src/app/structure/footer/footer.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/structure/footer/footer.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], FooterComponent);
+    return FooterComponent;
+}());
+exports.FooterComponent = FooterComponent;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/structure/footer/rights/rights.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "div.container {\n    max-width: 100%;\n    min-width: 100%;\n}\n\nh1 {\n    text-align: center;\n}\n\ndiv.col {\n    margin: 5%;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/structure/footer/rights/rights.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n    <section class=\"rights\">\n        <div class=\"col\">\n            <h1>Privacy / Rights and Use Information (Updated 2/1/2018)</h1>\n            <span>\n                By using this site, you agree to the conditions set forth below (this \"Agreement\"). If you disagree with any of the conditions\n                of this Agreement, do not use this site. We reserve the right to change this Agreement at any time, so\n                please check for changes to this Agreement each time you use this site. Your continued use of this site\n                following the posting of changes to this Agreement means that you accept those changes.\n            </span>\n            <h3>Licenses and Restrictions</h3>\n            <span>\n                This site is owned and operated by Baldridge Photography (hereinafter \"we\", \"us\", or a similar term). Material found at this\n                site (including visuals, text, displays, databases, media, and general information) is owned or licensed\n                by us. Unless otherwise indicated, individuals may: post material from portions of this site to another\n                website or on a computer network for their own personal, noncommercial use; and view, download, and print\n                materials from this site for their own personal, noncommercial use. In this regard, materials may not\n                be posted from this site to another website. In addition, materials from this site may be reproduced\n                by media personnel for use in traditional public news forums unless otherwise indicated. Any other use\n                of information or materials found at this site, including any use by organizations or legal entities,\n                is not permitted without our prior written permission. (See “Permission to Use Copyrights and Trademarks”\n                below.) Notwithstanding the foregoing, we reserve sole discretion and right to deny, revoke, or limit\n                use of this site, including the reproduction and any other use of any materials available through this\n                site. It is not our responsibility, however, to determine what “fair use” means for persons wishing to\n                use materials from this site. That remains wholly a responsibility of individual users of this site.\n                Furthermore, we are not required to give additional source citations, or to guarantee that the materials\n                of this site are cleared for any alternate use. Such responsibility also ultimately remains with individual\n                users of this site. However, we maintain the right to prevent infringement of Baldridge Photography materials\n                and to interpret “fair use” as we understand the law.\n            </span>\n            <h3>Permission to Use Copyrights and Trademarks</h3>\n            <span>\n                To request permission for use of Baldridge Photography copyrighted material or trademarks, please contact us at Phone: (918)576-8468\n                E-mail: BaldridgePhotography@gmail.com\n            </span>\n            <h3>Request Permission</h3>\n            <span>\n                Note: The approximate time frame for receiving a reply is 45 days. Requests involving considerable quantities of material\n                may take longer.\n            </span>\n            <h3>Code of Conduct</h3>\n            <span>\n                You agree that you will not individually, or as part of any collective effort, submit or post information to this site that\n                could be deemed harmful or offensive to other users, nor will you impersonate another user in order to\n                hide your identity or implicate another in such actions. You agree to do nothing that might disrupt the\n                flow of data to and from this site, impact the service or performance of this site, or circumvent any\n                of the controls or usage rules that we have implemented. You understand that the result of harmful or\n                offensive actions may include revocation of your right to use this site (including your right to use\n                any materials from this site) and legal action against you.\n            </span>\n            <h3>Linking</h3>\n            <span>\n                For your convenience, this site may contain links to websites operated by others. Such third-party sites are not maintained\n                or controlled by us, and we are not responsible for their content. Although we have made a good faith\n                effort to link only to tasteful, appropriate sites, some may contain inappropriate or objectionable material.\n                If you find such material while using a website that you accessed through a link on this site, please\n                notify us immediately. We believe that those who make information available on the Internet expect that\n                it will be publicly and widely available. Therefore, we believe that linking to other sites is legally\n                permissible and consistent with the expectations of those who use the Internet. However, if access to\n                a particular website should be restricted, the operator of such site should promptly notify us.\n            </span>\n            <h3>Jurisdiction and Applicable Law</h3>\n            <span>\n                This Agreement shall be governed by the laws of the State of Texas, United States of America, as applied to agreements entered\n                into and to be performed entirely within the state, without giving effect to any principles of conflicts\n                of law. Any action you bring to enforce this Agreement or any matters related to this site shall be brought\n                in either the state or federal courts located in Denton, Texas, and you hereby consent and submit to\n                the personal jurisdiction of such courts for the purposes of litigating any such action. If any provision\n                of this Agreement is unlawful, void, or unenforceable in whole or in part, the remaining provisions shall\n                not be affected, unless we determine that the invalid or unenforceable provision is an essential term\n                to the Agreement, in which case we may at our sole discretion amend this Agreement.\n            </span>\n            <h3>Limitations of Liability</h3>\n            <span>\n                We are not liable for any special or consequential damages resulting from your use of, or your inability to use, this site\n                or the materials in this site or any linked site, including, but not limited to, lost profits, business\n                interruption, and loss of programs or other data on your information handling system. In no event shall\n                our total liability to you for all damages, losses, and causes of action exceed the amount paid by you,\n                if any, for accessing this site or any linked site.\n            </span>\n            <h3>Disclaimers</h3>\n            <span>\n                THIS SITE AND THE MATERIALS AT THIS SITE AND ANY LINKED SITE ARE PROVIDED “AS IS” AND WITHOUT WARRANTIES OF ANY KIND, EITHER\n                EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMISSIBLE PURSUANT TO APPLICABLE LAW, WE DISCLAIM ALL WARRANTIES,\n                EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, WARRANTIES OF TITLE AND IMPLIED WARRANTIES OF MERCHANTABILITY\n                AND FITNESS FOR A PARTICULAR PURPOSE. WE DO NOT WARRANT THAT THE FUNCTIONS OF THIS SITE WILL BE UNINTERRUPTED\n                OR ERROR FREE, THAT DEFECTS WILL BE CORRECTED, OR THAT THIS SITE OR THE SERVER THAT MAKES IT AVAILABLE\n                ARE FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS.\n            </span>\n            <h3>Trademarks</h3>\n            <span>\n                These marks are identifiers of Baldridge Photography and are registered in the United States and other countries. For additional\n                information regarding Baldridge Photography trademarks and service marks and their proper use, please contact\n                Baldridge Photography.\n            </span>\n            <h3>Questions</h3>\n            <span>\n                For further assistance or information regarding Baldridge Photography trademarks and copyrighted materials, you may contact the\n                 Baldridge Photography at: Phone: (918)576-8468 E-mail: BaldridgePhotography@gmail.com\n                Effective date: Febuary 1, 2018\n            </span>\n        </div>\n    </section>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/structure/footer/rights/rights.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var Rights = (function () {
+    function Rights() {
+    }
+    Rights = __decorate([
+        core_1.Component({
+            selector: 'app-rights',
+            template: __webpack_require__("../../../../../src/app/structure/footer/rights/rights.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/structure/footer/rights/rights.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], Rights);
+    return Rights;
+}());
+exports.Rights = Rights;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/structure/nav/nav.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "mat-toolbar {\n    width: 100%;\n    border-bottom: 1px solid #00B8D4;\n}\n\n.spacer {\n    -webkit-box-flex: 1;\n    -ms-flex: 1 1 auto;\n    flex: 1 1 auto;\n}\n\n.header {\n    color: #00B8D4;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/structure/nav/nav.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<mat-toolbar>\n  <mat-toolbar-row>\n    <h1 class=\"header\" color=\"primary\">Tulsa Venues</h1>\n    <span class=\"spacer\"></span>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#00B8D4\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/\">Home</button>\n      <button mat-menu-item routerLink=\"/search\">Search</button>\n    </mat-menu>\n  </mat-toolbar-row>\n</mat-toolbar>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/structure/nav/nav.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var NavComponent = (function () {
+    function NavComponent() {
+    }
+    NavComponent.prototype.ngOnInit = function () {
+    };
+    NavComponent = __decorate([
+        core_1.Component({
+            selector: 'app-nav',
+            template: __webpack_require__("../../../../../src/app/structure/nav/nav.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/structure/nav/nav.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], NavComponent);
+    return NavComponent;
+}());
+exports.NavComponent = NavComponent;
 
 
 /***/ }),

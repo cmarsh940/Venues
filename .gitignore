@@ -1,6 +1,8 @@
-# dependencies
+/static
 /dist
 /server/config
+
+# dependencies
 /node_modules
 
 # IDEs and editors

@@ -12,8 +12,8 @@ export class GoogleMapComponent implements OnInit {
   zoom: number = 8;
 
   // initial center position for the map
-  lat: number = 36.153883;
-  lng: number = -95.990629;
+  lat: number;
+  lng: number;
 
   constructor() { }
 

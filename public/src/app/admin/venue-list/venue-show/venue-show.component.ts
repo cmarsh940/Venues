@@ -6,7 +6,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { User } from '../../../models/user';
 import { Venue } from '../../../models/venue';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Dialog } from '../../popup/popup.component';
+import { Dialog } from '../../../messages/popup/popup.component';
 
 @Component({
   selector: 'app-venue-show',

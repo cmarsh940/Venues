@@ -10,8 +10,5 @@ mat-toolbar {
 }
 
 .header {
-    width:100%;
-    text-align: center;
-    margin-left: 5%;
     color: #00B8D4;
 }

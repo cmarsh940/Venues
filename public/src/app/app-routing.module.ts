@@ -1,5 +1,5 @@
 import { VenueComponent } from './client/venue/venue.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './auth/login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ClientComponent } from './client/client.component';
@@ -12,6 +12,7 @@ import { VenueNewComponent } from './admin/venue-list/venue-new/venue-new.compon
 import { VenueEditComponent } from './admin/venue-list/venue-edit/venue-edit.component';
 import { AmmenityShowComponent } from './admin/ammenity-list/ammenity-show/ammenity-show.component';
 import { AmmenityEditComponent } from './admin/ammenity-list/ammenity-edit/ammenity-edit.component';
+import { Rights } from './structure/footer/rights/rights.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', component: DashboardComponent },
       { path: 'search', pathMatch: 'full', component: VenueSearchComponent },
       { path: 'venue/display/:id', pathMatch: 'full', component: VenueComponent },
+      { path: 'rights', pathMatch: 'full', component: Rights }
     ]
   },
   { path: 'admin', pathMatch: 'full', component: LoginComponent },
