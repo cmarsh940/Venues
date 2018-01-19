@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/admin-dashboard/admin-dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\n  <h1>Admin Dashboard</h1>\n</div>\n<div>\n  <mat-chip-list>\n    <mat-chip color=\"plain\" selected=\"true\">Total Venues:\n      <div *ngIf=\"venues\">\n        {{ venues.length }}\n      </div>\n    </mat-chip>\n    <mat-chip color=\"plain\" selected=\"true\">Total Ammenities:\n      <div mat-chip-value *ngIf=\"ammenities\">\n        {{ ammenities.length }}\n      </div>\n    </mat-chip>\n  </mat-chip-list>\n</div>\n"
+module.exports = "<div class=\"header\">\n  <h1>Admin Dashboard</h1>\n</div>\n<div>\n  <mat-chip-list>\n    <mat-chip color=\"plain\" selected=\"true\">Total Venues:\n      <div *ngIf=\"venues\">\n        {{ venues.length }}\n      </div>\n    </mat-chip>\n    <mat-chip color=\"plain\" selected=\"true\">Total Ammenities:\n      <div mat-chip-value *ngIf=\"ammenities\">\n        {{ ammenities.length }}\n      </div>\n    </mat-chip>\n    <mat-chip color=\"plain\" selected=\"true\">Total Users:\n      <div mat-chip-value *ngIf=\"users\">\n        {{ users.length }}\n      </div>\n    </mat-chip>\n  </mat-chip-list>\n</div>\n"
 
 /***/ }),
 
@@ -72,6 +72,7 @@ var AdminDashboardComponent = (function () {
     AdminDashboardComponent.prototype.ngOnInit = function () {
         this.getVenues();
         this.getAmmenities();
+        this.getUsers();
     };
     AdminDashboardComponent.prototype.getVenues = function () {
         var _this = this;
@@ -1211,7 +1212,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'app';
+        this.title = 'Tulsa Venues';
     }
     AppComponent = __decorate([
         core_1.Component({
@@ -1249,6 +1250,7 @@ var forms_1 = __webpack_require__("../../../forms/esm5/forms.js");
 var http_1 = __webpack_require__("../../../http/esm5/http.js");
 var http_2 = __webpack_require__("../../../common/esm5/http.js");
 var core_2 = __webpack_require__("../../../../@agm/core/index.js");
+var flex_layout_1 = __webpack_require__("../../../flex-layout/esm5/flex-layout.es5.js");
 var app_component_1 = __webpack_require__("../../../../../src/app/app.component.ts");
 var admin_component_1 = __webpack_require__("../../../../../src/app/admin/admin.component.ts");
 var client_component_1 = __webpack_require__("../../../../../src/app/client/client.component.ts");
@@ -1318,6 +1320,7 @@ var AppModule = (function () {
                 app_routing_module_1.AppRoutingModule,
                 animations_1.BrowserAnimationsModule,
                 forms_1.FormsModule,
+                flex_layout_1.FlexLayoutModule,
                 forms_1.ReactiveFormsModule,
                 http_1.HttpModule,
                 http_2.HttpClientModule,
@@ -1501,7 +1504,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "div.container {\n    width: 100%;\n}\n\nh1 {\n    text-align: center;\n}\n\nform {\n    width: 50%;\n    margin: auto;\n}\n.mat-form-field {\n    display: block;\n}\n\np {\n    text-align: center;\n    color: red;\n}", ""]);
+exports.push([module.i, "form {\n    width: 50%;\n    margin: auto;\n}\n.mat-form-field {\n    display: block;\n}\n\np {\n    text-align: center;\n    color: red;\n}\n\n.container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  min-width: 300px;\n}\n\n.mat-table {\n  overflow: auto;\n  max-height: 500px;\n}\n\n.mat-header-cell.mat-sort-header-sorted {\n  color: black;\n}\n\nh1 {\n  width: 100%;\n  text-align: center;\n}\ntable {\n  width: 100%;\n}\nth {\n  border-bottom: 1px solid black;\n}\n\ntd {\n  text-align: center;\n  border-bottom: 1px solid black;\n  border-right: 1px solid black;\n}", ""]);
 
 // exports
 
@@ -1664,7 +1667,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/* Large desktops and laptops */\n@media screen and (min-width: 1280px) {\n    /******* Body ********/\n    div.movie-3d {\n        width: 100%;\n        overflow: hidden;\n    }\n\n    iframe {\n        width:1280px;\n        height: 720px;\n        margin: auto;\n    }\n}\n  \n/* Landscape tablets and medium desktops */\n@media screen and (min-width: 992px) and (max-width: 1279px) {\n    /******* Body ********/\n    div.movie-3d {\n        width: 100%;\n        overflow: hidden;\n    }\n\n    iframe {\n        width:853px;\n        height: 480px;\n        margin: auto;\n    }\n   \n}\n\n/* Portrait tablets and small desktops */\n@media screen and (min-width: 815px) and (max-width: 1199px) {\n    /******* Body ********/\n    div.movie-3d {\n        width: 100%;\n        overflow: hidden;\n    }\n\n    iframe {\n        width:640px;\n        height: 360px;\n        margin: auto;\n    }\n}\n\n@media screen and (min-width: 768px) and (max-width: 814px) {\n    /******* Body ********/\n        div.movie-3d {\n        width: 100%;\n        overflow: hidden;\n    }\n\n    iframe {\n        width:640px;\n        height: 360px;\n        margin: auto;\n    }\n\n}\n\n\n/* Landscape phones and portrait tablets */\n@media screen and (max-width: 767px) {\n    /******* Body ********/\n    div.movie-3d {\n        width: 100%;\n        overflow: hidden;\n    }\n\n    iframe {\n        width:100%;\n        margin: auto;\n    }\n}\n\n/* Portrait phones and smaller */\n@media screen and (max-width: 480px) {\n    /******* Body ********/\n    div.movie-3d {\n        width: 100%;\n        overflow: hidden;\n    }\n\n    iframe {\n        width:100%;\n        margin: auto;\n    }\n}\n\nbody {\n    margin:0;\n}\n\ndiv.header {\n    width: 100%;\n    margin: 0;\n    padding: 0;\n    background-image: url(/assets/images/texture.png);\n    background-position: center, center;\n    background-size: cover;\n}\n\n.img{\n    max-width: 50%;\n    min-width: 50%;\n    display: block;\n    margin: auto;\n}\n\nh2 {\n    text-align: center;\n}\n\n#search-button {\n    width: 100%;\n}\n\nbutton{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin: auto;\n}\n\ndiv.movie {\n    width: 20%;\n    height: 10rem;\n    border-right: 1px solid black;\n}\n\ndiv.about {\n  width: 70%;\n  height: 10rem;\n}\n\n.movie, .about {\n  display: inline-block;\n  vertical-align: top;\n  padding: 2%;\n}\n\nh2 {\n    text-align: center;\n}\n\n.spacer {\n    -webkit-box-flex: 1;\n    -ms-flex: 1 1 auto;\n    flex: 1 1 auto;\n}\n", ""]);
+exports.push([module.i, "div.container {\n    width: 100%;\n    background: lightskyblue;\n}\n\n.img{\n    max-width: 50%;\n    min-width: 50%;\n    display: block;\n    margin: auto;\n}\n\ndiv[fxLayoutAlign] { \n    padding:4px; \n    background: lightcyan;\n}\n\nbutton {\n    margin: auto;\n}\n\nh2 {\n    text-align: center;\n}\n\ndiv.green {\n    width: 100%;\n    background: lightgreen;\n}\n\ndiv.red {\n    width: 100%;\n    background: lightcoral;\n}\n\nbutton {\n    -ms-flex-item-align: center;\n        -ms-grid-row-align: center;\n        align-self: center;\n}", ""]);
 
 // exports
 
@@ -1677,7 +1680,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/client/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\n  <section>\n    <img class=\"img\" src=\"assets/images/tulsavenus.png\" alt=\"Picture of outlined city\">\n    <h2>Who knows Tulsa better then tulsans?</h2>\n  </section>\n  <div id=\"search-button\">\n    <button mat-raised-button color=\"accent\" routerLink=\"/search\" matTooltip=\"Search for a Venue\">Find Your Venue Now</button>\n  </div>\n</div>\n<hr>\n<div class=\"movie\">\n  <div class=\"icon\">\n    <i class=\"material-icons\">&#xE04A;</i>\n  </div>\n</div>\n<div class=\"about\">\n  <h2>OUR STORY</h2>\n  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo dolorem, quibusdam eaque explicabo iste possimus aliquam perferendis in voluptatum quam, molestias architecto cumque. Perspiciatis, debitis. Id fuga quam soluta dicta?</p>\n</div>\n<hr>\n<div>\n  <h2>Preferred Venders</h2>\n</div>\n\n"
+module.exports = "<div class=\"containerX\">\n  <div class=\"container\">\n    <section>\n      <img class=\"img\" src=\"assets/images/tulsavenus.png\" alt=\"Picture of outlined city\">\n      <h2>Who knows Tulsa better then tulsans?</h2>\n    </section>\n    <div id=\"search-button\">\n      <button mat-raised-button color=\"accent\" routerLink=\"/search\" matTooltip=\"Search for a Venue\">Find Your Venue Now</button>\n    </div>\n  </div>\n  <hr>\n  <div class=\"container\" fxLayout=\"col\" fxLayoutAlign=\"space-around center\">\n    <div class=\"green\">\n      <i class=\"material-icons\">&#xE04A;</i>\n    </div>\n    <div class=\"red\">\n      <h2>ABOUT</h2>\n    </div>\n  </div>\n  <hr>\n  <div class=\"container\">\n    <h2>Preferred Venders</h2>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1823,7 +1826,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/client/venue-search/venue-search.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"search\">\n  <h2>SEARCH FORM COMING SOON...</h2>\n</div>\n<hr>\n<app-google-map></app-google-map>\n<hr>\n<div>\n  <mat-sidenav-container>\n    <mat-sidenav align=\"end\" mode=\"side\" #sidenav>\n      <mat-tab-group>\n        <mat-tab>\n          <ng-template mat-tab-label>Details</ng-template>\n          <button mat-raised-button (click)=\"sidenav.close()\" color=\"warn\">CLOSE</button>\n          <p>Name: {{currentVenue.name}}</p>\n          <p>Phone: {{currentVenue.phone}}</p>\n          <p>Location: {{currentVenue.address}}</p>\n          <p>Website: <a href=\"http://{{currentVenue.website}}\">{{currentVenue.website}}</a></p>\n          <button mat-raised-button [routerLink]=\"['/venue', 'display', currentVenue._id]\" color=\"accent\">View More Details</button>\n        </mat-tab>\n        <mat-tab>\n          <ng-template mat-tab-label>Photos</ng-template>\n          <div *ngIf='!currentVenue.pic_url'>\n            <h2>There are currently no pictures of this venue.</h2>\n          </div>\n          <div *ngIf='currentVenue.pic_url'>\n            <img src='https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{currentVenue.pic_url}}' alt=\"Venue Picture\">\n          </div>\n        </mat-tab>\n      </mat-tab-group>\n    </mat-sidenav>\n    <mat-sidenav-content>\n      <mat-grid-list cols=\"4\" rowHeight=\"200px\">\n        <mat-grid-tile *ngFor=\"let venue of venue_list\">\n          <img class='imageGrid' src='imgs/{{currentVenue.static_pic_url}}' alt=\"Venue Picture\">\n          <mat-grid-tile-footer>\n            <h3>{{venue.name}}</h3>\n            <span class=\"spacer\"></span>\n            <button mat-icon-button (click)=\"showVenue(venue)\">\n              <mat-icon matTooltip=\"Venue Info!\">info</mat-icon>\n            </button>\n          </mat-grid-tile-footer>\n        </mat-grid-tile>\n      </mat-grid-list>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>\n"
+module.exports = "<div class=\"search\">\n  <h2>SEARCH FORM COMING SOON...</h2>\n</div>\n<hr>\n<app-google-map></app-google-map>\n<hr>\n<div>\n  <mat-sidenav-container>\n    <mat-sidenav align=\"end\" mode=\"side\" opened=\"true\" #sidenav>\n      <mat-tab-group>\n        <mat-tab>\n          <ng-template mat-tab-label>Details</ng-template>\n          <button mat-raised-button (click)=\"sidenav.close()\" color=\"warn\">CLOSE</button>\n          <p>Name: {{currentVenue.name}}</p>\n          <p>Phone: {{currentVenue.phone}}</p>\n          <p>Location: {{currentVenue.address}}</p>\n          <p>Website: <a href=\"http://{{currentVenue.website}}\">{{currentVenue.website}}</a></p>\n          <button mat-raised-button [routerLink]=\"['/venue', 'display', currentVenue._id]\" color=\"accent\">View More Details</button>\n        </mat-tab>\n        <mat-tab>\n          <ng-template mat-tab-label>Photos</ng-template>\n          <div *ngIf='!currentVenue.pic_url'>\n            <h2>There are currently no pictures of this venue.</h2>\n          </div>\n          <div *ngIf='currentVenue.pic_url'>\n            <img src='https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{currentVenue.pic_url}}' alt=\"Venue Picture\">\n          </div>\n        </mat-tab>\n      </mat-tab-group>\n    </mat-sidenav>\n    <mat-sidenav-content>\n      <mat-grid-list cols=\"4\" rowHeight=\"200px\">\n        <mat-grid-tile *ngFor=\"let venue of venue_list; let i = index\">\n          <img class='imageGrid' src='imgs/{{venue.static_pic_url}}' alt=\"Venue Picture\">\n          <mat-grid-tile-footer>\n            <h3>{{venue.name}}</h3>\n            <span class=\"spacer\"></span>\n            <button mat-icon-button (click)=\"showVenue(venue)\">\n              <mat-icon matTooltip=\"Venue Info!\">info</mat-icon>\n            </button>\n          </mat-grid-tile-footer>\n        </mat-grid-tile>\n      </mat-grid-list>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>\n"
 
 /***/ }),
 
@@ -1850,18 +1853,11 @@ var VenueSearchComponent = (function () {
     function VenueSearchComponent(_venueService, _router) {
         this._venueService = _venueService;
         this._router = _router;
-        this.venues = [];
         this.currentVenue = [];
     }
     VenueSearchComponent.prototype.ngOnInit = function () {
         this.getVenues();
     };
-    // getVenues(): void {
-    // this._venueService.get_venues().subscribe(
-    // venues => (this.venues = venues)
-    // venues => (this.venues = venues.slice(1, 5)
-    // );
-    // }
     VenueSearchComponent.prototype.getVenues = function () {
         var _this = this;
         this._venueService.get_all_venues()
@@ -2420,11 +2416,15 @@ var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var http_1 = __webpack_require__("../../../common/esm5/http.js");
 var http_2 = __webpack_require__("../../../http/esm5/http.js");
 var BehaviorSubject_1 = __webpack_require__("../../../../rxjs/_esm5/BehaviorSubject.js");
+var of_1 = __webpack_require__("../../../../rxjs/_esm5/observable/of.js");
+__webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
 var operators_1 = __webpack_require__("../../../../rxjs/_esm5/operators.js");
+var message_service_1 = __webpack_require__("../../../../../src/app/services/message.service.ts");
 var UserService = (function () {
-    function UserService(_http, _httpClient) {
+    function UserService(_http, _httpClient, _messageService) {
         this._http = _http;
         this._httpClient = _httpClient;
+        this._messageService = _messageService;
         this.observedUser = new BehaviorSubject_1.BehaviorSubject(null);
         this.currentUser = null;
     }
@@ -2457,11 +2457,12 @@ var UserService = (function () {
     UserService.prototype.logout = function (callback) {
         this._http.delete('/users').subscribe(function (res) { return callback(res.json()); }, function (err) { return console.log(err); });
     };
-    // get_all_users() {
-    //   return this._http.get('/all_users')
-    //     .map(data => data.json())
-    //     .toPromise();
-    // }
+    UserService.prototype.destroy_user = function (user) {
+        console.log('*** Hit users service');
+        return this._http.post('/users/destroy', user)
+            .map(function (data) { return data.json(); })
+            .toPromise();
+    };
     UserService.prototype.get_all_users = function () {
         var _this = this;
         return this._httpClient.get('/all_users')
@@ -2472,10 +2473,33 @@ var UserService = (function () {
             .map(function (data) { return data.json(); })
             .toPromise();
     };
+    /**
+     * Handle Http operation that failed.
+     * Let the app continue.
+     * @param operation - name of the operation that failed
+     * @param result - optional value to return as the observable result
+     */
+    UserService.prototype.handleError = function (operation, result) {
+        var _this = this;
+        if (operation === void 0) { operation = 'operation'; }
+        return function (error) {
+            // TODO: send the error to remote logging infrastructure
+            console.error(error); // log to console instead
+            // TODO: better job of transforming error for user consumption
+            _this.log(operation + " failed: " + error.message);
+            // Let the app keep running by returning an empty result.
+            return of_1.of(result);
+        };
+    };
+    /** Log a HeroService message with the MessageService */
+    UserService.prototype.log = function (message) {
+        this._messageService.add('UserService: ' + message);
+    };
     UserService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [http_2.Http,
-            http_1.HttpClient])
+            http_1.HttpClient,
+            message_service_1.MessageService])
     ], UserService);
     return UserService;
 }());
@@ -2622,7 +2646,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/structure/admin-nav/admin-nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/dashboard\">Home</button>\n      <button mat-menu-item routerLink=\"/list_venue\">Venues</button>\n      <button mat-menu-item routerLink=\"/list_ammenity\">Ammenities</button>\n      <button mat-menu-item routerLink=\"#\">Venders</button>\n      <button mat-menu-item routerLink=\"/list_user\">Admin</button>\n    </mat-menu>\n    <span class=\"spacer\"></span>\n    <button mat-icon-button [routerLink]=\"['/']\" (click)='logout()'>\n      <mat-icon aria-label=\"Logout button\">exit_to_app</mat-icon>\n    </button>\n  </mat-toolbar-row>\n</mat-toolbar>\n"
+module.exports = "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/dashboard\">Home</button>\n      <button mat-menu-item routerLink=\"/list_venue\">Venues</button>\n      <button mat-menu-item routerLink=\"/list_ammenity\">Ammenities</button>\n      <button mat-menu-item routerLink=\"#\">Venders</button>\n      <button mat-menu-item routerLink=\"/list_admin\">Admin Users</button>\n    </mat-menu>\n    <span class=\"spacer\"></span>\n    <button mat-icon-button [routerLink]=\"['/']\" (click)='logout()'>\n      <mat-icon aria-label=\"Logout button\">exit_to_app</mat-icon>\n    </button>\n  </mat-toolbar-row>\n</mat-toolbar>\n"
 
 /***/ }),
 

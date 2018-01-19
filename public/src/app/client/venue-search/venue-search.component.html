@@ -6,7 +6,7 @@
 <hr>
 <div>
   <mat-sidenav-container>
-    <mat-sidenav align="end" mode="side" #sidenav>
+    <mat-sidenav align="end" mode="side" opened="true" #sidenav>
       <mat-tab-group>
         <mat-tab>
           <ng-template mat-tab-label>Details</ng-template>
@@ -30,8 +30,8 @@
     </mat-sidenav>
     <mat-sidenav-content>
       <mat-grid-list cols="4" rowHeight="200px">
-        <mat-grid-tile *ngFor="let venue of venue_list">
-          <img class='imageGrid' src='imgs/{{currentVenue.static_pic_url}}' alt="Venue Picture">
+        <mat-grid-tile *ngFor="let venue of venue_list; let i = index">
+          <img class='imageGrid' src='imgs/{{venue.static_pic_url}}' alt="Venue Picture">
           <mat-grid-tile-footer>
             <h3>{{venue.name}}</h3>
             <span class="spacer"></span>

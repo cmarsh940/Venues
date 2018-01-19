@@ -12,8 +12,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class VenueSearchComponent implements OnInit {
   venue_list: Array<Venue>;
-  venues: Venue[] = [];
-  currentVenue = [];
+  // venues: Venue[] = [];
+  venues: Array<Venue>;
+  currentVenue: Venue[] = [];
 
   @ViewChild('sidenav') sidenav: MatSidenav;
 
@@ -25,13 +26,6 @@ export class VenueSearchComponent implements OnInit {
   ngOnInit() {
     this.getVenues();
   }
-
-  // getVenues(): void {
-    // this._venueService.get_venues().subscribe(
-      // venues => (this.venues = venues)
-      // venues => (this.venues = venues.slice(1, 5)
-    // );
-  // }
 
   getVenues() {
     this._venueService.get_all_venues()

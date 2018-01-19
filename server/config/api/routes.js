@@ -36,6 +36,7 @@ const path = require('path');
 
 module.exports = app => {
     app.post("/users", Users.create);
+    app.post("/users/destroy", venues.destroy);
     app.get("/all_users", Users.index);
     app.post("/login", Users.authenticate);
     app.delete("/users", Users.logout);

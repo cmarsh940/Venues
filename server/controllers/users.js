@@ -64,6 +64,18 @@ class UsersController {
         delete req.session.user_id;
         return res.json({ status: true })
     }
+    destroy(req, res, next) {
+        console.log("*** logging the req.body", req.body);
+        let user = new User(req.body);
+        console.log("*** logging the new venue to be deleted", user);
+        User.findByIdAndRemove({ _id: user._id }, (err, user) => {
+        if (err) {
+            return next(err);
+        }
+        console.log("*** Deleted user")
+        return res.json(true);
+    });
+  }
 }
 
 module.exports = new UsersController();

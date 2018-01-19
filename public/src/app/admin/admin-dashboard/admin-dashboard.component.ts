@@ -28,6 +28,7 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit() {
     this.getVenues();
     this.getAmmenities();
+    this.getUsers();
   }
 
   getVenues(): void {

@@ -13,5 +13,10 @@
         {{ ammenities.length }}
       </div>
     </mat-chip>
+    <mat-chip color="plain" selected="true">Total Users:
+      <div mat-chip-value *ngIf="users">
+        {{ users.length }}
+      </div>
+    </mat-chip>
   </mat-chip-list>
 </div>
