@@ -2,15 +2,8 @@
   <mat-toolbar-row>
     <h1 class="header" color="primary">Tulsa Venues</h1>
     <span class="spacer"></span>
-    <button mat-button [matMenuTriggerFor]="menu">
-      <svg fill="#00B8D4" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 0h24v24H0z" fill="none" />
-        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-      </svg>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/">Home</button>
-      <button mat-menu-item routerLink="/search">Search</button>
-    </mat-menu>
+    <a mat-button routerLink="/">Home</a>
+    <a mat-button routerLink="/search">Venues</a>
+    <a mat-button routerLink="#">Venders</a>
   </mat-toolbar-row>
 </mat-toolbar>

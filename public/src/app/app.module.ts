@@ -73,6 +73,7 @@ import {
   MatTooltipModule,
   MatStepperModule
 } from '@angular/material';
+import { RegisterComponent } from './auth/register/register.component';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,8 @@ import {
     FileDropDirective,
     GoogleMapComponent,
     Dialog,
-    Rights
+    Rights,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

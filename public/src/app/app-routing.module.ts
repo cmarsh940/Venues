@@ -1,3 +1,4 @@
+import { RegisterComponent } from './auth/register/register.component';
 import { VenueComponent } from './client/venue/venue.component';
 import { LoginComponent } from './auth/login/login.component';
 import { NgModule } from '@angular/core';
@@ -34,6 +35,7 @@ const routes: Routes = [
       { path: 'venue/edit/:id', pathMatch: 'full', component: VenueEditComponent },
       { path: 'list_ammenity', pathMatch: 'full', component: AmmenityShowComponent },
       { path: 'ammenity/edit/:id', pathMatch: 'full', component: AmmenityEditComponent },
+      { path: 'list_admin', pathMatch: 'full', component: RegisterComponent }
     ]
   },
   {

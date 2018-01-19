@@ -6,6 +6,7 @@ import { VenueService } from '../../services/venue.service';
 import { Venue } from '../../models/venue';
 import { AmmenityService } from '../../services/ammenity.service';
 import { Ammenity } from '../../models/ammenity';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -15,6 +16,7 @@ import { Ammenity } from '../../models/ammenity';
 export class AdminDashboardComponent implements OnInit {
   venues: Array<Venue>;
   ammenities: Array<Ammenity>;
+  users: Array<User>;
 
   constructor(
     private _userService: UserService,
@@ -34,5 +36,9 @@ export class AdminDashboardComponent implements OnInit {
 
   getAmmenities(): void {
     this._ammenityService.get_ammenities().subscribe(ammenities => (this.ammenities = ammenities));
+  }
+
+  getUsers(): void {
+    this._userService.get_all_users().subscribe(users => (this.users = users));
   }
 }

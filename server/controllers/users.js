@@ -2,6 +2,14 @@ const mongoose = require('mongoose');
 const User = mongoose.model('User');
 
 class UsersController {
+    index(req, res, next) {
+        User.find()
+            .then(data => res.json(data))
+            .catch(err => {
+                res.status(500).json(err);
+            });
+    }
+
     create(req, res) {
         if (req.body.password != req.body.password_confirmation) {
             return res.json({

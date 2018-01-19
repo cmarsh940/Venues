@@ -31,9 +31,7 @@
     <mat-sidenav-content>
       <mat-grid-list cols="4" rowHeight="200px">
         <mat-grid-tile *ngFor="let venue of venue_list">
-          <a [routerLink]="['/venue', venue._id]">
-            <img class='imageGrid' src='imgs/{{currentVenue.static_pic_url}}' alt="Venue Picture">
-          </a>
+          <img class='imageGrid' src='imgs/{{currentVenue.static_pic_url}}' alt="Venue Picture">
           <mat-grid-tile-footer>
             <h3>{{venue.name}}</h3>
             <span class="spacer"></span>

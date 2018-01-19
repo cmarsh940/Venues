@@ -1,8 +1,13 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Http } from '@angular/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import 'rxjs/add/operator/map';
+
 import { User } from '../models/user';
+
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
@@ -10,7 +15,8 @@ export class UserService {
   currentUser: User = null;
 
   constructor(
-    private _http: Http
+    private _http: Http,
+    private _httpClient: HttpClient,
   ) { }
 
   getCurrentUser() {
@@ -58,10 +64,18 @@ export class UserService {
       err => console.log(err)
     );
   }
-  get_all_users() {
-    return this._http.get('/all_users')
-      .map(data => data.json())
-      .toPromise();
+  // get_all_users() {
+  //   return this._http.get('/all_users')
+  //     .map(data => data.json())
+  //     .toPromise();
+  // }
+
+  get_all_users(): Observable<User[]> {
+    return this._httpClient.get<User[]>('/all_users')
+      .pipe(
+        tap(ammenities => this.log(`fetched ammenities`)),
+        catchError(this.handleError('getAmmenities', []))
+      );
   }
 
   get_logged_in_user() {
