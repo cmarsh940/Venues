@@ -1,8 +1,19 @@
 <div class="search">
-  <h2>SEARCH FORM COMING SOON...</h2>
+  <h1>SEARCH FORM COMING SOON....</h1>
 </div>
 <hr>
-<app-google-map></app-google-map>
+<!-- <app-google-map></app-google-map> -->
+<div class="map">
+  <agm-map [latitude]='36.153883' [longitude]='-95.990629' [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
+    <agm-marker *ngFor="let venue of venues; let i = index" [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng" (click)="showVenue(venue)">
+      <agm-info-window>
+        <h3>
+          <strong>{{venue.name}}</strong>
+        </h3>
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
+</div>
 <hr>
 <div>
   <mat-sidenav-container>
@@ -30,7 +41,7 @@
     </mat-sidenav>
     <mat-sidenav-content>
       <mat-grid-list cols="4" rowHeight="200px">
-        <mat-grid-tile *ngFor="let venue of venue_list; let i = index">
+        <mat-grid-tile *ngFor="let venue of venues; let i = index">
           <img class='imageGrid' src='imgs/{{venue.static_pic_url}}' alt="Venue Picture">
           <mat-grid-tile-footer>
             <h3>{{venue.name}}</h3>

@@ -676,6 +676,415 @@ exports.UploadComponent = UploadComponent;
 
 /***/ }),
 
+/***/ "../../../../../src/app/admin/vender-list/vender-edit/vender-edit.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "h1 {\n    width: 100%;\n    text-align: center;\n}\n\nform {\n    width:50%;\n    margin: auto;\n    overflow: hidden;\n}\n\n.mat-form-field {\n    width: 100%;\n}\n\n.input-container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n\n.input-container > * {\n  width: 45%;\n}\n\n.right-align {\n  text-align: right;\n}\n\ninput.right-align::-webkit-outer-spin-button,\ninput.right-align::-webkit-inner-spin-button {\n  display: none;\n}\n\n.form-label {\n    margin-top: 3%;\n}\n\ninput.right-align {\n  -moz-appearance: textfield;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/vender-list/vender-edit/vender-edit.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<button mat-raised-button (click)=\"goBack()\">Cancel</button>\n<h1 class=\"text-center\">Edit {{vender.name}} vender</h1>\n<div class=\"container\">\n  <form (submit)=\"update(vender)\" #formData=\"ngForm\" class=\"form\">\n    <!-- Name -->\n    <mat-form-field>\n      <input matInput name='name' [(ngModel)]=\"vender.name\" #name='ngModel' placeholder=\"name\" required />\n    </mat-form-field>\n\n    <!-- Email -->\n    <mat-form-field>\n      <input matInput name='email' [(ngModel)]=\"vender.email\" #email='ngModel' placeholder=\"Email\" required />\n    </mat-form-field>\n\n    <!-- Phone# -->\n    <mat-form-field>\n      <input matInput name='phone' [(ngModel)]=\"vender.phone\" #phone='ngModel' placeholder=\"Phone #\" required />\n    </mat-form-field>\n\n    <!-- Address -->\n    <mat-form-field>\n      <input matInput name='address' [(ngModel)]=\"vender.address\" #address='ngModel' placeholder=\"Address\" required />\n    </mat-form-field>\n\n    <!-- Website -->\n    <mat-form-field>\n      <input matInput name='website' [(ngModel)]=\"vender.website\" #website='ngModel' placeholder=\"Website\" required />\n    </mat-form-field>\n\n    <!-- Submit -->\n    <button mat-raised-button type='submit' [disabled]=!formData.valid>Submit</button>\n  </form>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/vender-list/vender-edit/vender-edit.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var router_1 = __webpack_require__("../../../router/esm5/router.js");
+var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
+var vender_1 = __webpack_require__("../../../../../src/app/models/vender.ts");
+var vender_service_1 = __webpack_require__("../../../../../src/app/services/vender.service.ts");
+var common_1 = __webpack_require__("../../../common/esm5/common.js");
+var VenderEditComponent = (function () {
+    // venders: Vender[];
+    // @Input() vender: Vender;
+    function VenderEditComponent(_route, _venderService, _userService, _router, location) {
+        this._route = _route;
+        this._venderService = _venderService;
+        this._userService = _userService;
+        this._router = _router;
+        this.location = location;
+        this.vender = new vender_1.Vender();
+    }
+    VenderEditComponent.prototype.ngOnInit = function () {
+        this.isLoggedIn();
+        this.getVenders();
+        this.getRouteParams();
+    };
+    VenderEditComponent.prototype.isLoggedIn = function () {
+        if (this._userService.getCurrentUser() == null) {
+            this._router.navigateByUrl('/');
+        }
+    };
+    // getVender(): void {
+    //   const id = +this._route.snapshot.paramMap.get("id");
+    //   this._venderService.get_one(id).subscribe(vender => (this.vender = vender));
+    // }
+    VenderEditComponent.prototype.getVenders = function () {
+        var _this = this;
+        this._venderService
+            .get_all_venders()
+            .then(function (data) {
+            _this.vender_list = data;
+        })
+            .catch(function (err) {
+            console.log(err);
+        });
+    };
+    // getVenders(): void {
+    //   this._venderService.get_venders().subscribe(venders => (this.venders = venders));
+    // }
+    VenderEditComponent.prototype.getRouteParams = function () {
+        var _this = this;
+        this._route.params.subscribe(function (param) {
+            console.log("request to get one vender from client");
+            console.log(param.id);
+            _this._venderService
+                .get_one(param.id)
+                .then(function (data) {
+                _this.vender = data;
+            })
+                .catch(function (err) {
+                console.log(err);
+            });
+        });
+    };
+    VenderEditComponent.prototype.update = function (vender) {
+        this._venderService.update_vender(this.vender);
+        this._router.navigate(['/list_vender']);
+    };
+    VenderEditComponent.prototype.goBack = function () {
+        this.location.back();
+    };
+    VenderEditComponent = __decorate([
+        core_1.Component({
+            selector: 'app-vender-edit',
+            template: __webpack_require__("../../../../../src/app/admin/vender-list/vender-edit/vender-edit.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/admin/vender-list/vender-edit/vender-edit.component.css")]
+        }),
+        __metadata("design:paramtypes", [router_1.ActivatedRoute,
+            vender_service_1.VenderService,
+            user_service_1.UserService,
+            router_1.Router,
+            common_1.Location])
+    ], VenderEditComponent);
+    return VenderEditComponent;
+}());
+exports.VenderEditComponent = VenderEditComponent;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/vender-list/vender-list.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/vender-list/vender-list.component.html":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/vender-list/vender-list.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var VenderListComponent = (function () {
+    function VenderListComponent() {
+    }
+    VenderListComponent.prototype.ngOnInit = function () {
+    };
+    VenderListComponent = __decorate([
+        core_1.Component({
+            selector: 'app-vender-list',
+            template: __webpack_require__("../../../../../src/app/admin/vender-list/vender-list.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/admin/vender-list/vender-list.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], VenderListComponent);
+    return VenderListComponent;
+}());
+exports.VenderListComponent = VenderListComponent;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/vender-list/vender-new/vender-new.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "form {\n    width:50%;\n    margin: auto;\n    overflow: hidden;\n}\n.mat-form-field {\n    width: 100%;\n}\n\nh1 {\n  width:100%;\n  text-align: center;\n}\n\n.input-container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n\n.input-container > * {\n  width: 45%;\n}\n\n.right-align {\n  text-align: right;\n}\n\ninput.right-align::-webkit-outer-spin-button,\ninput.right-align::-webkit-inner-spin-button {\n  display: none;\n}\n\n.form-label {\n    margin-top: 3%;\n}\n\ninput.right-align {\n  -moz-appearance: textfield;\n}\n\n.file-upload {\n    margin-top: 3%;\n}\n\nbutton {\n    min-width: 100%;\n    max-width: 100%;\n}\n\n.submit-button {\n    margin-top: 3%;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/vender-list/vender-new/vender-new.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<button mat-raised-button [routerLink]=\"['/list_vender']\">\n  <i class=\"material-icons\">&#xE5C4;</i>\n</button>\n<h1>Add a Vender</h1>\n<form #form (submit)=\"create_vender()\" encType=\"multipart/form-data\">\n  <!-- Name -->\n  <mat-form-field>\n    <input matInput name=\"name\" required maxlength=250 [(ngModel)]=\"new_vender.name\" placeholder=\"Vender Name\" />\n  </mat-form-field>\n\n  <!-- Email -->\n  <mat-form-field>\n    <input matInput name=\"email\" required maxlength=250 [(ngModel)]=\"new_vender.email\" placeholder=\"Vender Email\" />\n  </mat-form-field>\n\n  <!-- Phone# -->\n  <mat-form-field>\n    <input matInput name=\"phone\" required maxlength=20 [(ngModel)]=\"new_vender.phone\" placeholder=\"Vender Phone #\" />\n    <mat-hint>no spaces EX: 1234567899 </mat-hint>\n  </mat-form-field>\n\n  <!-- Address -->\n  <mat-form-field>\n    <input matInput name=\"address\" required maxlength=200 [(ngModel)]=\"new_vender.address\" placeholder=\"Vender Address\" />\n  </mat-form-field>\n\n  <!-- Website -->\n  <mat-form-field>\n    <input matInput name=\"website\" required maxlength=250 [(ngModel)]=\"new_vender.website\" placeholder=\"Vender Website\" />\n    <mat-hint>EX: www.example.com</mat-hint>\n  </mat-form-field>\n\n  <!-- Picture -->\n  <div class=\"file-upload\">\n    <input #file type=\"file\" name=\"picture\" [(ngModel)]=\"new_vender.static_pic_url\">\n  </div>\n\n  <div class=\"submit-button\">\n    <!-- Submit -->\n    <button mat-raised-button type=\"submit\" color=\"accent\">Submit</button>\n  </div>\n</form>\n\n<div>\n  <p class=\"error\" *ngFor=\"let error of errors\">{{ error }}</p>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/vender-list/vender-new/vender-new.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var router_1 = __webpack_require__("../../../router/esm5/router.js");
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
+var vender_1 = __webpack_require__("../../../../../src/app/models/vender.ts");
+var vender_service_1 = __webpack_require__("../../../../../src/app/services/vender.service.ts");
+var VenderNewComponent = (function () {
+    function VenderNewComponent(_venderService, _userService, _router) {
+        this._venderService = _venderService;
+        this._userService = _userService;
+        this._router = _router;
+        this.new_vender = new vender_1.Vender();
+        this.errors = [];
+        this.new_vender_event = new core_1.EventEmitter();
+    }
+    VenderNewComponent.prototype.ngOnInit = function () {
+        this.isLoggedIn();
+    };
+    VenderNewComponent.prototype.isLoggedIn = function () {
+        if (this._userService.getCurrentUser() == null) {
+            this._router.navigateByUrl('/');
+        }
+    };
+    VenderNewComponent.prototype.create_vender = function () {
+        var _this = this;
+        var form_data = new FormData(this.my_form.nativeElement);
+        console.log("*** This is the form data", form_data);
+        this._venderService.post_vender(form_data)
+            .then(function () {
+            console.log("*** Setting new vender");
+            _this.new_vender = new vender_1.Vender;
+            console.log("*** Setting file value");
+            _this.file_input.nativeElement.value = "";
+            console.log("*** About to emit");
+            _this.new_vender_event.emit();
+            _this._router.navigate(["/list_vender"]);
+        });
+    };
+    __decorate([
+        core_1.ViewChild('file'),
+        __metadata("design:type", Object)
+    ], VenderNewComponent.prototype, "file_input", void 0);
+    __decorate([
+        core_1.ViewChild('form'),
+        __metadata("design:type", Object)
+    ], VenderNewComponent.prototype, "my_form", void 0);
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", Object)
+    ], VenderNewComponent.prototype, "new_vender_event", void 0);
+    VenderNewComponent = __decorate([
+        core_1.Component({
+            selector: 'app-vender-new',
+            template: __webpack_require__("../../../../../src/app/admin/vender-list/vender-new/vender-new.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/admin/vender-list/vender-new/vender-new.component.css")]
+        }),
+        __metadata("design:paramtypes", [vender_service_1.VenderService,
+            user_service_1.UserService,
+            router_1.Router])
+    ], VenderNewComponent);
+    return VenderNewComponent;
+}());
+exports.VenderNewComponent = VenderNewComponent;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/vender-list/vender-show/vender-show.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  min-width: 300px;\n}\n\n.mat-table {\n  overflow: auto;\n  max-height: 500px;\n}\n\n.mat-header-cell.mat-sort-header-sorted {\n  color: black;\n}\n\nh1 {\n  width: 100%;\n  text-align: center;\n}\ntable {\n  width: 100%;\n}\nth {\n  border-bottom: 1px solid black;\n}\n\ntd {\n  text-align: center;\n  border-bottom: 1px solid black;\n  border-right: 1px solid black;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/vender-list/vender-show/vender-show.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<button mat-raised-button color=\"accent\" [routerLink]=\"['/vender', 'add']\">Add a vender</button>\n<h1>Venders</h1>\n<hr>\n<table>\n  <thead>\n    <tr>\n      <th>#</th>\n      <th>Name</th>\n      <th>Email</th>\n      <th>Phone</th>\n      <th>Address</th>\n      <th>Website</th>\n      <th>Pic_URL</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr *ngFor=\"let vender of venders; let i = index\">\n      <td>{{i + 1}}</td>\n      <td>{{ vender.name }}</td>\n      <td>{{ vender.email }}</td>\n      <td>{{ vender.phone }}</td>\n      <td>{{ vender.address }}</td>\n      <td>{{ vender.website }}</td>\n      <td>{{ vender.static_pic_url }}</td>\n      <td>\n        <button mat-icon-button color=\"accent\" [routerLink]=\"['/vender', 'edit', vender._id]\">\n          <mat-icon aria-label=\"icon-button to edit vender\">\n            <i class=\"material-icons\">&#xE3C9;</i>\n          </mat-icon>\n        </button>\n        <button mat-icon-button color=\"warn\" (click)=\"delete(vender)\">\n          <mat-icon aria-label=\"icon-button to delete vender\">\n            <i class=\"material-icons\">&#xE872;</i>\n          </mat-icon>\n        </button>\n      </td>\n    </tr>\n  </tbody>\n</table>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/vender-list/vender-show/vender-show.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var router_1 = __webpack_require__("../../../router/esm5/router.js");
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var user_service_1 = __webpack_require__("../../../../../src/app/services/user.service.ts");
+var vender_service_1 = __webpack_require__("../../../../../src/app/services/vender.service.ts");
+var VenderShowComponent = (function () {
+    function VenderShowComponent(_venderService, _userService, _router) {
+        this._venderService = _venderService;
+        this._userService = _userService;
+        this._router = _router;
+        this.search_text = '';
+    }
+    VenderShowComponent.prototype.ngOnInit = function () {
+        this.isLoggedIn();
+        this.getVenders();
+    };
+    VenderShowComponent.prototype.isLoggedIn = function () {
+        if (this._userService.getCurrentUser() == null) {
+            this._router.navigateByUrl('/');
+        }
+    };
+    VenderShowComponent.prototype.getVenders = function () {
+        var _this = this;
+        this._venderService.get_all_venders()
+            .then(function (data) {
+            _this.venders = data;
+        })
+            .catch(function (err) {
+            if (err.error instanceof Error) {
+                // A client-side or network error occurred. Handle it accordingly.
+                console.log("An error occurred:", err.error.message);
+            }
+            else {
+                // The backend returned an unsuccessful response code.
+                // The response body may contain clues as to what went wrong,
+                console.log("Backend returned code " + err.status + ", body was: " + err.error);
+            }
+        });
+    };
+    // getVenders(): void {
+    //   this._venderService.get_venders().subscribe(venders => (this.venders = venders));
+    // }
+    VenderShowComponent.prototype.delete = function (vender) {
+        var _this = this;
+        this._venderService.destroy_vender(vender)
+            .then(function () {
+            _this.getVenders();
+        })
+            .catch(function (err) {
+            if (err.error instanceof Error) {
+                // A client-side or network error occurred. Handle it accordingly.
+                console.log("An error occurred:", err.error.message);
+            }
+            else {
+                // The backend returned an unsuccessful response code.
+                // The response body may contain clues as to what went wrong,
+                console.log("Backend returned code " + err.status + ", body was: " + err.error);
+            }
+        });
+    };
+    VenderShowComponent = __decorate([
+        core_1.Component({
+            selector: 'app-vender-show',
+            template: __webpack_require__("../../../../../src/app/admin/vender-list/vender-show/vender-show.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/admin/vender-list/vender-show/vender-show.component.css")]
+        }),
+        __metadata("design:paramtypes", [vender_service_1.VenderService,
+            user_service_1.UserService,
+            router_1.Router])
+    ], VenderShowComponent);
+    return VenderShowComponent;
+}());
+exports.VenderShowComponent = VenderShowComponent;
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/admin/venue-list/venue-edit/venue-edit.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1128,6 +1537,9 @@ var venue_edit_component_1 = __webpack_require__("../../../../../src/app/admin/v
 var ammenity_show_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-show/ammenity-show.component.ts");
 var ammenity_edit_component_1 = __webpack_require__("../../../../../src/app/admin/ammenity-list/ammenity-edit/ammenity-edit.component.ts");
 var rights_component_1 = __webpack_require__("../../../../../src/app/structure/footer/rights/rights.component.ts");
+var vender_show_component_1 = __webpack_require__("../../../../../src/app/admin/vender-list/vender-show/vender-show.component.ts");
+var vender_new_component_1 = __webpack_require__("../../../../../src/app/admin/vender-list/vender-new/vender-new.component.ts");
+var vender_edit_component_1 = __webpack_require__("../../../../../src/app/admin/vender-list/vender-edit/vender-edit.component.ts");
 var routes = [
     {
         path: '', component: client_component_1.ClientComponent,
@@ -1146,6 +1558,9 @@ var routes = [
             { path: 'list_venue', pathMatch: 'full', component: venue_show_component_1.VenueShowComponent },
             { path: 'venue/add', pathMatch: 'full', component: venue_new_component_1.VenueNewComponent },
             { path: 'venue/edit/:id', pathMatch: 'full', component: venue_edit_component_1.VenueEditComponent },
+            { path: 'list_vender', pathMatch: 'full', component: vender_show_component_1.VenderShowComponent },
+            { path: 'vender/add', pathMatch: 'full', component: vender_new_component_1.VenderNewComponent },
+            { path: 'vender/edit/:id', pathMatch: 'full', component: vender_edit_component_1.VenderEditComponent },
             { path: 'list_ammenity', pathMatch: 'full', component: ammenity_show_component_1.AmmenityShowComponent },
             { path: 'ammenity/edit/:id', pathMatch: 'full', component: ammenity_edit_component_1.AmmenityEditComponent },
             { path: 'list_admin', pathMatch: 'full', component: register_component_1.RegisterComponent }
@@ -1240,6 +1655,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var vender_service_1 = __webpack_require__("../../../../../src/app/services/vender.service.ts");
 var environment_prod_1 = __webpack_require__("../../../../../src/environments/environment.prod.ts");
 var venue_show_component_1 = __webpack_require__("../../../../../src/app/admin/venue-list/venue-show/venue-show.component.ts");
 var platform_browser_1 = __webpack_require__("../../../platform-browser/esm5/platform-browser.js");
@@ -1282,6 +1698,10 @@ var user_service_1 = __webpack_require__("../../../../../src/app/services/user.s
 var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
 var material_1 = __webpack_require__("../../../material/esm5/material.es5.js");
 var register_component_1 = __webpack_require__("../../../../../src/app/auth/register/register.component.ts");
+var vender_list_component_1 = __webpack_require__("../../../../../src/app/admin/vender-list/vender-list.component.ts");
+var vender_show_component_1 = __webpack_require__("../../../../../src/app/admin/vender-list/vender-show/vender-show.component.ts");
+var vender_new_component_1 = __webpack_require__("../../../../../src/app/admin/vender-list/vender-new/vender-new.component.ts");
+var vender_edit_component_1 = __webpack_require__("../../../../../src/app/admin/vender-list/vender-edit/vender-edit.component.ts");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -1313,7 +1733,11 @@ var AppModule = (function () {
                 google_map_component_1.GoogleMapComponent,
                 popup_component_1.Dialog,
                 rights_component_1.Rights,
-                register_component_1.RegisterComponent
+                register_component_1.RegisterComponent,
+                vender_list_component_1.VenderListComponent,
+                vender_show_component_1.VenderShowComponent,
+                vender_new_component_1.VenderNewComponent,
+                vender_edit_component_1.VenderEditComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -1364,6 +1788,7 @@ var AppModule = (function () {
             providers: [
                 user_service_1.UserService,
                 venue_service_1.VenueService,
+                vender_service_1.VenderService,
                 ammenity_service_1.AmmenityService,
                 message_service_1.MessageService,
                 upload_service_1.UploadService
@@ -1762,7 +2187,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/client/google-map/google-map.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf='lat && lng'>\n  <agm-map [latitude]='lat' [longitude]='lng' [zoom]=\"zoom\" [disableDefaultUI]=\"false\" [zoomControl]=\"false\">\n    <agm-marker [latitude]='lat' [longitude]='lng'>\n      <agm-info-window>\n        <h3>\n          <strong>Welcome!</strong>\n        </h3>\n        <p>Venues around Tulsa!</p>\n      </agm-info-window>\n    </agm-marker>\n  </agm-map>\n</div>"
+module.exports = "<agm-map [latitude]='36.153883' [longitude]='-95.990629' [zoom]=\"zoom\" [disableDefaultUI]=\"false\" [zoomControl]=\"false\">\n  <agm-marker *ngFor=\"let venue of venues; let i = index\" [title]=\"venue.address\" [latitude]=\"venue.lat\" [longitude]=\"venue.lng\">\n    <agm-info-window>\n      <h3>\n        <strong>{{venue.name}}</strong>\n      </h3>\n    </agm-info-window>\n  </agm-marker>\n</agm-map>\n"
 
 /***/ }),
 
@@ -1782,13 +2207,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
 var GoogleMapComponent = (function () {
-    function GoogleMapComponent() {
+    function GoogleMapComponent(_venueService) {
+        this._venueService = _venueService;
         // google maps zoom level
         this.zoom = 8;
     }
     GoogleMapComponent.prototype.ngOnInit = function () {
         // this.getUserLocation();
+        this.getVenuesLocation();
+    };
+    GoogleMapComponent.prototype.getVenuesLocation = function () {
+        var _this = this;
+        this._venueService.get_all_venues()
+            .then(function (data) {
+            _this.venues = data;
+        })
+            .catch(function (err) {
+            if (err.error instanceof Error) {
+                // A client-side or network error occurred. Handle it accordingly.
+                console.log('An error occurred:', err.error.message);
+            }
+            else {
+                // The backend returned an unsuccessful response code.
+                // The response body may contain clues as to what went wrong,
+                console.log("Backend returned code " + err.status + ", body was: " + err.error);
+            }
+        });
     };
     GoogleMapComponent = __decorate([
         core_1.Component({
@@ -1796,7 +2242,7 @@ var GoogleMapComponent = (function () {
             template: __webpack_require__("../../../../../src/app/client/google-map/google-map.component.html"),
             styles: [__webpack_require__("../../../../../src/app/client/google-map/google-map.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [venue_service_1.VenueService])
     ], GoogleMapComponent);
     return GoogleMapComponent;
 }());
@@ -1813,7 +2259,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".header, .search {\n    width: 100%;\n}\nh1, h2, h4 {\n    text-align: center;\n}\n\n[mat-raised-button] {\n  width:100%;\n}\n.mat-sidenav-container {\n  height: 100vh;\n}\n\n.mat-sidenav {\n  width: 320px;\n}\n\n.mat-grid-list {\n  width: 80%;\n  margin: auto;\n}\n\n.imageGrid {\n  width: 100%;\n}\n\n.spacer {\n    -webkit-box-flex: 1;\n    -ms-flex: 1 1 auto;\n    flex: 1 1 auto;\n}\n", ""]);
+exports.push([module.i, ".header, .search {\n    width: 100%;\n}\nh1, h2, h4 {\n    text-align: center;\n}\n\n[mat-raised-button] {\n  width:100%;\n}\n.mat-sidenav-container {\n  height: 100vh;\n}\n\n.mat-sidenav {\n  width: 320px;\n}\n\n.mat-grid-list {\n  width: 80%;\n  margin: auto;\n}\n\n.imageGrid {\n  width: 100%;\n}\n\n.spacer {\n    -webkit-box-flex: 1;\n    -ms-flex: 1 1 auto;\n    flex: 1 1 auto;\n}\n\nagm-map {\n  width: 100%;\n  height: 25vw;\n  overflow: hidden;\n}\n\n.map {\n  width: 100%;\n}", ""]);
 
 // exports
 
@@ -1826,7 +2272,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/client/venue-search/venue-search.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"search\">\n  <h2>SEARCH FORM COMING SOON...</h2>\n</div>\n<hr>\n<app-google-map></app-google-map>\n<hr>\n<div>\n  <mat-sidenav-container>\n    <mat-sidenav align=\"end\" mode=\"side\" opened=\"true\" #sidenav>\n      <mat-tab-group>\n        <mat-tab>\n          <ng-template mat-tab-label>Details</ng-template>\n          <button mat-raised-button (click)=\"sidenav.close()\" color=\"warn\">CLOSE</button>\n          <p>Name: {{currentVenue.name}}</p>\n          <p>Phone: {{currentVenue.phone}}</p>\n          <p>Location: {{currentVenue.address}}</p>\n          <p>Website: <a href=\"http://{{currentVenue.website}}\">{{currentVenue.website}}</a></p>\n          <button mat-raised-button [routerLink]=\"['/venue', 'display', currentVenue._id]\" color=\"accent\">View More Details</button>\n        </mat-tab>\n        <mat-tab>\n          <ng-template mat-tab-label>Photos</ng-template>\n          <div *ngIf='!currentVenue.pic_url'>\n            <h2>There are currently no pictures of this venue.</h2>\n          </div>\n          <div *ngIf='currentVenue.pic_url'>\n            <img src='https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{currentVenue.pic_url}}' alt=\"Venue Picture\">\n          </div>\n        </mat-tab>\n      </mat-tab-group>\n    </mat-sidenav>\n    <mat-sidenav-content>\n      <mat-grid-list cols=\"4\" rowHeight=\"200px\">\n        <mat-grid-tile *ngFor=\"let venue of venue_list; let i = index\">\n          <img class='imageGrid' src='imgs/{{venue.static_pic_url}}' alt=\"Venue Picture\">\n          <mat-grid-tile-footer>\n            <h3>{{venue.name}}</h3>\n            <span class=\"spacer\"></span>\n            <button mat-icon-button (click)=\"showVenue(venue)\">\n              <mat-icon matTooltip=\"Venue Info!\">info</mat-icon>\n            </button>\n          </mat-grid-tile-footer>\n        </mat-grid-tile>\n      </mat-grid-list>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>\n"
+module.exports = "<div class=\"search\">\n  <h1>SEARCH FORM COMING SOON....</h1>\n</div>\n<hr>\n<!-- <app-google-map></app-google-map> -->\n<div class=\"map\">\n  <agm-map [latitude]='36.153883' [longitude]='-95.990629' [zoom]=\"zoom\" [disableDefaultUI]=\"false\" [zoomControl]=\"false\">\n    <agm-marker *ngFor=\"let venue of venues; let i = index\" [title]=\"venue.address\" [latitude]=\"venue.lat\" [longitude]=\"venue.lng\" (click)=\"showVenue(venue)\">\n      <agm-info-window>\n        <h3>\n          <strong>{{venue.name}}</strong>\n        </h3>\n      </agm-info-window>\n    </agm-marker>\n  </agm-map>\n</div>\n<hr>\n<div>\n  <mat-sidenav-container>\n    <mat-sidenav align=\"end\" mode=\"side\" opened=\"true\" #sidenav>\n      <mat-tab-group>\n        <mat-tab>\n          <ng-template mat-tab-label>Details</ng-template>\n          <button mat-raised-button (click)=\"sidenav.close()\" color=\"warn\">CLOSE</button>\n          <p>Name: {{currentVenue.name}}</p>\n          <p>Phone: {{currentVenue.phone}}</p>\n          <p>Location: {{currentVenue.address}}</p>\n          <p>Website: <a href=\"http://{{currentVenue.website}}\">{{currentVenue.website}}</a></p>\n          <button mat-raised-button [routerLink]=\"['/venue', 'display', currentVenue._id]\" color=\"accent\">View More Details</button>\n        </mat-tab>\n        <mat-tab>\n          <ng-template mat-tab-label>Photos</ng-template>\n          <div *ngIf='!currentVenue.pic_url'>\n            <h2>There are currently no pictures of this venue.</h2>\n          </div>\n          <div *ngIf='currentVenue.pic_url'>\n            <img src='https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{currentVenue.pic_url}}' alt=\"Venue Picture\">\n          </div>\n        </mat-tab>\n      </mat-tab-group>\n    </mat-sidenav>\n    <mat-sidenav-content>\n      <mat-grid-list cols=\"4\" rowHeight=\"200px\">\n        <mat-grid-tile *ngFor=\"let venue of venues; let i = index\">\n          <img class='imageGrid' src='imgs/{{venue.static_pic_url}}' alt=\"Venue Picture\">\n          <mat-grid-tile-footer>\n            <h3>{{venue.name}}</h3>\n            <span class=\"spacer\"></span>\n            <button mat-icon-button (click)=\"showVenue(venue)\">\n              <mat-icon matTooltip=\"Venue Info!\">info</mat-icon>\n            </button>\n          </mat-grid-tile-footer>\n        </mat-grid-tile>\n      </mat-grid-list>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>\n"
 
 /***/ }),
 
@@ -1849,12 +2295,19 @@ var router_1 = __webpack_require__("../../../router/esm5/router.js");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
 var material_1 = __webpack_require__("../../../material/esm5/material.es5.js");
+var venue_1 = __webpack_require__("../../../../../src/app/models/venue.ts");
+var Subject_1 = __webpack_require__("../../../../rxjs/_esm5/Subject.js");
 var VenueSearchComponent = (function () {
     function VenueSearchComponent(_venueService, _router) {
         this._venueService = _venueService;
         this._router = _router;
         this.currentVenue = [];
+        this.searchTerms = new Subject_1.Subject();
+        this.zoom = 8;
     }
+    VenueSearchComponent.prototype.search = function (term) {
+        this.searchTerms.next(term);
+    };
     VenueSearchComponent.prototype.ngOnInit = function () {
         this.getVenues();
     };
@@ -1862,7 +2315,7 @@ var VenueSearchComponent = (function () {
         var _this = this;
         this._venueService.get_all_venues()
             .then(function (data) {
-            _this.venue_list = data;
+            _this.venues = data;
         })
             .catch(function (err) {
             if (err.error instanceof Error) {
@@ -1880,6 +2333,10 @@ var VenueSearchComponent = (function () {
         this.currentVenue = venue;
         this.sidenav.open();
     };
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", venue_1.Venue)
+    ], VenueSearchComponent.prototype, "venue", void 0);
     __decorate([
         core_1.ViewChild('sidenav'),
         __metadata("design:type", material_1.MatSidenav)
@@ -2196,6 +2653,22 @@ exports.User = User;
 
 /***/ }),
 
+/***/ "../../../../../src/app/models/vender.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Vender = (function () {
+    function Vender() {
+    }
+    return Vender;
+}());
+exports.Vender = Vender;
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/models/venue.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2508,6 +2981,119 @@ exports.UserService = UserService;
 
 /***/ }),
 
+/***/ "../../../../../src/app/services/vender.service.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var http_1 = __webpack_require__("../../../http/esm5/http.js");
+var http_2 = __webpack_require__("../../../common/esm5/http.js");
+var of_1 = __webpack_require__("../../../../rxjs/_esm5/observable/of.js");
+var operators_1 = __webpack_require__("../../../../rxjs/_esm5/operators.js");
+var message_service_1 = __webpack_require__("../../../../../src/app/services/message.service.ts");
+var VenderService = (function () {
+    function VenderService(_http, _httpClient, _messageService) {
+        this._http = _http;
+        this._httpClient = _httpClient;
+        this._messageService = _messageService;
+    }
+    VenderService.prototype.get_all_venders = function () {
+        return this._http
+            .get('/venders')
+            .map(function (data) { return data.json(); })
+            .toPromise();
+    };
+    VenderService.prototype.get_venders = function () {
+        var _this = this;
+        return this._httpClient.get('/venders')
+            .pipe(operators_1.tap(function (venders) { return _this.log("fetched venders"); }), operators_1.catchError(this.handleError('getVenders', [])));
+    };
+    // post_vender(form_data): Observable<Vender> {
+    //   return this._httpClient
+    //     .post<Vender>('/venders/create', form_data)
+    //     .pipe(
+    //     // tslint:disable-next-line:no-shadowed-variable
+    //     tap((form_data: Vender) =>
+    //       this.log(`added ammenity w/ id=${form_data._id}`)
+    //     ),
+    //     catchError(this.handleError<Vender>('addVender'))
+    //     );
+    // }
+    VenderService.prototype.post_vender = function (form_data) {
+        return this._http.post('/venders/create', form_data)
+            .map(function (data) { return data.json(); })
+            .toPromise();
+    };
+    // post_to_s3(form_data) {
+    //   return this._http
+    //     .post('/venders/upload', form_data)
+    //     .map(data => data.json())
+    //     .toPromise();
+    // }
+    VenderService.prototype.destroy_vender = function (vender) {
+        console.log('*** Hit venders service');
+        return this._http.post('/venders/destroy', vender)
+            .map(function (data) { return data.json(); })
+            .toPromise();
+    };
+    VenderService.prototype.update_vender = function (vender) {
+        return this._http
+            .post('/venders/update', vender)
+            .map(function (data) { return data.json(); })
+            .toPromise();
+    };
+    VenderService.prototype.get_one = function (vender_id) {
+        console.log('vender_id from service', vender_id);
+        return this._http.post('/venders/id', { vender_id: vender_id })
+            .map(function (data) { return data.json(); })
+            .toPromise();
+    };
+    /**
+     * Handle Http operation that failed.
+     * Let the app continue.
+     * @param operation - name of the operation that failed
+     * @param result - optional value to return as the observable result
+     */
+    VenderService.prototype.handleError = function (operation, result) {
+        var _this = this;
+        if (operation === void 0) { operation = 'operation'; }
+        return function (error) {
+            // TODO: send the error to remote logging infrastructure
+            console.error(error); // log to console instead
+            // TODO: better job of transforming error for user consumption
+            _this.log(operation + " failed: " + error.message);
+            // Let the app keep running by returning an empty result.
+            return of_1.of(result);
+        };
+    };
+    /** Log a HeroService message with the MessageService */
+    VenderService.prototype.log = function (message) {
+        this._messageService.add('VenderService: ' + message);
+    };
+    VenderService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.Http,
+            http_2.HttpClient,
+            message_service_1.MessageService])
+    ], VenderService);
+    return VenderService;
+}());
+exports.VenderService = VenderService;
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/services/venue.service.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2548,8 +3134,7 @@ var VenueService = (function () {
             .pipe(operators_1.tap(function (venues) { return _this.log("fetched venues"); }), operators_1.catchError(this.handleError('getVenues', [])));
     };
     VenueService.prototype.post_venue = function (form_data) {
-        return this._http
-            .post('/venues/create', form_data)
+        return this._http.post('/venues/create', form_data)
             .map(function (data) { return data.json(); })
             .toPromise();
     };
@@ -2585,8 +3170,7 @@ var VenueService = (function () {
     // }
     VenueService.prototype.get_one = function (venue_id) {
         console.log('venue_id from service', venue_id);
-        return this._http
-            .post('/venues/id', { venue_id: venue_id })
+        return this._http.post('/venues/id', { venue_id: venue_id })
             .map(function (data) { return data.json(); })
             .toPromise();
     };
@@ -2646,7 +3230,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/structure/admin-nav/admin-nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/dashboard\">Home</button>\n      <button mat-menu-item routerLink=\"/list_venue\">Venues</button>\n      <button mat-menu-item routerLink=\"/list_ammenity\">Ammenities</button>\n      <button mat-menu-item routerLink=\"#\">Venders</button>\n      <button mat-menu-item routerLink=\"/list_admin\">Admin Users</button>\n    </mat-menu>\n    <span class=\"spacer\"></span>\n    <button mat-icon-button [routerLink]=\"['/']\" (click)='logout()'>\n      <mat-icon aria-label=\"Logout button\">exit_to_app</mat-icon>\n    </button>\n  </mat-toolbar-row>\n</mat-toolbar>\n"
+module.exports = "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <button mat-button [matMenuTriggerFor]=\"menu\">\n      <svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n        <path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\" />\n      </svg>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/dashboard\">Home</button>\n      <button mat-menu-item routerLink=\"/list_admin\">Admin Users</button>\n      <button mat-menu-item routerLink=\"/list_ammenity\">Ammenities</button>\n      <button mat-menu-item routerLink=\"/list_vender\">Venders</button>\n      <button mat-menu-item routerLink=\"/list_venue\">Venues</button>\n    </mat-menu>\n    <span class=\"spacer\"></span>\n    <button mat-icon-button [routerLink]=\"['/']\" (click)='logout()'>\n      <mat-icon aria-label=\"Logout button\">exit_to_app</mat-icon>\n    </button>\n  </mat-toolbar-row>\n</mat-toolbar>\n"
 
 /***/ }),
 
@@ -2879,7 +3463,7 @@ exports.NavComponent = NavComponent;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.environment = {
     production: true,
-    googleMapsKey: '***',
+    googleMapsKey: 'AIzaSyCCYbtEzTOU2_9r90f2H1q5oOaSOd5w1aE',
 };
 
 
@@ -2897,7 +3481,7 @@ exports.environment = {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.environment = {
     production: false,
-    googleMapsKey: '***',
+    googleMapsKey: 'AIzaSyCCYbtEzTOU2_9r90f2H1q5oOaSOd5w1aE',
 };
 
 

@@ -33,8 +33,7 @@ export class VenueService {
   }
 
   post_venue(form_data) {
-    return this._http
-      .post('/venues/create', form_data)
+    return this._http.post('/venues/create', form_data)
       .map(data => data.json())
       .toPromise();
   }
@@ -74,8 +73,7 @@ export class VenueService {
 
   get_one(venue_id) {
     console.log('venue_id from service', venue_id);
-    return this._http
-      .post('/venues/id', { venue_id: venue_id })
+    return this._http.post('/venues/id', { venue_id: venue_id })
       .map(data => data.json())
       .toPromise();
   }

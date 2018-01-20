@@ -1,3 +1,4 @@
+import { VenderService } from './services/vender.service';
 import { environment } from './../environments/environment.prod';
 import { VenueShowComponent } from './admin/venue-list/venue-show/venue-show.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -75,6 +76,10 @@ import {
   MatStepperModule
 } from '@angular/material';
 import { RegisterComponent } from './auth/register/register.component';
+import { VenderListComponent } from './admin/vender-list/vender-list.component';
+import { VenderShowComponent } from './admin/vender-list/vender-show/vender-show.component';
+import { VenderNewComponent } from './admin/vender-list/vender-new/vender-new.component';
+import { VenderEditComponent } from './admin/vender-list/vender-edit/vender-edit.component';
 
 @NgModule({
   declarations: [
@@ -103,7 +108,11 @@ import { RegisterComponent } from './auth/register/register.component';
     GoogleMapComponent,
     Dialog,
     Rights,
-    RegisterComponent
+    RegisterComponent,
+    VenderListComponent,
+    VenderShowComponent,
+    VenderNewComponent,
+    VenderEditComponent
   ],
   imports: [
     BrowserModule,
@@ -154,6 +163,7 @@ import { RegisterComponent } from './auth/register/register.component';
   providers: [
     UserService,
     VenueService,
+    VenderService,
     AmmenityService,
     MessageService,
     UploadService

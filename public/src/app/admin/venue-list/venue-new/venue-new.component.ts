@@ -48,6 +48,7 @@ export class VenueNewComponent implements OnInit {
       .subscribe(ammenities => (this.ammenitiesList = ammenities));
   }
 
+
   create_venue() {
     let form_data = new FormData(this.my_form.nativeElement);
 
