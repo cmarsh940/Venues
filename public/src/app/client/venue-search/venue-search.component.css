@@ -37,6 +37,28 @@ agm-map {
   overflow: hidden;
 }
 
+.vender {
+  width: 24%;
+}
+
 .map {
-  width: 100%;
+  width: 50%;
+}
+
+.vender, .map {
+  display: inline-block;
+  vertical-align: top;
+}
+
+div.container {
+  width:100%;
+}
+ 
+.card-group {
+  display: inline-flex;
+  margin: 2%;
+}
+
+.card {
+  width: 20em;
 }

@@ -1,11 +1,15 @@
+<div class="containerX">
 <div class="search">
   <h1>SEARCH FORM COMING SOON....</h1>
 </div>
 <hr>
 <!-- <app-google-map></app-google-map> -->
+<div class="vender">
+  <h4>VENDER</h4>
+</div>
 <div class="map">
   <agm-map [latitude]='36.153883' [longitude]='-95.990629' [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
-    <agm-marker *ngFor="let venue of venues; let i = index" [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng" (click)="showVenue(venue)">
+    <agm-marker *ngFor="let venue of venues; let i = index" [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng">
       <agm-info-window>
         <h3>
           <strong>{{venue.name}}</strong>
@@ -14,8 +18,28 @@
     </agm-marker>
   </agm-map>
 </div>
+<div class="vender">
+  <h4>VENDER</h4>
+</div>
 <hr>
-<div>
+
+<div class="container">
+  <div class="card-group" *ngFor="let venue of venues; let i = index">
+    <mat-card class="card" tabindex="0">
+      <img mat-card-image src='imgs/{{venue.static_pic_url}}' alt="Venue Picture">
+      <mat-card-content>
+        <p>{{venue.name}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>VIEW</button>
+        <span class="spacer"></span>
+        <mat-icon class="icon" color="accent">favorite</mat-icon>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+</div>
+<!-- <div>
   <mat-sidenav-container>
     <mat-sidenav align="end" mode="side" opened="true" #sidenav>
       <mat-tab-group>
@@ -54,4 +78,4 @@
       </mat-grid-list>
     </mat-sidenav-content>
   </mat-sidenav-container>
-</div>
+</div> -->
