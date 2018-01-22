@@ -108,8 +108,7 @@ module.exports = {
       }
     }
 
-    new_venue
-      .save()
+    new_venue.save()
       .then(() => {
         return res.json(new_venue);
       })

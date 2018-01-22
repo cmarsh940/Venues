@@ -16,6 +16,11 @@ const VenderSchema = new mongoose.Schema(
             required: [true, "Phone number cannot be blank."],
             maxlength: 12,
         },
+        address: {
+            type: Number,
+            required: [true, "Address cannot be blank."],
+            maxlength: 150,
+        }, 
         website: {
             type: String,
             required: [true, 'Website cannot be blank.'],

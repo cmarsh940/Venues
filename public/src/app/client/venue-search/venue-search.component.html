@@ -5,10 +5,10 @@
 <hr>
 <!-- <app-google-map></app-google-map> -->
 <div class="container">
-  <div class="vender" *ngFor="let vender of venders">
+  <div class="vender">
     <h4>VENDER</h4>
     <h3>
-      <strong>{{vender.name}}</strong>
+      <!-- <strong>{{vender.name}}</strong> -->
     </h3>
   </div>
   <div class="map">
@@ -18,14 +18,15 @@
           <h3>
             <strong>{{venue.name}}</strong>
           </h3>
+          <button mat-button [routerLink]="['/venue', 'display', venue._id]">VIEW</button>
         </agm-info-window>
       </agm-marker>
     </agm-map>
   </div>
-  <div class="vender" *ngFor="let vender of venders">
+  <div class="vender" >
     <h4>VENDER</h4>
     <h3>
-      <strong>{{vender.name}}</strong>
+      <!-- <strong>{{vender.name}}</strong> -->
     </h3>
   </div>
 </div>
@@ -39,7 +40,7 @@
         <p>{{venue.name}}</p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button>VIEW</button>
+        <button mat-raised-button [routerLink]="['/venue', 'display', venue._id]">VIEW</button>
         <span class="spacer"></span>
         <mat-icon class="icon" color="accent">favorite</mat-icon>
       </mat-card-actions>

@@ -31,20 +31,7 @@ export class VenderService {
       );
   }
 
-  // post_vender(form_data): Observable<Vender> {
-  //   return this._httpClient
-  //     .post<Vender>('/venders/create', form_data)
-  //     .pipe(
-  //     // tslint:disable-next-line:no-shadowed-variable
-  //     tap((form_data: Vender) =>
-  //       this.log(`added ammenity w/ id=${form_data._id}`)
-  //     ),
-  //     catchError(this.handleError<Vender>('addVender'))
-  //     );
-  // }
-
   post_vender(form_data) {
-    console.log("*** Hit post vender on service")
     return this._http.post('/venders/create', form_data)
       .map(data => data.json())
       .toPromise();

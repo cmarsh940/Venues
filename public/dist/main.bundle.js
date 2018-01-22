@@ -931,12 +931,12 @@ var VenderNewComponent = (function () {
         console.log("*** This is the form data", form_data);
         this._venderService.post_vender(form_data).then(function () {
             console.log("*** Setting new vender");
-            _this.new_vender = new vender_1.Vender;
+            _this.new_vender = new vender_1.Vender();
             console.log("*** Setting file value");
             _this.file_input.nativeElement.value = "";
             console.log("*** About to emit");
             _this.new_vender_event.emit();
-            _this._router.navigate(["/list_vender"]);
+            _this._router.navigate(['/list_vender']);
         });
     };
     __decorate([
@@ -1539,6 +1539,7 @@ var rights_component_1 = __webpack_require__("../../../../../src/app/structure/f
 var vender_show_component_1 = __webpack_require__("../../../../../src/app/admin/vender-list/vender-show/vender-show.component.ts");
 var vender_new_component_1 = __webpack_require__("../../../../../src/app/admin/vender-list/vender-new/vender-new.component.ts");
 var vender_edit_component_1 = __webpack_require__("../../../../../src/app/admin/vender-list/vender-edit/vender-edit.component.ts");
+var vender_component_1 = __webpack_require__("../../../../../src/app/client/vender/vender.component.ts");
 var routes = [
     {
         path: '', component: client_component_1.ClientComponent,
@@ -1546,6 +1547,7 @@ var routes = [
             { path: '', pathMatch: 'full', component: dashboard_component_1.DashboardComponent },
             { path: 'search', pathMatch: 'full', component: venue_search_component_1.VenueSearchComponent },
             { path: 'venue/display/:id', pathMatch: 'full', component: venue_component_1.VenueComponent },
+            { path: 'vender/display/:id', pathMatch: 'full', component: vender_component_1.VenderComponent },
             { path: 'rights', pathMatch: 'full', component: rights_component_1.Rights }
         ]
     },
@@ -2334,7 +2336,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/client/venue-search/venue-search.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"containerX\">\n<div class=\"search\">\n  <h1>SEARCH FORM COMING SOON....</h1>\n</div>\n<hr>\n<!-- <app-google-map></app-google-map> -->\n<div class=\"container\">\n  <div class=\"vender\" *ngFor=\"let vender of venders\">\n    <h4>VENDER</h4>\n    <h3>\n      <strong>{{vender.name}}</strong>\n    </h3>\n  </div>\n  <div class=\"map\">\n    <agm-map [latitude]='36.153883' [longitude]='-95.990629' [zoom]=\"zoom\" [disableDefaultUI]=\"false\" [zoomControl]=\"false\">\n      <agm-marker *ngFor=\"let venue of venues; let i = index\" [title]=\"venue.address\" [latitude]=\"venue.lat\" [longitude]=\"venue.lng\">\n        <agm-info-window>\n          <h3>\n            <strong>{{venue.name}}</strong>\n          </h3>\n        </agm-info-window>\n      </agm-marker>\n    </agm-map>\n  </div>\n  <div class=\"vender\" *ngFor=\"let vender of venders\">\n    <h4>VENDER</h4>\n    <h3>\n      <strong>{{vender.name}}</strong>\n    </h3>\n  </div>\n</div>\n<hr>\n\n<div class=\"container\">\n  <div class=\"card-group\" *ngFor=\"let venue of venues; let i = index\">\n    <mat-card class=\"card\" tabindex=\"0\">\n      <img mat-card-image src='imgs/{{venue.static_pic_url}}' alt=\"Venue Picture\">\n      <mat-card-content>\n        <p>{{venue.name}}</p>\n      </mat-card-content>\n      <mat-card-actions>\n        <button mat-button>VIEW</button>\n        <span class=\"spacer\"></span>\n        <mat-icon class=\"icon\" color=\"accent\">favorite</mat-icon>\n      </mat-card-actions>\n    </mat-card>\n  </div>\n</div>\n<!-- <div>\n  <mat-sidenav-container>\n    <mat-sidenav align=\"end\" mode=\"side\" opened=\"true\" #sidenav>\n      <mat-tab-group>\n        <mat-tab>\n          <ng-template mat-tab-label>Details</ng-template>\n          <button mat-raised-button (click)=\"sidenav.close()\" color=\"warn\">CLOSE</button>\n          <p>Name: {{currentVenue.name}}</p>\n          <p>Phone: {{currentVenue.phone}}</p>\n          <p>Location: {{currentVenue.address}}</p>\n          <p>Website: <a href=\"http://{{currentVenue.website}}\">{{currentVenue.website}}</a></p>\n          <button mat-raised-button [routerLink]=\"['/venue', 'display', currentVenue._id]\" color=\"accent\">View More Details</button>\n        </mat-tab>\n        <mat-tab>\n          <ng-template mat-tab-label>Photos</ng-template>\n          <div *ngIf='!currentVenue.pic_url'>\n            <h2>There are currently no pictures of this venue.</h2>\n          </div>\n          <div *ngIf='currentVenue.pic_url'>\n            <img src='https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{currentVenue.pic_url}}' alt=\"Venue Picture\">\n          </div>\n        </mat-tab>\n      </mat-tab-group>\n    </mat-sidenav>\n    <mat-sidenav-content>\n      <mat-grid-list cols=\"4\" rowHeight=\"200px\">\n        <mat-grid-tile *ngFor=\"let venue of venues; let i = index\">\n          <img class='imageGrid' src='imgs/{{venue.static_pic_url}}' alt=\"Venue Picture\">\n          <mat-grid-tile-footer>\n            <h3>{{venue.name}}</h3>\n            <span class=\"spacer\"></span>\n            <button mat-icon-button (click)=\"showVenue(venue)\">\n              <mat-icon matTooltip=\"Venue Info!\">info</mat-icon>\n            </button>\n          </mat-grid-tile-footer>\n        </mat-grid-tile>\n      </mat-grid-list>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div> -->\n"
+module.exports = "<div class=\"containerX\">\n<div class=\"search\">\n  <h1>SEARCH FORM COMING SOON....</h1>\n</div>\n<hr>\n<!-- <app-google-map></app-google-map> -->\n<div class=\"container\">\n  <div class=\"vender\">\n    <h4>VENDER</h4>\n    <h3>\n      <!-- <strong>{{vender.name}}</strong> -->\n    </h3>\n  </div>\n  <div class=\"map\">\n    <agm-map [latitude]='36.153883' [longitude]='-95.990629' [zoom]=\"zoom\" [disableDefaultUI]=\"false\" [zoomControl]=\"false\">\n      <agm-marker *ngFor=\"let venue of venues; let i = index\" [title]=\"venue.address\" [latitude]=\"venue.lat\" [longitude]=\"venue.lng\">\n        <agm-info-window>\n          <h3>\n            <strong>{{venue.name}}</strong>\n          </h3>\n          <button mat-button [routerLink]=\"['/venue', 'display', venue._id]\">VIEW</button>\n        </agm-info-window>\n      </agm-marker>\n    </agm-map>\n  </div>\n  <div class=\"vender\" >\n    <h4>VENDER</h4>\n    <h3>\n      <!-- <strong>{{vender.name}}</strong> -->\n    </h3>\n  </div>\n</div>\n<hr>\n\n<div class=\"container\">\n  <div class=\"card-group\" *ngFor=\"let venue of venues; let i = index\">\n    <mat-card class=\"card\" tabindex=\"0\">\n      <img mat-card-image src='imgs/{{venue.static_pic_url}}' alt=\"Venue Picture\">\n      <mat-card-content>\n        <p>{{venue.name}}</p>\n      </mat-card-content>\n      <mat-card-actions>\n        <button mat-raised-button [routerLink]=\"['/venue', 'display', venue._id]\">VIEW</button>\n        <span class=\"spacer\"></span>\n        <mat-icon class=\"icon\" color=\"accent\">favorite</mat-icon>\n      </mat-card-actions>\n    </mat-card>\n  </div>\n</div>\n<!-- <div>\n  <mat-sidenav-container>\n    <mat-sidenav align=\"end\" mode=\"side\" opened=\"true\" #sidenav>\n      <mat-tab-group>\n        <mat-tab>\n          <ng-template mat-tab-label>Details</ng-template>\n          <button mat-raised-button (click)=\"sidenav.close()\" color=\"warn\">CLOSE</button>\n          <p>Name: {{currentVenue.name}}</p>\n          <p>Phone: {{currentVenue.phone}}</p>\n          <p>Location: {{currentVenue.address}}</p>\n          <p>Website: <a href=\"http://{{currentVenue.website}}\">{{currentVenue.website}}</a></p>\n          <button mat-raised-button [routerLink]=\"['/venue', 'display', currentVenue._id]\" color=\"accent\">View More Details</button>\n        </mat-tab>\n        <mat-tab>\n          <ng-template mat-tab-label>Photos</ng-template>\n          <div *ngIf='!currentVenue.pic_url'>\n            <h2>There are currently no pictures of this venue.</h2>\n          </div>\n          <div *ngIf='currentVenue.pic_url'>\n            <img src='https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{currentVenue.pic_url}}' alt=\"Venue Picture\">\n          </div>\n        </mat-tab>\n      </mat-tab-group>\n    </mat-sidenav>\n    <mat-sidenav-content>\n      <mat-grid-list cols=\"4\" rowHeight=\"200px\">\n        <mat-grid-tile *ngFor=\"let venue of venues; let i = index\">\n          <img class='imageGrid' src='imgs/{{venue.static_pic_url}}' alt=\"Venue Picture\">\n          <mat-grid-tile-footer>\n            <h3>{{venue.name}}</h3>\n            <span class=\"spacer\"></span>\n            <button mat-icon-button (click)=\"showVenue(venue)\">\n              <mat-icon matTooltip=\"Venue Info!\">info</mat-icon>\n            </button>\n          </mat-grid-tile-footer>\n        </mat-grid-tile>\n      </mat-grid-list>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div> -->\n"
 
 /***/ }),
 
@@ -3097,19 +3099,7 @@ var VenderService = (function () {
         return this._httpClient.get('/venders')
             .pipe(operators_1.tap(function (venders) { return _this.log("fetched venders"); }), operators_1.catchError(this.handleError('getVenders', [])));
     };
-    // post_vender(form_data): Observable<Vender> {
-    //   return this._httpClient
-    //     .post<Vender>('/venders/create', form_data)
-    //     .pipe(
-    //     // tslint:disable-next-line:no-shadowed-variable
-    //     tap((form_data: Vender) =>
-    //       this.log(`added ammenity w/ id=${form_data._id}`)
-    //     ),
-    //     catchError(this.handleError<Vender>('addVender'))
-    //     );
-    // }
     VenderService.prototype.post_vender = function (form_data) {
-        console.log("*** Hit post vender on service");
         return this._http.post('/venders/create', form_data)
             .map(function (data) { return data.json(); })
             .toPromise();
