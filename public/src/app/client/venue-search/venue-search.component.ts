@@ -9,6 +9,8 @@ import { google } from '@agm/core/services/google-maps-types';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { VenderService } from '../../services/vender.service';
+import { Vender } from '../../models/vender';
 
 @Component({
   selector: 'app-venue-search',
@@ -19,6 +21,7 @@ export class VenueSearchComponent implements OnInit {
   venue$: Observable<Venue[]>;
   venue_list: Array<Venue>;
   // venues: Venue[] = [];
+  venders: Vender[];
   venues: Venue[];
   currentVenue: Venue[] = [];
 
@@ -26,10 +29,10 @@ export class VenueSearchComponent implements OnInit {
   zoom: number = 8;
 
   @Input() venue: Venue;
-  @ViewChild('sidenav') sidenav: MatSidenav;
 
   constructor(
     private _venueService: VenueService,
+    private _venderService: VenderService,
     private _router: Router
   ) {}
 
@@ -38,7 +41,25 @@ export class VenueSearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getVenders();
     this.getVenues();
+  }
+
+  getVenders() {
+    this._venderService.get_all_venders()
+      .then(data => {
+        this.venders = data;
+      })
+      .catch((err: HttpErrorResponse) => {
+        if (err.error instanceof Error) {
+          // A client-side or network error occurred. Handle it accordingly.
+          console.log('An error occurred:', err.error.message);
+        } else {
+          // The backend returned an unsuccessful response code.
+          // The response body may contain clues as to what went wrong,
+          console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+        }
+      });
   }
 
   getVenues() {
@@ -60,7 +81,6 @@ export class VenueSearchComponent implements OnInit {
 
   showVenue(venue) {
     this.currentVenue = venue;
-    this.sidenav.open();
   }
 }
 

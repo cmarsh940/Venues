@@ -17,6 +17,7 @@ import { Rights } from './structure/footer/rights/rights.component';
 import { VenderShowComponent } from './admin/vender-list/vender-show/vender-show.component';
 import { VenderNewComponent } from './admin/vender-list/vender-new/vender-new.component';
 import { VenderEditComponent } from './admin/vender-list/vender-edit/vender-edit.component';
+import { VenderComponent } from './client/vender/vender.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,7 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', component: DashboardComponent },
       { path: 'search', pathMatch: 'full', component: VenueSearchComponent },
       { path: 'venue/display/:id', pathMatch: 'full', component: VenueComponent },
+      { path: 'vender/display/:id', pathMatch: 'full', component: VenderComponent },
       { path: 'rights', pathMatch: 'full', component: Rights }
     ]
   },

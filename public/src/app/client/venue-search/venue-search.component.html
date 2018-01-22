@@ -4,22 +4,30 @@
 </div>
 <hr>
 <!-- <app-google-map></app-google-map> -->
-<div class="vender">
-  <h4>VENDER</h4>
-</div>
-<div class="map">
-  <agm-map [latitude]='36.153883' [longitude]='-95.990629' [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
-    <agm-marker *ngFor="let venue of venues; let i = index" [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng">
-      <agm-info-window>
-        <h3>
-          <strong>{{venue.name}}</strong>
-        </h3>
-      </agm-info-window>
-    </agm-marker>
-  </agm-map>
-</div>
-<div class="vender">
-  <h4>VENDER</h4>
+<div class="container">
+  <div class="vender" *ngFor="let vender of venders">
+    <h4>VENDER</h4>
+    <h3>
+      <strong>{{vender.name}}</strong>
+    </h3>
+  </div>
+  <div class="map">
+    <agm-map [latitude]='36.153883' [longitude]='-95.990629' [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
+      <agm-marker *ngFor="let venue of venues; let i = index" [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng">
+        <agm-info-window>
+          <h3>
+            <strong>{{venue.name}}</strong>
+          </h3>
+        </agm-info-window>
+      </agm-marker>
+    </agm-map>
+  </div>
+  <div class="vender" *ngFor="let vender of venders">
+    <h4>VENDER</h4>
+    <h3>
+      <strong>{{vender.name}}</strong>
+    </h3>
+  </div>
 </div>
 <hr>
 
@@ -37,7 +45,6 @@
       </mat-card-actions>
     </mat-card>
   </div>
-
 </div>
 <!-- <div>
   <mat-sidenav-container>

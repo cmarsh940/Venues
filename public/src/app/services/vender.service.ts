@@ -44,6 +44,7 @@ export class VenderService {
   // }
 
   post_vender(form_data) {
+    console.log("*** Hit post vender on service")
     return this._http.post('/venders/create', form_data)
       .map(data => data.json())
       .toPromise();

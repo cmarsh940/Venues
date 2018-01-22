@@ -80,6 +80,7 @@ import { VenderListComponent } from './admin/vender-list/vender-list.component';
 import { VenderShowComponent } from './admin/vender-list/vender-show/vender-show.component';
 import { VenderNewComponent } from './admin/vender-list/vender-new/vender-new.component';
 import { VenderEditComponent } from './admin/vender-list/vender-edit/vender-edit.component';
+import { VenderComponent } from './client/vender/vender.component';
 
 @NgModule({
   declarations: [
@@ -112,7 +113,8 @@ import { VenderEditComponent } from './admin/vender-list/vender-edit/vender-edit
     VenderListComponent,
     VenderShowComponent,
     VenderNewComponent,
-    VenderEditComponent
+    VenderEditComponent,
+    VenderComponent
   ],
   imports: [
     BrowserModule,

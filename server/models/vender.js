@@ -24,10 +24,6 @@ const VenderSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        pic_url: {
-            type: String,
-            required: false
-        },
     },
     { timestamps: true }
 );

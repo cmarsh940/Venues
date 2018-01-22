@@ -6,7 +6,6 @@ export class Vender {
     address: string;
     website: string;
     static_pic_url: any;
-    pic_url: any;
     createdAt: any;
     updatedAt: any;
 }

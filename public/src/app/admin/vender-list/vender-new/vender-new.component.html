@@ -2,7 +2,7 @@
   <i class="material-icons">&#xE5C4;</i>
 </button>
 <h1>Add a Vender</h1>
-<form #form (submit)="create_vender()" encType="multipart/form-data">
+<form #form (ngSubmit)="create_vender()" encType="multipart/form-data">
   <!-- Name -->
   <mat-form-field>
     <input matInput name="name" required maxlength=250 [(ngModel)]="new_vender.name" placeholder="Vender Name" />

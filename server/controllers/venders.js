@@ -135,26 +135,26 @@ module.exports = {
 
     create: (req, res) => {
         console.log("*** hit server for creating a vender");
-        let new_vender = new Vender(req.body);
-        console.log(new_vender);
-        if (req.files.picture) {
-            let file = req.files.picture;
-            console.log("*** server recieved file named:", file);
-            let file_type = file.mimetype.match(/image\/(\w+)/);
-            console.log("*** server file type", file_type);
-            let new_file_name = "";
-            console.log("*** Renaming file");
-            if (file_type) {
-                let new_file_name = `${new Date().getTime()}.${file_type[1]}`;
-                console.log("*** Files new name is:", new_file_name);
-                file.mv(path.resolve(__dirname, "../../static/imgs/", new_file_name), err => {
-                    if (err) {
-                        console.log("*** file move error", err);
-                    }
+        if(req.method === 'POST') {
+            var busboy = new Busboy({ headers: req.headers });
+            busboy.on('file', function (fieldname, file, filename, encoding, mimetype) {
+                console.log('File [' + fieldname + ']: filename: ' + filename + ', encoding: ' + encoding + ', mimetype: ' + mimetype);
+                file.on('data', function (data) {
+                    console.log('File [' + fieldname + '] got ' + data.length + ' bytes');
                 });
-                console.log("*** Files is now moved to uploads folder");
-                new_vender.static_pic_url = new_file_name;
-            }
+                file.on('end', function () {
+                    console.log('File [' + fieldname + '] Finished');
+                });
+            });
+            busboy.on('field', function (fieldname, val, fieldnameTruncated, valTruncated, encoding, mimetype) {
+                console.log('Field [' + fieldname + ']: value: ' + inspect(val));
+            });
+            busboy.on('finish', function () {
+                console.log('Done parsing form!');
+                res.writeHead(303, { Connection: 'close', Location: '/' });
+                res.end();
+            });
+            req.pipe(busboy);
         }
 
         new_vender.save()
@@ -166,19 +166,53 @@ module.exports = {
                 return res.json(err);
             });
     },
+        
+    // create: (req, res) => {
+    //     console.log("*** hit server for creating a vender");
+    //     let new_vender = new Vender(req.body);
+    //     console.log(new_vender);
+    //     if (req.files.picture) {
+    //         let file = req.files.picture;
+    //         console.log("*** server recieved file named:", file);
+    //         let file_type = file.mimetype.match(/image\/(\w+)/);
+    //         console.log("*** server file type", file_type);
+    //         let new_file_name = "";
+    //         console.log("*** Renaming file");
+    //         if (file_type) {
+    //             let new_file_name = `${new Date().getTime()}.${file_type[1]}`;
+    //             console.log("*** Files new name is:", new_file_name);
+    //             file.mv(path.resolve(__dirname, "../../static/imgs/", new_file_name), err => {
+    //                 if (err) {
+    //                     console.log("*** file move error", err);
+    //                 }
+    //             });
+    //             console.log("*** Files is now moved to uploads folder");
+    //             new_vender.static_pic_url = new_file_name;
+    //         }
+    //     }
 
-    destroy: (req, res, next) => {
-        console.log("*** logging the req.body", req.body);
-        let vender = new Vender(req.body);
-        console.log("*** logging the new vender to be deleted", vender);
-        Vender.findByIdAndRemove({ _id: vender._id }, (err, vender) => {
-            if (err) {
-                return next(err);
-            }
-            console.log("*** Deleted vender")
-            return res.json(true);
-        });
-    },
+    //     new_vender.save()
+    //         .then(() => {
+    //             return res.json(new_vender);
+    //         })
+    //         .catch(err => {
+    //             console.log("*** my_vender save error", err);
+    //             return res.json(err);
+    //         });
+    // },
+
+    // destroy: (req, res, next) => {
+    //     console.log("*** logging the req.body", req.body);
+    //     let vender = new Vender(req.body);
+    //     console.log("*** logging the new vender to be deleted", vender);
+    //     Vender.findByIdAndRemove({ _id: vender._id }, (err, vender) => {
+    //         if (err) {
+    //             return next(err);
+    //         }
+    //         console.log("*** Deleted vender")
+    //         return res.json(true);
+    //     });
+    // },
 
 
 

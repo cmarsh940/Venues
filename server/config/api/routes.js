@@ -1,7 +1,7 @@
 const Users = require('../../controllers/users');
 const ammenities = require('../../controllers/ammenities');
 const venues = require('../../controllers/venues');
-const vender = require('../../controllers/venders');
+const venders = require('../../controllers/venders');
 // const config = require('../config');
 
 // const BUCKET_NAME = "venue-test";
@@ -52,12 +52,12 @@ module.exports = app => {
     app.post("/venues/id", venues.getOne);
 
     // VENDER
-    app.get("/vender", vender.index);
-    app.post("/vender/upload", vender.upload);
-    app.post("/vender/create", vender.create);
-    app.post("/vender/destroy", vender.destroy);
-    app.post("/vender/update", vender.update);
-    app.post("/vender/id", vender.getOne);
+    app.get("/venders", venders.index);
+    app.post("/venders/upload", venders.upload);
+    app.post("/venders/create", venders.create);
+    app.post("/venders/destroy", venders.destroy);
+    app.post("/venders/update", venders.update);
+    app.post("/venders/id", venders.getOne);
 
     // AMMENITIES
     app.get("/ammenities", ammenities.index);
