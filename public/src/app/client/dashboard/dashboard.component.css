@@ -1,38 +1,55 @@
-div.container {
-    width: 100%;
-    background: lightskyblue;
+div.containerX {
+    margin: 0;
+    padding: 0;
 }
 
-.img{
-    max-width: 50%;
-    min-width: 50%;
-    display: block;
+div.container {
+    width: 100%;
+    /* background: lightskyblue; */
+}
+
+#main {
+    background-image: url(/assets/images/tulsa.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    height: 50em;
+}
+
+div.search {
+    width: 100%;
+    display: grid;
+    margin-top: 1%;
+}
+
+.form-field {
+    width: 25%;
     margin: auto;
 }
 
-div[fxLayoutAlign] { 
-    padding:4px; 
-    background: lightcyan;
+#search-button {
+    width:100%;
+    display: flex;
+    /* margin: ; */
 }
 
 button {
     margin: auto;
 }
 
-h2 {
+h1, h2 {
+    margin-top: 9%;
     text-align: center;
 }
 
-div.green {
-    width: 100%;
-    background: lightgreen;
+div.vender-card {
+    display: inline;
+}
+.card {
+    display: inline-block;
+    width: 10em;
+    margin: 2%;
 }
 
-div.red {
-    width: 100%;
-    background: lightcoral;
-}
-
-button {
-    align-self: center;
+mat-form-field {
+    background: white;
 }

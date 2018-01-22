@@ -62,7 +62,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n/* @import '~@angular/material/prebuilt-themes/indigo-pink.css'; */\n\nbody {\n    height: 100%;\n    margin: 0;\n    padding: 0;\n    font-family: Roboto, sans-serif;\n}\n\n* {\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n}\n", ""]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n/* @import '~@angular/material/prebuilt-themes/indigo-pink.css'; */\n\nbody {\n    height: 100%;\n    margin: 0;\n    padding: 0;\n    font-family: Roboto, sans-serif;\n}\n\n* {\n    padding: 0;\n    margin: 0;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n}\n", ""]);
 
 // exports
 

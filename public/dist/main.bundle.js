@@ -2095,7 +2095,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "div.container {\n    width: 100%;\n    background: lightskyblue;\n}\n\n.img{\n    max-width: 50%;\n    min-width: 50%;\n    display: block;\n    margin: auto;\n}\n\ndiv[fxLayoutAlign] { \n    padding:4px; \n    background: lightcyan;\n}\n\nbutton {\n    margin: auto;\n}\n\nh2 {\n    text-align: center;\n}\n\ndiv.green {\n    width: 100%;\n    background: lightgreen;\n}\n\ndiv.red {\n    width: 100%;\n    background: lightcoral;\n}\n\nbutton {\n    -ms-flex-item-align: center;\n        -ms-grid-row-align: center;\n        align-self: center;\n}", ""]);
+exports.push([module.i, "div.containerX {\n    margin: 0;\n    padding: 0;\n}\n\ndiv.container {\n    width: 100%;\n    /* background: lightskyblue; */\n}\n\n#main {\n    background-image: url(/assets/images/tulsa.jpg);\n    background-attachment: fixed;\n    background-size: cover;\n    height: 50em;\n}\n\ndiv.search {\n    width: 100%;\n    display: -ms-grid;\n    display: grid;\n    margin-top: 1%;\n}\n\n.form-field {\n    width: 25%;\n    margin: auto;\n}\n\n#search-button {\n    width:100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    /* margin: ; */\n}\n\nbutton {\n    margin: auto;\n}\n\nh1, h2 {\n    margin-top: 9%;\n    text-align: center;\n}\n\ndiv.vender-card {\n    display: inline;\n}\n.card {\n    display: inline-block;\n    width: 10em;\n    margin: 2%;\n}\n\nmat-form-field {\n    background: white;\n}", ""]);
 
 // exports
 
@@ -2108,7 +2108,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/client/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"containerX\">\n  <div class=\"container\">\n    <section>\n      <img class=\"img\" src=\"assets/images/tulsavenus.png\" alt=\"Picture of outlined city\">\n      <h2>Who knows Tulsa better then tulsans?</h2>\n    </section>\n    <div id=\"search-button\">\n      <button mat-raised-button color=\"accent\" routerLink=\"/search\" matTooltip=\"Search for a Venue\">Find Your Venue Now</button>\n    </div>\n  </div>\n  <hr>\n  <div class=\"container\" fxLayout=\"col\" fxLayoutAlign=\"space-around center\">\n    <div class=\"green\">\n      <i class=\"material-icons\">&#xE04A;</i>\n    </div>\n    <div class=\"red\">\n      <h2>ABOUT</h2>\n    </div>\n  </div>\n  <hr>\n  <div class=\"container\">\n    <h2>Preferred Venders</h2>\n  </div>\n</div>\n"
+module.exports = "<div class=\"containerX\">\n  <div class=\"container\" id=\"main\">\n    <hr>\n    <section>\n      <h1>Who knows Tulsa better then tulsans?</h1>\n    </section>\n    <div class=\"search\">\n      <mat-form-field class=\"form-field\">\n        <input matInput type=\"text\" placeholder=\"Search for a venue\" [(ngModel)]=\"value\" />\n        <button mat-button *ngIf=\"value\" matSuffix mat-icon-button aria-label=\"Clear\" (click)=\"value=''\">\n          <mat-icon>close</mat-icon>\n        </button>\n      </mat-form-field>\n      <div id=\"search-button\">\n        <button mat-raised-button color=\"accent\" routerLink=\"/search\" matTooltip=\"Search for a Venue\">Find Your Venue Now</button>\n      </div>\n    </div>\n  </div>\n  <hr>\n  <!-- <div class=\"container\" fxLayout=\"col\" fxLayoutAlign=\"space-around center\">\n    <div class=\"green\">\n      <i class=\"material-icons\">&#xE04A;</i>\n    </div>\n    <div class=\"red\">\n      <h2>ABOUT</h2>\n    </div>\n  </div> -->\n  <div class=\"container\">\n    <h2>Preferred Venders</h2>\n    <div class=\"vender-card\" *ngFor=\"let vender of venders; let i = index\">\n      <mat-card class=\"card\" [tabindex]=\"i\">\n        <img mat-card-image src='imgs/{{vender.static_pic_url}}' alt=\"Vender Picture\">\n        <mat-card-content>\n          <p>{{vender.name}}</p>\n        </mat-card-content>\n        <mat-card-actions>\n          <button mat-raised-button [routerLink]=\"['/vender', 'display', vender._id]\">VIEW</button>\n        </mat-card-actions>\n      </mat-card>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -2130,14 +2130,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var venue_service_1 = __webpack_require__("../../../../../src/app/services/venue.service.ts");
 var router_1 = __webpack_require__("../../../router/esm5/router.js");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var vender_service_1 = __webpack_require__("../../../../../src/app/services/vender.service.ts");
 var DashboardComponent = (function () {
-    function DashboardComponent(_venueService, _router) {
+    function DashboardComponent(_venueService, _venderService, _router) {
         this._venueService = _venueService;
+        this._venderService = _venderService;
         this._router = _router;
         this.venues = [];
+        this.value = '';
     }
     DashboardComponent.prototype.ngOnInit = function () {
         this.getVenues();
+        this.getVenders();
     };
     // getVenues() {
     //   this._venueService.get_venues()
@@ -2150,9 +2154,13 @@ var DashboardComponent = (function () {
     // }
     DashboardComponent.prototype.getVenues = function () {
         var _this = this;
-        this._venueService
-            .get_venues()
+        this._venueService.get_venues()
             .subscribe(function (venues) { return (_this.venues = venues.slice(1, 5)); });
+    };
+    DashboardComponent.prototype.getVenders = function () {
+        var _this = this;
+        this._venderService.get_venders()
+            .subscribe(function (venders) { return (_this.venders = venders.slice(0, 5)); });
     };
     DashboardComponent = __decorate([
         core_1.Component({
@@ -2160,7 +2168,9 @@ var DashboardComponent = (function () {
             template: __webpack_require__("../../../../../src/app/client/dashboard/dashboard.component.html"),
             styles: [__webpack_require__("../../../../../src/app/client/dashboard/dashboard.component.css")]
         }),
-        __metadata("design:paramtypes", [venue_service_1.VenueService, router_1.Router])
+        __metadata("design:paramtypes", [venue_service_1.VenueService,
+            vender_service_1.VenderService,
+            router_1.Router])
     ], DashboardComponent);
     return DashboardComponent;
 }());
@@ -2262,7 +2272,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".mat-sidenav {\n  width: 500px;\n  height: 100%;\n}\n\nh1 {\n  width: 100%;\n  text-align: center;\n}\n\nimg {\n  -ms-flex-line-pack: center;\n      align-content: center;\n}", ""]);
 
 // exports
 
@@ -2275,7 +2285,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/client/vender/vender.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  vender works!\n</p>\n"
+module.exports = "<div>\n  <mat-sidenav-container>\n    <mat-sidenav align=\"end\" mode=\"side\" opened=\"true\" disableClose=\"true\" #sidenav>\n      <mat-tab-group>\n        <mat-tab>\n          <ng-template mat-tab-label>Details</ng-template>\n          <p>Name: {{vender.name}}</p>\n          <p>Phone: {{vender.phone}}</p>\n          <p>Location: {{vender.address}}</p>\n          <p>Website:\n            <a href=\"http://{{vender.website}}\">{{vender.website}}</a>\n          </p>\n        </mat-tab>\n      </mat-tab-group>\n    </mat-sidenav>\n    <mat-sidenav-content role=\"vender\">\n      <div>\n        <h1>{{vender.name}}</h1>\n        <img src='imgs/{{vender.static_pic_url}}' alt=\"Vender Picture\">\n      </div>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>"
 
 /***/ }),
 
@@ -2294,19 +2304,73 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var router_1 = __webpack_require__("../../../router/esm5/router.js");
+var material_1 = __webpack_require__("../../../material/esm5/material.es5.js");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var common_1 = __webpack_require__("../../../common/esm5/common.js");
+var vender_1 = __webpack_require__("../../../../../src/app/models/vender.ts");
+var vender_service_1 = __webpack_require__("../../../../../src/app/services/vender.service.ts");
 var VenderComponent = (function () {
-    function VenderComponent() {
+    function VenderComponent(_route, _venderService, _router, location) {
+        this._route = _route;
+        this._venderService = _venderService;
+        this._router = _router;
+        this.location = location;
+        this.vender = new vender_1.Vender();
     }
     VenderComponent.prototype.ngOnInit = function () {
+        this.getVenders();
+        this.getRouteParams();
     };
+    VenderComponent.prototype.getVenders = function () {
+        var _this = this;
+        this._venderService.get_all_venders()
+            .then(function (data) {
+            _this.vender_list = data;
+        })
+            .catch(function (err) {
+            console.log(err);
+        });
+    };
+    // getVenders(): void {
+    //   this._venderService.get_venders().subscribe(venders => (this.venders = venders));
+    // }
+    VenderComponent.prototype.getRouteParams = function () {
+        var _this = this;
+        this._route.params.subscribe(function (param) {
+            console.log("request to get one vender from client");
+            console.log(param.id);
+            _this._venderService
+                .get_one(param.id)
+                .then(function (data) {
+                _this.vender = data;
+            })
+                .catch(function (err) {
+                console.log(err);
+            });
+        });
+    };
+    VenderComponent.prototype.update = function (vender) {
+        this._venderService.update_vender(this.vender);
+        this._router.navigate(['/list_vender']);
+    };
+    VenderComponent.prototype.goBack = function () {
+        this.location.back();
+    };
+    __decorate([
+        core_1.ViewChild('sidenav'),
+        __metadata("design:type", material_1.MatSidenav)
+    ], VenderComponent.prototype, "sidenav", void 0);
     VenderComponent = __decorate([
         core_1.Component({
             selector: 'app-vender',
             template: __webpack_require__("../../../../../src/app/client/vender/vender.component.html"),
             styles: [__webpack_require__("../../../../../src/app/client/vender/vender.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [router_1.ActivatedRoute,
+            vender_service_1.VenderService,
+            router_1.Router,
+            common_1.Location])
     ], VenderComponent);
     return VenderComponent;
 }());
@@ -2336,7 +2400,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/client/venue-search/venue-search.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"containerX\">\n<div class=\"search\">\n  <h1>SEARCH FORM COMING SOON....</h1>\n</div>\n<hr>\n<!-- <app-google-map></app-google-map> -->\n<div class=\"container\">\n  <div class=\"vender\">\n    <h4>VENDER</h4>\n    <h3>\n      <!-- <strong>{{vender.name}}</strong> -->\n    </h3>\n  </div>\n  <div class=\"map\">\n    <agm-map [latitude]='36.153883' [longitude]='-95.990629' [zoom]=\"zoom\" [disableDefaultUI]=\"false\" [zoomControl]=\"false\">\n      <agm-marker *ngFor=\"let venue of venues; let i = index\" [title]=\"venue.address\" [latitude]=\"venue.lat\" [longitude]=\"venue.lng\">\n        <agm-info-window>\n          <h3>\n            <strong>{{venue.name}}</strong>\n          </h3>\n          <button mat-button [routerLink]=\"['/venue', 'display', venue._id]\">VIEW</button>\n        </agm-info-window>\n      </agm-marker>\n    </agm-map>\n  </div>\n  <div class=\"vender\" >\n    <h4>VENDER</h4>\n    <h3>\n      <!-- <strong>{{vender.name}}</strong> -->\n    </h3>\n  </div>\n</div>\n<hr>\n\n<div class=\"container\">\n  <div class=\"card-group\" *ngFor=\"let venue of venues; let i = index\">\n    <mat-card class=\"card\" tabindex=\"0\">\n      <img mat-card-image src='imgs/{{venue.static_pic_url}}' alt=\"Venue Picture\">\n      <mat-card-content>\n        <p>{{venue.name}}</p>\n      </mat-card-content>\n      <mat-card-actions>\n        <button mat-raised-button [routerLink]=\"['/venue', 'display', venue._id]\">VIEW</button>\n        <span class=\"spacer\"></span>\n        <mat-icon class=\"icon\" color=\"accent\">favorite</mat-icon>\n      </mat-card-actions>\n    </mat-card>\n  </div>\n</div>\n<!-- <div>\n  <mat-sidenav-container>\n    <mat-sidenav align=\"end\" mode=\"side\" opened=\"true\" #sidenav>\n      <mat-tab-group>\n        <mat-tab>\n          <ng-template mat-tab-label>Details</ng-template>\n          <button mat-raised-button (click)=\"sidenav.close()\" color=\"warn\">CLOSE</button>\n          <p>Name: {{currentVenue.name}}</p>\n          <p>Phone: {{currentVenue.phone}}</p>\n          <p>Location: {{currentVenue.address}}</p>\n          <p>Website: <a href=\"http://{{currentVenue.website}}\">{{currentVenue.website}}</a></p>\n          <button mat-raised-button [routerLink]=\"['/venue', 'display', currentVenue._id]\" color=\"accent\">View More Details</button>\n        </mat-tab>\n        <mat-tab>\n          <ng-template mat-tab-label>Photos</ng-template>\n          <div *ngIf='!currentVenue.pic_url'>\n            <h2>There are currently no pictures of this venue.</h2>\n          </div>\n          <div *ngIf='currentVenue.pic_url'>\n            <img src='https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{currentVenue.pic_url}}' alt=\"Venue Picture\">\n          </div>\n        </mat-tab>\n      </mat-tab-group>\n    </mat-sidenav>\n    <mat-sidenav-content>\n      <mat-grid-list cols=\"4\" rowHeight=\"200px\">\n        <mat-grid-tile *ngFor=\"let venue of venues; let i = index\">\n          <img class='imageGrid' src='imgs/{{venue.static_pic_url}}' alt=\"Venue Picture\">\n          <mat-grid-tile-footer>\n            <h3>{{venue.name}}</h3>\n            <span class=\"spacer\"></span>\n            <button mat-icon-button (click)=\"showVenue(venue)\">\n              <mat-icon matTooltip=\"Venue Info!\">info</mat-icon>\n            </button>\n          </mat-grid-tile-footer>\n        </mat-grid-tile>\n      </mat-grid-list>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div> -->\n"
+module.exports = "<div class=\"containerX\">\n<div class=\"search\">\n  <h1>SEARCH FORM COMING SOON....</h1>\n</div>\n<hr>\n<!-- <app-google-map></app-google-map> -->\n<div class=\"container\">\n  <div class=\"vender\">\n    <h4>VENDER</h4>\n    <h3>\n      <!-- <strong>{{vender.name}}</strong> -->\n    </h3>\n  </div>\n  <div class=\"map\">\n    <agm-map [latitude]='36.153883' [longitude]='-95.990629' [zoom]=\"zoom\" [disableDefaultUI]=\"false\" [zoomControl]=\"false\">\n      <agm-marker *ngFor=\"let venue of venues; let i = index\" [title]=\"venue.address\" [latitude]=\"venue.lat\" [longitude]=\"venue.lng\">\n        <agm-info-window>\n          <h3>\n            <strong>{{venue.name}}</strong>\n          </h3>\n          <button mat-button [routerLink]=\"['/venue', 'display', venue._id]\">VIEW</button>\n        </agm-info-window>\n      </agm-marker>\n    </agm-map>\n  </div>\n  <div class=\"vender\" >\n    <h4>VENDER</h4>\n    <h3>\n      <!-- <strong>{{vender.name}}</strong> -->\n    </h3>\n  </div>\n</div>\n<hr>\n\n<div class=\"container\">\n  <div class=\"card-group\" *ngFor=\"let venue of venues; let i = index\">\n    <mat-card class=\"card\" [tabindex]=\"i\" >\n      <img mat-card-image src='imgs/{{venue.static_pic_url}}' alt=\"Venue Picture\">\n      <mat-card-content>\n        <p>{{venue.name}}</p>\n      </mat-card-content>\n      <mat-card-actions>\n        <button mat-raised-button [routerLink]=\"['/venue', 'display', venue._id]\">VIEW</button>\n        <span class=\"spacer\"></span>\n        <mat-icon class=\"icon\" color=\"accent\">favorite</mat-icon>\n      </mat-card-actions>\n    </mat-card>\n  </div>\n</div>\n<!-- <div>\n  <mat-sidenav-container>\n    <mat-sidenav align=\"end\" mode=\"side\" opened=\"true\" #sidenav>\n      <mat-tab-group>\n        <mat-tab>\n          <ng-template mat-tab-label>Details</ng-template>\n          <button mat-raised-button (click)=\"sidenav.close()\" color=\"warn\">CLOSE</button>\n          <p>Name: {{currentVenue.name}}</p>\n          <p>Phone: {{currentVenue.phone}}</p>\n          <p>Location: {{currentVenue.address}}</p>\n          <p>Website: <a href=\"http://{{currentVenue.website}}\">{{currentVenue.website}}</a></p>\n          <button mat-raised-button [routerLink]=\"['/venue', 'display', currentVenue._id]\" color=\"accent\">View More Details</button>\n        </mat-tab>\n        <mat-tab>\n          <ng-template mat-tab-label>Photos</ng-template>\n          <div *ngIf='!currentVenue.pic_url'>\n            <h2>There are currently no pictures of this venue.</h2>\n          </div>\n          <div *ngIf='currentVenue.pic_url'>\n            <img src='https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{currentVenue.pic_url}}' alt=\"Venue Picture\">\n          </div>\n        </mat-tab>\n      </mat-tab-group>\n    </mat-sidenav>\n    <mat-sidenav-content>\n      <mat-grid-list cols=\"4\" rowHeight=\"200px\">\n        <mat-grid-tile *ngFor=\"let venue of venues; let i = index\">\n          <img class='imageGrid' src='imgs/{{venue.static_pic_url}}' alt=\"Venue Picture\">\n          <mat-grid-tile-footer>\n            <h3>{{venue.name}}</h3>\n            <span class=\"spacer\"></span>\n            <button mat-icon-button (click)=\"showVenue(venue)\">\n              <mat-icon matTooltip=\"Venue Info!\">info</mat-icon>\n            </button>\n          </mat-grid-tile-footer>\n        </mat-grid-tile>\n      </mat-grid-list>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div> -->\n"
 
 /***/ }),
 
@@ -3532,7 +3596,7 @@ exports.NavComponent = NavComponent;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.environment = {
     production: true,
-    googleMapsKey: 'AIzaSyCCYbtEzTOU2_9r90f2H1q5oOaSOd5w1aE',
+    googleMapsKey: '***',
 };
 
 
@@ -3550,7 +3614,7 @@ exports.environment = {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.environment = {
     production: false,
-    googleMapsKey: 'AIzaSyCCYbtEzTOU2_9r90f2H1q5oOaSOd5w1aE',
+    googleMapsKey: '***',
 };
 
 

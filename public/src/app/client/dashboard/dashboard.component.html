@@ -1,24 +1,42 @@
 <div class="containerX">
-  <div class="container">
+  <div class="container" id="main">
+    <hr>
     <section>
-      <img class="img" src="assets/images/tulsavenus.png" alt="Picture of outlined city">
-      <h2>Who knows Tulsa better then tulsans?</h2>
+      <h1>Who knows Tulsa better then tulsans?</h1>
     </section>
-    <div id="search-button">
-      <button mat-raised-button color="accent" routerLink="/search" matTooltip="Search for a Venue">Find Your Venue Now</button>
+    <div class="search">
+      <mat-form-field class="form-field">
+        <input matInput type="text" placeholder="Search for a venue" [(ngModel)]="value" />
+        <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <div id="search-button">
+        <button mat-raised-button color="accent" routerLink="/search" matTooltip="Search for a Venue">Find Your Venue Now</button>
+      </div>
     </div>
   </div>
   <hr>
-  <div class="container" fxLayout="col" fxLayoutAlign="space-around center">
+  <!-- <div class="container" fxLayout="col" fxLayoutAlign="space-around center">
     <div class="green">
       <i class="material-icons">&#xE04A;</i>
     </div>
     <div class="red">
       <h2>ABOUT</h2>
     </div>
-  </div>
-  <hr>
+  </div> -->
   <div class="container">
     <h2>Preferred Venders</h2>
+    <div class="vender-card" *ngFor="let vender of venders; let i = index">
+      <mat-card class="card" [tabindex]="i">
+        <img mat-card-image src='imgs/{{vender.static_pic_url}}' alt="Vender Picture">
+        <mat-card-content>
+          <p>{{vender.name}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button [routerLink]="['/vender', 'display', vender._id]">VIEW</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
   </div>
 </div>
