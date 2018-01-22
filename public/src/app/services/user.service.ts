@@ -79,8 +79,8 @@ export class UserService {
   get_all_users(): Observable<User[]> {
     return this._httpClient.get<User[]>('/all_users')
       .pipe(
-        tap(ammenities => this.log(`fetched ammenities`)),
-        catchError(this.handleError('getAmmenities', []))
+        tap(users => this.log(`fetched users`)),
+        catchError(this.handleError('getUsers', []))
       );
   }
 
