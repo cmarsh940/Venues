@@ -9,7 +9,7 @@ const port = 8000;
 
 const app = express();
 
-// app.use(express.static(path.join(__dirname, "./static")));
+app.use(express.static(path.join(__dirname, "./static")));
 app.use(express.static(path.join(__dirname + "../public/dist")));
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -32,7 +32,6 @@ app.use(fileUpload({
 require("./config/mongoose");
 
 require("./config/api/routes")(app);
-// require("./server/config/routes/api/routes")(app);
 
 app.listen(port, "0.0.0.0", err => {
   if (err) {

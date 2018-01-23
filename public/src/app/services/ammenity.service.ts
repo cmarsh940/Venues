@@ -17,7 +17,7 @@ export class AmmenityService {
     private _messageService: MessageService
   ) {}
 
-  get_ammenities(): Observable<Ammenity[]> {
+  index(): Observable<Ammenity[]> {
     return this._httpClient
       .get<Ammenity[]>('/ammenities')
       .pipe(
@@ -26,11 +26,10 @@ export class AmmenityService {
       );
   }
 
-  post_ammenity(ammenity: Ammenity): Observable<Ammenity> {
+  create(ammenity: Ammenity): Observable<Ammenity> {
     return this._httpClient
       .post<Ammenity>('/ammenities/add', ammenity)
       .pipe(
-        // tslint:disable-next-line:no-shadowed-variable
         tap((ammenity: Ammenity) =>
           this.log(`added ammenity w/ id=${ammenity._id}`)
         ),
@@ -38,7 +37,7 @@ export class AmmenityService {
       );
   }
 
-  destroy_ammenity(ammenity) {
+  delete(ammenity) {
     console.log("*** Hit ammenity destroy in service");
     return this._http
       .post('/ammenities/destroy', ammenity)
@@ -46,14 +45,14 @@ export class AmmenityService {
       .toPromise();
   }
 
-  update_ammenity(ammenity) {
+  update(ammenity) {
     return this._http
       .post('/ammenities/update', ammenity)
       .map(data => data.json())
       .toPromise();
   }
 
-  get_one(ammenity_id) {
+  show(ammenity_id) {
     console.log("ammenity_id from service", ammenity_id);
     return this._http
       .post('/ammenities/id', { ammenity_id: ammenity_id })
@@ -80,7 +79,7 @@ export class AmmenityService {
     };
   }
 
-  /** Log a HeroService message with the MessageService */
+  /** Log a AmmenityService message with the MessageService */
   private log(message: string) {
     this._messageService.add("AmmenityService: " + message);
   }

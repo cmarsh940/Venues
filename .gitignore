@@ -1,5 +1,5 @@
 /static
-/dist
+/public/dist
 /server/config
 
 # dependencies

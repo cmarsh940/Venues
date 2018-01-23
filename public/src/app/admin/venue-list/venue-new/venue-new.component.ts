@@ -43,8 +43,7 @@ export class VenueNewComponent implements OnInit {
   }
 
   getAmmenities(): void {
-    this._ammenityService
-      .get_ammenities()
+    this._ammenityService.index()
       .subscribe(ammenities => (this.ammenitiesList = ammenities));
   }
 

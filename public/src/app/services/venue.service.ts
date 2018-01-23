@@ -17,8 +17,7 @@ export class VenueService {
   ) {}
 
   get_all_venues() {
-    return this._http
-      .get('/venues')
+    return this._http.get('/venues')
       .map(data => data.json())
       .toPromise();
   }
@@ -37,6 +36,7 @@ export class VenueService {
       .map(data => data.json())
       .toPromise();
   }
+
   // post_to_s3(form_data) {
   //   return this._http
   //     .post('/venues/upload', form_data)
@@ -57,19 +57,6 @@ export class VenueService {
       .map(data => data.json())
       .toPromise();
   }
-
-  // get_venue<Data>(id: number): Observable<Venue> {
-  //   return this._httpClient
-  //     .get<Venue[]>('/venues/id', { Data })
-  //     .pipe(
-  //       map(venues => venues[0]), // returns a {0|1} element array
-  //       tap(v => {
-  //         const outcome = v ? `fetched` : `did not find`;
-  //         this.log(`${outcome} venue id=${id}`);
-  //       }),
-  //       catchError(this.handleError<Venue>(`getVenue id=${id}`))
-  //     );
-  // }
 
   get_one(venue_id) {
     console.log('venue_id from service', venue_id);
@@ -97,7 +84,7 @@ export class VenueService {
     };
   }
 
-  /** Log a HeroService message with the MessageService */
+  /** Log a venueService message with the MessageService */
   private log(message: string) {
     this._messageService.add('VenueService: ' + message);
   }

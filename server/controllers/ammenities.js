@@ -1,19 +1,18 @@
-const path = require("path")
-
 const mongoose = require("mongoose")
 const Ammenity = mongoose.model("Ammenity")
 
-mongoose.Promise = global.Promise;
-module.exports = {
-  index: (req, res, next) => {
+const path = require("path")
+
+class AmmenitiesController {
+  index(req, res, next) {
     Ammenity.find()
       .then(data => res.json(data))
       .catch(err => {
         res.status(500).json(err);
       });
-  },
+  }
 
-  create: (req, res) => {
+  create(req, res) {
     Ammenity.create(req.body, (err, ammenity) => {
       console.log("*** logging the req.body", req.body);
       if (err) {
@@ -23,9 +22,9 @@ module.exports = {
       console.log("*** Created Ammenity")
       return res.json(ammenity);
     });
-  },
+  }
 
-  destroy: (req, res, next) => {
+  destroy(req, res, next) {
     console.log("*** logging the req.body", req.body);
     let ammenity = new Ammenity(req.body);
     console.log("*** logging the new ammenity to be deleted", ammenity);
@@ -36,17 +35,16 @@ module.exports = {
       console.log("*** Deleted Ammenity")
       return res.json(true);
     });
-  },
+  }
 
-  update: (req, res, next) => {
+  update(req, res, next) {
     console.log("logging the update req.body", req.body);
     let myAmmenity = new Ammenity(req.body);
     Ammenity.findOne({ _id: myAmmenity._id }) //update makes you find one
       .then(ammenity => {
         console.log("successfully found one");
         ammenity.name = myAmmenity.name;
-        ammenity
-          .save()
+        ammenity.save()
           .then(() => {
             res.json(true);
           })
@@ -57,9 +55,9 @@ module.exports = {
       .catch(err => {
         res.status(500).json(err);
       });
-  },
+  }
 
-  getOne: (req, res, next) => {
+  getOne(req, res, next) {
     console.log("logging the body for getting one ammenity", req.body);
     Ammenity.findOne({ _id: req.body.ammenity_id })
       .then(ammenity => {
@@ -71,3 +69,5 @@ module.exports = {
       });
   }
 };
+
+module.exports = new AmmenitiesController();

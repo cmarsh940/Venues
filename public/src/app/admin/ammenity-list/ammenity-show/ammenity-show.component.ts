@@ -37,7 +37,7 @@ export class AmmenityShowComponent implements OnInit {
 
   getAmmenities(): void {
     this._ammenityService
-      .get_ammenities()
+      .index()
       .subscribe(ammenities => (this.ammenities = ammenities));
   }
 
@@ -47,7 +47,7 @@ export class AmmenityShowComponent implements OnInit {
       return;
     }
     this._ammenityService
-      .post_ammenity({ name } as Ammenity)
+      .create({ name } as Ammenity)
       .subscribe(ammenity => {
         this.ammenities.push(ammenity);
       });
@@ -59,7 +59,7 @@ export class AmmenityShowComponent implements OnInit {
   // }
 
   delete(ammenity) {
-    this._ammenityService.destroy_ammenity(ammenity)
+    this._ammenityService.delete(ammenity)
       .then(() => {
         this.getAmmenities();
       })

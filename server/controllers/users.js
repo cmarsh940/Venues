@@ -3,7 +3,7 @@ const User = mongoose.model('User');
 
 class UsersController {
     index(req, res, next) {
-        User.find()
+        User.find({})
             .then(data => res.json(data))
             .catch(err => {
                 res.status(500).json(err);
@@ -68,14 +68,14 @@ class UsersController {
         console.log("*** logging the req.body", req.body);
         let user = new User(req.body);
         console.log("*** logging the new venue to be deleted", user);
-        User.findByIdAndRemove({ _id: user._id }, (err, user) => {
-        if (err) {
-            return next(err);
-        }
-        console.log("*** Deleted user")
-        return res.json(true);
-    });
-  }
+        User.findOneAndRemove({ _id: user._id }, (err, user) => {
+            if (err) {
+                return next(err);
+            }
+            console.log("*** Deleted user")
+            return res.json(true);
+        });
+    }
 }
 
 module.exports = new UsersController();

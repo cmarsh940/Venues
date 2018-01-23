@@ -3,16 +3,24 @@ const Vender = mongoose.model("Vender")
 
 const path = require("path");
 
-mongoose.Promise = global.Promise;
+let shuffle = function (arr) {
+    for (let i = 0; i < arr.length; i++) {
+        let index = Math.floor(Math.random() * arr.length);
+        let temp = arr[i];
+        arr[i] = arr[index];
+        arr[index] = temp;
+    }
+}
 
-module.exports = {
-    index: (req, res, next) => {
-        Vender.find()
+class VendersController {
+
+    index(req, res, next) {
+        Vender.find({})
             .then(data => res.json(data))
             .catch(err => {
                 res.status(500).json(err);
             });
-    },
+    }
         
     create(req, res, next) {
         console.log("*** hit server for creating a vender");
@@ -47,9 +55,9 @@ module.exports = {
                 console.log("*** my_vender save error", err);
                 return res.json(err);
             });
-    },
+    }
 
-    destroy: (req, res, next) => {
+    destroy(req, res, next) {
         console.log("*** logging the req.body", req.body);
         let vender = new Vender(req.body);
         console.log("*** logging the new vender to be deleted", vender);
@@ -60,12 +68,12 @@ module.exports = {
             console.log("*** Deleted vender")
             return res.json(true);
         });
-    },
+    }
 
 
 
 
-    update: (req, res, next) => {
+    update(req, res, next) {
         console.log("*** logging the update req.body", req.body);
         let myVender = new Vender(req.body);
         Vender.findOne({ _id: myVender._id }) //update makes you find one
@@ -88,9 +96,9 @@ module.exports = {
             .catch(err => {
                 res.status(500).json(err);
             });
-    },
+    }
 
-    getOne: (req, res, next) => {
+    getOne(req, res, next) {
         console.log("*** logging the body for getting one vender", req.body);
         Vender.findOne({ _id: req.body.vender_id })
             .then(vender => {
@@ -103,3 +111,4 @@ module.exports = {
     }
 };
 
+module.exports = new VendersController();

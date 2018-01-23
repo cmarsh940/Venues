@@ -46,8 +46,7 @@ export class VenueEditComponent implements OnInit {
   // }
 
   getVenues() {
-    this._venueService
-      .get_all_venues()
+    this._venueService.get_all_venues()
       .then(data => {
         this.venue_list = data;
       })

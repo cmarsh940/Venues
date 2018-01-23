@@ -44,7 +44,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   getAmmenities(): void {
-    this._ammenityService.get_ammenities().subscribe(ammenities => (this.ammenities = ammenities));
+    this._ammenityService.index().subscribe(ammenities => (this.ammenities = ammenities));
   }
 
   getUsers(): void {

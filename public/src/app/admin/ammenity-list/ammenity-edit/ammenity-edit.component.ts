@@ -38,8 +38,7 @@ export class AmmenityEditComponent implements OnInit {
     this._route.params.subscribe(param => {
       console.log("*** Request to get one ammenity from client");
       console.log("*** Param id is:", param.id);
-      this._ammenityService
-        .get_one(param.id)
+      this._ammenityService.show(param.id)
         .then(data => {
           this.ammenity = data;
         })
@@ -56,7 +55,7 @@ export class AmmenityEditComponent implements OnInit {
     });
   }
   update(ammenity) {
-    this._ammenityService.update_ammenity(this.ammenity);
+    this._ammenityService.update(this.ammenity);
     this._router.navigate(['/list_ammenity']);
   }
 }
