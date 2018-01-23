@@ -7,6 +7,8 @@ import { Venue } from '../../models/venue';
 import { AmmenityService } from '../../services/ammenity.service';
 import { Ammenity } from '../../models/ammenity';
 import { User } from '../../models/user';
+import { VenderService } from '../../services/vender.service';
+import { Vender } from '../../models/vender';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -15,24 +17,30 @@ import { User } from '../../models/user';
 })
 export class AdminDashboardComponent implements OnInit {
   venues: Array<Venue>;
+  venders: Array<Vender>;
   ammenities: Array<Ammenity>;
   users: Array<User>;
 
   constructor(
     private _userService: UserService,
     private _venueService: VenueService,
+    private _venderService: VenderService,
     private _ammenityService: AmmenityService,
     private _router: Router
   ) {}
 
   ngOnInit() {
     this.getVenues();
+    this.getVenders();
     this.getAmmenities();
     this.getUsers();
   }
 
   getVenues(): void {
     this._venueService.get_venues().subscribe(venues => (this.venues = venues));
+  }
+  getVenders(): void {
+    this._venderService.get_venders().subscribe(venders => (this.venders = venders));
   }
 
   getAmmenities(): void {

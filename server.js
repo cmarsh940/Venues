@@ -3,8 +3,8 @@ const session = require("express-session");
 const bodyParser = require("body-parser");
 const path = require("path");
 const fileUpload = require("express-fileupload");
-const busboy = require("connect-busboy");
-const busboyBodyParser = require("busboy-body-parser");
+// const busboy = require("connect-busboy");
+// const busboyBodyParser = require("busboy-body-parser");
 const port = 8000;
 
 const app = express();
@@ -27,8 +27,8 @@ app.use(fileUpload({
     preserveExtension: true
 }));
 
-app.use(busboy());
-app.use(busboyBodyParser());
+// app.use(busboy());
+// app.use(busboyBodyParser());
 
 require("./server/config/mongoose");
 

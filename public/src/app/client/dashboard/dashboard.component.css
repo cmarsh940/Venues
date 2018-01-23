@@ -18,7 +18,7 @@ div.container {
 div.search {
     width: 100%;
     display: grid;
-    margin-top: 1%;
+    margin-top: 2%;
 }
 
 .form-field {
@@ -29,15 +29,20 @@ div.search {
 #search-button {
     width:100%;
     display: flex;
-    /* margin: ; */
 }
 
 button {
     margin: auto;
 }
 
+h1 {
+    font-family: 'Parisienne', cursive;
+    font-size: -webkit-xxx-large;
+    letter-spacing: 0.2rem;
+    margin-top: 8%;
+}
+
 h1, h2 {
-    margin-top: 9%;
     text-align: center;
 }
 
@@ -50,6 +55,6 @@ div.vender-card {
     margin: 2%;
 }
 
-mat-form-field {
+/* mat-form-field {
     background: white;
-}
+} */

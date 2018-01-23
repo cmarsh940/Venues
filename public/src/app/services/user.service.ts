@@ -76,6 +76,11 @@ export class UserService {
       .toPromise();
   }
 
+  // get_all_users() {
+  //   return this._http.get('/all_users')
+  //     .map(data => data.json())
+  //     .toPromise();
+  // }
   get_all_users(): Observable<User[]> {
     return this._httpClient.get<User[]>('/all_users')
       .pipe(
@@ -109,7 +114,7 @@ export class UserService {
     };
   }
 
-  /** Log a HeroService message with the MessageService */
+  /** Log a UserService message with the MessageService */
   private log(message: string) {
     this._messageService.add('UserService: ' + message);
   }

@@ -41,49 +41,7 @@
       </mat-card-content>
       <mat-card-actions>
         <button mat-raised-button [routerLink]="['/venue', 'display', venue._id]">VIEW</button>
-        <span class="spacer"></span>
-        <mat-icon class="icon" color="accent">favorite</mat-icon>
       </mat-card-actions>
     </mat-card>
   </div>
 </div>
-<!-- <div>
-  <mat-sidenav-container>
-    <mat-sidenav align="end" mode="side" opened="true" #sidenav>
-      <mat-tab-group>
-        <mat-tab>
-          <ng-template mat-tab-label>Details</ng-template>
-          <button mat-raised-button (click)="sidenav.close()" color="warn">CLOSE</button>
-          <p>Name: {{currentVenue.name}}</p>
-          <p>Phone: {{currentVenue.phone}}</p>
-          <p>Location: {{currentVenue.address}}</p>
-          <p>Website: <a href="http://{{currentVenue.website}}">{{currentVenue.website}}</a></p>
-          <button mat-raised-button [routerLink]="['/venue', 'display', currentVenue._id]" color="accent">View More Details</button>
-        </mat-tab>
-        <mat-tab>
-          <ng-template mat-tab-label>Photos</ng-template>
-          <div *ngIf='!currentVenue.pic_url'>
-            <h2>There are currently no pictures of this venue.</h2>
-          </div>
-          <div *ngIf='currentVenue.pic_url'>
-            <img src='https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{currentVenue.pic_url}}' alt="Venue Picture">
-          </div>
-        </mat-tab>
-      </mat-tab-group>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <mat-grid-list cols="4" rowHeight="200px">
-        <mat-grid-tile *ngFor="let venue of venues; let i = index">
-          <img class='imageGrid' src='imgs/{{venue.static_pic_url}}' alt="Venue Picture">
-          <mat-grid-tile-footer>
-            <h3>{{venue.name}}</h3>
-            <span class="spacer"></span>
-            <button mat-icon-button (click)="showVenue(venue)">
-              <mat-icon matTooltip="Venue Info!">info</mat-icon>
-            </button>
-          </mat-grid-tile-footer>
-        </mat-grid-tile>
-      </mat-grid-list>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-</div> -->

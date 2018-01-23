@@ -17,7 +17,7 @@ const VenderSchema = new mongoose.Schema(
             maxlength: 12,
         },
         address: {
-            type: Number,
+            type: String,
             required: [true, "Address cannot be blank."],
             maxlength: 150,
         }, 
