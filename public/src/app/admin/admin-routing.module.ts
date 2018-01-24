@@ -11,6 +11,9 @@ import { VenueNewComponent } from './venue/venue-new/venue-new.component';
 import { VenueEditComponent } from './venue/venue-edit/venue-edit.component';
 import { VenderNewComponent } from './vender/vender-new/vender-new.component';
 import { VenderEditComponent } from './vender/vender-edit/vender-edit.component';
+import { ReviewShowComponent } from './review/review-show/review-show.component';
+import { ReviewNewComponent } from './review/review-new/review-new.component';
+import { ReviewEditComponent } from './review/review-edit/review-edit.component';
 
 const routes: Routes = [
   {
@@ -51,7 +54,21 @@ const routes: Routes = [
         pathMatch: 'full', 
         component: VenueEditComponent 
       },
-      
+      {
+        path: 'list_review',
+        pathMatch: 'full',
+        component: ReviewShowComponent
+      },
+      { 
+        path: 'review/add', 
+        pathMatch: 'full', 
+        component: ReviewNewComponent 
+      },
+      { 
+        path: 'review/edit/:id', 
+        pathMatch: 'full', 
+        component: ReviewEditComponent 
+      },
       { 
         path: 'vender/add', 
         pathMatch: 'full', 

@@ -1,78 +1,55 @@
 import { MessageService } from './messages.service';
 import { Injectable } from '@angular/core';
-import { User } from '../models/user';
 import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/map';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Review } from '../models/review';
 
 @Injectable()
-export class UserService {
-  currentUser: User = null;
+export class ReviewService {
 
   constructor(
     private _messageService: MessageService,
     private _http: Http
   ) { }
 
-  getUsers(callback) {
-    this._http.get('/users').subscribe(
+  getReviews(callback) {
+    this._http.get('/reviews').subscribe(
       res => callback(res.json()),
       err => console.error(err)
     );
   }
 
-  getCurrentUser(): User {
-    return JSON.parse(localStorage.getItem('current_user'));
-  }
 
-  createUser(newUser: User, callback) {
-    return this._http.post('/users', newUser).subscribe(
+  createReview(newReview: Review, callback) {
+    return this._http.post('/reviews', newReview).subscribe(
       res => {
-        const user = res.json();
-        if (!user.errors) {
-          localStorage.setItem('current_user', JSON.stringify(user));
-        } else {
-          this.currentUser = null;
-        }
-        callback(user);
+        const review = res.json();
+        callback(review);
       },
       err => console.log(err)
     );
   }
 
-  setCurrentUser(user) {
-    sessionStorage.setItem('currentUser', JSON.stringify(user));
-  }
-
-  logout(callback) {
-    return this._http.delete('/users').subscribe(
-      res => {
-        this.currentUser = null;
-        callback(res.json());
-      },
-      err => console.error(err)
-    );
-  }
-
-  authenticate(loginUser: User, callback) {
-    return this._http.post('/users/login', loginUser).subscribe(
-      res => {
-        const user = res.json();
-        if (!user.errors) {
-          localStorage.setItem('current_user', JSON.stringify(user));
-        } else {
-          this.currentUser = null;
-        }
-        callback(user);
-      },
+  destroyReview(id: string, callback) {
+    this._http.delete(`reviews/${id}`).subscribe(
+      res => callback(res.json()),
       err => console.log(err)
     );
   }
 
-  destroy(id: string, callback) {
-    this._http.delete(`users/${id}`).subscribe(
+  showReview(id: string, callback) {
+    this._http.get(`reviews/${id}`).subscribe(
+      res => callback(res.json()),
+      err => console.log(err)
+    );
+  }
+
+  updateReview(newReview: Review, callback) {
+    this._http.put(`reviews/${newReview._id}`, newReview).subscribe(
       res => callback(res.json()),
       err => console.log(err)
     );

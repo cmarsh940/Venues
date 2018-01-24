@@ -55,6 +55,10 @@ import {
   MatStepperModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReviewShowComponent } from './review/review-show/review-show.component';
+import { ReviewEditComponent } from './review/review-edit/review-edit.component';
+import { ReviewNewComponent } from './review/review-new/review-new.component';
+import { ReviewService } from '../services/review.service';
 
 @NgModule({
   imports: [
@@ -110,10 +114,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     VenueEditComponent,
     VenueNewComponent,
     VenueShowComponent,
+    ReviewShowComponent,
+    ReviewEditComponent,
+    ReviewNewComponent,
   ],
   providers: [
     AmenityService,
     MessageService,
+    ReviewService,
     VenderService,
     VenueService,
     UserService

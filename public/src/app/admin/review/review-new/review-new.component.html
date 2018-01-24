@@ -1,0 +1,25 @@
+<button mat-raised-button [routerLink]="['/list_review']">
+    <i class="material-icons">&#xE5C4;</i>
+</button>
+<h1>Add a Review</h1>
+<form #form (submit)="createReview()" encType="multipart/form-data">
+    <mat-form-field>
+        <input matInput name="title" required maxlength=150 [(ngModel)]="newReview.title" placeholder="Review title" />
+    </mat-form-field>
+
+    <mat-form-field>
+        <textarea matInput name="content" required maxlength=350 [(ngModel)]="newReview.content" placeholder="Review content" matTextareaAutosize matAutosizeMinRows="5" matAutosizeMaxRows="10"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput name="rating" required maxlength=5 [(ngModel)]="newReview.rating" placeholder="Review rating" />
+    </mat-form-field>
+
+    <div class="submit-button">
+        <button mat-raised-button type="submit" color="accent">Submit</button>
+    </div>
+</form>
+
+<div>
+    <p class="error" *ngFor="let error of errors">{{ error }}</p>
+</div>
