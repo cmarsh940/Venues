@@ -1,55 +1,48 @@
-<div class="container">
-  <h1 class="text-center">Add a new administrative user</h1>
-  <form (submit)="createUser()" #userForm="ngForm">
-    <mat-form-field>
-      <input matInput type="text" class="form-control" name="name" required [(ngModel)]="newUser.name" placeholder="Name" />
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput type="email" class="form-control" name="email" required [(ngModel)]="newUser.email" placeholder="Email" />
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput type="password" class="form-control" name="password" required [(ngModel)]="newUser.password" placeholder="Password" />
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput type="password" class="form-control" name="password_confirmation" required [(ngModel)]="newUser.password_confirmation"
-        placeholder="Confirm Password" />
-    </mat-form-field>
-
+<div class="container" id="head">
+    <h1 class="text-center">Add a new administrative user</h1>
+    <form class="form" (submit)="createUser()">
+        <mat-form-field>
+            <input matInput type="text" name="name" class="form-control" [(ngModel)]="newUser.name" placeholder="Name">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="email" name="email" class="form-control" autocomplete="username email" [(ngModel)]="newUser.email" placeholder="Email">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="password" name="password" autocomplete="new-password" class="form-control" [(ngModel)]="newUser.password" placeholder="Password">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="password" class="form-control" name="password_confirmation" autocomplete="new-password-confirmation" required [(ngModel)]="newUser.password_confirmation"
+            placeholder="Confirm Password">
+        </mat-form-field>
+        <button mat-raised-button type="submit" class="btn btn-primary">Register</button>
+    </form>
     <div>
-      <button mat-raised-button type="submit" [disabled]="!userForm.form.valid">Register</button>
+        <p [ngStyle]="{ 'color': 'red' }" *ngFor="let error of errors">{{ error }}</p>
     </div>
-  </form>
-  <div>
-    <p *ngFor="let error of errors">{{ error }}</p>
-  </div>
 </div>
-<hr>
 <div class="container">
-  <table>
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="users" *ngFor="let user of users; let i = index">
-        <td class="badge">{{ i + 1 }}</td>
-        <td class="main">
-          <a [routerLink]="['/user', 'edit', user._id]">{{ user.name }}</a>
-        </td>
-        <td class="delete">
-          <button mat-icon-button color="warn" (click)="delete(user)">
-            <mat-icon aria-label="icon-button to delete venue">
-              <i class="material-icons">&#xE872;</i>
-            </mat-icon>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="users" *ngFor="let user of users; let i = index">
+                <td class="badge">{{ i + 1 }}</td>
+                <td class="main">{{ user.name }}</td>
+                <td>{{user.email}}</td>
+                <td class="delete">
+                    <button mat-icon-button color="warn" (click)="destroyUser(user._id, i)">
+                        <mat-icon aria-label="icon-button to delete venue">
+                            <i class="material-icons">&#xE872;</i>
+                        </mat-icon>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

@@ -1,98 +1,82 @@
+import { MessageService } from './messages.service';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Http } from '@angular/http';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-
 import { User } from '../models/user';
-
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/map';
 import { catchError, map, tap } from 'rxjs/operators';
-import { MessageService } from './message.service';
 
 @Injectable()
 export class UserService {
-  observedUser = new BehaviorSubject(null);
   currentUser: User = null;
-  users: Array<User>;
 
   constructor(
-    private _http: Http,
-    private _httpClient: HttpClient,
-    private _messageService: MessageService
+    private _messageService: MessageService,
+    private _http: Http
   ) { }
 
-  getCurrentUser() {
-    return JSON.parse(sessionStorage.getItem('currentUser'));
+  getUsers(callback) {
+    this._http.get('/users').subscribe(
+      res => callback(res.json()),
+      err => console.error(err)
+    );
+  }
+
+  getCurrentUser(): User {
+    return JSON.parse(localStorage.getItem('current_user'));
+  }
+
+  createUser(newUser: User, callback) {
+    return this._http.post('/users', newUser).subscribe(
+      res => {
+        const user = res.json();
+        if (!user.errors) {
+          localStorage.setItem('current_user', JSON.stringify(user));
+        } else {
+          this.currentUser = null;
+        }
+        callback(user);
+      },
+      err => console.log(err)
+    );
   }
 
   setCurrentUser(user) {
     sessionStorage.setItem('currentUser', JSON.stringify(user));
   }
 
-  createUser(user) {
-    return this._http.post('/users', user)
-      .map(data => data.json())
-      .toPromise();
-  }
-
-  authenticate(user: User, callback) {
-    this._http.post('/login', user).subscribe(
-      res => callback(res.json()),
-      err => console.log(err)
-    );
-  }
-
-  session(callback) {
-    this._http.get('/session').subscribe(
-      res => callback(res.json()),
-      err => console.log(err)
-    );
-  }
-
-  updateUser(user) {
-    this.observedUser.next(user);
-  }
-
-  getUsers() {
-    console.log("Service get users service");
-    return this._http.get('/get_users')
-      .map(data => data.json())
-      .toPromise();
-  }
-
   logout(callback) {
-    this._http.delete('/users').subscribe(
-      res => callback(res.json()),
+    return this._http.delete('/users').subscribe(
+      res => {
+        this.currentUser = null;
+        callback(res.json());
+      },
+      err => console.error(err)
+    );
+  }
+
+  authenticate(loginUser: User, callback) {
+    return this._http.post('/users/login', loginUser).subscribe(
+      res => {
+        const user = res.json();
+        if (!user.errors) {
+          localStorage.setItem('current_user', JSON.stringify(user));
+        } else {
+          this.currentUser = null;
+        }
+        callback(user);
+      },
       err => console.log(err)
     );
   }
 
-  destroy_user(user) {
-    console.log('*** Hit users service');
-    return this._http.post('/users/destroy', user)
-      .map(data => data.json())
-      .toPromise();
-  }
-
-  // get_all_users() {
-  //   return this._http.get('/all_users')
-  //     .map(data => data.json())
-  //     .toPromise();
-  // }
-  get_all_users(): Observable<User[]> {
-    return this._httpClient.get<User[]>('/all_users')
-      .pipe(
-        tap(users => this.log(`fetched users`)),
-        catchError(this.handleError('getUsers', []))
-      );
-  }
-
-  get_logged_in_user() {
-    return this._http.get('/get_logged_in_user')
-      .map(data => data.json())
-      .toPromise();
+  destroy(id: string, callback) {
+    this._http.delete(`users/${id}`).subscribe(
+      res => callback(res.json()),
+      err => console.log(err)
+    );
   }
 
   /**
@@ -118,6 +102,5 @@ export class UserService {
   private log(message: string) {
     this._messageService.add('UserService: ' + message);
   }
+
 }
-
-

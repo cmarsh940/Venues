@@ -1,59 +1,33 @@
 const mongoose = require('mongoose');
+const random = require('mongoose-random');
 
-const VenueSchema = new mongoose.Schema(
-  {
+const VenueSchema = new mongoose.Schema({
     name: {
-      type: String,
-      required: [true, 'Name cannot be blank.'],
-      maxlength: 250,
+        type: String,
+        required: [true, 'Name cannot be blank']
     },
     email: {
-      type: String,
-      required: [true, 'Email cannot be blank.'],
-    },
-    phone: {
-      type: Number,
-      required: [true, "Phone number cannot be blank."],
-      maxlength: 12,
-    },
-    address: {
-      type: String,
-      required: [true, 'Website cannot be blank.'],
+        type: String,
+        required: [true, 'Email cannot be blank']
     },
     website: {
-      type: String,
-      required: [true, 'Website cannot be blank.'],
+        type: String,
+        required: [true, 'Website cannot be blank']
     },
-    minAmmount: {
-      type: Number,
-      required: false
+    phone: {
+        type: String,
+        required: [true, 'Phone number cannot be blank']
     },
-    maxAmmount: {
-      type: Number,
-      required: false
+    address: {
+        type: String,
+        required: [true, 'Address cannot be blank']
     },
-    lat: {
-      type: Number,
-      required: false
-    },
-    lng: {
-      type: Number,
-      required: false
-    },
-    static_pic_url: {
-      type: String,
-      required: true
-    },
-    pic_url: {
-      type: String,
-      required: false
-    },
-    ammenities: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Ammenity"
-    }
-  },
-  { timestamps: true }
-);
+    amenities: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Amenity'
+    }]
+}, { timestamps: true });
+
+VenueSchema.plugin(random, { path: 'r' });
 
 mongoose.model('Venue', VenueSchema);

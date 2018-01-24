@@ -1,91 +1,53 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-import { tap, map, catchError } from 'rxjs/operators';
-
-import { Venue } from './../models/venue';
-import { MessageService } from './message.service';
+import { MessageService } from './messages.service';
+import { Venue } from '../models/venue';
 
 @Injectable()
 export class VenueService {
+
   constructor(
-    private _http: Http,
-    private _httpClient: HttpClient,
-    private _messageService: MessageService
-  ) {}
+    private _messageService: MessageService,
+    private _http: Http
+  ) { }
 
-  get_all_venues() {
-    return this._http.get('/venues')
-      .map(data => data.json())
-      .toPromise();
+  getVenues(callback) {
+    this._http.get('/venues').subscribe(
+      res => callback(res.json()),
+      err => console.error(err)
+    );
   }
 
-  get_venues(): Observable<Venue[]> {
-    return this._httpClient
-      .get<Venue[]>('/venues')
-      .pipe(
-        tap(venues => this.log(`fetched venues`)),
-        catchError(this.handleError('getVenues', []))
-      );
+  createVenue(newVenue: Venue, callback) {
+    return this._http.post('/venues', newVenue).subscribe(
+      res => {
+        const venue = res.json();
+        callback(venue);
+      },
+      err => console.log(err)
+    );
   }
 
-  post_venue(form_data) {
-    return this._http.post('/venues/create', form_data)
-      .map(data => data.json())
-      .toPromise();
+  destroy(id: string, callback) {
+    this._http.delete(`venues/${id}`).subscribe(
+      res => callback(res.json()),
+      err => console.log(err)
+    );
   }
 
-  // post_to_s3(form_data) {
-  //   return this._http
-  //     .post('/venues/upload', form_data)
-  //     .map(data => data.json())
-  //     .toPromise();
-  // }
-
-  destroy_venue(venue) {
-    console.log('*** Hit venues service');
-    return this._http.post('/venues/destroy', venue)
-      .map(data => data.json())
-      .toPromise();
+  showVenue(id: string, callback) {
+    this._http.get(`venues/${id}`).subscribe(
+      res => callback(res.json()),
+      err => console.log(err)
+    );
   }
 
-  update_venue(venue) {
-    return this._http
-      .post('/venues/update', venue)
-      .map(data => data.json())
-      .toPromise();
+  updateVenue(newVenue: Venue, callback) {
+    this._http.put(`venues/${newVenue._id}`, newVenue).subscribe(
+      res => callback(res.json()),
+      err => console.log(err)
+    );
   }
+  
 
-  get_one(venue_id) {
-    console.log('venue_id from service', venue_id);
-    return this._http.post('/venues/id', { venue_id: venue_id })
-      .map(data => data.json())
-      .toPromise();
-  }
-
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
-
-  /** Log a venueService message with the MessageService */
-  private log(message: string) {
-    this._messageService.add('VenueService: ' + message);
-  }
 }

@@ -1,15 +1,13 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
-var path = require('path');
+const models_path = __dirname + '/../models';
+const database = 'venue';
 
-mongoose.connect('mongodb://localhost/Venues');
 mongoose.Promise = global.Promise;
 
-let models_path = __dirname + '/../models';
+mongoose.connect(`mongodb://localhost/${database}`);
 
 fs.readdirSync(models_path).forEach((file) => {
-    if (file.includes('.js')) {
-        console.log(`loading ${file}...`)
-        require(`${models_path}/${file}`);
-    }
+    console.log(`loading ${file}...`);
+    require(`${models_path}/${file}`);
 });

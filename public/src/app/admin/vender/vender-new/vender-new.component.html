@@ -1,0 +1,39 @@
+<button mat-raised-button [routerLink]="['/list_vender']">
+  <i class="material-icons">&#xE5C4;</i>
+</button>
+<h1>Add a Vender</h1>
+<form #form (submit)="createVender()" encType="multipart/form-data">
+  <mat-form-field>
+    <input matInput name="name" required maxlength=250 [(ngModel)]="newVender.name" placeholder="Vender Name" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput name="email" required maxlength=250 [(ngModel)]="newVender.email" placeholder="Vender Email" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput name="phone" required maxlength=20 [(ngModel)]="newVender.phone" placeholder="Vender Phone #" />
+    <mat-hint>no spaces EX: 1234567899 </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput name="address" required maxlength=200 [(ngModel)]="newVender.address" placeholder="Vender Address" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput name="website" required maxlength=250 [(ngModel)]="newVender.website" placeholder="Vender Website" />
+    <mat-hint>EX: www.example.com</mat-hint>
+  </mat-form-field>
+
+  <!-- <div class="file-upload">
+    <input #file type="file" name="picture" [(ngModel)]="newVender.static_pic_url">
+  </div> -->
+
+  <div class="submit-button">
+    <button mat-raised-button type="submit" color="accent">Submit</button>
+  </div>
+</form>
+
+<div>
+  <p class="error" *ngFor="let error of errors">{{ error }}</p>
+</div>

@@ -1,0 +1,123 @@
+<button mat-raised-button (click)="goBack()">Cancel</button>
+<h1 class="text-center">Edit {{venue.name}} venue</h1>
+<div class="container">
+  <form (submit)="updateVenue()" #formData="ngForm" class="form">
+    <mat-form-field>
+      <input 
+        matInput 
+        name='name' 
+        [(ngModel)]="venue.name" 
+        #name='ngModel' 
+        placeholder="name" 
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input 
+        matInput 
+        name='email' 
+        [(ngModel)]="venue.email" 
+        #email='ngModel' 
+        placeholder="Email" 
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input 
+        matInput 
+        name='phone' 
+        [(ngModel)]="venue.phone" 
+        #phone='ngModel' 
+        placeholder="Phone #" 
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input 
+        matInput 
+        name='address' 
+        [(ngModel)]="venue.address" 
+        #address='ngModel' 
+        placeholder="Address" 
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input 
+        matInput 
+        name='website' 
+        [(ngModel)]="venue.website" 
+        #website='ngModel' 
+        placeholder="Website" 
+        required
+      />
+    </mat-form-field>
+
+    <!-- <div class="input-container">
+      <mat-form-field>
+        <input 
+          matInput 
+          name="lat" 
+          required 
+          maxlength=50 
+          [(ngModel)]="venue.lat" 
+          #lat='ngModel'
+          placeholder="Latitude" 
+        />
+        <mat-hint>EX: 36.153883</mat-hint>
+      </mat-form-field>
+    
+      <mat-form-field>
+        <input 
+          matInput 
+          name="lng" 
+          required 
+          maxlength=50 
+          [(ngModel)]="venue.lng"
+          #lng='ngModel'
+          placeholder="Longitude" 
+        />
+        <mat-hint>EX: -95.990629</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="input-container">
+      <mat-form-field>
+        <span matPrefix>$&nbsp;</span>
+        <input 
+          matInput type="number" 
+          name="minAmmount" 
+          required 
+          maxlength=250 
+          [(ngModel)]="venue.minAmmount" 
+          #minAmmount='ngModel'
+          placeholder="Min-ammount"
+          class="right-align"
+        />
+        <span matSuffix>.00</span>
+      </mat-form-field>
+    
+      <mat-form-field>
+        <span matPrefix>$&nbsp;</span>
+        <input 
+          matInput 
+          type="number" 
+          name="maxAmmount" 
+          required 
+          maxlength=250 
+          [(ngModel)]="venue.maxAmmount"
+          #maxAmmount='ngModel'
+          placeholder="Max-ammount"
+          class="right-align"
+        />
+        <span matSuffix>.00</span>
+      </mat-form-field>
+    </div> -->
+
+    <button mat-raised-button type='submit' [disabled]=!formData.valid>Submit</button>
+  </form>
+</div>
+

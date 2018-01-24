@@ -12,14 +12,16 @@ const UserSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: [true, 'Passwors cannot be blank']
-    },
-}, { timestamps: true })
+        required: [true, 'Email cannot be blank']
+    }
+}, { timestamps: true });
 
 UserSchema.pre('save', function (next) {
-    this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(10));
+    if (this.isNew) {
+        this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync());
+    }
     next();
-})
+});
 
 UserSchema.methods.authenticate = function (password) {
     return bcrypt.compareSync(password, this.password);

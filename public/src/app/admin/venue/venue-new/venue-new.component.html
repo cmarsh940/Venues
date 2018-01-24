@@ -1,0 +1,137 @@
+<button mat-raised-button [routerLink]="['/list_venue']">
+  <i class="material-icons">&#xE5C4;</i>
+</button>
+<h1>Add a Venue</h1>
+  <form #form (submit)="createVenue()" encType="multipart/form-data">
+    <mat-form-field>
+      <input 
+        matInput 
+        name="name" 
+        required 
+        maxlength=250 
+        [(ngModel)]="newVenue.name" 
+        placeholder="Venue Name"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input 
+        matInput 
+        name="email" 
+        required 
+        maxlength=250 
+        [(ngModel)]="newVenue.email" 
+        placeholder="Venue Email"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input 
+        matInput 
+        name="phone" 
+        required 
+        maxlength=20 
+        [(ngModel)]="newVenue.phone"  
+        placeholder="Venue Phone #"
+      />
+      <mat-hint>no spaces EX: 1234567899 </mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input 
+        matInput 
+        name="address" 
+        required 
+        maxlength=200 
+        [(ngModel)]="newVenue.address" 
+        placeholder="Venue Address"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input 
+        matInput 
+        name="website" 
+        required 
+        maxlength=250 
+        [(ngModel)]="newVenue.website" 
+        placeholder="Venue Website" 
+      />
+      <mat-hint>EX: www.example.com</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Venue Amenities" [formControl]="amenityControl" [(ngModel)]="newVenue.amenities" multiple>
+        <mat-option *ngFor="let amenity of amenities" [value]="amenity">{{amenity.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- <mat-label class="form-label">Latitude and Longitude used for map placement</mat-label>
+
+    <div class="input-container">
+      <mat-form-field>
+        <input 
+          matInput 
+          name="lat" 
+          required 
+          maxlength=50 
+          [(ngModel)]="newVenue.lat" 
+          placeholder="Latitude" 
+        />
+        <mat-hint>EX: 36.153883</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input 
+          matInput 
+          name="lng" 
+          required 
+          maxlength=50 
+          [(ngModel)]="newVenue.lng" 
+          placeholder="Longitude" 
+        />
+        <mat-hint>EX: -95.990629</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="input-container">
+      <mat-form-field>
+        <span matPrefix>$&nbsp;</span>
+        <input 
+          matInput 
+          type="number" 
+          name="minAmmount" 
+          required maxlength=250 
+          [(ngModel)]="newVenue.minAmmount" 
+          placeholder="Min-ammount" 
+          class="right-align"
+        />
+        <span matSuffix>.00</span>
+      </mat-form-field>
+
+      <mat-form-field>
+        <span matPrefix>$&nbsp;</span>
+        <input 
+          matInput 
+          type="number" 
+          name="maxAmmount" 
+          required maxlength=250 
+          [(ngModel)]="newVenue.maxAmmount" 
+          placeholder="Max-ammount" 
+          class="right-align"
+        />
+        <span matSuffix>.00</span>
+      </mat-form-field>
+    </div>  -->
+
+    <!-- <div class="file-upload">
+      <input #file type="file" name="picture" [(ngModel)]="new_venue.static_pic_url">
+    </div> -->
+
+    <div class="submit-button">
+      <button mat-raised-button type="submit" color="accent">Submit</button>
+    </div>
+  </form>
+
+  <div>
+    <p class="error" *ngFor="let error of errors">{{ error }}</p>
+  </div>

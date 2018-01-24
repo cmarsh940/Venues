@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +10,8 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   currentUser: User = new User();
-  newUser: User = new User();
-  errors: any = [];
+  errors: string[] = [];
   hide = true;
   email = new FormControl('', [Validators.required, Validators.email]);
 
@@ -29,7 +27,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.currentUser.email = 'test@test.test';
+    this.currentUser.email = 'cam@cam.cam';
     this.currentUser.password = 'Marshal1';
     this.loginUser();
   }
@@ -38,7 +36,6 @@ export class LoginComponent implements OnInit {
     this.errors = [];
     this._userService.authenticate(this.currentUser, (user) => {
       console.log(user);
-
       if (user.errors) {
         for (const key of Object.keys(user.errors)) {
           const error = user.errors[key];
@@ -46,25 +43,8 @@ export class LoginComponent implements OnInit {
         }
       } else {
         this._userService.setCurrentUser(user);
-        this._router.navigateByUrl('/dashboard');
+        this._router.navigateByUrl('/admin_dashboard');
       }
     });
-  }
-  createUser() {
-    this.errors = [];
-    return this._userService.createUser(this.newUser)
-      .then(user => {
-        console.log(user);
-        if (user.errors) {
-          for (const key in user.errors) {
-            const error = user.error[key];
-            this.errors.push(error.message);
-          }
-        } else {
-          this._userService.setCurrentUser(user);
-          this._router.navigateByUrl('/dashboard');
-        }
-      })
-      .catch(err => console.log(err));
   }
 }

@@ -1,3 +1,27 @@
 <app-admin-nav></app-admin-nav>
-<router-outlet></router-outlet>
-<app-messages></app-messages>
+<mat-sidenav-container class="container">
+    <mat-sidenav #sidenav mode="side" opened="true" class="sidenav">
+        <ul>
+            <li>
+                <button mat-button class="navButton" routerLink="/admin_dashboard">Home</button>
+            </li>
+            <li>
+                <button mat-button class="navButton" routerLink="/list_admin">Admin Users</button>
+            </li>
+            <li>
+                <button mat-button class="navButton" routerLink="/list_amenity">Ammenities</button>
+            </li>
+            <li>
+                <button mat-button class="navButton" routerLink="/list_vender">Venders</button>
+            </li>
+            <li>
+                <button mat-button class="navButton" routerLink="/list_venue">Venues</button>
+            </li>
+        </ul>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <button mat-button (click)="sidenav.toggle()">Toggle</button>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

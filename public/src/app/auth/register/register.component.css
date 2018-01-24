@@ -1,6 +1,13 @@
 form {
     width: 50%;
     margin: auto;
+
+}
+
+#head {
+  padding-bottom: 3%;
+  margin-bottom: 5%;
+  border-bottom: 1px solid black;
 }
 .mat-form-field {
     display: block;
@@ -9,6 +16,7 @@ form {
 p {
     text-align: center;
     color: red;
+    margin-bottom: 3%;
 }
 
 .container {
@@ -32,6 +40,7 @@ h1 {
 }
 table {
   width: 100%;
+  margin-top: 2%;
 }
 th {
   border-bottom: 1px solid black;

@@ -1,11 +1,11 @@
 export class Vender {
-    _id: string;
+    _id: any;
     name: string;
     email: string;
     phone: number;
     address: string;
     website: string;
-    static_pic_url: any;
+    amenities: any;
     createdAt: any;
     updatedAt: any;
 }

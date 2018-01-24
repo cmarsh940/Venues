@@ -1,0 +1,27 @@
+<button mat-raised-button (click)="goBack()">Cancel</button>
+<h1 class="text-center">Edit {{vender.name}} vender</h1>
+<div class="container">
+  <form (submit)="updateVender()" #formData="ngForm" class="form">
+    <mat-form-field>
+      <input matInput name='name' [(ngModel)]="vender.name" #name='ngModel' placeholder="name" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name='email' [(ngModel)]="vender.email" #email='ngModel' placeholder="Email" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name='phone' [(ngModel)]="vender.phone" #phone='ngModel' placeholder="Phone #" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name='address' [(ngModel)]="vender.address" #address='ngModel' placeholder="Address" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name='website' [(ngModel)]="vender.website" #website='ngModel' placeholder="Website" required />
+    </mat-form-field>
+
+    <button mat-raised-button type='submit' [disabled]=!formData.valid>Submit</button>
+  </form>
+</div>

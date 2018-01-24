@@ -1,9 +1,0 @@
-<agm-map [latitude]='36.153883' [longitude]='-95.990629' [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
-  <agm-marker *ngFor="let venue of venues; let i = index" [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng">
-    <agm-info-window>
-      <h3>
-        <strong>{{venue.name}}</strong>
-      </h3>
-    </agm-info-window>
-  </agm-marker>
-</agm-map>
