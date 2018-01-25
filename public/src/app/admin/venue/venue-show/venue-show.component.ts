@@ -15,6 +15,7 @@ export class VenueShowComponent implements OnInit {
   venues: Venue[];
   currentUser: User;
   errors: string[] = [];
+  search_text: String = '';
 
   constructor(
     private _venueService: VenueService,

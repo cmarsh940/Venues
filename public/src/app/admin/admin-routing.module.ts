@@ -14,6 +14,8 @@ import { VenderEditComponent } from './vender/vender-edit/vender-edit.component'
 import { ReviewShowComponent } from './review/review-show/review-show.component';
 import { ReviewNewComponent } from './review/review-new/review-new.component';
 import { ReviewEditComponent } from './review/review-edit/review-edit.component';
+import { CategoryShowComponent } from './category/category-show/category-show.component';
+import { CategoryEditComponent } from './category/category-edit/category-edit.component';
 
 const routes: Routes = [
   {
@@ -33,7 +35,18 @@ const routes: Routes = [
       {
         path: 'amenity/edit/:id',
         pathMatch: 'full',
-        component: AmenityEditComponent },
+        component: AmenityEditComponent 
+      },
+      {
+        path: 'list_category',
+        pathMatch: 'full',
+        component: CategoryShowComponent
+      },
+      {
+        path: 'category/edit/:id',
+        pathMatch: 'full',
+        component: CategoryEditComponent 
+      },
       {
         path: 'list_vender',
         pathMatch: 'full',

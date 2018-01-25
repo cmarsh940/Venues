@@ -1,19 +1,15 @@
-import { environment } from './../environments/environment';
-import { AgmCoreModule } from '@agm/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { UserService } from './services/user.service';
-import { BrowserModule } from '@angular/platform-browser';
+import { NavComponent } from './../structure/nav/nav.component';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
-import { AppRoutingModule } from './app-routing.module';
-
-import { AppComponent } from './app.component';
-import { AuthModule } from './auth/auth.module';
-import { AdminModule } from './admin/admin.module';
-
+import { ClientComponent } from './client.component'
+import { ClientRoutingModule } from './client-routing.module';
+import { SearchComponent } from './search/search.component';
+import { VenderComponent } from './vender/vender.component';
+import { VenueComponent } from './venue/venue.component';
+import { LandingComponent } from './landing/landing.component';
+import { Rights } from '../structure/footer/rights/rights.component';
+import { FooterComponent } from '../structure/footer/footer.component';
 import {
   MatButtonModule,
   MatToolbarModule,
@@ -47,24 +43,18 @@ import {
   MatTooltipModule,
   MatStepperModule
 } from '@angular/material';
-
-
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
+    CommonModule,
+    ClientRoutingModule,
     HttpModule,
-    AuthModule,
-    AdminModule,
-    BrowserAnimationsModule,
     FormsModule,
-    FlexLayoutModule,
     ReactiveFormsModule,
+    FlexLayoutModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,
@@ -96,14 +86,16 @@ import {
     MatToolbarModule,
     MatTooltipModule,
     MatStepperModule,
-    ReactiveFormsModule,
-    AgmCoreModule.forRoot({
-      apiKey: environment.googleMapsKey
-    })
   ],
-  providers: [
-    UserService
-  ],
-  bootstrap: [AppComponent]
+  declarations: [
+    ClientComponent,
+    FooterComponent,
+    LandingComponent,
+    NavComponent,
+    Rights,
+    SearchComponent, 
+    VenderComponent, 
+    VenueComponent, 
+  ]
 })
-export class AppModule { }
+export class ClientModule { }

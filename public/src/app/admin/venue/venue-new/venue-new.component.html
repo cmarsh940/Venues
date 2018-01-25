@@ -61,8 +61,14 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="Venue Amenities" [formControl]="amenityControl" [(ngModel)]="newVenue.amenities" multiple>
+      <mat-select placeholder="Venue Amenities" [formControl]="amenityControl" name="amenities" [(ngModel)]="newVenue.amenities" multiple>
         <mat-option *ngFor="let amenity of amenities" [value]="amenity">{{amenity.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Venue Category" name="category" [(ngModel)]="newVenue.category">
+        <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
       </mat-select>
     </mat-form-field>
 

@@ -1,3 +1,4 @@
+import { CategoryService } from './../services/category.service';
 import { RegisterComponent } from './../auth/register/register.component';
 import { AdminNavComponent } from './../structure/admin-nav/admin-nav.component';
 import { UserService } from './../services/user.service';
@@ -59,6 +60,11 @@ import { ReviewShowComponent } from './review/review-show/review-show.component'
 import { ReviewEditComponent } from './review/review-edit/review-edit.component';
 import { ReviewNewComponent } from './review/review-new/review-new.component';
 import { ReviewService } from '../services/review.service';
+import { CategoryShowComponent } from './category/category-show/category-show.component';
+import { CategoryEditComponent } from './category/category-edit/category-edit.component';
+import { SortVenuesPipe } from '../pipes/sort-venues.pipe';
+import { FilterVenuesPipe } from '../pipes/filter-venues.pipe';
+
 
 @NgModule({
   imports: [
@@ -117,9 +123,14 @@ import { ReviewService } from '../services/review.service';
     ReviewShowComponent,
     ReviewEditComponent,
     ReviewNewComponent,
+    CategoryShowComponent,
+    CategoryEditComponent,
+    SortVenuesPipe,
+    FilterVenuesPipe,
   ],
   providers: [
     AmenityService,
+    CategoryService,
     MessageService,
     ReviewService,
     VenderService,

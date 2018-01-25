@@ -5,6 +5,8 @@ export class Venue {
     phone: number;
     address: string;
     website: string;
+    amenities: any;
+    category: any;
     createdAt: any;
     updatedAt: any;
 }

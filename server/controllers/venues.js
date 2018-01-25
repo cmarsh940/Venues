@@ -12,7 +12,7 @@ let shuffle = function (arr) {
 
 class VenuesController {
     index(req, res) {
-        Venue.find({}).populate('amenities').exec((err, venues) => {
+        Venue.find({}).populate('amenities').populate('category').exec((err, venues) => {
             if(err) {
                 return res.json(err);
             }

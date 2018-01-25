@@ -1,6 +1,9 @@
 <button mat-raised-button color="accent" [routerLink]="['/vender', 'add']">Add a vender</button>
 <h1>Venders</h1>
 <hr>
+<div>
+  <input matInput type='text' name='search_text' [(ngModel)]='search_text' placeholder="Search...">
+</div>
 <table>
   <thead>
     <tr>

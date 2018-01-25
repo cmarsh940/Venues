@@ -25,6 +25,10 @@ const VenueSchema = new mongoose.Schema({
     amenities: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Amenity'
+    }],
+    category: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category'
     }]
 }, { timestamps: true });
 

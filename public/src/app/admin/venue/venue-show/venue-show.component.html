@@ -16,6 +16,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let venue of venues; let i = index">
+        <!-- <tr *ngFor="let venue of venues | filterVenues: search_text | sortVenues:'name'; let i = index"> -->
             <td>{{i + 1}}</td>
             <td>{{ venue.name }}</td>
             <td>{{ venue.email }}</td>

@@ -1,0 +1,34 @@
+<div class="containerX">
+    <div class="container" id="main">
+        <hr>
+        <section>
+            <h1>Who knows Tulsa better then tulsans?</h1>
+        </section>
+        <div class="search">
+            <mat-form-field class="form-field">
+                <input matInput type="text" placeholder="Search for a venue" [(ngModel)]="value" />
+                <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+            <div id="search-button">
+                <button mat-raised-button color="accent" routerLink="/search" matTooltip="Search for a Venue">Find Your Venue Now</button>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <h2>Preferred Venders</h2>
+        <div class="vender-card" *ngFor="let vender of venders; let i = index">
+            <mat-card class="card" [tabindex]="i">
+                <!-- <img mat-card-image src='imgs/{{vender.static_pic_url}}' alt="Vender Picture"> -->
+                <mat-card-content>
+                    <p>{{vender.name}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button [routerLink]="['/vender', 'display', vender._id]">VIEW</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

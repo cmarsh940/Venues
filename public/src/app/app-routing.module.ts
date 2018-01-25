@@ -3,12 +3,17 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '', pathMatch: 'full', redirectTo: 'auth'
+    path: '', 
+    loadChildren: 'app/client/client.module#ClientModule' 
+  },
+  {
+    path: 'admin', 
+    redirectTo: 'auth' 
   },
   {
     path: 'dashboard',
     loadChildren: 'app/admin/admin.module#AdminModule'
-  }
+  },
 ];
 
 @NgModule({

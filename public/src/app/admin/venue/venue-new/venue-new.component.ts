@@ -7,6 +7,8 @@ import { VenueService } from '../../../services/venue.service';
 import { AmenityService } from '../../../services/amenity.service';
 import { Amenity } from '../../../models/amenity';
 import { FormControl } from '@angular/forms';
+import { Category } from '../../../models/category';
+import { CategoryService } from '../../../services/category.service';
 
 
 @Component({
@@ -18,6 +20,7 @@ export class VenueNewComponent implements OnInit {
   currentUser: User;
   venues: Venue[];
   amenities: Amenity[];
+  categories: Category[];
   newVenue: Venue = new Venue();
   errors: string[] = [];
 
@@ -27,6 +30,7 @@ export class VenueNewComponent implements OnInit {
     private _userService: UserService,
     private _venueService: VenueService,
     private _amenityService: AmenityService,
+    private _categoryService: CategoryService,
     private _router: Router
   ) {}
 
@@ -34,6 +38,7 @@ export class VenueNewComponent implements OnInit {
     this.isLoggedIn();
     this.getVenues();
     this.getAmenities();
+    this.getCategories();
   }
 
   isLoggedIn() {
@@ -54,6 +59,9 @@ export class VenueNewComponent implements OnInit {
   }
   getAmenities(): void {
     this._amenityService.getAmenities((amenities) => this.amenities = amenities);
+  }
+  getCategories(): void {
+    this._categoryService.getCategories((categories) => this.categories = categories);
   }
 
   createVenue() {

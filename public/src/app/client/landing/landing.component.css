@@ -1,0 +1,46 @@
+div.containerX {
+    margin: 0;
+    padding: 0;
+}
+
+div.container {
+    width: 100%;
+}
+
+#main {
+    background-image: url(/assets/images/tulsa.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    height: 25em;
+}
+
+div.search {
+    width: 100%;
+    display: grid;
+    margin-top: 2%;
+}
+
+.form-field {
+    width: 25%;
+    margin: auto;
+}
+
+#search-button {
+    width:100%;
+    display: flex;
+}
+
+button {
+    margin: auto;
+}
+
+h1 {
+    font-family: 'Parisienne', cursive;
+    font-size: -webkit-xxx-large;
+    letter-spacing: 0.2rem;
+    margin-top: 8%;
+}
+
+h1, h2 {
+    text-align: center;
+}
