@@ -18,9 +18,25 @@ const VenueSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Phone number cannot be blank']
     },
+    minAmmount: {
+        type: Number,
+        required: false
+    },
+    maxAmmount: {
+        type: Number,
+        required: false
+    },
     address: {
         type: String,
         required: [true, 'Address cannot be blank']
+    }, 
+    lat: {
+        type: Number,
+        required: false
+    },
+    lng: {
+        type: Number,
+        required: false
     },
     amenities: [{
         type: mongoose.Schema.Types.ObjectId,

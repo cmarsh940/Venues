@@ -1,6 +1,6 @@
 export class Review {
     _id: any;
-    title: string;
+    email: string;
     content: string;
     rating: number;
     approved: boolean;

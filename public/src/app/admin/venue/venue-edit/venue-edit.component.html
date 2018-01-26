@@ -46,18 +46,7 @@
       />
     </mat-form-field>
 
-    <mat-form-field>
-      <input 
-        matInput 
-        name='website' 
-        [(ngModel)]="venue.website" 
-        #website='ngModel' 
-        placeholder="Website" 
-        required
-      />
-    </mat-form-field>
-
-    <!-- <div class="input-container">
+    <div class="input-container">
       <mat-form-field>
         <input 
           matInput 
@@ -65,7 +54,7 @@
           required 
           maxlength=50 
           [(ngModel)]="venue.lat" 
-          #lat='ngModel'
+          #lat='ngModel' 
           placeholder="Latitude" 
         />
         <mat-hint>EX: 36.153883</mat-hint>
@@ -77,13 +66,25 @@
           name="lng" 
           required 
           maxlength=50 
-          [(ngModel)]="venue.lng"
-          #lng='ngModel'
+          [(ngModel)]="venue.lng" 
+          #lng='ngModel' 
           placeholder="Longitude" 
         />
         <mat-hint>EX: -95.990629</mat-hint>
       </mat-form-field>
     </div>
+
+    <mat-form-field>
+      <input 
+        matInput 
+        name='website' 
+        [(ngModel)]="venue.website" 
+        #website='ngModel' 
+        placeholder="Website" 
+        required
+      />
+    </mat-form-field>
+
     <div class="input-container">
       <mat-form-field>
         <span matPrefix>$&nbsp;</span>
@@ -115,7 +116,32 @@
         />
         <span matSuffix>.00</span>
       </mat-form-field>
-    </div> -->
+    </div>
+
+    <!-- <mat-form-field>
+      <mat-select 
+        name="amenities" 
+        [(ngModel)]="venue.amenities" 
+        #amenities='ngModel' 
+        placeholder="Venue Amenities" 
+        multiple>
+        <mat-option *ngFor="let amenity of amenities" [value]="amenity">
+          {{amenity.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> -->
+    
+    <mat-form-field>
+      <mat-select  
+        name="category" 
+        [(ngModel)]="venue.category"
+        #category='ngModel' 
+        placeholder="Venue Category">
+        <mat-option *ngFor="let category of categories" [value]="category">
+          {{category.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
     <button mat-raised-button type='submit' [disabled]=!formData.valid>Submit</button>
   </form>

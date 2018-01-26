@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const ReviewSchema = new mongoose.Schema({
-    title: {
+    email: {
         type: String,
         required: [true, 'Title cannot be blank'],
         maxlength: 150,

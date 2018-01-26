@@ -48,6 +48,21 @@
       />
     </mat-form-field>
 
+    <div>
+      <mat-label class="form-label">Latitude and Longitude used for map placement</mat-label>
+    </div>
+    <div class="input-container">
+      <mat-form-field>
+        <input matInput name="lat" required maxlength=50 [(ngModel)]="newVenue.lat" placeholder="Latitude" />
+        <mat-hint>EX: 36.153883</mat-hint>
+      </mat-form-field>
+    
+      <mat-form-field>
+        <input matInput name="lng" required maxlength=50 [(ngModel)]="newVenue.lng" placeholder="Longitude" />
+        <mat-hint>EX: -95.990629</mat-hint>
+      </mat-form-field>
+    </div>
+
     <mat-form-field>
       <input 
         matInput 
@@ -72,33 +87,6 @@
       </mat-select>
     </mat-form-field>
 
-    <!-- <mat-label class="form-label">Latitude and Longitude used for map placement</mat-label>
-
-    <div class="input-container">
-      <mat-form-field>
-        <input 
-          matInput 
-          name="lat" 
-          required 
-          maxlength=50 
-          [(ngModel)]="newVenue.lat" 
-          placeholder="Latitude" 
-        />
-        <mat-hint>EX: 36.153883</mat-hint>
-      </mat-form-field>
-
-      <mat-form-field>
-        <input 
-          matInput 
-          name="lng" 
-          required 
-          maxlength=50 
-          [(ngModel)]="newVenue.lng" 
-          placeholder="Longitude" 
-        />
-        <mat-hint>EX: -95.990629</mat-hint>
-      </mat-form-field>
-    </div>
     <div class="input-container">
       <mat-form-field>
         <span matPrefix>$&nbsp;</span>
@@ -127,7 +115,7 @@
         />
         <span matSuffix>.00</span>
       </mat-form-field>
-    </div>  -->
+    </div> 
 
     <!-- <div class="file-upload">
       <input #file type="file" name="picture" [(ngModel)]="new_venue.static_pic_url">

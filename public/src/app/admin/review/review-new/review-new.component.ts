@@ -45,6 +45,7 @@ export class ReviewNewComponent implements OnInit {
   }
 
   createReview() {
+    alert("Thank you, We are reviewing your message now")
     this.errors = [];
     return this._reviewService.createReview(this.newReview, (review) => {
       console.log(review);

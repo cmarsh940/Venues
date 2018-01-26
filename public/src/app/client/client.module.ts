@@ -46,6 +46,8 @@ import {
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { AgmCoreModule } from '@agm/core';
+import { environment } from '../../environments/environment';
 
 @NgModule({
   imports: [
@@ -86,6 +88,9 @@ import { HttpModule } from '@angular/http';
     MatToolbarModule,
     MatTooltipModule,
     MatStepperModule,
+    AgmCoreModule.forRoot({
+      apiKey: environment.googleMapsKey
+    })
   ],
   declarations: [
     ClientComponent,

@@ -3,8 +3,12 @@ export class Venue {
     name: string;
     email: string;
     phone: number;
-    address: string;
     website: string;
+    address: string;
+    lat: number;
+    lng: number;
+    minAmmount: number;
+    maxAmmount: number;
     amenities: any;
     category: any;
     createdAt: any;

@@ -1,1 +1,47 @@
-Search
+<div class="containerX">
+    <div class="search">
+        <h1>SEARCH FORM COMING SOON....</h1>
+    </div>
+    <hr>
+    <!-- <app-google-map></app-google-map> -->
+    <div class="container">
+        <div class="vender">
+            <h4>VENDER</h4>
+            <h3>
+                <!-- <strong>{{vender.name}}</strong> -->
+            </h3>
+        </div>
+        <div class="map">
+            <agm-map [latitude]='36.153883' [longitude]='-95.990629' [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
+                <agm-marker *ngFor="let venue of venues; let i = index" [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng">
+                    <agm-info-window>
+                        <h3>
+                            <strong>{{venue.name}}</strong>
+                        </h3>
+                        <button mat-button [routerLink]="['/venue', 'display', venue._id]">VIEW</button>
+                    </agm-info-window>
+                </agm-marker>
+            </agm-map>
+        </div>
+        <div class="vender">
+            <h4>VENDER</h4>
+            <h3>
+                <!-- <strong>{{vender.name}}</strong> -->
+            </h3>
+        </div>
+    </div>
+    <hr>
+
+    <div class="container">
+        <div class="card-group" *ngFor="let venue of venues; let i = index">
+            <mat-card class="card" [tabindex]="i">
+                <img mat-card-image src='imgs/{{venue.static_pic_url}}' alt="Venue Picture">
+                <mat-card-content>
+                    <p>{{venue.name}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button [routerLink]="['/venue', 'display', venue._id]">VIEW</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
