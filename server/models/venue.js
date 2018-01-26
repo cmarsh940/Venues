@@ -15,7 +15,7 @@ const VenueSchema = new mongoose.Schema({
         required: [true, 'Website cannot be blank']
     },
     phone: {
-        type: String,
+        type: Number,
         required: [true, 'Phone number cannot be blank']
     },
     minAmmount: {

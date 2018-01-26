@@ -35,12 +35,17 @@
     <div class="container">
         <div class="card-group" *ngFor="let venue of venues; let i = index">
             <mat-card class="card" [tabindex]="i">
-                <img mat-card-image src='imgs/{{venue.static_pic_url}}' alt="Venue Picture">
+                <ng-container *ngIf="venue.static_pic_url; else elseTemplate">
+                    <img mat-card-image src='imgs/{{venue.static_pic_url}}' alt="Venue Picture">
+                </ng-container>
+                <ng-template #elseTemplate>
+                    <img mat-card-image src='/assets/images/missing.png' alt="Venue Picture">
+                </ng-template>
                 <mat-card-content>
                     <p>{{venue.name}}</p>
                 </mat-card-content>
                 <mat-card-actions>
-                    <button mat-raised-button [routerLink]="['/venue', 'display', venue._id]">VIEW</button>
+                    <button mat-button [routerLink]="['/venue', 'display', venue._id]">VIEW</button>
                 </mat-card-actions>
             </mat-card>
         </div>

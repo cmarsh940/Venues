@@ -44,3 +44,17 @@ h1 {
 h1, h2 {
     text-align: center;
 }
+.vender-card {
+  display: inline-flex;
+  margin: 2%;
+}
+
+.card {
+  width: 15em;
+  border-radius: 5%;
+  overflow: hidden;
+}
+
+.vender-button {
+    width:100%;
+}

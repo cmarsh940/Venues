@@ -5,7 +5,7 @@ h1, h2, h4 {
     text-align: center;
 }
 
-[mat-raised-button] {
+[mat-button] {
   width:100%;
 }
 
@@ -53,5 +53,7 @@ div.container {
 }
 
 .card {
-  width: 20em;
+  width: 15em;
+  border-radius: 5%;
+  overflow: hidden;
 }

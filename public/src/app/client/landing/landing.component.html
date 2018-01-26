@@ -21,12 +21,18 @@
         <h2>Preferred Venders</h2>
         <div class="vender-card" *ngFor="let vender of venders; let i = index">
             <mat-card class="card" [tabindex]="i">
-                <!-- <img mat-card-image src='imgs/{{vender.static_pic_url}}' alt="Vender Picture"> -->
+                <ng-container *ngIf="vender.static_pic_url; else elseTemplate">
+                    <img mat-card-image src='imgs/{{vender.static_pic_url}}' alt="Vender Picture">
+                </ng-container>
+                <ng-template #elseTemplate>
+                    <img mat-card-image src='/assets/images/missing.png' alt="Venue Picture">
+                </ng-template>
                 <mat-card-content>
                     <p>{{vender.name}}</p>
                 </mat-card-content>
+
                 <mat-card-actions>
-                    <button mat-raised-button [routerLink]="['/vender', 'display', vender._id]">VIEW</button>
+                    <button mat-button class="vender-button" [routerLink]="['/vender', 'display', vender._id]">VIEW</button>
                 </mat-card-actions>
             </mat-card>
         </div>

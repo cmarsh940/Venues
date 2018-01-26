@@ -14,7 +14,11 @@
     </mat-form-field>
 
     <mat-form-field>
-        <input matInput name="rating" required maxlength=5 [(ngModel)]="newReview.rating" placeholder="Review rating" />
+        <mat-select name="rating" [(ngModel)]="newReview.rating" placeholder="Rating">
+            <mat-option *ngFor="let rating of ratings" [value]="rating.value">
+                {{ rating.viewValue }}
+            </mat-option>
+        </mat-select>
     </mat-form-field>
 
     <div class="submit-button">
