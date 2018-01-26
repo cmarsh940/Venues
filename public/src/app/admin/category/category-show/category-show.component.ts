@@ -4,6 +4,7 @@ import { User } from '../../../models/user';
 import { UserService } from '../../../services/user.service';
 import { Category } from '../../../models/category';
 import { CategoryService } from '../../../services/category.service';
+import { Sort } from '@angular/material';
 
 @Component({
   selector: 'app-category-show',
@@ -16,15 +17,22 @@ export class CategoryShowComponent implements OnInit {
   newCategory: Category = new Category();
   errors: string[] = [];
 
+  sortedData: Category[];
+
   constructor(
     private _categoryService: CategoryService,
     private _userService: UserService,
     private _router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.isLoggedIn();
     this.getCategories();
+    this.sortData;
+  }
+
+  ngAfterViewInit() {
+    this.sortData(name);
   }
 
   isLoggedIn() {
@@ -64,4 +72,23 @@ export class CategoryShowComponent implements OnInit {
     this._categoryService.destroy(id, res => this.categories.splice(idx, 1));
   }
 
+  sortData(sort: Sort) :void {
+    const data = this.categories;
+    if (!sort.active || sort.direction == '') {
+      this.sortedData = data;
+      return;
+    }
+
+    this.sortedData = data.sort((a, b) => {
+      let isAsc = sort.direction == 'asc';
+      switch (sort.active) {
+        case 'name': return compare(a.name, b.name, isAsc);
+        default: return 0;
+      }
+    });
+  }
+}
+
+function compare(a, b, isAsc) {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }

@@ -11,19 +11,19 @@
 
 <hr>
 <div class="container">
-    <table>
+    <table matSort (matSortChange)="sortData($event)">
         <thead>
             <tr>
                 <th>#</th>
-                <th>Name</th>
+                <th mat-sort-header="name">Name</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
             <tr class="categories" *ngFor="let category of categories; let i = index">
-                <td class="badge">{{ i + 1 }}</td>
-                <td class="main">{{ category.name }}</td>
-                <td class="delete">
+                <td>{{ i + 1 }}</td>
+                <td>{{ category.name }}</td>
+                <td>
                     <button mat-icon-button color="accent" [routerLink]="['/category', 'edit', category._id]">
                         <mat-icon aria-label="icon-button to edit category">
                             <i class="material-icons">&#xE3C9;</i>
