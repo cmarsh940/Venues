@@ -1,26 +1,25 @@
-<div class="containerX" *ngFor="let vender of venders">
-    <button mat-raised-button (click)="goBack()">Go Back</button>
+<div class="containerX">
     <div class="container">
-        <ng-container *ngIf="v.pic_url; else elseTemplate">
-            <img mat-card-image src='imgs/{{v.pic_url}}' alt="Vender Picture">
+        <ng-container *ngIf="vender.pic_url; else elseTemplate">
+            <img mat-card-image src='imgs/{{vender.pic_url}}' class="vender-image" alt="Vender Picture">
         </ng-container>
         <ng-template #elseTemplate>
-            <img mat-card-image src='/assets/images/missing.png' alt="Missing Vender Picture">
+            <img mat-card-image src='/assets/images/missing.png' class="vender-image" alt="Missing Vender Picture">
         </ng-template>
     </div>
     <div class="container">
         <mat-grid-list cols="4" rowHeight="5em">
             <!-- VENDER / DESCRIPTION -->
-            <mat-grid-tile [colspan]="2" [rowspan]="3" class="venue-info">
+            <mat-grid-tile [colspan]="2" [rowspan]="3" class="vender-info">
                 <h1>VENDER CONTACT INFO</h1>
-                <h3>{{v.name}}</h3>
-                <h3>{{v.phone}}</h3>
-                <h3>{{v.address}}</h3>
-                <h3>{{v.website}}</h3>
+                <!-- <h3>{{vender.name}}</h3>
+                <h3>{{vender.phone}}</h3>
+                <h3>{{vender.address}}</h3>
+                <h3>{{vender.website}}</h3> -->
             </mat-grid-tile>
-            <mat-grid-tile [colspan]="2" [rowspan]="3" class="venue-about">
+            <mat-grid-tile [colspan]="2" [rowspan]="3" class="vender-about">
                 <h2>VENUE ABOUT</h2>
-                <P>{{v.description}}</P>
+                <!-- <P>{{vender.description}}</P> -->
             </mat-grid-tile>
         </mat-grid-list>
     </div>

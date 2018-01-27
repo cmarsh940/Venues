@@ -11,7 +11,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./vender.component.css']
 })
 export class VenderComponent implements OnInit {
-  v = new Vender();
+  vender = new Vender();
   subscription: Subscription;
 
   constructor(
@@ -31,7 +31,7 @@ export class VenderComponent implements OnInit {
 
   getVender() {
     this.subscription = this._activatedRoute.params.subscribe(
-      params => this._venderService.showVender(params.id, res => this.v = res)
+      params => this._venderService.showVender(params.id, res => this.vender = res)
     );
   }
 

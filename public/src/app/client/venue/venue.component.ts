@@ -6,6 +6,9 @@ import { VenueService } from '../../services/venue.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Location } from '@angular/common';
 
+import { AgmMap } from '@agm/core/directives/map';
+import { google } from '@agm/core/services/google-maps-types';
+
 @Component({
   selector: 'app-venue',
   templateUrl: './venue.component.html',
@@ -13,8 +16,13 @@ import { Location } from '@angular/common';
 })
 export class VenueComponent implements OnInit, OnDestroy {
 
-  v = new Venue();
+  venue = new Venue();
   subscription: Subscription;
+
+  zoom: number = 12;
+  latitude: number;
+  longitude: number;
+  title: string;
 
   constructor(
     private _venueService: VenueService,
@@ -33,7 +41,7 @@ export class VenueComponent implements OnInit, OnDestroy {
 
   getVenue() {
     this.subscription = this._activatedRoute.params.subscribe(
-      params => this._venueService.showVenue(params.id, res => this.v = res)
+      params => this._venueService.showVenue(params.id, res => this.venue = res)
     );
   }
 
@@ -41,4 +49,11 @@ export class VenueComponent implements OnInit, OnDestroy {
     this.location.back();
   }
 
+}
+
+interface marker {
+  lat: number;
+  lng: number;
+  label?: string;
+  draggable: boolean;
 }

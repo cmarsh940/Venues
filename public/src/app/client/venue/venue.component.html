@@ -1,54 +1,57 @@
-<div class="containerX" *ngFor="let v of venues">
-    <button mat-raised-button (click)="goBack()">Go Back</button>
+<div class="containerX">
     <div class="container">
-        <ng-container *ngIf="v.pic_url; else elseTemplate">
-            <img mat-card-image src='imgs/{{v.pic_url}}' alt="Venue Picture">
+        <ng-container *ngIf="venue.pic_url; else elseTemplate">
+            <img mat-card-image src='imgs/{{venue.pic_url}}' class="venue-image" alt="Venue Picture">
         </ng-container>
         <ng-template #elseTemplate>
-            <img mat-card-image src='/assets/images/missing.png' alt="Missing Venue Picture">
+            <img mat-card-image src='/assets/images/missing.png' class="venue-image" alt="Missing Venue Picture">
         </ng-template>
     </div>
     <div class="container">
-        <mat-grid-list cols="4" rowHeight="5em">
+        <mat-grid-list cols="4" rowHeight="5em" role="list">
             <!-- INFO /  ABOUT / PHOTO ALBUM -->
-            <mat-grid-tile [colspan]="1" [rowspan]="3" class="venue-info">
-                <h1>VENDER CONTACT INFO</h1>
-                <h3>{{v.name}}</h3>
-                <h3>{{v.phone}}</h3>
-                <h3>{{v.address}}</h3>
-                <h3>{{v.website}}</h3>
+            <mat-grid-tile [colspan]="1" [rowspan]="3" class="venue-info" role="listitem">
+                <h1>VENUE INFO</h1>
+                <!-- <h3>{{venue.name}}</h3>
+                <h3>{{venue.phone}}</h3>
+                <h3>{{venue.address}}</h3>
+                <h3>{{venue.website}}</h3> -->
             </mat-grid-tile>
-            <mat-grid-tile [colspan]="2" [rowspan]="3" class="venue-about">
-                <h2>VENUE ABOUT</h2>
-                <P>{{v.description}}</P>
+            <mat-grid-tile [colspan]="2" [rowspan]="3" class="venue-about" role="listitem">
+                <div>
+                    <h2>ABOUT {{venue.name}}</h2>
+                </div>
+                <div>
+                    <h5>{{venue.description}}</h5>
+                </div>
             </mat-grid-tile>
-            <mat-grid-tile [colspan]="1" [rowspan]="3" class="venue-gallery">
+            <mat-grid-tile [colspan]="1" [rowspan]="3" class="venue-gallery" role="listitem">
                 <h2>VENUE PHOTO ALBUM</h2>
             </mat-grid-tile>
 
             <!-- AMENITIES /  3D -->
-            <mat-grid-tile [colspan]="2" [rowspan]="4" class="venue-amenities">
+            <mat-grid-tile [colspan]="2" [rowspan]="4" class="venue-amenities" role="listitem">
                 <h2>VENUE AMENITIES</h2>
-
+                <mat-list dense>
+                    <mat-list-item>  </mat-list-item>
+                </mat-list>
             </mat-grid-tile>
-            <mat-grid-tile [colspan]="2" [rowspan]="4" class="venue-3d-link">
+            <mat-grid-tile [colspan]="2" [rowspan]="4" class="venue-3d-link" role="listitem">
                 <h2>VENUE 3D LINK</h2>
             </mat-grid-tile>
 
             <!-- VENDER / MAP / DESCRIPTION -->
-            <mat-grid-tile [colspan]="1" [rowspan]="2" class="vender">
+            <mat-grid-tile [colspan]="1" [rowspan]="2" class="vender" role="listitem">
                 <h2>RANDOM VENDER</h2>
             </mat-grid-tile>
-            <mat-grid-tile [colspan]="2" [rowspan]="2" class="venue-map">
-                <h2>VENUE MAP POSITION</h2>
-                <agm-map [latitude]='36.153883' [longitude]='-95.990629' [zoom]="4" [disableDefaultUI]="false" [zoomControl]="false">
-                    <agm-marker [title]="v.address" [latitude]="v.lat" [longitude]="v.lng">
+            <mat-grid-tile [colspan]="2" [rowspan]="4" class="venue-map" role="listitem">
+                <agm-map [latitude]='venue.lat' [longitude]='venue.lng' [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
+                    <agm-marker [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng">
                     </agm-marker>
                 </agm-map>
             </mat-grid-tile>
-            <mat-grid-tile [colspan]="1" [rowspan]="2" class="venue-details">
+            <mat-grid-tile [colspan]="1" [rowspan]="2" class="venue-details" role="listitem">
                 <h2>VENUE Details</h2>
-                <h3>{{v.category.name}}</h3>
             </mat-grid-tile>
         </mat-grid-list>
     </div>
