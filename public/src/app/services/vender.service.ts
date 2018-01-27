@@ -18,6 +18,13 @@ export class VenderService {
     );
   }
 
+  getRandomVender(num: number, callback) {
+    this._http.get(`/venders/random/${num}`).subscribe(
+      res => callback(res.json()),
+      err => console.error(err)
+    );
+  }
+
   createVender(newVenue: Vender, callback) {
     return this._http.post('/venders', newVenue).subscribe(
       res => {

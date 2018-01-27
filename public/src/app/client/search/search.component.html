@@ -1,52 +1,82 @@
 <div class="containerX">
-    <div class="search">
-        <h1>SEARCH FORM COMING SOON....</h1>
-    </div>
-    <hr>
-    <!-- <app-google-map></app-google-map> -->
-    <div class="container">
-        <div class="vender">
-            <h4>VENDER</h4>
-            <h3>
-                <!-- <strong>{{vender.name}}</strong> -->
-            </h3>
-        </div>
-        <div class="map">
-            <agm-map [latitude]='36.153883' [longitude]='-95.990629' [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
-                <agm-marker *ngFor="let venue of venues; let i = index" [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng">
-                    <agm-info-window>
-                        <h3>
-                            <strong>{{venue.name}}</strong>
-                        </h3>
-                        <button mat-button [routerLink]="['/venue', 'display', venue._id]">VIEW</button>
-                    </agm-info-window>
-                </agm-marker>
-            </agm-map>
-        </div>
-        <div class="vender">
-            <h4>VENDER</h4>
-            <h3>
-                <!-- <strong>{{vender.name}}</strong> -->
-            </h3>
-        </div>
-    </div>
-    <hr>
+    <div class="none-scroll">
+        <mat-grid-list cols="4" rowHeight="5em">
+            <mat-grid-tile [colspan]="4" [rowspan]="1" class="search">
+                <h1>SEARCH FORM COMING SOON....</h1>
+            </mat-grid-tile>
 
-    <div class="container">
-        <div class="card-group" *ngFor="let venue of venues; let i = index">
-            <mat-card class="card" [tabindex]="i">
-                <ng-container *ngIf="venue.static_pic_url; else elseTemplate">
-                    <img mat-card-image src='imgs/{{venue.static_pic_url}}' alt="Venue Picture">
+
+            <!-- VENDER / MAP / VENDER -->
+            <mat-grid-tile [colspan]="1" [rowspan]="4" class="vender">
+                <h2>VENDER</h2>
+                <!-- <ng-container *ngIf="vender.pic_url; else elseTemplate">
+                    <img mat-card-image src='imgs/{{vender.pic_url}}' alt="Vender Picture">
                 </ng-container>
                 <ng-template #elseTemplate>
                     <img mat-card-image src='/assets/images/missing.png' alt="Venue Picture">
-                </ng-template>
-                <mat-card-content>
-                    <p>{{venue.name}}</p>
-                </mat-card-content>
-                <mat-card-actions>
-                    <button mat-button [routerLink]="['/venue', 'display', venue._id]">VIEW</button>
-                </mat-card-actions>
-            </mat-card>
+                </ng-template> -->
+            </mat-grid-tile>
+
+
+            <mat-grid-tile [colspan]="2" [rowspan]="4" class="map">
+                <agm-map [latitude]='36.153883' [longitude]='-95.990629' [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
+                    <agm-marker *ngFor="let venue of venues" [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng">
+                        <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+                            <ng-template>
+                                {{venue.name}}
+                                <button mat-button [routerLink]="['/venue', 'display', venue._id]">VIEW</button>
+                            </ng-template>
+                        </agm-snazzy-info-window>
+                    </agm-marker>
+                </agm-map>
+            </mat-grid-tile>
+
+
+            <mat-grid-tile [colspan]="1" [rowspan]="4" class="vender">
+                <h2>VENDER</h2>
+                <!-- <ng-container *ngIf="vender.pic_url; else elseTemplate">
+                    <img mat-card-image src='imgs/{{vender.pic_url}}' class="vender-image" alt="Venue Picture">
+                </ng-container>
+                <ng-template #elseTemplate>
+                    <img mat-card-image src='/assets/images/missing.png' class="vender-image" alt="Venue Picture">
+                </ng-template> -->
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+
+
+
+
+
+    <hr>
+
+
+
+
+
+
+
+    <div class="scroll">
+        <div class="container">
+            <h2>Venues</h2>
+            <div class="card-group" *ngFor="let venue of venues; let i = index">
+                <mat-card class="card" [tabindex]="i">
+                    <ng-container *ngIf="venue.static_pic_url; else elseTemplate">
+                        <img mat-card-image src='imgs/{{venue.static_pic_url}}' alt="Venue Picture">
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                        <img mat-card-image src='/assets/images/missing.png' alt="Venue Picture">
+                    </ng-template>
+                    <mat-card-content>
+                        <h2>{{venue.name}}</h2>
+                        <span class="spacer"></span>
+                        <img src="assets/images/{{venue.category.icon}}" class="venue-icon" alt="Venue Icon" align="end">
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-button [routerLink]="['/venue', 'display', venue._id]">VIEW</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
         </div>
     </div>
+</div>

@@ -5,6 +5,7 @@ export class Vender {
     phone: number;
     address: string;
     website: string;
+    pic_url: any;
     amenities: any;
     createdAt: any;
     updatedAt: any;

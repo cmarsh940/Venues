@@ -14,7 +14,7 @@
             <input matInput type="password" class="form-control" name="password_confirmation" autocomplete="new-password-confirmation" required [(ngModel)]="newUser.password_confirmation"
             placeholder="Confirm Password">
         </mat-form-field>
-        <button mat-raised-button type="submit" class="btn btn-primary">Register</button>
+        <button mat-raised-button type="submit" color="accent">Register</button>
     </form>
     <div>
         <p [ngStyle]="{ 'color': 'red' }" *ngFor="let error of errors">{{ error }}</p>

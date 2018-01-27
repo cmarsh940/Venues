@@ -1,6 +1,9 @@
 mat-toolbar {
     width: 100%;
     border-bottom: 1px solid #00B8D4;
+    position:fixed;
+    top:0;
+    z-index: 2;
 }
 
 .spacer {

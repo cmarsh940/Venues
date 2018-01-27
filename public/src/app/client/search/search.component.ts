@@ -20,6 +20,7 @@ export class SearchComponent implements OnInit {
   zoom: number = 8;
   latitude: number;
   longitude: number;
+  title: string;
 
   constructor(
     private _venderService: VenderService,

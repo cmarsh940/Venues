@@ -48,6 +48,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from '../../environments/environment';
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 
 @NgModule({
   imports: [
@@ -90,7 +91,8 @@ import { environment } from '../../environments/environment';
     MatStepperModule,
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapsKey
-    })
+    }),
+    AgmSnazzyInfoWindowModule
   ],
   declarations: [
     ClientComponent,
