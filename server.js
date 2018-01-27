@@ -2,10 +2,11 @@ const express = require('express');
 const session = require('express-session')
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const path = require("path");
 const port = 8000;
 const app = express();
 
-app.use(express.static(__dirname + '/public/dist'));
+app.use(express.static(path.join(__dirname + '/public/dist')));
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
 app.use(session({
