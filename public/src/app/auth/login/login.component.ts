@@ -13,7 +13,6 @@ export class LoginComponent implements OnInit {
   currentUser: User = new User();
   errors: string[] = [];
   hide = true;
-  newUser: User = new User();
   email = new FormControl('', [Validators.required, Validators.email]);
 
   getErrorMessage() {
@@ -47,21 +46,5 @@ export class LoginComponent implements OnInit {
         this._router.navigateByUrl('/admin_dashboard');
       }
     });
-  }
-
-  createUser() {
-    this.errors = [];
-    return this._userService.createUser(this.newUser, (user) => {
-      console.log(user);
-      if (user.errors) {
-        for (let key in user.errors) {
-          let error = user.error[key];
-          this.errors.push(error.message);
-        }
-      } else {
-        this._userService.setCurrentUser(user);
-        this._router.navigate(['/list_admin']);
-      }
-    })
   }
 }
