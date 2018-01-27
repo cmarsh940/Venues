@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
 const models_path = __dirname + '/../models';
-const database = 'venue';
+const database = 'tulsaVenues';
 
 mongoose.Promise = global.Promise;
 

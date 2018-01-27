@@ -24,3 +24,25 @@
         <p [ngStyle]="{ 'color': 'red' }" >{{ error }}</p>
     </div>
 </div>
+
+<form class="form" (submit)="createUser()">
+    <mat-form-field>
+        <input matInput type="text" name="name" class="form-control" [(ngModel)]="newUser.name" placeholder="Name">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="email" name="email" class="form-control" autocomplete="username email" [(ngModel)]="newUser.email"
+            placeholder="Email">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="password" name="password" autocomplete="new-password" class="form-control" [(ngModel)]="newUser.password"
+            placeholder="Password">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="password" class="form-control" name="password_confirmation" autocomplete="new-password-confirmation"
+            required [(ngModel)]="newUser.password_confirmation" placeholder="Confirm Password">
+    </mat-form-field>
+    <button mat-raised-button type="submit" color="accent">Register</button>
+</form>
+<div>
+    <p [ngStyle]="{ 'color': 'red' }" *ngFor="let error of errors">{{ error }}</p>
+</div>
