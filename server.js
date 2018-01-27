@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname + '/public/dist')));
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
 app.use(session({
-    secret: 'IaM$phpaM$I1M9M$phpaM$',
+    secret: "VenuesSecret",
     resave: false,
     saveUninitialized: true
 }));
