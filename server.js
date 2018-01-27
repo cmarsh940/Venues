@@ -9,7 +9,7 @@ app.use(express.static(__dirname + '/public/dist'));
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
 app.use(session({
-    secret: 'VenuesSecret',
+    secret: 'IaM$phpaM$I1M9M$phpaM$',
     resave: false,
     saveUninitialized: true
 }));
