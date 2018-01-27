@@ -60,6 +60,10 @@ const VenueSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    tour_url: {
+        type: String,
+        required: false
+    },
     amenities: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Amenity'

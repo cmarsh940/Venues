@@ -1,1 +1,27 @@
-VENDER
+<div class="containerX" *ngFor="let vender of venders">
+    <button mat-raised-button (click)="goBack()">Go Back</button>
+    <div class="container">
+        <ng-container *ngIf="v.pic_url; else elseTemplate">
+            <img mat-card-image src='imgs/{{v.pic_url}}' alt="Vender Picture">
+        </ng-container>
+        <ng-template #elseTemplate>
+            <img mat-card-image src='/assets/images/missing.png' alt="Missing Vender Picture">
+        </ng-template>
+    </div>
+    <div class="container">
+        <mat-grid-list cols="4" rowHeight="5em">
+            <!-- VENDER / DESCRIPTION -->
+            <mat-grid-tile [colspan]="2" [rowspan]="3" class="venue-info">
+                <h1>VENDER CONTACT INFO</h1>
+                <h3>{{v.name}}</h3>
+                <h3>{{v.phone}}</h3>
+                <h3>{{v.address}}</h3>
+                <h3>{{v.website}}</h3>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="2" [rowspan]="3" class="venue-about">
+                <h2>VENUE ABOUT</h2>
+                <P>{{v.description}}</P>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+</div>

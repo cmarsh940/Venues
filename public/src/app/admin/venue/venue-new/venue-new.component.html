@@ -117,6 +117,10 @@
       </mat-form-field>
     </div> 
 
+    <mat-form-field>
+      <textarea matInput name="description" required minlength=1 [(ngModel)]="newVenue.description" placeholder="Venue description" matTextareaAutosize matAutosizeMinRows="5" matAutosizeMaxRows="15"></textarea>
+    </mat-form-field>
+
     <!-- <div class="file-upload">
       <input #file type="file" name="picture" [(ngModel)]="new_venue.static_pic_url">
     </div> -->

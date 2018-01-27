@@ -28,15 +28,10 @@ const routes: Routes = [
         component: VenueComponent 
       },
       { 
-        path: 'vender', 
+        path: 'vender/display/:id', 
         pathMatch: 'full', 
         component: VenderComponent 
       },
-      // { 
-      //   path: 'vender/display/:id', 
-      //   pathMatch: 'full', 
-      //   component: VenderComponent 
-      // },
       { 
         path: 'rights', 
         pathMatch: 'full', 

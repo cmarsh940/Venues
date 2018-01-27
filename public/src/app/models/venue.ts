@@ -9,6 +9,9 @@ export class Venue {
     lng: number;
     minAmmount: number;
     maxAmmount: number;
+    description: string;
+    pic_url: string;
+    tour_url: string;
     amenities: any;
     category: any;
     createdAt: any;
