@@ -8,6 +8,7 @@ import { Location } from '@angular/common';
 
 import { AgmMap } from '@agm/core/directives/map';
 import { google } from '@agm/core/services/google-maps-types';
+import { DigitalTourService } from '../../services/digital-tour.service';
 
 @Component({
   selector: 'app-venue',
@@ -28,7 +29,8 @@ export class VenueComponent implements OnInit, OnDestroy {
     private _venueService: VenueService,
     private _activatedRoute: ActivatedRoute,
     private _router: Router,
-    private location: Location
+    private location: Location,
+    private _digitalTourService: DigitalTourService
   ) { }
 
   ngOnInit() {
@@ -47,6 +49,10 @@ export class VenueComponent implements OnInit, OnDestroy {
 
   goBack(): void {
     this.location.back();
+  }
+  show(): void {
+    this._digitalTourService.show();
+    // this._router.navigateByUrl('/venue/display/:id/3d')
   }
 
 }

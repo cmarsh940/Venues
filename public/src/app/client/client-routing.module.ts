@@ -6,6 +6,7 @@ import { VenueComponent } from './venue/venue.component';
 import { VenderComponent } from './vender/vender.component';
 import { Rights } from '../structure/footer/rights/rights.component';
 import { LandingComponent } from './landing/landing.component';
+import { DigitalTourComponent } from './venue/digital-tour/digital-tour.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,11 @@ const routes: Routes = [
         path: 'venue/display/:id', 
         pathMatch: 'full', 
         component: VenueComponent 
+      },
+      { 
+        path: 'venue/display/:id/3d', 
+        pathMatch: 'full', 
+        component: DigitalTourComponent 
       },
       { 
         path: 'vender/display/:id', 

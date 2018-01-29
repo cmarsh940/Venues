@@ -49,6 +49,8 @@ import { HttpModule } from '@angular/http';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from '../../environments/environment';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
+import { DigitalTourComponent } from './venue/digital-tour/digital-tour.component';
+import { DigitalTourService } from '../services/digital-tour.service';
 
 @NgModule({
   imports: [
@@ -96,6 +98,7 @@ import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
   ],
   declarations: [
     ClientComponent,
+    DigitalTourComponent,
     FooterComponent,
     LandingComponent,
     NavComponent,
@@ -103,6 +106,10 @@ import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
     SearchComponent, 
     VenderComponent, 
     VenueComponent, 
-  ]
+    DigitalTourComponent 
+  ],
+  providers: [
+    DigitalTourService
+  ],
 })
 export class ClientModule { }
