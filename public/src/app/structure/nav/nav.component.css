@@ -14,4 +14,6 @@ mat-toolbar {
 
 .header {
     color: #00B8D4;
+    font-family: 'Jacques Francois Shadow', cursive;
+    letter-spacing: 0.2rem;
 }

@@ -4,3 +4,20 @@ footer {
     background: gainsboro;
     margin-top: 5%;
 }
+
+.social-links {
+    width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+ul {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+li {
+    margin: 1%;
+}

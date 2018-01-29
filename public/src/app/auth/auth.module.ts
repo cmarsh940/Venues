@@ -40,7 +40,6 @@ import {
   MatTooltipModule,
   MatStepperModule
 } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
@@ -50,7 +49,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HttpModule,
     HttpClientModule,
     AuthRoutingModule,
-    FlexLayoutModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
     MatButtonModule,

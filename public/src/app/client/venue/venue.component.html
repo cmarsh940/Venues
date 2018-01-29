@@ -1,59 +1,84 @@
 <div class="containerX">
-    <div class="container">
-        <ng-container *ngIf="venue.pic_url; else elseTemplate">
-            <img mat-card-image src='imgs/{{venue.pic_url}}' class="venue-image" alt="Venue Picture">
-        </ng-container>
-        <ng-template #elseTemplate>
-            <img mat-card-image src='/assets/images/missing.png' class="venue-image" alt="Missing Venue Picture">
-        </ng-template>
+    <div class="carousel">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <ng-container *ngIf="venue.pic_url; else elseTemplate">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src='imgs/{{venue.pic_url}}' class="venue-image" alt="Venue slide pictures">
+                    </div>
+                </ng-container>
+                <ng-template #elseTemplate>
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src='/assets/images/missing.png' class="venue-image" alt="Missing Venue Picture">
+                    </div>
+                </ng-template>
+            </div>
+            <a class="carousel-control-prev text-light bg-dark" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next text-light bg-dark" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
     </div>
-    <div class="container">
-        <mat-grid-list cols="4" rowHeight="5em" role="list">
+    <div class="container-fluid">
+        <div class="col-12" id="top">
             <!-- INFO /  ABOUT / PHOTO ALBUM -->
-            <mat-grid-tile [colspan]="1" [rowspan]="3" class="venue-info" role="listitem">
-                <h1>VENUE INFO</h1>
-                <!-- <h3>{{venue.name}}</h3>
-                <h3>{{venue.phone}}</h3>
-                <h3>{{venue.address}}</h3>
-                <h3>{{venue.website}}</h3> -->
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="2" [rowspan]="3" class="venue-about" role="listitem">
-                <div>
-                    <h2>ABOUT {{venue.name}}</h2>
-                </div>
-                <div>
-                    <h5>{{venue.description}}</h5>
-                </div>
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="1" [rowspan]="3" class="venue-gallery" role="listitem">
-                <h2>VENUE PHOTO ALBUM</h2>
-            </mat-grid-tile>
-
+            <div class="col-3">
+                <h2 class="text-center">VENUE INFO</h2>
+                <ul class="text-center">
+                    <li>
+                        <h5>{{venue.name}}</h5>
+                    </li>
+                    <li>
+                        <h5>{{venue.phone}}</h5>
+                    </li>
+                    <li>
+                        <h5>{{venue.address}}</h5>
+                    </li>
+                    <li>
+                        <h5>{{venue.website}}</h5>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-5">
+                <h2 class="text-center">ABOUT {{venue.name}}</h2>
+                <p class="text-center">{{venue.description}}</p>
+            </div>
+            <div class="col-3">
+                <h2 class="text-center">PHOTO ALBUM</h2>
+            </div>
+        </div>
+        <div class="col-12" id="middle">
             <!-- AMENITIES /  3D -->
-            <mat-grid-tile [colspan]="2" [rowspan]="4" class="venue-amenities" role="listitem">
-                <h2>VENUE AMENITIES</h2>
+            <div class="col-5">
+                <h2 class="text-center">AMENITIES</h2>
                 <mat-list dense>
-                    <mat-list-item>  </mat-list-item>
+                    <mat-list-item> {{venue.amenities}}  </mat-list-item>
                 </mat-list>
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="2" [rowspan]="4" class="venue-3d-link" role="listitem">
-                <!-- <h2>VENUE 3D LINK</h2> -->
+            </div>
+            <div class="col-5">
+                <h2 class="text-center">3D TOUR</h2>
                 <button mat-raised-button (click)="show()">3D</button>
-            </mat-grid-tile>
+            </div>
+        </div>
+        <div class="col-12" id="bottom">
 
             <!-- VENDER / MAP / DESCRIPTION -->
-            <mat-grid-tile [colspan]="1" [rowspan]="2" class="vender" role="listitem">
-                <h2>RANDOM VENDER</h2>
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="2" [rowspan]="4" class="venue-map" role="listitem">
+            <div class="col-3">
+                <h2 class="text-center">RANDOM VENDER</h2>
+            </div>
+            <div class="col-5" id="map">
                 <agm-map [latitude]='venue.lat' [longitude]='venue.lng' [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
                     <agm-marker [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng">
                     </agm-marker>
                 </agm-map>
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="1" [rowspan]="2" class="venue-details" role="listitem">
-                <h2>VENUE Details</h2>
-            </mat-grid-tile>
-        </mat-grid-list>
+            </div>
+            <div class="col-3">
+                <h2 class="text-center">DETAILS</h2>
+            </div>
+        </div>
     </div>
 </div>

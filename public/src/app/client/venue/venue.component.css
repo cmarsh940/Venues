@@ -3,11 +3,7 @@ div.containerX {
     width: 100%;
 }
 
-.mat-grid-list {
-  width: 100%;
-}
-
-div.container {
+.carousel {
   width: 100%;
 }
 
@@ -17,36 +13,21 @@ div.container {
   display: inherit;
 }
 
-
-.venue-info {
-
-}
-
-.venue-about {
+.container-fluid  {
   display: block;
-  width: 100%;
 }
 
-.venue-gallery {
-
+#top, #middle, #bottom {
+  margin-bottom: 2%;
 }
 
-.venue-amenities {
-
+.col-3, .col-5 {
+  display: inline-block;
+  vertical-align: top;
 }
 
-
-.venue-3d-link {
-
-}
-
-
-.vender {
-
-}
-
-.venue-details {
-
+ul {
+  list-style: none;
 }
 
 
@@ -58,14 +39,9 @@ h2, h3, h4, h5, h6 {
   width: 100%;
 }
 
-
-
-
-
-
-
-.vender, .map {
+#map {
   width:100%;
+  height: 400px;
   vertical-align: top;
 }
 

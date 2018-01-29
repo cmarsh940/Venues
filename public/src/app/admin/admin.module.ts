@@ -55,7 +55,6 @@ import {
   MatTooltipModule,
   MatStepperModule
 } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReviewShowComponent } from './review/review-show/review-show.component';
 import { ReviewEditComponent } from './review/review-edit/review-edit.component';
 import { ReviewNewComponent } from './review/review-new/review-new.component';
@@ -74,7 +73,6 @@ import { FilterVenuesPipe } from '../pipes/filter-venues.pipe';
     AdminRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,

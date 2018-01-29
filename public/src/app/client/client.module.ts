@@ -43,7 +43,6 @@ import {
   MatTooltipModule,
   MatStepperModule
 } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AgmCoreModule } from '@agm/core';
@@ -59,7 +58,6 @@ import { DigitalTourService } from '../services/digital-tour.service';
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,

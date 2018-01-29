@@ -44,19 +44,11 @@
         </mat-grid-list>
     </div>
 
-
-
-
-
     <hr>
 
-
-
-
-
-
-
     <div class="scroll">
+        <mat-progress-spinner *ngIf="!venues" class="progress-spinner" [color]="'primary'" [mode]="'indeterminate'">
+        </mat-progress-spinner>
         <div class="container">
             <h2>Venues</h2>
             <div class="card-group" *ngFor="let venue of venues; let i = index">

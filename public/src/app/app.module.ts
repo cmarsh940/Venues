@@ -1,7 +1,6 @@
 import { environment } from './../environments/environment';
 import { AgmCoreModule } from '@agm/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { UserService } from './services/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -63,7 +62,6 @@ import {
     AdminModule,
     BrowserAnimationsModule,
     FormsModule,
-    FlexLayoutModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
     MatButtonModule,

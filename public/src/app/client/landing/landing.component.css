@@ -3,16 +3,12 @@ div.containerX {
     padding: 0;
 }
 
-div.container {
-    width: 100%;
-}
-
 #main {
-    background-image: url(/assets/images/tulsa1.png);
+    width:100%;
+    background-image: url(/assets/images/tulsa-venues-header.jpg);
     /* background-image: url(/assets/images/tulsa.jpg); */
-    background-attachment: fixed;
+    background-attachment: scroll;
     background-size: cover;
-    background-blend-mode: soft-light;
     height: 25em;
 }
 
@@ -24,7 +20,7 @@ div.search {
     width:100%;
     display: flex;
     position: absolute;
-    top: 17em;
+    top: 15em;
 }
 
 button {
@@ -32,21 +28,25 @@ button {
 }
 
 h1 {
+    text-align: -webkit-left;
+    color: white;
+    text-shadow: 3px 4px 2px #000;
+    margin-left: 3em;
     font-family: 'Parisienne', cursive;
     font-size: -webkit-xxx-large;
     letter-spacing: 0.2rem;
     position: absolute;
-    top: 3em;
+    top: 2em;
     left: 0;
     right: 0;
 }
 
-h1, h2 {
-    text-align: center;
-}
-
 h2 {
-  color:#00B8D4;
+    text-align: center;
+    color:#00B8D4;
+    font-family: 'Jacques Francois Shadow', cursive;
+    font-size: x-large;
+    letter-spacing: 0.2rem;
 }
 
 #vender {
