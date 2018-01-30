@@ -30,10 +30,15 @@ footer {
     margin-top: 5%;
 }
 
+#footer-toolbar {
+    background: black;
+}
+
 .social-links {
     width: 100%;
     height: auto;
     margin: auto;
+    background: black;
 }
 
 ul {
@@ -45,4 +50,12 @@ ul {
 
 li {
     margin: 1%;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+  color: #00B8D4;
 }
