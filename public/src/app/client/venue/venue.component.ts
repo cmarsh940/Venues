@@ -9,6 +9,8 @@ import { Location } from '@angular/common';
 import { AgmMap } from '@agm/core/directives/map';
 import { google } from '@agm/core/services/google-maps-types';
 import { DigitalTourService } from '../../services/digital-tour.service';
+import { Amenity } from '../../models/amenity';
+import { AmenityService } from '../../services/amenity.service';
 
 @Component({
   selector: 'app-venue',
@@ -16,7 +18,6 @@ import { DigitalTourService } from '../../services/digital-tour.service';
   styleUrls: ['./venue.component.css']
 })
 export class VenueComponent implements OnInit, OnDestroy {
-
   venue = new Venue();
   subscription: Subscription;
 
@@ -27,6 +28,7 @@ export class VenueComponent implements OnInit, OnDestroy {
 
   constructor(
     private _venueService: VenueService,
+    private _amenityService: AmenityService,
     private _activatedRoute: ActivatedRoute,
     private _router: Router,
     private location: Location,

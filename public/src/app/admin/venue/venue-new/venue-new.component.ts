@@ -69,12 +69,13 @@ export class VenueNewComponent implements OnInit {
     return this._venueService.createVenue(this.newVenue, (venue) => {
       console.log(venue);
       if (venue.errors) {
-        for (let key in venue.errors) {
-          let error = venue.error[key];
+        for (const key of Object.keys(venue.errors)) {
+          const error = venue.errors[key];
           this.errors.push(error.message);
         }
       } else {
         this.getVenues();
+        this.newVenue = new Venue();
         this._router.navigate(['/list_venue']);
       }
     })

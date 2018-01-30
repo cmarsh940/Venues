@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Venue = mongoose.model('Venue');
+const Amenity = mongoose.model('Amenity');
 
 let shuffle = function (arr) {
     for (let i = 0; i < arr.length; i++) {
@@ -12,7 +13,7 @@ let shuffle = function (arr) {
 
 class VenuesController {
     index(req, res) {
-        Venue.find({}).populate('amenities').populate('category').exec((err, venues) => {
+        Venue.find({}).populate('amenities', 'name').populate('category').exec((err, venues) => {
             if(err) {
                 return res.json(err);
             }
@@ -21,7 +22,7 @@ class VenuesController {
     }
 
     getRandom(req, res) {
-        Venue.findRandom().limit(parseInt(req.params.num, (err, venues) => {
+        Venue.findRandom().limit(parseInt(req.params.num)).populate('amenities', 'name').populate('category').exec((err, questions) => {
             if (err) {
                 return res.json(err);
             }
@@ -29,9 +30,8 @@ class VenuesController {
                 shuffle(venue);
             }
             return res.json(venues);
-        }));
+        });
     }
-
 
     create(req, res) {
         Venue.create(req.body, (err, venue) => {
@@ -45,13 +45,14 @@ class VenuesController {
 
 
     show(req, res) {
-        Venue.findById(req.params.id, (err, venue) => {
+        Venue.findById(req.params.id).populate('amenities', 'name').exec((err, venue) => {
             if (err) {
                 return res.json(err);
             }
             return res.json(venue);
         });
     }
+
 
     update(req, res) {
         Venue.findByIdAndUpdate(

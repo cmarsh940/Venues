@@ -1,9 +1,9 @@
 <div class="containerX">
     <div class="none-scroll">
         <mat-grid-list cols="4" rowHeight="5em">
-            <mat-grid-tile [colspan]="4" [rowspan]="1" class="search">
+            <!-- <mat-grid-tile [colspan]="4" [rowspan]="1" class="search">
                 <h1>SEARCH FORM COMING SOON....</h1>
-            </mat-grid-tile>
+            </mat-grid-tile> -->
 
 
             <!-- VENDER / MAP / VENDER -->
@@ -59,11 +59,12 @@
                     <ng-template #elseTemplate>
                         <img mat-card-image src='/assets/images/missing.png' alt="Venue Picture">
                     </ng-template>
-                    <mat-card-content>
-                        <h2>{{venue.name}}</h2>
-                        <span class="spacer"></span>
-                        <img src="assets/images/{{venue.category.icon}}" class="venue-icon" alt="Venue Icon" align="end">
-                    </mat-card-content>
+                    <mat-card-title>
+                        <h5 class="text-center">{{venue.name}}</h5>
+                    </mat-card-title>
+                    <mat-card-footer>
+                        <img src="assets/images/{{venue.category.icon}}" class="venue-icon" alt="Venue Icon">
+                    </mat-card-footer>
                     <mat-card-actions>
                         <button mat-button [routerLink]="['/venue', 'display', venue._id]">VIEW</button>
                     </mat-card-actions>
