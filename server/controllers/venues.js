@@ -22,7 +22,7 @@ class VenuesController {
     }
 
     getRandom(req, res) {
-        Venue.findRandom().limit(parseInt(req.params.num)).populate('amenities', 'name').populate('category').exec((err, questions) => {
+        Venue.findRandom().limit(1).populate('amenities', 'name').populate('category').exec((err, questions) => {
             if (err) {
                 return res.json(err);
             }

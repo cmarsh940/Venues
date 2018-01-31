@@ -4,8 +4,8 @@
             <h4>SEARCH FORM COMING SOON....</h4>
         </div>
         <div class="top-middle">
-            <div class="col-3 mx-auto" *ngFor="let vender of venders">
-                <h2 class="text-center">VENDER</h2>
+            <div class="col-3 mx-auto" *ngFor="let vender of venders; let idx = index">
+                <h2 class="text-center">{{ idx + 1 }}</h2>
                 <ng-container *ngIf="vender.pic_url; else elseTemplate">
                     <div class="vender-link">
                         <a [routerLink]="['/vender', 'display', vender._id]">
@@ -39,8 +39,8 @@
                     </agm-marker>
                 </agm-map>
             </div>
-            <div class="col-3 mx-auto" *ngFor="let vender of venders">
-                <h2 class="text-center">VENDER</h2>
+            <div class="col-3 mx-auto" *ngFor="let vender of venders; let idx = index">
+                <h2 class="text-center">{{ idx + 1 }}</h2>
                 <ng-container *ngIf="vender.pic_url; else elseTemplate">
                     <div class="vender-link">
                         <a [routerLink]="['/vender', 'display', vender._id]">
@@ -81,13 +81,13 @@
                         <img mat-card-image src='/assets/images/missing.png' alt="Venue Picture">
                     </ng-template>
                     <mat-card-title>
-                        <h5 class="text-center">{{venue.name}}</h5>
+                        <h5 class="text-left">{{venue.name}}</h5>
                     </mat-card-title>
                     <mat-card-footer>
                         <img src="assets/images/{{venue.category.icon}}" class="venue-icon" alt="Venue Icon">
                     </mat-card-footer>
                     <mat-card-actions>
-                        <button mat-button [routerLink]="['/venue', 'display', venue._id]">VIEW</button>
+                        <button mat-button [routerLink]="['/venue', 'display', venue._id]" matTooltip="View {{venue.name}}">VIEW</button>
                     </mat-card-actions>
                 </mat-card>
             </div>

@@ -40,6 +40,6 @@ div.btn-close {
   margin-bottom: 3%;
 }
 #content {
-  width: 90;
+  width: 100%;
   z-index: 4;
 }

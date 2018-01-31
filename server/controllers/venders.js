@@ -27,6 +27,7 @@ class VendersController {
             }
             for (let vender of venders) {
                 shuffle(vender);
+                console.log("*** This is the random vender:", vedner);
             }
             return res.json(venders);
         }));

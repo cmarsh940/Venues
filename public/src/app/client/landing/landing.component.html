@@ -6,14 +6,14 @@
         </section>
         <div class="search">
             <div id="search-button">
-                <button mat-raised-button color="accent" routerLink="/search" matTooltip="Search for a Venue">Find Your Venue Now</button>
+                <button mat-raised-button color="accent" routerLink="/search" matTooltip="Search for a Venue" matTooltip="Search for a venue">Find Your Venue Now</button>
             </div>
         </div>
     </div>
     <hr>
     <div class="container" id="vender">
         <h2>Best Things To Do In The City</h2>
-        <h6 class="text-center">Explore some of the best tips from around the city from our partners and friends.</h6>
+        <h6 class="text-center">Explore some of the best places to visit in our city.</h6>
         <div class="vender-card" *ngFor="let vender of venders; let i = index">
             <mat-card class="card" [tabindex]="i">
                 <ng-container *ngIf="vender.static_pic_url; else elseTemplate">
@@ -23,11 +23,11 @@
                     <img mat-card-image src='/assets/images/missing.png' alt="Venue Picture">
                 </ng-template>
                 <mat-card-content>
-                    <h5 class="text-center">{{vender.name}}</h5>
+                    <h5 class="text-left">{{vender.name}}</h5>
                 </mat-card-content>
 
                 <mat-card-actions>
-                    <button mat-button class="vender-button" [routerLink]="['/vender', 'display', vender._id]">VIEW</button>
+                    <button mat-button class="vender-button" [routerLink]="['/vender', 'display', vender._id]" matTooltip="View {{vender.name}}">VIEW</button>
                 </mat-card-actions>
             </mat-card>
         </div>

@@ -15,11 +15,11 @@
             </div>
             <a class="carousel-control-prev text-light bg-dark" href="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
+                <span class="sr-only" matTooltip="Previus">Previous</span>
             </a>
             <a class="carousel-control-next text-light bg-dark" href="#carouselExampleControls" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
+                <span class="sr-only" matTooltip="Next">Next</span>
             </a>
         </div>
     </div>
@@ -42,7 +42,7 @@
                         <h5>{{venue.address}}</h5>
                     </li>
                     <li>
-                        <a href='{{venue.website}}' target='_blank' rel='nofollow noopener noreferrer'>view website</a>
+                        <a href='{{venue.website}}' target='_blank' rel='nofollow noopener noreferrer' matTooltip="View {{venue.name}}'s' website">view website</a>
                     </li>
                 </ul>
             </div><!--
@@ -51,7 +51,7 @@
                 <p class="text-center">{{venue.description}}</p>
             </div><!--
             --><div class="col-3" id="venue-tour">
-                <button mat-raised-button (click)="show()">3D Tour</button>
+                <button mat-raised-button (click)="show()" matTooltip="View 3D tour">3D Tour</button>
             </div>
         </div>
         <div class="col-12" id="middle">
@@ -69,7 +69,7 @@
         </div>
         <div class="col-12" id="bottom">
             <div class="col-3">
-                <h2 class="text-center">RANDOM VENDER</h2>
+                <h2 class="text-center">VENDER</h2>
             </div><!--
             --><div class="col-6" id="map">
                 <agm-map [latitude]='venue.lat' [longitude]='venue.lng' [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
@@ -78,7 +78,25 @@
                 </agm-map>
             </div><!--
             --><div class="col-3">
-                <h2 class="text-center">DETAILS</h2>
+                <h5 class="text-center">DETAILS & INFORMATION</h5>
+                <mat-divider></mat-divider>
+                <h6 class="text-center">Price range: {{ venue.minAmmount | currency }} - {{ venue.maxAmmount | currency }}</h6>
+                <ul id="venue-contact">
+                    <li>
+                        <mat-icon aria-label="email icon link">
+                            <a href='mailto:{{venue.email}}' target='_top'>
+                                <i class="material-icons">&#xE0BE;</i>
+                            </a>
+                        </mat-icon>
+                    </li>
+                    <li>
+                        <mat-icon aria-label="Phone icon link">
+                            <a href='tel:{{venue.phone}}' data-type='phone'>
+                                <i class="material-icons">&#xE0CD;</i>
+                            </a>
+                        </mat-icon>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

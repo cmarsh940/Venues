@@ -11,6 +11,8 @@ import { google } from '@agm/core/services/google-maps-types';
 import { DigitalTourService } from '../../services/digital-tour.service';
 import { Amenity } from '../../models/amenity';
 import { AmenityService } from '../../services/amenity.service';
+import { VenderService } from '../../services/vender.service';
+import { Vender } from '../../models/vender';
 
 @Component({
   selector: 'app-venue',
@@ -19,6 +21,7 @@ import { AmenityService } from '../../services/amenity.service';
 })
 export class VenueComponent implements OnInit, OnDestroy {
   venue = new Venue();
+  vender: Vender[];
   subscription: Subscription;
 
   zoom: number = 12;
@@ -28,7 +31,7 @@ export class VenueComponent implements OnInit, OnDestroy {
 
   constructor(
     private _venueService: VenueService,
-    private _amenityService: AmenityService,
+    private _venderService: VenderService,
     private _activatedRoute: ActivatedRoute,
     private _router: Router,
     private location: Location,
@@ -37,6 +40,7 @@ export class VenueComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getVenue();
+    // this.getVender();
   }
 
   ngOnDestroy() {
@@ -52,10 +56,14 @@ export class VenueComponent implements OnInit, OnDestroy {
   goBack(): void {
     this.location.back();
   }
+
   show(): void {
     this._digitalTourService.show();
-    // this._router.navigateByUrl('/venue/display/:id/3d')
   }
+
+  // getVender(): void {
+  //   this._venderService.getRandomVender(1, vender => this.vender = vender);
+  // }
 
 }
 

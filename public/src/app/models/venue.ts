@@ -12,6 +12,7 @@ export class Venue {
     description: string;
     pic_url: string;
     tour_url: string;
+    video_url: string;
     amenities: any;
     category: any;
     createdAt: any;

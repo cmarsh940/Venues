@@ -43,12 +43,12 @@ const VenueSchema = new mongoose.Schema({
     }, 
     lat: {
         type: Number,
-        required: false,
+        required: [true, "Latitude cannot be blank"],
         maxlength: 25
     },
     lng: {
         type: Number,
-        required: false,
+        required: [true, "Longitude cannot be blank"],
         maxlength: 25
     },
     description: {
@@ -61,6 +61,10 @@ const VenueSchema = new mongoose.Schema({
         required: false
     },
     tour_url: {
+        type: String,
+        required: false
+    },
+    video_url: {
         type: String,
         required: false
     },
