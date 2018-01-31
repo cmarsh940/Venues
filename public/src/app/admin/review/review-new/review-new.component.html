@@ -15,8 +15,8 @@
 
     <mat-form-field>
         <mat-select name="rating" [(ngModel)]="newReview.rating" placeholder="Rating">
-            <mat-option *ngFor="let rating of ratings" [value]="rating.value">
-                {{ rating.viewValue }}
+            <mat-option *ngFor="let num of [1, 2, 3, 4, 5]" [value]="num">
+                {{ num }}
             </mat-option>
         </mat-select>
     </mat-form-field>

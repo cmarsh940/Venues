@@ -12,7 +12,8 @@
     </div>
     <hr>
     <div class="container" id="vender">
-        <h2>Preferred Venders</h2>
+        <h2>Best Things To Do In The City</h2>
+        <h6 class="text-center">Explore some of the best tips from around the city from our partners and friends.</h6>
         <div class="vender-card" *ngFor="let vender of venders; let i = index">
             <mat-card class="card" [tabindex]="i">
                 <ng-container *ngIf="vender.static_pic_url; else elseTemplate">

@@ -45,7 +45,12 @@ export class ReviewShowComponent implements OnInit {
   }
 
   destroyReview(id: string, idx: any) {
+    let r = window.confirm("Delete Review?");
+    if (r == true) {
     this._reviewService.destroyReview(id, res => this.reviews.splice(idx, 1));
+    } else {
+      window.close();
+    }
   }
 
 }

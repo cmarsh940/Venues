@@ -25,7 +25,6 @@
     </div>
     <div class="container-fluid">
         <div class="col-12" id="top">
-            <!-- INFO /  ABOUT / PHOTO ALBUM -->
             <div class="col-3" id="venue-info">
                 <h2 class="text-center">{{venue.name}}</h2>
                 <div class="mx-auto" id="rating">
@@ -46,43 +45,39 @@
                         <a href='{{venue.website}}' target='_blank' rel='nofollow noopener noreferrer'>view website</a>
                     </li>
                 </ul>
-            </div>
-            <div class="col-5">
+            </div><!--
+            --><div class="col-6" id="venue-about">
                 <h2 class="text-center">ABOUT {{venue.name}}</h2>
                 <p class="text-center">{{venue.description}}</p>
-            </div>
-            <div class="col-3">
-                <h2 class="text-center">3D TOUR</h2>
-                <button mat-raised-button class="mx-auto" (click)="show()">3D</button>
+            </div><!--
+            --><div class="col-3" id="venue-tour">
+                <button mat-raised-button (click)="show()">3D Tour</button>
             </div>
         </div>
         <div class="col-12" id="middle">
-            <!-- AMENITIES /  3D -->
-            <div class="col-5">
+            <div class="col-6">
                 <h2 class="text-center">AMENITIES</h2>
                 <mat-list *ngFor="let amenity of venue.amenities">
                     <mat-list-item>
                         <i class="material-icons">&#xE876;</i> {{amenity.name}}
                     </mat-list-item>
                 </mat-list>
-            </div>
-            <div class="col-5">
+            </div><!--
+            --><div class="col-6">
                 <h2 class="text-center">PHOTO GALLORY</h2>
             </div>
         </div>
         <div class="col-12" id="bottom">
-
-            <!-- VENDER / MAP / DESCRIPTION -->
             <div class="col-3">
                 <h2 class="text-center">RANDOM VENDER</h2>
-            </div>
-            <div class="col-5" id="map">
+            </div><!--
+            --><div class="col-6" id="map">
                 <agm-map [latitude]='venue.lat' [longitude]='venue.lng' [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
                     <agm-marker [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng">
                     </agm-marker>
                 </agm-map>
-            </div>
-            <div class="col-3">
+            </div><!--
+            --><div class="col-3">
                 <h2 class="text-center">DETAILS</h2>
             </div>
         </div>

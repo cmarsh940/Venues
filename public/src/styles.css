@@ -22,3 +22,12 @@ html {
     -moz-box-sizing: inherit;
     box-sizing: inherit;
 }
+
+h1 {
+    font-family: 'Parisienne', cursive;
+}
+
+h2 {
+    color:#00B8D4;
+    font-family: 'Delius', cursive;
+}
