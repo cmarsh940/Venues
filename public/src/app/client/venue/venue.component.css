@@ -71,16 +71,38 @@ div.containerX {
 
 .carousel {
   width: 100%;
+  background: #252d2fbf;
+}
+
+#top {
+  padding-top: 3%;
 }
 
 h2 {
   color:#FFB300;
+  letter-spacing: 0.2em;
 }
 
 #top, #middle, #bottom {
   margin-bottom: 2%;
 }
 
+#venue-info {
+  border: 1px solid lightgrey;
+}
+
+#rating {
+  width: 138px;
+}
+
 a {
   color: #00B8D4;
+}
+
+i {
+  color: lightgreen;
+}
+
+#rating>i {
+  color: grey;
 }

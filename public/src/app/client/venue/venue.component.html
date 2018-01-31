@@ -26,8 +26,15 @@
     <div class="container-fluid">
         <div class="col-12" id="top">
             <!-- INFO /  ABOUT / PHOTO ALBUM -->
-            <div class="col-3">
+            <div class="col-3" id="venue-info">
                 <h2 class="text-center">{{venue.name}}</h2>
+                <div class="mx-auto" id="rating">
+                    <i class="material-icons">&#xE83A;</i>
+                    <i class="material-icons">&#xE83A;</i>
+                    <i class="material-icons">&#xE83A;</i>
+                    <i class="material-icons">&#xE83A;</i>
+                    <i class="material-icons">&#xE83A;</i>
+                </div>
                 <ul class="text-center">
                     <li>
                         <h5>{{venue.phone}}</h5>
@@ -54,7 +61,9 @@
             <div class="col-5">
                 <h2 class="text-center">AMENITIES</h2>
                 <mat-list *ngFor="let amenity of venue.amenities">
-                    <mat-list-item>{{amenity.name}} </mat-list-item>
+                    <mat-list-item>
+                        <i class="material-icons">&#xE876;</i> {{amenity.name}}
+                    </mat-list-item>
                 </mat-list>
             </div>
             <div class="col-5">

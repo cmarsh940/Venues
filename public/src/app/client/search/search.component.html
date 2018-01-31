@@ -1,24 +1,33 @@
 <div class="containerX">
     <div class="none-scroll">
-        <mat-grid-list cols="4" rowHeight="5em">
-            <!-- <mat-grid-tile [colspan]="4" [rowspan]="1" class="search">
-                <h1>SEARCH FORM COMING SOON....</h1>
-            </mat-grid-tile> -->
-
-
-            <!-- VENDER / MAP / VENDER -->
-            <mat-grid-tile [colspan]="1" [rowspan]="4" class="vender">
-                <h2>VENDER</h2>
-                <!-- <ng-container *ngIf="vender.pic_url; else elseTemplate">
-                    <img mat-card-image src='imgs/{{vender.pic_url}}' alt="Vender Picture">
+        <div class="col-12" id="search-form">
+            <h4>SEARCH FORM COMING SOON....</h4>
+        </div>
+        <div class="top-middle">
+            <div class="col-3 mx-auto" *ngFor="let vender of venders">
+                <h2 class="text-center">VENDER</h2>
+                <ng-container *ngIf="vender.pic_url; else elseTemplate">
+                    <div class="vender-link">
+                        <a [routerLink]="['/vender', 'display', vender._id]">
+                            <img src='imgs/{{vender.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture">
+                            <div class="middle rounded-circle">
+                                <div class="text">{{vender.name}}</div>
+                            </div>
+                        </a>
+                    </div>
                 </ng-container>
                 <ng-template #elseTemplate>
-                    <img mat-card-image src='/assets/images/missing.png' alt="Venue Picture">
-                </ng-template> -->
-            </mat-grid-tile>
-
-
-            <mat-grid-tile [colspan]="2" [rowspan]="4" class="map">
+                    <div class="vender-link">
+                        <a [routerLink]="['/vender', 'display', vender._id]">
+                            <img src='/assets/images/missing.png' class="rounded-circle mx-auto d-block" id="vender-image" alt="Venue Picture">
+                            <div class="middle rounded-circle">
+                                <div class="text">{{vender.name}}</div>
+                            </div>
+                        </a>
+                    </div>
+                </ng-template>
+            </div>
+            <div class="col-6" id="map">
                 <agm-map [latitude]='36.153883' [longitude]='-95.990629' [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
                     <agm-marker *ngFor="let venue of venues" [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng">
                         <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
@@ -29,19 +38,31 @@
                         </agm-snazzy-info-window>
                     </agm-marker>
                 </agm-map>
-            </mat-grid-tile>
-
-
-            <mat-grid-tile [colspan]="1" [rowspan]="4" class="vender">
-                <h2>VENDER</h2>
-                <!-- <ng-container *ngIf="vender.pic_url; else elseTemplate">
-                    <img mat-card-image src='imgs/{{vender.pic_url}}' class="vender-image" alt="Venue Picture">
+            </div>
+            <div class="col-3 mx-auto" *ngFor="let vender of venders">
+                <h2 class="text-center">VENDER</h2>
+                <ng-container *ngIf="vender.pic_url; else elseTemplate">
+                    <div class="vender-link">
+                        <a [routerLink]="['/vender', 'display', vender._id]">
+                            <img src='imgs/{{vender.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture">
+                            <div class="middle rounded-circle">
+                                <div class="text">{{vender.name}}</div>
+                            </div>
+                        </a>
+                    </div>
                 </ng-container>
                 <ng-template #elseTemplate>
-                    <img mat-card-image src='/assets/images/missing.png' class="vender-image" alt="Venue Picture">
-                </ng-template> -->
-            </mat-grid-tile>
-        </mat-grid-list>
+                    <div class="vender-link">
+                        <a [routerLink]="['/vender', 'display', vender._id]">
+                            <img src='/assets/images/missing.png' class="rounded-circle mx-auto d-block" id="vender-image" alt="Venue Picture">
+                            <div class="middle rounded-circle">
+                                <div class="text">{{vender.name}}</div>
+                            </div>
+                        </a>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
     </div>
 
     <hr>

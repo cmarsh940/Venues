@@ -46,6 +46,11 @@ export class VenueShowComponent implements OnInit {
   }
 
   destroyVenue(id: string, idx: any) {
-    this._venueService.destroy(id, res => this.venues.splice(idx, 1));
+    let r = window.confirm("Delete Venue?");
+    if (r == true) {
+      this._venueService.destroy(id, res => this.venues.splice(idx, 1));
+    } else {
+      window.close();
+    }
   }
 }

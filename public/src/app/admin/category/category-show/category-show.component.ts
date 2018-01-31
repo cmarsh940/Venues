@@ -69,7 +69,12 @@ export class CategoryShowComponent implements OnInit {
   }
 
   destroyCategory(id: string, idx: any) {
-    this._categoryService.destroy(id, res => this.categories.splice(idx, 1));
+    let r = window.confirm("Delete venue category?");
+    if (r == true) {
+      this._categoryService.destroy(id, res => this.categories.splice(idx, 1));
+    } else {
+      window.close();
+    }
   }
 
   sortData(sort: Sort) :void {

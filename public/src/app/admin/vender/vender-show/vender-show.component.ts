@@ -45,7 +45,12 @@ export class VenderShowComponent implements OnInit {
   }
 
   destroyVender(id: string, idx: any) {
-    this._venderService.destroy(id, res => this.venders.splice(idx, 1));
+    let r = window.confirm("Delete Vender?");
+    if (r == true) {
+      this._venderService.destroy(id, res => this.venders.splice(idx, 1));
+    } else {
+      window.close();
+    }
   }
 
 }

@@ -5,6 +5,7 @@ import { UserService } from '../../../services/user.service';
 import { User } from '../../../models/user';
 import { Amenity } from '../../../models/amenity';
 import { AmenityService } from '../../../services/amenity.service';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class AmenityShowComponent implements OnInit {
   constructor(
     private _amenityService: AmenityService,
     private _userService: UserService,
-    private _router: Router
+    private _router: Router,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -62,7 +64,16 @@ export class AmenityShowComponent implements OnInit {
     })
   }
 
+  goBack(): void {
+    this.location.back();
+  }
+
   destroyAmenity(id: string, idx: any) {
-    this._amenityService.destroy(id, res => this.amenities.splice(idx, 1));
+    let r = window.confirm("Delete Amenity?");
+    if(r == true) {
+      this._amenityService.destroy(id, res => this.amenities.splice(idx, 1));
+    } else {
+      window.close()
+    }
   }
 }
