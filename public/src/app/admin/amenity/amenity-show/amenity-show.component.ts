@@ -54,8 +54,8 @@ export class AmenityShowComponent implements OnInit {
       console.log(amenity);
       if (amenity.errors) {
         for (let key in amenity.errors) {
-          let error = amenity.error[key];
-          this.errors.push(error.message);
+          let errors = amenity.errors[key];
+          this.errors.push(errors.message);
         }
       } else {
         this.getAmenities();

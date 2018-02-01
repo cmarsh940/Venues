@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
   isLoggedIn() {
     if (this._userService.getCurrentUser() == null) {
       console.log("You are not logged in with admin privlages", sessionStorage)
-      this._router.navigateByUrl('/dashboard');
+      this._router.navigateByUrl('/');
     }
   }
 
@@ -49,8 +49,8 @@ export class RegisterComponent implements OnInit {
         console.log(user);
         if (user.errors) {
           for (let key in user.errors) {
-            let error = user.error[key];
-            this.errors.push(error.message);
+            let errors = user.errors[key];
+            this.errors.push(errors.message);
           }
         } else {
           this._userService.setCurrentUser(user);

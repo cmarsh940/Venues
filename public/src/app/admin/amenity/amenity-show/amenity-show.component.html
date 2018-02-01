@@ -1,12 +1,15 @@
 <h1>Amenities</h1>
 
 <div>
-  <form class="form" (submit)="createAmenity()">
+  <form (ngSubmit)="createAmenity()" #amenityForm="ngForm">
     <mat-form-field>
-      <input matInput type="text" name="name" class="form-control" [(ngModel)]="newAmenity.name" placeholder="Name">
+      <input matInput type="text" name="name" id="name" [(ngModel)]="newAmenity.name" required placeholder="Name">
     </mat-form-field>
-    <button mat-raised-button type="submit" color="accent">Add</button>
+    <button mat-raised-button type="button" color="accent" [disabled]="!amenityForm.form.valid" (click)="createAmenity(); amenityForm.reset()">Add</button>
   </form>
+  <div>
+    <p [ngStyle]="{ 'color': 'red' }" *ngFor="let error of errors">{{ error }}</p>
+  </div>
 </div>
 
 <hr>

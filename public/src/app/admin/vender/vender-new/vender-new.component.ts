@@ -50,8 +50,8 @@ export class VenderNewComponent implements OnInit {
       console.log(vender);
       if (vender.errors) {
         for (let key in vender.errors) {
-          let error = vender.error[key];
-          this.errors.push(error.message);
+          let errors = vender.errors[key];
+          this.errors.push(errors.message);
         }
       } else {
         this.getVenders();

@@ -2,7 +2,7 @@
     <i class="material-icons">&#xE5C4;</i>
 </button>
 <h1>Add a Review</h1>
-<form #form (submit)="createReview()" encType="multipart/form-data">
+<form (ngSubmit)="createReview()" #reviewForm="ngForm">
     <mat-form-field>
         <input matInput type="email" name="email" required maxlength=150 [(ngModel)]="newReview.email" placeholder="Email" />
     </mat-form-field>
@@ -14,7 +14,7 @@
     </mat-form-field>
 
     <mat-form-field>
-        <mat-select name="rating" [(ngModel)]="newReview.rating" placeholder="Rating">
+        <mat-select name="rating" required [(ngModel)]="newReview.rating" placeholder="Rating">
             <mat-option *ngFor="let num of [1, 2, 3, 4, 5]" [value]="num">
                 {{ num }}
             </mat-option>
@@ -22,10 +22,10 @@
     </mat-form-field>
 
     <div class="submit-button">
-        <button mat-raised-button type="submit" color="accent">Submit</button>
+        <button mat-raised-button type="submit" color="accent" [disabled]="!reviewForm.form.valid">Submit</button>
     </div>
 </form>
 
 <div>
-    <p class="error" *ngFor="let error of errors">{{ error }}</p>
+    <p [ngStyle]="{ 'color': 'red' }" *ngFor="let error of errors">{{ error }}</p>
 </div>

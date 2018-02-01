@@ -53,16 +53,16 @@ export class ReviewNewComponent implements OnInit {
   }
 
   createReview() {
-    alert("Thank you, We are reviewing your message now")
     this.errors = [];
     return this._reviewService.createReview(this.newReview, (review) => {
       console.log(review);
       if (review.errors) {
         for (let key in review.errors) {
-          let error = review.error[key];
-          this.errors.push(error.message);
+          let errors = review.errors[key];
+          this.errors.push(errors.message);
         }
       } else {
+        alert("Thank you, We are reviewing your message now")
         this.getReviews();
         this._router.navigate(['/list_review']);
       }

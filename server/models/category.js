@@ -7,7 +7,8 @@ const CategorySchema = new mongoose.Schema({
     },
     icon: {
         type: String,
-        required: [true, 'Icon name cannot be blank']
+        required: [true, 'Icon name cannot be blank'],
+        trim: true
     }
 }, { timestamps: true });
 

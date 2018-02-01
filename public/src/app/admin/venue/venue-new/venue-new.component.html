@@ -2,7 +2,7 @@
   <i class="material-icons">&#xE5C4;</i>
 </button>
 <h1>Add a Venue</h1>
-  <form #form (submit)="createVenue()" encType="multipart/form-data">
+  <form (ngSubmit)="createVenue()" #venueForm="ngForm" encType="multipart/form-data">
     <mat-form-field>
       <input 
         matInput 
@@ -118,7 +118,12 @@
     </div> 
 
     <mat-form-field>
-      <textarea matInput name="description" required minlength=1 [(ngModel)]="newVenue.description" placeholder="Venue description" matTextareaAutosize matAutosizeMinRows="5" matAutosizeMaxRows="15"></textarea>
+      <textarea matInput name="description" required [(ngModel)]="newVenue.description" placeholder="Venue description" matTextareaAutosize matAutosizeMinRows="5" matAutosizeMaxRows="15"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="video" maxlength=500 [(ngModel)]="newVenue.video_url" placeholder="Venue Video" />
+      <mat-hint>Video URL</mat-hint>
     </mat-form-field>
 
     <!-- <div class="file-upload">
@@ -126,7 +131,7 @@
     </div> -->
 
     <div class="submit-button">
-      <button mat-raised-button type="submit" color="accent">Submit</button>
+      <button mat-raised-button type="submit" color="accent" [disabled]="!venueForm.form.valid">Submit</button>
     </div>
   </form>
 

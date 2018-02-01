@@ -58,8 +58,8 @@ export class CategoryShowComponent implements OnInit {
       console.log(category);
       if (category.errors) {
         for (let key in category.errors) {
-          let error = category.error[key];
-          this.errors.push(error.message);
+          let errors = category.errors[key];
+          this.errors.push(errors.message);
         }
       } else {
         this.getCategories();

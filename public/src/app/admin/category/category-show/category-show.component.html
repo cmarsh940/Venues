@@ -1,15 +1,18 @@
 <h1>Venue Categories</h1>
 
 <div>
-    <form class="form" (submit)="createCategory()">
+    <form (ngSubmit)="createCategory()" #categoryForm="ngForm">
         <mat-form-field>
-            <input matInput type="text" name="name" class="form-control" [(ngModel)]="newCategory.name" placeholder="Name">
+            <input matInput type="text" name="name" required [(ngModel)]="newCategory.name" placeholder="Name">
         </mat-form-field>
         <mat-form-field>
-            <input matInput type="text" name="icon" class="form-control" [(ngModel)]="newCategory.icon" placeholder="Icon Name">
+            <input matInput type="text" name="icon" required [(ngModel)]="newCategory.icon" placeholder="Icon Name">
         </mat-form-field>
-        <button mat-raised-button type="submit" color="accent">Add</button>
+        <button mat-raised-button type="button" color="accent" [disabled]="!categoryForm.form.valid" (click)="createCategory(); categoryForm.reset()">Add</button>
     </form>
+    <div>
+        <p [ngStyle]="{ 'color': 'red' }" *ngFor="let error of errors">{{ error }}</p>
+    </div>
 </div>
 
 <hr>

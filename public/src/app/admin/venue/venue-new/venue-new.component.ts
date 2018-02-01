@@ -70,8 +70,8 @@ export class VenueNewComponent implements OnInit {
       console.log(venue);
       if (venue.errors) {
         for (const key of Object.keys(venue.errors)) {
-          const error = venue.errors[key];
-          this.errors.push(error.message);
+          const errors = venue.errors[key];
+          this.errors.push(errors.message);
         }
       } else {
         this.getVenues();
