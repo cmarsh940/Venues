@@ -24,7 +24,7 @@
         </div>
     </div><!--
     --><div class="container-fluid">
-        <div class="col-12" id="top">
+        <div class="row" id="top">
             <div class="col-3" id="venue-info">
                 <h2 class="text-center">{{venue.name}}</h2>
                 <div class="mx-auto" id="rating">
@@ -74,7 +74,7 @@
                 <button (click)="openPanelWithBackdrop()">Backdrop panel</button> -->
             </div>
         </div><!--
-        --><div class="col-12" id="middle">
+        --><div class="row" id="middle">
             <div class="col-6">
                 <h2 class="text-center">AMENITIES</h2>
                 <mat-list *ngFor="let amenity of venue.amenities">
@@ -87,7 +87,7 @@
                 <h2 class="text-center">PHOTO GALLORY</h2>
             </div>
         </div><!--
-        --><div class="col-12" id="bottom">
+        --><div class="row" id="bottom">
             <div class="col-3">
                 <h2 class="text-center">VENDER</h2>
             </div><!--
@@ -102,6 +102,13 @@
                 <mat-divider></mat-divider>
                 <h6 class="text-center">Price range: {{ venue.minAmmount | currency }} - {{ venue.maxAmmount | currency }}</h6>
                 <ul id="venue-contact">
+                    <li>
+                        <mat-icon aria-label="Video icon link">
+                            <a href='{{venue.video_url}}' target='_blank'>
+                                <i class="material-icons">&#xE04B;</i>
+                            </a>
+                        </mat-icon>
+                    </li>
                     <li>
                         <mat-icon aria-label="email icon link">
                             <a href='mailto:{{venue.email}}' target='_top'>

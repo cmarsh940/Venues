@@ -1,9 +1,6 @@
 <div class="containerX">
-    <div class="none-scroll">
-        <div class="col-12" id="search-form">
-            <h4>SEARCH FORM COMING SOON....</h4>
-        </div>
-        <div class="top-middle">
+    <div class="row" id="none-scroll">
+        <div class="row" id="top-middle">
             <div class="col-3 mx-auto" *ngFor="let vender of venders; let idx = index">
                 <h2 class="text-center">{{ idx + 1 }}</h2>
                 <ng-container *ngIf="vender.pic_url; else elseTemplate">
@@ -66,13 +63,17 @@
     </div>
 
     <hr>
-
-    <div class="scroll">
+    <div class="row" id="scroll">
         <mat-progress-spinner *ngIf="!venues" class="progress-spinner" [color]="'primary'" [mode]="'indeterminate'">
         </mat-progress-spinner>
         <div class="container">
-            <h2>Venues</h2>
-            <div class="card-group" *ngFor="let venue of venues; let i = index">
+            <div class="col-12">
+                <h2 class="text-center" id="venue-header">Venues</h2>
+                <div id="move-right">
+                    <input type='text' name='search_text' [(ngModel)]='search_text' id="search-box" placeholder="Search for a venue name or type...">
+                </div>
+            </div>
+            <div class="card-group" *ngFor="let venue of venues | filterVenues: search_text; let i = index">
                 <mat-card class="card" [tabindex]="i">
                     <ng-container *ngIf="venue.static_pic_url; else elseTemplate">
                         <img mat-card-image src='imgs/{{venue.static_pic_url}}' alt="Venue Picture">
@@ -82,10 +83,10 @@
                     </ng-template>
                     <mat-card-title>
                         <h5 class="text-left">{{venue.name}}</h5>
+                        <div class="icon-address">
+                            <img src="assets/images/{{venue.category.icon}}" class="venue-icon" alt="Venue Icon"><mat-card-subtitle>{{venue.address}}</mat-card-subtitle>
+                        </div>
                     </mat-card-title>
-                    <mat-card-footer>
-                        <img src="assets/images/{{venue.category.icon}}" class="venue-icon" alt="Venue Icon">
-                    </mat-card-footer>
                     <mat-card-actions>
                         <button mat-button [routerLink]="['/venue', 'display', venue._id]" matTooltip="View {{venue.name}}">VIEW</button>
                     </mat-card-actions>

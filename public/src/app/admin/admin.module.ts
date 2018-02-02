@@ -61,8 +61,6 @@ import { ReviewNewComponent } from './review/review-new/review-new.component';
 import { ReviewService } from '../services/review.service';
 import { CategoryShowComponent } from './category/category-show/category-show.component';
 import { CategoryEditComponent } from './category/category-edit/category-edit.component';
-import { SortVenuesPipe } from '../pipes/sort-venues.pipe';
-import { FilterVenuesPipe } from '../pipes/filter-venues.pipe';
 
 
 @NgModule({
@@ -123,8 +121,6 @@ import { FilterVenuesPipe } from '../pipes/filter-venues.pipe';
     ReviewNewComponent,
     CategoryShowComponent,
     CategoryEditComponent,
-    SortVenuesPipe,
-    FilterVenuesPipe,
   ],
   providers: [
     AmenityService,

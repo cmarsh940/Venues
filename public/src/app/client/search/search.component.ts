@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 export class SearchComponent implements OnInit {
   venders: Array<Vender>;
   venues: Array<Venue>;
+  search_text: String = "";
 
   zoom: number = 8;
   latitude: number;
@@ -44,6 +45,7 @@ export class SearchComponent implements OnInit {
 
 
 interface marker {
+  icon: string;
   lat: number;
   lng: number;
   label?: string;

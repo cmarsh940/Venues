@@ -57,6 +57,7 @@ import { OverlayModule, OverlayContainer, FullscreenOverlayContainer } from '@an
 import { PlatformModule } from '@angular/cdk/platform';
 import { ObserversModule } from '@angular/cdk/observers';
 import { PortalModule } from '@angular/cdk/portal';
+import { FilterVenuesPipe } from '../pipes/filter-venues.pipe';
 
 @NgModule({
   imports: [
@@ -115,6 +116,7 @@ import { PortalModule } from '@angular/cdk/portal';
     SearchComponent, 
     VenderComponent, 
     VenueComponent,
+    FilterVenuesPipe
   ],
   providers: [
     { provide: OverlayContainer, useClass: FullscreenOverlayContainer },

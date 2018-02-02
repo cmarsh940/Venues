@@ -8,10 +8,11 @@ import { Venue } from '../models/venue';
 export class FilterVenuesPipe implements PipeTransform {
 
   transform(venue_array: Array<Venue>, search: string): Array<Venue> {
-    search = search.toLowerCase()
+    if (!venue_array) return [];
+    search = search.toString().toLowerCase()
 
     return venue_array.filter(venue => {
-      return venue.name.toLowerCase().includes(search) || venue.category.toLowerCase().includes(search)
+      return venue.name.toString().toLowerCase().includes(search) || venue.category.toString().toLowerCase().includes(search)
     })
   }
 
