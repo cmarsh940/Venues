@@ -1,6 +1,6 @@
 /static
 /public/dist
-/server/config
+/server/config/config.js
 
 # dependencies
 /node_modules
