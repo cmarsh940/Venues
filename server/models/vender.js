@@ -24,7 +24,7 @@ const VenderSchema = new mongoose.Schema({
     website: {
         type: String,
         required: [true, 'Website cannot be blank'],
-        minlength: [5, "cannot be less then 5 characters"],
+        minlength: [5, "Website cannot be less then 5 characters"],
         maxlength: [250, "Website cannot be greater then 250 characters"],
         trim: true
     },

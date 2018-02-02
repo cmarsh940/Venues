@@ -118,6 +118,27 @@
       </mat-form-field>
     </div>
 
+    <mat-form-field>
+      <input 
+        matInput 
+        name='tour_url' 
+        [(ngModel)]="venue.tour_url" 
+        #tour_url='ngModel' 
+        placeholder="Tour url" 
+        required 
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input 
+        matInput 
+        name='video_url' 
+        [(ngModel)]="venue.video_url" 
+        #tour_url='ngModel' 
+        placeholder="Video url" 
+        required 
+      />
+    </mat-form-field>
+
     <!-- <mat-form-field>
       <mat-select 
         name="amenities" 

@@ -57,21 +57,21 @@
                 <ng-template cdk-connected-overlay [origin]="trigger" [width]="900" hasBackdrop [open]="isMenuOpen" (backdropClick)="isMenuOpen=false" >
                     <div class="overlay">
                         <div class="embed-responsive embed-responsive-16by9" id="content">
-                            <iframe class="embed-responsive-item" src="https://www.transported.co/t/dRMGKQzj?embeddable=true" scrolling="no"></iframe>
+                            <iframe class="embed-responsive-item" [src]='sanitizer.bypassSecurityTrustResourceUrl(venue.tour_url)' scrolling="no"></iframe>
                         </div>
                     </div>
                 </ng-template>
-
-
+                
+                <!-- SAMPLE PORTAL -->
                 <!-- <ng-template cdk-portal>
                     <div class="overlay">
                         <div class="embed-responsive embed-responsive-16by9" id="content">
-                            <iframe class="embed-responsive-item" src="https://www.transported.co/t/dRMGKQzj?embeddable=true" scrolling="no"></iframe>
+                            <iframe class="embed-responsive-item" [src]='sanitizer.bypassSecurityTrustResourceUrl(venue.tour_url)' scrolling="no"></iframe>
                         </div>
                     </div>
-                </ng-template> -->
+                </ng-template>
                 
-                <!-- <button (click)="openPanelWithBackdrop()">Backdrop panel</button> -->
+                <button (click)="openPanelWithBackdrop()">Backdrop panel</button> -->
             </div>
         </div><!--
         --><div class="col-12" id="middle">

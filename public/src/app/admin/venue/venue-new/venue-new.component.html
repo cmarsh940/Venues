@@ -122,6 +122,11 @@
     </mat-form-field>
 
     <mat-form-field>
+      <input matInput name="tour" maxlength=500 [(ngModel)]="newVenue.tour_url" placeholder="Venue 3D Tour" />
+      <mat-hint>3D Tour URL</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
       <input matInput name="video" maxlength=500 [(ngModel)]="newVenue.video_url" placeholder="Venue Video" />
       <mat-hint>Video URL</mat-hint>
     </mat-form-field>

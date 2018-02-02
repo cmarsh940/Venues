@@ -12,7 +12,8 @@ import { AmenityService } from '../../services/amenity.service';
 import { VenderService } from '../../services/vender.service';
 import { Vender } from '../../models/vender';
 
-
+import { DomSanitizer } from '@angular/platform-browser';
+import { SafeResourceUrl } from '@angular/platform-browser';
 import { CdkOverlayOrigin, Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import { CdkPortal, ComponentPortal, Portal } from '@angular/cdk/portal';
 import {
@@ -62,7 +63,8 @@ export class VenueComponent implements OnInit, OnDestroy {
     private _router: Router,
     private location: Location,
     public overlay: Overlay, 
-    public viewContainerRef: ViewContainerRef
+    public viewContainerRef: ViewContainerRef,
+    public sanitizer: DomSanitizer
   ) { }
 
   ngOnInit() {
@@ -84,17 +86,17 @@ export class VenueComponent implements OnInit, OnDestroy {
     this.location.back();
   }
 
-  // openPanelWithBackdrop() {
-  //   let config = new OverlayConfig({
-  //     hasBackdrop: true,
-  //     backdropClass: 'cdk-overlay-transparent-backdrop',
-  //     positionStrategy: this.overlay.position().global().centerHorizontally()
-  //   });
+  openPanelWithBackdrop() {
+    let config = new OverlayConfig({
+      hasBackdrop: true,
+      backdropClass: 'cdk-overlay-transparent-backdrop',
+      positionStrategy: this.overlay.position().global().centerHorizontally()
+    });
 
-  //   let overlayRef = this.overlay.create(config);
-  //   overlayRef.attach(this.templatePortals.first);
-  //   overlayRef.backdropClick().subscribe(() => overlayRef.detach());
-  // }
+    let overlayRef = this.overlay.create(config);
+    overlayRef.attach(this.templatePortals.first);
+    overlayRef.backdropClick().subscribe(() => overlayRef.detach());
+  }
 
 }
 

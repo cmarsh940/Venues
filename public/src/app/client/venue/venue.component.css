@@ -132,6 +132,7 @@ i {
   display: inline-block;
   margin: 2%;
 }
+
 #venue-contact i {
   color:black;
 }
@@ -140,7 +141,6 @@ i {
   margin: 0;
   padding: 1%;
 }
-
 
 div.overlay {
   padding: 1%;
@@ -151,10 +151,12 @@ div.overlay {
   min-height: 100%;
   background: #00000075;
 }
+
 div.btn-close {
   z-index: 4;
   margin-bottom: 3%;
 }
+
 #content {
   width: 100%;
   z-index: 4;
