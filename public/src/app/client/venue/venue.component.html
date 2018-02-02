@@ -22,8 +22,8 @@
                 <span class="sr-only" matTooltip="Next">Next</span>
             </a>
         </div>
-    </div>
-    <div class="container-fluid">
+    </div><!--
+    --><div class="container-fluid">
         <div class="col-12" id="top">
             <div class="col-3" id="venue-info">
                 <h2 class="text-center">{{venue.name}}</h2>
@@ -51,10 +51,30 @@
                 <p class="text-center">{{venue.description}}</p>
             </div><!--
             --><div class="col-3" id="venue-tour">
-                <button mat-raised-button (click)="show()" matTooltip="View 3D tour">3D Tour</button>
+                <button mat-button cdk-overlay-origin #trigger="cdkOverlayOrigin" (click)="isMenuOpen = !isMenuOpen" matTooltip="View 3D tour">3D Tour
+                </button>
+                
+                <ng-template cdk-connected-overlay [origin]="trigger" [width]="900" hasBackdrop [open]="isMenuOpen" (backdropClick)="isMenuOpen=false" >
+                    <div class="overlay">
+                        <div class="embed-responsive embed-responsive-16by9" id="content">
+                            <iframe class="embed-responsive-item" src="https://www.transported.co/t/dRMGKQzj?embeddable=true" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </ng-template>
+
+
+                <!-- <ng-template cdk-portal>
+                    <div class="overlay">
+                        <div class="embed-responsive embed-responsive-16by9" id="content">
+                            <iframe class="embed-responsive-item" src="https://www.transported.co/t/dRMGKQzj?embeddable=true" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </ng-template> -->
+                
+                <!-- <button (click)="openPanelWithBackdrop()">Backdrop panel</button> -->
             </div>
-        </div>
-        <div class="col-12" id="middle">
+        </div><!--
+        --><div class="col-12" id="middle">
             <div class="col-6">
                 <h2 class="text-center">AMENITIES</h2>
                 <mat-list *ngFor="let amenity of venue.amenities">
@@ -66,8 +86,8 @@
             --><div class="col-6">
                 <h2 class="text-center">PHOTO GALLORY</h2>
             </div>
-        </div>
-        <div class="col-12" id="bottom">
+        </div><!--
+        --><div class="col-12" id="bottom">
             <div class="col-3">
                 <h2 class="text-center">VENDER</h2>
             </div><!--

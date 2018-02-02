@@ -48,8 +48,15 @@ import { HttpModule } from '@angular/http';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from '../../environments/environment';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
-import { DigitalTourComponent } from './venue/digital-tour/digital-tour.component';
-import { DigitalTourService } from '../services/digital-tour.service';
+
+import { CdkTableModule } from '@angular/cdk/table';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { A11yModule } from '@angular/cdk/a11y';
+import { BidiModule } from '@angular/cdk/bidi';
+import { OverlayModule, OverlayContainer, FullscreenOverlayContainer } from '@angular/cdk/overlay';
+import { PlatformModule } from '@angular/cdk/platform';
+import { ObserversModule } from '@angular/cdk/observers';
+import { PortalModule } from '@angular/cdk/portal';
 
 @NgModule({
   imports: [
@@ -92,22 +99,25 @@ import { DigitalTourService } from '../services/digital-tour.service';
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapsKey
     }),
-    AgmSnazzyInfoWindowModule
+    AgmSnazzyInfoWindowModule,
+    CdkAccordionModule,
+    ObserversModule,
+    OverlayModule,
+    PlatformModule,
+    PortalModule,
   ],
   declarations: [
     ClientComponent,
-    DigitalTourComponent,
     FooterComponent,
     LandingComponent,
     NavComponent,
     Rights,
     SearchComponent, 
     VenderComponent, 
-    VenueComponent, 
-    DigitalTourComponent 
+    VenueComponent,
   ],
   providers: [
-    DigitalTourService
+    { provide: OverlayContainer, useClass: FullscreenOverlayContainer },
   ],
 })
 export class ClientModule { }

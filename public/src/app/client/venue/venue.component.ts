@@ -1,6 +1,5 @@
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
 import { Venue } from '../../models/venue';
 import { VenueService } from '../../services/venue.service';
 import { Subscription } from 'rxjs/Subscription';
@@ -8,34 +7,62 @@ import { Location } from '@angular/common';
 
 import { AgmMap } from '@agm/core/directives/map';
 import { google } from '@agm/core/services/google-maps-types';
-import { DigitalTourService } from '../../services/digital-tour.service';
 import { Amenity } from '../../models/amenity';
 import { AmenityService } from '../../services/amenity.service';
 import { VenderService } from '../../services/vender.service';
 import { Vender } from '../../models/vender';
 
+
+import { CdkOverlayOrigin, Overlay, OverlayConfig } from '@angular/cdk/overlay';
+import { CdkPortal, ComponentPortal, Portal } from '@angular/cdk/portal';
+import {
+  Component,
+  OnInit,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+  ViewContainerRef,
+  ViewEncapsulation,
+  Output,
+  EventEmitter,
+} from '@angular/core';
+import { filter } from 'rxjs/operators/filter';
+import { tap } from 'rxjs/operators/tap';
+
 @Component({
   selector: 'app-venue',
   templateUrl: './venue.component.html',
-  styleUrls: ['./venue.component.css']
+  styleUrls: ['./venue.component.css'],
+  preserveWhitespaces: false,
 })
 export class VenueComponent implements OnInit, OnDestroy {
   venue = new Venue();
   vender: Vender[];
   subscription: Subscription;
 
+  // OVERLAY & PORTAL
+  nextPosition: number = 0;
+  isMenuOpen: boolean = false;
+
+  // MAP
   zoom: number = 12;
   latitude: number;
   longitude: number;
   title: string;
 
+  @ViewChildren(CdkPortal) templatePortals: QueryList<Portal<any>>;
+  @ViewChild(CdkOverlayOrigin) _overlayOrigin: CdkOverlayOrigin;
+
+
+  @Output() close: EventEmitter<any> = new EventEmitter<any>();
   constructor(
     private _venueService: VenueService,
     private _venderService: VenderService,
     private _activatedRoute: ActivatedRoute,
     private _router: Router,
     private location: Location,
-    private _digitalTourService: DigitalTourService
+    public overlay: Overlay, 
+    public viewContainerRef: ViewContainerRef
   ) { }
 
   ngOnInit() {
@@ -57,12 +84,16 @@ export class VenueComponent implements OnInit, OnDestroy {
     this.location.back();
   }
 
-  show(): void {
-    this._digitalTourService.show();
-  }
+  // openPanelWithBackdrop() {
+  //   let config = new OverlayConfig({
+  //     hasBackdrop: true,
+  //     backdropClass: 'cdk-overlay-transparent-backdrop',
+  //     positionStrategy: this.overlay.position().global().centerHorizontally()
+  //   });
 
-  // getVender(): void {
-  //   this._venderService.getRandomVender(1, vender => this.vender = vender);
+  //   let overlayRef = this.overlay.create(config);
+  //   overlayRef.attach(this.templatePortals.first);
+  //   overlayRef.backdropClick().subscribe(() => overlayRef.detach());
   // }
 
 }

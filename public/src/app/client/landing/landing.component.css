@@ -24,6 +24,7 @@
 }
 
 
+
 div.containerX {
     margin: 0;
     padding: 0;
@@ -32,7 +33,6 @@ div.containerX {
 #main {
     width:100%;
     background-image: url(/assets/images/tulsa-venues-header.jpg);
-    /* background-image: url(/assets/images/tulsa.jpg); */
     background-attachment: scroll;
     background-size: cover;
     height: 25em;
