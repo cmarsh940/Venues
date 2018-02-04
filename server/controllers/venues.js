@@ -4,7 +4,7 @@ const Amenity = mongoose.model('Amenity');
 
 const config = require("../config/config");
 
-const BUCKET_NAME = "venue-test";
+const BUCKET_NAME = "tulsa-venues";
 const IAM_USER_KEY = config.iamUser;
 const IAM_USER_SECRET = config.iamSecret;
 
@@ -27,11 +27,9 @@ function uploadToS3(file) {
     };
     s3bucket.upload(params, function(err, data) {
       if (err) {
-        console.log("error in callback");
-        console.log(err);
+        console.log("*** Error in callback: ", err);
       }
-      console.log("success");
-      console.log(data);
+      console.log("success", data);
     });
   });
 }

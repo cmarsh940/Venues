@@ -36,10 +36,12 @@ module.exports = function (app) {
 
     app.get('/venues', Venues.index);
     app.post('/venues', Venues.create);
+    app.post('/venues/upload', Venues.upload);
     app.delete('/venues/:id', Venues.delete);
     app.get('/venues/:id', Venues.show);
     app.put('/venues/:id', Venues.update);
     app.get('/venues/random', Venues.getRandom);
+
 
     app.get('/venders', Venders.index);
     app.post('/venders', Venders.create);

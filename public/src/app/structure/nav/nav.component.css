@@ -17,3 +17,7 @@ mat-toolbar {
     font-family: 'Jacques Francois Shadow', cursive;
     letter-spacing: 0.2rem;
 }
+
+#logo:hover {
+    text-decoration: none;
+}

@@ -51,7 +51,8 @@
                 <p class="text-center">{{venue.description}}</p>
             </div><!--
             --><div class="col-3" id="venue-tour">
-                <button mat-button cdk-overlay-origin #trigger="cdkOverlayOrigin" (click)="isMenuOpen = !isMenuOpen" matTooltip="View 3D tour">3D Tour
+                <button mat-button cdk-overlay-origin #trigger="cdkOverlayOrigin" (click)="isMenuOpen = !isMenuOpen" matTooltip="View 3D tour">
+                    <img src="/assets/images/3d.png" alt="3D tour image" class="tour-image">
                 </button>
                 
                 <ng-template cdk-connected-overlay [origin]="trigger" [width]="900" hasBackdrop [open]="isMenuOpen" (backdropClick)="isMenuOpen=false" >
