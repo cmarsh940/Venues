@@ -70,7 +70,7 @@
             <div class="col-12">
                 <h2 class="text-center" id="venue-header">Venues</h2>
                 <div id="move-right">
-                    <input type='text' name='search_text' [(ngModel)]='search_text' id="search-box" placeholder="Search for a venue name or type...">
+                    <input type='text' name='search_text' [(ngModel)]='search_text' id="search-box" placeholder="Search for a venue...">
                 </div>
             </div>
             <div class="card-group" *ngFor="let venue of venues | filterVenues: search_text; let i = index">

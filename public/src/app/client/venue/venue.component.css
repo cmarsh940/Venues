@@ -170,3 +170,11 @@ div#cdk-overlay-1.cdk-overlay-pane element.style {
   width: 65%;
   overflow: hidden;
 }
+
+.tab-content {
+  min-height: 300px;
+}
+
+.bottom {
+  margin-top: 5%;
+}

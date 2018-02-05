@@ -46,85 +46,92 @@
                     </li>
                 </ul>
             </div><!--
-            --><div class="col-6" id="venue-about">
-                <h2 class="text-center">ABOUT {{venue.name}}</h2>
-                <p class="text-center">{{venue.description}}</p>
+            --><div class="col-9" id="venue-about">
+                <div class="text-center">
+                    {{venue.description}}
+                </div>    
+            </div>    
+        </div>
+        <div class="row" id="middle-top">
+            <div class="col-3" id="venue-info">
+                <h2 class="text-center">Vender</h2>
             </div><!--
-            --><div class="col-3" id="venue-tour">
-                <button mat-button cdk-overlay-origin #trigger="cdkOverlayOrigin" (click)="isMenuOpen = !isMenuOpen" matTooltip="View 3D tour">
-                    <img src="/assets/images/3d.png" alt="3D tour image" class="tour-image">
-                </button>
-                
-                <ng-template cdk-connected-overlay [origin]="trigger" [width]="900" hasBackdrop [open]="isMenuOpen" (backdropClick)="isMenuOpen=false" >
-                    <div class="overlay">
-                        <div class="embed-responsive embed-responsive-16by9" id="content">
-                            <iframe class="embed-responsive-item" [src]='sanitizer.bypassSecurityTrustResourceUrl(venue.tour_url)' scrolling="no"></iframe>
+            --><div class="col-9" id="venue-about">
+                <mat-tab-group class="demo-tab-group">
+                    <mat-tab label="Amenities">
+                        <div class="tab-content">
+                            <mat-list *ngFor="let amenity of venue.amenities">
+                                <mat-list-item>
+                                    <i class="material-icons">&#xE876;</i> {{amenity?.name}}
+                                </mat-list-item>
+                            </mat-list>
                         </div>
-                    </div>
-                </ng-template>
-                
-                <!-- SAMPLE PORTAL -->
-                <!-- <ng-template cdk-portal>
-                    <div class="overlay">
-                        <div class="embed-responsive embed-responsive-16by9" id="content">
-                            <iframe class="embed-responsive-item" [src]='sanitizer.bypassSecurityTrustResourceUrl(venue.tour_url)' scrolling="no"></iframe>
+                    </mat-tab>
+                    <mat-tab label="DETAILS & INFORMATION">
+                        <div class="tab-content">
+                            <h6 class="text-center">Price range: {{ venue.minAmmount | currency }} - {{ venue.maxAmmount | currency }}</h6>
+                            <ul id="venue-contact">
+                                <li>
+                                    <mat-icon aria-label="Video icon link">
+                                        <a href='{{venue.video_url}}' target='_blank'>
+                                            <i class="material-icons">&#xE04B;</i>
+                                        </a>
+                                    </mat-icon>
+                                </li>
+                                <li>
+                                    <mat-icon aria-label="email icon link">
+                                        <a href='mailto:{{venue.email}}' target='_top'>
+                                            <i class="material-icons">&#xE0BE;</i>
+                                        </a>
+                                    </mat-icon>
+                                </li>
+                                <li>
+                                    <mat-icon aria-label="Phone icon link">
+                                        <a href='tel:{{venue.phone}}' data-type='phone'>
+                                            <i class="material-icons">&#xE0CD;</i>
+                                        </a>
+                                    </mat-icon>
+                                </li>
+                            </ul>
                         </div>
-                    </div>
+                    </mat-tab>
+                    <mat-tab label="Gallery">
+                        <div class="tab-content">
+                            <mat-grid-list cols="2" rowHeight="2:1" *ngFor="let pic of venue.pic_url">
+                                <mat-grid-tile>{{pic}}</mat-grid-tile>
+                            </mat-grid-list>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>    
+        </div>
+        <div class="row" id="middle-bottom">
+            <div class="col-3"></div>
+            <!-- <div class="col-3">
+                <ng-container *ngIf="venue.review; else elseTemplate">
+                    <mat-card>
+                        <h6>{{venue.review}}</h6>
+                    </mat-card>
+                </ng-container>
+                <ng-template #elseTemplate>
+                    <h6>There are no reviews for {{ venue.name }}</h6>
                 </ng-template>
-                
-                <button (click)="openPanelWithBackdrop()">Backdrop panel</button> -->
+            </div> -->
+            <div class="col-9">
+                <mat-toolbar color="accent">REVIEWS</mat-toolbar>
+                <mat-card>
+                    <h6 class="text-center">There are no reviews for {{ venue.name }}</h6>
+                </mat-card>
             </div>
-        </div><!--
-        --><div class="row" id="middle">
-            <div class="col-6">
-                <h2 class="text-center">AMENITIES</h2>
-                <mat-list *ngFor="let amenity of venue.amenities">
-                    <mat-list-item>
-                        <i class="material-icons">&#xE876;</i> {{amenity.name}}
-                    </mat-list-item>
-                </mat-list>
-            </div><!--
-            --><div class="col-6">
-                <h2 class="text-center">PHOTO GALLORY</h2>
-            </div>
-        </div><!--
-        --><div class="row" id="bottom">
-            <div class="col-3">
-                <h2 class="text-center">VENDER</h2>
-            </div><!--
-            --><div class="col-6" id="map">
+        </div>
+
+        <div class="row" id="bottom">
+            <div class="col-3"></div>
+            <div class="col-9" id="map">
                 <agm-map [latitude]='venue.lat' [longitude]='venue.lng' [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
                     <agm-marker [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng">
                     </agm-marker>
                 </agm-map>
-            </div><!--
-            --><div class="col-3">
-                <h5 class="text-center">DETAILS & INFORMATION</h5>
-                <mat-divider></mat-divider>
-                <h6 class="text-center">Price range: {{ venue.minAmmount | currency }} - {{ venue.maxAmmount | currency }}</h6>
-                <ul id="venue-contact">
-                    <li>
-                        <mat-icon aria-label="Video icon link">
-                            <a href='{{venue.video_url}}' target='_blank'>
-                                <i class="material-icons">&#xE04B;</i>
-                            </a>
-                        </mat-icon>
-                    </li>
-                    <li>
-                        <mat-icon aria-label="email icon link">
-                            <a href='mailto:{{venue.email}}' target='_top'>
-                                <i class="material-icons">&#xE0BE;</i>
-                            </a>
-                        </mat-icon>
-                    </li>
-                    <li>
-                        <mat-icon aria-label="Phone icon link">
-                            <a href='tel:{{venue.phone}}' data-type='phone'>
-                                <i class="material-icons">&#xE0CD;</i>
-                            </a>
-                        </mat-icon>
-                    </li>
-                </ul>
             </div>
         </div>
     </div>
