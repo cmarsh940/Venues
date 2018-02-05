@@ -10,7 +10,15 @@
             </div>
         </div>
     </div>
-    <hr>
+    
+    <div class="container" id="category">
+        <mat-grid-list cols="4" rowHeight="200px">
+            <mat-grid-tile *ngFor="let category of categories; let i = index; ">{{category.name}}
+                <span *ngFor="let venue of venues">{{venue.category.length}}</span>
+            </mat-grid-tile>
+        </mat-grid-list>
+
+    </div>
     <div class="container" id="vender">
         <h2>Best Things To Do In The City</h2>
         <h6 class="text-center">Explore some of the best places to visit in our city.</h6>
@@ -32,4 +40,5 @@
             </mat-card>
         </div>
     </div>
+    
 </div>
