@@ -1,3 +1,5 @@
+import { MaterialModule } from './../material/material.module';
+import { GalleryService } from './../services/gallery.service';
 import { CategoryService } from './../services/category.service';
 import { RegisterComponent } from './../auth/register/register.component';
 import { AdminNavComponent } from './../structure/admin-nav/admin-nav.component';
@@ -22,46 +24,13 @@ import { VenderShowComponent } from './vender/vender-show/vender-show.component'
 import { VenueService } from '../services/venue.service';
 import { MessageService } from '../services/messages.service';
 
-import {
-  MatButtonModule,
-  MatToolbarModule,
-  MatIconModule,
-  MatCardModule,
-  MatMenuModule,
-  MatAutocompleteModule,
-  MatButtonToggleModule,
-  MatCheckboxModule,
-  MatChipsModule,
-  MatDatepickerModule,
-  MatDialogModule,
-  MatExpansionModule,
-  MatGridListModule,
-  MatInputModule,
-  MatListModule,
-  MatNativeDateModule,
-  MatPaginatorModule,
-  MatProgressBarModule,
-  MatProgressSpinnerModule,
-  MatRadioModule,
-  MatRippleModule,
-  MatSelectModule,
-  MatSidenavModule,
-  MatSliderModule,
-  MatSlideToggleModule,
-  MatSnackBarModule,
-  MatSortModule,
-  MatTableModule,
-  MatTabsModule,
-  MatTooltipModule,
-  MatStepperModule
-} from '@angular/material';
 import { ReviewShowComponent } from './review/review-show/review-show.component';
 import { ReviewEditComponent } from './review/review-edit/review-edit.component';
 import { ReviewNewComponent } from './review/review-new/review-new.component';
 import { ReviewService } from '../services/review.service';
 import { CategoryShowComponent } from './category/category-show/category-show.component';
 import { CategoryEditComponent } from './category/category-edit/category-edit.component';
-
+import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
 
 @NgModule({
   imports: [
@@ -70,38 +39,8 @@ import { CategoryEditComponent } from './category/category-edit/category-edit.co
     CommonModule,
     AdminRoutingModule,
     FormsModule,
+    MaterialModule,
     ReactiveFormsModule,
-    MatAutocompleteModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatExpansionModule,
-    MatGridListModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatRadioModule,
-    MatRippleModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatSnackBarModule,
-    MatSortModule,
-    MatTableModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatTooltipModule,
-    MatStepperModule,
   ],
   declarations: [
     AdminComponent,
@@ -121,10 +60,13 @@ import { CategoryEditComponent } from './category/category-edit/category-edit.co
     ReviewNewComponent,
     CategoryShowComponent,
     CategoryEditComponent,
+    FileSelectDirective,
+    FileDropDirective,
   ],
   providers: [
     AmenityService,
     CategoryService,
+    GalleryService,
     MessageService,
     ReviewService,
     VenderService,

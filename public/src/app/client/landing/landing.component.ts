@@ -29,7 +29,7 @@ export class LandingComponent implements OnInit {
   }
 
   getCategories(): void {
-    this._categoryService.getCategories((categories) => this.categories = categories.slice(4))
+    this._categoryService.getCategories((categories) => this.categories = categories)
   }
 
   getVenues(): void {

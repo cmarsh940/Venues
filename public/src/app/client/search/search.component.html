@@ -66,7 +66,10 @@
     <div class="row" id="scroll">
         <mat-progress-spinner *ngIf="!venues" class="progress-spinner" [color]="'primary'" [mode]="'indeterminate'">
         </mat-progress-spinner>
-        <div class="container">
+        <div class="container" *ngIf = "!finished">
+            <mat-spinner color="accent"></mat-spinner>
+        </div>
+        <div class="container" *ngIf = "finished">
             <div class="col-12">
                 <h2 class="text-center" id="venue-header">Venues</h2>
                 <div id="move-right">

@@ -17,6 +17,7 @@ export class SearchComponent implements OnInit {
   venders: Array<Vender>;
   venues: Array<Venue>;
   search_text: String = "";
+  finished: boolean;
 
   zoom: number = 8;
   latitude: number;
@@ -30,8 +31,10 @@ export class SearchComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.finished = false;
     this.getVenues();
     this.getVenders();
+    this.finished = true;
   }
 
   getVenders(): void {

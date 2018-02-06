@@ -19,7 +19,7 @@ export class VenueService {
   }
 
   createVenue(newVenue: Venue, callback) {
-    return this._http.post('/venues', newVenue).subscribe(
+    return this._http.post('/upload', newVenue).subscribe(
       res => {
         const venue = res.json();
         callback(venue);
@@ -37,6 +37,13 @@ export class VenueService {
 
   showVenue(id: string, callback) {
     this._http.get(`venues/${id}`).subscribe(
+      res => callback(res.json()),
+      err => console.log(err)
+    );
+  }
+
+  getImages(id: string, callback) {
+    this._http.get(`venues/${id}/images`).subscribe(
       res => callback(res.json()),
       err => console.log(err)
     );

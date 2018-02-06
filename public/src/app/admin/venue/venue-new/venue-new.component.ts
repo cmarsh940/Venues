@@ -9,7 +9,9 @@ import { Amenity } from '../../../models/amenity';
 import { FormControl } from '@angular/forms';
 import { Category } from '../../../models/category';
 import { CategoryService } from '../../../services/category.service';
+import { FileUploader } from 'ng2-file-upload';
 
+const URL = '/upload';
 
 @Component({
   selector: 'app-venue-new',
@@ -23,6 +25,8 @@ export class VenueNewComponent implements OnInit {
   categories: Category[];
   newVenue: Venue = new Venue();
   errors: string[] = [];
+
+  public uploader: FileUploader = new FileUploader({ url: URL });
 
   amenityControl= new FormControl();
   
@@ -44,7 +48,7 @@ export class VenueNewComponent implements OnInit {
   isLoggedIn() {
     if (this._userService.getCurrentUser() == null) {
       console.log("You are not logged in with admin privlages", sessionStorage)
-      this._router.navigateByUrl('/dashboard');
+      this._router.navigateByUrl('/');
     }
   }
 
@@ -65,19 +69,25 @@ export class VenueNewComponent implements OnInit {
   }
 
   createVenue() {
-    this.errors = [];
-    return this._venueService.createVenue(this.newVenue, (venue) => {
-      console.log(venue);
-      if (venue.errors) {
-        for (const key of Object.keys(venue.errors)) {
-          const errors = venue.errors[key];
-          this.errors.push(errors.message);
+    if (this.currentUser !== null) {
+      console.log("*** currentUser:", this.currentUser)
+      this.errors = [];
+      return this._venueService.createVenue(this.newVenue, (venue) => {
+        console.log(venue);
+        if (venue.errors) {
+          for (const key of Object.keys(venue.errors)) {
+            const errors = venue.errors[key];
+            this.errors.push(errors.message);
+          }
+        } else {
+          this.getVenues();
+          this.newVenue = new Venue();
+          this._router.navigate(['/list_venue']);
         }
-      } else {
-        this.getVenues();
-        this.newVenue = new Venue();
-        this._router.navigate(['/list_venue']);
-      }
-    })
+      })
+    } else {
+      console.log("REPORTED: You are not a administrater")
+      this._router.navigateByUrl('/');
+    }
   }
 }

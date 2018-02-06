@@ -66,13 +66,52 @@ class VenuesController {
     }
 
     create(req, res) {
-        Venue.create(req.body, (err, venue) => {
-            if (err) {
-                return res.json(err);
+        console.log("*** hit server for creating a venue");
+        let new_venue = new Venue(req.body);
+        console.log(new_venue);
+        if (req.files) {
+            let file = req.files;
+            console.log("*** server recieved file named:", file);
+            let file_type = file.mimetype.match(/image\/(\w+)/);
+            console.log("*** server file type", file_type);
+            let new_file_name = "";
+            console.log("*** Renaming file");
+            if (file_type) {
+                let new_file_name = `${new Date().getTime()}.${file_type[1]}`;
+                console.log("*** Files new name is:", new_file_name);
+                file.mv(path.resolve(__dirname, "../../upload", new_file_name), err => {
+                    if (err) {
+                        console.log("*** file move error", err);
+                    }
+                });
+                console.log("*** Files is now moved to uploads folder");
+                new_venue.pic_url = new_file_name;
+            } else{
+                console.log("****** not file_type")
+                return
             }
-            return res.json(venue);
-        });
+        } else {
+            console.log("****** not files")
+            return
+        }
+        new_venue.save()
+            .then(() => {
+                return res.json(new_venue);
+            })
+            .catch(err => {
+                console.log("*** my_venue save error", err);
+                return res.json(err);
+            });
     }
+
+    // create(req, res) {
+    //     Venue.create(req.body, (err, venue) => {
+    //         if (err) {
+    //             return res.json(err);
+    //         }
+    //         return res.json(venue);
+    //     });
+    // }
 
     upload(req, res, next) {
         const new_venue = new Venue(req.body);
@@ -90,11 +129,20 @@ class VenuesController {
 
 
     show(req, res) {
-        Venue.findById(req.params.id).populate('amenities', 'name').exec((err, venue) => {
+        Venue.findById(req.params.id).populate('amenities', 'name').populate('category').populate('galleryItems').exec((err, venue) => {
             if (err) {
                 return res.json(err);
             }
             return res.json(venue);
+        });
+    }
+
+    images(req, res) {
+        Venue.findById(req.params.id).populate('galleryItems').exec((err, item) => {
+            if (err) {
+                return res.json(err);
+            }
+            return res.json(item);
         });
     }
 

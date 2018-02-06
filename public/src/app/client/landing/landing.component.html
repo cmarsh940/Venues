@@ -8,11 +8,29 @@
             <div id="search-button">
                 <button mat-raised-button color="accent" routerLink="/search" matTooltip="Search for a Venue" matTooltip="Search for a venue">Find Your Venue Now</button>
             </div>
+            <div id="search-icon-group">
+                <ul>
+                    <li class="search-icon">
+                        <img src='/assets/images/ballroom.png' alt="ballroom icon">
+                    </li>
+                    <li class="search-icon">
+                        <img src='/assets/images/barn.png' alt="barn icon">
+                    </li>
+                    <li class="search-icon">
+                        <img src='/assets/images/chaple.png' alt="chaple icon">
+                    </li>
+                    <li class="search-icon">
+                        <img src='/assets/images/garden.png' alt="garden icon">
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
     
     <div class="container" id="category">
-        <mat-grid-list cols="4" rowHeight="200px">
+        <h2>What are you interested in?</h2>
+        <h6 class="text-center">Explore some of our differnt venues</h6>
+        <mat-grid-list cols="4" rowHeight="200px" gutterSize="1rem">
             <mat-grid-tile *ngFor="let category of categories; let i = index; ">{{category.name}}
                 <span *ngFor="let venue of venues">{{venue.category.length}}</span>
             </mat-grid-tile>

@@ -10,6 +10,13 @@ import { Venue } from '../../../models/venue';
 import { VenueService } from '../../../services/venue.service';
 import { CategoryService } from '../../../services/category.service';
 import { Category } from '../../../models/category';
+import { MatTabChangeEvent } from '@angular/material';
+import { FileUploader } from 'ng2-file-upload';
+import { Amenity } from '../../../models/amenity';
+import { AmenityService } from '../../../services/amenity.service';
+
+
+const URL = '/upload';
 
 @Component({
   selector: 'app-venue-edit',
@@ -18,13 +25,30 @@ import { Category } from '../../../models/category';
 })
 export class VenueEditComponent implements OnInit, OnDestroy {
   venue = new Venue();
+  amenityList: Amenity[];
+  categories: Category[];
   currentUser: User;
   subscription: Subscription;
-  categories: Category[];
+  fetchItems: any[];
+  dataLoading: boolean;
+
+  public uploader: FileUploader = new FileUploader({ url: URL });
+  public hasBaseDropZoneOver: boolean = false;
+  public hasAnotherDropZoneOver: boolean = false;
+
+  public fileOverBase(e: any): void {
+    this.hasBaseDropZoneOver = e;
+  }
+
+  public fileOverAnother(e: any): void {
+    this.hasAnotherDropZoneOver = e;
+  }
+
   
   constructor(
     private _route: ActivatedRoute,
     private _venueService: VenueService,
+    private _amenityService: AmenityService,
     private _categoryService: CategoryService,
     private _userService: UserService,
     private _activatedRoute: ActivatedRoute,
@@ -33,8 +57,12 @@ export class VenueEditComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.dataLoading = true;
     this.isLoggedIn();
     this.getVenues();
+    this.getAmenities();
+    this.getCategories();
+    this.dataLoading = false;
   }
 
   ngOnDestroy() {
@@ -58,6 +86,13 @@ export class VenueEditComponent implements OnInit, OnDestroy {
     this.subscription = this._activatedRoute.params.subscribe(
       params => this._venueService.showVenue(params.id, res => this.venue = res)
     );
+    let item = this.venue.galleryItems
+  }
+  getAmenities(): void {
+    this._amenityService.getAmenities((amenities) => this.amenityList = amenities);
+  }
+  getCategories(): void {
+    this._categoryService.getCategories((categories) => this.categories = categories);
   }
 
   updateVenue() {
@@ -66,12 +101,26 @@ export class VenueEditComponent implements OnInit, OnDestroy {
     });
   }
 
-  getCategories(): void {
-    this._categoryService.getCategories((categories) => this.categories = categories);
-  }
 
   goBack(): void {
     this.location.back();
   }
+
+  updateGalleryItems() {
+    this.dataLoading = true;
+    console.log('Updating Gallery Items')
+    this.subscription = this._activatedRoute.params.subscribe(
+      params => this._venueService.getImages(params.id, res => this.venue = res)
+    );
+    this.dataLoading = false;
+  }
+
+  onLinkClick(tabChangeEvent: MatTabChangeEvent): void {
+    if (tabChangeEvent.index == 0) {
+      this.updateGalleryItems();
+    }
+  }
+
+  
 
 }

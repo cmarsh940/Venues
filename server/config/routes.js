@@ -5,6 +5,7 @@ const Venders = require('../controllers/venders');
 const Reviews = require('../controllers/reviews');
 const Amenities = require('../controllers/amenities');
 const Categories = require('../controllers/categories');
+const Galleries = require('../controllers/galleries');
 
 module.exports = function (app) {
     app.get('/users', Users.index);
@@ -28,6 +29,13 @@ module.exports = function (app) {
     app.get('/categories/:id', Categories.show);
     app.put('/categories/:id', Categories.update);
 
+    // app.get('/galleries', Galleries.index);
+    // app.post('/galleries', Galleries.create);
+    // app.delete('galleries/:id', Galleries.delete);
+    // app.delete('/deleteMultiple', Galleries.deleteMultiple);
+    // app.get('/galleries/:id', Galleries.show);
+    // app.put('/galleries/:id', Galleries.update);
+
     app.get('/reviews', Reviews.index);
     app.post('/reviews', Reviews.create);
     app.delete('/reviews/:id', Reviews.delete);
@@ -39,6 +47,7 @@ module.exports = function (app) {
     app.post('/venues/upload', Venues.upload);
     app.delete('/venues/:id', Venues.delete);
     app.get('/venues/:id', Venues.show);
+    app.get('/venues/:id/images', Venues.images);
     app.put('/venues/:id', Venues.update);
     app.get('/venues/random', Venues.getRandom);
 

@@ -88,6 +88,10 @@ const VenueSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Amenity'
     }],
+    galleryItems: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Gallery'
+    }],
     category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category'

@@ -98,3 +98,32 @@ h2 {
 h5 {
   color:#FFB300;
 }
+
+#category {
+    margin-top: 3rem;
+}
+
+#category>h2 {
+    margin-bottom: 1rem;
+}
+
+#search-icon-group {
+    width:100%;
+    display: flex;
+    position: absolute;
+    top: 19rem;
+    justify-content: center;
+}
+
+.search-icon {
+    display: -webkit-inline-box;
+    margin: 2%;
+}
+
+ul {
+    width: 27%;
+}
+
+.search-icon img {
+    width: 65%;
+}

@@ -131,9 +131,9 @@
       <mat-hint>Video URL</mat-hint>
     </mat-form-field>
 
-    <!-- <div class="file-upload">
-      <input #file type="file" name="picture" [(ngModel)]="new_venue.static_pic_url">
-    </div> -->
+    <div class="file-upload">
+      <input #file type="file" name="picture" [(ngModel)]="newVenue.pic_url">
+    </div>
 
     <div class="submit-button">
       <button mat-raised-button type="submit" color="accent" [disabled]="!venueForm.form.valid">Submit</button>
