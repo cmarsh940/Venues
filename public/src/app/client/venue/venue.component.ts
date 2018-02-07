@@ -40,6 +40,7 @@ export class VenueComponent implements OnInit, OnDestroy {
   venue = new Venue();
   vender: Vender[];
   subscription: Subscription;
+  num = 1;
 
   // OVERLAY & PORTAL
   nextPosition: number = 0;
@@ -56,6 +57,7 @@ export class VenueComponent implements OnInit, OnDestroy {
 
 
   @Output() close: EventEmitter<any> = new EventEmitter<any>();
+
   constructor(
     private _venueService: VenueService,
     private _venderService: VenderService,
@@ -69,7 +71,6 @@ export class VenueComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getVenue();
-    // this.getVender();
   }
 
   ngOnDestroy() {
@@ -80,6 +81,10 @@ export class VenueComponent implements OnInit, OnDestroy {
     this.subscription = this._activatedRoute.params.subscribe(
       params => this._venueService.showVenue(params.id, res => this.venue = res)
     );
+  }
+
+  getVender(num) {
+    this._venderService.getRandomVender(num, (vender) => this.vender = vender);
   }
 
   goBack(): void {

@@ -1,7 +1,7 @@
 export class Category {
     _id: any;
     name: string;
-    icon: string;
+    icon: any;
     createdAt: any;
     updatedAt: any;
 }

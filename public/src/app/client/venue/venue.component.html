@@ -4,7 +4,7 @@
             <div class="carousel-inner">
                 <ng-container *ngIf="venue.pic_url; else elseTemplate">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src='imgs/{{venue.pic_url}}' class="venue-image" alt="Venue slide pictures">
+                        <img class="d-block w-100" src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue.name}}/{{venue.pic_url}}' class="venue-image" alt="Venue slide pictures">
                     </div>
                 </ng-container>
                 <ng-template #elseTemplate>
@@ -53,8 +53,9 @@
             </div>    
         </div>
         <div class="row" id="middle-top">
-            <div class="col-3" id="venue-info">
+            <div class="col-3" id="vender-info">
                 <h2 class="text-center">Vender</h2>
+                <p>{{vender}}</p>
             </div><!--
             --><div class="col-9" id="venue-about">
                 <mat-tab-group class="demo-tab-group">
@@ -62,43 +63,48 @@
                         <div class="tab-content">
                             <mat-list *ngFor="let amenity of venue.amenities">
                                 <mat-list-item>
-                                    <i class="material-icons">&#xE876;</i> {{amenity?.name}}
+                                    <i class="material-icons">&#xE876;</i> {{amenity!.name}}
                                 </mat-list-item>
                             </mat-list>
                         </div>
                     </mat-tab>
                     <mat-tab label="DETAILS & INFORMATION">
                         <div class="tab-content">
-                            <h6 class="text-center">Price range: {{ venue.minAmmount | currency }} - {{ venue.maxAmmount | currency }}</h6>
                             <ul id="venue-contact">
-                                <li>
-                                    <mat-icon aria-label="Video icon link">
-                                        <a href='{{venue.video_url}}' target='_blank'>
-                                            <i class="material-icons">&#xE04B;</i>
-                                        </a>
-                                    </mat-icon>
+                                <li class="list-items">
+                                     <h6>Price range: {{ venue.minAmmount | currency }} - {{ venue.maxAmmount | currency }}</h6>
                                 </li>
-                                <li>
-                                    <mat-icon aria-label="email icon link">
-                                        <a href='mailto:{{venue.email}}' target='_top'>
-                                            <i class="material-icons">&#xE0BE;</i>
-                                        </a>
-                                    </mat-icon>
+                                <li class="list-items">
+                                    <a href='{{ venue.video_url }}' target='_blank'>
+                                        <mat-icon aria-label="Video icon link">
+                                            <i class="material-icons">&#xE04B;</i> 
+                                        </mat-icon> 
+                                        <p>View {{ venue.name }} video</p>
+                                    </a>
                                 </li>
-                                <li>
-                                    <mat-icon aria-label="Phone icon link">
-                                        <a href='tel:{{venue.phone}}' data-type='phone'>
-                                            <i class="material-icons">&#xE0CD;</i>
-                                        </a>
-                                    </mat-icon>
+                                <li class="list-items">
+                                    <a href='mailto:{{ venue.email }}' target='_top'>
+                                        <mat-icon aria-label="email icon link">
+                                            <i class="material-icons">&#xE0BE;</i> 
+                                        </mat-icon>
+                                        <p>Email {{ venue.name }}</p>
+                                    </a>
+                                </li>
+                                <li class="list-items">
+                                    <a href='tel:{{ venue.phone }}' data-type='phone'>
+                                        <mat-icon aria-label="Phone icon link">
+                                            <i class="material-icons">&#xE0CD;</i> 
+                                        </mat-icon>
+                                        <p>Call {{ venue.name }}</p>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
                     </mat-tab>
                     <mat-tab label="Gallery">
                         <div class="tab-content">
-                            <mat-grid-list cols="2" rowHeight="2:1" *ngFor="let pic of venue.pic_url">
-                                <mat-grid-tile>{{pic}}</mat-grid-tile>
+                            <mat-grid-list cols="2" rowHeight="2:1" >
+                                <mat-grid-tile>COMING SOON</mat-grid-tile>
                             </mat-grid-list>
                         </div>
                     </mat-tab>

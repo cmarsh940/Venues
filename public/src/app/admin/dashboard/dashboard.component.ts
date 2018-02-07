@@ -45,8 +45,10 @@ export class DashboardComponent implements OnInit {
   }
 
   validateSession(): void {
-    if (!this.currentUser) {
+    if (this.currentUser == null) {
       this._router.navigateByUrl('/');
+    } else {
+      console.log(this.currentUser._id);
     }
   }
 
@@ -60,7 +62,6 @@ export class DashboardComponent implements OnInit {
   getAmenity(): void{
     this._amenityService.getAmenities((amenities) => this.amenities = amenities)
   }
-
   getUsers(): void {
     this._userService.getUsers((users) => this.users = users);
   }

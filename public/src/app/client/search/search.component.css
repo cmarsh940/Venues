@@ -174,8 +174,8 @@
     width: 15em;
     border-radius: 5%;
     overflow: hidden;
-    max-height: 23em;
-    min-height: 23em; 
+    max-height: 18em;
+    min-height: 18em; 
   }
 
   .mat-card-content>:first-child, .mat-card>:first-child {

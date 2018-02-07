@@ -35,6 +35,13 @@ export class VenderService {
     );
   }
 
+  post_to_s3(form_data) {
+    return this._http
+      .post('/venders/upload', form_data)
+      .map(data => data.json())
+      .toPromise();
+  }
+
   destroy(id: string, callback) {
     this._http.delete(`venders/${id}`).subscribe(
       res => callback(res.json()),

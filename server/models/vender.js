@@ -44,6 +44,14 @@ const VenderSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Description cannot be blank'],
     },
+    facebook_url: {
+        type: String,
+        required: false,
+    },
+    instagram_url: {
+        type: String,
+        required: false,
+    },
     pic_url: {
         type: String,
         required: false

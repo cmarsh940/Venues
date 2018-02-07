@@ -96,16 +96,22 @@ export class VenueNewComponent implements OnInit {
   // }
 
   createVenue() {
-    let form_data = new FormData(this.my_form.nativeElement);
-    console.log("*** This is the form data", form_data);
-    this._venueService.post_to_s3(form_data).then(() => {
-      console.log("*** Setting new venue");
-      this.newVenue = new Venue();
-      console.log("*** Setting file value");
-      this.file_input.nativeElement.value = "";
-      console.log("*** About to emit");
-      this.newVenue_event.emit();
-      this._router.navigate(['/list_venue']);
-    });
+    this.errors = [];
+    if (this._userService.getCurrentUser() == null) {
+      console.log("REPORTED: You do not have administration privilages")
+      this._router.navigateByUrl('/');
+    } else {
+      let form_data = new FormData(this.my_form.nativeElement);
+      console.log("*** This is the form data", form_data);
+      this._venueService.post_to_s3(form_data).then(() => {
+        console.log("*** Setting new venue");
+        this.newVenue = new Venue();
+        console.log("*** Setting file value");
+        this.file_input.nativeElement.value = "";
+        console.log("*** About to emit");
+        this.newVenue_event.emit();
+        this._router.navigate(['/list_venue']);
+      });
+    }
   }
 }

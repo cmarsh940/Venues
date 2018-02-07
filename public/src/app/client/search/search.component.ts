@@ -34,11 +34,11 @@ export class SearchComponent implements OnInit {
     this.finished = false;
     this.getVenues();
     this.getVenders();
-    this.finished = true;
   }
 
   getVenders(): void {
     this._venderService.getVenders((venders) => this.venders = venders);
+    this.finished = true;
   }
 
   getVenues(): void {

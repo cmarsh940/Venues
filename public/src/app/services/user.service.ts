@@ -24,7 +24,7 @@ export class UserService {
   }
 
   getCurrentUser(): User {
-    return JSON.parse(localStorage.getItem('current_user'));
+    return JSON.parse(localStorage.getItem('currentUser'));
   }
 
   createUser(newUser: User, callback) {
@@ -61,7 +61,7 @@ export class UserService {
       res => {
         const user = res.json();
         if (!user.errors) {
-          localStorage.setItem('current_user', JSON.stringify(user));
+          localStorage.setItem('currentUser', JSON.stringify(user));
         } else {
           this.currentUser = null;
         }

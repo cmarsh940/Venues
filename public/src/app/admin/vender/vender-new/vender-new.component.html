@@ -2,8 +2,7 @@
   <i class="material-icons">&#xE5C4;</i>
 </button>
 <h1>Add a Vender</h1>
-<!-- <form #form (submit)="createVender()" encType="multipart/form-data"> -->
-  <form (ngSubmit)="createVender()" #venderForm="ngForm">
+<form (ngSubmit)="createVender()" #form encType="multipart/form-data">
   <mat-form-field>
     <input matInput name="name" required maxlength=250 [(ngModel)]="newVender.name" placeholder="Vender Name" />
   </mat-form-field>
@@ -31,12 +30,22 @@
       matTextareaAutosize matAutosizeMinRows="5" matAutosizeMaxRows="15"></textarea>
   </mat-form-field>
 
-  <!-- <div class="file-upload">
-    <input #file type="file" name="picture" [(ngModel)]="newVender.static_pic_url">
-  </div> -->
+  <mat-form-field>
+    <input matInput name="facebook" maxlength=500 [(ngModel)]="newVender.facebook_url" placeholder="Venders Facebook URL" />
+    <mat-hint>EX: www.facebook.com/vender</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput name="instagram" maxlength=500 [(ngModel)]="newVender.instagram_url" placeholder="Venders Instagram URL" />
+    <mat-hint>EX: www.instagram.com/vender</mat-hint>
+  </mat-form-field>
+
+  <div class="file-upload">
+    <input #file type="file" name="picture" [(ngModel)]="newVender.pic_url">
+  </div>
 
   <div class="submit-button">
-    <button mat-raised-button type="submit" color="accent" [disabled]="!venderForm.form.valid">Submit</button>
+    <button mat-raised-button type="submit" color="accent">Submit</button>
   </div>
 </form>
 

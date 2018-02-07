@@ -54,6 +54,7 @@ module.exports = function (app) {
 
     app.get('/venders', Venders.index);
     app.post('/venders', Venders.create);
+    app.post('/venders/upload', Venders.upload);
     app.delete('/venders/:id', Venders.delete);
     app.get('/venders/:id', Venders.show);
     app.put('/venders/:id', Venders.update);

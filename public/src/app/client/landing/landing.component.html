@@ -8,7 +8,7 @@
             <div id="search-button">
                 <button mat-raised-button color="accent" routerLink="/search" matTooltip="Search for a Venue" matTooltip="Search for a venue">Find Your Venue Now</button>
             </div>
-            <div id="search-icon-group">
+            <!-- <div id="search-icon-group">
                 <ul>
                     <li class="search-icon">
                         <img src='/assets/images/ballroom.png' alt="ballroom icon">
@@ -23,7 +23,7 @@
                         <img src='/assets/images/garden.png' alt="garden icon">
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </div>
     </div>
     
@@ -32,7 +32,6 @@
         <h6 class="text-center">Explore some of our differnt venues</h6>
         <mat-grid-list cols="4" rowHeight="200px" gutterSize="1rem">
             <mat-grid-tile *ngFor="let category of categories; let i = index; ">{{category.name}}
-                <span *ngFor="let venue of venues">{{venue.category.length}}</span>
             </mat-grid-tile>
         </mat-grid-list>
 
@@ -42,8 +41,8 @@
         <h6 class="text-center">Explore some of the best places to visit in our city.</h6>
         <div class="vender-card" *ngFor="let vender of venders; let i = index">
             <mat-card class="card" [tabindex]="i">
-                <ng-container *ngIf="vender.static_pic_url; else elseTemplate">
-                    <img mat-card-image src='imgs/{{vender.static_pic_url}}' alt="Vender Picture">
+                <ng-container *ngIf="vender.pic_url; else elseTemplate">
+                    <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' alt="Vender Picture">
                 </ng-container>
                 <ng-template #elseTemplate>
                     <img mat-card-image src='/assets/images/missing.png' alt="Venue Picture">

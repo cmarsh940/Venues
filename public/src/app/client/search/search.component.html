@@ -6,7 +6,7 @@
                 <ng-container *ngIf="vender.pic_url; else elseTemplate">
                     <div class="vender-link">
                         <a [routerLink]="['/vender', 'display', vender._id]">
-                            <img src='imgs/{{vender.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture">
+                            <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture">
                             <div class="middle rounded-circle">
                                 <div class="text">{{vender.name}}</div>
                             </div>
@@ -41,7 +41,7 @@
                 <ng-container *ngIf="vender.pic_url; else elseTemplate">
                     <div class="vender-link">
                         <a [routerLink]="['/vender', 'display', vender._id]">
-                            <img src='imgs/{{vender.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture">
+                            <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture">
                             <div class="middle rounded-circle">
                                 <div class="text">{{vender.name}}</div>
                             </div>
@@ -78,16 +78,17 @@
             </div>
             <div class="card-group" *ngFor="let venue of venues | filterVenues: search_text; let i = index">
                 <mat-card class="card" [tabindex]="i">
-                    <ng-container *ngIf="venue.static_pic_url; else elseTemplate">
-                        <img mat-card-image src="https://tulsa-venues.s3.amazonaws.com/Venues/{{venue.pic_url}}" alt="Venue Picture">
+                    <ng-container *ngIf="venue.pic_url; else elseTemplate">
+                        <img mat-card-image src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue?.name}}/{{venue?.pic_url}}" alt="Venue Picture">
                     </ng-container>
                     <ng-template #elseTemplate>
                         <img mat-card-image src='/assets/images/missing.png' alt="Venue Picture">
                     </ng-template>
                     <mat-card-title>
-                        <h5 class="text-left">{{venue.name}}</h5>
+                        <h5 class="text-left">{{venue?.name}}</h5>
                         <div class="icon-address">
-                            <img src="assets/images/{{venue.category.icon}}" class="venue-icon" alt="Venue Icon"><mat-card-subtitle>{{venue.address}}</mat-card-subtitle>
+                            <!-- <img [src]="category.icon" class="venue-icon" alt="Venue Icon"> -->
+                            <mat-card-subtitle>{{venue?.address}}</mat-card-subtitle>
                         </div>
                     </mat-card-title>
                     <mat-card-actions>

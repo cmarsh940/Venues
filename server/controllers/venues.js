@@ -13,25 +13,26 @@ const AWS = require("aws-sdk");
 const Busboy = require("busboy");
 
 
-function uploadToS3(file, new_venue) {
-  let s3bucket = new AWS.S3({
-    accessKeyId: IAM_USER_KEY,
-    secretAccessKey: IAM_USER_SECRET,
-    Bucket: BUCKET_NAME
-  });
-  s3bucket.createBucket(function() {
-    var params = {
-      Bucket: BUCKET_NAME,
-      Key: `Venues/${file.name}`,
-      Body: file.data
-    };
-    s3bucket.upload(params, function(err, data) {
-      if (err) {
-        console.log("*** Error in callback: ", err);
-      }
-      console.log("success", data);
+function uploadToS3(file, venue) {
+    let s3bucket = new AWS.S3({
+        accessKeyId: IAM_USER_KEY,
+        secretAccessKey: IAM_USER_SECRET,
+        Bucket: BUCKET_NAME
     });
-  });
+    s3bucket.createBucket(function() {
+        var params = {
+            Bucket: BUCKET_NAME,
+            Key: `Venues/${venue.name}/${file.name}`,
+            Body: file.data,
+            ACL: 'public-read'
+        };
+        s3bucket.upload(params, function(err, data) {
+        if (err) {
+            console.log("*** Error in callback: ", err);
+        }
+            console.log("success", data);
+        });
+    });
 }
 
 let shuffle = function (arr) {
@@ -66,52 +67,13 @@ class VenuesController {
     }
 
     create(req, res) {
-        console.log("*** hit server for creating a venue");
-        let new_venue = new Venue(req.body);
-        console.log(new_venue);
-        if (req.files) {
-            let file = req.files;
-            console.log("*** server recieved file named:", file);
-            let file_type = file.mimetype.match(/image\/(\w+)/);
-            console.log("*** server file type", file_type);
-            let new_file_name = "";
-            console.log("*** Renaming file");
-            if (file_type) {
-                let new_file_name = `${new Date().getTime()}.${file_type[1]}`;
-                console.log("*** Files new name is:", new_file_name);
-                file.mv(path.resolve(__dirname, "../../upload", new_file_name), err => {
-                    if (err) {
-                        console.log("*** file move error", err);
-                    }
-                });
-                console.log("*** Files is now moved to uploads folder");
-                new_venue.pic_url = new_file_name;
-            } else{
-                console.log("****** not file_type")
-                return
-            }
-        } else {
-            console.log("****** not files")
-            return
-        }
-        new_venue.save()
-            .then(() => {
-                return res.json(new_venue);
-            })
-            .catch(err => {
-                console.log("*** my_venue save error", err);
+        Venue.create(req.body, (err, venue) => {
+            if (err) {
                 return res.json(err);
-            });
+            }
+            return res.json(venue);
+        });
     }
-
-    // create(req, res) {
-    //     Venue.create(req.body, (err, venue) => {
-    //         if (err) {
-    //             return res.json(err);
-    //         }
-    //         return res.json(venue);
-    //     });
-    // }
 
     upload(req, res, next) {
         let new_venue = new Venue(req.body);
@@ -126,10 +88,13 @@ class VenuesController {
             if (file_type) {
                 new_venue.pic_url = new_file_name;
                 busboy.on("finish", function () {
+                    const venue = req.body
+                    console.log("**** req.body:", req.body)
+                    console.log("**** venue:", venue)
                     const file = req.files.picture;
-                    console.log("Done parsing form!");
+                    console.log("Done parsing file:");
                     console.log(file);
-                    uploadToS3(file);
+                    uploadToS3(file, venue);
                 });
                 req.pipe(busboy);
                 console.log("*** Files is now uploaded");
