@@ -13,7 +13,7 @@ const AWS = require("aws-sdk");
 const Busboy = require("busboy");
 
 
-function uploadToS3(file) {
+function uploadToS3(file, new_venue) {
   let s3bucket = new AWS.S3({
     accessKeyId: IAM_USER_KEY,
     secretAccessKey: IAM_USER_SECRET,
@@ -114,16 +114,36 @@ class VenuesController {
     // }
 
     upload(req, res, next) {
-        const new_venue = new Venue(req.body);
-        var busboy = new Busboy({ headers: req.headers });
-        // The file upload has completed
-        busboy.on("finish", function() {
-            console.log("Upload finished");
-            const file = req.files.picture;
-            console.log(file);
-            uploadToS3(file);
-        });
-        req.pipe(busboy);
+        let new_venue = new Venue(req.body);
+        let busboy = new Busboy({ headers: req.headers });
+        if (req.files.picture) {
+            let file = req.files.picture;
+            console.log("*** server recieved file named:", file);
+            let file_type = file.mimetype.match(/image\/(\w+)/);
+            console.log("*** server file type", file_type);
+            let new_file_name = file.name;
+
+            if (file_type) {
+                new_venue.pic_url = new_file_name;
+                busboy.on("finish", function () {
+                    const file = req.files.picture;
+                    console.log("Done parsing form!");
+                    console.log(file);
+                    uploadToS3(file);
+                });
+                req.pipe(busboy);
+                console.log("*** Files is now uploaded");
+            }
+        }
+
+        new_venue.save()
+            .then(() => {
+                return res.json(new_venue);
+            })
+            .catch(err => {
+                console.log("*** my_venue save error", err);
+                return res.json(err);
+            });
     }
 
 

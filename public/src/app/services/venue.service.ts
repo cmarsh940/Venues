@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+import { tap, map, catchError } from 'rxjs/operators';
 import { MessageService } from './messages.service';
 import { Venue } from '../models/venue';
 
@@ -19,13 +23,20 @@ export class VenueService {
   }
 
   createVenue(newVenue: Venue, callback) {
-    return this._http.post('/upload', newVenue).subscribe(
+    return this._http.post('/venues', newVenue).subscribe(
       res => {
         const venue = res.json();
         callback(venue);
       },
       err => console.log(err)
     );
+  }
+
+  post_to_s3(form_data) {
+    return this._http
+      .post('/venues/upload', form_data)
+      .map(data => data.json())
+      .toPromise();
   }
 
   destroy(id: string, callback) {

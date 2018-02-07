@@ -1,5 +1,5 @@
 import { UserService } from './../../../services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../../models/user';
 import { Venue } from '../../../models/venue';
@@ -27,6 +27,10 @@ export class VenueNewComponent implements OnInit {
   errors: string[] = [];
 
   public uploader: FileUploader = new FileUploader({ url: URL });
+
+  @ViewChild('file') file_input;
+  @ViewChild('form') my_form;
+  @Output() newVenue_event = new EventEmitter();
 
   amenityControl= new FormControl();
   
@@ -68,26 +72,40 @@ export class VenueNewComponent implements OnInit {
     this._categoryService.getCategories((categories) => this.categories = categories);
   }
 
+  // createVenue() {
+  //   if (this.currentUser !== null) {
+  //     console.log("*** currentUser:", this.currentUser)
+  //     this.errors = [];
+  //     return this._venueService.createVenue(this.newVenue, (venue) => {
+  //       console.log(venue);
+  //       if (venue.errors) {
+  //         for (const key of Object.keys(venue.errors)) {
+  //           const errors = venue.errors[key];
+  //           this.errors.push(errors.message);
+  //         }
+  //       } else {
+  //         this.getVenues();
+  //         this.newVenue = new Venue();
+  //         this._router.navigate(['/list_venue']);
+  //       }
+  //     })
+  //   } else {
+  //     console.log("REPORTED: You are not a administrater")
+  //     this._router.navigateByUrl('/');
+  //   }
+  // }
+
   createVenue() {
-    if (this.currentUser !== null) {
-      console.log("*** currentUser:", this.currentUser)
-      this.errors = [];
-      return this._venueService.createVenue(this.newVenue, (venue) => {
-        console.log(venue);
-        if (venue.errors) {
-          for (const key of Object.keys(venue.errors)) {
-            const errors = venue.errors[key];
-            this.errors.push(errors.message);
-          }
-        } else {
-          this.getVenues();
-          this.newVenue = new Venue();
-          this._router.navigate(['/list_venue']);
-        }
-      })
-    } else {
-      console.log("REPORTED: You are not a administrater")
-      this._router.navigateByUrl('/');
-    }
+    let form_data = new FormData(this.my_form.nativeElement);
+    console.log("*** This is the form data", form_data);
+    this._venueService.post_to_s3(form_data).then(() => {
+      console.log("*** Setting new venue");
+      this.newVenue = new Venue();
+      console.log("*** Setting file value");
+      this.file_input.nativeElement.value = "";
+      console.log("*** About to emit");
+      this.newVenue_event.emit();
+      this._router.navigate(['/list_venue']);
+    });
   }
 }

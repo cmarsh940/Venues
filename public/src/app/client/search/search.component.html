@@ -79,7 +79,7 @@
             <div class="card-group" *ngFor="let venue of venues | filterVenues: search_text; let i = index">
                 <mat-card class="card" [tabindex]="i">
                     <ng-container *ngIf="venue.static_pic_url; else elseTemplate">
-                        <img mat-card-image src='imgs/{{venue.static_pic_url}}' alt="Venue Picture">
+                        <img mat-card-image src="https://tulsa-venues.s3.amazonaws.com/Venues/{{venue.pic_url}}" alt="Venue Picture">
                     </ng-container>
                     <ng-template #elseTemplate>
                         <img mat-card-image src='/assets/images/missing.png' alt="Venue Picture">
