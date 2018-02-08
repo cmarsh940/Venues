@@ -38,9 +38,9 @@ import { tap } from 'rxjs/operators/tap';
 })
 export class VenueComponent implements OnInit, OnDestroy {
   venue = new Venue();
-  vender: Vender[];
+  vender: Vender[] = [];
   subscription: Subscription;
-  num = 1;
+  random: number;
 
   // OVERLAY & PORTAL
   nextPosition: number = 0;
@@ -70,6 +70,7 @@ export class VenueComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.getVender();
     this.getVenue();
   }
 
@@ -83,8 +84,13 @@ export class VenueComponent implements OnInit, OnDestroy {
     );
   }
 
-  getVender(num) {
-    this._venderService.getRandomVender(num, (vender) => this.vender = vender);
+  getVender() {
+    this._venderService.getVenders((vender) => {
+      this.random = Math.floor((Math.random() * vender.length));
+      this.vender = vender[this.random];
+      console.log("Random number:" + this.random);
+      console.log(this.vender);
+    });
   }
 
   goBack(): void {

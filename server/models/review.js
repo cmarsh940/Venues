@@ -32,4 +32,22 @@ const ReviewSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
+
+Model.on('index', function (err) { // <-- Wait for model's indexes to finish
+    assert.ifError(err);
+    Model.create([{ email: 'Val' }, { email: 'Val' }], function (err) {
+        console.log(err);
+    });
+});
+
+// Promise based alternative. `init()` returns a promise that resolves
+// when the indexes have finished building successfully. The `init()`
+// function is idempotent, so don't worry about triggering an index rebuild.
+Model.init().then(function () {
+    assert.ifError(err);
+    Model.create([{ email: 'Val' }, { email: 'Val' }], function (err) {
+        console.log(err);
+    });
+});
+
 mongoose.model('Review', ReviewSchema);
