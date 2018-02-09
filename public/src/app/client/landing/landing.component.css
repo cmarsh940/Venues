@@ -81,18 +81,38 @@ h2 {
 }
 
 .vender-card {
-  display: inline-flex;
-  margin: 2%;
+  display: inline-block;
+  padding: 0;
+  margin: 1%;
 }
 
 .card {
-  width: 15em;
-  border-radius: 5%;
-  overflow: hidden;
+    max-width: 15em;
+    min-width: 15rem;
+    max-height: 21rem;
+    min-height: 21rem;
+    border-radius: 5%;
+    overflow: hidden;
+    padding: 0;
 }
+
+.mat-card-image {
+    margin: 0;
+    max-height: 15rem;
+    min-height: 15rem;
+    object-fit: fill;
+    
+}
+
 
 .vender-button {
     width:100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
 }
 
 h5 {
@@ -126,4 +146,8 @@ ul {
 
 .search-icon img {
     width: 65%;
+}
+
+img {
+    object-fit: cover;
 }

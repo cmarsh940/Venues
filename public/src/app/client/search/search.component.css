@@ -74,7 +74,8 @@
 
 
   #vender-image {
-    width: 50%;
+    min-width: 10rem;
+    max-width: 10rem;
     margin-top: 10%;
     opacity: 1;
     display: block;
@@ -134,8 +135,9 @@
     z-index:0;
   }
 
-  div.container {
+  div.container-fluid {
     width:100%;
+    padding: 0 10%;
   }
 
   h1, h2, h4 {
@@ -158,6 +160,13 @@
 
   .imageGrid {
     width: 100%;
+  }
+
+  .mat-card-image {
+    max-height: 10rem;
+    min-height: 10rem;
+    object-fit: scale-down;
+    object-position: center;
   }
 
   .mat-card-content {

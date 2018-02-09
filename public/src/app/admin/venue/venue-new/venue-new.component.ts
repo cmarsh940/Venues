@@ -9,9 +9,6 @@ import { Amenity } from '../../../models/amenity';
 import { FormControl } from '@angular/forms';
 import { Category } from '../../../models/category';
 import { CategoryService } from '../../../services/category.service';
-import { FileUploader } from 'ng2-file-upload';
-
-const URL = '/upload';
 
 @Component({
   selector: 'app-venue-new',
@@ -26,7 +23,6 @@ export class VenueNewComponent implements OnInit {
   newVenue: Venue = new Venue();
   errors: string[] = [];
 
-  public uploader: FileUploader = new FileUploader({ url: URL });
 
   @ViewChild('file') file_input;
   @ViewChild('form') my_form;
@@ -101,12 +97,13 @@ export class VenueNewComponent implements OnInit {
       console.log("REPORTED: You do not have administration privilages")
       this._router.navigateByUrl('/');
     } else {
+      console.log("*** This is the newVenue before sending it to s3:", this.newVenue);
       let form_data = new FormData(this.my_form.nativeElement);
       console.log("*** This is the form data", form_data);
       this._venueService.post_to_s3(form_data).then(() => {
         console.log("*** Setting new venue");
         this.newVenue = new Venue();
-        console.log("*** Setting file value");
+        console.log("*** Setting file value", form_data);
         this.file_input.nativeElement.value = "";
         console.log("*** About to emit");
         this.newVenue_event.emit();

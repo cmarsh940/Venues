@@ -33,8 +33,8 @@ export class VenueService {
   }
 
   post_to_s3(form_data) {
-    return this._http
-      .post('/venues/upload', form_data)
+    console.log("**** HIT SERVICE", form_data)
+    return this._http.post('/venues/upload', form_data)
       .map(data => data.json())
       .toPromise();
   }

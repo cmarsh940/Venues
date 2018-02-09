@@ -15,7 +15,8 @@ export class Venue {
     video_url: string;
     amenities: any;
     category: any;
-    galleryItems: any
+    galleryItems: any;
+    review: any;
     createdAt: any;
     updatedAt: any;
 }

@@ -57,11 +57,13 @@ export class DashboardComponent implements OnInit {
   }
 
   getVenues(): void {
-    this._venueService.getVenues((venues) => this.venues = venues)
+    this._venueService.getVenues((venues) => this.venues = venues);
   }
+
   getAmenity(): void{
-    this._amenityService.getAmenities((amenities) => this.amenities = amenities)
+    this._amenityService.getAmenities((amenities) => this.amenities = amenities);
   }
+
   getUsers(): void {
     this._userService.getUsers((users) => this.users = users);
   }

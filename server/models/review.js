@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const ReviewSchema = new mongoose.Schema({
+var ReviewSchema = new mongoose.Schema({
     email: {
         type: String,
         unique: [true, "You can only leave 1 review"],
@@ -29,25 +29,11 @@ const ReviewSchema = new mongoose.Schema({
         type: Boolean,
         required: false,
         default: false
+    },
+    venue: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Venue'
     }
 }, { timestamps: true });
-
-
-Model.on('index', function (err) { // <-- Wait for model's indexes to finish
-    assert.ifError(err);
-    Model.create([{ email: 'Val' }, { email: 'Val' }], function (err) {
-        console.log(err);
-    });
-});
-
-// Promise based alternative. `init()` returns a promise that resolves
-// when the indexes have finished building successfully. The `init()`
-// function is idempotent, so don't worry about triggering an index rebuild.
-Model.init().then(function () {
-    assert.ifError(err);
-    Model.create([{ email: 'Val' }, { email: 'Val' }], function (err) {
-        console.log(err);
-    });
-});
 
 mongoose.model('Review', ReviewSchema);

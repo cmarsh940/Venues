@@ -4,7 +4,7 @@
             <div class="carousel-inner">
                 <ng-container *ngIf="vender.pic_url; else elseTemplate">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src='imgs/{{vender.pic_url}}' class="vender-image" alt="Vender slide pictures">
+                        <img class="d-block w-100" src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' class="vender-image" alt="Vender slide pictures">
                     </div>
                 </ng-container>
                 <ng-template #elseTemplate>
@@ -41,11 +41,36 @@
                 </ul>
             </div>
             <div class="col-5">
-                <h2 class="text-center">ABOUT {{vender.name}}</h2>
                 <p class="text-center">{{vender.description}}</p>
             </div>
             <div class="col-3">
-                <h2 class="text-center">SOMETHING</h2>
+                <h2 class="text-center">Follow {{vender.name}}</h2>
+                <ul id="vender-contact">
+                    <li class="list-items">
+                        <a href='{{ venue?.facebook_url }}' target='_blank'>
+                            <mat-icon aria-label="Vender facebook icon link">
+                                <img src="/assets/images/facebook.svg" alt="Facebook icon">
+                            </mat-icon>
+                            <p>{{vender?.name}}'s Facebook page</p>
+                        </a>
+                    </li>
+                    <li class="list-items">
+                        <a href='{{vender?.instagram_url}}' target='_blank'>
+                            <mat-icon aria-label="instagram icon link">
+                                <img src="/assets/images/instagram.svg" alt="Instagram icon">
+                            </mat-icon>
+                            <p>{{vender?.name}}'s Instagram page</p>
+                        </a>
+                    </li>
+                    <li class="list-items">
+                        <a href='tel:{{ vender?.phone }}' data-type='phone'>
+                            <mat-icon aria-label="Phone icon link">
+                                <i class="material-icons">&#xE0CD;</i>
+                            </mat-icon>
+                            <p>Call {{ vender?.name }}</p>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

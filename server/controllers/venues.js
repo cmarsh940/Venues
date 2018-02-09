@@ -76,8 +76,11 @@ class VenuesController {
     }
 
     upload(req, res, next) {
+        console.log("*** SERVER REQ.BODY:", req.body)
         let new_venue = new Venue(req.body);
+        console.log("*** SERVER SET NEW_VENUE:", new_venue)
         let busboy = new Busboy({ headers: req.headers });
+        console.log("*** SERVER SET BUSBOY TO HEADERS:", busboy)
         if (req.files.picture) {
             let file = req.files.picture;
             console.log("*** server recieved file named:", file);

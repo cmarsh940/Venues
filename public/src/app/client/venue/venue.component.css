@@ -112,6 +112,12 @@ h2 {
   max-height: 12rem;
   min-height: 12rem;
   border: 1px solid lightgrey;
+  overflow: hidden;
+}
+
+#vender-image {
+  max-width: 7rem;
+  min-width: 7rem;
 }
 
 #rating {
@@ -147,10 +153,16 @@ i {
   color:black;
 }
 
+.tab-icon{
+  color: black;
+  margin-right: 1%;
+}
+
 
 .mat-icon, p {
   display: inline-block;
   vertical-align: text-top;
+  color: black;
 }
 
 .col-12 {
@@ -193,4 +205,12 @@ div#cdk-overlay-1.cdk-overlay-pane element.style {
 
 .bottom {
   margin-top: 5%;
+}
+
+.vender-link:hover img {
+  opacity: 0.3;
+}
+
+.vender-link:hover .middle {
+  opacity: 1;
 }

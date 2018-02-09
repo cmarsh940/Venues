@@ -14,14 +14,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  venders: Array<Vender>
   vender: Vender[] = [];
-  vender2: Vender[] = [];
+  venderTwo: Vender[] = [];
   venues: Array<Venue>;
   search_text: String = "";
   finished: boolean;
   random: number;
-  random2: number;
+  randomTwo: number;
 
   zoom: number = 8;
   latitude: number;
@@ -42,19 +41,17 @@ export class SearchComponent implements OnInit {
   }
 
   getVenders() {
-    this._venderService.getVenders((venders) => {
-      this.random = Math.floor((Math.random() * venders.length));
-      this.random2 = Math.floor((Math.random() * venders.length));
-      this.vender = venders[this.random];
-      this.vender2 = venders[this.random2];
-      console.log("Random number:" + this.random);
-      console.log("Random2 number:" + this.random2);
+    this._venderService.getVenders((vender) => {
+      this.random = Math.floor((Math.random() * vender.length));
+      console.log("Random number:", this.random);
+      this.vender = vender[this.random];
       console.log(this.vender);
-      console.log(this.vender2);
+      this.randomTwo = Math.floor((Math.random() * vender.length));
+      console.log("RandomTwo number:", this.randomTwo);
+      this.venderTwo = vender[this.randomTwo];
+      console.log(this.venderTwo);
     });
   }
-
-  
 
   getVenues(): void {
     this._venueService.getVenues((venues) => this.venues = venues)

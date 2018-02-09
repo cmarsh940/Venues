@@ -3,22 +3,26 @@
 </div>
 <div>
     <mat-chip-list>
-        <mat-chip color="plain" selected="true" routerLink="/list_venue">Total Venues:
+        <mat-chip color="plain" selected="true" routerLink="/list_venue">
+            Total Venues:
             <div *ngIf="venues">
                 {{ venues.length }}
             </div>
         </mat-chip>
-        <mat-chip color="plain" selected="true" routerLink="/list_vender">Total Venders:
-            <div *ngIf="vender">
+        <mat-chip color="plain" selected="true" routerLink="/list_vender">
+            Total Vendors: 
+            <div *ngIf="venders">
                 {{ venders.length }}
             </div>
         </mat-chip>
-        <mat-chip color="plain" selected="true" routerLink="/list_amenity">Total Amenities:
+        <mat-chip color="plain" selected="true" routerLink="/list_amenity">
+            Total Amenities:
             <div mat-chip-value *ngIf="amenities">
                 {{ amenities.length }}
             </div>
         </mat-chip>
-        <mat-chip color="plain" selected="true" routerLink="/list_admin">Total Users:
+        <mat-chip color="plain" selected="true" routerLink="/list_admin">
+            Total Users:
             <div mat-chip-value *ngIf="users">
                 {{ users.length }}
             </div>
