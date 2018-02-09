@@ -75,7 +75,7 @@ class VenuesController {
         });
     }
 
-    upload(req, res, next) {
+    upload(req, res) {
         console.log("*** SERVER REQ.BODY:", req.body)
         let new_venue = new Venue(req.body);
         console.log("*** SERVER SET NEW_VENUE:", new_venue)
@@ -104,14 +104,20 @@ class VenuesController {
             }
         }
 
-        new_venue.save()
-            .then(() => {
-                return res.json(new_venue);
-            })
-            .catch(err => {
-                console.log("*** my_venue save error", err);
+        new_venue.save((err, new_venue) => {
+            if (err) {
                 return res.json(err);
-            });
+            }
+            return res.json(new_venue);
+        });
+        // new_venue.save()
+        //     .then(() => {
+        //         return res.json(new_venue);
+        //     })
+        //     .catch(err => {
+        //         console.log("*** my_venue save error", err);
+        //         return res.json(err);
+        //     });
     }
 
 

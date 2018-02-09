@@ -73,7 +73,7 @@ export class VenderNewComponent implements OnInit {
     } else {
       let form_data = new FormData(this.my_form.nativeElement);
       console.log("*** This is the form data", form_data);
-      this._venderService.post_to_s3(form_data).then(() => {
+      this._venderService.post_to_s3(form_data, res => {
         console.log("*** Setting new venue");
         this.newVender = new Vender();
         console.log("*** Setting file value");

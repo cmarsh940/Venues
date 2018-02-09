@@ -78,6 +78,7 @@ class VendersController {
     }
 
     upload(req, res, next) {
+        console.log("*** SERVER REQ.BODY:", req.body)
         let new_vender = new Vender(req.body);
         let busboy = new Busboy({ headers: req.headers });
         if (req.files.picture) {
@@ -103,17 +104,13 @@ class VendersController {
             }
         }
 
-        new_vender.save()
-            .then(() => {
-                return res.json(new_vender);
-            })
-            .catch(err => {
-                console.log("*** my_vender save error", err);
+        new_vender.save((err, new_vender) => {
+            if (err) {
                 return res.json(err);
-            });
+            }
+            return res.json(new_vender);
+        });
     }
-
-
 
     show(req, res) {
         Vender.findById(req.params.id, (err, vender) => {

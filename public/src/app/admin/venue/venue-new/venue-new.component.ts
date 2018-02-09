@@ -100,7 +100,7 @@ export class VenueNewComponent implements OnInit {
       console.log("*** This is the newVenue before sending it to s3:", this.newVenue);
       let form_data = new FormData(this.my_form.nativeElement);
       console.log("*** This is the form data", form_data);
-      this._venueService.post_to_s3(form_data).then(() => {
+      this._venueService.post_to_s3(form_data, res => {
         console.log("*** Setting new venue");
         this.newVenue = new Venue();
         console.log("*** Setting file value", form_data);

@@ -35,11 +35,15 @@ export class VenderService {
     );
   }
 
-  post_to_s3(form_data) {
-    return this._http
-      .post('/venders/upload', form_data)
-      .map(data => data.json())
-      .toPromise();
+  post_to_s3(form_data, callback) {
+    console.log("**** HIT SERVICE", form_data)
+    return this._http.post('/venders/upload', form_data).subscribe(
+      res => {
+        const new_vender = res.json();
+        callback(res.json())
+      },
+      err => console.log(err)
+    );
   }
 
   destroy(id: string, callback) {

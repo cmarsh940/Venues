@@ -32,11 +32,12 @@ export class VenueService {
     );
   }
 
-  post_to_s3(form_data) {
+  post_to_s3(form_data, callback) {
     console.log("**** HIT SERVICE", form_data)
-    return this._http.post('/venues/upload', form_data)
-      .map(data => data.json())
-      .toPromise();
+    return this._http.post('/venues/upload', form_data).subscribe(
+      res => callback(res.json()),
+      err => console.log(err)
+    );
   }
 
   destroy(id: string, callback) {
