@@ -1,4 +1,4 @@
-<button mat-raised-button (click)="goBack()">Cancel</button>
+<!-- <button mat-raised-button (click)="goBack()">Cancel</button> -->
 <h1 class="text-center">Editing {{venue.name}}</h1>
 <div class="container">
   <form (submit)="updateVenue()" #formData="ngForm" class="form">
@@ -166,13 +166,13 @@
 
     <button mat-raised-button type='submit' [disabled]=!formData.valid>Submit</button>
   </form>
-
+</div>
 
 <!-- UPLOADING AND IMAGES -->
 
 
 
-  <div>
+  <!-- <div>
     <mat-toolbar color="primary">
       <span>
         <mat-icon>photo_library</mat-icon>
@@ -187,13 +187,13 @@
           </mat-card>
         </div>
         <mat-progress-bar mode="indeterminate" color="primary" bufferValue="0" *ngIf="dataLoading"></mat-progress-bar>
-      </mat-tab>
+      </mat-tab> -->
 
 
 <!-- UPLOAD -->
 
 
-      <mat-tab label="Uploader">
+      <!-- <mat-tab label="Uploader">
         <div style="margin: 30px 30px">
           <div class="row">
             <div class="col-md-3">
@@ -288,4 +288,4 @@
   </div>
 </div>
 
-
+ -->

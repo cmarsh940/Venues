@@ -11,7 +11,7 @@ import { VenueService } from '../../../services/venue.service';
 import { CategoryService } from '../../../services/category.service';
 import { Category } from '../../../models/category';
 import { MatTabChangeEvent } from '@angular/material';
-import { FileUploader } from 'ng2-file-upload';
+// import { FileUploader } from 'ng2-file-upload';
 import { Amenity } from '../../../models/amenity';
 import { AmenityService } from '../../../services/amenity.service';
 
@@ -32,17 +32,17 @@ export class VenueEditComponent implements OnInit, OnDestroy {
   fetchItems: any[];
   dataLoading: boolean;
 
-  public uploader: FileUploader = new FileUploader({ url: URL });
-  public hasBaseDropZoneOver: boolean = false;
-  public hasAnotherDropZoneOver: boolean = false;
+  // public uploader: FileUploader = new FileUploader({ url: URL });
+  // public hasBaseDropZoneOver: boolean = false;
+  // public hasAnotherDropZoneOver: boolean = false;
 
-  public fileOverBase(e: any): void {
-    this.hasBaseDropZoneOver = e;
-  }
+  // public fileOverBase(e: any): void {
+  //   this.hasBaseDropZoneOver = e;
+  // }
 
-  public fileOverAnother(e: any): void {
-    this.hasAnotherDropZoneOver = e;
-  }
+  // public fileOverAnother(e: any): void {
+  //   this.hasAnotherDropZoneOver = e;
+  // }
 
   
   constructor(
@@ -86,7 +86,6 @@ export class VenueEditComponent implements OnInit, OnDestroy {
     this.subscription = this._activatedRoute.params.subscribe(
       params => this._venueService.showVenue(params.id, res => this.venue = res)
     );
-    let item = this.venue.galleryItems
   }
   getAmenities(): void {
     this._amenityService.getAmenities((amenities) => this.amenityList = amenities);
@@ -102,24 +101,24 @@ export class VenueEditComponent implements OnInit, OnDestroy {
   }
 
 
-  goBack(): void {
-    this.location.back();
-  }
+  // goBack(): void {
+  //   this.location.back();
+  // }
 
-  updateGalleryItems() {
-    this.dataLoading = true;
-    console.log('Updating Gallery Items')
-    this.subscription = this._activatedRoute.params.subscribe(
-      params => this._venueService.getImages(params.id, res => this.venue = res)
-    );
-    this.dataLoading = false;
-  }
+  // updateGalleryItems() {
+  //   this.dataLoading = true;
+  //   console.log('Updating Gallery Items')
+  //   this.subscription = this._activatedRoute.params.subscribe(
+  //     params => this._venueService.getImages(params.id, res => this.venue = res)
+  //   );
+  //   this.dataLoading = false;
+  // }
 
-  onLinkClick(tabChangeEvent: MatTabChangeEvent): void {
-    if (tabChangeEvent.index == 0) {
-      this.updateGalleryItems();
-    }
-  }
+  // onLinkClick(tabChangeEvent: MatTabChangeEvent): void {
+  //   if (tabChangeEvent.index == 0) {
+  //     this.updateGalleryItems();
+  //   }
+  // }
 
   
 

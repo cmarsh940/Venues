@@ -51,3 +51,8 @@ button {
 .submit-button {
     margin-top: 3%;
 }
+
+.example-additional-selection {
+  opacity: 0.75;
+  font-size: 0.75em;
+}

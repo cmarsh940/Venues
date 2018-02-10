@@ -30,7 +30,7 @@ import { ReviewNewComponent } from './review/review-new/review-new.component';
 import { ReviewService } from '../services/review.service';
 import { CategoryShowComponent } from './category/category-show/category-show.component';
 import { CategoryEditComponent } from './category/category-edit/category-edit.component';
-import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
+import { SortVenuesPipe } from '../pipes/sort-venues.pipe';
 
 @NgModule({
   imports: [
@@ -38,7 +38,6 @@ import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-u
     HttpModule,
     CommonModule,
     AdminRoutingModule,
-    FormsModule,
     MaterialModule,
     ReactiveFormsModule,
   ],
@@ -60,8 +59,7 @@ import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-u
     ReviewNewComponent,
     CategoryShowComponent,
     CategoryEditComponent,
-    FileSelectDirective,
-    FileDropDirective,
+    SortVenuesPipe
   ],
   providers: [
     AmenityService,

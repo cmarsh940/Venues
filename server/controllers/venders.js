@@ -77,7 +77,8 @@ class VendersController {
         });
     }
 
-    upload(req, res, next) {
+    upload(req, res) {
+        console.log("*** SERVER REQ:", req)
         console.log("*** SERVER REQ.BODY:", req.body)
         let new_vender = new Vender(req.body);
         let busboy = new Busboy({ headers: req.headers });
@@ -108,6 +109,7 @@ class VendersController {
             if (err) {
                 return res.json(err);
             }
+            console.warn("*** WARN *** SERVER NEW_VENDER", new_vender);
             return res.json(new_vender);
         });
     }
