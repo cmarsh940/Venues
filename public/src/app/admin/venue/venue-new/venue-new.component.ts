@@ -18,7 +18,7 @@ import { CategoryService } from '../../../services/category.service';
 export class VenueNewComponent implements OnInit {
   currentUser: User;
   venues: Venue[];
-  amenities: Amenity[];
+  amenitiesList: Amenity[];
   categories: Category[];
   newVenue: Venue = new Venue();
   errors: string[] = [];
@@ -26,9 +26,10 @@ export class VenueNewComponent implements OnInit {
 
   @ViewChild('file') file_input;
   @ViewChild('form') my_form;
+  @ViewChild('amenities')  amenities_input ;
   @Output() newVenue_event = new EventEmitter();
 
-  amenityControl= new FormControl();
+  // amenityControl= new FormControl();
   
   constructor(
     private _userService: UserService,
@@ -62,7 +63,7 @@ export class VenueNewComponent implements OnInit {
     this._venueService.getVenues((venues) => this.venues = venues);
   }
   getAmenities(): void {
-    this._amenityService.getAmenities((amenities) => this.amenities = amenities);
+    this._amenityService.getAmenities((amenities) => this.amenitiesList = amenities);
   }
   getCategories(): void {
     this._categoryService.getCategories((categories) => this.categories = categories);
@@ -93,12 +94,14 @@ export class VenueNewComponent implements OnInit {
 
   createVenue() {
     this.errors = [];
+    console.log("**** THIS.NEWVENUE:", this.newVenue);
     if (this._userService.getCurrentUser() == null) {
       console.log("REPORTED: You do not have administration privilages")
       this._router.navigateByUrl('/');
     } else {
-      console.log("*** This is the newVenue before sending it to s3:", this.newVenue);
       let form_data = new FormData(this.my_form.nativeElement);
+      form_data.append("amenities", this.newVenue.amenities);
+
       console.log("*** This is the form data", form_data);
       this._venueService.post_to_s3(form_data, res => {
         console.log("*** Setting new venue");
