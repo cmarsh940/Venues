@@ -36,7 +36,7 @@
                         <h5>{{vender.address}}</h5>
                     </li>
                     <li>
-                        <a href='{{vender.website}}' target='_blank' rel='nofollow noopener noreferrer'>view website</a>
+                        <a href='http://{{vender.website}}' target='_blank' rel='nofollow noopener noreferrer'>view website</a>
                     </li>
                 </ul>
             </div>
@@ -47,19 +47,19 @@
                 <h2 class="text-center">Follow {{vender.name}}</h2>
                 <ul id="vender-contact">
                     <li class="list-items">
-                        <a href='{{ venue?.facebook_url }}' target='_blank'>
+                        <a href='http://{{vender?.facebook_url}}' target='_blank'>
                             <mat-icon aria-label="Vender facebook icon link">
                                 <img src="/assets/images/facebook.svg" alt="Facebook icon">
                             </mat-icon>
-                            <p>{{vender?.name}}'s Facebook page</p>
+                            <p>{{vender?.name}}</p>
                         </a>
                     </li>
                     <li class="list-items">
-                        <a href='{{vender?.instagram_url}}' target='_blank'>
+                        <a href='http://{{vender?.instagram_url}}' target='_blank'>
                             <mat-icon aria-label="instagram icon link">
                                 <img src="/assets/images/instagram.svg" alt="Instagram icon">
                             </mat-icon>
-                            <p>{{vender?.name}}'s Instagram page</p>
+                            <p>{{vender?.name}}</p>
                         </a>
                     </li>
                     <li class="list-items">

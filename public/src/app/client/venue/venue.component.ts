@@ -26,19 +26,20 @@ import {
   ViewEncapsulation,
   Output,
   EventEmitter,
+  Input,
 } from '@angular/core';
 import { filter } from 'rxjs/operators/filter';
 import { tap } from 'rxjs/operators/tap';
 
 @Component({
-  selector: 'app-venue',
-  templateUrl: './venue.component.html',
-  styleUrls: ['./venue.component.css'],
-  preserveWhitespaces: false,
+  selector: "app-venue",
+  templateUrl: "./venue.component.html",
+  styleUrls: ["./venue.component.css"],
+  preserveWhitespaces: false
 })
 export class VenueComponent implements OnInit, OnDestroy {
   venue = new Venue();
-  vender: Vender[] = [];
+  vender: Array<Vender> = [];
   subscription: Subscription;
   random: number;
 
@@ -55,7 +56,6 @@ export class VenueComponent implements OnInit, OnDestroy {
   @ViewChildren(CdkPortal) templatePortals: QueryList<Portal<any>>;
   @ViewChild(CdkOverlayOrigin) _overlayOrigin: CdkOverlayOrigin;
 
-
   @Output() close: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(
@@ -64,10 +64,10 @@ export class VenueComponent implements OnInit, OnDestroy {
     private _activatedRoute: ActivatedRoute,
     private _router: Router,
     private location: Location,
-    public overlay: Overlay, 
+    public overlay: Overlay,
     public viewContainerRef: ViewContainerRef,
     public sanitizer: DomSanitizer
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.getVender();
@@ -79,17 +79,15 @@ export class VenueComponent implements OnInit, OnDestroy {
   }
 
   getVenue() {
-    this.subscription = this._activatedRoute.params.subscribe(
-      params => this._venueService.showVenue(params.id, res => this.venue = res)
+    this.subscription = this._activatedRoute.params.subscribe(params =>
+      this._venueService.showVenue(params.id, res => (this.venue = res))
     );
   }
 
   getVender() {
-    this._venderService.getVenders((vender) => {
-      this.random = Math.floor((Math.random() * vender.length));
+    this._venderService.getVenders(vender => {
+      this.random = Math.floor(Math.random() * vender.length);
       this.vender = vender[this.random];
-      console.log("Random number:" + this.random);
-      console.log(this.vender);
     });
   }
 
@@ -100,15 +98,17 @@ export class VenueComponent implements OnInit, OnDestroy {
   openPanelWithBackdrop() {
     let config = new OverlayConfig({
       hasBackdrop: true,
-      backdropClass: 'cdk-overlay-transparent-backdrop',
-      positionStrategy: this.overlay.position().global().centerHorizontally()
+      backdropClass: "cdk-overlay-transparent-backdrop",
+      positionStrategy: this.overlay
+        .position()
+        .global()
+        .centerHorizontally()
     });
 
     let overlayRef = this.overlay.create(config);
     overlayRef.attach(this.templatePortals.first);
     overlayRef.backdropClick().subscribe(() => overlayRef.detach());
   }
-
 }
 
 interface marker {

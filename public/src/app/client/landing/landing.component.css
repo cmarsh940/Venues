@@ -97,11 +97,10 @@ h2 {
 }
 
 .mat-card-image {
-    margin: 0;
     max-height: 15rem;
     min-height: 15rem;
-    object-fit: fill;
-    
+    object-position: bottom;
+    object-fit: scale-down;
 }
 
 
