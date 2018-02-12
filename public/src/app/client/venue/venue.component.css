@@ -104,11 +104,11 @@ h2 {
 }
 
 #venue-info {
-  max-height: 12rem;
   min-height: 12rem;
   border: 1px solid lightgrey;
 }
 #vender-info {
+  max-height: 12rem;
   min-height: 12rem;
   border: 1px solid lightgrey;
   overflow: hidden;
