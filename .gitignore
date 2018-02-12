@@ -1,5 +1,4 @@
 /public/dist
-/server/config/config.js
 
 # dependencies
 /node_modules
