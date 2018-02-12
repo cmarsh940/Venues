@@ -76,31 +76,22 @@ class VenuesController {
     }
 
     upload(req, res) {
-        console.log("*** SERVER REQ.BODY:", req.body)
         let new_venue = new Venue(req.body);
         console.log("*** SERVER SET NEW_VENUE:", new_venue)
         let busboy = new Busboy({ headers: req.headers });
-        console.log("*** SERVER SET BUSBOY TO HEADERS:", busboy)
         if (req.files.picture) {
             let file = req.files.picture;
-            console.log("*** server recieved file named:", file);
             let file_type = file.mimetype.match(/image\/(\w+)/);
-            console.log("*** server file type", file_type);
             let new_file_name = file.name;
 
             if (file_type) {
                 new_venue.pic_url = new_file_name;
                 busboy.on("finish", function () {
                     const venue = req.body
-                    console.log("**** req.body:", req.body)
-                    console.log("**** venue:", venue)
                     const file = req.files.picture;
-                    console.log("Done parsing file:");
-                    console.log(file);
                     uploadToS3(file, venue);
                 });
                 req.pipe(busboy);
-                console.log("*** Files is now uploaded");
             }
         }
 
@@ -108,6 +99,7 @@ class VenuesController {
             if (err) {
                 return res.json(err);
             }
+            console.log("**** this is the new venue:", new_venue);
             return res.json(new_venue);
         });
         // new_venue.save()

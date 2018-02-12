@@ -4,39 +4,39 @@
 <h1>Add a Vender</h1>
 <form (ngSubmit)="createVender()" #form encType="multipart/form-data">
   <mat-form-field>
-    <input matInput name="name" required maxlength=250 [(ngModel)]="newVender.name" placeholder="Vender Name" />
+    <input matInput type="text" name="name" required maxlength=250 [(ngModel)]="newVender.name" placeholder="Vender Name" />
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput name="email" required maxlength=250 [(ngModel)]="newVender.email" placeholder="Vender Email" />
+    <input matInput type="email" name="email" required maxlength=250 [(ngModel)]="newVender.email" placeholder="Vender Email" />
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput name="phone" required maxlength=20 [(ngModel)]="newVender.phone" placeholder="Vender Phone #" />
-    <mat-hint>no spaces EX: 1234567899 </mat-hint>
+    <input matInput type="tel" name="phone" required maxlength=13 [(ngModel)]="newVender.phone" placeholder="Vender Phone #" />
+    <mat-hint>no spaces EX: 123-456-7899 </mat-hint>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput name="address" required maxlength=200 [(ngModel)]="newVender.address" placeholder="Vender Address" />
+    <input matInput type="text" name="address" required maxlength=200 [(ngModel)]="newVender.address" placeholder="Vender Address" />
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput name="website" required maxlength=250 [(ngModel)]="newVender.website" placeholder="Vender Website" />
+    <input matInput type="url" name="website" required maxlength=250 [(ngModel)]="newVender.website" placeholder="Vender Website" />
     <mat-hint>EX: www.example.com</mat-hint>
   </mat-form-field>
 
   <mat-form-field>
-    <textarea matInput name="description" required minlength=1 [(ngModel)]="newVender.description" placeholder="Vender description"
+    <textarea matInput type="text" name="description" required minlength=1 [(ngModel)]="newVender.description" placeholder="Vender description"
       matTextareaAutosize matAutosizeMinRows="5" matAutosizeMaxRows="15"></textarea>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput name="facebook" maxlength=500 [(ngModel)]="newVender.facebook_url" placeholder="Venders Facebook URL" />
+    <input matInput type="url" name="facebook" maxlength=500 [(ngModel)]="newVender.facebook_url" placeholder="Venders Facebook URL" />
     <mat-hint>EX: www.facebook.com/vender</mat-hint>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput name="instagram" maxlength=500 [(ngModel)]="newVender.instagram_url" placeholder="Venders Instagram URL" />
+    <input matInput type="url" name="instagram" maxlength=500 [(ngModel)]="newVender.instagram_url" placeholder="Venders Instagram URL" />
     <mat-hint>EX: www.instagram.com/vender</mat-hint>
   </mat-form-field>
 

@@ -32,10 +32,13 @@ export class VenueService {
     );
   }
 
-  post_to_s3(form_data, callback) {
+  post_to_s3(form_data, newVenue, callback) {
     console.log("**** HIT SERVICE", form_data)
-    return this._http.post('/venues/upload', form_data).subscribe(
-      res => callback(res.json()),
+    return this._http.post('/venues/upload', form_data, newVenue).subscribe(
+      res => {
+        console.log("**** THIS IS THE RESPONSE:", res.json());
+        callback(res.json())
+      },
       err => console.log(err)
     );
   }

@@ -26,7 +26,8 @@ export class VenueNewComponent implements OnInit {
 
   @ViewChild('file') file_input;
   @ViewChild('form') my_form;
-  @ViewChild('amenities')  amenities_input ;
+  // @ViewChild('amenities')  amenities_input ;
+  // @ViewChild('category')  category_input;
   @Output() newVenue_event = new EventEmitter();
 
   // amenityControl= new FormControl();
@@ -100,10 +101,13 @@ export class VenueNewComponent implements OnInit {
       this._router.navigateByUrl('/');
     } else {
       let form_data = new FormData(this.my_form.nativeElement);
-      form_data.append("amenities", this.newVenue.amenities);
+      // let amenities_array = new Array();
+      // amenities_array = this.newVenue.amenities
+      // form_data.append("amenities", amenities_array);
+      // form_data.append("category", this.newVenue.category);
 
-      console.log("*** This is the form data", form_data);
-      this._venueService.post_to_s3(form_data, res => {
+      // console.log("*** This is the form data", form_data);
+      this._venueService.post_to_s3(form_data, this.newVenue, res => {
         console.log("*** Setting new venue");
         this.newVenue = new Venue();
         console.log("*** Setting file value", form_data);

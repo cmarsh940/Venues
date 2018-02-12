@@ -6,6 +6,7 @@
     <mat-form-field>
       <input 
         matInput 
+        type="text"
         name="name" 
         required 
         maxlength=250 
@@ -17,6 +18,7 @@
     <mat-form-field>
       <input 
         matInput 
+        type="email"
         name="email" 
         required 
         maxlength=250 
@@ -28,18 +30,20 @@
     <mat-form-field>
       <input 
         matInput 
+        type="tel"
         name="phone" 
         required 
-        maxlength=20 
+        maxlength=14 
         [(ngModel)]="newVenue.phone"  
         placeholder="Venue Phone #"
       />
-      <mat-hint>no spaces EX: 1234567899 </mat-hint>
+      <mat-hint>no spaces EX: 123-456-7899 </mat-hint>
     </mat-form-field>
 
     <mat-form-field>
       <input 
-        matInput 
+        matInput
+        type="text"
         name="address" 
         required 
         maxlength=200 
@@ -53,12 +57,12 @@
     </div>
     <div class="input-container">
       <mat-form-field>
-        <input matInput name="lat" required maxlength=50 [(ngModel)]="newVenue.lat" placeholder="Latitude" />
+        <input matInput type="number" name="lat" required maxlength=50 [(ngModel)]="newVenue.lat" placeholder="Latitude" />
         <mat-hint>EX: 36.153883</mat-hint>
       </mat-form-field>
     
       <mat-form-field>
-        <input matInput name="lng" required maxlength=50 [(ngModel)]="newVenue.lng" placeholder="Longitude" />
+        <input matInput type="number" name="lng" required maxlength=50 [(ngModel)]="newVenue.lng" placeholder="Longitude" />
         <mat-hint>EX: -95.990629</mat-hint>
       </mat-form-field>
     </div>
@@ -66,6 +70,7 @@
     <mat-form-field>
       <input 
         matInput 
+        type="url"
         name="website" 
         required 
         maxlength=250 
@@ -76,8 +81,8 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="Venue Amenities" #amenities name="amenities" [(ngModel)]="newVenue.amenities" multiple>
-        <mat-option *ngFor="let amenity of amenitiesList" [value]="amenity" [innerHTML]="amenity.name"></mat-option>
+      <mat-select placeholder="Venue Amenities" name="amenities" [(ngModel)]="newVenue.amenities" multiple>
+        <mat-option *ngFor="let amenity of amenitiesList" [value]="amenity._id" [innerHTML]="amenity.name"></mat-option>
       </mat-select>
     </mat-form-field>
 
@@ -118,16 +123,16 @@
     </div> 
 
     <mat-form-field>
-      <textarea matInput name="description" required [(ngModel)]="newVenue.description" placeholder="Venue description" matTextareaAutosize matAutosizeMinRows="5" matAutosizeMaxRows="15"></textarea>
+      <textarea matInput type="text" name="description" required [(ngModel)]="newVenue.description" placeholder="Venue description" matTextareaAutosize matAutosizeMinRows="5" matAutosizeMaxRows="15"></textarea>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput name="tour" maxlength=500 [(ngModel)]="newVenue.tour_url" placeholder="Venue 3D Tour" />
+      <input matInput type="url" name="tour" maxlength=500 [(ngModel)]="newVenue.tour_url" placeholder="Venue 3D Tour" />
       <mat-hint>3D Tour URL</mat-hint>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput name="video" maxlength=500 [(ngModel)]="newVenue.video_url" placeholder="Venue Video" />
+      <input matInput type="url" name="video" maxlength=500 [(ngModel)]="newVenue.video_url" placeholder="Venue Video" />
       <mat-hint>Video URL</mat-hint>
     </mat-form-field>
 
@@ -139,7 +144,6 @@
       <button mat-raised-button type="submit" color="accent">Submit</button>
     </div>
   </form>
-  {{ newVenue | json }}
 
   <div>
     <p class="error" *ngFor="let error of errors">{{ error }}</p>

@@ -65,7 +65,7 @@
                     </ng-container>
                     <ng-template #elseTemplate>
                         <div class="vender-link">
-                            <a [routerLink]="['/vender', 'display', v._id]">
+                            <a [routerLink]="['/vender', 'display', vender._id]">
                                 <img src='/assets/images/missing.png' class="rounded-circle mx-auto d-block" id="vender-image" alt="Venue Picture">
                                 <div class="middle rounded-circle">
                                     <div class="text">{{vender?.name}}</div>
@@ -162,7 +162,6 @@
                         <i class="material-icons">&#xE876;</i> {{amenity.name}}
                     </mat-list-item>
                 </mat-list>
-                {{ venue | json }}
             </div>
             <div class="col-9">
                 <mat-toolbar color="accent">REVIEWS</mat-toolbar>
