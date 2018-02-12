@@ -5,33 +5,31 @@ import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
   currentUser: User = new User();
   errors: string[] = [];
+  newUser: User = new User();
   hide = true;
-  email = new FormControl('', [Validators.required, Validators.email]);
+  email = new FormControl("", [Validators.required, Validators.email]);
+  password_confirmation: string;
 
   getErrorMessage() {
-    return this.email.hasError('required') ? 'You must enter a value' :
-      this.email.hasError('email') ? 'Not a valid email' :
-        '';
+    return this.email.hasError("required")
+      ? "You must enter a value"
+      : this.email.hasError("email") ? "Not a valid email" : "";
   }
 
-  constructor(
-    private _userService: UserService,
-    private _router: Router
-  ) { }
+  constructor(private _userService: UserService, private _router: Router) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   loginUser() {
     this.errors = [];
-    this._userService.authenticate(this.currentUser, (user) => {
+    this._userService.authenticate(this.currentUser, user => {
       console.log(user);
       if (user.errors) {
         for (const key of Object.keys(user.errors)) {
@@ -40,7 +38,23 @@ export class LoginComponent implements OnInit {
         }
       } else {
         this._userService.setCurrentUser(user);
-        this._router.navigateByUrl('/admin_dashboard');
+        this._router.navigateByUrl("/admin_dashboard");
+      }
+    });
+  }
+
+  createUser() {
+    this.errors = [];
+    return this._userService.createUser(this.newUser, user => {
+      console.log(user);
+      if (user.errors) {
+        for (let key in user.errors) {
+          let errors = user.errors[key];
+          this.errors.push(errors.message);
+        }
+      } else {
+        this._userService.setCurrentUser(user);
+        this._router.navigate(["/list_admin"]);
       }
     });
   }

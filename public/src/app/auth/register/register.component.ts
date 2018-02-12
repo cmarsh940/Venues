@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
   newUser: User = new User();
   users: Array<User> = []
   errors: string[] = [];
+  password_confirmation: string;
   
 
   constructor(
