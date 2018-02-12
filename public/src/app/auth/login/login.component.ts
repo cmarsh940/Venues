@@ -12,10 +12,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   currentUser: User = new User();
   errors: string[] = [];
-  newUser: User = new User();
   hide = true;
   email = new FormControl("", [Validators.required, Validators.email]);
-  password_confirmation: string;
 
   getErrorMessage() {
     return this.email.hasError("required")
@@ -39,22 +37,6 @@ export class LoginComponent implements OnInit {
       } else {
         this._userService.setCurrentUser(user);
         this._router.navigateByUrl("/admin_dashboard");
-      }
-    });
-  }
-
-  createUser() {
-    this.errors = [];
-    return this._userService.createUser(this.newUser, user => {
-      console.log(user);
-      if (user.errors) {
-        for (let key in user.errors) {
-          let errors = user.errors[key];
-          this.errors.push(errors.message);
-        }
-      } else {
-        this._userService.setCurrentUser(user);
-        this._router.navigate(["/list_admin"]);
       }
     });
   }
