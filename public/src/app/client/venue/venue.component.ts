@@ -35,11 +35,11 @@ import { tap } from 'rxjs/operators/tap';
   selector: "app-venue",
   templateUrl: "./venue.component.html",
   styleUrls: ["./venue.component.css"],
-  preserveWhitespaces: false
+  preserveWhitespaces: true
 })
 export class VenueComponent implements OnInit, OnDestroy {
   venue = new Venue();
-  vender: Array<Vender> = [];
+  vender: Vender;
   subscription: Subscription;
   random: number;
 

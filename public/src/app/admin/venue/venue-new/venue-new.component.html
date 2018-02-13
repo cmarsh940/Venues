@@ -2,7 +2,7 @@
   <i class="material-icons">&#xE5C4;</i>
 </button>
 <h1>Add a Venue</h1>
-  <form (submit)="createVenue(this.newVenue)" #form encType="multipart/form-data">
+  <form (submit)="createVenue()" #form encType="multipart/form-data">
     <mat-form-field>
       <input 
         matInput 
@@ -82,7 +82,7 @@
 
     <mat-form-field>
       <mat-select placeholder="Venue Amenities" name="amenities" [(ngModel)]="newVenue.amenities" multiple>
-        <mat-option *ngFor="let amenity of amenitiesList" [value]="amenity._id" [innerHTML]="amenity.name"></mat-option>
+        <mat-option *ngFor="let amenity of amenitiesList" [value]="amenity._id">{{amenity.name}}</mat-option>
       </mat-select>
     </mat-form-field>
 

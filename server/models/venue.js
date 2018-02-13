@@ -30,10 +30,10 @@ const VenueSchema = new mongoose.Schema({
 
     },
     phone: {
-        type: Number,
-        required: [true, 'Phone number cannot be blank, Example 123 123 1234'],
+        type: String,
+        required: [true, 'Phone number cannot be blank, Example 123-123-1234'],
         minlength: [9, "Phone number cannot be less then 9 characters"],
-        maxlength: [11, "Phone number cannot be greater then 11 characters"],
+        maxlength: [14, "Phone number cannot be greater then 11 characters"],
         trim: true,
     },
     minAmmount: {

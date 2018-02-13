@@ -13,8 +13,8 @@ import { Venue } from '../../models/venue';
 })
 export class LandingComponent implements OnInit {
   venders: Array<Vender>;
-  categories: Array<Category>
-  venues: Array<Venue>
+  categories: Array<Category>;
+  venues: Array<Venue>;
   
   constructor(
     private _venderService: VenderService,

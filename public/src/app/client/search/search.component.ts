@@ -8,14 +8,15 @@ import { Venue } from '../../models/venue';
 import { Vender } from '../../models/vender';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  vender: Vender[] = [];
-  venderTwo: Vender[] = [];
+  vender: Vender;
+  venderTwo: Vender;
   venues: Array<Venue>;
   search_text: String = "";
   finished: boolean;
@@ -35,9 +36,19 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.finished = false;
-    this.getVenders();
     this.getVenues();
-    this.finished = true;
+    this._venderService.getVenders(vender => {
+      this.finished = false;
+      this.random = Math.floor(Math.random() * vender.length);
+      console.log("Random number:", this.random);
+      this.vender = vender[this.random];
+      console.log(this.vender);
+      this.randomTwo = Math.floor(Math.random() * vender.length);
+      console.log("RandomTwo number:", this.randomTwo);
+      this.venderTwo = vender[this.randomTwo];
+      console.log(this.venderTwo);
+      this.finished = true;
+    });
   }
 
   getVenders() {

@@ -80,7 +80,7 @@
             <div class="col-12">
                 <h2 class="text-center" id="venue-header">Venues</h2>
                 <div id="move-right">
-                    <input type='text' name='search_text' [(ngModel)]='search_text' id="search-box" placeholder="Search for a venue...">
+                    <input matInput type='text' name='search_text' [(ngModel)]='search_text' id="search-box" placeholder="Search for a venue...">
                 </div>
             </div>
             <div class="card-group" *ngFor="let venue of venues | filterVenues: search_text; let i = index">
@@ -94,7 +94,9 @@
                     <mat-card-title>
                         <h5 class="text-left">{{venue?.name}}</h5>
                         <div class="icon-address">
-                            <!-- <img [src]="category.icon" class="venue-icon" alt="Venue Icon"> -->
+                            <span *ngFor="let category of venue.category">
+                                <img src="/assets/images/{{category.icon}}" class="venue-icon" alt="Venue Icon">
+                            </span>
                             <mat-card-subtitle>{{venue?.address}}</mat-card-subtitle>
                         </div>
                     </mat-card-title>

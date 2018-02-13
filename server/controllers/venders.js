@@ -50,6 +50,7 @@ class VendersController {
             if (err) {
                 return res.json(err);
             }
+            shuffle(venders);
             return res.json(venders);
         });
     }
@@ -78,30 +79,21 @@ class VendersController {
     }
 
     upload(req, res) {
-        console.log("*** SERVER REQ:", req)
-        console.log("*** SERVER REQ.BODY:", req.body)
         let new_vender = new Vender(req.body);
         let busboy = new Busboy({ headers: req.headers });
         if (req.files.picture) {
             let file = req.files.picture;
-            console.log("*** server recieved file named:", file);
             let file_type = file.mimetype.match(/image\/(\w+)/);
-            console.log("*** server file type", file_type);
             let new_file_name = file.name;
 
             if (file_type) {
                 new_vender.pic_url = new_file_name;
                 busboy.on("finish", function () {
                     const vender = req.body
-                    console.log("**** req.body:", req.body)
-                    console.log("**** vender:", vender)
                     const file = req.files.picture;
-                    console.log("Done parsing file:");
-                    console.log(file);
                     uploadToS3(file, vender);
                 });
                 req.pipe(busboy);
-                console.log("*** Files is now uploaded");
             }
         }
 
@@ -109,7 +101,6 @@ class VendersController {
             if (err) {
                 return res.json(err);
             }
-            console.warn("*** WARN *** SERVER NEW_VENDER", new_vender);
             return res.json(new_vender);
         });
     }

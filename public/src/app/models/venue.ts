@@ -2,7 +2,7 @@ export class Venue {
     _id: any;
     name: string;
     email: string;
-    phone: number;
+    phone: string;
     website: string;
     address: string;
     lat: number;

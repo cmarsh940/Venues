@@ -50,6 +50,7 @@ class VenuesController {
             if(err) {
                 return res.json(err);
             }
+            shuffle(venues);
             return res.json(venues);
         })
     }

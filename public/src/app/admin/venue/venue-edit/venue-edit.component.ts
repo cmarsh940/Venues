@@ -100,11 +100,6 @@ export class VenueEditComponent implements OnInit, OnDestroy {
     });
   }
 
-
-  // goBack(): void {
-  //   this.location.back();
-  // }
-
   // updateGalleryItems() {
   //   this.dataLoading = true;
   //   console.log('Updating Gallery Items')
