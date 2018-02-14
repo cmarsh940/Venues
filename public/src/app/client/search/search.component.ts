@@ -10,9 +10,10 @@ import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  selector: "app-search",
+  templateUrl: "./search.component.html",
+  styleUrls: ["./search.component.css"],
+  preserveWhitespaces: false
 })
 export class SearchComponent implements OnInit {
   vender: Vender;
@@ -32,7 +33,7 @@ export class SearchComponent implements OnInit {
     private _venderService: VenderService,
     private _venueService: VenueService,
     private _router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.finished = false;
@@ -52,12 +53,12 @@ export class SearchComponent implements OnInit {
   }
 
   getVenders() {
-    this._venderService.getVenders((vender) => {
-      this.random = Math.floor((Math.random() * vender.length));
+    this._venderService.getVenders(vender => {
+      this.random = Math.floor(Math.random() * vender.length);
       console.log("Random number:", this.random);
       this.vender = vender[this.random];
       console.log(this.vender);
-      this.randomTwo = Math.floor((Math.random() * vender.length));
+      this.randomTwo = Math.floor(Math.random() * vender.length);
       console.log("RandomTwo number:", this.randomTwo);
       this.venderTwo = vender[this.randomTwo];
       console.log(this.venderTwo);
@@ -65,7 +66,7 @@ export class SearchComponent implements OnInit {
   }
 
   getVenues(): void {
-    this._venueService.getVenues((venues) => this.venues = venues)
+    this._venueService.getVenues(venues => (this.venues = venues));
   }
 }
 

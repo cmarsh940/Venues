@@ -6,9 +6,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-vender',
-  templateUrl: './vender.component.html',
-  styleUrls: ['./vender.component.css']
+  selector: "app-vender",
+  templateUrl: "./vender.component.html",
+  styleUrls: ["./vender.component.css"],
+  preserveWhitespaces: false
 })
 export class VenderComponent implements OnInit {
   vender = new Vender();
@@ -19,7 +20,7 @@ export class VenderComponent implements OnInit {
     private _activatedRoute: ActivatedRoute,
     private _router: Router,
     private location: Location
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.getVender();
@@ -30,13 +31,12 @@ export class VenderComponent implements OnInit {
   }
 
   getVender() {
-    this.subscription = this._activatedRoute.params.subscribe(
-      params => this._venderService.showVender(params.id, res => this.vender = res)
+    this.subscription = this._activatedRoute.params.subscribe(params =>
+      this._venderService.showVender(params.id, res => (this.vender = res))
     );
   }
 
   goBack(): void {
     this.location.back();
   }
-
 }

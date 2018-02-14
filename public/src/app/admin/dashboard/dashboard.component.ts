@@ -12,7 +12,8 @@ import { Amenity } from '../../models/amenity';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  preserveWhitespaces: false
 })
 export class DashboardComponent implements OnInit {
   amenities: Array<Amenity>;

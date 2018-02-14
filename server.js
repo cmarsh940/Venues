@@ -15,6 +15,7 @@ const app = express();
 
 app.use(express.static(path.join(__dirname + '/public/dist')));
 app.use(busboy());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(busboyBodyParser());
 app.use(morgan('tiny'));

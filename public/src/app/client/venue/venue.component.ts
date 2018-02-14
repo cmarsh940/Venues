@@ -35,7 +35,7 @@ import { tap } from 'rxjs/operators/tap';
   selector: "app-venue",
   templateUrl: "./venue.component.html",
   styleUrls: ["./venue.component.css"],
-  preserveWhitespaces: true
+  preserveWhitespaces: false
 })
 export class VenueComponent implements OnInit, OnDestroy {
   venue = new Venue();

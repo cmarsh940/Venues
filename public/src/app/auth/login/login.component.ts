@@ -3,11 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { preserveWhitespacesDefault } from '@angular/compiler';
 
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.css"]
+  styleUrls: ["./login.component.css"],
+  preserveWhitespaces: false
 })
 export class LoginComponent implements OnInit {
   currentUser: User = new User();
@@ -28,7 +30,6 @@ export class LoginComponent implements OnInit {
   loginUser() {
     this.errors = [];
     this._userService.authenticate(this.currentUser, user => {
-      console.log(user);
       if (user.errors) {
         for (const key of Object.keys(user.errors)) {
           const error = user.errors[key];

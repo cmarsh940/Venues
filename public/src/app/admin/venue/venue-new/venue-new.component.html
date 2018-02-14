@@ -80,17 +80,20 @@
       <mat-hint>EX: www.example.com</mat-hint>
     </mat-form-field>
 
-    <mat-form-field>
-      <mat-select placeholder="Venue Amenities" name="amenities" [(ngModel)]="newVenue.amenities" multiple>
-        <mat-option *ngFor="let amenity of amenitiesList" [value]="amenity._id">{{amenity.name}}</mat-option>
-      </mat-select>
-    </mat-form-field>
+    
+    <div class="input-container">
+      <mat-form-field>
+        <mat-select multiple placeholder="Venue Amenities" name="amenities" [(ngModel)]="newVenue.amenities">
+          <mat-option *ngFor="let amenity of amenitiesList" [value]="amenity._id">{{amenity.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-    <mat-form-field>
-      <mat-select placeholder="Venue Category" name="category" [(ngModel)]="newVenue.category">
-        <mat-option *ngFor="let category of categories" [value]="category._id" [innerHTML]="category.name"></mat-option>
-      </mat-select>
-    </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Venue Category" name="category" [(ngModel)]="newVenue.category">
+          <mat-option *ngFor="let category of categories" [value]="category._id">{{category.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
 
     <div class="input-container">
       <mat-form-field>
@@ -137,14 +140,15 @@
     </mat-form-field>
 
     <div class="file-upload">
-      <input #file type="file" name="picture" [(ngModel)]="newVenue.pic_url">
+      <input #files type="file" name="picture" [(ngModel)]="newVenue.pic_url">
     </div>
 
     <div class="submit-button">
       <button mat-raised-button type="submit" color="accent">Submit</button>
     </div>
   </form>
+  {{newVenue | json}}
 
   <div>
-    <p class="error" *ngFor="let error of errors">{{ error }}</p>
+    <p class="text-center" [ngStyle]="{ 'color': 'red' }" *ngFor="let error of errors">{{ error }}</p>
   </div>

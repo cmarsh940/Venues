@@ -1,19 +1,19 @@
 import { UserService } from './../../../services/user.service';
-import { Component, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, ViewChild, EventEmitter, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../../models/user';
 import { Venue } from '../../../models/venue';
 import { VenueService } from '../../../services/venue.service';
 import { AmenityService } from '../../../services/amenity.service';
 import { Amenity } from '../../../models/amenity';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Category } from '../../../models/category';
 import { CategoryService } from '../../../services/category.service';
 
 @Component({
-  selector: 'app-venue-new',
-  templateUrl: './venue-new.component.html',
-  styleUrls: ['./venue-new.component.css']
+  selector: "app-venue-new",
+  templateUrl: "./venue-new.component.html",
+  styleUrls: ["./venue-new.component.css"]
 })
 export class VenueNewComponent implements OnInit {
   currentUser: User;
@@ -22,16 +22,18 @@ export class VenueNewComponent implements OnInit {
   categories: Category[];
   newVenue: Venue = new Venue();
   errors: string[] = [];
+  form: FormGroup;
 
-
-  @ViewChild('file') file_input;
-  @ViewChild('form') my_form;
+  @ViewChild("files") file_input;
+  @ViewChild("form", { read: ElementRef })
+  my_form: ElementRef;
   // @ViewChild('amenities')  amenities_input ;
-  // @ViewChild('category')  category_input;
+  @ViewChild("category", { read: ElementRef })
+  category_input: ElementRef;
   @Output() newVenue_event = new EventEmitter();
 
   // amenityControl= new FormControl();
-  
+
   constructor(
     private _userService: UserService,
     private _venueService: VenueService,
@@ -45,29 +47,34 @@ export class VenueNewComponent implements OnInit {
     this.getVenues();
     this.getAmenities();
     this.getCategories();
+    this.form = new FormGroup({});
   }
 
   isLoggedIn() {
     if (this._userService.getCurrentUser() == null) {
-      console.log("You are not logged in with admin privlages", sessionStorage)
-      this._router.navigateByUrl('/');
+      console.log("You are not logged in with admin privlages", sessionStorage);
+      this._router.navigateByUrl("/");
     }
   }
 
   validateSession(): void {
     if (!this.currentUser) {
-      this._router.navigateByUrl('/');
+      this._router.navigateByUrl("/");
     }
   }
 
   getVenues(): void {
-    this._venueService.getVenues((venues) => this.venues = venues);
+    this._venueService.getVenues(venues => (this.venues = venues));
   }
   getAmenities(): void {
-    this._amenityService.getAmenities((amenities) => this.amenitiesList = amenities);
+    this._amenityService.getAmenities(
+      amenities => (this.amenitiesList = amenities)
+    );
   }
   getCategories(): void {
-    this._categoryService.getCategories((categories) => this.categories = categories);
+    this._categoryService.getCategories(
+      categories => (this.categories = categories)
+    );
   }
 
   // createVenue() {
@@ -97,24 +104,32 @@ export class VenueNewComponent implements OnInit {
     this.errors = [];
     console.log("**** THIS.NEWVENUE:", this.newVenue);
     if (this._userService.getCurrentUser() == null) {
-      console.log("REPORTED: You do not have administration privilages")
-      this._router.navigateByUrl('/');
+      console.log("REPORTED: You do not have administration privilages");
+      this._router.navigateByUrl("/");
     } else {
-      let form_data = new FormData(this.my_form.nativeElement);
-      // let amenities_array = new Array();
-      // amenities_array = this.newVenue.amenities
-      // form_data.append("amenities", amenities_array);
-      // form_data.append("category", this.newVenue.category);
+      const files: FileList = this.file_input.nativeElement.files;
+      if (files.length === 0) {
+        console.log("No File Was Selected")
+        return;
+      }
 
-      // console.log("*** This is the form data", form_data);
-      this._venueService.post_to_s3(form_data, this.newVenue, res => {
-        console.log("*** Setting new venue");
-        this.newVenue = new Venue();
-        console.log("*** Setting file value", form_data);
-        this.file_input.nativeElement.value = "";
-        console.log("*** About to emit");
-        this.newVenue_event.emit();
-        this._router.navigate(['/list_venue']);
+      const formData = new FormData(this.my_form.nativeElement);
+      formData.append(files[0].name, files[0]);
+      this._venueService.post_to_s3(formData, (venue) => {
+        if (venue.errors) {
+          for (const key of Object.keys(venue.errors)) {
+            const errors = venue.errors[key];
+            this.errors.push(errors.message);
+          }
+        } else {
+          console.log("*** Setting new venue");
+          this.newVenue = new Venue();
+          console.log("*** Setting file value", formData);
+          this.file_input.nativeElement.value = "";
+          console.log("*** About to emit");
+          this.newVenue_event.emit();
+          this._router.navigate(["/list_venue"]);
+        }
       });
     }
   }

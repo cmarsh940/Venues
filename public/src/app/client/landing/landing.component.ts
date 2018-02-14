@@ -7,20 +7,21 @@ import { VenueService } from '../../services/venue.service';
 import { Venue } from '../../models/venue';
 
 @Component({
-  selector: 'app-landing',
-  templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.css']
+  selector: "app-landing",
+  templateUrl: "./landing.component.html",
+  styleUrls: ["./landing.component.css"],
+  preserveWhitespaces: false
 })
 export class LandingComponent implements OnInit {
   venders: Array<Vender>;
   categories: Array<Category>;
   venues: Array<Venue>;
-  
+
   constructor(
     private _venderService: VenderService,
     private _categoryService: CategoryService,
-    private _venueService: VenueService,
-  ) { }
+    private _venueService: VenueService
+  ) {}
 
   ngOnInit() {
     this.getCategories();
@@ -29,15 +30,18 @@ export class LandingComponent implements OnInit {
   }
 
   getCategories(): void {
-    this._categoryService.getCategories((categories) => this.categories = categories)
+    this._categoryService.getCategories(
+      categories => (this.categories = categories)
+    );
   }
 
   getVenues(): void {
-    this._venueService.getVenues((venues) => this.venues = venues)
+    this._venueService.getVenues(venues => (this.venues = venues));
   }
 
   getVenders(): void {
-    this._venderService.getVenders((venders) => this.venders = venders.slice(0, 4));
+    this._venderService.getVenders(
+      venders => (this.venders = venders.slice(0, 4))
+    );
   }
-
 }
