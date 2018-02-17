@@ -28,10 +28,17 @@ table {
 
 th {
   border-bottom: 1px solid black;
+  text-align: center;
 }
 
 td {
   text-align: center;
   border-bottom: 1px solid black;
   border-right: 1px solid black;
+}
+
+.badge {
+  padding: 0;
+  display: table-cell;
+  vertical-align: middle;
 }

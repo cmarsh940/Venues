@@ -9,7 +9,11 @@ const CategorySchema = new mongoose.Schema({
         type: String,
         required: [true, 'Icon name cannot be blank'],
         trim: true
-    }
+    },
+    venues: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Venue"
+    }],
 }, { timestamps: true });
 
 mongoose.model('Category', CategorySchema);

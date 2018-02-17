@@ -31,10 +31,13 @@ const VenueSchema = new mongoose.Schema(
     },
     phone: {
       type: String,
-      required: [true, "Phone number cannot be blank, Example 123-123-1234"],
-      minlength: [9, "Phone number cannot be less then 9 characters"],
-      maxlength: [14, "Phone number cannot be greater then 11 characters"],
-      trim: true
+      validate: {
+        validator: function(phone) {
+          return /\d{3}-\d{3}-\d{4}/.test(phone);
+        },
+        message: "{ VALUE } is not a valid phone number"
+      },
+      required: [true, "Venue phone number required EX: 123-123-1234"]
     },
     minAmmount: {
       type: Number,
@@ -72,7 +75,8 @@ const VenueSchema = new mongoose.Schema(
     pic_url: {
       type: String,
       required: false,
-      trim: true
+      trim: true,
+      default: ""
     },
     tour_url: {
       type: String,
@@ -84,26 +88,35 @@ const VenueSchema = new mongoose.Schema(
       required: false,
       trim: true
     },
-    amenities: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Amenity"
-      }
-    ],
-    category: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Category"
-    }
-    // galleryItems: [{
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Gallery'
-    // }],
-    // Reviews: [{
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Review'
-    // }],
-  },
-  { timestamps: true }
+    amenities: {
+      type: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Amenity"
+        }
+      ],
+      default: []
+    },
+    reviews: {
+      type: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Review"
+        }
+      ],
+      default: []
+    },
+    galleryItems: {
+      type: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Gallery"
+        }
+      ],
+      default: []
+    },
+    _category: { type: mongoose.Schema.Types.ObjectId, ref: "Category" }
+}, { timestamps: true }
 );
 
 VenueSchema.plugin(random, { path: 'r' });

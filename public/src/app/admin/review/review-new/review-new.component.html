@@ -1,7 +1,7 @@
 <button mat-raised-button [routerLink]="['/list_review']">
     <i class="material-icons">&#xE5C4;</i>
 </button>
-<h1>Add a Review</h1>
+<h2 class="text-center">Add a Review</h2>
 <form (ngSubmit)="createReview()" #reviewForm="ngForm">
     <mat-form-field>
         <input matInput type="email" name="email" required maxlength=150 [(ngModel)]="newReview.email" placeholder="Email" />

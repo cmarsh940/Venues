@@ -1,0 +1,14 @@
+<form (submit)="uploadOne()" #form="ngForm" encType="multipart/form-data">
+    <div class="file-upload">
+        <input #files type="file" name="picture" [(ngModel)]="venue.pic_url">
+    </div>
+    <div class="submit-button">
+        <button mat-raised-button type="submit" color="accent">Submit</button>
+    </div>
+</form>
+
+
+<div> {{ progressBarValue }}</div>
+
+<mat-progress-bar  color="primary" [value]="progressBarValue">
+</mat-progress-bar>

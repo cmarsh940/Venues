@@ -16,6 +16,7 @@ import { ReviewNewComponent } from './review/review-new/review-new.component';
 import { ReviewEditComponent } from './review/review-edit/review-edit.component';
 import { CategoryShowComponent } from './category/category-show/category-show.component';
 import { CategoryEditComponent } from './category/category-edit/category-edit.component';
+import { UploadComponent } from "./venue/upload/upload.component";
 
 const routes: Routes = [
   {
@@ -66,6 +67,11 @@ const routes: Routes = [
         path: 'venue/edit/:id', 
         pathMatch: 'full', 
         component: VenueEditComponent 
+      },
+      { 
+        path: 'venue/upload/:id', 
+        pathMatch: 'full', 
+        component: UploadComponent
       },
       {
         path: 'list_review',

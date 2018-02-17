@@ -11,12 +11,8 @@ import { VenueService } from '../../../services/venue.service';
 import { CategoryService } from '../../../services/category.service';
 import { Category } from '../../../models/category';
 import { MatTabChangeEvent } from '@angular/material';
-// import { FileUploader } from 'ng2-file-upload';
 import { Amenity } from '../../../models/amenity';
 import { AmenityService } from '../../../services/amenity.service';
-
-
-const URL = '/upload';
 
 @Component({
   selector: 'app-venue-edit',
@@ -29,24 +25,10 @@ export class VenueEditComponent implements OnInit, OnDestroy {
   categories: Category[];
   currentUser: User;
   subscription: Subscription;
-  fetchItems: any[];
   dataLoading: boolean;
-
-  // public uploader: FileUploader = new FileUploader({ url: URL });
-  // public hasBaseDropZoneOver: boolean = false;
-  // public hasAnotherDropZoneOver: boolean = false;
-
-  // public fileOverBase(e: any): void {
-  //   this.hasBaseDropZoneOver = e;
-  // }
-
-  // public fileOverAnother(e: any): void {
-  //   this.hasAnotherDropZoneOver = e;
-  // }
 
   
   constructor(
-    private _route: ActivatedRoute,
     private _venueService: VenueService,
     private _amenityService: AmenityService,
     private _categoryService: CategoryService,
@@ -59,7 +41,7 @@ export class VenueEditComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.dataLoading = true;
     this.isLoggedIn();
-    this.getVenues();
+    this.getVenue();
     this.getAmenities();
     this.getCategories();
     this.dataLoading = false;
@@ -82,7 +64,7 @@ export class VenueEditComponent implements OnInit, OnDestroy {
     }
   }
 
-  getVenues() {
+  getVenue() {
     this.subscription = this._activatedRoute.params.subscribe(
       params => this._venueService.showVenue(params.id, res => this.venue = res)
     );
@@ -99,22 +81,4 @@ export class VenueEditComponent implements OnInit, OnDestroy {
       this._router.navigate(['/list_venue']);
     });
   }
-
-  // updateGalleryItems() {
-  //   this.dataLoading = true;
-  //   console.log('Updating Gallery Items')
-  //   this.subscription = this._activatedRoute.params.subscribe(
-  //     params => this._venueService.getImages(params.id, res => this.venue = res)
-  //   );
-  //   this.dataLoading = false;
-  // }
-
-  // onLinkClick(tabChangeEvent: MatTabChangeEvent): void {
-  //   if (tabChangeEvent.index == 0) {
-  //     this.updateGalleryItems();
-  //   }
-  // }
-
-  
-
 }

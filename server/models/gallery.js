@@ -21,7 +21,7 @@ const GallerySchema = new mongoose.Schema({
         type: String, 
         required: [true,"mimeType cannot be blank"], 
         default: '' },
-    venue: {
+    _venue: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Venue'
     }

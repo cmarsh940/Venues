@@ -1,5 +1,5 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './../material/material.module';
-import { GalleryService } from './../services/gallery.service';
 import { CategoryService } from './../services/category.service';
 import { RegisterComponent } from './../auth/register/register.component';
 import { AdminNavComponent } from './../structure/admin-nav/admin-nav.component';
@@ -31,6 +31,8 @@ import { ReviewService } from '../services/review.service';
 import { CategoryShowComponent } from './category/category-show/category-show.component';
 import { CategoryEditComponent } from './category/category-edit/category-edit.component';
 import { SortVenuesPipe } from '../pipes/sort-venues.pipe';
+import { UploadComponent } from './venue/upload/upload.component';
+
 
 @NgModule({
   imports: [
@@ -40,6 +42,7 @@ import { SortVenuesPipe } from '../pipes/sort-venues.pipe';
     AdminRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   declarations: [
     AdminComponent,
@@ -59,17 +62,17 @@ import { SortVenuesPipe } from '../pipes/sort-venues.pipe';
     ReviewNewComponent,
     CategoryShowComponent,
     CategoryEditComponent,
-    SortVenuesPipe
+    SortVenuesPipe,
+    UploadComponent
   ],
   providers: [
     AmenityService,
     CategoryService,
-    GalleryService,
     MessageService,
     ReviewService,
     VenderService,
     VenueService,
     UserService
-  ],
+  ]
 })
-export class AdminModule { }
+export class AdminModule {}

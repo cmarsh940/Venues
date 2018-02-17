@@ -30,7 +30,7 @@ var ReviewSchema = new mongoose.Schema({
         required: false,
         default: false
     },
-    venue: {
+    _venue: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Venue'
     }

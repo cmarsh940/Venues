@@ -4,7 +4,8 @@ const Amenity = mongoose.model('Amenity');
 
 const config = require("../config/config");
 
-const BUCKET_NAME = "tulsa-venues";
+// const BUCKET_NAME = "tulsa-venues";
+const BUCKET_NAME = "venue-test";
 const IAM_USER_KEY = config.iamUser;
 const IAM_USER_SECRET = config.iamSecret;
 
@@ -14,6 +15,7 @@ const Busboy = require("busboy");
 
 
 function uploadToS3(file, venue) {
+    console.log("*** STARTING TO UPLOADTOS3 FUNCTION")
     let s3bucket = new AWS.S3({
         accessKeyId: IAM_USER_KEY,
         secretAccessKey: IAM_USER_SECRET,
@@ -29,6 +31,7 @@ function uploadToS3(file, venue) {
         s3bucket.upload(params, function(err, data) {
         if (err) {
             console.log("*** Error in callback: ", err);
+            console.log("*** UPLOAD PARAMS: ", params);
         }
             console.log("success", data);
         });
@@ -46,25 +49,16 @@ let shuffle = function (arr) {
 
 class VenuesController {
     index(req, res) {
-        Venue.find({}).populate('amenities', 'name').populate('category').exec((err, venues) => {
-            if(err) {
-                return res.json(err);
+        Venue.find({})
+          .populate({ path: "amenities", model: "Amenity" })
+          .populate({ path: "category", model: "Category" })
+          .exec((err, venues) => {
+            if (err) {
+              return res.json(err);
             }
             shuffle(venues);
             return res.json(venues);
-        })
-    }
-
-    getRandom(req, res) {
-        Venue.findRandom().limit(1).populate('amenities', 'name').populate('category').exec((err, questions) => {
-            if (err) {
-                return res.json(err);
-            }
-            for (let venue of venues) {
-                shuffle(venue);
-            }
-            return res.json(venues);
-        });
+          });
     }
 
     create(req, res) {
@@ -77,42 +71,38 @@ class VenuesController {
     }
 
     upload(req, res) {
-        console.log("*** req.body:", req.body)
-        let new_venue = new Venue(req.body);
-        // new_venue.amenities = req.body.amenities
-        console.log("*** SERVER SET NEW_VENUE:", new_venue)
-        let busboy = new Busboy({ headers: req.headers });
-        if (req.files.picture) {
-            let file = req.files.picture;
-            let file_type = file.mimetype.match(/image\/(\w+)/);
-            let new_file_name = file.name;
-
-            if (file_type) {
-                new_venue.pic_url = new_file_name;
-                busboy.on("finish", function () {
-                    const venue = req.body
-                    const file = req.files.picture;
-                    uploadToS3(file, venue);
-                });
-                req.pipe(busboy);
-            }
-        }
-
-        new_venue.save((err, new_venue) => {
+        Venue.findById(req.params.id, (err, new_venue) => {
             if (err) {
-                return res.json(err);
+                return handleError(err);
             }
-            console.log("**** this is the new venue:", new_venue);
-            return res.json(new_venue);
-        });
-        // new_venue.save()
-        //     .then(() => {
-        //         return res.json(new_venue);
-        //     })
-        //     .catch(err => {
-        //         console.log("*** my_venue save error", err);
-        //         return res.json(err);
-        //     });
+
+            let busboy = new Busboy({ headers: req.headers });
+            if (req.files.picture) {
+                let file = req.files.picture;
+                console.log("*** SERVER FILE:", file)
+                let file_type = file.mimetype.match(/image\/(\w+)/);
+                let new_file_name = file.name;
+
+                if (file_type) {
+                    venue.pic_url = new_file_name;
+                    busboy.on("finish", function () {
+                        const venue = req.params.id
+                        console.log("**** BUSBOY VENUE:", venue)
+                        const file = req.files.picture;
+                        uploadToS3(file, venue);
+                    });
+                    req.pipe(busboy);
+                }
+            }
+            new_venue.pic_url = req.files.name;
+            new_venue.save((err, new_venue) => {
+                if (err) {
+                    return res.json(err);
+                }
+                console.log("**** this is the new venue:", new_venue);
+                return res.json(new_venue);
+            });
+        })
     }
 
 
@@ -126,19 +116,60 @@ class VenuesController {
         });
     }
 
+    // review(req, res){
+    //     Venue.findOne({_id: req.params.id}, (err, venue) =>{
+    //         var review = new Review(req.body);
+    //         review._venue = venue._id;
+    //         venue.reviews.push(review);
+    //         review.save(function(err){
+    //                 venue.save(function(err){
+    //                     if(err) { 
+    //                         console.log('Error'); 
+    //                     }
+    //                     return res.json(venue) 
+    //                 });
+    //         });
+    // });
+    // }
+
     images(req, res) {
-        Venue.findById(req.params.id).populate('galleryItems').exec((err, item) => {
+        Venue.findById(req.params.id).populate('galleryItems').exec((err, doc) => {
+            console.log("*** SERVER IMAGES", doc)
             if (err) {
-                return res.json(err);
+                res.end("Error while retreaving images");
+            } else if (doc.gallerItems.length < 1) {
+                res.end("There are no images for this Venue yet")
+            } else {
+                const key = "Venues" + "/" + venue.name + "/" + venue.galleryItems;
+                console.log("*** SERVER S3 KEY:", key)
+
+                let s3bucket = new AWS.S3({
+                    accessKeyId: IAM_USER_KEY,
+                    secretAccessKey: IAM_USER_SECRET,
+                    Bucket: BUCKET_NAME
+                });
+                s3bucket.createBucket(() => {
+                    var params = {
+                        Bucket: BUCKET_NAME,
+                        Key: key,
+                    };
+                    s3bucket.getObject(params, (err, data) => {
+                    if (err) {
+                        console.log("*** S3 Error in callback: ", err);
+                        res.end("Error")
+                    }
+                        console.log("success", data);
+                        res.setHeader('Content-Type', data.ContentType);
+                        res.end(data.Body);
+                    });
+                });
             }
-            return res.json(item);
-        });
+        })
     }
 
 
     update(req, res) {
-        Venue.findByIdAndUpdate(
-            req.params.id,
+        Venue.findByIdAndUpdate(req.params.id,
             { $set: req.body },
             { new: true },
             (err, venue) => {

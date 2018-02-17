@@ -1,4 +1,9 @@
 module.exports = {
-  iamUser: "***",
-  iamSecret: "***"
+  //ADMIN
+  // iamUser: "***",
+  // iamSecret: "***"
+
+  // TEST
+    iamUser: '***',
+    iamSecret: '***',
 };

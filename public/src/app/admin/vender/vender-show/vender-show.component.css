@@ -13,17 +13,13 @@
   color: black;
 }
 
-h1 {
-  width: 100%;
-  text-align: center;
-}
-
 table {
   width: 100%;
 }
 
 th {
   border-bottom: 1px solid black;
+  text-align: center;
 }
 
 td {

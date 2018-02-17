@@ -13,10 +13,10 @@ export class Venue {
     pic_url: string;
     tour_url: string;
     video_url: string;
-    amenities: any;
-    category: any;
-    galleryItems: any;
-    review: any;
+    _category: any;
+    amenities: any[];
+    galleryItems: any[];
+    reviews: any[];
     createdAt: any;
     updatedAt: any;
 }

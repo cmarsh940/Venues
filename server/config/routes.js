@@ -44,12 +44,11 @@ module.exports = function (app) {
 
     app.get('/venues', Venues.index);
     app.post('/venues', Venues.create);
-    app.post('/venues/upload', Venues.upload);
+    app.put('/venues/upload/:id', Venues.upload);
     app.delete('/venues/:id', Venues.delete);
     app.get('/venues/:id', Venues.show);
-    app.get('/venues/:id/images', Venues.images);
+    app.get('/venues/images/:id', Venues.images);
     app.put('/venues/:id', Venues.update);
-    app.get('/venues/random', Venues.getRandom);
 
 
     app.get('/venders', Venders.index);
@@ -58,7 +57,6 @@ module.exports = function (app) {
     app.delete('/venders/:id', Venders.delete);
     app.get('/venders/:id', Venders.show);
     app.put('/venders/:id', Venders.update);
-    app.get('/venders/random/:num', Venders.getRandom);
 
     app.all('*', (req, res, next) => {
         res.sendFile(path.resolve('./public/dist/index.html'));

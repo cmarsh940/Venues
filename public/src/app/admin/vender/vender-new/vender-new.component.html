@@ -1,7 +1,7 @@
 <button mat-raised-button [routerLink]="['/list_vender']" id="back-btn">
   <i class="material-icons">&#xE5C4;</i>
 </button>
-<h1>Add a Vender</h1>
+<h2 class="text-center">Add a Vender</h2>
 <form (ngSubmit)="createVender()" #form encType="multipart/form-data">
   <mat-form-field>
     <input matInput type="text" name="name" required maxlength=250 [(ngModel)]="newVender.name" placeholder="Vender Name" />

@@ -121,7 +121,7 @@
                         </ng-template>
                         <mat-selection-list #amenities>
                             <mat-list-option *ngFor="let amenity of venue.amenities">
-                                {{amenity}}
+                                {{amenity.name}}
                             </mat-list-option>
                         </mat-selection-list>
 
@@ -165,9 +165,9 @@
             </div>
             <div class="col-9">
                 <mat-toolbar color="accent">REVIEWS</mat-toolbar>
-                <ng-container *ngIf="venue.review && venue.review.approved === true; else elseTemplate">
+                <ng-container *ngIf="venue.reviews && approved === true; else elseTemplate">
                     <mat-card>
-                        <h6>{{venue.review}}</h6>
+                        <h6>{{venue.reviews}}</h6>
                     </mat-card>
                 </ng-container>
                 <ng-template #elseTemplate>

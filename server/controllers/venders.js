@@ -3,7 +3,8 @@ const Vender = mongoose.model('Vender');
 
 const config = require("../config/config");
 
-const BUCKET_NAME = "tulsa-venues";
+// const BUCKET_NAME = "tulsa-venues";
+const BUCKET_NAME = "venue-test";
 const IAM_USER_KEY = config.iamUser;
 const IAM_USER_SECRET = config.iamSecret;
 
@@ -54,20 +55,6 @@ class VendersController {
             return res.json(venders);
         });
     }
-
-    getRandom(req, res) {
-        Vender.findRandom().limit(1, (err, venders) => {
-            if (err) {
-                return res.json(err);
-            }
-            for (let vender of venders) {
-                shuffle(vender);
-                console.log("*** This is the random vender:", vender);
-            }
-            return res.json(venders);
-        });
-    }
-
 
     create(req, res) {
         Vender.create(req.body, (err, vender) => {
