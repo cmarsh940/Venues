@@ -21,9 +21,9 @@ export class UploadComponent implements OnInit, OnDestroy {
   errors = [];
   progressBarValue;
 
-  @ViewChild("files") file_input;
+  @ViewChild("file") file_input;
   @ViewChild("form") my_form;
-  @Output() newVenue_event = new EventEmitter();
+  @Output() venue_event = new EventEmitter();
 
   constructor(
     private _venueService: VenueService,
@@ -56,28 +56,18 @@ export class UploadComponent implements OnInit, OnDestroy {
     );
   }
 
-  // chooseFiles(event) {
-  //   this.selectedFiles = event.target.files;
-  //   if (this.selectedFiles.item(0)) this.uploadPic();
-  // }
-
   uploadOne() {
     this.errors = [];
     if (this._userService.getCurrentUser() == null) {
       console.log("REPORTED: You do not have administration privilages");
       this._router.navigateByUrl("/");
     } else {
-      const files: FileList = this.file_input.nativeElement.files;
-      if (files.length === 0) {
-        console.log("No File Was Selected");
-        return;
-      }
-      const formData = new FormData(this.my_form.nativeElement);
-      formData.append(files[0].name, files[0]);
-      return this._venueService.post_to_s3(formData, this.venue, res => {
-        console.log("*** returned", res)
+      let formData = new FormData(this.my_form.nativeElement);
+      this._venueService.post_to_s3(formData, this.venue._id, res => {
+        this.file_input.nativeElement.value = "";
+        this.venue_event.emit();
         this._router.navigate(["/list_venue"]);
-      })
+      });
     }
   }
 
@@ -101,7 +91,7 @@ export class UploadComponent implements OnInit, OnDestroy {
   //           const errors = venue.errors[key];
   //           this.errors.push(errors.message);
   //         }
-  //       } 
+  //       }
   //     });
   //   }
   // }

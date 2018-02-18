@@ -31,12 +31,23 @@ export class VenueService {
     );
   }
 
-  post_to_s3(formData, venue: Venue, callback) {
+  // post_to_s3(venue: Venue, formData, callback) {
+  //   console.log("**** HIT SERVICE", formData);
+  //   var URL = API_URL + "upload" + "/" + venue._id;
+  //   return this._http.post(URL, formData).subscribe(
+  //     res => {
+  //       console.log("**** THIS IS THE RESPONSE:", res.json());
+  //       // const venue = res.json();
+  //       callback(res.json());
+  //     },
+  //     err => console.log(err)
+  //   );
+  // }
+  post_to_s3(formData, id: string, callback) {
     console.log("**** HIT SERVICE", formData);
-    var URL = API_URL + "upload" + "/" + venue._id;
+    var URL = API_URL + "upload" + "/" + id;
     return this._http.put(URL, formData).subscribe(
       res => {
-        console.log("**** THIS IS THE RESPONSE:", res.json());
         // const venue = res.json();
         callback(res.json());
       },
@@ -69,39 +80,10 @@ export class VenueService {
     var URL = API_URL + "images/" + id;
     return this._http.get(URL).subscribe(
       res => {
-        console.log("*** SERVICE IMAGE RES:", res)
+        console.log("*** SERVICE IMAGE RES:", res);
         callback(res.json());
       },
       err => console.log(err)
     );
-  }
-
-  //Delete Image
-  deleteImage(id: String) {
-    var URL = API_URL + "delete/" + "image/" + id;
-    return this._http
-      .delete(URL)
-      .map((response: Response) => response.json())
-      .toPromise()
-      .catch((err: any) => {
-        console.log(err);
-        return Promise.reject(err);
-      });
-  }
-
-  //DeleteMultiple
-  deleteMultiple(idList: string[]) {
-    console.log("In delete service" + idList);
-    var URL = API_URL + "deleteMultiple/";
-    var body = JSON.stringify(idList);
-    const header = new Headers({ "Content-Type": "application/json" });
-    return this._http
-      .post(URL, body, { headers: header })
-      .map((response: Response) => response.json())
-      .toPromise()
-      .catch((err: any) => {
-        console.log(err);
-        return Promise.reject(err);
-      });
   }
 }

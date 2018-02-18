@@ -58,6 +58,7 @@ export class VenderNewComponent implements OnInit {
     } else {
       let form_data = new FormData(this.my_form.nativeElement);
       this._venderService.post_to_s3(form_data, res => {
+        console.log("*** RETURNED RES:", res)
         this.newVender = new Vender();
         this.file_input.nativeElement.value = "";
         this.newVender_event.emit();

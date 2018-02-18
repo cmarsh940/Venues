@@ -5,6 +5,7 @@ const http = require('http');
 const morgan = require('morgan');
 const busboy = require("connect-busboy");
 const busboyBodyParser = require("busboy-body-parser");
+const cors = require("cors");
 const path = require("path");
 const port = 8000;
 
@@ -12,6 +13,8 @@ const env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 console.log('Starting Tulsa Venues app in env = ' + env)
 
 const app = express();
+
+app.use(cors());
 
 app.use(express.static(path.join(__dirname + '/public/dist')));
 app.use(busboy());

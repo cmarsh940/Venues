@@ -44,7 +44,9 @@
         <div class="vender-card" *ngFor="let vender of venders; let i = index">
             <mat-card class="card" [tabindex]="i">
                 <ng-container *ngIf="vender.pic_url; else elseTemplate">
-                    <img mat-card-image  src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' alt="Vender Picture" class= "img-responsive">
+                    <img mat-card-image  src='https://s3-us-west-2.amazonaws.com/venue-test/Venders/{{vender.name}}/{{vender.pic_url}}' alt="Vender Picture" class= "img-responsive">
+                    
+                    <!-- <img mat-card-image  src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' alt="Vender Picture" class= "img-responsive"> -->
                 </ng-container>
                 <ng-template #elseTemplate>
                     <img mat-card-image src='/assets/images/missing.png' alt="Venue Picture" class= "img-responsive">

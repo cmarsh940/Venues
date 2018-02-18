@@ -14,7 +14,7 @@ const Busboy = require("busboy");
 
 
 function uploadToS3(file, vender) {
-    console.log("*** upload function vender:", this.vender)
+    console.log("*** upload function vender:", vender)
     let s3bucket = new AWS.S3({
         accessKeyId: IAM_USER_KEY,
         secretAccessKey: IAM_USER_SECRET,

@@ -39,7 +39,6 @@ export class VenderService {
     console.log("**** HIT SERVICE", form_data)
     return this._http.post('/venders/upload', form_data).subscribe(
       res => {
-        const new_vender = res.json();
         callback(res.json())
       },
       err => console.log(err)

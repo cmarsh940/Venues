@@ -1,6 +1,6 @@
-<form (submit)="uploadOne()" #form="ngForm" encType="multipart/form-data">
+<form (ngSubmit)="uploadOne()" #form encType="multipart/form-data">
     <div class="file-upload">
-        <input #files type="file" name="picture" [(ngModel)]="venue.pic_url">
+        <input #file type="file" name="picture" name="picture">
     </div>
     <div class="submit-button">
         <button mat-raised-button type="submit" color="accent">Submit</button>
