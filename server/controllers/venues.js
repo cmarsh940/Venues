@@ -143,6 +143,43 @@ class VenuesController {
         //     return res.json(new_venue);
         // });
     }
+    gallery(req, res) {
+        let new_venue = new Venue(req.body);
+        let busboy = new Busboy({ headers: req.headers });
+        console.log("*** SERVER REQ.FILES:", req.files);
+        console.log("*** SERVER REQ.FILES.PICTURE:", req.files.picture);
+        for(let i = 0; i < req.files.length; i++) {
+            if (req.files.picture) {
+                let file = req.files.picture;
+                let file_type = file.mimetype.match(/image\/(\w+)/);
+                let new_file_name = file.name;
+
+                if (file_type) {
+                new_venue.pic_url = new_file_name;
+                busboy.on("finish", function() {
+                    const venue = req.params.id;
+                    const file = req.files.picture;
+                    uploadToS3(file, venue);
+                });
+                req.pipe(busboy);
+                }
+            }
+        }
+        req.body.files = venue._id;
+        Gallery.create(req.body.files, (err, files) => {
+            if(err){
+                return res.json(err);
+            }
+            venue.galleryItems.push(files._id)
+        },
+
+        Venue.update({ _id: req.params.id }, { $set: [{ galleryItems: { objectId: files._id } }] }).exec((err, new_venue) => {
+            if (err) {
+                return res.json(err);
+            }
+            return res.json(new_venue);
+        }))
+    }
 
 
 

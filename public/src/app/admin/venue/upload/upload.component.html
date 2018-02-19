@@ -1,14 +1,45 @@
-<form (ngSubmit)="uploadOne()" #form encType="multipart/form-data">
-    <div class="file-upload">
-        <input #file type="file" name="picture" name="picture">
-    </div>
-    <div class="submit-button">
-        <button mat-raised-button type="submit" color="accent">Submit</button>
-    </div>
-</form>
+<div class="container">
+    <!-- <ng-container *ngIf="venue.pic_url == ''; else elseTemplate"> -->
+        <div>
+            <h2 class="text-center">Cover Image</h2>
+        </div>
+        <div class="col-3">
+            <form (ngSubmit)="uploadOne()" #form encType="multipart/form-data">
+                <div class="file-upload">
+                    <input #file type="file" name="picture" name="picture">
+                </div>
+                <div class="submit-button">
+                    <button mat-raised-button type="submit" color="accent">Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-3">
+            <img src="https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}" alt="Venue Picture" class="img-thumbnail">
+        </div>
+
+    <!-- </ng-container>
+    <ng-template #elseTemplate> -->
+        <hr>
+        <div>
+            <h2 class="text-center">Gallery Images</h2>
+        </div>
+        <div class="col-3">
+            <form (ngSubmit)="uploadMultiple()" #formMultiple encType="multipart/form-data">
+                <div class="file-upload">
+                    <input #files type="file" name="picture" name="picture" multiple>
+                </div>
+                <div class="submit-button">
+                    <button mat-raised-button type="submit" color="accent">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-3"></div>
+    <!-- </ng-template> -->
 
 
-<div> {{ progressBarValue }}</div>
+    <div> {{ progressBarValue }}</div>
 
-<mat-progress-bar  color="primary" [value]="progressBarValue">
-</mat-progress-bar>
+    <mat-progress-bar  color="primary" [value]="progressBarValue">
+    </mat-progress-bar>
+</div>

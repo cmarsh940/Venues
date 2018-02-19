@@ -1,0 +1,11 @@
+form {
+    margin: 3%;
+}
+
+button {
+    margin-top: 2%;
+}
+
+.col-3 {
+    display: inline-block;
+}

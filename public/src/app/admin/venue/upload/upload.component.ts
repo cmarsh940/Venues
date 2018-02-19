@@ -21,6 +21,8 @@ export class UploadComponent implements OnInit, OnDestroy {
   errors = [];
   progressBarValue;
 
+  @ViewChild("files") files_input;
+  @ViewChild("formMultiple") multiple_form;
   @ViewChild("file") file_input;
   @ViewChild("form") my_form;
   @Output() venue_event = new EventEmitter();
@@ -71,28 +73,28 @@ export class UploadComponent implements OnInit, OnDestroy {
     }
   }
 
-  // uploadMultiple() {
-  //   this.errors = [];
-  //   console.log("**** THIS.NEWVENUE:", this.venue);
-  //   if (this._userService.getCurrentUser() == null) {
-  //     console.log("REPORTED: You do not have administration privilages");
-  //     this._router.navigateByUrl("/");
-  //   } else {
-  //     const files: FileList = this.file_input.nativeElement.files;
-  //     if (files.length === 0) {
-  //       console.log("No File Was Selected");
-  //       return;
-  //     }
-  //     const formData = new FormData(this.my_form.nativeElement);
-  //     formData.append(files[0].name, files[0]);
-  //     this._venueService.post_to_s3(formData, venue => {
-  //       if (venue.errors) {
-  //         for (const key of Object.keys(venue.errors)) {
-  //           const errors = venue.errors[key];
-  //           this.errors.push(errors.message);
-  //         }
-  //       }
-  //     });
-  //   }
-  // }
+  uploadMultiple() {
+    this.errors = [];
+    console.log("**** THIS.NEWVENUE:", this.venue);
+    if (this._userService.getCurrentUser() == null) {
+      console.log("REPORTED: You do not have administration privilages");
+      this._router.navigateByUrl("/");
+    } else {
+      const files: FileList = this.files_input.nativeElement.files;
+      if (files.length === 0) {
+        console.log("No File Was Selected");
+        return;
+      }
+      const formData = new FormData(this.multiple_form.nativeElement);
+      formData.append(files[0].name, files[0]);
+      this._venueService.post_multiple_to_s3(formData, this.venue._id, venue => {
+        if (venue.errors) {
+          for (const key of Object.keys(venue.errors)) {
+            const errors = venue.errors[key];
+            this.errors.push(errors.message);
+          }
+        }
+      });
+    }
+  }
 }

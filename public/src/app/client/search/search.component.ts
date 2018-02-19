@@ -41,13 +41,19 @@ export class SearchComponent implements OnInit {
     this._venderService.getVenders(vender => {
       this.finished = false;
       this.random = Math.floor(Math.random() * vender.length);
-      console.log("Random number:", this.random);
-      this.vender = vender[this.random];
-      console.log(this.vender);
       this.randomTwo = Math.floor(Math.random() * vender.length);
+      console.log("Random number:", this.random);
       console.log("RandomTwo number:", this.randomTwo);
-      this.venderTwo = vender[this.randomTwo];
-      console.log(this.venderTwo);
+      if(this.random === this.randomTwo) {
+        this.randomTwo = Math.floor(Math.random() * vender.length);
+        console.log("Random number:", this.random);
+        console.log("RandomTwo number:", this.randomTwo);
+      } else {
+        this.vender = vender[this.random];
+        console.log(this.vender);
+        this.venderTwo = vender[this.randomTwo];
+        console.log(this.venderTwo);
+      }
       this.finished = true;
     });
   }

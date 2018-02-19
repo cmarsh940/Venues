@@ -54,6 +54,17 @@ export class VenueService {
       err => console.log(err)
     );
   }
+  post_multiple_to_s3(formData, id: string, callback) {
+    console.log("**** HIT SERVICE", formData);
+    var URL = API_URL + "upload" + "/" + "multiple" + "/" + id;
+    return this._http.put(URL, formData).subscribe(
+      res => {
+        // const venue = res.json();
+        callback(res.json());
+      },
+      err => console.log(err)
+    );
+  }
 
   destroy(id: string, callback) {
     var URL = API_URL + id;
@@ -85,5 +96,29 @@ export class VenueService {
       },
       err => console.log(err)
     );
+  }
+
+  /**
+   * Handle Http operation that failed.
+   * Let the app continue.
+   * @param operation - name of the operation that failed
+   * @param result - optional value to return as the observable result
+   */
+  private handleError<T>(operation = "operation", result?: T) {
+    return (error: any): Observable<T> => {
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+      this.log(`${operation} failed: ${error.message}`);
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
+
+  /** Log a UserService message with the MessageService */
+  private log(message: string) {
+    this._messageService.add("VenueService: " + message);
   }
 }
