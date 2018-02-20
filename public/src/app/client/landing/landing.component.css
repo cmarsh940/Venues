@@ -103,6 +103,9 @@ h2 {
     object-fit: scale-down;
 }
 
+.mat-card-title {
+    padding: 2%;
+}
 
 .vender-button {
     width:100%;

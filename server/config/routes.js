@@ -43,6 +43,7 @@ module.exports = function (app) {
     app.put('/reviews/:id', Reviews.update);
 
     app.get('/venues', Venues.index);
+    app.get('/venues/:category', Venues.category);
     app.post('/venues', Venues.create);
     app.put('/venues/upload/:id', Venues.upload);
     app.put('/venues/upload/multiple/:id', Venues.gallery);

@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const Venue = mongoose.model('Venue');
-// const Amenity = mongoose.model('Amenity');
+const Category = mongoose.model('Category');
+const Amenity = mongoose.model('Amenity');
+const Gallery = mongoose.model('Gallery');
+const Review = mongoose.model('Review');
 
 const config = require("../config/config");
 
@@ -52,13 +55,25 @@ let shuffle = function (arr) {
 class VenuesController {
     index(req, res) {
         Venue.find({})
-          .populate({ path: "amenities", model: "Amenity" })
-          .populate({ path: "category", model: "Category" })
+          .populate({ path: "amenities", model: Amenity })
+          .populate({ path: "_category", model: Category })
           .exec((err, venues) => {
             if (err) {
               return res.json(err);
             }
             shuffle(venues);
+            return res.json(venues);
+          });
+    }
+
+    category(req, res) {
+        Venue.find({ _category: req.params.category }).populate({path: '_category', model: Category}).exec((err, venues) => {
+            if (err) {
+                console.log("*** SERVER FIND ERROR:", err)
+              return res.json(err);
+            } 
+            shuffle(venues);
+            console.log("*** SERVER SENDING VENUES:", venues)
             return res.json(venues);
           });
     }
@@ -192,21 +207,21 @@ class VenuesController {
         });
     }
 
-    // review(req, res){
-    //     Venue.findOne({_id: req.params.id}, (err, venue) =>{
-    //         var review = new Review(req.body);
-    //         review._venue = venue._id;
-    //         venue.reviews.push(review);
-    //         review.save(function(err){
-    //                 venue.save(function(err){
-    //                     if(err) { 
-    //                         console.log('Error'); 
-    //                     }
-    //                     return res.json(venue) 
-    //                 });
-    //         });
-    // });
-    // }
+    review(req, res){
+        Venue.findOne({_id: req.params.id}, (err, venue) =>{
+            var review = new Review(req.body);
+            review._venue = venue._id;
+            review.save((err) => {
+                    venue.reviews.push(review);
+                    venue.save((err) => {
+                        if(err) { 
+                            console.log('Error'); 
+                        }
+                        return res.json(venue) 
+                    });
+            });
+        });
+    }
 
     images(req, res) {
         Venue.findById(req.params.id).populate('galleryItems').exec((err, doc) => {

@@ -1,21 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { AgmMap } from '@agm/core/directives/map';
-import { google } from '@agm/core/services/google-maps-types';
-
-import { VenueService } from '../../services/venue.service';
-import { VenderService } from './../../services/vender.service';
-import { Venue } from '../../models/venue';
-import { Vender } from '../../models/vender';
+import { Vender } from './../../../../models/vender';
 import { Router } from '@angular/router';
-
+import { Component, OnInit } from '@angular/core';
+import { VenueService } from '../../../../services/venue.service';
+import { VenderService } from '../../../../services/vender.service';
+import { Venue } from '../../../../models/venue';
 
 @Component({
-  selector: "app-search",
-  templateUrl: "./search.component.html",
-  styleUrls: ["./search.component.css"],
+  selector: "app-lodge",
+  templateUrl: "./lodge.component.html",
+  styleUrls: ["./lodge.component.css"],
   preserveWhitespaces: false
 })
-export class SearchComponent implements OnInit {
+export class LodgeComponent implements OnInit {
   vender: Vender[] = [];
   venderTwo: Vender[] = [];
   venues: Array<Venue>;
@@ -44,7 +40,7 @@ export class SearchComponent implements OnInit {
       this.randomTwo = Math.floor(Math.random() * vender.length);
       console.log("Random number:", this.random);
       console.log("RandomTwo number:", this.randomTwo);
-      if(this.random === this.randomTwo) {
+      if (this.random === this.randomTwo) {
         this.randomTwo = Math.floor(Math.random() * vender.length);
         console.log("Random number:", this.random);
         console.log("RandomTwo number:", this.randomTwo);
@@ -58,24 +54,11 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  getVenders() {
-    this._venderService.getVenders(vender => {
-      this.random = Math.floor(Math.random() * vender.length);
-      console.log("Random number:", this.random);
-      this.vender = vender[this.random];
-      console.log(this.vender);
-      this.randomTwo = Math.floor(Math.random() * vender.length);
-      console.log("RandomTwo number:", this.randomTwo);
-      this.venderTwo = vender[this.randomTwo];
-      console.log(this.venderTwo);
-    });
-  }
-
   getVenues(): void {
-    this._venueService.getVenues(venues => (this.venues = venues));
+    this._venueService.getSingleVenue("", venues => (this.venues = venues));
+    console.log(this.venues);
   }
 }
-
 
 interface marker {
   icon: string;

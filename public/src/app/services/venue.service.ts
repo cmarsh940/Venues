@@ -21,6 +21,14 @@ export class VenueService {
       .subscribe(res => callback(res.json()), err => console.error(err));
   }
 
+  getSingleVenue(_category: string, callback) {
+    var URL = API_URL + _category;
+    return this._http.get(URL, _category)
+    .subscribe(res => {
+        callback(res.json());
+      }, err => console.log(err));
+  }
+
   createVenue(newVenue: Venue, callback) {
     return this._http.post(API_URL, newVenue).subscribe(
       res => {
