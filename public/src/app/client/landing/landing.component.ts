@@ -18,6 +18,7 @@ export class LandingComponent implements OnInit {
   venues: Array<Venue>;
 
   showDelay = 300;
+  length:number;
 
   constructor(
     private _venderService: VenderService,

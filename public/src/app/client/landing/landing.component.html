@@ -26,24 +26,29 @@
                         </a>
                     </li>
                     <li class="search-icon" matTooltip="Search for country club venue's" [matTooltipShowDelay]="showDelay">
-                        <a routerLink="/search/countryclub"></a>
-                        <img src='/assets/images/countryclub.png' alt="Country Club icon">
+                        <a routerLink="/search/countryclub">
+                            <img src='/assets/images/countryclub.png' alt="Country Club icon">
+                        </a>
                     </li>
                     <li class="search-icon" matTooltip="Search for event center venue's" [matTooltipShowDelay]="showDelay">
-                        <a routerLink="/search/eventcenter"></a>
-                        <img src='/assets/images/eventcenter.png' alt="Event Center icon">
+                        <a routerLink="/search/eventcenter">
+                            <img src='/assets/images/eventcenter.png' alt="Event Center icon">
+                        </a>
                     </li>
                     <li class="search-icon" matTooltip="Search for garden venue's" [matTooltipShowDelay]="showDelay">
-                        <a routerLink="/search/garden"></a>
-                        <img src='/assets/images/garden.png' alt="Garden icon">
+                        <a routerLink="/search/garden">
+                            <img src='/assets/images/garden.png' alt="Garden icon">
+                        </a>
                     </li>
                     <li class="search-icon" matTooltip="Search for historic venue's" [matTooltipShowDelay]="showDelay">
-                        <a routerLink="/search/historic"></a>
-                        <img src='/assets/images/historic.png' alt="Historic icon">
+                        <a routerLink="/search/historic">
+                            <img src='/assets/images/historic.png' alt="Historic icon">
+                        </a>
                     </li>
                     <!-- <li class="search-icon" matTooltip="Search for lodge venue's" [matTooltipShowDelay]="showDelay">
-                        <a routerLink="/search/lodge"></a>
-                        <img src='/assets/images/lodge.png' alt="Lodge icon">
+                        <a routerLink="/search/lodge">
+                            <img src='/assets/images/lodge.png' alt="Lodge icon">
+                        </a>
                     </li> -->
                 </ul>
             </div>
@@ -85,15 +90,23 @@
             </div>
         </div>
     </div>
+    <div class="image-seperater mx-auto">
+        <img src="/assets/images/tulsavenus.png" alt="Image seperater">
+    </div>
+    <span class="line"></span>
     <div class="col-12" id="bottom-group">
         <br>
         <div class="container" id="category">
             <h2>What are you interested in?</h2>
             <h6 class="text-center">Explore some of our differnt venues</h6>
-            <mat-grid-list cols="4" rowHeight="200px" gutterSize="1rem">
-                <mat-grid-tile *ngFor="let category of categories; let i = index; ">{{category.name}}
-                </mat-grid-tile>
-            </mat-grid-list>
+            <ng-container *ngFor="let category of categories; let i = index">
+                <span class="inner-circle">
+                    <span class="small-inner-circle">
+                        {{category.name.length}}
+                    </span>
+                    {{category.name}}
+                </span>
+            </ng-container>
         </div>
     </div>
 </div>
