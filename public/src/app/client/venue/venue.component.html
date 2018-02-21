@@ -2,7 +2,7 @@
     <div class="carousel">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                <ng-container *ngIf="venue.pic_url; else elseTemplate">
+                <ng-container *ngIf="vender.pic_url; else elseTemplate">
                     <div class="carousel-item active">
                         <img class="d-block w-100" src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}' class="venue-image" alt="Venue slide pictures">
                     </div>
@@ -119,12 +119,11 @@
                             <i class="material-icons tab-icon">&#xE876;</i>
                             AMENITIES
                         </ng-template>
-                        <mat-selection-list #amenities>
-                            <mat-list-option *ngFor="let amenity of venue.amenities">
-                                {{amenity.name}}
-                            </mat-list-option>
-                        </mat-selection-list>
-
+                        <mat-list [ngStyle]="{ 'width': '50%', 'display': 'inline-block' }" *ngFor="let amenity of venue.amenities">
+                            <mat-list-item>
+                                <i class="material-icons">&#xE876;</i> {{amenity.name}}
+                            </mat-list-item>
+                        </mat-list>
                     </mat-tab>
                     <mat-tab>
                         <ng-template mat-tab-label>
@@ -157,15 +156,15 @@
         </div>
         <div class="row" id="middle-bottom">
             <div class="col-3">
-                <mat-list *ngFor="let amenity of venue.amenities">
+                <!-- <mat-list *ngFor="let amenity of venue.amenities">
                     <mat-list-item>
                         <i class="material-icons">&#xE876;</i> {{amenity.name}}
                     </mat-list-item>
-                </mat-list>
+                </mat-list> -->
             </div>
             <div class="col-9">
                 <mat-toolbar color="accent">REVIEWS</mat-toolbar>
-                <button mat-raised-button color="primary" routerLink="['/venue', 'display/','review/', venue._id]">Add a Review</button>
+                <button mat-button color="primary" [routerLink]="['/venue', venue._id, 'review']">Add a Review</button>
                 <ng-container *ngIf="venue.reviews && approved === true; else elseTemplate">
                     <mat-card>
                         <h6>{{venue.reviews}}</h6>

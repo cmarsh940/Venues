@@ -20,6 +20,28 @@
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+    h1 {
+        text-align: -webkit-left;
+        color: white;
+        margin-left: 3em;
+        font-size: -webkit-xxx-large;
+        letter-spacing: 0.2rem;
+        position: absolute;
+        top: 2em;
+        left: 0;
+        right: 0;
+    }
+
+    #search-icon-group {
+        position: absolute;
+        top: 19rem;
+        left: 439px;
+        right: 0px;
+    }
+
+    ul {
+        width: 50%;
+    }
   
 }
 
@@ -44,6 +66,7 @@ div.containerX {
 
 div.search {
     width: 100%;
+    overflow: hidden;
 }
 
 #search-button {
@@ -60,15 +83,8 @@ button {
 h1 {
     text-align: -webkit-left;
     color: white;
-    text-shadow: 3px 4px 2px #000;
-    margin-left: 3em;
+    text-shadow: 3px 4px 2px #5f5f5f;
     font-family: 'Parisienne', cursive;
-    font-size: -webkit-xxx-large;
-    letter-spacing: 0.2rem;
-    position: absolute;
-    top: 2em;
-    left: 0;
-    right: 0;
 }
 
 h2 {
@@ -81,9 +97,9 @@ h2 {
 }
 
 .vender-card {
-  display: inline-block;
-  padding: 0;
-  margin: 1%;
+    display: inline-block;
+    padding: 0;
+    margin: 1%;
 }
 
 .card {
@@ -131,23 +147,19 @@ h5 {
 
 #search-icon-group {
     width:100%;
-    display: flex;
-    position: absolute;
-    top: 19rem;
-    justify-content: center;
 }
 
 .search-icon {
-    display: -webkit-inline-box;
-    margin: 2%;
-}
-
-ul {
-    width: 27%;
+    display: inline-block;
 }
 
 .search-icon img {
-    width: 65%;
+    width: 50%;
+    padding: 5%;
+}
+
+.search-icon:hover img {
+   background: #808080a1;
 }
 
 img {

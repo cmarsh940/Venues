@@ -9,7 +9,6 @@ export class Vender {
     facebook_url: any;
     instagram_url: any;
     pic_url: any;
-    amenities: any;
     createdAt: any;
     updatedAt: any;
 }

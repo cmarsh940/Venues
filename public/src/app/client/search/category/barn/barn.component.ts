@@ -12,8 +12,8 @@ import { Vender } from '../../../../models/vender';
   preserveWhitespaces: false
 })
 export class BarnComponent implements OnInit {
-  vender: Vender[] = [];
-  venderTwo: Vender[] = [];
+  vender = new Vender();
+  venderTwo = new Vender();
   venues: Array<Venue>;
   search_text: String = "";
   finished: boolean;
@@ -55,7 +55,10 @@ export class BarnComponent implements OnInit {
   }
 
   getVenues(): void {
-    this._venueService.getSingleVenue("5a8896a2d339a10b3f535c8f", venues => (this.venues = venues));
+    this._venueService.getSingleVenue(
+      "5a8896a2d339a10b3f535c8f",
+      venues => (this.venues = venues)
+    );
     console.log(this.venues);
   }
 }

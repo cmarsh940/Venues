@@ -8,7 +8,6 @@ import { Venue } from '../../models/venue';
 import { Vender } from '../../models/vender';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: "app-search",
   templateUrl: "./search.component.html",
@@ -16,8 +15,8 @@ import { Router } from '@angular/router';
   preserveWhitespaces: false
 })
 export class SearchComponent implements OnInit {
-  vender: Vender[] = [];
-  venderTwo: Vender[] = [];
+  vender = new Vender();
+  venderTwo = new Vender();
   venues: Array<Venue>;
   search_text: String = "";
   finished: boolean;

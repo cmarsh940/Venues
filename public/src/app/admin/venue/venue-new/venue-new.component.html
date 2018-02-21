@@ -91,7 +91,7 @@
       </mat-form-field>
 
       <mat-form-field>
-        <mat-select *ngIf="!isMultiple" placeholder="Venue Category" name="_category" [(ngModel)]="newVenue._category" #_category='ngModel'>
+        <mat-select placeholder="Venue Category" name="_category" [(ngModel)]="newVenue._category" #_category='ngModel'>
           <mat-option *ngFor="let category of categories" [value]="category._id">{{category.name}}</mat-option>
         </mat-select>
       </mat-form-field>

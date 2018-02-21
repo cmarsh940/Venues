@@ -101,8 +101,8 @@
                     <mat-card-title>
                         <h5 class="text-left">{{venue?.name}}</h5>
                         <div class="icon-address">
-                            <span *ngFor="let category of venue._category">
-                                <img src="/assets/images/{{category.icon}}" class="venue-icon" alt="Venue Icon">
+                            <span>
+                                <img src="/assets/images/{{venue?._category.icon}}" class="venue-icon" alt="Venue Icon">
                             </span>
                             <mat-card-subtitle>{{venue?.address}}</mat-card-subtitle>
                         </div>

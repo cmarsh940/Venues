@@ -72,7 +72,7 @@ const routes: Routes = [
         component: VenueComponent
       },
       {
-        path: "venue/display/review/:id",
+        path: "venue/:id/review",
         pathMatch: "full",
         component: ReviewNewComponent
       },

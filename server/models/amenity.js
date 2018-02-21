@@ -6,10 +6,6 @@ const AmenitySchema = new mongoose.Schema(
       type: String,
       required: [true, "Name cannot be blank"]
     },
-    venues: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Venue"
-      }]
   },
   { timestamps: true }
 );

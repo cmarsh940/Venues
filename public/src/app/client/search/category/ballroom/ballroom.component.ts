@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { VenderService } from '../../../../services/vender.service';
 import { Vender } from '../../../../models/vender';
 
+
 @Component({
   selector: "app-ballroom",
   templateUrl: "./ballroom.component.html",
@@ -12,8 +13,8 @@ import { Vender } from '../../../../models/vender';
   preserveWhitespaces: false
 })
 export class BallroomComponent implements OnInit {
-  vender: Vender[] = [];
-  venderTwo: Vender[] = [];
+  vender = new Vender();
+  venderTwo = new Vender();
   venues: Array<Venue>;
   search_text: String = "";
   finished: boolean;
@@ -55,7 +56,10 @@ export class BallroomComponent implements OnInit {
   }
 
   getVenues(): void {
-    this._venueService.getSingleVenue("5a8896add339a10b3f535c90", venues => (this.venues = venues));
+    this._venueService.getSingleVenue(
+      "5a8896add339a10b3f535c90",
+      venues => (this.venues = venues)
+    );
     console.log(this.venues);
   }
 }

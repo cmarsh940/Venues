@@ -73,6 +73,7 @@ export class VenueComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.getVender();
     this.getVenue();
+    console.log(this.venue);
   }
 
   ngOnDestroy() {
@@ -80,6 +81,7 @@ export class VenueComponent implements OnInit, OnDestroy {
   }
 
   getVenue() {
+    console.log("*** HIT GETVENUE");
     this.subscription = this._activatedRoute.params.subscribe(params =>
       this._venueService.showVenue(params.id, res => (this.venue = res))
     );

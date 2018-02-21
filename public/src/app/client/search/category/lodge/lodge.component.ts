@@ -12,8 +12,8 @@ import { Venue } from '../../../../models/venue';
   preserveWhitespaces: false
 })
 export class LodgeComponent implements OnInit {
-  vender: Vender[] = [];
-  venderTwo: Vender[] = [];
+  vender = new Vender();
+  venderTwo = new Vender();
   venues: Array<Venue>;
   search_text: String = "";
   finished: boolean;

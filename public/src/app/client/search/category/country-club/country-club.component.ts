@@ -12,8 +12,8 @@ import { Vender } from '../../../../models/vender';
   preserveWhitespaces: false
 })
 export class CountryClubComponent implements OnInit {
-  vender: Vender[] = [];
-  venderTwo: Vender[] = [];
+  vender = new Vender();
+  venderTwo = new Vender();
   venues: Array<Venue>;
   search_text: String = "";
   finished: boolean;

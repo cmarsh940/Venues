@@ -1,3 +1,4 @@
+import { AnalyticsService } from './services/analytics.service';
 import { environment } from './../environments/environment';
 import { AgmCoreModule } from '@agm/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,7 +36,8 @@ import { MaterialModule } from './material/material.module';
     })
   ],
   providers: [
-    UserService
+    UserService,
+    AnalyticsService
   ],
   bootstrap: [AppComponent]
 })
