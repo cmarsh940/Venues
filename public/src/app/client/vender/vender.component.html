@@ -3,13 +3,13 @@
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <ng-container *ngIf="vender.pic_url; else elseTemplate">
-                    <div class="carousel-item active">
+                    <!-- <div class="carousel-item active">
                         <img class="d-block w-100" src='https://venue-test.s3.amazonaws.com/Venues/{{vender._id}}/{{vender.pic_url}}' class="vender-image"
                             alt="Vender slide pictures">
-                    </div>
-                    <!-- <div class="carousel-item active">
-                        <img class="d-block w-100" src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' class="vender-image" alt="Vender slide pictures">
                     </div> -->
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' class="vender-image" alt="Vender slide pictures">
+                    </div>
                 </ng-container>
                 <ng-template #elseTemplate>
                     <div class="carousel-item active">

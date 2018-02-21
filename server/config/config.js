@@ -1,9 +1,9 @@
 module.exports = {
   //ADMIN
-  // iamUser: "***",
-  // iamSecret: "***"
+  iamUser: "***",
+  iamSecret: "***"
 
   // TEST
-    iamUser: '***',
-    iamSecret: '***',
+    // iamUser: '***',
+    // iamSecret: '***',
 };

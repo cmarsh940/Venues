@@ -39,7 +39,7 @@ import { tap } from 'rxjs/operators/tap';
 })
 export class VenueComponent implements OnInit, OnDestroy {
   venue = new Venue();
-  vender: Vender;
+  vender = new Vender();
   subscription: Subscription;
   random: number;
   approved: boolean;

@@ -62,13 +62,13 @@
             <div class="vender-card" *ngFor="let vender of venders; let i = index">
                 <mat-card class="card" [tabindex]="i">
                     <ng-container *ngIf="vender.pic_url; else elseTemplate">
-                        <a [routerLink]="['/vender', 'display', vender._id]">
+                        <!-- <a [routerLink]="['/vender', 'display', vender._id]">
                             <img mat-card-image src='https://s3-us-west-2.amazonaws.com/venue-test/Venders/{{vender.name}}/{{vender.pic_url}}' alt="Vender Picture"
                             class="img-responsive">
-                        </a>
-                        <!-- <a [routerLink]="['/vender', 'display', vender._id]">
-                            <img mat-card-image  src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' alt="Vender Picture" class= "img-responsive">
                         </a> -->
+                        <a [routerLink]="['/vender', 'display', vender._id]">
+                            <img mat-card-image  src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' alt="Vender Picture" class= "img-responsive">
+                        </a>
                     </ng-container>
                     <ng-template #elseTemplate>
                         <a [routerLink]="['/vender', 'display', vender._id]">
