@@ -30,14 +30,14 @@ footer {
 }
 
 #footer-toolbar {
-    background: black;
+    background: #dcdcdc;
 }
 
 .social-links {
     width: 100%;
     height: auto;
     margin: auto;
-    background: black;
+    background: #dcdcdc;
 }
 
 ul {

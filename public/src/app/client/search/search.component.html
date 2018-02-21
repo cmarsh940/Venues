@@ -28,8 +28,8 @@
                         </div>
                     </ng-template>
                 </div>
-            </div>
-            <div class="col-6" id="map">
+            </div><!--
+            --><div class="col-6" id="map">
                 <agm-map [latitude]='36.153883' [longitude]='-95.990629' [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
                     <agm-marker *ngFor="let venue of venues" [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng">
                         <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
@@ -40,8 +40,8 @@
                         </agm-snazzy-info-window>
                     </agm-marker>
                 </agm-map>
-            </div>
-            <div class="col-3">
+            </div><!--
+            --><div class="col-3">
                 <div>
                     <h2 class="text-center">{{ venderTwo?.name }}</h2>
                     <ng-container *ngIf="venderTwo?.pic_url; else elseTemplate">

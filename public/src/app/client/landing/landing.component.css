@@ -40,7 +40,7 @@
     }
 
     ul {
-        width: 50%;
+        width: 100%;
     }
   
 }
@@ -73,7 +73,15 @@ div.search {
     width:100%;
     display: flex;
     position: absolute;
-    top: 15em;
+    top: 14em;
+}
+
+#search-button-style {
+    color: #00B8D4;
+}
+
+#search-button-style:hover {
+    border: 3px solid #00B8D4;
 }
 
 button {
@@ -92,6 +100,18 @@ h2 {
     letter-spacing: 0.2rem;
 }
 
+div.col-12 {
+    background: #ffffff; /* For browsers that do not support gradients */
+    background: linear-gradient(white, whitesmoke);
+    height: 100%;
+}
+
+#bottom-group {
+    background: #ffffff; /* For browsers that do not support gradients */
+    background: linear-gradient(whitesmoke, white);
+    height: 100%;
+}
+
 #vender {
     margin-top: 2%;
 }
@@ -99,7 +119,8 @@ h2 {
 .vender-card {
     display: inline-block;
     padding: 0;
-    margin: 1%;
+    margin: 1% 1% 13% 1%;
+
 }
 
 .card {
@@ -134,19 +155,20 @@ h2 {
 }
 
 h5 {
-  color:#FFB300;
+  color:#00B8D4;
 }
 
 #category {
-    margin-top: 3rem;
+    margin-bottom: 3rem;
 }
 
 #category>h2 {
+    margin-top: 2rem;
     margin-bottom: 1rem;
 }
 
 #search-icon-group {
-    width:100%;
+    width:50%;
 }
 
 .search-icon {
@@ -154,14 +176,26 @@ h5 {
 }
 
 .search-icon img {
-    width: 50%;
-    padding: 5%;
+    width: 100%;
+    padding: 25%;
+    border: 1px dotted white;
+    background: #86793433;
 }
 
 .search-icon:hover img {
-   background: #808080a1;
+    border: 5px dashed #FFB300;
+    background: #0000004a;
 }
 
 img {
     object-fit: cover;
 }
+
+.vender-location-marker {
+    width: 7%;
+}
+
+.vender-location-marker, .mat-card-subtitle {
+    display: inline-block;
+}
+

@@ -6,83 +6,94 @@
         </section>
         <div class="search">
             <div id="search-button">
-                <button mat-raised-button color="accent" routerLink="/search" matTooltip="Search for a Venue" matTooltip="Search for a venue">Find Your Venue Now</button>
+                <button mat-raised-button routerLink="/search" matTooltip="Search for a Venue" [matTooltipShowDelay]="showDelay" id="search-button-style">Find Your Venue Now</button>
             </div>
             <div id="search-icon-group">
                 <ul>
-                    <li class="search-icon">
+                    <li class="search-icon" matTooltip="Search for ballroom venue's" [matTooltipShowDelay]="showDelay">
                         <a routerLink="/search/ballroom">
-                            <img src='/assets/images/ballroom.png' alt="ballroom icon">
+                            <img src='/assets/images/ballroom.png' alt="Ballroom icon">
                         </a>
                     </li>
-                    <li class="search-icon">
+                    <li class="search-icon" matTooltip="Search for barn venue's" [matTooltipShowDelay]="showDelay">
                         <a routerLink="/search/barn">
-                            <img src='/assets/images/barn.png' alt="barn icon">
+                            <img src='/assets/images/barn.png' alt="Barn icon">
                         </a>
                     </li>
-                    <li class="search-icon">
+                    <li class="search-icon" matTooltip="Search for chapel venue's" [matTooltipShowDelay]="showDelay">
                         <a routerLink="/search/chapel">
-                            <img src='/assets/images/chaple.png' alt="chaple icon">
+                            <img src='/assets/images/chaple.png' alt="Chaple icon">
                         </a>
                     </li>
-                    <li class="search-icon">
-                        <a routerLink="/search/garden"></a>
-                        <img src='/assets/images/countryclub.png' alt="garden icon">
+                    <li class="search-icon" matTooltip="Search for country club venue's" [matTooltipShowDelay]="showDelay">
+                        <a routerLink="/search/countryclub"></a>
+                        <img src='/assets/images/countryclub.png' alt="Country Club icon">
                     </li>
-                    <li class="search-icon">
-                        <a routerLink="/search/garden"></a>
-                        <img src='/assets/images/eventcenter.png' alt="garden icon">
+                    <li class="search-icon" matTooltip="Search for event center venue's" [matTooltipShowDelay]="showDelay">
+                        <a routerLink="/search/eventcenter"></a>
+                        <img src='/assets/images/eventcenter.png' alt="Event Center icon">
                     </li>
-                    <li class="search-icon">
+                    <li class="search-icon" matTooltip="Search for garden venue's" [matTooltipShowDelay]="showDelay">
                         <a routerLink="/search/garden"></a>
-                        <img src='/assets/images/garden.png' alt="garden icon">
+                        <img src='/assets/images/garden.png' alt="Garden icon">
                     </li>
-                    <li class="search-icon">
-                        <a routerLink="/search/garden"></a>
-                        <img src='/assets/images/historic.png' alt="garden icon">
+                    <li class="search-icon" matTooltip="Search for historic venue's" [matTooltipShowDelay]="showDelay">
+                        <a routerLink="/search/historic"></a>
+                        <img src='/assets/images/historic.png' alt="Historic icon">
                     </li>
-                    <!-- <li class="search-icon">
-                        <a routerLink="/search/garden"></a>
-                        <img src='/assets/images/lodge.png' alt="garden icon">
+                    <!-- <li class="search-icon" matTooltip="Search for lodge venue's" [matTooltipShowDelay]="showDelay">
+                        <a routerLink="/search/lodge"></a>
+                        <img src='/assets/images/lodge.png' alt="Lodge icon">
                     </li> -->
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="container" id="vender">
-        <h2>Best Things To Do In The City</h2>
-        <h6 class="text-center">Explore some of the best places to visit in our city.</h6>
-        <div class="vender-card" *ngFor="let vender of venders; let i = index">
-            <mat-card class="card" [tabindex]="i">
-                <ng-container *ngIf="vender.pic_url; else elseTemplate">
-                    <img mat-card-image src='https://s3-us-west-2.amazonaws.com/venue-test/Venders/{{vender.name}}/{{vender.pic_url}}' alt="Vender Picture"
-                        class="img-responsive">
-    
-                    <!-- <img mat-card-image  src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' alt="Vender Picture" class= "img-responsive"> -->
-                </ng-container>
-                <ng-template #elseTemplate>
-                    <img mat-card-image src='/assets/images/missing.png' alt="Venue Picture" class="img-responsive">
-                </ng-template>
-                <mat-card-title>
-                    <h5 class="text-left">{{vender.name}}</h5>
-                </mat-card-title>
-    
-                <mat-card-actions>
-                    <button mat-button class="vender-button" [routerLink]="['/vender', 'display', vender._id]" matTooltip="View {{vender.name}}">VIEW</button>
-                </mat-card-actions>
-            </mat-card>
+    <div class="col-12">
+        <div class="container" id="vender">
+            <h2>Best Things To Do In The City</h2>
+            <h6 class="text-center">Explore some of the best places to visit in our city.</h6>
+            <div class="vender-card" *ngFor="let vender of venders; let i = index">
+                <mat-card class="card" [tabindex]="i">
+                    <ng-container *ngIf="vender.pic_url; else elseTemplate">
+                        <a [routerLink]="['/vender', 'display', vender._id]">
+                            <img mat-card-image src='https://s3-us-west-2.amazonaws.com/venue-test/Venders/{{vender.name}}/{{vender.pic_url}}' alt="Vender Picture"
+                            class="img-responsive">
+                        </a>
+                        <!-- <a [routerLink]="['/vender', 'display', vender._id]">
+                            <img mat-card-image  src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' alt="Vender Picture" class= "img-responsive">
+                        </a> -->
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                        <a [routerLink]="['/vender', 'display', vender._id]">
+                            <img mat-card-image src='/assets/images/missing.png' alt="Venue Picture" class="img-responsive">
+                        </a>
+                    </ng-template>
+                    <mat-card-title>
+                        <h5 class="text-left">{{vender?.name}}</h5>
+                        <span>
+                            <img src="/assets/images/marker.png" alt="location icon" class="vender-location-marker">
+                        </span>
+                        <mat-card-subtitle>{{vender?.address}}</mat-card-subtitle>
+                    </mat-card-title>
+        
+                    <mat-card-actions>
+                        <button mat-button class="vender-button" [routerLink]="['/vender', 'display', vender._id]" matTooltip="View {{vender.name}}" [matTooltipShowDelay]="showDelay">VIEW</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
         </div>
     </div>
-    <br>
-    <hr>
-    <br>
-    <div class="container" id="category">
-        <h2>What are you interested in?</h2>
-        <h6 class="text-center">Explore some of our differnt venues</h6>
-        <mat-grid-list cols="4" rowHeight="200px" gutterSize="1rem">
-            <mat-grid-tile *ngFor="let category of categories; let i = index; ">{{category.name}}
-            </mat-grid-tile>
-        </mat-grid-list>
+    <div class="col-12" id="bottom-group">
+        <br>
+        <div class="container" id="category">
+            <h2>What are you interested in?</h2>
+            <h6 class="text-center">Explore some of our differnt venues</h6>
+            <mat-grid-list cols="4" rowHeight="200px" gutterSize="1rem">
+                <mat-grid-tile *ngFor="let category of categories; let i = index; ">{{category.name}}
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
     </div>
 </div>
