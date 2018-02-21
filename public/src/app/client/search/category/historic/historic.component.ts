@@ -55,7 +55,7 @@ export class HistoricComponent implements OnInit {
   }
 
   getVenues(): void {
-    this._venueService.getSingleVenue("", venues => (this.venues = venues));
+    this._venueService.getSingleVenue("5a813a1800114b31f5f3ac66", venues => (this.venues = venues));
     console.log(this.venues);
   }
 }

@@ -55,7 +55,7 @@ export class GardenComponent implements OnInit {
   }
 
   getVenues(): void {
-    this._venueService.getSingleVenue("", venues => (this.venues = venues));
+    this._venueService.getSingleVenue("5a813a0700114b31f5f3ac65", venues => (this.venues = venues));
     console.log(this.venues);
   }
 }

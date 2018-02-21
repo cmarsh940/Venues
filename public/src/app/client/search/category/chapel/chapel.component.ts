@@ -55,12 +55,16 @@ export class ChapelComponent implements OnInit {
   }
 
   getVenues(): void {
-    this._venueService.getSingleVenue(
-      "5a8896bbd339a10b3f535c91",
-      venues => (this.venues = venues)
-    );
+    this._venueService.getSingleVenue("5a8139d200114b31f5f3ac62", venues => (this.venues = venues));
     console.log(this.venues);
   }
+  // getVenues(): void {
+  //   this._venueService.getSingleVenue(
+  //     "5a8896bbd339a10b3f535c91",
+  //     venues => (this.venues = venues)
+  //   );
+  //   console.log(this.venues);
+  // }
 }
 
 interface marker {

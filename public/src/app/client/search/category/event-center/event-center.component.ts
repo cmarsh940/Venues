@@ -55,7 +55,7 @@ export class EventCenterComponent implements OnInit {
   }
 
   getVenues(): void {
-    this._venueService.getSingleVenue("", venues => (this.venues = venues));
+    this._venueService.getSingleVenue("5a8139f800114b31f5f3ac64", venues => (this.venues = venues));
     console.log(this.venues);
   }
 }

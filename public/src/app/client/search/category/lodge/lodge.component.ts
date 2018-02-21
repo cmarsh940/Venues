@@ -55,7 +55,7 @@ export class LodgeComponent implements OnInit {
   }
 
   getVenues(): void {
-    this._venueService.getSingleVenue("", venues => (this.venues = venues));
+    this._venueService.getSingleVenue("5a813a2500114b31f5f3ac67", venues => (this.venues = venues));
     console.log(this.venues);
   }
 }
