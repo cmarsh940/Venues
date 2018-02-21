@@ -22,7 +22,7 @@ export class VenueService {
   }
 
   getSingleVenue(_category: string, callback) {
-    var URL = API_URL + _category;
+    var URL = API_URL + "category/" + _category;
     return this._http.get(URL, _category)
     .subscribe(res => {
         callback(res.json());
@@ -83,8 +83,8 @@ export class VenueService {
 
   showVenue(id: string, callback) {
     var URL = API_URL + id;
-    this._http
-      .get(URL)
+    console.log("*** SERVICE HIT SHOWVENUE:");
+    this._http.get(URL)
       .subscribe(res => callback(res.json()), err => console.log(err));
   }
 
