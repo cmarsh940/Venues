@@ -33,7 +33,7 @@ const VenderSchema = new mongoose.Schema(
       type: String,
       required: [true, "Phone number cannot be blank"],
       minlength: [9, "Phone number cannot be less then 9 characters"],
-      maxlength: [14, "Phone number cannot be greater then 11 characters"],
+      maxlength: [15, "Phone number cannot be greater then 15 characters"],
       trim: true
     },
     address: {

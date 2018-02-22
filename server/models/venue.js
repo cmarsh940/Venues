@@ -32,7 +32,9 @@ const VenueSchema = new mongoose.Schema(
     phone: {
       type: String,
       required: [true, "Venue phone number required EX: 123-123-1234"],
-      maxlength: [15, "Phone cannot be greater then 15 characters"]
+      minlength: [9, "Phone number cannot be less then 9 characters"],
+      maxlength: [15, "Phone number cannot be greater then 15 characters"],
+      trim: true
     },
     minAmmount: {
       type: Number,
