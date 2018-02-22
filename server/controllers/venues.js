@@ -52,6 +52,26 @@ let shuffle = function (arr) {
     }
 }
 
+
+//  James wagner's example(signed url)
+// var aws2 = new AWS.S3({
+//   accessKeyId: IAM_USER_KEY,
+//   secretAccessKey: IAM_USER_SECRET,
+//   Bucket: BUCKET_NAME
+// });
+
+// aws2.getSignedUrl(
+//   "putObject",
+//   {
+//     Bucket: "venue-test",
+//     Key: "folder/another/test.jpg",
+//     ContentType: "image/jpeg"
+//   },
+//   (err, url) => {
+//     console.log(url);
+//   }
+// );
+
 class VenuesController {
   index(req, res) {
     Venue.find({})
@@ -194,7 +214,7 @@ class VenuesController {
         let new_file_name = file.name;
 
         if (file_type) {
-          new_venue.pic_url = new_file_name;
+          new_venue.galleryItems = new_file_name;
           busboy.on("finish", function() {
             const venue = req.params.id;
             const file = req.files.picture;
@@ -204,7 +224,7 @@ class VenuesController {
         }
       }
     }
-    req.body.files = venue._id;
+    // req.body.files = venue._id;
     Gallery.create(
       req.body.files,
       (err, files) => {

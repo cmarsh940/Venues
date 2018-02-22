@@ -34,10 +34,15 @@
                 <h2 class="text-center">{{vender.name}}</h2>
                 <ul class="text-center">
                     <li>
-                        <h5>{{vender.phone}}</h5>
+                        <h5>{{vender.address}}</h5>
                     </li>
                     <li>
-                        <h5>{{vender.address}}</h5>
+                        <a href='tel:{{ vender?.phone }}' data-type='phone'>
+                            <mat-icon aria-label="Phone icon link">
+                                <i class="material-icons">&#xE0CD;</i>
+                            </mat-icon>
+                            <h6>Call {{ vender?.phone }}</h6>
+                        </a>
                     </li>
                     <li>
                         <a href='http://{{vender.website}}' target='_blank' rel='nofollow noopener noreferrer'>view website</a>
@@ -64,14 +69,6 @@
                                 <img src="/assets/images/instagram.svg" alt="Instagram icon">
                             </mat-icon>
                             <p>{{vender?.name}}</p>
-                        </a>
-                    </li>
-                    <li class="list-items">
-                        <a href='tel:{{ vender?.phone }}' data-type='phone'>
-                            <mat-icon aria-label="Phone icon link">
-                                <i class="material-icons">&#xE0CD;</i>
-                            </mat-icon>
-                            <p>Call {{ vender?.name }}</p>
                         </a>
                     </li>
                 </ul>

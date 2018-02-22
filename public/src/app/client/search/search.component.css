@@ -1,7 +1,7 @@
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
   div.containerX {
-    margin-top: 18%;
+    margin-top: 10%;
   }
 
   /* FIXXED TOP */
@@ -343,6 +343,13 @@
     max-height: 18em;
     min-height: 18em; 
   }
+
+  .mat-card-image {
+    max-height: 15rem;
+    min-height: 15rem;
+    object-position: bottom;
+    object-fit: scale-down;
+  } 
 
   .mat-card-content>:first-child, .mat-card>:first-child {
     display: inline-flex;

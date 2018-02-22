@@ -39,10 +39,15 @@
                 </div>
                 <ul class="text-center">
                     <li>
-                        <h5>{{venue.phone}}</h5>
+                        <h5>{{venue.address}}</h5>
                     </li>
                     <li>
-                        <h5>{{venue.address}}</h5>
+                        <a href='tel:{{ venue?.phone }}' data-type='phone'>
+                            <mat-icon aria-label="Phone icon link">
+                                <i class="material-icons">&#xE0CD;</i>
+                            </mat-icon>
+                            <h6>Call {{ venue?.phone }}</h6>
+                        </a>
                     </li>
                     <li>
                         <a href='http://{{venue.website}}' target='_blank' rel='nofollow noopener noreferrer' matTooltip="View {{venue.name}}'s' website">view website</a>
