@@ -43,6 +43,11 @@
     display: inherit;
   }
 
+  img {
+    max-height: 33rem;
+    min-width: 33rem;
+    margin: 0 25%;
+  }
   .col-3, .col-6 {
     display: inline-block;
     vertical-align: top;
@@ -117,6 +122,7 @@ h2 {
 #vender-image {
   max-width: 7rem;
   min-width: 7rem;
+  margin-top: 10%;
 }
 
 #rating {
