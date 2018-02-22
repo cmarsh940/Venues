@@ -12,13 +12,26 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput type="tel" name="phone" required maxlength=14 [(ngModel)]="newVender.phone" placeholder="Vender Phone #" />
+    <input matInput type="tel" name="phone" required maxlength=14 [(ngModel)]="newVender.phone" placeholder="Vendor Phone #" />
     <mat-hint>no spaces EX: 123-456-7899 </mat-hint>
   </mat-form-field>
 
   <mat-form-field>
     <input matInput type="text" name="address" required maxlength=200 [(ngModel)]="newVender.address" placeholder="Vendor Address" />
   </mat-form-field>
+
+  <div class="input-container">
+    <mat-form-field>
+      <input matInput type="text" name="city" required maxlength=150 [(ngModel)]="newVender.city" #city='ngModel' placeholder="Vendor City"
+      />
+      <mat-hint>EX: Tulsa</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" name="state" required maxlength=3 [(ngModel)]="newVender.state" #state='ngModel' placeholder="Vendor State"
+      />
+      <mat-hint>EX: OK</mat-hint>
+    </mat-form-field>
+  </div>
 
   <mat-form-field>
     <input matInput type="url" name="website" required maxlength=250 [(ngModel)]="newVender.website" placeholder="Vendor Website" />
