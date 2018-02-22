@@ -4,6 +4,8 @@ export class Vender {
     email: string;
     phone: string;
     address: string;
+    city: string;
+    state: string;
     website: string;
     description: string;
     facebook_url: any;

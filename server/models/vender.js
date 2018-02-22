@@ -41,6 +41,16 @@ const VenderSchema = new mongoose.Schema(
       required: [true, "Address cannot be blank"],
       maxlength: [500, "Address cannot be greater then 500 characters"]
     },
+    city: {
+      type: String,
+      required: [true, "City cannot be blank"],
+      maxlength: [150, "City cannot be greater then 150 characters"]
+    },
+    state: {
+      type: String,
+      required: [true, "State cannot be blank"],
+      maxlength: [3, "State cannot be greater then 3 characters"]
+    },
     description: {
       type: String,
       required: [true, "Description cannot be blank"]

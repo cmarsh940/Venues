@@ -1,25 +1,189 @@
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-  
+    #main {
+        background-attachment: scroll;
+        background-size: contain;
+        height: 12rem;
+    }
+
+    h1 {
+        text-align: -webkit-center!important;
+        color: white;
+        font-size: xx-large;
+        margin: 0 1em;
+        position: absolute;
+        top: 4em;
+    }
+
+
+
+    #search-icon-group {
+        display: none;
+    }
+
+    ul {
+        width: 100%;
+    }
+
+    .image-seperater {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: space-around;
+        background: whitesmoke;
+    }
+
+    .image-seperater img{
+        width:50%;
+        object-fit: contain;
+        z-index: 2;
+    }
 }
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
-  
+    #main {
+        background-attachment: scroll;
+        background-size: cover;
+        height: 25em;
+    }
+  h1 {
+        text-align: -webkit-left;
+        color: white;
+        margin-left: 3em;
+        font-size: -webkit-xxx-large;
+        letter-spacing: 0.2rem;
+        position: absolute;
+        top: 2em;
+        left: 0;
+        right: 0;
+    }
+
+    #search-icon-group {
+        position: absolute;
+        top: 19rem;
+        left: 439px;
+        right: 0px;
+    }
+
+    ul {
+        width: 100%;
+    }
+
+    .image-seperater {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: space-around;
+        background: whitesmoke;
+    }
+
+    .image-seperater img{
+        width:50%;
+        object-fit: contain;
+        z-index: 2;
+    }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-  
+    #main {
+        background-attachment: scroll;
+        background-size: cover;
+        height: 25em;
+    }
+  h1 {
+        text-align: -webkit-left;
+        color: white;
+        margin-left: 3em;
+        font-size: -webkit-xxx-large;
+        letter-spacing: 0.2rem;
+        position: absolute;
+        top: 2em;
+        left: 0;
+        right: 0;
+    }
+
+    #search-icon-group {
+        position: absolute;
+        top: 19rem;
+        left: 439px;
+        right: 0px;
+    }
+
+    ul {
+        width: 100%;
+    }
+
+    .image-seperater {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: space-around;
+        background: whitesmoke;
+    }
+
+    .image-seperater img{
+        width:50%;
+        object-fit: contain;
+        z-index: 2;
+    }
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  
+
+    #main {
+        background-attachment: scroll;
+        background-size: cover;
+        height: 25em;
+    }
+  h1 {
+        text-align: -webkit-left;
+        color: white;
+        margin-left: 3em;
+        font-size: -webkit-xxx-large;
+        letter-spacing: 0.2rem;
+        position: absolute;
+        top: 2em;
+        left: 0;
+        right: 0;
+    }
+
+    #search-icon-group {
+        position: absolute;
+        top: 19rem;
+        left: 439px;
+        right: 0px;
+    }
+
+    ul {
+        width: 100%;
+    }
+
+    .image-seperater {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: space-around;
+        background: whitesmoke;
+    }
+
+    .image-seperater img{
+        width:50%;
+        object-fit: contain;
+        z-index: 2;
+    }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+    #main {
+        background-attachment: scroll;
+        background-size: cover;
+        height: 25em;
+    }
+
     h1 {
         text-align: -webkit-left;
         color: white;
@@ -73,9 +237,6 @@ div.containerX {
 #main {
     width:100%;
     background-image: url(/assets/images/tulsa-venues-header.jpg);
-    background-attachment: scroll;
-    background-size: cover;
-    height: 25em;
 }
 
 div.search {

@@ -5,6 +5,8 @@ export class Venue {
     phone: string;
     website: string;
     address: string;
+    city: string;
+    state: string;
     lat: number;
     lng: number;
     minAmmount: number;
@@ -13,6 +15,8 @@ export class Venue {
     pic_url: string;
     tour_url: string;
     video_url: string;
+    facebook_url: string;
+    instagram_url: string;
     _category: any;
     amenities: any[];
     galleryItems: any[];
