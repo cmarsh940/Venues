@@ -31,13 +31,8 @@ const VenueSchema = new mongoose.Schema(
     },
     phone: {
       type: String,
-      validate: {
-        validator: function(phone) {
-          return /\d{3}-\d{3}-\d{4}/.test(phone);
-        },
-        message: "{ VALUE } is not a valid phone number"
-      },
-      required: [true, "Venue phone number required EX: 123-123-1234"]
+      required: [true, "Venue phone number required EX: 123-123-1234"],
+      maxlength: [15, "Phone cannot be greater then 15 characters"]
     },
     minAmmount: {
       type: Number,
