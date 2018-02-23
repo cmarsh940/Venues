@@ -21,7 +21,7 @@
                         {{category.name.length}}
                     </span>
                     <a routerLink="/search/{{category.name | lowercase}}">
-                        <img src='/assets/images/{{category.name}}.png' class="icon-category" alt="{{category.name}} icon">
+                        <img src='/assets/images/{{category.name | lowercase}}.png' class="icon-category" alt="{{category.name}} icon">
                     </a>
                 </span>
             </ng-container>
