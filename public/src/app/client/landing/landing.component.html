@@ -8,54 +8,31 @@
             <div id="search-button">
                 <button mat-raised-button routerLink="/search" matTooltip="Search for a Venue" [matTooltipShowDelay]="showDelay" id="search-button-style">Find Your Venue Now</button>
             </div>
-            <div id="search-icon-group">
-                <ul>
-                    <li class="search-icon" matTooltip="Search for ballroom venue's" [matTooltipShowDelay]="showDelay">
-                        <a routerLink="/search/ballroom">
-                            <img src='/assets/images/ballroom.png' alt="Ballroom icon">
-                        </a>
-                    </li>
-                    <li class="search-icon" matTooltip="Search for barn venue's" [matTooltipShowDelay]="showDelay">
-                        <a routerLink="/search/barn">
-                            <img src='/assets/images/barn.png' alt="Barn icon">
-                        </a>
-                    </li>
-                    <li class="search-icon" matTooltip="Search for chapel venue's" [matTooltipShowDelay]="showDelay">
-                        <a routerLink="/search/chapel">
-                            <img src='/assets/images/chaple.png' alt="Chaple icon">
-                        </a>
-                    </li>
-                    <li class="search-icon" matTooltip="Search for country club venue's" [matTooltipShowDelay]="showDelay">
-                        <a routerLink="/search/countryclub">
-                            <img src='/assets/images/countryclub.png' alt="Country Club icon">
-                        </a>
-                    </li>
-                    <li class="search-icon" matTooltip="Search for event center venue's" [matTooltipShowDelay]="showDelay">
-                        <a routerLink="/search/eventcenter">
-                            <img src='/assets/images/eventcenter.png' alt="Event Center icon">
-                        </a>
-                    </li>
-                    <li class="search-icon" matTooltip="Search for garden venue's" [matTooltipShowDelay]="showDelay">
-                        <a routerLink="/search/garden">
-                            <img src='/assets/images/garden.png' alt="Garden icon">
-                        </a>
-                    </li>
-                    <li class="search-icon" matTooltip="Search for historic venue's" [matTooltipShowDelay]="showDelay">
-                        <a routerLink="/search/historic">
-                            <img src='/assets/images/historic.png' alt="Historic icon">
-                        </a>
-                    </li>
-                    <!-- <li class="search-icon" matTooltip="Search for lodge venue's" [matTooltipShowDelay]="showDelay">
-                        <a routerLink="/search/lodge">
-                            <img src='/assets/images/lodge.png' alt="Lodge icon">
-                        </a>
-                    </li> -->
-                </ul>
-            </div>
         </div>
     </div>
 
     <div class="col-12">
+        <div class="container" id="category">
+            <h2>What are you interested in?</h2>
+            <h6 class="text-center">Explore some of our differnt venues</h6>
+            <ng-container *ngFor="let category of categories; let i = index">
+                <span class="inner-circle">
+                    <span class="small-inner-circle">
+                        {{category.name.length}}
+                    </span>
+                    <a routerLink="/search/{{category.name | lowercase}}">
+                        <img src='/assets/images/{{category.name}}.png' class="icon-category" alt="{{category.name}} icon">
+                    </a>
+                </span>
+            </ng-container>
+        </div>      
+    </div>
+    <div class="image-seperater mx-auto">
+        <img src="/assets/images/tulsavenus.png" alt="Image seperater">
+    </div>
+    <span class="line"></span>
+    <div class="col-12" id="bottom-group">
+        <br>
         <div class="container" id="vender">
             <h2>Best Things To Do In The City</h2>
             <h6 class="text-center">Explore some of the best places to visit in our city.</h6>
@@ -69,7 +46,8 @@
                         </a> -->
                         <!-- LIVE -->
                         <a [routerLink]="['/vender', 'display', vender._id]">
-                            <img mat-card-image  src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' alt="Vender Picture" class= "img-responsive">
+                            <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' alt="Vender Picture"
+                                class="img-responsive">
                         </a>
                     </ng-container>
                     <ng-template #elseTemplate>
@@ -86,29 +64,11 @@
                     </mat-card-title>
         
                     <mat-card-actions>
-                        <button mat-button class="vender-button" [routerLink]="['/vender', 'display', vender._id]" matTooltip="View {{vender.name}}" [matTooltipShowDelay]="showDelay">VIEW</button>
+                        <button mat-button class="vender-button" [routerLink]="['/vender', 'display', vender._id]" matTooltip="View {{vender.name}}"
+                            [matTooltipShowDelay]="showDelay">VIEW</button>
                     </mat-card-actions>
                 </mat-card>
             </div>
-        </div>
-    </div>
-    <div class="image-seperater mx-auto">
-        <img src="/assets/images/tulsavenus.png" alt="Image seperater">
-    </div>
-    <span class="line"></span>
-    <div class="col-12" id="bottom-group">
-        <br>
-        <div class="container" id="category">
-            <h2>What are you interested in?</h2>
-            <h6 class="text-center">Explore some of our differnt venues</h6>
-            <ng-container *ngFor="let category of categories; let i = index">
-                <span class="inner-circle">
-                    <span class="small-inner-circle">
-                        {{category.name.length}}
-                    </span>
-                    {{category.name}}
-                </span>
-            </ng-container>
         </div>
     </div>
 </div>

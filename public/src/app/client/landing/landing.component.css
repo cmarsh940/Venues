@@ -181,7 +181,7 @@
     #main {
         background-attachment: scroll;
         background-size: cover;
-        height: 25em;
+        height: 20em;
     }
 
     h1 {
@@ -352,18 +352,20 @@ h5 {
     display: inline-block;
 }
 
-.search-icon img {
-    width: 100%;
+.icon-category {
+    max-width: 35%;
+    min-width: 35%;
+    /* width: 100%;
     padding: 25%;
     border: 1px dotted white;
     background: #86793433;
-    opacity: 0.5;
+    opacity: 0.5; */
 }
 
-.search-icon:hover img {
-    border: 5px dashed #FFB300;
+.icon-category:hover {
+    /* /* border: 5px dashed #FFB300; */
     background: #0000004a;
-    opacity: 1;
+    /* opacity: 1; */
 }
 
 img {
@@ -404,10 +406,11 @@ img {
     display: block;
     width: 30px;
     height: 30px;
+    margin-left: 70%;
     border-radius: 50%;
     border-style: solid;
     border-width: 2px;
-    border-color: gold;
+    border-color: #00B8D4;
     pointer-events: none;
     background: white;
     text-align: -webkit-center;
@@ -420,8 +423,26 @@ img {
     border-style: solid;
     border-width: 2px;
     border-color: gold;
-    pointer-events:none;
     text-align: center;
     vertical-align: text-bottom;
     margin: 1%;
+    background: #ffdb3f3d;
+}
+
+.inner-circle:hover{
+    border-color: #00b8d454;
+    background: #00b8d454;
+}
+.inner-circle:hover img{
+    box-shadow: 0px 0px 27px 4px #00b8d4;
+    background: #00b8d4a1;
+}
+
+.inner-circle:hover .small-inner-circle{
+    border-color: gold;
+}
+
+.icon-category {
+    box-shadow: 0px 0px 29px -3px gold;
+    background: #fbecb2;
 }

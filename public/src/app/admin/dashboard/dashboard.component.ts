@@ -9,10 +9,13 @@ import { Venue } from '../../models/venue';
 import { Vender } from '../../models/vender';
 import { Amenity } from '../../models/amenity';
 
+import { DomSanitizer } from "@angular/platform-browser";
+import { SafeResourceUrl } from "@angular/platform-browser";
+
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  selector: "app-dashboard",
+  templateUrl: "./dashboard.component.html",
+  styleUrls: ["./dashboard.component.css"],
   preserveWhitespaces: false
 })
 export class DashboardComponent implements OnInit {
@@ -28,8 +31,9 @@ export class DashboardComponent implements OnInit {
     private _userService: UserService,
     private _venueService: VenueService,
     private _venderService: VenderService,
-    private _router: Router
-  ) { }
+    private _router: Router,
+    public sanitizer: DomSanitizer
+  ) {}
 
   ngOnInit() {
     this.isLoggedIn();
@@ -41,31 +45,33 @@ export class DashboardComponent implements OnInit {
 
   isLoggedIn() {
     if (this._userService.getCurrentUser() == null) {
-      this._router.navigateByUrl('/');
+      this._router.navigateByUrl("/");
     }
   }
 
   validateSession(): void {
     if (this.currentUser == null) {
-      this._router.navigateByUrl('/');
+      this._router.navigateByUrl("/");
     } else {
       console.log(this.currentUser._id);
     }
   }
 
   getVenders(): void {
-    this._venderService.getVenders((venders) => this.venders = venders);
+    this._venderService.getVenders(venders => (this.venders = venders));
   }
 
   getVenues(): void {
-    this._venueService.getVenues((venues) => this.venues = venues);
+    this._venueService.getVenues(venues => (this.venues = venues));
   }
 
-  getAmenity(): void{
-    this._amenityService.getAmenities((amenities) => this.amenities = amenities);
+  getAmenity(): void {
+    this._amenityService.getAmenities(
+      amenities => (this.amenities = amenities)
+    );
   }
 
   getUsers(): void {
-    this._userService.getUsers((users) => this.users = users);
+    this._userService.getUsers(users => (this.users = users));
   }
 }

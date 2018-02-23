@@ -4,6 +4,6 @@ module.exports = {
   // iamSecret: "***"
 
   // TEST
-    iamUser: '***',
-    iamSecret: '***',
+  iamUser: "***",
+  iamSecret: "***"
 };

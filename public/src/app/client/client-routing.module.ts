@@ -47,12 +47,12 @@ const routes: Routes = [
         component: ChapelComponent
       },
       {
-        path: "search/countryClub",
+        path: "search/countryclub",
         pathMatch: "full",
         component: CountryClubComponent
       },
       {
-        path: "search/eventCenter",
+        path: "search/eventcenter",
         pathMatch: "full",
         component: EventCenterComponent
       },
