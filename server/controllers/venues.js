@@ -247,10 +247,13 @@ class VenuesController {
   }
 
   review(req, res) {
-    Venue.findOne({ _id: req.params.id }, (err, venue) => {
-      var review = new Review(req.body);
+    Venue.find({ _id: req.params.id }, (err, venue) => {
+      let review = new Review(req.body);
       review._venue = venue._id;
-      review.save(err => {
+      if (err) {
+        return res.status(500).send({message: err.message});
+      }
+      if (venue) {
         venue.reviews.push(review);
         venue.save(err => {
           if (err) {
@@ -258,9 +261,10 @@ class VenuesController {
           }
           return res.json(venue);
         });
-      });
-    });
-  }
+      }
+    })
+  };
+
 
   images(req, res) {
     Venue.findById(req.params.id)

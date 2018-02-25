@@ -39,7 +39,8 @@ import {
   MatTableModule,
   MatTabsModule,
   MatTooltipModule,
-  MatStepperModule
+  MatStepperModule,
+  MAT_CHECKBOX_CLICK_ACTION
 } from '@angular/material';
 
 @NgModule({
@@ -79,7 +80,7 @@ import {
     ObserversModule,
     OverlayModule,
     PlatformModule,
-    PortalModule,
+    PortalModule
   ],
   exports: [
     MatAutocompleteModule,
@@ -117,10 +118,11 @@ import {
     ObserversModule,
     OverlayModule,
     PlatformModule,
-    PortalModule,
+    PortalModule
   ],
   providers: [
     { provide: OverlayContainer, useClass: FullscreenOverlayContainer },
+    { provide: MAT_CHECKBOX_CLICK_ACTION, useValue: "check" }
   ]
 })
-export class MaterialModule { }
+export class MaterialModule {}

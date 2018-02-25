@@ -912,3 +912,7 @@
 #venue-header, #move-right {
   display: inline-block;
 }
+
+h2 {
+  text-decoration: underline;
+}

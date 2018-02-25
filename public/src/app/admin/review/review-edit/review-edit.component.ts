@@ -17,6 +17,7 @@ export class ReviewEditComponent implements OnInit, OnDestroy {
   currentUser: User;
   reviews_list: Array<Review>;
   subscription: Subscription;
+  approved = Boolean
 
   constructor(
     private _route: ActivatedRoute,

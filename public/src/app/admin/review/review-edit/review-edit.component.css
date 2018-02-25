@@ -4,6 +4,7 @@ h1 {
 }
 
 form {
+    padding: 5%;
     width:50%;
     margin: auto;
     overflow: hidden;

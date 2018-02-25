@@ -42,7 +42,7 @@ export class VenueComponent implements OnInit, OnDestroy {
   vender = new Vender();
   subscription: Subscription;
   random: number;
-  approved: boolean;
+  approved = Boolean;
 
   // OVERLAY & PORTAL
   nextPosition: number = 0;
