@@ -9,7 +9,7 @@
                     </div> -->
                     <!-- LIVE -->
                     <div class="carousel-item active">
-                        <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue.name}}/{{venue.pic_url}}' alt="Venue slide Pictures">
+                        <img class="d-block w-100" src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue slide Pictures">
                     </div>
                 </ng-container>
                 <ng-template #elseTemplate>
@@ -180,7 +180,6 @@
                 <ng-template #elseTemplate>
                     <mat-card>
                         <h6>There are no reviews for {{ venue.name }}</h6>
-
                     </mat-card>
                 </ng-template>
             </div>
