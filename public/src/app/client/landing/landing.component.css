@@ -314,7 +314,7 @@ div.col-12 {
     max-height: 15rem;
     min-height: 15rem;
     object-position: bottom;
-    object-fit: scale-down;
+    object-fit: contain;
 }
 
 .mat-card-title {

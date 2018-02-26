@@ -876,7 +876,7 @@
     max-height: 10rem;
     min-height: 10rem;
     object-position: bottom;
-    object-fit: scale-down;
+    object-fit: cover;
   } 
 
   .mat-card-content>:first-child, .mat-card>:first-child {

@@ -3,9 +3,9 @@
         <div class="row" id="top-middle">
             <div class="col-3">
                 <div>
+                    <h2 class=text-center>Vendor</h2>
                     <ng-container *ngIf="vender?.pic_url; else elseTemplate">
                         <div class="vender-link">
-                            <h2 class=text-center>Vendor</h2>
                             <a [routerLink]="['/vender', 'display', vender._id]">
                                 <!-- TEST -->
                                 <!-- <img src='https://venue-test.s3.amazonaws.com/Venders/{{vender.name}}/{{vender.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture"> -->

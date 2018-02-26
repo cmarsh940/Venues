@@ -146,6 +146,34 @@
         <span matSuffix>.00</span>
       </mat-form-field>
     </div>
+    <div class="input-container">
+      <mat-form-field>
+        <input 
+          matInput type="number" 
+          name="minCapacity" 
+          required 
+          maxlength=250 
+          [(ngModel)]="venue.minCapacity" 
+          #minCapacity='ngModel'
+          placeholder="Min-capacity"
+          class="right-align"
+        />
+      </mat-form-field>
+    
+      <mat-form-field>
+        <input 
+          matInput 
+          type="number" 
+          name="maxCapacity" 
+          required 
+          maxlength=250 
+          [(ngModel)]="venue.maxCapacity"
+          #maxCapacity='ngModel'
+          placeholder="Max-capacity"
+          class="right-align"
+        />
+      </mat-form-field>
+    </div>
 
     <mat-form-field>
       <input 

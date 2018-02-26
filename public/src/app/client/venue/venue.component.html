@@ -91,33 +91,63 @@
                         </ng-template>
                         <div class="tab-content">
                             <ul id="venue-contact">
-                                <li class="list-items">
-                                    <h6>Price range: {{ venue.minAmmount | currency }} - {{ venue.maxAmmount | currency }}</h6>
-                                </li>
-                                <li class="list-items">
-                                    <a href='{{ venue.video_url }}' target='_blank'>
-                                        <mat-icon aria-label="Video icon link">
-                                            <i class="material-icons">&#xE04B;</i>
-                                        </mat-icon>
-                                        <p>View {{ venue.name }} video</p>
-                                    </a>
-                                </li>
-                                <li class="list-items">
-                                    <a href='mailto:{{ venue.email }}' target='_top'>
-                                        <mat-icon aria-label="email icon link">
-                                            <i class="material-icons">&#xE0BE;</i>
-                                        </mat-icon>
-                                        <p>Email {{ venue.name }}</p>
-                                    </a>
-                                </li>
-                                <li class="list-items">
-                                    <a href='tel:{{ venue.phone }}' data-type='phone'>
-                                        <mat-icon aria-label="Phone icon link">
-                                            <i class="material-icons">&#xE0CD;</i>
-                                        </mat-icon>
-                                        <p>Call {{ venue.name }}</p>
-                                    </a>
-                                </li>
+                                <div class="half">
+                                    <li class="list-items">
+                                        <h6>
+                                            Minimum Cost:{{ venue.minAmmount | currency }}
+                                        </h6>
+                                    </li>
+                                </div>
+                                <div class="half">
+                                    <li class="list-items">
+                                        <h6>
+                                            Maximum Cost: {{ venue.maxAmmount | currency }}
+                                        </h6>
+                                    </li>
+                                </div>
+                                <div class="half">
+                                    <li class="list-items">
+                                        <h6>
+                                            <i class="material-icons">&#xE7FD;</i> Minimum Capacity: {{ venue.minCapacity }}</h6>
+                                    </li>
+                                </div>
+                                <div class="half">
+                                    <li class="list-items">
+                                        <h6>
+                                            <i class="material-icons">&#xE7EF;</i> Maximum Capacity {{ venue.maxCapacity }}
+                                        </h6>
+                                    </li>
+                                </div>
+                                <div class="third">
+                                    <li class="list-items">
+                                        <a href='{{ venue.video_url }}' target='_blank'>
+                                            <mat-icon aria-label="Video icon link">
+                                                <i class="material-icons">&#xE04A;</i>
+                                            </mat-icon>
+                                            <p>{{ venue.name }}'s' Video</p>
+                                        </a>
+                                    </li>
+                                </div>
+                                <div class="third">
+                                    <li class="list-items">
+                                        <a href='mailto:{{ venue.email }}' target='_top'>
+                                            <mat-icon aria-label="email icon link">
+                                                <i class="material-icons">&#xE0BE;</i>
+                                            </mat-icon>
+                                            <p>Email {{ venue.email }}</p>
+                                        </a>
+                                    </li>
+                                </div>
+                                <div class="third">
+                                    <li class="list-items">
+                                        <a href='tel:{{ venue.phone }}' data-type='phone'>
+                                            <mat-icon aria-label="Phone icon link">
+                                                <i class="material-icons">&#xE0CD;</i>
+                                            </mat-icon>
+                                            <p>Call {{ venue.phone }}</p>
+                                        </a>
+                                    </li>
+                                </div>
                             </ul>
                         </div>
                     </mat-tab>

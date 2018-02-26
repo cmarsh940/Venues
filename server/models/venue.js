@@ -48,6 +48,16 @@ const VenueSchema = new mongoose.Schema(
       maxlength: [15, "Ammount cannot be greater then 15 characters"],
       trim: true
     },
+    minCapacity: {
+      type: Number,
+      required: false,
+      trim: true
+    },
+    maxCapacity: {
+      type: Number,
+      required: false,
+      trim: true
+    },
     address: {
       type: String,
       required: [true, "Address cannot be blank"],

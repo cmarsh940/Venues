@@ -156,6 +156,7 @@ i {
 
 #venue-contact i {
   color:black;
+  vertical-align: bottom;
 }
 
 .tab-icon{
@@ -218,4 +219,28 @@ div#cdk-overlay-1.cdk-overlay-pane element.style {
 
 .vender-link:hover .middle {
   opacity: 1;
+}
+
+.half {
+  width: 50%;
+  display: inline-block;
+}
+.third {
+  width: 33%;
+  display: inline-block;
+  border-right: 1px solid lightgray;
+}
+
+.third:last-child {
+  border-right: none;
+}
+
+.list-items {
+  text-align: center;
+  margin: 3%;
+}
+
+.social {
+  min-width: 2rem;
+  max-width: 2rem;
 }
