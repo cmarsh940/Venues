@@ -18,7 +18,9 @@
             <ng-container *ngFor="let category of categories; let i = index">
                 <span class="inner-circle">
                     <span class="small-inner-circle">
-                        {{category.name.length}}
+                        <div *ngIf="category">
+                            {{category.name.length}}
+                        </div>
                     </span>
                     <a routerLink="/search/{{category.name | lowercase}}">
                         <img src='/assets/images/{{category.name | lowercase}}.png' class="icon-category" alt="{{category.name}} icon">

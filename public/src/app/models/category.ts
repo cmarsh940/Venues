@@ -4,4 +4,5 @@ export class Category {
     icon: any;
     createdAt: any;
     updatedAt: any;
+    length: number;
 }

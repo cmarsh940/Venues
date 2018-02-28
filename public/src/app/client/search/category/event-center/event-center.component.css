@@ -1,5 +1,5 @@
 /* Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) {
+@media (max-width: 450px) {
   div.containerX {
     margin-top: 10%;
   }
@@ -31,29 +31,33 @@
     border-bottom: 1px solid black;
   }
   
-  .col-3, .col-6 {
-    display: block;
-    max-width: 100%;
-    min-width: 100%;
-    height: auto;
+  .col-3 {
+    display: inline-block;
+    max-width: 50%;
+    min-width: 50%;
+    min-height: 10em;
+    max-height: 10em;
     padding: 0;
     margin: 0;
   }
 
-  #map {
-    width:100%;
-    height: 200px;
-    overflow: hidden;
+  .col-3:first-child {
+    border-right: 1px solid lightgray;
   }
 
-  agm-map {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+  .col-6 {
+    display: none;
+    width: 0;
+  }
+
+  #map {
+    visibility: hidden;
   }
 
   .vender-link {
-    display: inline-block;
+    display: block;
+    height: 100%;
+    margin: 5%;
   }
 
   #vender-image {
@@ -65,18 +69,9 @@
     object-position: center;
   }
 
-  #vender-image, .middle {
-    display: inline-block!important;
-    vertical-align: middle;
-    margin: 0 1%;
-  }
-
-  h6 {
-    font-size:1.3rem;
-  }
-
-  .mx-auto {
-    margin-left: inherit!important;
+  h3 {
+    font-size: 1.2em;
+    margin: 6%;
   }
 
   .middle {
@@ -99,22 +94,223 @@
 
   #scroll {
     position: absolute;
-    top: 21em;
+    top: 13em;
     width:100%;
     z-index:0;
+    padding: 0;
+    margin: 0;
   }
 
   div.container-fluid {
     width:100%;
-    padding: 0 3%;
+  }
+
+  #move-right {
+    display: block!important;
   }
 
   h2{
-    display: none;
+    font-size: 1.5rem;
+    margin: 5%;
   }
 
   h5 {
     color:#FFB300;
+    margin: 5% 5% 0 5%;
+    font-size: 1.5rem;
+  }
+
+  [mat-button] {
+    width:100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .imageGrid {
+    width: 100%;
+  }
+
+  .mat-card-image {
+    max-height: 15em;
+    min-height: 15em;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .mat-card-content {
+    display: flex;
+    margin: 0;
+  }
+  
+  .card-group {
+    display: inline-flex;
+    width: 100%;
+  }
+
+  .card {
+    width: 100%;
+    padding: 0;
+    margin: 5% 0;
+    border-radius: 5%;
+    overflow: hidden;
+    max-height: 25em;
+    min-height: 25em; 
+  }
+
+  .mat-card-content>:first-child, .mat-card>:first-child {
+    display: inline-flex;
+  }
+
+  .venue-icon {
+    width: 1em;
+    height: 1em;
+  }
+
+  .icon-address {
+    display: inline-flex;
+    margin-top: 5%;
+  }
+
+  .venue-icon, .mat-card-subtitle {
+    vertical-align: top;
+  }
+  
+}
+@media (min-width: 451px) and (max-width: 575.98px) {
+  div.containerX {
+    margin-top: 10%;
+  }
+
+  /* FIXXED TOP */
+  #none-scroll {
+    position:fixed;
+    width: 100%;
+    z-index: 1;
+    background: #fff;
+    border-bottom: 1px solid black;
+    padding: 0;
+    margin: 0;
+  }
+
+  #top-middle {
+    width:100%;
+    max-height: 400px;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  .mat-grid-list {
+    width: 100%;
+  }
+
+  #search {
+    border-bottom: 1px solid black;
+  }
+  
+  .col-3 {
+    display: inline-block;
+    max-width: 50%;
+    min-width: 50%;
+    min-height: 10em;
+    max-height: 10em;
+    padding: 0;
+    margin: 0;
+  }
+
+  .col-3:first-child {
+    border-right: 1px solid lightgray;
+  }
+
+  .col-6 {
+    display: none;
+    width: 0;
+  }
+
+  #map {
+    visibility: hidden;
+  }
+
+  /* agm-map {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  } */
+
+  .vender-link {
+    display: block;
+    height: 100%;
+    margin: 5%;
+  }
+
+  #vender-image {
+    min-width: 4rem;
+    max-width: 4rem;
+    min-height: 4rem;
+    max-height: 4rem;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* #vender-image, h3 {
+    display: inline-block!important;
+    vertical-align: middle;
+    margin: 0 1%;
+  } */
+
+  h3 {
+    font-size: 1.2em;
+    margin: 6%;
+  }
+
+  .middle {
+    color: #FFB300;
+  }
+
+  #search-form {
+    width: 100%;
+    display: block;
+    padding: 0;
+    margin: 0;
+  }
+
+  #search-box {
+    width: 100%;
+    border: 2px solid #00b8d4;
+  }
+
+  /* SCROLLING AREA */
+
+  #scroll {
+    position: absolute;
+    top: 13em;
+    width:100%;
+    z-index:0;
+    padding: 0;
+    margin: 0;
+  }
+
+  div.container-fluid {
+    width:100%;
+  }
+
+  #move-right {
+    display: block!important;
+  }
+
+  h2{
+    font-size: 1.5rem;
+    margin: 5%;
+  }
+
+  h5 {
+    color:#FFB300;
+    margin: 5% 5% 0 5%;
+    font-size: 1.3em;
   }
 
   [mat-button] {
@@ -134,7 +330,7 @@
   .mat-card-image {
     max-height: 22em;
     min-height: 22em;
-    object-fit: scale-down;
+    object-fit: cover;
     object-position: center;
   }
 
@@ -145,15 +341,17 @@
   
   .card-group {
     display: inline-flex;
-    margin: 2%;
+    width: 100%;
   }
 
   .card {
-    width: 30em;
+    width: 100%;
+    padding: 0;
+    margin: 5% 0;
     border-radius: 5%;
     overflow: hidden;
-    max-height: 35em;
-    min-height: 35em; 
+    max-height: 33em;
+    min-height: 33em; 
   }
 
   .mat-card-content>:first-child, .mat-card>:first-child {
@@ -179,7 +377,7 @@
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
   div.containerX {
-    margin-top: 4.5%;
+    margin-top: 10%;
   }
 
   /* FIXXED TOP */
@@ -195,10 +393,10 @@
 
   #top-middle {
     width:100%;
-    max-height: 300px;
-    min-height: 300px;
+    max-height: 400px;
     overflow: hidden;
     white-space: nowrap;
+    margin: 0;
   }
 
   .mat-grid-list {
@@ -209,53 +407,51 @@
     border-bottom: 1px solid black;
   }
   
-  .col-3, .col-6 {
+  .col-3 {
     display: inline-block;
-    vertical-align: top;
-    max-height: 300px;
-    min-height: 300px;
-    margin: 5% 0 0 0;
+    max-width: 50%;
+    min-width: 50%;
+    min-height: 10em;
+    max-height: 10em;
+    padding: 0;
+    margin: 0;
+  }
+
+  .col-3:first-child {
+    border-right: 1px solid lightgray;
+  }
+
+  .col-6 {
+    display: none;
+    width: 0;
   }
 
   #map {
-    width:100%;
-    height: 300px;
-    overflow: hidden;
+    visibility: hidden;
   }
 
-  agm-map {
-    width: 100%;
+  .vender-link {
+    display: block;
     height: 100%;
-    overflow: hidden;
+    margin: 5%;
   }
-
-
 
   #vender-image {
-    min-width: 10em;
-    max-width: 10em;
-    max-height: 10em;
-    min-height: 10em;
-    margin-top: 10%;
-    /* opacity: 1;
-    display: block;
-    height: auto;
-    transition: .5s ease;
-    backface-visibility: hidden;
-    background: black; */
+    min-width: 4rem;
+    max-width: 4rem;
+    min-height: 4rem;
+    max-height: 4rem;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  h3 {
+    font-size: 1.2em;
+    margin: 6%;
   }
 
   .middle {
-    transition: .5s ease;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    text-align: center;
-    background-color: rgba(61, 61, 61, 0.5);
-    border-radius: 25%;
+    color: #FFB300;
   }
 
   #search-form {
@@ -266,7 +462,7 @@
   }
 
   #search-box {
-    width: 150%;
+    width: 100%;
     border: 2px solid #00b8d4;
   }
 
@@ -274,22 +470,30 @@
 
   #scroll {
     position: absolute;
-    top: 24em;
+    top: 13em;
     width:100%;
     z-index:0;
+    padding: 0;
+    margin: 0;
   }
 
   div.container-fluid {
     width:100%;
-    padding: 0 10%;
   }
 
-  h1, h2, h4 {
-    text-align: center;
+  #move-right {
+    display: block!important;
+  }
+
+  h2{
+    font-size: 1.5rem;
+    margin: 5%;
   }
 
   h5 {
     color:#FFB300;
+    margin: 5% 5% 0 5%;
+    font-size: 1.5rem;
   }
 
   [mat-button] {
@@ -307,9 +511,9 @@
   }
 
   .mat-card-image {
-    max-height: 10rem;
-    min-height: 10rem;
-    object-fit: scale-down;
+    max-height: 15em;
+    min-height: 15em;
+    object-fit: cover;
     object-position: center;
   }
 
@@ -320,23 +524,18 @@
   
   .card-group {
     display: inline-flex;
-    margin: 2%;
+    width: 100%;
   }
 
   .card {
-    width: 15em;
+    width: 100%;
+    padding: 0;
+    margin: 5% 0;
     border-radius: 5%;
     overflow: hidden;
-    max-height: 18em;
-    min-height: 18em; 
+    max-height: 25em;
+    min-height: 25em; 
   }
-
-  .mat-card-image {
-    max-height: 10rem;
-    min-height: 10rem;
-    object-position: bottom;
-    object-fit: scale-down;
-  } 
 
   .mat-card-content>:first-child, .mat-card>:first-child {
     display: inline-flex;
@@ -361,9 +560,8 @@
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
   div.containerX {
-    margin-top: 4.5%;
+    margin-top: 10%;
   }
-
 
   /* FIXXED TOP */
   #none-scroll {
@@ -378,10 +576,10 @@
 
   #top-middle {
     width:100%;
-    max-height: 300px;
-    min-height: 300px;
+    max-height: 400px;
     overflow: hidden;
     white-space: nowrap;
+    margin: 0;
   }
 
   .mat-grid-list {
@@ -392,47 +590,51 @@
     border-bottom: 1px solid black;
   }
   
-  .col-3, .col-6 {
+  .col-3 {
     display: inline-block;
-    vertical-align: top;
-    max-height: 300px;
-    min-height: 300px;
+    max-width: 50%;
+    min-width: 50%;
+    min-height: 10em;
+    max-height: 10em;
+    padding: 0;
     margin: 0;
   }
 
+  .col-3:first-child {
+    border-right: 1px solid lightgray;
+  }
+
+  .col-6 {
+    display: none;
+    width: 0;
+  }
+
   #map {
-    width:100%;
-    height: 300px;
-    overflow: hidden;
+    visibility: hidden;
   }
 
-  agm-map {
-    width: 100%;
+  .vender-link {
+    display: block;
     height: 100%;
-    overflow: hidden;
+    margin: 5%;
   }
-
-
 
   #vender-image {
-    min-width: 10em;
-    max-width: 10em;
-    max-height: 10em;
-    min-height: 10em;
-    margin-top: 10%;
+    min-width: 4rem;
+    max-width: 4rem;
+    min-height: 4rem;
+    max-height: 4rem;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  h3 {
+    font-size: 1.2em;
+    margin: 6%;
   }
 
   .middle {
-    transition: .5s ease;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    text-align: center;
-    background-color: rgba(61, 61, 61, 0.5);
-    border-radius: 25%;
+    color: #FFB300;
   }
 
   #search-form {
@@ -443,7 +645,7 @@
   }
 
   #search-box {
-    width: 150%;
+    width: 100%;
     border: 2px solid #00b8d4;
   }
 
@@ -451,22 +653,30 @@
 
   #scroll {
     position: absolute;
-    top: 24em;
+    top: 13em;
     width:100%;
     z-index:0;
+    padding: 0;
+    margin: 0;
   }
 
   div.container-fluid {
     width:100%;
-    padding: 0 10%;
   }
 
-  h1, h2, h4 {
-    text-align: center;
+  #move-right {
+    display: block!important;
+  }
+
+  h2{
+    font-size: 1.5rem;
+    margin: 5%;
   }
 
   h5 {
     color:#FFB300;
+    margin: 5% 5% 0 5%;
+    font-size: 1.5rem;
   }
 
   [mat-button] {
@@ -484,9 +694,9 @@
   }
 
   .mat-card-image {
-    max-height: 10rem;
-    min-height: 10rem;
-    object-fit: scale-down;
+    max-height: 15em;
+    min-height: 15em;
+    object-fit: cover;
     object-position: center;
   }
 
@@ -497,23 +707,18 @@
   
   .card-group {
     display: inline-flex;
-    margin: 2%;
+    width: 100%;
   }
 
   .card {
-    width: 15em;
+    width: 100%;
+    padding: 0;
+    margin: 5% 0;
     border-radius: 5%;
     overflow: hidden;
-    max-height: 18em;
-    min-height: 18em; 
+    max-height: 25em;
+    min-height: 25em; 
   }
-
-  .mat-card-image {
-    max-height: 10rem;
-    min-height: 10rem;
-    object-position: bottom;
-    object-fit: scale-down;
-  } 
 
   .mat-card-content>:first-child, .mat-card>:first-child {
     display: inline-flex;
@@ -538,7 +743,7 @@
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
   div.containerX {
-    margin-top: 4.5%;
+    margin-top: 10%;
   }
 
   /* FIXXED TOP */
@@ -554,10 +759,10 @@
 
   #top-middle {
     width:100%;
-    max-height: 300px;
-    min-height: 300px;
+    max-height: 400px;
     overflow: hidden;
     white-space: nowrap;
+    margin: 0;
   }
 
   .mat-grid-list {
@@ -568,53 +773,51 @@
     border-bottom: 1px solid black;
   }
   
-  .col-3, .col-6 {
+  .col-3 {
     display: inline-block;
-    vertical-align: top;
-    max-height: 300px;
-    min-height: 300px;
+    max-width: 50%;
+    min-width: 50%;
+    min-height: 10em;
+    max-height: 10em;
+    padding: 0;
     margin: 0;
   }
 
+  .col-3:first-child {
+    border-right: 1px solid lightgray;
+  }
+
+  .col-6 {
+    display: none;
+    width: 0;
+  }
+
   #map {
-    width:100%;
-    height: 300px;
-    overflow: hidden;
+    visibility: hidden;
   }
 
-  agm-map {
-    width: 100%;
+  .vender-link {
+    display: block;
     height: 100%;
-    overflow: hidden;
+    margin: 5%;
   }
-
-
 
   #vender-image {
-    min-width: 10em;
-    max-width: 10em;
-    max-height: 10em;
-    min-height: 10em;
-    margin-top: 10%;
-    /* opacity: 1;
-    display: block;
-    height: auto;
-    transition: .5s ease;
-    backface-visibility: hidden;
-    background: black; */
+    min-width: 4rem;
+    max-width: 4rem;
+    min-height: 4rem;
+    max-height: 4rem;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  h3 {
+    font-size: 1.2em;
+    margin: 6%;
   }
 
   .middle {
-    transition: .5s ease;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    text-align: center;
-    background-color: rgba(61, 61, 61, 0.5);
-    border-radius: 25%;
+    color: #FFB300;
   }
 
   #search-form {
@@ -625,7 +828,7 @@
   }
 
   #search-box {
-    width: 150%;
+    width: 100%;
     border: 2px solid #00b8d4;
   }
 
@@ -633,22 +836,30 @@
 
   #scroll {
     position: absolute;
-    top: 24em;
+    top: 13em;
     width:100%;
     z-index:0;
+    padding: 0;
+    margin: 0;
   }
 
   div.container-fluid {
     width:100%;
-    padding: 0 10%;
   }
 
-  h1, h2, h4 {
-    text-align: center;
+  #move-right {
+    display: block!important;
+  }
+
+  h2{
+    font-size: 1.5rem;
+    margin: 5%;
   }
 
   h5 {
     color:#FFB300;
+    margin: 5% 5% 0 5%;
+    font-size: 1.5rem;
   }
 
   [mat-button] {
@@ -666,9 +877,9 @@
   }
 
   .mat-card-image {
-    max-height: 10rem;
-    min-height: 10rem;
-    object-fit: scale-down;
+    max-height: 15em;
+    min-height: 15em;
+    object-fit: cover;
     object-position: center;
   }
 
@@ -679,23 +890,18 @@
   
   .card-group {
     display: inline-flex;
-    margin: 2%;
+    width: 100%;
   }
 
   .card {
-    width: 15em;
+    width: 100%;
+    padding: 0;
+    margin: 5% 0;
     border-radius: 5%;
     overflow: hidden;
-    max-height: 18em;
-    min-height: 18em; 
+    max-height: 25em;
+    min-height: 25em; 
   }
-
-  .mat-card-image {
-    max-height: 10rem;
-    min-height: 10rem;
-    object-position: bottom;
-    object-fit: scale-down;
-  } 
 
   .mat-card-content>:first-child, .mat-card>:first-child {
     display: inline-flex;
@@ -720,7 +926,7 @@
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
   div.containerX {
-    margin-top: 4.5%;
+    margin-top: 4%;
   }
 
   /* FIXXED TOP */
@@ -736,10 +942,11 @@
 
   #top-middle {
     width:100%;
-    max-height: 300px;
-    min-height: 300px;
+    max-height: 17em;
+    min-height: 17em;
     overflow: hidden;
     white-space: nowrap;
+    margin: 0;
   }
 
   .mat-grid-list {
@@ -750,18 +957,18 @@
     border-bottom: 1px solid black;
   }
   
-  .col-3, .col-6 {
+  .col-3 {
     display: inline-block;
-    vertical-align: top;
-    max-height: 300px;
-    min-height: 300px;
+    max-width: 25%;
+    min-width: 25%;
+    min-height: 10em;
+    padding: 0;
     margin: 0;
   }
 
   #map {
-    width:100%;
-    height: 300px;
-    overflow: hidden;
+    width: 100%;
+    height: 100%;
   }
 
   agm-map {
@@ -770,33 +977,28 @@
     overflow: hidden;
   }
 
-
+  .vender-link {
+    display: block;
+    height: 100%;
+    margin: 5%;
+  }
 
   #vender-image {
-    min-width: 10em;
-    max-width: 10em;
-    max-height: 10em;
-    min-height: 10em;
-    margin-top: 10%;
-    /* opacity: 1;
-    display: block;
-    height: auto;
-    transition: .5s ease;
-    backface-visibility: hidden;
-    background: black; */
+    min-width: 4rem;
+    max-width: 4rem;
+    min-height: 4rem;
+    max-height: 4rem;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  h3 {
+    font-size: 1.2em;
+    margin: 6%;
   }
 
   .middle {
-    transition: .5s ease;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    text-align: center;
-    background-color: rgba(61, 61, 61, 0.5);
-    border-radius: 25%;
+    color: #FFB300;
   }
 
   #search-form {
@@ -807,7 +1009,7 @@
   }
 
   #search-box {
-    width: 150%;
+    width: 100%;
     border: 2px solid #00b8d4;
   }
 
@@ -815,22 +1017,35 @@
 
   #scroll {
     position: absolute;
-    top: 24em;
+    top: 13em;
     width:100%;
     z-index:0;
+    padding: 0;
+    margin: 0;
   }
 
   div.container-fluid {
     width:100%;
-    padding: 0 10%;
+    margin: 7%;
   }
 
-  h1, h2, h4 {
-    text-align: center;
+  #move-right {
+    float: right;
+  }
+
+  #venue-header, #move-right {
+    margin: 0;
+  }
+
+  h2{
+    font-size: 1.5rem;
+    margin: 5%;
   }
 
   h5 {
     color:#FFB300;
+    margin: 5% 5% 0 5%;
+    font-size: 1.5rem;
   }
 
   [mat-button] {
@@ -848,9 +1063,9 @@
   }
 
   .mat-card-image {
-    max-height: 10rem;
-    min-height: 10rem;
-    object-fit: scale-down;
+    max-height: 15em;
+    min-height: 15em;
+    object-fit: cover;
     object-position: center;
   }
 
@@ -862,22 +1077,18 @@
   .card-group {
     display: inline-flex;
     margin: 2%;
+    border-radius: 5%;
   }
 
   .card {
     width: 15em;
+    padding: 0;
+    margin: 5% 0;
     border-radius: 5%;
     overflow: hidden;
-    max-height: 18em;
-    min-height: 18em; 
+    max-height: 23em;
+    min-height: 23em;
   }
-
-  .mat-card-image {
-    max-height: 10rem;
-    min-height: 10rem;
-    object-position: bottom;
-    object-fit: scale-down;
-  } 
 
   .mat-card-content>:first-child, .mat-card>:first-child {
     display: inline-flex;
@@ -899,13 +1110,16 @@
 
 }
 
+h5 {
+  font-family: -webkit-pictograph;
+}
+
 .col-12 {
   text-align: center;
 }
 
 #move-right {
   margin: 0;
-  position: absolute;
   right: 0;
 }
 
@@ -915,4 +1129,13 @@
 
 h2 {
   text-decoration: underline;
+}
+
+.mat-card-subtitle {
+  font-family: serif;
+}
+
+.icon-address {
+  width: 100%;
+  margin: 5%;
 }

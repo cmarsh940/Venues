@@ -18,7 +18,7 @@ export class LandingComponent implements OnInit {
   venues: Array<Venue>;
 
   showDelay = 300;
-  length:number;
+  length: number;
 
   constructor(
     private _venderService: VenderService,
@@ -27,7 +27,9 @@ export class LandingComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.length = 0;
     this.getCategories();
+    
     this.getVenues();
     this.getVenders();
   }

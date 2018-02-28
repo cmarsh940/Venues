@@ -37,17 +37,18 @@
   }
 
   .venue-image {
-    width: 50%;
+    min-width: 50%;
+    max-width: 50%;
     max-height: 25rem;
     margin: auto;
     display: inherit;
   }
 
-  img {
+  /* img {
     max-height: 33rem;
     min-width: 33rem;
     margin: 0 25%;
-  }
+  } */
   .col-3, .col-6 {
     display: inline-block;
     vertical-align: top;
@@ -84,6 +85,10 @@
     height: 100%;
     overflow: hidden;
   }
+}
+
+h5 {
+  font-size: 0.8rem;
 }
 
 div.containerX {
