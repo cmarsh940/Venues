@@ -35,8 +35,8 @@
     display: inline-block;
     max-width: 50%;
     min-width: 50%;
-    min-height: 10em;
-    max-height: 10em;
+    min-height: 11em;
+    max-height: 11em;
     padding: 0;
     margin: 0;
     overflow: hidden;
@@ -58,7 +58,7 @@
   .vender-link {
     display: block;
     height: 100%;
-    margin: 5%;
+    margin: 2%;
   }
 
   #vender-image {
@@ -118,7 +118,7 @@
 
   h5 {
     color:#FFB300;
-    margin: 5% 5% 0 5%;
+    margin: 5% 5% 0 0;
     font-size: 1.5rem;
   }
 
@@ -218,8 +218,8 @@
     display: inline-block;
     max-width: 50%;
     min-width: 50%;
-    min-height: 10em;
-    max-height: 10em;
+    min-height: 11em;
+    max-height: 11em;
     padding: 0;
     margin: 0;
     overflow: hidden;
@@ -238,16 +238,10 @@
     visibility: hidden;
   }
 
-  /* agm-map {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  } */
-
   .vender-link {
     display: block;
     height: 100%;
-    margin: 5%;
+    margin: 2%;
   }
 
   #vender-image {
@@ -258,12 +252,6 @@
     object-fit: cover;
     object-position: center;
   }
-
-  /* #vender-image, h3 {
-    display: inline-block!important;
-    vertical-align: middle;
-    margin: 0 1%;
-  } */
 
   h3 {
     font-size: 1.2em;
@@ -313,7 +301,7 @@
 
   h5 {
     color:#FFB300;
-    margin: 5% 5% 0 5%;
+    margin: 5% 5% 0 0;
     font-size: 1.3em;
   }
 
@@ -497,7 +485,7 @@
 
   h5 {
     color:#FFB300;
-    margin: 5% 5% 0 5%;
+    margin: 5% 5% 0 0;
     font-size: 1.5rem;
   }
 
@@ -684,7 +672,7 @@
 
   h5 {
     color:#FFB300;
-    margin: 5% 5% 0 5%;
+    margin: 5% 5% 0 0;
     font-size: 1.5rem;
   }
 
@@ -871,7 +859,7 @@
 
   h5 {
     color:#FFB300;
-    margin: 5% 5% 0 5%;
+    margin: 5% 5% 0 0;
     font-size: 1.2rem;
   }
 
@@ -1058,7 +1046,7 @@
 
   h5 {
     color:#FFB300;
-    margin: 5% 5% 0 5%;
+    margin: 5% 5% 0 0;
     font-size: 1.5rem;
   }
 
