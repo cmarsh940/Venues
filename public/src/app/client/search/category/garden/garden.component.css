@@ -39,6 +39,7 @@
     max-height: 10em;
     padding: 0;
     margin: 0;
+    overflow: hidden;
   }
 
   .col-3:first-child {
@@ -71,7 +72,8 @@
 
   h3 {
     font-size: 1.2em;
-    margin: 6%;
+    margin: 3%;
+    white-space: pre-wrap;
   }
 
   .middle {
@@ -110,8 +112,8 @@
   }
 
   h2{
-    font-size: 1.5rem;
-    margin: 5%;
+    font-size: 1.2rem;
+    margin-top: 10%;
   }
 
   h5 {
@@ -220,6 +222,7 @@
     max-height: 10em;
     padding: 0;
     margin: 0;
+    overflow: hidden;
   }
 
   .col-3:first-child {
@@ -264,7 +267,8 @@
 
   h3 {
     font-size: 1.2em;
-    margin: 6%;
+    margin: 3%;
+    white-space: pre-wrap;
   }
 
   .middle {
@@ -303,8 +307,8 @@
   }
 
   h2{
-    font-size: 1.5rem;
-    margin: 5%;
+    font-size: 1.4rem;
+    margin-top: 10%;
   }
 
   h5 {
@@ -447,7 +451,8 @@
 
   h3 {
     font-size: 1.2em;
-    margin: 6%;
+    margin: 3%;
+    white-space: pre-wrap;
   }
 
   .middle {
@@ -487,7 +492,7 @@
 
   h2{
     font-size: 1.5rem;
-    margin: 5%;
+    margin-top: 2%;
   }
 
   h5 {
@@ -560,7 +565,7 @@
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
   div.containerX {
-    margin-top: 10%;
+    margin-top: 4%;
   }
 
   /* FIXXED TOP */
@@ -576,7 +581,8 @@
 
   #top-middle {
     width:100%;
-    max-height: 400px;
+    max-height: 17em;
+    min-height: 17em;
     overflow: hidden;
     white-space: nowrap;
     margin: 0;
@@ -592,25 +598,22 @@
   
   .col-3 {
     display: inline-block;
-    max-width: 50%;
-    min-width: 50%;
+    max-width: 25%;
+    min-width: 25%;
     min-height: 10em;
-    max-height: 10em;
     padding: 0;
     margin: 0;
   }
 
-  .col-3:first-child {
-    border-right: 1px solid lightgray;
-  }
-
-  .col-6 {
-    display: none;
-    width: 0;
-  }
-
   #map {
-    visibility: hidden;
+    width: 100%;
+    height: 100%;
+  }
+
+  agm-map {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
   }
 
   .vender-link {
@@ -620,17 +623,18 @@
   }
 
   #vender-image {
-    min-width: 4rem;
-    max-width: 4rem;
-    min-height: 4rem;
-    max-height: 4rem;
+    min-width: 7rem;
+    max-width: 7rem;
+    min-height: 7rem;
+    max-height: 7rem;
     object-fit: cover;
     object-position: center;
   }
 
   h3 {
-    font-size: 1.2em;
+    font-size: 1.1em;
     margin: 6%;
+    white-space: pre-wrap;
   }
 
   .middle {
@@ -653,7 +657,7 @@
 
   #scroll {
     position: absolute;
-    top: 13em;
+    top: 16em;
     width:100%;
     z-index:0;
     padding: 0;
@@ -662,15 +666,20 @@
 
   div.container-fluid {
     width:100%;
+    margin: 7%;
   }
 
   #move-right {
-    display: block!important;
+    float: right;
+  }
+
+  #venue-header, #move-right {
+    margin: 0;
   }
 
   h2{
-    font-size: 1.5rem;
-    margin: 5%;
+    font-size: 2rem;
+    margin-top: 20%;
   }
 
   h5 {
@@ -694,8 +703,8 @@
   }
 
   .mat-card-image {
-    max-height: 15em;
-    min-height: 15em;
+    max-height: 11em;
+    min-height: 11em;
     object-fit: cover;
     object-position: center;
   }
@@ -707,17 +716,18 @@
   
   .card-group {
     display: inline-flex;
-    width: 100%;
+    margin: 2%;
+    border-radius: 5%;
   }
 
   .card {
-    width: 100%;
+    width: 13em;
     padding: 0;
     margin: 5% 0;
     border-radius: 5%;
     overflow: hidden;
-    max-height: 25em;
-    min-height: 25em; 
+    max-height: 20em;
+    min-height: 20em;
   }
 
   .mat-card-content>:first-child, .mat-card>:first-child {
@@ -743,7 +753,7 @@
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
   div.containerX {
-    margin-top: 10%;
+    margin-top: 4%;
   }
 
   /* FIXXED TOP */
@@ -759,7 +769,8 @@
 
   #top-middle {
     width:100%;
-    max-height: 400px;
+    max-height: 17em;
+    min-height: 17em;
     overflow: hidden;
     white-space: nowrap;
     margin: 0;
@@ -775,25 +786,22 @@
   
   .col-3 {
     display: inline-block;
-    max-width: 50%;
-    min-width: 50%;
+    max-width: 25%;
+    min-width: 25%;
     min-height: 10em;
-    max-height: 10em;
     padding: 0;
     margin: 0;
   }
 
-  .col-3:first-child {
-    border-right: 1px solid lightgray;
-  }
-
-  .col-6 {
-    display: none;
-    width: 0;
-  }
-
   #map {
-    visibility: hidden;
+    width: 100%;
+    height: 100%;
+  }
+
+  agm-map {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
   }
 
   .vender-link {
@@ -803,16 +811,16 @@
   }
 
   #vender-image {
-    min-width: 4rem;
-    max-width: 4rem;
-    min-height: 4rem;
-    max-height: 4rem;
+    min-width: 7rem;
+    max-width: 7rem;
+    min-height: 7rem;
+    max-height: 7rem;
     object-fit: cover;
     object-position: center;
   }
 
   h3 {
-    font-size: 1.2em;
+    font-size: 1.4em;
     margin: 6%;
   }
 
@@ -836,7 +844,7 @@
 
   #scroll {
     position: absolute;
-    top: 13em;
+    top: 16em;
     width:100%;
     z-index:0;
     padding: 0;
@@ -845,21 +853,26 @@
 
   div.container-fluid {
     width:100%;
+    margin: 7%;
   }
 
   #move-right {
-    display: block!important;
+    float: right;
+  }
+
+  #venue-header, #move-right {
+    margin: 0;
   }
 
   h2{
-    font-size: 1.5rem;
-    margin: 5%;
+    font-size: 2rem;
+    margin: 10%;
   }
 
   h5 {
     color:#FFB300;
     margin: 5% 5% 0 5%;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   [mat-button] {
@@ -877,8 +890,8 @@
   }
 
   .mat-card-image {
-    max-height: 15em;
-    min-height: 15em;
+    max-height: 12em;
+    min-height: 12em;
     object-fit: cover;
     object-position: center;
   }
@@ -890,17 +903,18 @@
   
   .card-group {
     display: inline-flex;
-    width: 100%;
+    margin: 2%;
+    border-radius: 5%;
   }
 
   .card {
-    width: 100%;
+    width: 15em;
     padding: 0;
     margin: 5% 0;
     border-radius: 5%;
     overflow: hidden;
-    max-height: 25em;
-    min-height: 25em; 
+    max-height: 18em;
+    min-height: 18em;
   }
 
   .mat-card-content>:first-child, .mat-card>:first-child {
@@ -984,16 +998,16 @@
   }
 
   #vender-image {
-    min-width: 4rem;
-    max-width: 4rem;
-    min-height: 4rem;
-    max-height: 4rem;
+    min-width: 7rem;
+    max-width: 7rem;
+    min-height: 7rem;
+    max-height: 7rem;
     object-fit: cover;
     object-position: center;
   }
 
   h3 {
-    font-size: 1.2em;
+    font-size: 1.4em;
     margin: 6%;
   }
 
@@ -1017,7 +1031,7 @@
 
   #scroll {
     position: absolute;
-    top: 13em;
+    top: 16em;
     width:100%;
     z-index:0;
     padding: 0;
@@ -1038,7 +1052,7 @@
   }
 
   h2{
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin: 5%;
   }
 
@@ -1138,4 +1152,12 @@ h2 {
 .icon-address {
   width: 100%;
   margin: 5%;
+}
+
+div.loading {
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 15em;
+  max-height: 15em;
+  margin: 50%;
 }

@@ -22,6 +22,7 @@ export class SearchComponent implements OnInit {
   finished: boolean;
   random: number;
   randomTwo: number;
+  loaded: Boolean = false;
 
   zoom: number = 8;
   latitude: number;
@@ -35,6 +36,7 @@ export class SearchComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.loaded = false;
     this.finished = false;
     this.getVenues();
     this._venderService.getVenders(vender => {
@@ -43,7 +45,7 @@ export class SearchComponent implements OnInit {
       this.randomTwo = Math.floor(Math.random() * vender.length);
       console.log("Random number:", this.random);
       console.log("RandomTwo number:", this.randomTwo);
-      if(this.random === this.randomTwo) {
+      if (this.random === this.randomTwo) {
         this.randomTwo = Math.floor(Math.random() * vender.length);
         console.log("Random number:", this.random);
         console.log("RandomTwo number:", this.randomTwo);
@@ -55,6 +57,9 @@ export class SearchComponent implements OnInit {
       }
       this.finished = true;
     });
+    setTimeout(() => {
+      this.loaded = true;
+    }, 1000);
   }
 
   getVenders() {

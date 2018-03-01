@@ -43,6 +43,7 @@ export class VenueComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   random: number;
   approved = Boolean;
+  loaded: Boolean = false;
 
   // OVERLAY & PORTAL
   nextPosition: number = 0;
@@ -71,9 +72,13 @@ export class VenueComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    this.loaded = false
     this.getVender();
     this.getVenue();
     console.log(this.venue);
+    setTimeout(() => {
+      this.loaded = true
+    }, 1000);
   }
 
   ngOnDestroy() {

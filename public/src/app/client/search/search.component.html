@@ -1,110 +1,117 @@
-<div class="containerX">
-    <div class="row" id="none-scroll">
-        <div class="row" id="top-middle">
-            <div class="col-3">
-                <div>
-                    <h2 class=text-center>Vendor</h2>
-                    <ng-container *ngIf="vender?.pic_url; else elseTemplate">
-                        <div class="vender-link">
-                            <a [routerLink]="['/vender', 'display', vender._id]">
-                                <!-- TEST -->
-                                <!-- <img src='https://venue-test.s3.amazonaws.com/Venders/{{vender.name}}/{{vender.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture"> -->
-                                <!-- Live -->
-                                <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture">
-                            </a>
-                            <h3 class="text-center">{{ vender?.name }}</h3>
-                        </div>
-                    </ng-container>
-                    <ng-template #elseTemplate>
-                        <h2 class=text-center>Vendor</h2>
-                        <div class="vender-link">
-                            <a [routerLink]="['/vender', 'display', vender._id]">
-                                <img src='/assets/images/missing.png' class="rounded-circle mx-auto d-block" id="vender-image" alt="Venue Picture">
-                            </a>
-                        </div>
-                    </ng-template>
-                </div>
-            </div><!--
-            --><div class="col-6" id="map">
-                <agm-map [latitude]='36.153883' [longitude]='-95.990629' [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
-                    <agm-marker *ngFor="let venue of venues" [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng">
-                        <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
-                            <ng-template>
-                                {{venue?.name}}
-                                <button mat-button [routerLink]="['/venue', 'display', venue._id]">VIEW</button>
-                            </ng-template>
-                        </agm-snazzy-info-window>
-                    </agm-marker>
-                </agm-map>
-            </div><!--
-            --><div class="col-3">
-                <div>
-                    <h2 class=text-center>Vendor</h2>
-                    <ng-container *ngIf="venderTwo?.pic_url; else elseTemplate">
-                        <div class="vender-link">
-                            <a [routerLink]="['/vender', 'display', venderTwo._id]">
-                                <!-- TEST -->
-                                <!-- <img src='https://venue-test.s3.amazonaws.com/Venders/{{venderTwo.name}}/{{venderTwo.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture"> -->
-                                <!-- LIVE -->
-                                <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{venderTwo.name}}/{{venderTwo.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture">
-                            </a>
-                            <h3 class="text-center">{{ venderTwo?.name }}</h3>
-                        </div>
-                    </ng-container>
-                    <ng-template #elseTemplate>
-                        <div class="vender-link">
-                            <a [routerLink]="['/vender', 'display', venderTwo._id]">
-                                <img src='/assets/images/missing.png' class="rounded-circle mx-auto d-block" id="vender-image" alt="Venue Picture">
-                                <div class="middle rounded-circle">
-                                    <div class="text">
-                                        <h6>{{venderTwo?.name}}</h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </ng-template>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="row" id="scroll">
-        <div class="container" *ngIf = "!finished">
-            <mat-spinner class="mx-auto" color="primary"></mat-spinner>
-        </div>
-        <div class="container-fluid" *ngIf = "finished">
-            <div class="col-12">
-                <h2 class="text-center" id="venue-header">Venues</h2>
-                <div id="move-right">
-                    <input matInput type='text' name='search_text' [(ngModel)]='search_text' id="search-box" placeholder="Search for a venue...">
-                </div>
-            </div>
-            <div class="card-group" *ngFor="let venue of venues | filterVenues: search_text; let i = index">
-                <mat-card class="card" [tabindex]="i">
-                    <ng-container *ngIf="venue.pic_url === ''; else elseTemplate">
-                        <img mat-card-image src='/assets/images/missing.png' alt="Venue Picture">  
-                    </ng-container>
-                    <ng-template #elseTemplate>
-                        <!-- LIVE -->
-                        <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Picture">
-
-                        <!-- TEST -->
-                        <!-- <img mat-card-image src="https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}" alt="Venue Picture"> -->
-                    </ng-template>
-                    <mat-card-title>
-                        <h5 class="text-left">{{venue?.name}}</h5>
-                        <div class="icon-address">
-                            <span>
-                                <img src="/assets/images/{{venue?._category.icon}}" class="venue-icon" alt="Venue Icon">
-                            </span>
-                            <mat-card-subtitle>{{venue?.address}}, {{venue?.city}} {{venue?.state | uppercase}}</mat-card-subtitle>
-                        </div>
-                    </mat-card-title>
-                    <mat-card-actions>
-                        <button mat-button [routerLink]="['/venue', 'display', venue._id]" matTooltip="View {{venue.name}}">VIEW</button>
-                    </mat-card-actions>
-                </mat-card>
-            </div>
-        </div>
+<div class="col align-self-center" *ngIf="!loaded; else mainTemplate">
+    <div class="loading">
+        <mat-spinner color="accent"></mat-spinner>
     </div>
 </div>
+<ng-template #mainTemplate>
+    <div class="containerX">
+        <div class="row" id="none-scroll">
+            <div class="row" id="top-middle">
+                <div class="col-3">
+                    <div>
+                        <h2 class=text-center>Vendor</h2>
+                        <ng-container *ngIf="vender?.pic_url; else elseTemplate">
+                            <div class="vender-link">
+                                <a [routerLink]="['/vender', 'display', vender._id]">
+                                    <!-- TEST -->
+                                    <!-- <img src='https://venue-test.s3.amazonaws.com/Venders/{{vender.name}}/{{vender.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture"> -->
+                                    <!-- Live -->
+                                    <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture">
+                                </a>
+                                <h3 class="text-center">{{ vender?.name }}</h3>
+                            </div>
+                        </ng-container>
+                        <ng-template #elseTemplate>
+                            <h2 class=text-center>Vendor</h2>
+                            <div class="vender-link">
+                                <a [routerLink]="['/vender', 'display', vender._id]">
+                                    <img src='/assets/images/missing.png' class="rounded-circle mx-auto d-block" id="vender-image" alt="Venue Picture">
+                                </a>
+                            </div>
+                        </ng-template>
+                    </div>
+                </div><!--
+                --><div class="col-6" id="map">
+                    <agm-map [latitude]='36.153883' [longitude]='-95.990629' [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
+                        <agm-marker *ngFor="let venue of venues" [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng">
+                            <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+                                <ng-template>
+                                    {{venue?.name}}
+                                    <button mat-button [routerLink]="['/venue', 'display', venue._id]">VIEW</button>
+                                </ng-template>
+                            </agm-snazzy-info-window>
+                        </agm-marker>
+                    </agm-map>
+                </div><!--
+                --><div class="col-3">
+                    <div>
+                        <h2 class=text-center>Vendor</h2>
+                        <ng-container *ngIf="venderTwo?.pic_url; else elseTemplate">
+                            <div class="vender-link">
+                                <a [routerLink]="['/vender', 'display', venderTwo._id]">
+                                    <!-- TEST -->
+                                    <!-- <img src='https://venue-test.s3.amazonaws.com/Venders/{{venderTwo.name}}/{{venderTwo.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture"> -->
+                                    <!-- LIVE -->
+                                    <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{venderTwo.name}}/{{venderTwo.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture">
+                                </a>
+                                <h3 class="text-center">{{ venderTwo?.name }}</h3>
+                            </div>
+                        </ng-container>
+                        <ng-template #elseTemplate>
+                            <div class="vender-link">
+                                <a [routerLink]="['/vender', 'display', venderTwo._id]">
+                                    <img src='/assets/images/missing.png' class="rounded-circle mx-auto d-block" id="vender-image" alt="Venue Picture">
+                                    <div class="middle rounded-circle">
+                                        <div class="text">
+                                            <h6>{{venderTwo?.name}}</h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row" id="scroll">
+            <div class="container" *ngIf = "!finished">
+                <mat-spinner class="mx-auto" color="primary"></mat-spinner>
+            </div>
+            <div class="container-fluid" *ngIf = "finished">
+                <div class="col-12">
+                    <h2 class="text-center" id="venue-header">Venues</h2>
+                    <div id="move-right">
+                        <input matInput type='text' name='search_text' [(ngModel)]='search_text' id="search-box" placeholder="Search for a venue...">
+                    </div>
+                </div>
+                <div class="card-group" *ngFor="let venue of venues | filterVenues: search_text; let i = index">
+                    <mat-card class="card" [tabindex]="i">
+                        <ng-container *ngIf="venue.pic_url === ''; else elseTemplate">
+                            <img mat-card-image src='/assets/images/missing.png' alt="Venue Picture">  
+                        </ng-container>
+                        <ng-template #elseTemplate>
+                            <!-- LIVE -->
+                            <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Picture">
+
+                            <!-- TEST -->
+                            <!-- <img mat-card-image src="https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}" alt="Venue Picture"> -->
+                        </ng-template>
+                        <mat-card-title>
+                            <h5 class="text-left">{{venue?.name}}</h5>
+                            <div class="icon-address">
+                                <span>
+                                    <img src="/assets/images/{{venue?._category.icon}}" class="venue-icon" alt="Venue Icon">
+                                </span>
+                                <mat-card-subtitle>{{venue?.address}}, {{venue?.city}} {{venue?.state | uppercase}}</mat-card-subtitle>
+                            </div>
+                        </mat-card-title>
+                        <mat-card-actions>
+                            <button mat-button [routerLink]="['/venue', 'display', venue._id]" matTooltip="View {{venue.name}}">VIEW</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

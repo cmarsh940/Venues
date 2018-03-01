@@ -20,6 +20,7 @@ export class BallroomComponent implements OnInit {
   finished: boolean;
   random: number;
   randomTwo: number;
+  loaded: Boolean = false;
 
   zoom: number = 8;
   latitude: number;
@@ -33,6 +34,7 @@ export class BallroomComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.loaded = false;
     this.finished = false;
     this.getVenues();
     this._venderService.getVenders(vender => {
@@ -52,11 +54,17 @@ export class BallroomComponent implements OnInit {
         console.log(this.venderTwo);
       }
       this.finished = true;
+      setTimeout(() => {
+        this.loaded = true;
+      }, 1000);
     });
   }
 
   getVenues(): void {
-    this._venueService.getSingleVenue("5a81397e00114b31f5f3ac60", venues => (this.venues = venues));
+    this._venueService.getSingleVenue(
+      "5a81397e00114b31f5f3ac60",
+      venues => (this.venues = venues)
+    );
     console.log(this.venues);
   }
   // getVenues(): void {

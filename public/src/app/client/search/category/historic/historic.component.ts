@@ -19,6 +19,7 @@ export class HistoricComponent implements OnInit {
   finished: boolean;
   random: number;
   randomTwo: number;
+  loaded: Boolean = false;
 
   zoom: number = 8;
   latitude: number;
@@ -32,6 +33,7 @@ export class HistoricComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.loaded = false;
     this.finished = false;
     this.getVenues();
     this._venderService.getVenders(vender => {
@@ -51,11 +53,17 @@ export class HistoricComponent implements OnInit {
         console.log(this.venderTwo);
       }
       this.finished = true;
+      setTimeout(() => {
+        this.loaded = true;
+      }, 1000);
     });
   }
 
   getVenues(): void {
-    this._venueService.getSingleVenue("5a813a1800114b31f5f3ac66", venues => (this.venues = venues));
+    this._venueService.getSingleVenue(
+      "5a813a1800114b31f5f3ac66",
+      venues => (this.venues = venues)
+    );
     console.log(this.venues);
   }
 }

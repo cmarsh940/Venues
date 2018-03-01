@@ -1,28 +1,147 @@
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-  
+  .vender-image {
+    min-width: 40%;
+    max-width: 70%;
+    margin: auto;
+    display: inherit;
+  }
+
+  .col-3, .col-5 {
+    display: block;
+    min-width: 100%;
+    max-width: 100%;
+    vertical-align: top;
+  }
+
+  a, h6 {
+    display: inline-block;
+  }
+
+  #bottom {
+    border: 1px solid lightgrey;
+  }
+
+  #vender-contact>li {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    border-right: 1px solid lightgrey;
+  }
+
+  #vender-contact>li:last-child {
+    border-right: none;
+  }
+
+  .mat-icon, p {
+    display: inline;
+    vertical-align: -webkit-baseline-middle;
+  }
+
+  img {
+    max-width: 75%;
+    min-width: 75%;
+  }
 }
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
-  
+  .vender-image {
+    min-width: 40%;
+    max-width: 70%;
+    margin: auto;
+    display: inherit;
+  }
+
+  .col-3, .col-5 {
+    display: block;
+    min-width: 100%;
+    max-width: 100%;
+    vertical-align: top;
+  }
+
+  a, h6 {
+    display: inline-block;
+  }
+
+  #bottom {
+    border: 1px solid lightgrey;
+  }
+
+  #vender-contact>li {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    border-right: 1px solid lightgrey;
+  }
+
+  #vender-contact>li:last-child {
+    border-right: none;
+  }
+
+  .mat-icon, p {
+    display: inline;
+    vertical-align: -webkit-baseline-middle;
+  }
+
+  img {
+    max-width: 75%;
+    min-width: 75%;
+  }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-  
+  .vender-image {
+    min-width: 40%;
+    max-width: 70%;
+    margin: auto;
+    display: inherit;
+  }
+
+  i {
+    font-size: 18px;
+    vertical-align: super;
+  }
+
+  .col-3, .col-5 {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  h6 {
+    font-size: 0.8rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  a, h6 {
+    display: inline-block;
+  }
+
+  #vender-contact>li {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    border-right: 1px solid lightgrey;
+  }
+
+  #vender-contact>li:last-child {
+    border-right: none;
+  }
+
+  .mat-icon, p {
+    vertical-align: -webkit-baseline-middle;
+  }
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  
-}
-
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-
   .vender-image {
-    width: 30%;
+    min-width: 40%;
+    max-width: 60%;
     margin: auto;
     display: inherit;
   }
@@ -31,6 +150,76 @@
     display: inline-block;
     vertical-align: top;
   }
+
+  a, h6 {
+    display: inline-block;
+  }
+
+  #vender-contact>li {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    border-right: 1px solid lightgrey;
+  }
+
+  #vender-contact>li:last-child {
+    border-right: none;
+  }
+
+  .mat-icon, p {
+    display: inline;
+    vertical-align: -webkit-baseline-middle;
+  }
+
+  img {
+    max-width: 75%;
+    min-width: 75%;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+  .vender-image {
+    min-width: 40%;
+    max-width: 50%;
+    margin: auto;
+    display: inherit;
+  }
+
+  .col-3, .col-5 {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  a, h6 {
+    display: inline-block;
+  }
+
+  #vender-contact>li {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    border-right: 1px solid lightgrey;
+  }
+
+  #vender-contact>li:last-child {
+    border-right: none;
+  }
+
+  .mat-icon, p {
+    display: inline;
+    vertical-align: -webkit-baseline-middle;
+  }
+
+  img {
+    max-width: 75%;
+    min-width: 75%;
+  }
+
+  #top, #middle, #bottom {
+  margin: 5% 0!important;
+}
   
 }
 
@@ -48,9 +237,14 @@ h2 {
   color:#FFB300;
 }
 
-#top, #middle, #bottom {
-  margin: 2% 0;
+#top {
+  border: 1px solid lightgrey;
 }
+
+#top, #middle, #bottom {
+  margin: 10% 0;
+}
+
 
 a {
   color: black;
@@ -65,16 +259,15 @@ ul {
   width: 100%;
 }
 
-#vender-contact>li {
-  display: block;
-}
-
 #vender-contact .mat-icon {
   margin-right: 1%;
   vertical-align: baseline;
 }
 
-.mat-icon, p {
-  display: inline-block;
-  vertical-align: text-top;
+div.loading {
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 15em;
+  max-height: 15em;
+  margin: 50%;
 }

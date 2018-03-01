@@ -346,7 +346,7 @@
     .image-seperater img{
         width:50%;
         object-fit: contain;
-        z-index: 2;
+        z-index: 1;
     }
 
     .line {

@@ -14,6 +14,7 @@ import { Location } from '@angular/common';
 export class VenderComponent implements OnInit {
   vender = new Vender();
   subscription: Subscription;
+  loaded: Boolean = false;
 
   constructor(
     private _venderService: VenderService,
@@ -23,7 +24,11 @@ export class VenderComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.loaded = false;
     this.getVender();
+    setTimeout(() => {
+      this.loaded = true;
+    }, 1000);
   }
 
   ngOnDestroy() {

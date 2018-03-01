@@ -1,44 +1,44 @@
-<div class="containerX">
-    <div class="carousel">
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <ng-container *ngIf="vender.pic_url; else elseTemplate">
-                    <!-- TEST -->
-                    <!-- <div class="carousel-item active">
-                        <img class="d-block w-100" src='https://venue-test.s3.amazonaws.com/Venders/{{vender.name}}/{{vender.pic_url}}' class="vender-image"
-                            alt="Vender slide pictures">
-                    </div> -->
-                    <!-- LIVE -->
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' class="vender-image" alt="Vender slide pictures">
-                    </div>
-                </ng-container>
-                <ng-template #elseTemplate>
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src='/assets/images/missing.png' class="vender-image" alt="Missing Vender Picture">
-                    </div>
-                </ng-template>
-            </div>
-            <a class="carousel-control-prev text-light bg-dark" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next text-light bg-dark" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
+<div class="col align-self-center" *ngIf="!loaded; else mainTemplate">
+    <div class="loading">
+        <mat-spinner color="accent"></mat-spinner>
     </div>
-    <div class="container-fluid">
-        <div class="col-12" id="top">
-            <!-- INFO /  ABOUT / PHOTO ALBUM -->
-            <div class="col-3">
+</div>
+<ng-template #mainTemplate>
+    <div class="containerX">
+        <div class="carousel">
+            <div id="carouselExampleControls">
+                <div class="carousel-inner">
+                    <ng-container *ngIf="vender.pic_url; else elseTemplate">
+                        <!-- TEST -->
+                        <!-- <div class="carousel-item active">
+                            <img class="d-block w-100" src='https://venue-test.s3.amazonaws.com/Venders/{{vender.name}}/{{vender.pic_url}}' class="vender-image"
+                                alt="Vender slide pictures">
+                        </div> -->
+                        <!-- LIVE -->
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' class="vender-image" alt="Vender slide pictures">
+                        </div>
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src='/assets/images/missing.png' class="vender-image" alt="Missing Vender Picture">
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="col-3" id="top">
+                <!-- INFO /  ABOUT / PHOTO ALBUM -->
                 <h2 class="text-center">{{vender.name}}</h2>
                 <ul class="text-center">
                     <li>
-                        <h5>{{vender.address}}</h5>
+                        <mat-icon aria-label="Phone icon link">
+                            <i class="material-icons">&#xE0C8;</i>
+                        </mat-icon>
+                        <h6>{{vender.address}}, {{vender.city}} {{vender.state | uppercase}}</h6>
                     </li>
-                    <li>
+                    <li id="phone-number">
                         <a href='tel:{{ vender?.phone }}' data-type='phone'>
                             <mat-icon aria-label="Phone icon link">
                                 <i class="material-icons">&#xE0CD;</i>
@@ -51,10 +51,12 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-5">
-                <p class="text-center">{{vender.description}}</p>
+            <div class="col-5" id="middle">
+                    <div class="text-center">
+                        <p>{{vender.description}}</p>
+                    </div>
             </div>
-            <div class="col-3">
+            <div class="col-3" id="bottom">
                 <h2 class="text-center">Follow {{vender.name}}</h2>
                 <ul id="vender-contact">
                     <li class="list-items">
@@ -77,4 +79,4 @@
             </div>
         </div>
     </div>
-</div>
+</ng-template>
