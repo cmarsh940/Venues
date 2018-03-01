@@ -118,7 +118,7 @@
 
   h5 {
     color:#FFB300;
-    margin: 5% 5% 0 0;
+    margin: 5% 0;
     font-size: 1.5rem;
   }
 
@@ -301,7 +301,7 @@
 
   h5 {
     color:#FFB300;
-    margin: 5% 5% 0 0;
+    margin: 5% 0;
     font-size: 1.3em;
   }
 
@@ -485,7 +485,7 @@
 
   h5 {
     color:#FFB300;
-    margin: 5% 5% 0 0;
+    margin: 5% 0;
     font-size: 1.5rem;
   }
 
@@ -672,7 +672,7 @@
 
   h5 {
     color:#FFB300;
-    margin: 5% 5% 0 0;
+    margin: 5% 0;
     font-size: 1.5rem;
   }
 
@@ -859,7 +859,7 @@
 
   h5 {
     color:#FFB300;
-    margin: 5% 5% 0 0;
+    margin: 5% 0;
     font-size: 1.2rem;
   }
 
@@ -1046,7 +1046,7 @@
 
   h5 {
     color:#FFB300;
-    margin: 5% 5% 0 0;
+    margin: 5% 0;
     font-size: 1.5rem;
   }
 
@@ -1110,10 +1110,6 @@
     vertical-align: top;
   }
 
-}
-
-h5 {
-  font-family: -webkit-pictograph;
 }
 
 .col-12 {
