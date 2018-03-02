@@ -11,7 +11,7 @@
     margin: 0!important;
   }
 
-  .venue-image {
+  #venue-image {
     min-width: 50%;
     max-width: 70%;
     max-height: 13rem;
@@ -110,7 +110,7 @@
     margin: 0!important;
   }
 
-  .venue-image {
+  #venue-image {
     min-width: 50%;
     max-width: 70%;
     max-height: 22rem;
@@ -209,7 +209,7 @@
     margin: 0!important;
   }
 
-  .venue-image {
+  #venue-image {
     min-width: 50%;
     max-width: 70%;
     max-height: 22rem;
@@ -326,7 +326,7 @@
     margin: 0;
   }
 
-  .venue-image {
+  #venue-image {
     min-width: 50%;
     max-width: 70%;
     max-height: 22rem;
@@ -458,7 +458,7 @@
     margin: 0;
   }
 
-  .venue-image {
+  #venue-image {
     min-width: 40%;
     max-width: 70%;
     max-height: 25rem;
