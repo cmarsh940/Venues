@@ -21,7 +21,7 @@ export class Venue {
          instagram_url: string;
          _category: any;
          amenities: any[];
-         galleryItems: any[];
+         gallery: any[];
          reviews: any[];
          createdAt: any;
          updatedAt: any;

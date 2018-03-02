@@ -43,6 +43,32 @@ function uploadToS3(file, venue) {
     });
 }
 
+function uploadManyToS3(file, venue) {
+    console.log("*** STARTING TO UPLOADTOS3 FUNCTION")
+    console.log("*** S3 FILE:", file)
+    console.log("*** S3 VENUE", venue)
+    let s3bucket = new AWS.S3({
+        accessKeyId: IAM_USER_KEY,
+        secretAccessKey: IAM_USER_SECRET,
+        Bucket: BUCKET_NAME
+    });
+    s3bucket.createBucket(function() {
+        var params = {
+            Bucket: BUCKET_NAME,
+            Key: `Venues/${venue}/Gallery/${file.name}`,
+            Body: file.data,
+            ACL: 'public-read'
+        };
+        s3bucket.upload(params, function(err, data) {
+        if (err) {
+            console.log("*** Error in callback: ", err);
+            console.log("*** UPLOAD PARAMS: ", params);
+        }
+            console.log("**** SUCCESS", data);
+        });
+    });
+}
+
 let shuffle = function (arr) {
     for (let i = 0; i < arr.length; i++) {
         let index = Math.floor(Math.random() * arr.length);
@@ -89,7 +115,6 @@ class VenuesController {
   }
 
   show(req, res) {
-    console.log("*** SERVER HIT SHOW");
     Venue.findById({ _id: req.params.id })
       .populate({ path: "amenities", model: Amenity })
       .populate({ path: "galleryItems", model: Gallery })
@@ -100,7 +125,6 @@ class VenuesController {
           console.log("*** SERVER SHOW VENUE ERROR:", err);
           return res.json(err);
         }
-        console.log("*** SERVER SHOW VENUE:", venue);
         return res.json(venue);
       });
   }
@@ -127,41 +151,6 @@ class VenuesController {
       return res.json(venue);
     });
   }
-
-  // upload(req, res) {
-  //         let new_venue = new Venue(req.body);
-
-  //         console.log("*** SERVER REQ:", req)
-  //         let busboy = new Busboy({ headers: req.headers });
-  //         console.log("*** SERVER REQ.FILES:", req.files);
-  //         console.log("*** SERVER REQ.FILES.PICTURE:", req.files.picture);
-  //         if (!req.files) {
-  //             console.log("*** NO FILE DETECTED", req.files);
-  //         }
-  //         let file = req.files;
-  //         console.log("*** SERVER FILE:", file);
-  //         let new_file_name = req.files.name;
-  //         console.log("*** SERVER FILE NAME:", new_file_name);
-
-  //         new_venue.pic_url = new_file_name;
-  //         busboy.on("finish", function () {
-  //             const venue = req.body
-  //             console.log("**** BUSBOY VENUE:", venue)
-  //             const file = req.files.picture;
-  //             uploadToS3(file, venue);
-  //         });
-  //         req.pipe(busboy);
-  //         console.log("*** SERVER REQ.FILES.NAME:", req.files.name);
-  //         new_venue.pic_url = req.files.name;
-  //         new_venue.save((err, new_venue) => {
-  //             if (err) {
-  //                 return res.json(err);
-  //             }
-  //             console.log("**** this is the new venue:", new_venue);
-  //             return res.json(new_venue);
-  //         });
-  //     })
-  // }
 
   upload(req, res) {
     let new_venue = new Venue(req.body);
@@ -192,14 +181,6 @@ class VenuesController {
       }
       return res.json(new_venue);
     });
-
-    // new_venue.save((err, new_venue) => {
-    //     if (err) {
-    //         return res.json(err);
-    //     }
-    //     console.log("**** this is the new venue:", new_venue);
-    //     return res.json(new_venue);
-    // });
   }
 
   gallery(req, res) {
@@ -207,51 +188,83 @@ class VenuesController {
     let busboy = new Busboy({ headers: req.headers });
     console.log("*** SERVER REQ.FILES:", req.files);
     console.log("*** SERVER REQ.FILES.PICTURE:", req.files.picture);
-    for (let i = 0; i < req.files.length; i++) {
-      if (req.files.picture) {
-        let file = req.files.picture;
-        let file_type = file.mimetype.match(/image\/(\w+)/);
-        let new_file_name = file.name;
+    if (req.files.picture) {
+      let file = req.files.picture;
+      let file_type = file.mimetype.match(/image\/(\w+)/);
+      let new_file_name = file.name;
 
-        if (file_type) {
-          new_venue.galleryItems = new_file_name;
-          busboy.on("finish", function() {
-            const venue = req.params.id;
-            const file = req.files.picture;
-            uploadToS3(file, venue);
-          });
-          req.pipe(busboy);
-        }
+      if (file_type) {
+        new_venue.gallery.push(new_file_name);
+        busboy.on("finish", function() {
+          const venue = req.params.id;
+          const file = req.files.picture;
+          uploadManyToS3(file, venue);
+        });
+        req.pipe(busboy);
       }
     }
-    // req.body.files = venue._id;
-    Gallery.create(
-      req.body.files,
-      (err, files) => {
-        if (err) {
-          return res.json(err);
-        }
-        venue.galleryItems.push(files._id);
-      },
-
-      Venue.update(
-        { _id: req.params.id },
-        { $set: [{ galleryItems: { objectId: files._id } }] }
-      ).exec((err, new_venue) => {
-        if (err) {
-          return res.json(err);
-        }
-        return res.json(new_venue);
-      })
-    );
+    let gallery = req.files.picture;
+    Venue.update(
+      { _id: req.params.id },
+      { $push: { gallery: gallery } }
+    ).exec((err, new_venue) => {
+      if (err) {
+        return res.status(204).json(err);
+      }
+      return res.json(new_venue);
+    });
   }
+  // gallery(req, res) {
+  //   let new_venue = new Venue(req.body);
+  //   let busboy = new Busboy({ headers: req.headers });
+  //   console.log("*** SERVER REQ.FILES:", req.files);
+  //   console.log("*** SERVER REQ.FILES.PICTURE:", req.files.picture);
+  //   for (let i = 0; i < req.files.length; i++) {
+  //     if (req.files.picture) {
+  //       let file = req.files.picture;
+  //       let file_type = file.mimetype.match(/image\/(\w+)/);
+  //       let new_file_name = file.name;
+
+  //       if (file_type) {
+  //         new_venue.galleryItems = new_file_name;
+  //         busboy.on("finish", function() {
+  //           const venue = req.params.id;
+  //           const file = req.files.picture;
+  //           uploadToS3(file, venue);
+  //         });
+  //         req.pipe(busboy);
+  //       }
+  //     }
+  //   }
+  //   // req.body.files = venue._id;
+  //   Gallery.create(
+  //     req.body.files,
+  //     (err, files) => {
+  //       if (err) {
+  //         return res.json(err);
+  //       }
+  //     }),
+
+  //     new_venue.galleryItems.push(req.body.files);
+
+  //     Venue.update(
+  //       { _id: req.params.id },
+  //       { $set: [{ galleryItems: { objectId: files._id } }] }
+  //     ).exec((err, new_venue) => {
+  //       if (err) {
+  //         return res.json(err);
+  //       }
+  //       return res.json(new_venue);
+  //     }
+  //   )
+  // }
 
   review(req, res) {
     Venue.find({ _id: req.params.id }, (err, venue) => {
       let review = new Review(req.body);
       review._venue = venue._id;
       if (err) {
-        return res.status(500).send({message: err.message});
+        return res.status(500).send({ message: err.message });
       }
       if (venue) {
         venue.reviews.push(review);
@@ -262,9 +275,8 @@ class VenuesController {
           return res.json(venue);
         });
       }
-    })
-  };
-
+    });
+  }
 
   images(req, res) {
     Venue.findById(req.params.id)

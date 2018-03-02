@@ -65,7 +65,7 @@ export class VenueService {
   post_multiple_to_s3(formData, id: string, callback) {
     console.log("**** HIT SERVICE", formData);
     var URL = API_URL + "upload" + "/" + "multiple" + "/" + id;
-    return this._http.put(URL, formData).subscribe(
+    return this._http.post(URL, formData).subscribe(
       res => {
         // const venue = res.json();
         callback(res.json());

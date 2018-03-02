@@ -46,7 +46,7 @@ module.exports = function (app) {
     app.get('/venues/category/:category', Venues.category);
     app.post('/venues', Venues.create);
     app.put('/venues/upload/:id', Venues.upload);
-    app.put('/venues/upload/multiple/:id', Venues.gallery);
+    app.post('/venues/upload/multiple/:id', Venues.gallery);
     app.delete('/venues/:id', Venues.delete);
     app.get('/venues/:id', Venues.show);
     app.get('/venues/images/:id', Venues.images);

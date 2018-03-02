@@ -22,16 +22,18 @@
             <td>{{ venue.website }}</td>
             <td>
                 <ng-container *ngIf="venue.pic_url == ''; else elseTemplate">
-                    <button mat-icon-button color="primary" [routerLink]="['/venue', 'upload', venue._id]">
+                    <button mat-icon-button color="warn" [routerLink]="['/venue', 'upload', venue._id]">
                         <mat-icon aria-label="icon-button to upload venue images">
                             <i class="material-icons">&#xE439;</i>
                         </mat-icon>
                     </button>
                 </ng-container>
                 <ng-template #elseTemplate>
-                    <mat-icon aria-label="Venue cover image check icon">
-                        <i class="material-icons">&#xE5CA;</i>
-                    </mat-icon>
+                    <button mat-icon-button color="primary" [routerLink]="['/venue', 'upload', venue._id]">
+                        <mat-icon aria-label="icon-button to upload venue images">
+                            <i class="material-icons">&#xE417;</i>
+                        </mat-icon>
+                    </button>
                 </ng-template>
                 
             </td>

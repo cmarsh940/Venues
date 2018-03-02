@@ -95,6 +95,7 @@ const VenueSchema = new mongoose.Schema(
       trim: true,
       default: ""
     },
+    gallery: [{ name: String }],
     tour_url: {
       type: String,
       required: false,
@@ -143,15 +144,15 @@ const VenueSchema = new mongoose.Schema(
       ],
       default: []
     },
-    galleryItems: {
-      type: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Gallery"
-        }
-      ],
-      default: []
-    },
+    // galleryItems: {
+    //   type: [
+    //     {
+    //       type: mongoose.Schema.Types.ObjectId,
+    //       ref: "Gallery"
+    //     }
+    //   ],
+    //   default: []
+    // },
     _category: { type: mongoose.Schema.Types.ObjectId, ref: "Category" }
   },
   { timestamps: true }

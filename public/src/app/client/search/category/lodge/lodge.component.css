@@ -1145,3 +1145,18 @@ div.loading {
   max-height: 15em;
   margin: 50%;
 }
+
+.map-card {
+  padding: 0;
+  margin: 0;
+  width: 10em;
+  height: 7em;
+}
+
+.mat-card-content {
+  width:100%;
+  margin: auto;
+}
+.map-card button{
+  width: 100%;
+}
