@@ -267,15 +267,18 @@ class VenuesController {
         return res.status(500).send({ message: err.message });
       }
       if (venue) {
-        venue.reviews.push(review);
-        venue.save(err => {
+        Venue.update(
+          { _id: req.params.id },
+          { $push: { reviews: review } }
+        ).exec((err, venue) => {
           if (err) {
-            console.log("Error");
+            return res.json(err);
           }
+          console.log("*** SERVER REVIEW:", venue);
           return res.json(venue);
         });
       }
-    });
+    })
   }
 
   images(req, res) {

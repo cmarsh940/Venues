@@ -14,9 +14,9 @@
                             <div class="vender-link">
                                 <a [routerLink]="['/vender', 'display', vender._id]">
                                     <!-- TEST -->
-                                    <!-- <img src='https://venue-test.s3.amazonaws.com/Venders/{{vender.name}}/{{vender.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture"> -->
+                                    <img src='https://venue-test.s3.amazonaws.com/Venders/{{vender.name}}/{{vender.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture">
                                     <!-- Live -->
-                                    <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture">
+                                    <!-- <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture"> -->
                                 </a>
                                 <h3 class="text-center">{{ vender?.name }}</h3>
                             </div>
@@ -39,9 +39,9 @@
                                     <mat-card class="map-card">
                                         <mat-card-header>
                                             <!-- TEST -->
-                                            <!-- <img mat-card-avatar src="https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}" alt="Venue Avatar Picture"> -->
+                                            <img mat-card-avatar src="https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}" alt="Venue Avatar Picture">
                                             <!-- LIVE -->
-                                            <img mat-card-avatar src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Avatar Picture">
+                                            <!-- <img mat-card-avatar src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Avatar Picture"> -->
                                         </mat-card-header>
                                         <mat-card-content class="text-center">
                                             <mat-card-subtitle>{{venue?.name}}</mat-card-subtitle>
@@ -62,9 +62,9 @@
                             <div class="vender-link">
                                 <a [routerLink]="['/vender', 'display', venderTwo._id]">
                                     <!-- TEST -->
-                                    <!-- <img src='https://venue-test.s3.amazonaws.com/Venders/{{venderTwo.name}}/{{venderTwo.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture"> -->
+                                    <img src='https://venue-test.s3.amazonaws.com/Venders/{{venderTwo.name}}/{{venderTwo.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture">
                                     <!-- LIVE -->
-                                    <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{venderTwo.name}}/{{venderTwo.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture">
+                                    <!-- <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{venderTwo.name}}/{{venderTwo.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture"> -->
                                 </a>
                                 <h3 class="text-center">{{ venderTwo?.name }}</h3>
                             </div>
@@ -104,19 +104,15 @@
                         </ng-container>
                         <ng-template #elseTemplate>
                             <!-- LIVE -->
-                            <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Picture">
+                            <!-- <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Picture"> -->
 
                             <!-- TEST -->
-                            <!-- <img mat-card-image src="https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}" alt="Venue Picture"> -->
+                            <img mat-card-image src="https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}" alt="Venue Picture">
                         </ng-template>
                         <mat-card-title>
-                            <h5 class="text-left">{{venue?.name}}</h5>
-                            <div class="icon-address">
-                                <span>
-                                    <img src="/assets/images/{{venue?._category.icon}}" class="venue-icon" alt="Venue Icon">
-                                </span>
-                                <mat-card-subtitle>{{venue?.address}}, {{venue?.city}} {{venue?.state | uppercase}}</mat-card-subtitle>
-                            </div>
+                            <h5 class="text-center">{{venue?.name}}</h5>
+                            <span class="line"></span>
+                            <mat-card-subtitle class="text-center">{{venue?.city | uppercase}}, {{venue?.state | uppercase}}</mat-card-subtitle>
                         </mat-card-title>
                         <mat-card-actions>
                             <button mat-button [routerLink]="['/venue', 'display', venue._id]" matTooltip="View {{venue.name}}">VIEW</button>

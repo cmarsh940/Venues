@@ -1,4 +1,19 @@
-/*  Extra small devices (portrait phones, less than 576px) */
+.sidenav-container {
+  margin-top: 5em;
+  height: -webkit-fill-available;
+}
+.mat-sidenav {
+  width: 20%;
+  height: 100%;
+  background-color: #f5f5f50a;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+  color: palegreen;
+}
+/* Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575.98px) {
   .container-fluid  {
     display: block;
@@ -105,7 +120,7 @@
   }
 }
 
-/* Small devices (landscape phones, 576px and up) */
+Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) and (max-width: 767.98px) {
   .container-fluid  {
     display: block;
@@ -213,7 +228,7 @@
   }
 }
 
-/* Medium devices (tablets, 768px and up) */
+Medium devices (tablets, 768px and up)
 @media (min-width: 768px) and (max-width: 991.98px) {
   .container-fluid  {
     display: block;
@@ -344,7 +359,7 @@
   }
 }
 
-/* Large devices (desktops, 992px and up) */
+Large devices (desktops, 992px and up)
 @media (min-width: 992px) and (max-width: 1199.98px) {
   .container-fluid  {
     display: block;
@@ -485,7 +500,7 @@
   }
 }
 
-/* Extra large devices (large desktops, 1200px and up) */
+Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { 
   .container-fluid  {
     display: block;
@@ -801,4 +816,4 @@ div.loading {
   max-height: 11rem;
   min-height: 11rem;
   transform: scale(1.1);
-}
+} */

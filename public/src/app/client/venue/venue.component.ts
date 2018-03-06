@@ -30,6 +30,7 @@ import {
 } from '@angular/core';
 import { filter } from 'rxjs/operators/filter';
 import { tap } from 'rxjs/operators/tap';
+import { MatSidenav } from "@angular/material";
 
 @Component({
   selector: "app-venue",
@@ -55,6 +56,8 @@ export class VenueComponent implements OnInit, OnDestroy {
   longitude: number;
   title: string;
 
+  @ViewChild("sidenav") sidenav: MatSidenav;
+
   @ViewChildren(CdkPortal) templatePortals: QueryList<Portal<any>>;
   @ViewChild(CdkOverlayOrigin) _overlayOrigin: CdkOverlayOrigin;
 
@@ -72,12 +75,12 @@ export class VenueComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.loaded = false
+    this.loaded = false;
     this.getVender();
     this.getVenue();
     console.log(this.venue);
     setTimeout(() => {
-      this.loaded = true
+      this.loaded = true;
     }, 1000);
   }
 

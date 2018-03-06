@@ -37,7 +37,7 @@ module.exports = function (app) {
     // app.put('/galleries/:id', Galleries.update);
 
     app.get('/reviews', Reviews.index);
-    app.post('/reviews', Reviews.create);
+    // app.post('/reviews/:id', Reviews.create);
     app.delete('/reviews/:id', Reviews.delete);
     app.get('/reviews/:id', Reviews.show);
     app.put('/reviews/:id', Reviews.update);
@@ -51,6 +51,7 @@ module.exports = function (app) {
     app.get('/venues/:id', Venues.show);
     app.get('/venues/images/:id', Venues.images);
     app.put('/venues/:id', Venues.update);
+    app.post("/reviews/:id", Venues.review);
 
 
     app.get('/venders', Venders.index);

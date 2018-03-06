@@ -24,14 +24,11 @@ export class ReviewService {
   }
 
 
-  createReview(newReview: Review, callback) {
-    return this._http.post('/reviews', newReview).subscribe(
-      res => {
+  createReview(id: string, newReview: Review, callback) {
+    return this._http.post(`reviews/${id}`, newReview).subscribe(res => {
         const review = res.json();
         callback(review);
-      },
-      err => console.log(err)
-    );
+      }, err => console.log(err));
   }
 
   destroyReview(id: string, callback) {

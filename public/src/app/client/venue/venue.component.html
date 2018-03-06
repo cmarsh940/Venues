@@ -1,22 +1,46 @@
-<div class="col align-self-center" *ngIf="!loaded; else mainTemplate">
+<!-- <div class="col align-self-center" *ngIf="!loaded; else mainTemplate">
     <div class="loading">
         <mat-spinner color="accent"></mat-spinner>
     </div>
 </div>
-<ng-template #mainTemplate>
+<ng-template #mainTemplate> -->
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav align="start" mode="side" opened="true" disableClose="true" #sidenav>
+        <mat-tab-group>
+            <mat-tab>
+                <ng-template mat-tab-label>Details</ng-template>
+                <p>Name: {{venue.name}}</p>
+                <p>Phone: {{venue.phone}}</p>
+                <p>Location: {{venue.address}}</p>
+                <p>Website:
+                    <a href="http://{{venue.website}}">{{venue.website}}</a>
+                </p>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-sidenav>
+    <mat-sidenav-content role="venue">
+        <div>
+            <h1>{{venue.name}}</h1>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+<h1>HELLO</h1>
+<!-- </ng-template> -->
+<!-- <ng-template #mainTemplate>
     <div class="containerX">
         <div class="carousel">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <ng-container *ngIf="venue?.pic_url; else elseTemplate">
-                        <!-- LIVE -->
+                        LIVE
                         <div class="carousel-item active">
                             <img class="rounded mx-auto d-block" src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' id="venue-image" alt="Venue slide Pictures">
                         </div>
-                        <!-- TEST -->
-                        <!-- <div class="carousel-item active">
+                        TEST
+                        <div class="carousel-item active">
                             <img  src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}' id="venue-image" alt="Venue slide pictures">
-                        </div> -->
+                        </div>
                     </ng-container>
                     <ng-template #elseTemplate>
                         <div class="carousel-item active">
@@ -33,8 +57,8 @@
                     <span class="sr-only" matTooltip="Next">Next</span>
                 </a>
             </div>
-        </div><!--
-        --><div class="container-fluid">
+        </div>
+        <div class="container-fluid">
             <div class="row" id="top">
                 <div class="col-3" id="venue-info">
                     <h2 class="text-center">{{venue.name}}</h2>
@@ -54,8 +78,8 @@
                             <a href='http://{{venue.website}}' target='_blank' rel='nofollow noopener noreferrer' matTooltip="View {{venue.name}}'s' website">view website</a>
                         </li>
                     </ul>
-                </div><!--
-                --><div class="col-9" id="venue-about">
+                </div>
+                <div class="col-9" id="venue-about">
                     <div class="text-center">
                         <p>{{venue.description}}</p>
                     </div> 
@@ -67,16 +91,16 @@
                         <h2 class="text-center"><u>Vendor</u></h2>
                         <ng-container *ngIf="vender?.pic_url; else elseTemplate">
                             <div class="vender-link">
-                                <!-- LIVE -->
+                                LIVE
                                 <a [routerLink]="['/vender', 'display', vender._id]">
                                     <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture" />
                                 </a>
                                 <h2 class="text-center" id="vender-name">{{ vender?.name }}</h2>
-                                <!-- TEST -->
-                                <!-- <a [routerLink]="['/vender', 'display', vender._id]">
+                                TEST
+                                <a [routerLink]="['/vender', 'display', vender._id]">
                                     <img src='https://venue-test.s3.amazonaws.com/Venders/{{vender.name}}/{{vender.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture" />
                                 </a>
-                                <h2 class="text-center" id="vender-name">{{ vender?.name }}</h2> -->
+                                <h2 class="text-center" id="vender-name">{{ vender?.name }}</h2>
                             </div>
                         </ng-container>
                         <ng-template #elseTemplate>
@@ -90,8 +114,8 @@
                             </div>
                         </ng-template>
                     </div>
-                </div><!--
-                --><div class="col-9" id="venue-about">
+                </div>
+                <div class="col-9" id="venue-about">
                     <mat-tab-group class="demo-tab-group" color="accent">
                         <mat-tab>
                             <ng-template mat-tab-label>
@@ -179,11 +203,11 @@
                             <div class="tab-content">
                                 <div *ngFor="let gallery of venue.gallery" id="gallery">
                                     <div class="col-2">
-                                        <!-- LIVE -->
+                                        LIVE
                                         <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/Gallery/{{gallery.name}}' alt="Venue Gallery Picture"
                                          class="gallery-image">
-                                        <!-- TEST -->
-                                        <!-- <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/Gallery/{{gallery.name}}' class="gallery-image" alt="Venue gallery picture"> -->
+                                        TEST
+                                        <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/Gallery/{{gallery.name}}' class="gallery-image" alt="Venue gallery picture">
                                     </div>
                                 </div>
                             </div>
@@ -208,11 +232,11 @@
             </div>
             <div class="row" id="middle-bottom">
                 <div class="col-3">
-                    <!-- <mat-list *ngFor="let amenity of venue.amenities">
+                    <mat-list *ngFor="let amenity of venue.amenities">
                         <mat-list-item>
                             <i class="material-icons">&#xE876;</i> {{amenity.name}}
                         </mat-list-item>
-                    </mat-list> -->
+                    </mat-list>
                 </div>
                 <div class="col-9">
                     <mat-toolbar color="accent">REVIEWS</mat-toolbar>
@@ -241,4 +265,4 @@
             </div>
         </div>
     </div>
-</ng-template>
+</ng-template> -->

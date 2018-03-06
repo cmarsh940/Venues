@@ -118,7 +118,6 @@
 
   h5 {
     color:#FFB300;
-    margin: 5% 0;
     font-size: 1.5rem;
   }
 
@@ -170,15 +169,6 @@
   .venue-icon {
     width: 1em;
     height: 1em;
-  }
-
-  .icon-address {
-    display: inline-flex;
-    margin-top: 5%;
-  }
-
-  .venue-icon, .mat-card-subtitle {
-    vertical-align: top;
   }
   
 }
@@ -301,7 +291,6 @@
 
   h5 {
     color:#FFB300;
-    margin: 5% 0;
     font-size: 1.3em;
   }
 
@@ -353,15 +342,6 @@
   .venue-icon {
     width: 1em;
     height: 1em;
-  }
-
-  .icon-address {
-    display: inline-flex;
-    margin-top: 5%;
-  }
-
-  .venue-icon, .mat-card-subtitle {
-    vertical-align: top;
   }
   
 }
@@ -485,7 +465,6 @@
 
   h5 {
     color:#FFB300;
-    margin: 5% 0;
     font-size: 1.5rem;
   }
 
@@ -537,15 +516,6 @@
   .venue-icon {
     width: 1em;
     height: 1em;
-  }
-
-  .icon-address {
-    display: inline-flex;
-    margin-top: 5%;
-  }
-
-  .venue-icon, .mat-card-subtitle {
-    vertical-align: top;
   }
   
 }
@@ -672,7 +642,6 @@
 
   h5 {
     color:#FFB300;
-    margin: 5% 0;
     font-size: 1.5rem;
   }
 
@@ -725,15 +694,6 @@
   .venue-icon {
     width: 1em;
     height: 1em;
-  }
-
-  .icon-address {
-    display: inline-flex;
-    margin-top: 5%;
-  }
-
-  .venue-icon, .mat-card-subtitle {
-    vertical-align: top;
   }
   
 }
@@ -859,7 +819,6 @@
 
   h5 {
     color:#FFB300;
-    margin: 5% 0;
     font-size: 1.2rem;
   }
 
@@ -912,15 +871,6 @@
   .venue-icon {
     width: 1em;
     height: 1em;
-  }
-
-  .icon-address {
-    display: inline-flex;
-    margin-top: 5%;
-  }
-
-  .venue-icon, .mat-card-subtitle {
-    vertical-align: top;
   }
   
 }
@@ -1046,7 +996,6 @@
 
   h5 {
     color:#FFB300;
-    margin: 5% 0;
     font-size: 1.5rem;
   }
 
@@ -1101,15 +1050,6 @@
     height: 1em;
   }
 
-  .icon-address {
-    display: inline-flex;
-    margin-top: 5%;
-  }
-
-  .venue-icon, .mat-card-subtitle {
-    vertical-align: top;
-  }
-
 }
 
 .col-12 {
@@ -1131,6 +1071,7 @@ h2 {
 
 .mat-card-subtitle {
   font-family: serif;
+  margin-top: 0!important;
 }
 
 .icon-address {
@@ -1159,4 +1100,11 @@ div.loading {
 }
 .map-card button{
   width: 100%;
+}
+
+.line{
+  display: block;
+  width: 80%;
+  border: 1px solid lightgrey;
+  margin: auto;
 }

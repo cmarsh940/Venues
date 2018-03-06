@@ -54,7 +54,7 @@ export class ReviewNewComponent implements OnInit, OnDestroy {
 
   createReview() {
     this.errors = [];
-    return this._reviewService.createReview(this.newReview, review => {
+    return this._reviewService.createReview(this.venue._id, this.newReview, review => {
       console.log(review);
       if (review.errors) {
         for (let key in review.errors) {

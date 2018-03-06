@@ -96,6 +96,14 @@ const VenueSchema = new mongoose.Schema(
       default: ""
     },
     gallery: [{ name: String }],
+    reviews: [
+        { 
+          email: String,
+          content: String,
+          rating: Number,
+          approved: Boolean 
+        }
+    ],
     tour_url: {
       type: String,
       required: false,
@@ -135,24 +143,6 @@ const VenueSchema = new mongoose.Schema(
       ],
       default: []
     },
-    reviews: {
-      type: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Review"
-        }
-      ],
-      default: []
-    },
-    // galleryItems: {
-    //   type: [
-    //     {
-    //       type: mongoose.Schema.Types.ObjectId,
-    //       ref: "Gallery"
-    //     }
-    //   ],
-    //   default: []
-    // },
     _category: { type: mongoose.Schema.Types.ObjectId, ref: "Category" }
   },
   { timestamps: true }

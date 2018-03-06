@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-const Review = mongoose.model('Review');
+const Venue = mongoose.model('Venue');
 
 class ReviewsController {
     index(req, res) {
-        Review.find({}, (err, reviews) => {
+        Venue.find({}, (err, reviews) => {
             if (err) {
                 return res.json(err);
             }
