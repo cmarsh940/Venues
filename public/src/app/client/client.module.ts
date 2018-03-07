@@ -29,6 +29,7 @@ import { EventCenterComponent } from './search/category/event-center/event-cente
 import { GardenComponent } from './search/category/garden/garden.component';
 import { HistoricComponent } from './search/category/historic/historic.component';
 import { LodgeComponent } from './search/category/lodge/lodge.component';
+import { VenderDisplayComponent } from './vender/vender-display/vender-display.component';
 
 @NgModule({
   imports: [
@@ -61,7 +62,8 @@ import { LodgeComponent } from './search/category/lodge/lodge.component';
     EventCenterComponent,
     GardenComponent,
     HistoricComponent,
-    LodgeComponent
+    LodgeComponent,
+    VenderDisplayComponent
   ],
 })
 export class ClientModule { }

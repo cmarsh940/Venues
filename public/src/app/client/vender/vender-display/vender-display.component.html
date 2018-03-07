@@ -1,0 +1,82 @@
+<div class="col align-self-center" *ngIf="!loaded; else mainTemplate">
+    <div class="loading">
+        <mat-spinner color="primary"></mat-spinner>
+    </div>
+</div>
+<ng-template #mainTemplate>
+    <div class="containerX">
+        <div class="carousel">
+            <div id="carouselExampleControls">
+                <div class="carousel-inner">
+                    <ng-container *ngIf="vender.pic_url; else elseTemplate">
+                        <!-- TEST -->
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src='https://venue-test.s3.amazonaws.com/Venders/{{vender.name}}/{{vender.pic_url}}' class="vender-image"
+                                alt="Vender slide pictures">
+                        </div>
+                        <!-- LIVE -->
+                        <!-- <div class="carousel-item active">
+                            <img class="d-block w-100" src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' class="vender-image" alt="Vender slide pictures">
+                        </div> -->
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src='/assets/images/missing.png' class="vender-image" alt="Missing Vender Picture">
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="col-3" id="top">
+                <!-- INFO /  ABOUT / PHOTO ALBUM -->
+                <h2 class="text-center">{{vender.name}}</h2>
+                <ul class="text-center">
+                    <li>
+                        <mat-icon aria-label="Phone icon link">
+                            <i class="material-icons">&#xE0C8;</i>
+                        </mat-icon>
+                        <h6>{{vender.address}}, {{vender.city}} {{vender.state | uppercase}}</h6>
+                    </li>
+                    <li id="phone-number">
+                        <a href='tel:{{ vender?.phone }}' data-type='phone'>
+                            <mat-icon aria-label="Phone icon link">
+                                <i class="material-icons">&#xE0CD;</i>
+                            </mat-icon>
+                            <h6>Call {{ vender?.phone }}</h6>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='http://{{vender.website}}' target='_blank' rel='nofollow noopener noreferrer'>view website</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-5" id="middle">
+                <div class="text-center">
+                    <p>{{vender.description}}</p>
+                </div>
+            </div>
+            <div class="col-3" id="bottom">
+                <h2 class="text-center">Follow {{vender.name}}</h2>
+                <ul id="vender-contact">
+                    <li class="list-items">
+                        <a href='http://{{vender?.facebook_url}}' target='_blank'>
+                            <mat-icon aria-label="Vender facebook icon link">
+                                <img src="/assets/images/facebook.svg" alt="Facebook icon">
+                            </mat-icon>
+                            <p>{{vender?.name}}</p>
+                        </a>
+                    </li>
+                    <li class="list-items">
+                        <a href='http://{{vender?.instagram_url}}' target='_blank'>
+                            <mat-icon aria-label="instagram icon link">
+                                <img src="/assets/images/instagram.svg" alt="Instagram icon">
+                            </mat-icon>
+                            <p>{{vender?.name}}</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</ng-template>

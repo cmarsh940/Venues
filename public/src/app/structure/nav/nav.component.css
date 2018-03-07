@@ -18,6 +18,23 @@ mat-toolbar {
     letter-spacing: 0.2rem;
 }
 
+#logo {
+    width: 10rem;
+    max-height: 100%;
+}
 #logo:hover {
     text-decoration: none;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+    height: 3em;
+}
+
+.text-hide {
+    background-repeat: no-repeat;
+    background-size: contain;
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 2em;
+    min-height: 2em;
 }

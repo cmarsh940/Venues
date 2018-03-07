@@ -1,3 +1,4 @@
+import { VenderDisplayComponent } from './vender/vender-display/vender-display.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ClientComponent } from './client.component';
@@ -67,6 +68,16 @@ const routes: Routes = [
         component: LodgeComponent
       },
       {
+        path: "vendor",
+        pathMatch: "full",
+        component: VenderComponent
+      },
+      {
+        path: "vendor/display/:id",
+        pathMatch: "full",
+        component: VenderDisplayComponent
+      },
+      {
         path: "venue/display/:id",
         pathMatch: "full",
         component: VenueComponent
@@ -75,11 +86,6 @@ const routes: Routes = [
         path: "venue/:id/review",
         pathMatch: "full",
         component: ReviewNewComponent
-      },
-      {
-        path: "vender/display/:id",
-        pathMatch: "full",
-        component: VenderComponent
       },
       {
         path: "rights",

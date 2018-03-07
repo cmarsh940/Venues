@@ -1,6 +1,6 @@
 .sidenav-container {
   margin-top: 5em;
-  height: -webkit-fill-available;
+  /* height: -webkit-fill-available; */
 }
 .mat-sidenav {
   width: 20%;

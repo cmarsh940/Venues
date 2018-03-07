@@ -5,6 +5,7 @@ body {
     padding: 0;
     font-family: 'Libre Franklin', sans-serif;
     background: #ffffff;
+    overflow-x: hidden;
     /* font-family: Roboto, sans-serif; */
 }
 
@@ -25,10 +26,12 @@ html {
 }
 
 h1 {
-    font-family: 'Parisienne', cursive;
+    font-family: sans-serif;
+    font-weight: lighter;
 }
 
 h2 {
     color:#00B8D4;
-    font-family: 'Delius', cursive;
+    font-family: sans-serif;
+    font-weight: lighter;
 }

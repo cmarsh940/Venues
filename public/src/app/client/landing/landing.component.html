@@ -1,72 +1,65 @@
 <div class="containerX">
     <hr>
     <div id="main">
-        <section>
-            <h1>Real Reviews, from Real Tulsans.</h1>
-        </section>
-        <div class="search">
-            <div id="search-button">
-                <button mat-raised-button routerLink="/search" matTooltip="Search for a Venue" [matTooltipShowDelay]="showDelay" id="search-button-style">Find Your Venue Now</button>
+        <div class="main-inner text-center">
+            <h1 class="text-center">Who knows Tulsa better then Tulsans?</h1>
+            <div class="search">
+                <div id="search-button">
+                    <button mat-raised-button routerLink="/search" matTooltip="Search for a Venue" [matTooltipShowDelay]="showDelay" id="search-button-style">VIEW ALL VENUES</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="col-12">
-        <div class="container" id="category">
-            <h2>What are you interested in?</h2>
-            <h6 class="text-center">Explore some of our differnt venues</h6>
-            <ng-container *ngFor="let category of categories; let i = index">
-                <span class="inner-circle">
-                    <span class="small-inner-circle">
-                        <div *ngIf="category">
-                            {{category.name.length}}
-                        </div>
-                    </span>
-                    <a routerLink="/search/{{category.name | lowercase}}">
-                        <img src='/assets/images/{{category.name | lowercase}}.png' class="icon-category" alt="{{category.name}} icon">
-                    </a>
-                </span>
-            </ng-container>
-        </div>      
+    <div class="col-12" id="middle-top">
+        <div class="col-6">
+            <h2 class="text-center">UNBIASED REVIEWS FROM PEOPLE LIKE YOU, HELPING YOU MAKE YOUR BIG DAY, THE PERFECT DAY.</h2>
+        </div>
+        <div class="col-6">
+            <h6 class="text-left" id="middle-left-text">Planning a wedding can be stressful. Luckily, you don’t have to waste your time on the phone with venues or pinging your friends on social media for suggestions. We collect information and reviews from actual customers on the best venues in Tulsa so you can make an informed decision on where to celebrate your big day. We gladly do the leg work for you, and best of all: <span>IT’S COMPLETELY FREE.</span></h6>
+            <div id="search-button" class="clearfix">
+                <button mat-raised-button routerLink="/search" matTooltip="Search for a Venue" [matTooltipShowDelay]="showDelay" id="search-button-style" class="float-right">BROWSE VENUES</button>
+            </div>
+
+        </div>
+          
     </div>
-    <div class="image-seperater mx-auto">
-        <img src="/assets/images/tulsavenus.png" alt="Image seperater">
-    </div>
-    <span class="line"></span>
+
     <div class="col-12" id="bottom-group">
         <br>
         <div class="container" id="vender">
-            <h2>Best Things To Do In The City</h2>
-            <h6 class="text-center">Explore some of the best places to visit in our city.</h6>
+            <h2>JUST A FEW OF THE BEST PLACES AROUND TULSA</h2>
+            <h6 class="text-center">We see a lot of venues and we talk to a lot of owners. Combine that with real opinions from fellow Northeastern Oklahomans
+            and we’re confident in saying that you can find your dream wedding location on Tulsa Venues. Here is just a sample of the
+            hundreds of vetted venues you’ll find inside.</h6>
             <div class="vender-card" *ngFor="let vender of venders; let i = index">
                 <mat-card class="card" [tabindex]="i">
                     <ng-container *ngIf="vender.pic_url; else elseTemplate">
-                        <!-- TEST -->
-                        <a [routerLink]="['/vender', 'display', vender._id]">
-                            <img mat-card-image src='https://s3-us-west-2.amazonaws.com/venue-test/Venders/{{vender.name}}/{{vender.pic_url}}' alt="Vender Picture"
-                            class="img-responsive">
-                        </a>
                         <!-- LIVE -->
                         <!-- <a [routerLink]="['/vender', 'display', vender._id]">
                             <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' alt="Vender Picture"
                                 class="img-responsive">
                         </a> -->
+                        <!-- TEST -->
+                        <a [routerLink]="['/vender', 'display', vender._id]">
+                            <img mat-card-image src='https://s3-us-west-2.amazonaws.com/venue-test/Venders/{{vender.name}}/{{vender.pic_url}}' alt="Vender Picture"
+                                class="img-responsive">
+                        </a>
                     </ng-container>
                     <ng-template #elseTemplate>
-                        <a [routerLink]="['/vender', 'display', vender._id]">
-                            <img mat-card-image src='/assets/images/missing.png' alt="Venue Picture" class="img-responsive">
+                        <a [routerLink]="['/vendor', 'display', vender._id]">
+                            <img mat-card-image src='/assets/images/missing.png' alt="Vendor Picture" class="img-responsive">
                         </a>
                     </ng-template>
                     <mat-card-title>
                         <h5 class="text-center">{{vender?.name}}</h5>
-                        <span>
-                            <img src="/assets/images/marker.png" alt="location icon" class="vender-location-marker">
-                        </span>
-                        <mat-card-subtitle>{{vender?.address}}</mat-card-subtitle>
+                        <!-- <span class="line"></span> -->
                     </mat-card-title>
+                    <span class="line"></span>
+                    <mat-card-subtitle class="text-center">{{vender?.city | titlecase}}, {{vender?.state | uppercase}}</mat-card-subtitle>
         
                     <mat-card-actions>
-                        <button mat-button class="vender-button" [routerLink]="['/vender', 'display', vender._id]" matTooltip="View {{vender.name}}"
+                        <button mat-button class="vender-button" [routerLink]="['/vendor', 'display', vender._id]" matTooltip="View {{vender.name}}"
                             [matTooltipShowDelay]="showDelay">VIEW</button>
                     </mat-card-actions>
                 </mat-card>

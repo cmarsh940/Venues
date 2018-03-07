@@ -37,8 +37,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.loaded = false;
-    this.finished = false;
-    this.getVenues();
+    this.finished = true;
     this._venderService.getVenders(vender => {
       this.finished = false;
       this.random = Math.floor(Math.random() * vender.length);
@@ -55,11 +54,12 @@ export class SearchComponent implements OnInit {
         this.venderTwo = vender[this.randomTwo];
         console.log(this.venderTwo);
       }
-      this.finished = true;
     });
-    setTimeout(() => {
-      this.loaded = true;
-    }, 1000);
+    // setTimeout(() => {
+    //   this.loaded = true;
+    // }, 1000);
+    this.getVenues();
+    this.loaded = true;
   }
 
   getVenders() {
