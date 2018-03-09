@@ -51,6 +51,9 @@ const VenderSchema = new mongoose.Schema(
       required: [true, "State cannot be blank"],
       maxlength: [3, "State cannot be greater then 3 characters"]
     },
+    category: {
+      type: String,
+    },
     description: {
       type: String,
       required: [true, "Description cannot be blank"]

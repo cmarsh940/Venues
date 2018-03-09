@@ -29,7 +29,6 @@ export class LandingComponent implements OnInit {
   ngOnInit() {
     this.length = 0;
     this.getCategories();
-    
     this.getVenues();
     this.getVenders();
   }
@@ -41,12 +40,10 @@ export class LandingComponent implements OnInit {
   }
 
   getVenues(): void {
-    this._venueService.getVenues(venues => (this.venues = venues));
+    this._venueService.getVenues(venues => (this.venues = venues.slice(0, 4)));
   }
 
   getVenders(): void {
-    this._venderService.getVenders(
-      venders => (this.venders = venders.slice(0, 4))
-    );
+    this._venderService.getVenders(venders => (this.venders = venders.slice(0, 4)));
   }
 }

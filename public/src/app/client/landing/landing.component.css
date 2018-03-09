@@ -160,7 +160,26 @@ div.search {
     overflow: hidden;
 }
 
+.group {
+    border: 1px solid white;
+    width: fit-content;
+    margin: auto;
+}
 
+.search-icons {
+    display: inline-block;
+}
+
+.search-icons img {
+    max-width: 5em;
+    min-width: 5em;
+    max-height: 5em;
+    min-height: 5em;
+}
+
+#search-button {
+    margin-top: 2%;
+}
 
 #search-button-style {
     background: #00B8D4;
@@ -196,9 +215,29 @@ h2 {
     background-position-x: 44em;
 }
 
+#middle-bottom {
+    padding: 0;
+    margin: 2% 0;
+    background-color: #f5f5f5;
+}
+
+#middle-bottom .col-6 {
+    padding: 0;
+    margin: 0;
+}
+
+#middle-bottom .col-6:last-child {
+    padding: 5% 10% 2% 2%;
+}
+
+#middle-bottom .col-6 #search-button-style {
+    margin-top: 10%;
+}
+
 .col-6 {
     display: inline-block;
     padding: 5% 10%;
+    vertical-align: top;
 }
 
 span {
@@ -206,8 +245,12 @@ span {
 }
 
 #middle-left-text {
-    line-height: 1.5;
+    line-height: 2;
+    letter-spacing: 0.1rem;
+    font-size: 0.8rem;
 }
+
+
 
 div.col-12 {
     background: #ffffff;
@@ -215,9 +258,8 @@ div.col-12 {
 }
 
 #bottom-group {
-    background: #ffffff; /* For browsers that do not support gradients */
-    background: linear-gradient(whitesmoke, white);
-    height: 100%;
+    padding: 0;
+    margin: 0;
 }
 
 #vender {
@@ -247,6 +289,13 @@ div.col-12 {
     object-fit: cover;
     object-position: center;
 }
+.mat-card-subtitle {
+    margin: 0;
+}
+
+.mat-card-subtitle:not(:first-child) {
+    margin-top:0;
+}
 
 .vender-button {
     width:100%;
@@ -271,4 +320,67 @@ img {
   width: 80%;
   border: 1px solid lightgrey;
   margin: auto;
+}
+
+@keyframes slidy {
+0% { left: 0%; }
+20% { left: 0%; }
+25% { left: -100%; }
+45% { left: -100%; }
+50% { left: -200%; }
+70% { left: -200%; }
+75% { left: -300%; }
+95% { left: -300%; }
+100% { left: -400%; }
+}
+
+div#slider { 
+    overflow: hidden;
+    height: 20em;
+}
+div#slider figure img {     
+    width: 100%;
+    min-height: auto;
+}
+div#slider figure { 
+    position: sticky;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: inline-flex;
+    -webkit-animation: 30s slidy infinite;
+    animation: 30s slidy infinite;
+}
+/* div#slider figure { 
+  position: relative;
+  width: 500%;
+  margin: 0;
+  left: 0;
+  text-align: left;
+  font-size: 0;
+  animation: 30s slidy infinite; 
+} */
+
+div.small-box {
+    background-color: #00B8D4;
+    color: white;
+    display: block;
+    width: 50%;
+    padding: 3%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 5;
+}
+
+.small-box h6, p {
+    margin: 0;
+    padding: 0;
+}
+.small-box p {
+    font-size: 0.7rem;
+}
+
+#bottom-paragraph {
+    line-height: 2em;
 }

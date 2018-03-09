@@ -7,6 +7,7 @@ export class Vender {
     city: string;
     state: string;
     website: string;
+    category: string;
     description: string;
     facebook_url: any;
     instagram_url: any;
