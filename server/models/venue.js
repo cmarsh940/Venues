@@ -99,6 +99,7 @@ const VenueSchema = new mongoose.Schema(
     reviews: [
         { 
           email: String,
+          title: String,
           content: String,
           rating: Number,
           approved: Boolean 

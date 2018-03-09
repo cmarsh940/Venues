@@ -9,6 +9,13 @@ ul {
     justify-content: flex-end;
 }
 
+.mat-icon {
+    max-height: 1em;
+    min-height: 1em;
+    max-width: 1em;
+    min-width: 1em;
+}
+
 li {
     margin: 1%;
 }

@@ -144,6 +144,16 @@ div.containerX {
     max-height: 28em;
     min-height: 28em;
     background-image: url(/assets/images/headerImage.jpg);
+    -webkit-filter: grayscale(25%);
+    filter: grayscale(25%);
+}
+
+.containerY {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 28em;
+    max-height: 28em;
+    background: black; 
 }
 
 
@@ -158,16 +168,20 @@ div.containerX {
 div.search {
     width: 100%;
     overflow: hidden;
+    opacity: 1;
 }
 
 .group {
     border: 1px solid white;
-    width: fit-content;
+    width: 60%;
     margin: auto;
+    opacity: 1;
 }
 
 .search-icons {
     display: inline-block;
+    opacity: 1;
+    margin: 2%;
 }
 
 .search-icons img {
@@ -175,10 +189,18 @@ div.search {
     min-width: 5em;
     max-height: 5em;
     min-height: 5em;
+    opacity: 1;
+}
+
+.category-name {
+    font-size: 0.7rem;
+    font-weight: bold;
+    opacity: 1;
 }
 
 #search-button {
     margin-top: 2%;
+    opacity: 1;
 }
 
 #search-button-style {
@@ -351,15 +373,6 @@ div#slider figure {
     -webkit-animation: 30s slidy infinite;
     animation: 30s slidy infinite;
 }
-/* div#slider figure { 
-  position: relative;
-  width: 500%;
-  margin: 0;
-  left: 0;
-  text-align: left;
-  font-size: 0;
-  animation: 30s slidy infinite; 
-} */
 
 div.small-box {
     background-color: #00B8D4;
@@ -383,4 +396,9 @@ div.small-box {
 
 #bottom-paragraph {
     line-height: 2em;
+}
+
+#vender-line {
+    width: 65%;
+    margin: 1% auto;
 }

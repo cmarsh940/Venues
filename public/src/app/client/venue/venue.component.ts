@@ -45,6 +45,7 @@ export class VenueComponent implements OnInit, OnDestroy {
   random: number;
   approved = Boolean;
   loaded: Boolean = false;
+  rating: number;
 
   // OVERLAY & PORTAL
   nextPosition: number = 0;
@@ -119,6 +120,14 @@ export class VenueComponent implements OnInit, OnDestroy {
     let overlayRef = this.overlay.create(config);
     overlayRef.attach(this.templatePortals.first);
     overlayRef.backdropClick().subscribe(() => overlayRef.detach());
+  }
+
+  showIcon(index: number) {
+    if (this.rating >= index + 1) {
+      return "star";
+    } else {
+      return "star_border";
+    }
   }
 }
 

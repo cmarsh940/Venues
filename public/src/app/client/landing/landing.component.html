@@ -1,17 +1,19 @@
 <div class="containerX">
     <hr>
-    <div id="main">
-        <div class="main-inner text-center">
-            <h1 class="text-center">Who knows Tulsa better then Tulsans?</h1>
-            <div class="search">
-                <div class="group">
-                    <div class="search-icons" *ngFor="let category of categories">
-                        <img src="/assets/images/{{category.name}}.png" alt="Category Icon">
-                        <h6>{{category.name}}</h6>
+    <div class="containerY">
+        <div id="main">
+            <div class="main-inner text-center">
+                <h1 class="text-center">Who knows Tulsa better then Tulsans?</h1>
+                <div class="search">
+                    <div class="group">
+                        <div class="search-icons" *ngFor="let category of categories">
+                            <img src="/assets/images/{{category.name}}.png" alt="Category Icon">
+                            <h6 class="category-name">{{category.name}}</h6>
+                        </div>
                     </div>
-                </div>
-                <div id="search-button">
-                    <button mat-raised-button routerLink="/search" matTooltip="Search for a Venue" [matTooltipShowDelay]="showDelay" id="search-button-style">VIEW ALL VENUES</button>
+                    <div id="search-button">
+                        <button mat-raised-button routerLink="/search" matTooltip="Search for a Venue" [matTooltipShowDelay]="showDelay" id="search-button-style">VIEW ALL VENUES</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -26,9 +28,7 @@
             <div id="search-button" class="clearfix">
                 <button mat-raised-button routerLink="/search" matTooltip="Search for a Venue" [matTooltipShowDelay]="showDelay" id="search-button-style" class="float-right">BROWSE VENUES</button>
             </div>
-
         </div>
-          
     </div>
 
     <div class="col-12" id="middle-bottom">
@@ -46,7 +46,7 @@
         <div class="col-6">
             <h2 class="text-left">WE’RE PROUD TO FEATURE TULSA-AREA PROFESSIONALS IN THE WEDDING INDUSTRY.</h2>
             <div id="search-button" class="clearfix">
-                <button mat-raised-button routerLink="/search" matTooltip="Search for a Venue" [matTooltipShowDelay]="showDelay" id="search-button-style"
+                <button mat-raised-button routerLink="/search" matTooltip="Search for a Vendor" [matTooltipShowDelay]="showDelay" id="search-button-style"
                     class="float-right">BROWSE VENDORS</button>
             </div>
         </div>
@@ -56,6 +56,7 @@
         <br>
         <div class="container" id="vender">
             <h2>JUST A FEW OF THE BEST PLACES AROUND TULSA</h2>
+            <span class="line" id="vender-line"></span>
             <h6 class="text-center" id="bottom-paragraph">We see a lot of venues and we talk to a lot of owners. Combine that with real opinions from fellow Northeastern Oklahomans
             and we’re confident in saying that you can find your dream wedding location on Tulsa Venues. Here is just a sample of the
             hundreds of vetted venues you’ll find inside.</h6>
