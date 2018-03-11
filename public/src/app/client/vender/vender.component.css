@@ -268,4 +268,5 @@ div.loading {
   min-height: 15em;
   max-height: 15em;
   margin: 50%;
+  padding: 0;
 }
