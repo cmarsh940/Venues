@@ -2,8 +2,6 @@ const mongoose = require('mongoose');
 const Venue = mongoose.model('Venue');
 const Category = mongoose.model('Category');
 const Amenity = mongoose.model('Amenity');
-const Gallery = mongoose.model('Gallery');
-const Review = mongoose.model('Review');
 
 const config = require("../config/config");
 
@@ -102,7 +100,6 @@ class VenuesController {
   index(req, res) {
     Venue.find({})
       .populate({ path: "amenities", model: Amenity })
-      .populate({ path: "galleryItems", model: Gallery })
       .populate({ path: "reviews", model: Review })
       .populate({ path: "_category", model: Category })
       .exec((err, venues) => {
@@ -117,8 +114,6 @@ class VenuesController {
   show(req, res) {
     Venue.findById({ _id: req.params.id })
       .populate({ path: "amenities", model: Amenity })
-      .populate({ path: "galleryItems", model: Gallery })
-      .populate({ path: "reviews", model: Review })
       .populate({ path: "_category", model: Category })
       .exec((err, venue) => {
         if (err) {

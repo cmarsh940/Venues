@@ -17,6 +17,8 @@ import { ReviewEditComponent } from './review/review-edit/review-edit.component'
 import { CategoryShowComponent } from './category/category-show/category-show.component';
 import { CategoryEditComponent } from './category/category-edit/category-edit.component';
 import { UploadComponent } from "./venue/upload/upload.component";
+import { VendorCategoryShowComponent } from './vendor-category/vendor-category-show/vendor-category-show.component';
+import { VendorCategoryEditComponent } from './vendor-category/vendor-category-edit/vendor-category-edit.component';
 
 const routes: Routes = [
   {
@@ -44,12 +46,22 @@ const routes: Routes = [
         component: CategoryShowComponent
       },
       {
+        path: 'list_vendor_category',
+        pathMatch: 'full',
+        component: VendorCategoryShowComponent
+      },
+      {
         path: 'category/edit/:id',
         pathMatch: 'full',
         component: CategoryEditComponent 
       },
       {
-        path: 'list_vender',
+        path: 'vendor/category/edit/:id',
+        pathMatch: 'full',
+        component: VendorCategoryEditComponent 
+      },
+      {
+        path: 'list_vendor',
         pathMatch: 'full',
         component: VenderShowComponent
       },

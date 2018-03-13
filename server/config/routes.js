@@ -5,7 +5,7 @@ const Venders = require('../controllers/venders');
 const Reviews = require('../controllers/reviews');
 const Amenities = require('../controllers/amenities');
 const Categories = require('../controllers/categories');
-const Galleries = require('../controllers/galleries');
+const VendorCategories = require("../controllers/VendorCategory");
 
 module.exports = function (app) {
     app.get('/users', Users.index);
@@ -29,12 +29,11 @@ module.exports = function (app) {
     app.get('/categories/:id', Categories.show);
     app.put('/categories/:id', Categories.update);
 
-    // app.get('/galleries', Galleries.index);
-    // app.post('/galleries', Galleries.create);
-    // app.delete('galleries/:id', Galleries.delete);
-    // app.delete('/deleteMultiple', Galleries.deleteMultiple);
-    // app.get('/galleries/:id', Galleries.show);
-    // app.put('/galleries/:id', Galleries.update);
+    app.get('/vendorCategories', VendorCategories.index);
+    app.post('/vendorCategories', VendorCategories.create);
+    app.delete('/vendorCategories/:id', VendorCategories.delete);
+    app.get('/vendorCategories/:id', VendorCategories.show);
+    app.put('/vendorCategories/:id', VendorCategories.update);
 
     app.get('/reviews', Reviews.index);
     // app.post('/reviews/:id', Reviews.create);

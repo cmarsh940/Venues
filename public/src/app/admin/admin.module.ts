@@ -1,3 +1,5 @@
+import { VendorCategoryEditComponent } from './vendor-category/vendor-category-edit/vendor-category-edit.component';
+import { VendorCategoryShowComponent } from './vendor-category/vendor-category-show/vendor-category-show.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './../material/material.module';
 import { CategoryService } from './../services/category.service';
@@ -33,6 +35,8 @@ import { CategoryEditComponent } from './category/category-edit/category-edit.co
 import { SortVenuesPipe } from '../pipes/sort-venues.pipe';
 import { UploadComponent } from './venue/upload/upload.component';
 
+import { VendorCategoryService } from '../services/vendor-category.service';
+
 
 @NgModule({
   imports: [
@@ -62,12 +66,15 @@ import { UploadComponent } from './venue/upload/upload.component';
     ReviewNewComponent,
     CategoryShowComponent,
     CategoryEditComponent,
+    VendorCategoryEditComponent,
+    VendorCategoryShowComponent,
     SortVenuesPipe,
     UploadComponent
   ],
   providers: [
     AmenityService,
     CategoryService,
+    VendorCategoryService,
     MessageService,
     ReviewService,
     VenderService,
