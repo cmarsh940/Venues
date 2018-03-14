@@ -63,11 +63,11 @@
         height: 100%;
     }
 
-    #vender {
+    #vendor {
         margin-top: 2%;
     }
 
-    .vender-card {
+    .vendor-card {
         display: inline-block;
         padding: 0;
         margin: 1% 1% 5% 1%;
@@ -89,7 +89,7 @@
         padding: 2%;
     }
 
-    .vender-button {
+    .vendor-button {
         width:100%;
         position: absolute;
         bottom: 0;
@@ -102,6 +102,8 @@
     h5 {
     color:#00B8D4;
     }
+
+
 
     img {
         object-fit: cover;
@@ -284,11 +286,11 @@ div.col-12 {
     margin: 0;
 }
 
-#vender {
+#vendor {
     margin-top: 2%;
 }
 
-.vender-card {
+.vendor-card {
     display: inline-block;
     padding: 0;
     margin: 1% 1% 5% 1%;
@@ -319,7 +321,7 @@ div.col-12 {
     margin-top:0;
 }
 
-.vender-button {
+.vendor-button {
     width:100%;
     position: absolute;
     bottom: 0;
@@ -364,6 +366,11 @@ div#slider figure img {
     width: 100%;
     min-height: auto;
 }
+div#slider img {
+    object-fit: contain;
+    object-position: center;
+}
+
 div#slider figure { 
     position: sticky;
     height: 100%;
@@ -398,7 +405,7 @@ div.small-box {
     line-height: 2em;
 }
 
-#vender-line {
+#vendor-line {
     width: 65%;
     margin: 1% auto;
 }

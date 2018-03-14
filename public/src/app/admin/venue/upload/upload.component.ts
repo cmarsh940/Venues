@@ -6,6 +6,7 @@ import { User } from '../../../models/user';
 import { Venue } from '../../../models/venue';
 import { UserService } from '../../../services/user.service';
 import { VenueService } from '../../../services/venue.service';
+import { Location } from "@angular/common";
 
 
 @Component({
@@ -31,7 +32,8 @@ export class UploadComponent implements OnInit, OnDestroy {
     private _venueService: VenueService,
     private _userService: UserService,
     private _activatedRoute: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -87,14 +89,21 @@ export class UploadComponent implements OnInit, OnDestroy {
       }
       const formData = new FormData(this.multiple_form.nativeElement);
       formData.append(files[0].name, files[0]);
-      this._venueService.post_multiple_to_s3(formData, this.venue._id, venue => {
-        if (venue.errors) {
-          for (const key of Object.keys(venue.errors)) {
-            const errors = venue.errors[key];
-            this.errors.push(errors.message);
+      this._venueService.post_multiple_to_s3(
+        formData,
+        this.venue._id,
+        venue => {
+          if (venue.errors) {
+            for (const key of Object.keys(venue.errors)) {
+              const errors = venue.errors[key];
+              this.errors.push(errors.message);
+            }
           }
+          this.file_input.nativeElement.value = "";
+          this.venue_event.emit();
+          location.reload();
         }
-      });
+      );
     }
   }
 }

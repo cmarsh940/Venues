@@ -37,18 +37,18 @@
                 <div class="col-3">
                     <div id="top-vendor">
                         <h6 class="text-center">Featured Vendor</h6>
-                        <ng-container *ngIf="vender?.pic_url; else elseTemplate">
+                        <ng-container *ngIf="vendor?.pic_url; else elseTemplate">
                             <div class="vendor-link">
-                                <a [routerLink]="['/vendor', 'display', vender._id]">
+                                <a [routerLink]="['/vendor', 'display', vendor._id]">
                                     <!-- TEST -->
                                     <div class="text-center">
-                                        <img src='https://venue-test.s3.amazonaws.com/Venders/{{vender.name}}/{{vender.pic_url}}' id="vendor-image" alt="Vendor Picture">
+                                        <img src='https://venue-test.s3.amazonaws.com/Vendors/{{vendor.name}}/{{vendor.pic_url}}' id="vendor-image" alt="Vendor Picture">
                                     </div>
                                     <!-- Live -->
                                     <!-- <div class="text-center">
-                                        <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{vender.name}}/{{vender.pic_url}}' id="vendor-image" alt="Vendor Picture"> 
+                                        <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor.name}}/{{vendor.pic_url}}' id="vendor-image" alt="Vendor Picture"> 
                                     </div> -->
-                                    <h4 class="text-center">{{ vender?.name }}</h4>
+                                    <h4 class="text-center">{{ vendor?.name }}</h4>
                                     <h6 class="text-center">LEARN MORE</h6>
                                 </a>
                             </div>
@@ -56,7 +56,7 @@
                         <ng-template #elseTemplate>
                             <h2 class=text-center>Vendor</h2>
                             <div class="vendor-link">
-                                <a [routerLink]="['/vendor', 'display', vender._id]">
+                                <a [routerLink]="['/vendor', 'display', vendor._id]">
                                     <img src='/assets/images/missing.png' id="vendor-image" alt="Vendor Picture">
                                 </a>
                             </div>
@@ -101,69 +101,3 @@
         </div>
     </div>
 </ng-template>
-        <!-- <div class="row" id="scroll">
-            <div class="container" *ngIf = "!finished">
-                <mat-spinner class="mx-auto" color="primary"></mat-spinner>
-            </div>
-            <div class="container-fluid" *ngIf = "finished">
-
-                <div class="col-12">
-                    <h2 class="text-center" id="venue-header">Venues</h2>
-                    <div id="move-right">
-                        <input matInput type='text' name='search_text' [(ngModel)]='search_text' id="search-box" placeholder="Search for a venue...">
-                    </div>
-                </div>
-                <div class="card-group" *ngFor="let venue of venues | filterVenues: search_text; let i = index">
-                    <mat-card class="card" [tabindex]="i">
-                        <ng-container *ngIf="venue.pic_url === ''; else elseTemplate">
-                            <img mat-card-image src='/assets/images/missing.png' alt="Venue Picture">  
-                        </ng-container>
-                        <ng-template #elseTemplate>
-                            LIVE
-                            <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Picture">
-
-                            TEST
-                            <img mat-card-image src="https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}" alt="Venue Picture">
-                        </ng-template>
-                        <mat-card-title>
-                            <h5 class="text-center">{{venue?.name}}</h5>
-                            <span class="line"></span>
-                            <mat-card-subtitle class="text-center">{{venue?.city | uppercase}}, {{venue?.state | uppercase}}</mat-card-subtitle>
-                        </mat-card-title>
-                        <mat-card-actions>
-                            <button mat-button [routerLink]="['/venue', 'display', venue._id]" matTooltip="View {{venue.name}}">VIEW</button>
-                        </mat-card-actions>
-                    </mat-card>
-                </div>
-            </div>
-        </div> -->
-
-<!-- <div class="col-3">
-    <div>
-        <h2 class=text-center>Vendor</h2>
-        <ng-container *ngIf="venderTwo?.pic_url; else elseTemplate">
-            <div class="vender-link">
-                <a [routerLink]="['/vender', 'display', venderTwo._id]">
-                    TEST
-                    <img src='https://venue-test.s3.amazonaws.com/Venders/{{venderTwo.name}}/{{venderTwo.pic_url}}' class="rounded-circle mx-auto d-block"
-                        id="vender-image" alt="Vender Picture">
-                    LIVE
-                    <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venders/{{venderTwo.name}}/{{venderTwo.pic_url}}' class="rounded-circle mx-auto d-block" id="vender-image" alt="Vender Picture">
-                </a>
-                <h3 class="text-center">{{ venderTwo?.name }}</h3>
-            </div>
-        </ng-container>
-        <ng-template #elseTemplate>
-            <div class="vender-link">
-                <a [routerLink]="['/vender', 'display', venderTwo._id]">
-                    <img src='/assets/images/missing.png' class="rounded-circle mx-auto d-block" id="vender-image" alt="Venue Picture">
-                    <div class="middle rounded-circle">
-                        <div class="text">
-                            <h6>{{venderTwo?.name}}</h6>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </ng-template>
-    </div>
-</div> -->

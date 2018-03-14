@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Vendor = mongoose.model("Vendor");
-const Category = mongoose.model("Category");
+const VendorCategory = mongoose.model("VendorCategory");
 const Amenity = mongoose.model("Amenity");
 const Review = mongoose.model("Review");
 
@@ -100,7 +100,7 @@ class VendorsController {
     Vendor.find({})
       .populate({ path: "amenities", model: Amenity })
       .populate({ path: "reviews", model: Review })
-      .populate({ path: "_category", model: Category })
+      .populate({ path: "_category", model: VendorCategory })
       .exec((err, vendors) => {
         if (err) {
           return res.json(err);
@@ -113,7 +113,7 @@ class VendorsController {
   show(req, res) {
     Vendor.findById({ _id: req.params.id })
       .populate({ path: "amenities", model: Amenity })
-      .populate({ path: "_category", model: Category })
+      .populate({ path: "_category", model: VendorCategory })
       .populate({ path: "reviews", model: Review })
       .exec((err, vendor) => {
         if (err) {
@@ -126,7 +126,7 @@ class VendorsController {
 
   category(req, res) {
     Vendor.find({ _category: req.params.category })
-      .populate({ path: "_category", model: Category })
+      .populate({ path: "_category", model: VendorCategory })
       .exec((err, vendors) => {
         if (err) {
           console.log("*** SERVER FIND ERROR:", err);
@@ -143,9 +143,23 @@ class VendorsController {
       if (err) {
         return res.json(err);
       }
+      VendorCategory.findById(req.body._category, (err, category) => {
+        if (err) {
+        category.vendors.push(req.body.vendor.name);
+        VendorCategory.save();
+        }
+      });
       return res.json(vendor);
     });
   }
+  // create(req, res) {
+  //   Vendor.create(req.body, (err, vendor) => {
+  //     if (err) {
+  //       return res.json(err);
+  //     }
+  //     return res.json(vendor);
+  //   });
+  // }
 
   upload(req, res) {
     let new_vendor = new Vendor(req.body);

@@ -35,10 +35,10 @@
         <div class="col-6">
             <div id="slider">
                 <figure *ngFor="let vendor of vendors">
-                    <img class="d-block" src='https://s3-us-west-2.amazonaws.com/venue-test/Vendors/{{vendor.name}}/{{vendor.pic_url}}' alt="Vendor Picture">
+                    <img class="d-block" src='https://s3-us-west-2.amazonaws.com/venue-test/Vendors/{{vendor._id}}/{{vendor.pic_url}}' alt="Vendor Picture">
                     <div class="small-box">
                         <h6>{{vendor?.name | titlecase}}</h6>
-                        <p>{{vendor?._category | titlecase}}</p>
+                        <p>{{vendor._category.name}}</p>
                     </div>
                 </figure>
             </div>
@@ -76,7 +76,7 @@
                     </ng-container>
                     <ng-template #elseTemplate>
                         <a [routerLink]="['/venue', 'display', venue._id]">
-                            <img mat-card-image src='/assets/images/missing.png' alt="Vendor Picture" class="img-responsive">
+                            <img mat-card-image src='/assets/images/missing.png' alt="Venue Picture" class="img-responsive">
                         </a>
                     </ng-template>
                     <mat-card-title>

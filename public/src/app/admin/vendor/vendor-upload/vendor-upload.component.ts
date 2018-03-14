@@ -5,6 +5,7 @@ import { VendorService } from '../../../services/vendor.service';
 import { Subscription } from 'rxjs';
 import { User } from '../../../models/user';
 import { Vendor } from '../../../models/vendor';
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-vendor-upload",
@@ -29,7 +30,8 @@ export class VendorUploadComponent implements OnInit {
     private _vendorService: VendorService,
     private _userService: UserService,
     private _activatedRoute: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -85,18 +87,17 @@ export class VendorUploadComponent implements OnInit {
       }
       const formData = new FormData(this.multiple_form.nativeElement);
       formData.append(files[0].name, files[0]);
-      this._vendorService.post_multiple_to_s3(
-        formData,
-        this.vendor._id,
-        vendor => {
+      this._vendorService.post_multiple_to_s3(formData, this.vendor._id, vendor => {
           if (vendor.errors) {
             for (const key of Object.keys(vendor.errors)) {
               const errors = vendor.errors[key];
               this.errors.push(errors.message);
             }
           }
-        }
-      );
+          this.file_input.nativeElement.value = "";
+          this.vendor_event.emit();
+          location.reload();
+        });
     }
   }
 }
