@@ -1,3 +1,4 @@
+import { VendorDisplayComponent } from './vendor/vendor-display/vendor-display.component';
 import { MaterialModule } from './../material/material.module';
 import { NavComponent } from './../structure/nav/nav.component';
 import { NgModule } from '@angular/core';
@@ -6,7 +7,6 @@ import { CommonModule } from '@angular/common';
 import { ClientComponent } from './client.component'
 import { ClientRoutingModule } from './client-routing.module';
 import { SearchComponent } from './search/search.component';
-import { VenderComponent } from './vender/vender.component';
 import { VenueComponent } from './venue/venue.component';
 import { LandingComponent } from './landing/landing.component';
 import { Rights } from '../structure/footer/rights/rights.component';
@@ -26,10 +26,11 @@ import { BallroomComponent } from './search/category/ballroom/ballroom.component
 import { ChapelComponent } from './search/category/chapel/chapel.component';
 import { CountryClubComponent } from './search/category/country-club/country-club.component';
 import { EventCenterComponent } from './search/category/event-center/event-center.component';
-import { GardenComponent } from './search/category/garden/garden.component';
 import { HistoricComponent } from './search/category/historic/historic.component';
 import { LodgeComponent } from './search/category/lodge/lodge.component';
-import { VenderDisplayComponent } from './vender/vender-display/vender-display.component';
+import { VendorComponent } from './vendor/vendor.component';
+import { MansionsComponent } from './search/category/Mansions/mansions.component';
+
 
 @NgModule({
   imports: [
@@ -50,8 +51,7 @@ import { VenderDisplayComponent } from './vender/vender-display/vender-display.c
     LandingComponent,
     NavComponent,
     Rights,
-    SearchComponent, 
-    VenderComponent, 
+    SearchComponent,  
     VenueComponent,
     ReviewNewComponent,
     FilterVenuesPipe,
@@ -60,10 +60,11 @@ import { VenderDisplayComponent } from './vender/vender-display/vender-display.c
     ChapelComponent,
     CountryClubComponent,
     EventCenterComponent,
-    GardenComponent,
+    MansionsComponent,
     HistoricComponent,
     LodgeComponent,
-    VenderDisplayComponent
+    VendorComponent,
+    VendorDisplayComponent
   ],
 })
 export class ClientModule { }

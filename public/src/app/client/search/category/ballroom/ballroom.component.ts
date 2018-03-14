@@ -2,8 +2,8 @@ import { Venue } from './../../../../models/venue';
 import { VenueService } from './../../../../services/venue.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { VenderService } from '../../../../services/vender.service';
-import { Vender } from '../../../../models/vender';
+import { Vendor } from '../../../../models/vendor';
+import { VendorService } from '../../../../services/vendor.service';
 
 
 @Component({
@@ -13,8 +13,8 @@ import { Vender } from '../../../../models/vender';
   preserveWhitespaces: false
 })
 export class BallroomComponent implements OnInit {
-  vender = new Vender();
-  venderTwo = new Vender();
+  vendor = new Vendor();
+  vendorTwo = new Vendor();
   venues: Array<Venue>;
   search_text: String = "";
   finished: boolean;
@@ -28,50 +28,56 @@ export class BallroomComponent implements OnInit {
   title: string;
 
   constructor(
-    private _venderService: VenderService,
+    private _vendorService: VendorService,
     private _venueService: VenueService,
     private _router: Router
   ) {}
 
   ngOnInit() {
     this.loaded = false;
-    this.finished = false;
-    this.getVenues();
-    this._venderService.getVenders(vender => {
+    this.finished = true;
+    this._vendorService.getVendors(vendor => {
       this.finished = false;
-      this.random = Math.floor(Math.random() * vender.length);
-      this.randomTwo = Math.floor(Math.random() * vender.length);
+      this.random = Math.floor(Math.random() * vendor.length);
+      this.randomTwo = Math.floor(Math.random() * vendor.length);
       console.log("Random number:", this.random);
       console.log("RandomTwo number:", this.randomTwo);
       if (this.random === this.randomTwo) {
-        this.randomTwo = Math.floor(Math.random() * vender.length);
+        this.randomTwo = Math.floor(Math.random() * vendor.length);
         console.log("Random number:", this.random);
         console.log("RandomTwo number:", this.randomTwo);
       } else {
-        this.vender = vender[this.random];
-        console.log(this.vender);
-        this.venderTwo = vender[this.randomTwo];
-        console.log(this.venderTwo);
+        this.vendor = vendor[this.random];
+        console.log(this.vendor);
+        this.vendorTwo = vendor[this.randomTwo];
+        console.log(this.vendorTwo);
       }
-      this.finished = true;
-      setTimeout(() => {
-        this.loaded = true;
-      }, 1000);
+    });
+    // setTimeout(() => {
+    //   this.loaded = true;
+    // }, 1000);
+    this.getVenues();
+    this.loaded = true;
+  }
+
+  getVendors() {
+    this._vendorService.getVendors(vendor => {
+      this.random = Math.floor(Math.random() * vendor.length);
+      console.log("Random number:", this.random);
+      this.vendor = vendor[this.random];
+      console.log(this.vendor);
+      this.randomTwo = Math.floor(Math.random() * vendor.length);
+      console.log("RandomTwo number:", this.randomTwo);
+      this.vendorTwo = vendor[this.randomTwo];
+      console.log(this.vendorTwo);
     });
   }
 
   getVenues(): void {
-    this._venueService.getSingleVenue(
-      "5a81397e00114b31f5f3ac60",
-      venues => (this.venues = venues)
-    );
-    console.log(this.venues);
+    this._venueService.getVenues(venues => (this.venues = venues));
   }
-  // getVenues(): void {
-  //   this._venueService.getSingleVenue("5a8896add339a10b3f535c90", venues => (this.venues = venues));
-  //   console.log(this.venues);
-  // }
 }
+
 
 interface marker {
   icon: string;

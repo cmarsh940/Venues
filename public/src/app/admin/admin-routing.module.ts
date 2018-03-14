@@ -3,14 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminComponent } from './admin.component';
 import { AmenityShowComponent } from './amenity/amenity-show/amenity-show.component';
-import { VenderShowComponent } from './vender/vender-show/vender-show.component';
 import { VenueShowComponent } from './venue/venue-show/venue-show.component';
 import { AmenityEditComponent } from './amenity/amenity-edit/amenity-edit.component';
 import { RegisterComponent } from '../auth/register/register.component';
 import { VenueNewComponent } from './venue/venue-new/venue-new.component';
 import { VenueEditComponent } from './venue/venue-edit/venue-edit.component';
-import { VenderNewComponent } from './vender/vender-new/vender-new.component';
-import { VenderEditComponent } from './vender/vender-edit/vender-edit.component';
 import { ReviewShowComponent } from './review/review-show/review-show.component';
 import { ReviewNewComponent } from './review/review-new/review-new.component';
 import { ReviewEditComponent } from './review/review-edit/review-edit.component';
@@ -19,6 +16,10 @@ import { CategoryEditComponent } from './category/category-edit/category-edit.co
 import { UploadComponent } from "./venue/upload/upload.component";
 import { VendorCategoryShowComponent } from './vendor-category/vendor-category-show/vendor-category-show.component';
 import { VendorCategoryEditComponent } from './vendor-category/vendor-category-edit/vendor-category-edit.component';
+import { VendorUploadComponent } from './vendor/vendor-upload/vendor-upload.component';
+import { VendorShowComponent } from './vendor/vendor-show/vendor-show.component';
+import { VendorNewComponent } from './vendor/vendor-new/vendor-new.component';
+import { VendorEditComponent } from './vendor/vendor-edit/vendor-edit.component';
 
 const routes: Routes = [
   {
@@ -63,7 +64,7 @@ const routes: Routes = [
       {
         path: 'list_vendor',
         pathMatch: 'full',
-        component: VenderShowComponent
+        component: VendorShowComponent
       },
       {
         path: 'list_venue',
@@ -85,6 +86,11 @@ const routes: Routes = [
         pathMatch: 'full', 
         component: UploadComponent
       },
+      { 
+        path: 'vendor/upload/:id', 
+        pathMatch: 'full', 
+        component: VendorUploadComponent
+      },
       {
         path: 'list_review',
         pathMatch: 'full',
@@ -101,14 +107,14 @@ const routes: Routes = [
         component: ReviewEditComponent 
       },
       { 
-        path: 'vender/add', 
+        path: 'vendor/add', 
         pathMatch: 'full', 
-        component: VenderNewComponent
+        component: VendorNewComponent
       },
       { 
-        path: 'vender/edit/:id', 
+        path: 'vendor/edit/:id', 
         pathMatch: 'full', 
-        component: VenderEditComponent 
+        component: VendorEditComponent 
       },
       { 
         path: 'list_admin', 

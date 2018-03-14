@@ -1,31 +1,30 @@
 import { Subscription } from 'rxjs/Subscription';
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Vender } from '../../models/vender';
-import { VenderService } from '../../services/vender.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import { Location } from "@angular/common";
+import { Vendor } from '../../../models/vendor';
+import { VendorService } from '../../../services/vendor.service';
 
 @Component({
-  selector: "app-vender",
-  templateUrl: "./vender.component.html",
-  styleUrls: ["./vender.component.css"],
+  selector: "app-vendor-display",
+  templateUrl: "./vendor-display.component.html",
+  styleUrls: ["./vendor-display.component.css"],
   preserveWhitespaces: false
 })
-export class VenderComponent implements OnInit {
-  vender = new Vender();
+export class VendorDisplayComponent implements OnInit {
+  vendor = new Vendor();
   subscription: Subscription;
   loaded: Boolean = false;
 
   constructor(
-    private _venderService: VenderService,
+    private _vendorService: VendorService,
     private _activatedRoute: ActivatedRoute,
-    private _router: Router,
     private location: Location
   ) {}
 
   ngOnInit() {
     this.loaded = false;
-    this.getVender();
+    this.getVendor();
     setTimeout(() => {
       this.loaded = true;
     }, 1000);
@@ -35,9 +34,9 @@ export class VenderComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
-  getVender() {
+  getVendor() {
     this.subscription = this._activatedRoute.params.subscribe(params =>
-      this._venderService.showVender(params.id, res => (this.vender = res))
+      this._vendorService.showVendor(params.id, res => (this.vendor = res))
     );
   }
 

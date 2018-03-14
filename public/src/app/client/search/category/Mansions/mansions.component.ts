@@ -6,12 +6,12 @@ import { Vendor } from '../../../../models/vendor';
 import { VendorService } from '../../../../services/vendor.service';
 
 @Component({
-  selector: "app-chapel",
-  templateUrl: "./chapel.component.html",
-  styleUrls: ["./chapel.component.css"],
+  selector: "app-mansions",
+  templateUrl: "./mansions.component.html",
+  styleUrls: ["./mansions.component.css"],
   preserveWhitespaces: false
 })
-export class ChapelComponent implements OnInit {
+export class MansionsComponent implements OnInit {
   vendor = new Vendor();
   vendorTwo = new Vendor();
   venues: Array<Venue>;

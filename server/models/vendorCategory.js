@@ -1,10 +1,16 @@
 const mongoose = require('mongoose');
 
 const VendorCategorySchema = new mongoose.Schema({
-    name: { 
-        type: String, 
-        required: [true,"File name cannot be blank"], 
-    },
+  name: {
+    type: String,
+    required: [true, "File name cannot be blank"]
+  },
+  vendors: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Vendor"
+    }
+  ]
 });
 
 mongoose.model('VendorCategory', VendorCategorySchema); 

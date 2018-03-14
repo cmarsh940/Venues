@@ -17,12 +17,14 @@
 
     <div class="middle-top">
         <h5 class="text-center"> LOOKING FOR A SPECIFIC SERVICE PROVIDER? CHOOSE FROM THE LIST BELOW OR BROWSE ALL OF OUR PREMIUM VENDORS.</h5>
-        <mat-form-field>
-            <mat-select [(value)]="vender.category">
-                <mat-option>None</mat-option>
-                <mat-option value="">Option 1</mat-option>
-            </mat-select>
-        </mat-form-field>
+        <div class="text-center">
+            <mat-form-field>
+                <mat-select [(value)]="vendor._category">
+                    <mat-option>None</mat-option>
+                    <mat-option value="">1</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
     </div>
 
 </ng-template>

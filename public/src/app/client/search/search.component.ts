@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AgmMap } from '@agm/core/directives/map';
 import { google } from '@agm/core/services/google-maps-types';
-
 import { VenueService } from '../../services/venue.service';
-import { VenderService } from './../../services/vender.service';
 import { Venue } from '../../models/venue';
-import { Vender } from '../../models/vender';
 import { Router } from '@angular/router';
+import { Vendor } from '../../models/vendor';
+import { VendorService } from '../../services/vendor.service';
 
 @Component({
   selector: "app-search",
@@ -15,8 +14,8 @@ import { Router } from '@angular/router';
   preserveWhitespaces: false
 })
 export class SearchComponent implements OnInit {
-  vender = new Vender();
-  venderTwo = new Vender();
+  vendor = new Vendor();
+  vendorTwo = new Vendor();
   venues: Array<Venue>;
   search_text: String = "";
   finished: boolean;
@@ -30,7 +29,7 @@ export class SearchComponent implements OnInit {
   title: string;
 
   constructor(
-    private _venderService: VenderService,
+    private _vendorService: VendorService,
     private _venueService: VenueService,
     private _router: Router
   ) {}
@@ -38,21 +37,21 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.loaded = false;
     this.finished = true;
-    this._venderService.getVenders(vender => {
+    this._vendorService.getVendors(vendor => {
       this.finished = false;
-      this.random = Math.floor(Math.random() * vender.length);
-      this.randomTwo = Math.floor(Math.random() * vender.length);
+      this.random = Math.floor(Math.random() * vendor.length);
+      this.randomTwo = Math.floor(Math.random() * vendor.length);
       console.log("Random number:", this.random);
       console.log("RandomTwo number:", this.randomTwo);
       if (this.random === this.randomTwo) {
-        this.randomTwo = Math.floor(Math.random() * vender.length);
+        this.randomTwo = Math.floor(Math.random() * vendor.length);
         console.log("Random number:", this.random);
         console.log("RandomTwo number:", this.randomTwo);
       } else {
-        this.vender = vender[this.random];
-        console.log(this.vender);
-        this.venderTwo = vender[this.randomTwo];
-        console.log(this.venderTwo);
+        this.vendor = vendor[this.random];
+        console.log(this.vendor);
+        this.vendorTwo = vendor[this.randomTwo];
+        console.log(this.vendorTwo);
       }
     });
     // setTimeout(() => {
@@ -62,16 +61,16 @@ export class SearchComponent implements OnInit {
     this.loaded = true;
   }
 
-  getVenders() {
-    this._venderService.getVenders(vender => {
-      this.random = Math.floor(Math.random() * vender.length);
+  getVendors() {
+    this._vendorService.getVendors(vendor => {
+      this.random = Math.floor(Math.random() * vendor.length);
       console.log("Random number:", this.random);
-      this.vender = vender[this.random];
-      console.log(this.vender);
-      this.randomTwo = Math.floor(Math.random() * vender.length);
+      this.vendor = vendor[this.random];
+      console.log(this.vendor);
+      this.randomTwo = Math.floor(Math.random() * vendor.length);
       console.log("RandomTwo number:", this.randomTwo);
-      this.venderTwo = vender[this.randomTwo];
-      console.log(this.venderTwo);
+      this.vendorTwo = vendor[this.randomTwo];
+      console.log(this.vendorTwo);
     });
   }
 

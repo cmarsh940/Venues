@@ -1,7 +1,7 @@
 const path = require('path');
 const Users = require('../controllers/users');
 const Venues = require('../controllers/venues');
-const Venders = require('../controllers/venders');
+const Vendors = require('../controllers/vendors');
 const Reviews = require('../controllers/reviews');
 const Amenities = require('../controllers/amenities');
 const Categories = require('../controllers/categories');
@@ -51,14 +51,17 @@ module.exports = function (app) {
     app.get('/venues/images/:id', Venues.images);
     app.put('/venues/:id', Venues.update);
     app.post("/reviews/:id", Venues.review);
+    
+    app.get('/vendors', Vendors.index);
+    app.get('/vendors/vendorcategory/:category', Vendors.category);
+    app.post('/vendors', Vendors.create);
+    app.put('/vendors/upload/:id', Vendors.upload);
+    app.post('/vendors/upload/multiple/:id', Vendors.gallery);
+    app.delete('/vendors/:id', Vendors.delete);
+    app.get('/vendors/:id', Vendors.show);
+    app.get('/vendors/images/:id', Vendors.images);
+    app.put('/vendors/:id', Vendors.update);
 
-
-    app.get('/venders', Venders.index);
-    app.post('/venders', Venders.create);
-    app.post('/venders/upload', Venders.upload);
-    app.delete('/venders/:id', Venders.delete);
-    app.get('/venders/:id', Venders.show);
-    app.put('/venders/:id', Venders.update);
 
     app.all('*', (req, res, next) => {
         res.sendFile(path.resolve('./public/dist/index.html'));

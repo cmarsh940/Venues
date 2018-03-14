@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const random = require('mongoose-random');
 
-const VenderSchema = new mongoose.Schema(
+const VendorSchema = new mongoose.Schema(
   {
     name: {
       type: String,
       required: [true, "Name cannot be blank"],
-      maxlength: [250, "Name cannot be greater then 200 characters"]
+      maxlength: [200, "Name cannot be greater then 200 characters"]
     },
     email: {
       type: String,
@@ -25,13 +25,13 @@ const VenderSchema = new mongoose.Schema(
     website: {
       type: String,
       required: [true, "Website cannot be blank"],
-      minlength: [5, "Website cannot be less then 5 characters"],
-      maxlength: [250, "Website cannot be greater then 250 characters"],
+      minlength: [5, "Website did not meat the requirments"],
+      maxlength: [200, "Website cannot be greater then 200 characters"],
       trim: true
     },
     phone: {
       type: String,
-      required: [true, "Phone number cannot be blank"],
+      required: [true, "Vendor phone number required EX: 123-123-1234"],
       minlength: [9, "Phone number cannot be less then 9 characters"],
       maxlength: [15, "Phone number cannot be greater then 15 characters"],
       trim: true
@@ -51,12 +51,22 @@ const VenderSchema = new mongoose.Schema(
       required: [true, "State cannot be blank"],
       maxlength: [3, "State cannot be greater then 3 characters"]
     },
-    category: {
-      type: String,
-    },
     description: {
       type: String,
       required: [true, "Description cannot be blank"]
+    },
+    pic_url: {
+      type: String,
+      required: false,
+      trim: true,
+      default: ""
+    },
+    gallery: [{ name: String }],
+    services: [{ name: String }],
+    video_url: {
+      type: String,
+      required: false,
+      trim: true
     },
     facebook_url: {
       type: String,
@@ -78,14 +88,11 @@ const VenderSchema = new mongoose.Schema(
         message: "Instagram must start with https://www.instagram.com/"
       }
     },
-    pic_url: {
-      type: String,
-      required: false
-    }
+    _category: { type: mongoose.Schema.Types.ObjectId, ref: "VendorCategory" }
   },
   { timestamps: true }
 );
 
-VenderSchema.plugin(random, { path: 'r' });
+VendorSchema.plugin(random, { path: 'r' });
 
-mongoose.model('Vender', VenderSchema);
+mongoose.model('Vendor', VendorSchema);

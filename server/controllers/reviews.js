@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Venue = mongoose.model('Venue');
+const Review = mongoose.model("Review");
 
 class ReviewsController {
     index(req, res) {

@@ -1,10 +1,8 @@
-import { VenderDisplayComponent } from './vender/vender-display/vender-display.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ClientComponent } from './client.component';
 import { SearchComponent } from './search/search.component';
 import { VenueComponent } from './venue/venue.component';
-import { VenderComponent } from './vender/vender.component';
 import { Rights } from '../structure/footer/rights/rights.component';
 import { LandingComponent } from './landing/landing.component';
 import { ReviewNewComponent } from './venue/review-new/review-new.component';
@@ -13,9 +11,11 @@ import { BarnComponent } from './search/category/barn/barn.component';
 import { ChapelComponent } from './search/category/chapel/chapel.component';
 import { CountryClubComponent } from './search/category/country-club/country-club.component';
 import { EventCenterComponent } from './search/category/event-center/event-center.component';
-import { GardenComponent } from './search/category/garden/garden.component';
 import { HistoricComponent } from './search/category/historic/historic.component';
 import { LodgeComponent } from './search/category/lodge/lodge.component';
+import { VendorComponent } from './vendor/vendor.component';
+import { VendorDisplayComponent } from './vendor/vendor-display/vendor-display.component';
+import { MansionsComponent } from './search/category/Mansions/mansions.component';
 
 const routes: Routes = [
   {
@@ -58,9 +58,9 @@ const routes: Routes = [
         component: EventCenterComponent
       },
       {
-        path: "search/historic",
+        path: "search/mansions",
         pathMatch: "full",
-        component: HistoricComponent
+        component: MansionsComponent
       },
       {
         path: "search/lodge",
@@ -70,12 +70,12 @@ const routes: Routes = [
       {
         path: "vendor",
         pathMatch: "full",
-        component: VenderComponent
+        component: VendorComponent
       },
       {
         path: "vendor/display/:id",
         pathMatch: "full",
-        component: VenderDisplayComponent
+        component: VendorDisplayComponent
       },
       {
         path: "venue/display/:id",

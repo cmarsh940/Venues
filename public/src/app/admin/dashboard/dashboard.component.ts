@@ -1,16 +1,16 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AmenityService } from '../../services/amenity.service';
-import { VenderService } from '../../services/vender.service';
 import { VenueService } from '../../services/venue.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
 import { Venue } from '../../models/venue';
-import { Vender } from '../../models/vender';
 import { Amenity } from '../../models/amenity';
 
 import { DomSanitizer } from "@angular/platform-browser";
 import { SafeResourceUrl } from "@angular/platform-browser";
+import { Vendor } from '../../models/vendor';
+import { VendorService } from '../../services/vendor.service';
 
 @Component({
   selector: "app-dashboard",
@@ -20,7 +20,7 @@ import { SafeResourceUrl } from "@angular/platform-browser";
 })
 export class DashboardComponent implements OnInit {
   amenities: Array<Amenity>;
-  venders: Array<Vender>;
+  vendors: Array<Vendor>;
   venues: Array<Venue>;
   users: Array<User>;
 
@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
     private _amenityService: AmenityService,
     private _userService: UserService,
     private _venueService: VenueService,
-    private _venderService: VenderService,
+    private _vendorService: VendorService,
     private _router: Router,
     public sanitizer: DomSanitizer
   ) {}
@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
     this.getUsers();
     this.getAmenity();
     this.getVenues();
-    this.getVenders();
+    this.getVendors();
   }
 
   isLoggedIn() {
@@ -57,8 +57,8 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  getVenders(): void {
-    this._venderService.getVenders(venders => (this.venders = venders));
+  getVendors(): void {
+    this._vendorService.getVendors(vendors => (this.vendors = vendors));
   }
 
   getVenues(): void {

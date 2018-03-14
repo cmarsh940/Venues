@@ -34,11 +34,11 @@
     <div class="col-12" id="middle-bottom">
         <div class="col-6">
             <div id="slider">
-                <figure *ngFor="let vender of venders">
-                    <img class="d-block" src='https://s3-us-west-2.amazonaws.com/venue-test/Venders/{{vender.name}}/{{vender.pic_url}}' alt="Vendor Picture">
+                <figure *ngFor="let vendor of vendors">
+                    <img class="d-block" src='https://s3-us-west-2.amazonaws.com/venue-test/Vendors/{{vendor.name}}/{{vendor.pic_url}}' alt="Vendor Picture">
                     <div class="small-box">
-                        <h6>{{vender?.name | titlecase}}</h6>
-                        <p>{{vender?.category | titlecase}}</p>
+                        <h6>{{vendor?.name | titlecase}}</h6>
+                        <p>{{vendor?._category | titlecase}}</p>
                     </div>
                 </figure>
             </div>
@@ -54,13 +54,13 @@
 
     <div class="col-12" id="bottom-group">
         <br>
-        <div class="container" id="vender">
+        <div class="container" id="vendor">
             <h2>JUST A FEW OF THE BEST PLACES AROUND TULSA</h2>
-            <span class="line" id="vender-line"></span>
+            <span class="line" id="vendor-line"></span>
             <h6 class="text-center" id="bottom-paragraph">We see a lot of venues and we talk to a lot of owners. Combine that with real opinions from fellow Northeastern Oklahomans
             and we’re confident in saying that you can find your dream wedding location on Tulsa Venues. Here is just a sample of the
             hundreds of vetted venues you’ll find inside.</h6>
-            <div class="vender-card" *ngFor="let venue of venues; let i = index">
+            <div class="vendor-card" *ngFor="let venue of venues; let i = index">
                 <mat-card class="card" [tabindex]="i">
                     <ng-container *ngIf="venue.pic_url; else elseTemplate">
                         <!-- LIVE -->
@@ -87,7 +87,7 @@
                     <mat-card-subtitle class="text-center">{{venue?.city | titlecase}}, {{venue?.state | uppercase}}</mat-card-subtitle>
         
                     <mat-card-actions>
-                        <button mat-button class="vender-button" [routerLink]="['/venue', 'display', venue._id]" matTooltip="View {{venue.name}}"
+                        <button mat-button class="vendor-button" [routerLink]="['/venue', 'display', venue._id]" matTooltip="View {{venue.name}}"
                             [matTooltipShowDelay]="showDelay">VIEW</button>
                     </mat-card-actions>
                 </mat-card>

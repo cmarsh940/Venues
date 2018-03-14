@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Venue = mongoose.model('Venue');
 const Category = mongoose.model('Category');
 const Amenity = mongoose.model('Amenity');
+const Review = mongoose.model("Review");
 
 const config = require("../config/config");
 
@@ -115,6 +116,7 @@ class VenuesController {
     Venue.findById({ _id: req.params.id })
       .populate({ path: "amenities", model: Amenity })
       .populate({ path: "_category", model: Category })
+      .populate({ path: "reviews", model: Review })
       .exec((err, venue) => {
         if (err) {
           console.log("*** SERVER SHOW VENUE ERROR:", err);

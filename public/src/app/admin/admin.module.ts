@@ -1,3 +1,5 @@
+import { VendorNewComponent } from './vendor/vendor-new/vendor-new.component';
+import { VendorService } from './../services/vendor.service';
 import { VendorCategoryEditComponent } from './vendor-category/vendor-category-edit/vendor-category-edit.component';
 import { VendorCategoryShowComponent } from './vendor-category/vendor-category-show/vendor-category-show.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -6,7 +8,6 @@ import { CategoryService } from './../services/category.service';
 import { RegisterComponent } from './../auth/register/register.component';
 import { AdminNavComponent } from './../structure/admin-nav/admin-nav.component';
 import { UserService } from './../services/user.service';
-import { VenderService } from './../services/vender.service';
 import { AmenityService } from './../services/amenity.service';
 import { AdminComponent } from './admin.component';
 import { NgModule } from '@angular/core';
@@ -15,14 +16,11 @@ import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminRoutingModule } from './admin-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { VenderEditComponent } from './vender/vender-edit/vender-edit.component';
-import { VenderNewComponent } from './vender/vender-new/vender-new.component';
 import { VenueEditComponent } from './venue/venue-edit/venue-edit.component';
 import { VenueNewComponent } from './venue/venue-new/venue-new.component';
 import { VenueShowComponent } from './venue/venue-show/venue-show.component';
 import { AmenityShowComponent } from './amenity/amenity-show/amenity-show.component';
 import { AmenityEditComponent } from './amenity/amenity-edit/amenity-edit.component';
-import { VenderShowComponent } from './vender/vender-show/vender-show.component';
 import { VenueService } from '../services/venue.service';
 import { MessageService } from '../services/messages.service';
 
@@ -36,6 +34,9 @@ import { SortVenuesPipe } from '../pipes/sort-venues.pipe';
 import { UploadComponent } from './venue/upload/upload.component';
 
 import { VendorCategoryService } from '../services/vendor-category.service';
+import { VendorShowComponent } from './vendor/vendor-show/vendor-show.component';
+import { VendorEditComponent } from './vendor/vendor-edit/vendor-edit.component';
+import { VendorUploadComponent } from './vendor/vendor-upload/vendor-upload.component';
 
 
 @NgModule({
@@ -55,9 +56,9 @@ import { VendorCategoryService } from '../services/vendor-category.service';
     AmenityShowComponent,
     AmenityEditComponent,
     RegisterComponent,
-    VenderShowComponent,
-    VenderEditComponent,
-    VenderNewComponent,
+    VendorNewComponent,
+    VendorShowComponent,
+    VendorEditComponent,
     VenueEditComponent,
     VenueNewComponent,
     VenueShowComponent,
@@ -69,7 +70,8 @@ import { VendorCategoryService } from '../services/vendor-category.service';
     VendorCategoryEditComponent,
     VendorCategoryShowComponent,
     SortVenuesPipe,
-    UploadComponent
+    UploadComponent,
+    VendorUploadComponent
   ],
   providers: [
     AmenityService,
@@ -77,7 +79,7 @@ import { VendorCategoryService } from '../services/vendor-category.service';
     VendorCategoryService,
     MessageService,
     ReviewService,
-    VenderService,
+    VendorService,
     VenueService,
     UserService
   ]

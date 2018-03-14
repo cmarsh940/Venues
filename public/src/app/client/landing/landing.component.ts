@@ -1,10 +1,10 @@
-import { VenderService } from './../../services/vender.service';
-import { Component, OnInit } from '@angular/core';
-import { Vender } from '../../models/vender';
+import { Component, OnInit } from '@angular/core';;
 import { Category } from '../../models/category';
 import { CategoryService } from '../../services/category.service';
 import { VenueService } from '../../services/venue.service';
 import { Venue } from '../../models/venue';
+import { Vendor } from '../../models/vendor';
+import { VendorService } from '../../services/vendor.service';
 
 @Component({
   selector: "app-landing",
@@ -13,7 +13,7 @@ import { Venue } from '../../models/venue';
   preserveWhitespaces: false
 })
 export class LandingComponent implements OnInit {
-  venders: Array<Vender>;
+  vendors: Array<Vendor>;
   categories: Array<Category>;
   venues: Array<Venue>;
 
@@ -21,7 +21,7 @@ export class LandingComponent implements OnInit {
   length: number;
 
   constructor(
-    private _venderService: VenderService,
+    private _vendorService: VendorService,
     private _categoryService: CategoryService,
     private _venueService: VenueService
   ) {}
@@ -30,7 +30,7 @@ export class LandingComponent implements OnInit {
     this.length = 0;
     this.getCategories();
     this.getVenues();
-    this.getVenders();
+    this.getVendors();
   }
 
   getCategories(): void {
@@ -43,7 +43,7 @@ export class LandingComponent implements OnInit {
     this._venueService.getVenues(venues => (this.venues = venues.slice(0, 4)));
   }
 
-  getVenders(): void {
-    this._venderService.getVenders(venders => (this.venders = venders.slice(0, 4)));
+  getVendors(): void {
+    this._vendorService.getVendors(vendors => (this.vendors = vendors.slice(0, 4)));
   }
 }
