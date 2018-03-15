@@ -67,9 +67,16 @@ h6 {
 }
 
 .header-image {
+  width: 100%;
   min-height: 20em;
   max-height: 20em;
+  overflow: hidden;
+  background-image: url(/assets/images/vendorBackground.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
 }
+
 
 .header-text {
   padding: 3% 0;

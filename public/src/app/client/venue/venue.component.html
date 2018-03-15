@@ -7,7 +7,10 @@
     <div class="containerX">
         <div id="slider">
             <figure *ngFor="let gallery of venue.gallery">
-                <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/Gallery/{{gallery.name}}' alt>
+                <!-- LIVE -->
+                <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/Gallery/{{gallery.name}}" alt>
+                <!-- TEST -->
+                <!-- <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/Gallery/{{gallery.name}}' alt> -->
             </figure>
         </div>
         <div class="container-fluid">
@@ -66,16 +69,17 @@
                             <ng-container *ngIf="vendor?.pic_url; else elseTemplate">
                                 <div class="vendor-link">
                                     <!-- LIVE -->
-                                    <!-- <a [routerLink]="['/vendor', 'display', vendor._id]">
-                                        <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/{{vendor.pic_url}}' class="img-fluid img-thumbnail" id="vendor-image" alt="Vendor Picture" />
-                                    </a>
-                                    <h2 class="text-center" id="vendor-name">{{ vendor?.name }}</h2> -->
-                                    <!-- TEST -->
                                     <div class="text-center">
+                                        <a [routerLink]="['/vendor', 'display', vendor._id]">
+                                            <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/{{vendor.pic_url}}' class="img-thumbnail" id="vendor-image" alt="Vendor Picture" />
+                                        </a>
+                                    </div>
+                                    <!-- TEST -->
+                                    <!-- <div class="text-center">
                                         <a [routerLink]="['/vendor', 'display', vendor._id]">
                                             <img src='https://venue-test.s3.amazonaws.com/Vendors/{{vendor._id}}/{{vendor.pic_url}}' class="img-thumbnail" id="vendor-image" alt="Vendor Picture" />
                                         </a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </ng-container>
                             <ng-template #elseTemplate>
@@ -107,7 +111,10 @@
                         </div>
                         <div class="links">
                             <div class="col-6">
-                                <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}' class="img-fluid img-thumbnail" alt="Venue Video">
+                                <!-- LIVE -->
+                                <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.video_pic_url}}" class="img-fluid img-thumbnail" alt="Venue Video">
+                                <!-- TEST -->
+                                <!-- <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.video_pic_url}}' class="img-fluid img-thumbnail" alt="Venue Video"> -->
                                 <div class="text-center image-button">
                                     <button mat-button cdk-overlay-origin #video="cdkOverlayOrigin" (click)="isMenuOpen = !isMenuOpen" matTooltip="View Video" >
                                         <i class="material-icons">&#xE037;</i>
@@ -123,7 +130,10 @@
                                 </ng-template>
                             </div>
                             <div class="col-6">
-                                <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}' class="img-fluid img-thumbnail" alt="Venue 3D Tour">
+                                <!-- LIVE -->
+                                <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.tour_pic_url}}" class="img-fluid img-thumbnail" alt="Venue 3D Tour">
+                                <!-- TEST -->
+                                <!-- <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.tour_pic_url}}' class="img-fluid img-thumbnail" alt="Venue 3D Tour"> -->
                                 <div class="text-center image-button">
                                     <button mat-button cdk-overlay-origin #trigger="cdkOverlayOrigin" (click)="isMenuOpen = !isMenuOpen" matTooltip="View 3D tour">
                                         3D TOUR
@@ -142,10 +152,9 @@
                         <div *ngFor="let gallery of venue.gallery" id="gallery">
                             <div class="col-2">
                                 <!-- LIVE -->
-                                <!-- <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/Gallery/{{gallery.name}}' alt="Venue Gallery Picture"
-                                    class="gallery-image"> -->
+                                <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/Gallery/{{gallery.name}}" alt="Venue Gallery Picture" class="img-thumbnail gallery-image">
                                 <!-- TEST -->
-                                <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/Gallery/{{gallery.name}}' class="img-thumbnail gallery-image" alt="Venue gallery picture">
+                                <!-- <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/Gallery/{{gallery.name}}' class="img-thumbnail gallery-image" alt="Venue gallery picture"> -->
                             </div>
                         </div>  
                     </div>
@@ -156,33 +165,20 @@
                         </div>
                         <span class="line"></span>
                         <div *ngFor="let review of venue.reviews">
-                            <ng-container *ngIf="review; else elseTemplate">
+                            <ng-container *ngIf="review.approved; else elseTemplate">
                                 <mat-card>
                                     <mat-card-header>
-                                        <mat-card-title>{{review.title}}</mat-card-title>
-                                        <fieldset class="rating">
-                                            <input type="radio" id="star5" name="rating" value="5" />
-                                            <label class="full" for="star5" title="5 stars"></label>
-
-                                            <input type="radio" id="star4" name="rating" value="4" />
-                                            <label class="full" for="star4" title="4 stars"></label>
-
-                                            <input type="radio" id="star3" name="rating" value="3" />
-                                            <label class="full" for="star3" title="3 stars"></label>
-
-                                            <input type="radio" id="star2" name="rating" value="2" />
-                                            <label class="full" for="star2" title="2 stars"></label>
-
-                                            <input type="radio" id="star1" name="rating" value="1" />
-                                            <label class="full" for="star1" title="1 star"></label>
-                                        </fieldset>
-                                        <!-- <div id="rating">
-                                            <i class="material-icons" value="1">&#xE83A;</i>
-                                            <i class="material-icons" value="2">&#xE83A;</i>
-                                            <i class="material-icons" value="3">&#xE83A;</i>
-                                            <i class="material-icons" value="4">&#xE83A;</i>
-                                            <i class="material-icons" value="5">&#xE83A;</i>
-                                        </div> -->
+                                        <mat-card-title>
+                                            {{review.title}}
+                                            <br>
+                                            <div id="rating">
+                                                <i class="material-icons" value="1">&#xE83A;</i>
+                                                <i class="material-icons" value="2">&#xE83A;</i>
+                                                <i class="material-icons" value="3">&#xE83A;</i>
+                                                <i class="material-icons" value="4">&#xE83A;</i>
+                                                <i class="material-icons" value="5">&#xE83A;</i>
+                                            </div>
+                                        </mat-card-title>
                                     </mat-card-header>
                                     <mat-card-content>
                                         <p>{{review.content}}</p>
@@ -195,7 +191,7 @@
                             </ng-container>
                             <ng-template #elseTemplate>
                                 <mat-card>
-                                    <h6>There are no reviews for {{ venue.name }}</h6>
+                                    <h6>There are no reviews for {{ venue?.name }}</h6>
                                 </mat-card>
                             </ng-template>
                         </div>

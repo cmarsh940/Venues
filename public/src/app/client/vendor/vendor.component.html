@@ -5,7 +5,6 @@
 </div>
 <ng-template #mainTemplate>
     <div class="header-image">
-
     </div>
     <div class="header-text">
         <h1 class="text-center">THE BEST OF THE BEST</h1>
@@ -20,8 +19,7 @@
         <div class="text-center">
             <mat-form-field>
                 <mat-select [(value)]="vendor._category">
-                    <mat-option>None</mat-option>
-                    <mat-option value="">1</mat-option>
+                    <mat-option *ngFor="let category of vendorCategories">{{category.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>

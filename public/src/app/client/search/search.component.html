@@ -15,10 +15,10 @@
                                     <ng-template>
                                         <mat-card class="mat-card">
                                             <mat-card-header>
-                                                <!-- TEST -->
-                                                <img mat-card-avatar src="https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}" alt="Venue Avatar Picture">
                                                 <!-- LIVE -->
-                                                <!-- <img mat-card-avatar src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Avatar Picture"> -->
+                                                <img mat-card-avatar src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Avatar Picture">
+                                                <!-- TEST -->
+                                                <!-- <img mat-card-avatar src="https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}" alt="Venue Avatar Picture"> -->
                                             </mat-card-header>
                                             <mat-card-content class="text-center">
                                                 <mat-card-subtitle>{{venue?.name}}</mat-card-subtitle>
@@ -40,13 +40,13 @@
                         <ng-container *ngIf="vendor?.pic_url; else elseTemplate">
                             <div class="vendor-link">
                                 <a [routerLink]="['/vendor', 'display', vendor._id]">
-                                    <!-- TEST -->
-                                    <div class="text-center">
-                                        <img src='https://venue-test.s3.amazonaws.com/Vendors/{{vendor.name}}/{{vendor.pic_url}}' id="vendor-image" alt="Vendor Picture">
-                                    </div>
                                     <!-- Live -->
+                                    <div class="text-center">
+                                        <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/{{vendor.pic_url}}' id="vendor-image" alt="Vendor Picture">
+                                    </div>
+                                    <!-- TEST -->
                                     <!-- <div class="text-center">
-                                        <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor.name}}/{{vendor.pic_url}}' id="vendor-image" alt="Vendor Picture"> 
+                                        <img src='https://venue-test.s3.amazonaws.com/Vendors/{{vendor._id}}/{{vendor.pic_url}}' id="vendor-image" alt="Vendor Picture">
                                     </div> -->
                                     <h4 class="text-center">{{ vendor?.name }}</h4>
                                     <h6 class="text-center">LEARN MORE</h6>
@@ -80,10 +80,9 @@
                                 </ng-container>
                                 <ng-template #elseTemplate>
                                     <!-- LIVE -->
-                                    <!-- <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Picture">  -->
-                                    
+                                    <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Picture"> 
                                     <!-- TEST -->
-                                    <img mat-card-image src="https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}" alt="Venue Picture">
+                                    <!-- <img mat-card-image src="https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}" alt="Venue Picture"> -->
                                 </ng-template>
                                 <mat-card-title>
                                     <h5 class="text-center">{{venue?.name}}</h5>

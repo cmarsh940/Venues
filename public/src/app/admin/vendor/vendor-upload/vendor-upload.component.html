@@ -12,6 +12,9 @@
             </div>
         </form>
     </div>
+    <div>
+        <p [ngStyle]="{ 'color': 'red' }" *ngFor="let error of errors">{{ error }}</p>
+    </div>
 
     <div class="col-3">
         <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/{{vendor.pic_url}}' alt="Vendor Picture" class="img-thumbnail">
@@ -29,6 +32,9 @@
                 <button mat-raised-button type="submit" color="accent">Submit</button>
             </div>
         </form>
+    </div>
+    <div>
+        <p [ngStyle]="{ 'color': 'red' }" *ngFor="let error of errors">{{ error }}</p>
     </div>
     <div class="row">
         <div class="col-3" *ngFor="let gallery of vendor.gallery">

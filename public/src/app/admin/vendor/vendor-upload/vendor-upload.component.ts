@@ -68,7 +68,7 @@ export class VendorUploadComponent implements OnInit {
       this._vendorService.post_to_s3(formData, this.vendor._id, res => {
         this.file_input.nativeElement.value = "";
         this.vendor_event.emit();
-        this._router.navigate(["/list_vendor"]);
+        location.reload();
       });
     }
   }

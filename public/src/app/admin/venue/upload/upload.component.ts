@@ -70,7 +70,7 @@ export class UploadComponent implements OnInit, OnDestroy {
       this._venueService.post_to_s3(formData, this.venue._id, res => {
         this.file_input.nativeElement.value = "";
         this.venue_event.emit();
-        this._router.navigate(["/list_venue"]);
+        location.reload();
       });
     }
   }

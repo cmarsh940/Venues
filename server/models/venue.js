@@ -97,20 +97,30 @@ const VenueSchema = new mongoose.Schema(
     },
     gallery: [{ name: String }],
     reviews: [
-        { 
-          email: String,
-          title: String,
-          content: String,
-          rating: Number,
-          approved: Boolean 
-        }
+      {
+        email: String,
+        title: String,
+        content: String,
+        rating: Number,
+        approved: Boolean
+      }
     ],
     tour_url: {
       type: String,
       required: false,
       trim: true
     },
+    tour_pic_url: {
+      type: String,
+      required: false,
+      trim: true
+    },
     video_url: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    video_pic_url: {
       type: String,
       required: false,
       trim: true
