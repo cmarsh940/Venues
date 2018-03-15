@@ -68,9 +68,16 @@ export class UploadComponent implements OnInit, OnDestroy {
     } else {
       let formData = new FormData(this.my_form.nativeElement);
       this._venueService.post_to_s3(formData, this.venue._id, res => {
-        this.file_input.nativeElement.value = "";
-        this.venue_event.emit();
-        location.reload();
+        if (res.errors) {
+          for (let key in res.errors) {
+            let errors = res.errors[key];
+            this.errors.push(errors.message);
+          }
+        } else {
+          this.file_input.nativeElement.value = "";
+          this.venue_event.emit();
+          location.reload();
+        }
       });
     }
   }
@@ -82,9 +89,16 @@ export class UploadComponent implements OnInit, OnDestroy {
     } else {
       let formData = new FormData(this.my_form.nativeElement);
       this._venueService.post_video_pic_to_s3(formData, this.venue._id, res => {
-        this.file_input.nativeElement.value = "";
-        this.venue_event.emit();
-        location.reload();
+        if (res.errors) {
+          for (let key in res.errors) {
+            let errors = res.errors[key];
+            this.errors.push(errors.message);
+          }
+        } else {
+          this.file_input.nativeElement.value = "";
+          this.venue_event.emit();
+          location.reload();
+        }
       });
     }
   }
@@ -96,9 +110,16 @@ export class UploadComponent implements OnInit, OnDestroy {
     } else {
       let formData = new FormData(this.my_form.nativeElement);
       this._venueService.post_tour_pic_to_s3(formData, this.venue._id, res => {
-        this.file_input.nativeElement.value = "";
-        this.venue_event.emit();
-        location.reload();
+        if (res.errors) {
+          for (let key in res.errors) {
+            let errors = res.errors[key];
+            this.errors.push(errors.message);
+          }
+        } else {
+          this.file_input.nativeElement.value = "";
+          this.venue_event.emit();
+          location.reload();
+        }
       });
     }
   }

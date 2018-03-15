@@ -66,9 +66,16 @@ export class VendorUploadComponent implements OnInit {
     } else {
       let formData = new FormData(this.my_form.nativeElement);
       this._vendorService.post_to_s3(formData, this.vendor._id, res => {
-        this.file_input.nativeElement.value = "";
-        this.vendor_event.emit();
-        location.reload();
+        if (res.errors) {
+          for (let key in res.errors) {
+            let errors = res.errors[key];
+            this.errors.push(errors.message);
+          }
+        } else {
+          this.file_input.nativeElement.value = "";
+          this.vendor_event.emit();
+          location.reload();
+        }
       });
     }
   }
