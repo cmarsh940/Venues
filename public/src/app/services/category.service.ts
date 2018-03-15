@@ -77,6 +77,6 @@ export class CategoryService {
 
   /** Log a UserService message with the MessageService */
   private log(message: string) {
-    this._messageService.add('UserService: ' + message);
+    this._messageService.add('CategoryService: ' + message);
   }
 }
