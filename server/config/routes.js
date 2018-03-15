@@ -5,7 +5,7 @@ const Vendors = require('../controllers/vendors');
 const Reviews = require('../controllers/reviews');
 const Amenities = require('../controllers/amenities');
 const Categories = require('../controllers/categories');
-const VendorCategories = require("../controllers/VendorCategory");
+const VendorCategories = require('../controllers/vendorCategory');
 
 module.exports = function (app) {
     app.get('/users', Users.index);
