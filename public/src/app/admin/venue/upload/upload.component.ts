@@ -74,6 +74,34 @@ export class UploadComponent implements OnInit, OnDestroy {
       });
     }
   }
+  uploadVideo() {
+    this.errors = [];
+    if (this._userService.getCurrentUser() == null) {
+      console.log("REPORTED: You do not have administration privilages");
+      this._router.navigateByUrl("/");
+    } else {
+      let formData = new FormData(this.my_form.nativeElement);
+      this._venueService.post_video_pic_to_s3(formData, this.venue._id, res => {
+        this.file_input.nativeElement.value = "";
+        this.venue_event.emit();
+        location.reload();
+      });
+    }
+  }
+  uploadTour() {
+    this.errors = [];
+    if (this._userService.getCurrentUser() == null) {
+      console.log("REPORTED: You do not have administration privilages");
+      this._router.navigateByUrl("/");
+    } else {
+      let formData = new FormData(this.my_form.nativeElement);
+      this._venueService.post_tour_pic_to_s3(formData, this.venue._id, res => {
+        this.file_input.nativeElement.value = "";
+        this.venue_event.emit();
+        location.reload();
+      });
+    }
+  }
 
   uploadMultiple() {
     this.errors = [];

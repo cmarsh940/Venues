@@ -45,6 +45,8 @@ module.exports = function (app) {
     app.get('/venues/category/:category', Venues.category);
     app.post('/venues', Venues.create);
     app.put('/venues/upload/:id', Venues.upload);
+    app.put('/venues/uploadVideoPic/:id', Venues.uploadVideoPic);
+    app.put('/venues/uploadTourPic/:id', Venues.uploadTourPic);
     app.post('/venues/upload/multiple/:id', Venues.gallery);
     app.delete('/venues/:id', Venues.delete);
     app.get('/venues/:id', Venues.show);

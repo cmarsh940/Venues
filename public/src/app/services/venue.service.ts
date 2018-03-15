@@ -62,6 +62,28 @@ export class VenueService {
       err => console.log(err)
     );
   }
+
+  post_video_pic_to_s3(formData, id: string, callback) {
+    console.log("**** HIT SERVICE", formData);
+    var URL = API_URL + "uploadVideoPic" + "/" + id;
+    return this._http.put(URL, formData).subscribe(
+      res => {
+        callback(res.json());
+      },
+      err => console.log(err)
+    );
+  }
+  
+  post_tour_pic_to_s3(formData, id: string, callback) {
+    console.log("**** HIT SERVICE", formData);
+    var URL = API_URL + "uploadTourPic" + "/" + id;
+    return this._http.put(URL, formData).subscribe(
+      res => {
+        callback(res.json());
+      },
+      err => console.log(err)
+    );
+  }
   post_multiple_to_s3(formData, id: string, callback) {
     console.log("**** HIT SERVICE", formData);
     var URL = API_URL + "upload" + "/" + "multiple" + "/" + id;

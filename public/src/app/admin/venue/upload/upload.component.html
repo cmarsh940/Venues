@@ -5,7 +5,7 @@
     <div class="col-3">
         <form (ngSubmit)="uploadOne()" #form encType="multipart/form-data">
             <div class="file-upload">
-                <input #file type="file" name="picture" name="picture">
+                <input #file type="file" name="picture" />
             </div>
             <div class="submit-button">
                 <button mat-raised-button type="submit" color="accent">Submit</button>
@@ -20,12 +20,52 @@
     </div>
     <hr>
     <div>
+        <h2 class="text-center">Video  Image</h2>
+    </div>
+    <div class="col-3">
+        <form (ngSubmit)="uploadVideo()" #form encType="multipart/form-data">
+            <div class="file-upload">
+                <input #file type="file" name="picture" />
+            </div>
+            <div class="submit-button">
+                <button mat-raised-button type="submit" color="accent">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <p [ngStyle]="{ 'color': 'red' }" *ngFor="let error of errors">{{ error }}</p>
+    </div>
+    <div class="col-3">
+        <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.video_pic_url}}' alt="Venue Picture" class="img-thumbnail">
+    </div>
+    <hr>
+    <div>
+        <h2 class="text-center">Tour Image</h2>
+    </div>
+    <div class="col-3">
+        <form (ngSubmit)="uploadTour()" #form encType="multipart/form-data">
+            <div class="file-upload">
+                <input #file type="file" name="picture" />
+            </div>
+            <div class="submit-button">
+                <button mat-raised-button type="submit" color="accent">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <p [ngStyle]="{ 'color': 'red' }" *ngFor="let error of errors">{{ error }}</p>
+    </div>
+    <div class="col-3">
+        <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.tour_pic_url}}' alt="Venue Picture" class="img-thumbnail">
+    </div>
+    <hr>
+    <div>
         <h2 class="text-center">Gallery Images</h2>
     </div>
     <div class="col-12">
         <form (ngSubmit)="uploadMultiple()" #formMultiple encType="multipart/form-data">
             <div class="file-upload">
-                <input #files type="file" name="picture" multiple>
+                <input #files type="file" name="picture" multiple />
             </div>
             <div class="submit-button">
                 <button mat-raised-button type="submit" color="accent">Submit</button>

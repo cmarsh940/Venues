@@ -179,6 +179,68 @@ class VenuesController {
       return res.json(new_venue);
     });
   }
+  
+  uploadVideoPic(req, res) {
+    let new_venue = new Venue(req.body);
+    let busboy = new Busboy({ headers: req.headers });
+    console.log("*** SERVER REQ.FILES:", req.files);
+    console.log("*** SERVER REQ.FILES.PICTURE:", req.files.picture);
+    if (req.files.picture) {
+      let file = req.files.picture;
+      let file_type = file.mimetype.match(/image\/(\w+)/);
+      let new_file_name = file.name;
+
+      if (file_type) {
+        new_venue.pic_url = new_file_name;
+        busboy.on("finish", function() {
+          const venue = req.params.id;
+          const file = req.files.picture;
+          uploadToS3(file, venue);
+        });
+        req.pipe(busboy);
+      }
+    }
+    Venue.update(
+      { _id: req.params.id },
+      { $set: { video_pic_url: new_venue.video_pic_url } }
+    ).exec((err, new_venue) => {
+      if (err) {
+        return res.status(204).json(err);
+      }
+      return res.json(new_venue);
+    });
+  }
+
+  uploadTourPic(req, res) {
+    let new_venue = new Venue(req.body);
+    let busboy = new Busboy({ headers: req.headers });
+    console.log("*** SERVER REQ.FILES:", req.files);
+    console.log("*** SERVER REQ.FILES.PICTURE:", req.files.picture);
+    if (req.files.picture) {
+      let file = req.files.picture;
+      let file_type = file.mimetype.match(/image\/(\w+)/);
+      let new_file_name = file.name;
+
+      if (file_type) {
+        new_venue.pic_url = new_file_name;
+        busboy.on("finish", function() {
+          const venue = req.params.id;
+          const file = req.files.picture;
+          uploadToS3(file, venue);
+        });
+        req.pipe(busboy);
+      }
+    }
+    Venue.update(
+      { _id: req.params.id },
+      { $set: { tour_pic_url: new_venue.tour_pic_url } }
+    ).exec((err, new_venue) => {
+      if (err) {
+        return res.status(204).json(err);
+      }
+      return res.json(new_venue);
+    });
+  }
 
   gallery(req, res) {
     let new_venue = new Venue(req.body);
