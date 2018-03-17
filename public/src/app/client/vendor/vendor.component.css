@@ -66,6 +66,10 @@ h6 {
   line-height: 1.5rem;
 }
 
+.color {
+  color: #00B8D4!important;
+}
+
 .header-image {
   width: 100%;
   min-height: 20em;
@@ -75,10 +79,24 @@ h6 {
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
+  background-color: black;
 }
 
 
 .header-text {
   padding: 3% 0;
   background: #f1f1f1;
+}
+
+.card-group {
+  display: inline-block;
+  margin: 1%;
+}
+
+.card {
+  min-width: 20rem;
+  max-width: 20rem;
+  min-width: 20rem;
+  max-width: 20rem;
+  overflow: hidden;
 }

@@ -110,7 +110,7 @@ const VenueSchema = new mongoose.Schema(
       required: false,
       trim: true
     },
-    tour_pic_url: {
+    tourPicURL: {
       type: String,
       required: false,
       trim: true
@@ -120,7 +120,7 @@ const VenueSchema = new mongoose.Schema(
       required: false,
       trim: true
     },
-    video_pic_url: {
+    videoPicURL: {
       type: String,
       required: false,
       trim: true

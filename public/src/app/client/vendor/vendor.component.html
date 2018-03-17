@@ -18,10 +18,35 @@
         <h5 class="text-center"> LOOKING FOR A SPECIFIC SERVICE PROVIDER? CHOOSE FROM THE LIST BELOW OR BROWSE ALL OF OUR PREMIUM VENDORS.</h5>
         <div class="text-center">
             <mat-form-field>
-                <mat-select [(value)]="vendor._category">
+                <mat-select [(value)]="vendorCategories">
                     <mat-option *ngFor="let category of vendorCategories">{{category.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="card-group" *ngFor="let vendor of vendors; let i = index">
+            <mat-card class="card" [tabindex]="i">
+                <ng-container *ngIf="vendor.pic_url === ''; else elseTemplate">
+                    <img mat-card-image src='/assets/images/missing.png' alt="Vendor Picture">
+                </ng-container>
+                <ng-template #elseTemplate>
+                    <!-- LIVE -->
+                    <!-- <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/{{vendor.pic_url}}' alt="Vendor Picture">  -->
+                    <!-- TEST -->
+                    <img mat-card-image src="https://venue-test.s3.amazonaws.com/Vendors/{{vendor._id}}/{{vendor.pic_url}}" alt="Vendor Picture">
+                </ng-template>
+                <mat-card-title>
+                    <h5 class="text-center"><span class="color">{{vendor?.name}}</span></h5>
+                    <span class="line"></span>
+                    <mat-card-subtitle class="text-center">{{vendor?.city | titlecase}}, {{vendor?.state | uppercase}}</mat-card-subtitle>
+                </mat-card-title>
+                <mat-card-actions>
+                    <div class="text-center">
+                        <button mat-button [routerLink]="['/vendor', 'display', vendor._id]" matTooltip="View {{vendor.name}}">VIEW</button>
+                    </div>
+                </mat-card-actions>
+            </mat-card>
         </div>
     </div>
 

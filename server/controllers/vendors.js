@@ -16,9 +16,6 @@ const AWS = require("aws-sdk");
 const Busboy = require("busboy");
 
 function uploadToS3(file, vendor) {
-  console.log("*** STARTING TO UPLOADTOS3 FUNCTION");
-  console.log("*** S3 FILE:", file);
-  console.log("*** S3 VENDOR", vendor);
   let s3bucket = new AWS.S3({
     accessKeyId: IAM_USER_KEY,
     secretAccessKey: IAM_USER_SECRET,
@@ -41,10 +38,53 @@ function uploadToS3(file, vendor) {
   });
 }
 
+function uploadLogoToS3(file, vendor) {
+  let s3bucket = new AWS.S3({
+    accessKeyId: IAM_USER_KEY,
+    secretAccessKey: IAM_USER_SECRET,
+    Bucket: BUCKET_NAME
+  });
+  s3bucket.createBucket(function() {
+    var params = {
+      Bucket: BUCKET_NAME,
+      Key: `Vendors/${vendor}/Logo/${file.name}`,
+      Body: file.data,
+      ACL: "public-read"
+    };
+    s3bucket.upload(params, function(err, data) {
+      if (err) {
+        console.log("*** Error in callback: ", err);
+        console.log("*** UPLOAD PARAMS: ", params);
+      }
+      console.log("**** SUCCESS", data);
+    });
+  });
+}
+
+function uploadVideoPicToS3(file, vendor) {
+  let s3bucket = new AWS.S3({
+    accessKeyId: IAM_USER_KEY,
+    secretAccessKey: IAM_USER_SECRET,
+    Bucket: BUCKET_NAME
+  });
+  s3bucket.createBucket(function() {
+    var params = {
+      Bucket: BUCKET_NAME,
+      Key: `Vendors/${vendor}/VideoPic/${file.name}`,
+      Body: file.data,
+      ACL: "public-read"
+    };
+    s3bucket.upload(params, function(err, data) {
+      if (err) {
+        console.log("*** Error in callback: ", err);
+        console.log("*** UPLOAD PARAMS: ", params);
+      }
+      console.log("**** SUCCESS", data);
+    });
+  });
+}
+
 function uploadManyToS3(file, vendor) {
-  console.log("*** STARTING TO UPLOADTOS3 FUNCTION");
-  console.log("*** S3 FILE:", file);
-  console.log("*** S3 VENdor", vendor);
   let s3bucket = new AWS.S3({
     accessKeyId: IAM_USER_KEY,
     secretAccessKey: IAM_USER_SECRET,
@@ -184,6 +224,67 @@ class VendorsController {
     Vendor.update(
       { _id: req.params.id },
       { $set: { pic_url: new_vendor.pic_url } }
+    ).exec((err, new_vendor) => {
+      if (err) {
+        return res.status(204).json(err);
+      }
+      return res.json(new_vendor);
+    });
+  }
+  uploadLogo(req, res) {
+    let new_vendor = new Vendor(req.body);
+    let busboy = new Busboy({ headers: req.headers });
+    console.log("*** SERVER REQ.FILES:", req.files);
+    console.log("*** SERVER REQ.FILES.PICTURE:", req.files.picture);
+    if (req.files.picture) {
+      let file = req.files.picture;
+      let file_type = file.mimetype.match(/image\/(\w+)/);
+      let new_file_name = file.name;
+
+      if (file_type) {
+        new_vendor.logo_url = new_file_name;
+        busboy.on("finish", function() {
+          const vendor = req.params.id;
+          const file = req.files.picture;
+          uploadLogoToS3(file, vendor);
+        });
+        req.pipe(busboy);
+      }
+    }
+    Vendor.update(
+      { _id: req.params.id },
+      { $set: { logo_url: new_vendor.logo_url } }
+    ).exec((err, new_vendor) => {
+      if (err) {
+        return res.status(204).json(err);
+      }
+      return res.json(new_vendor);
+    });
+  }
+
+  uploadVideoPic(req, res) {
+    let new_vendor = new Vendor(req.body);
+    let busboy = new Busboy({ headers: req.headers });
+    console.log("*** SERVER REQ.FILES:", req.files);
+    console.log("*** SERVER REQ.FILES.PICTURE:", req.files.picture);
+    if (req.files.picture) {
+      let file = req.files.picture;
+      let file_type = file.mimetype.match(/image\/(\w+)/);
+      let new_file_name = file.name;
+
+      if (file_type) {
+        new_vendor.videoPicURL = new_file_name;
+        busboy.on("finish", function() {
+          const vendor = req.params.id;
+          const file = req.files.picture;
+          uploadVideoPicToS3(file, vendor);
+        });
+        req.pipe(busboy);
+      }
+    }
+    Vendor.update(
+      { _id: req.params.id },
+      { $set: { videoPicURL: new_vendor.videoPicURL } }
     ).exec((err, new_vendor) => {
       if (err) {
         return res.status(204).json(err);

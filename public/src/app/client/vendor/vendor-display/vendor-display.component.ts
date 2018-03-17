@@ -15,6 +15,7 @@ export class VendorDisplayComponent implements OnInit {
   vendor = new Vendor();
   subscription: Subscription;
   loaded: Boolean = false;
+  errors = [];
 
   constructor(
     private _vendorService: VendorService,

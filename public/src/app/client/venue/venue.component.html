@@ -8,9 +8,9 @@
         <div id="slider">
             <figure *ngFor="let gallery of venue.gallery">
                 <!-- LIVE -->
-                <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/Gallery/{{gallery.name}}" alt>
+                <!-- <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/Gallery/{{gallery.name}}" alt> -->
                 <!-- TEST -->
-                <!-- <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/Gallery/{{gallery.name}}' alt> -->
+                <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/Gallery/{{gallery.name}}' alt>
             </figure>
         </div>
         <div class="container-fluid">
@@ -26,7 +26,7 @@
                         </div>
                         <ul class="text-left">
                             <li>
-                                <h5>{{venue.address}}, {{venue.city}} {{venue.state | uppercase}}</h5>
+                                <h5 class="black">{{venue.address}}, {{venue.city}} {{venue.state | uppercase}}</h5>
 
                             </li>
                             <li>
@@ -36,12 +36,12 @@
                             </li>
                             <li>
                                 <a href='http://{{venue.website}}' target='_blank' rel='nofollow noopener noreferrer' matTooltip="View {{venue.name}}'s' website">
-                                    <p><span>{{venue.website}}</span></p>
+                                    <p><span class="color">{{venue.website}}</span></p>
                                 </a>
                             </li>
                             <li>
                                 <a href='mailto:{{ venue.email }}' target='_top'>
-                                    <p><span>{{ venue.email }}</span></p>
+                                    <p><span class="color">{{ venue.email }}</span></p>
                                 </a>
                             </li>
                         </ul>
@@ -69,17 +69,17 @@
                             <ng-container *ngIf="vendor?.pic_url; else elseTemplate">
                                 <div class="vendor-link">
                                     <!-- LIVE -->
-                                    <div class="text-center">
+                                    <!-- <div class="text-center">
                                         <a [routerLink]="['/vendor', 'display', vendor._id]">
                                             <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/{{vendor.pic_url}}' class="img-thumbnail" id="vendor-image" alt="Vendor Picture" />
                                         </a>
-                                    </div>
+                                    </div> -->
                                     <!-- TEST -->
-                                    <!-- <div class="text-center">
+                                    <div class="text-center">
                                         <a [routerLink]="['/vendor', 'display', vendor._id]">
                                             <img src='https://venue-test.s3.amazonaws.com/Vendors/{{vendor._id}}/{{vendor.pic_url}}' class="img-thumbnail" id="vendor-image" alt="Vendor Picture" />
                                         </a>
-                                    </div> -->
+                                    </div>
                                 </div>
                             </ng-container>
                             <ng-template #elseTemplate>
@@ -106,15 +106,30 @@
                     <div id="top-right">
                         <div id="venue-about">
                             <div class="text-center">
+                                <h2>{{venue.name}}</h2>
                                 <p>{{venue.description}}</p>
                             </div>
                         </div>
                         <div class="links">
                             <div class="col-6">
                                 <!-- LIVE -->
-                                <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.video_pic_url}}" class="img-fluid img-thumbnail" alt="Venue Video">
+                                <!-- <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.videoPicURl}}" class="img-fluid img-thumbnail" alt="Venue Video"> -->
                                 <!-- TEST -->
-                                <!-- <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.video_pic_url}}' class="img-fluid img-thumbnail" alt="Venue Video"> -->
+                                <div class="text-center">
+                                    <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/VideoPic/{{venue.videoPicURL}}' class="img-fluid img-thumbnail" alt="Venue Video">
+                                    <div class="text-center image-button">
+                                        <a href="{{venue.video_url}}" target="_blank" class="white">
+                                            <i class="material-icons" id="play-icon">&#xE037;</i>
+                                            <h5 class="white" id="play-text">PLAY VIDEO</h5>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-6">
+                                LIVE
+                                <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.videoPicURl}}" class="img-fluid img-thumbnail" alt="Venue Video">
+                                TEST
+                                <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/VideoPic/{{venue.videoPicURL}}' class="img-fluid img-thumbnail" alt="Venue Video">
                                 <div class="text-center image-button">
                                     <button mat-button cdk-overlay-origin #video="cdkOverlayOrigin" (click)="isMenuOpen = !isMenuOpen" matTooltip="View Video" >
                                         <i class="material-icons">&#xE037;</i>
@@ -128,16 +143,18 @@
                                         </div>
                                     </div>
                                 </ng-template>
-                            </div>
+                            </div> -->
                             <div class="col-6">
                                 <!-- LIVE -->
-                                <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.tour_pic_url}}" class="img-fluid img-thumbnail" alt="Venue 3D Tour">
+                                <!-- <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.tourPicURL}}" class="img-fluid img-thumbnail" alt="Venue 3D Tour"> -->
                                 <!-- TEST -->
-                                <!-- <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.tour_pic_url}}' class="img-fluid img-thumbnail" alt="Venue 3D Tour"> -->
-                                <div class="text-center image-button">
-                                    <button mat-button cdk-overlay-origin #trigger="cdkOverlayOrigin" (click)="isMenuOpen = !isMenuOpen" matTooltip="View 3D tour">
-                                        3D TOUR
-                                    </button>
+                                <div class="text-center">
+                                    <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/TourPic/{{venue.tourPicURL}}' class="img-fluid img-thumbnail" alt="Venue 3D Tour">
+                                    <div class="text-center image-button">
+                                        <button mat-button cdk-overlay-origin #trigger="cdkOverlayOrigin" (click)="isMenuOpen = !isMenuOpen" matTooltip="View 3D tour">
+                                            <h5 class="white" id="play-text">3D TOUR</h5>
+                                        </button>
+                                    </div>
                                 </div>
                                 <ng-template cdk-connected-overlay [origin]="trigger" [width]="900" hasBackdrop [open]="isMenuOpen" (backdropClick)="isMenuOpen=false">
                                     <div class="overlay">
@@ -152,20 +169,20 @@
                         <div *ngFor="let gallery of venue.gallery" id="gallery">
                             <div class="col-2">
                                 <!-- LIVE -->
-                                <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/Gallery/{{gallery.name}}" alt="Venue Gallery Picture" class="img-thumbnail gallery-image">
+                                <!-- <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/Gallery/{{gallery.name}}" alt="Venue Gallery Picture" class="img-thumbnail gallery-image"> -->
                                 <!-- TEST -->
-                                <!-- <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/Gallery/{{gallery.name}}' class="img-thumbnail gallery-image" alt="Venue gallery picture"> -->
+                                <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/Gallery/{{gallery.name}}' class="img-thumbnail gallery-image" alt="Venue gallery picture">
                             </div>
                         </div>  
                     </div>
                     <div class="reviews">
-                        <h2 class="text-center"></h2>
+                        <h2 class="text-center">Reviews</h2>
                         <div class="clearfix">
                             <button mat-button color="primary" [routerLink]="['/venue', venue._id, 'review']" class="float-right">Add a Review</button>
                         </div>
                         <span class="line"></span>
                         <div *ngFor="let review of venue.reviews">
-                            <ng-container *ngIf="review.approved; else elseTemplate">
+                            <ng-container *ngIf="review.approved">
                                 <mat-card>
                                     <mat-card-header>
                                         <mat-card-title>
@@ -189,19 +206,44 @@
                                     </mat-card-actions>
                                 </mat-card>
                             </ng-container>
-                            <ng-template #elseTemplate>
-                                <mat-card>
-                                    <h6>There are no reviews for {{ venue?.name }}</h6>
-                                </mat-card>
-                            </ng-template>
                         </div>
+                        <ng-container *ngIf="!venue.reviews">
+                            <div class="text-center">
+                                <p>There are no reviews for {{venue?.name}}</p>
+                            </div>
+                        </ng-container>
                     </div>
                 </div>
-                <div id="map">
-                    <agm-map [latitude]='venue.lat' [longitude]='venue.lng' [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
-                        <agm-marker [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng">
-                        </agm-marker>
-                    </agm-map>
+                <div id="none-scroll">
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-9" id="bottom-map">
+                            <div class="map">
+                                <agm-map [latitude]='venue.lat' [longitude]='venue.lng' [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
+                                    <agm-marker [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng">
+                                        <agm-snazzy-info-window [maxWidth]="400" [padding]="0" [closeWhenOthersOpen]="true">
+                                            <ng-template>
+                                                <mat-card class="mat-card">
+                                                    <mat-card-header>
+                                                        <!-- LIVE -->
+                                                        <!-- <img mat-card-avatar src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Avatar Picture"> -->
+                                                        <!-- TEST -->
+                                                        <img mat-card-avatar src="https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}" alt="Venue Avatar Picture">
+                                                    </mat-card-header>
+                                                    <mat-card-content class="text-center">
+                                                        <mat-card-subtitle>{{venue?.name}}</mat-card-subtitle>
+                                                    </mat-card-content>
+                                                    <mat-card-actions>
+                                                        <button mat-raised-button [routerLink]="['/venue', 'display', venue._id]">VIEW</button>
+                                                    </mat-card-actions>
+                                                </mat-card>
+                                            </ng-template>
+                                        </agm-snazzy-info-window>
+                                    </agm-marker>
+                                </agm-map>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,3 +1,4 @@
+import { CategoryService } from './../../services/category.service';
 import { Component, OnInit } from '@angular/core';
 import { AgmMap } from '@agm/core/directives/map';
 import { google } from '@agm/core/services/google-maps-types';
@@ -6,6 +7,8 @@ import { Venue } from '../../models/venue';
 import { Router } from '@angular/router';
 import { Vendor } from '../../models/vendor';
 import { VendorService } from '../../services/vendor.service';
+import { Category } from '../../models/category';
+import { VendorTwo } from '../../models/vendor-two';
 
 @Component({
   selector: "app-search",
@@ -15,8 +18,9 @@ import { VendorService } from '../../services/vendor.service';
 })
 export class SearchComponent implements OnInit {
   vendor = new Vendor();
-  vendorTwo = new Vendor();
+  vendorTwo = new VendorTwo();
   venues: Array<Venue>;
+  categories: Array<Category>;
   search_text: String = "";
   finished: boolean;
   random: number;
@@ -28,9 +32,18 @@ export class SearchComponent implements OnInit {
   longitude: number;
   title: string;
 
+  disabled = true;
+  invert = false;
+  max = 10000;
+  min = 0;
+  thumbLabel = true;
+  value = 0;
+  vertical = false;
+
   constructor(
     private _vendorService: VendorService,
     private _venueService: VenueService,
+    private _categoryService: CategoryService,
     private _router: Router
   ) {}
 
@@ -58,6 +71,7 @@ export class SearchComponent implements OnInit {
     //   this.loaded = true;
     // }, 1000);
     this.getVenues();
+    this.getCategories();
     this.loaded = true;
   }
 
@@ -72,6 +86,12 @@ export class SearchComponent implements OnInit {
       this.vendorTwo = vendor[this.randomTwo];
       console.log(this.vendorTwo);
     });
+  }
+
+  getCategories(): void {
+    this._categoryService.getCategories(
+      categories => (this.categories = categories)
+    );
   }
 
   getVenues(): void {

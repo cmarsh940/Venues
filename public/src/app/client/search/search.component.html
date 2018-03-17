@@ -16,9 +16,9 @@
                                         <mat-card class="mat-card">
                                             <mat-card-header>
                                                 <!-- LIVE -->
-                                                <img mat-card-avatar src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Avatar Picture">
+                                                <!-- <img mat-card-avatar src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Avatar Picture"> -->
                                                 <!-- TEST -->
-                                                <!-- <img mat-card-avatar src="https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}" alt="Venue Avatar Picture"> -->
+                                                <img mat-card-avatar src="https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}" alt="Venue Avatar Picture">
                                             </mat-card-header>
                                             <mat-card-content class="text-center">
                                                 <mat-card-subtitle>{{venue?.name}}</mat-card-subtitle>
@@ -36,31 +36,49 @@
 
                 <div class="col-3">
                     <div id="top-vendor">
-                        <h6 class="text-center">Featured Vendor</h6>
-                        <ng-container *ngIf="vendor?.pic_url; else elseTemplate">
-                            <div class="vendor-link">
-                                <a [routerLink]="['/vendor', 'display', vendor._id]">
-                                    <!-- Live -->
-                                    <div class="text-center">
-                                        <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/{{vendor.pic_url}}' id="vendor-image" alt="Vendor Picture">
+                        <div class="text-center">
+                            <mat-card id="vendor-card">
+                                <h6 class="text-center">
+                                    <span>Featured Vendor</span>
+                                </h6>
+                                <ng-container *ngIf="vendor?.pic_url; else elseTemplate">
+                                    <div class="vendor-link">
+                                        <!-- LIVE -->
+                                        <!-- <div class="text-center">
+                                            <a [routerLink]="['/vendor', 'display', vendor._id]">
+                                                <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/{{vendor.pic_url}}' class="img-thumbnail" id="vendor-image" alt="Vendor Picture" />
+                                            </a>
+                                        </div> -->
+                                        <!-- TEST -->
+                                        <div class="text-center">
+                                            <a [routerLink]="['/vendor', 'display', vendorTwo._id]">
+                                                <img src='https://venue-test.s3.amazonaws.com/Vendors/{{vendor._id}}/{{vendor.pic_url}}' class="img-thumbnail" id="vendor-image"
+                                                    alt="Vendor Picture" />
+                                            </a>
+                                        </div>
                                     </div>
-                                    <!-- TEST -->
-                                    <!-- <div class="text-center">
-                                        <img src='https://venue-test.s3.amazonaws.com/Vendors/{{vendor._id}}/{{vendor.pic_url}}' id="vendor-image" alt="Vendor Picture">
-                                    </div> -->
-                                    <h4 class="text-center">{{ vendor?.name }}</h4>
-                                    <h6 class="text-center">LEARN MORE</h6>
-                                </a>
-                            </div>
-                        </ng-container>
-                        <ng-template #elseTemplate>
-                            <h2 class=text-center>Vendor</h2>
-                            <div class="vendor-link">
-                                <a [routerLink]="['/vendor', 'display', vendor._id]">
-                                    <img src='/assets/images/missing.png' id="vendor-image" alt="Vendor Picture">
-                                </a>
-                            </div>
-                        </ng-template>
+                                </ng-container>
+                                <ng-template #elseTemplate>
+                                    <div class="vendor-link">
+                                        <a [routerLink]="['/vendor', 'display', vendor._id]">
+                                            <img src='/assets/images/missing.png' class="img-thumbnail" id="vendor-image" alt="Vendor Picture">
+                                        </a>
+                                    </div>
+                                </ng-template>
+                                <mat-card-title>
+                                    <h5 class="text-center"><span class="color">{{vendor?.name}}</span></h5>
+                                    <span class="line"></span>
+                                    <mat-card-subtitle class="text-center">{{vendor._category.name | titlecase}}</mat-card-subtitle>
+                                </mat-card-title>
+                                <mat-card-actions>
+                                    <div class="text-center">
+                                        <button mat-button [routerLink]="['/vendor', 'display', vendor._id]" matTooltip="View {{vendor.name}}">
+                                            <h6>LEARN MORE</h6>
+                                        </button>
+                                    </div>
+                                </mat-card-actions>
+                            </mat-card>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -69,7 +87,78 @@
             <div class="container-fluid">
                 <mat-sidenav-container class="sidenav-container">
                     <mat-sidenav align="end" mode="side" opened="true" disableClose="true" #sidenav>
-                        <input matInput type='text' name='search_text' [(ngModel)]='search_text' id='search-box' placeholder=" Search for a venue">
+                        <div class="text-center">
+                            <input matInput type='text' name='search_text' [(ngModel)]='search_text' id='search-box' placeholder=" Search for a venue">
+                        </div>
+                        <h5>VENUE TYPES</h5>
+                        <hr>
+                        <mat-radio-group class="radio-group" [(ngModel)]="search_text">
+                            <mat-radio-button class="radio-button" *ngFor="let categroy of categories" color="primary" disabled>
+                                {{categroy.name}}
+                            </mat-radio-button>
+                        </mat-radio-group>
+                        <h5>CAPACITY</h5>
+                        <hr>
+                        <mat-radio-group class="radio-group" [(ngModel)]="search_text">
+                            <mat-radio-button class="radio-button" color="primary" disabled>< 100</mat-radio-button>
+                            <mat-radio-button class="radio-button" color="primary" disabled>100 - 500</mat-radio-button>
+                            <mat-radio-button class="radio-button" color="primary" disabled><500- 1000</mat-radio-button>
+                            <mat-radio-button class="radio-button" color="primary" disabled>> 1000</mat-radio-button>
+                        </mat-radio-group>
+                        <h5>COST</h5>
+                        <hr>
+                        <div class="text-center">
+                            <mat-slider class="slider" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" step="4" tickInterval="3" [thumb-label]="thumbLabel" [(ngModel)]="value" [vertical]="vertical" color="primary">
+                            </mat-slider>
+                        </div>
+
+                        <div class="bottom-vendor">
+                            <div class="text-center">
+                                <mat-card id="vendor-card">
+                                    <h6 class="text-center">
+                                        <span>Featured Vendor</span>
+                                    </h6>
+                                    <ng-container *ngIf="vendorTwo?.pic_url; else elseTemplate">
+                                        <div class="vendor-link">
+                                            <!-- LIVE -->
+                                            <!-- <div class="text-center">
+                                                    <a [routerLink]="['/vendor', 'display', vendor._id]">
+                                                        <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/{{vendor.pic_url}}' class="img-thumbnail" id="vendor-image" alt="Vendor Picture" />
+                                                    </a>
+                                                </div> -->
+                                            <!-- TEST -->
+                                            <div class="text-center">
+                                                <a [routerLink]="['/vendor', 'display', vendorTwo._id]">
+                                                    <img src='https://venue-test.s3.amazonaws.com/Vendors/{{vendorTwo._id}}/{{vendorTwo.pic_url}}' class="img-thumbnail" id="vendor-image"
+                                                        alt="Vendor Picture" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                    <ng-template #elseTemplate>
+                                        <div class="vendor-link">
+                                            <a [routerLink]="['/vendor', 'display', vendorTwo._id]">
+                                                <img src='/assets/images/missing.png' class="img-thumbnail" id="vendor-image" alt="Vendor Picture">
+                                            </a>
+                                        </div>
+                                    </ng-template>
+                                    <mat-card-title>
+                                        <h5 class="text-center">{{vendorTwo?.name}}</h5>
+                                        <span class="line"></span>
+                                        <mat-card-subtitle class="text-center">{{vendorTwo._category.name | titlecase}}</mat-card-subtitle>
+                                    </mat-card-title>
+                                    <mat-card-actions>
+                                        <div class="text-center">
+                                            <button mat-button [routerLink]="['/vendor', 'display', vendorTwo._id]" matTooltip="View {{vendorTwo.name}}">
+                                                <span>LEARN MORE</span>
+                                            </button>
+                                        </div>
+                                    </mat-card-actions>
+                                </mat-card>
+                            </div>
+                        </div>
+                        
+
                     </mat-sidenav>
                     <mat-sidenav-content>
                         <h2 class="text-center">VENUES</h2>
@@ -80,9 +169,9 @@
                                 </ng-container>
                                 <ng-template #elseTemplate>
                                     <!-- LIVE -->
-                                    <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Picture"> 
+                                    <!-- <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Picture">  -->
                                     <!-- TEST -->
-                                    <!-- <img mat-card-image src="https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}" alt="Venue Picture"> -->
+                                    <img mat-card-image src="https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}" alt="Venue Picture">
                                 </ng-template>
                                 <mat-card-title>
                                     <h5 class="text-center">{{venue?.name}}</h5>

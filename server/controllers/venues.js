@@ -42,6 +42,54 @@ function uploadToS3(file, venue) {
     });
 }
 
+function uploadVideoPicToS3(file, venue) {
+    console.log("*** SERVER VIDEO FILE:", file);
+    let s3bucket = new AWS.S3({
+        accessKeyId: IAM_USER_KEY,
+        secretAccessKey: IAM_USER_SECRET,
+        Bucket: BUCKET_NAME
+    });
+    s3bucket.createBucket(function() {
+        var params = {
+            Bucket: BUCKET_NAME,
+            Key: `Venues/${venue}/VideoPic/${file.name}`,
+            Body: file.data,
+            ACL: 'public-read'
+        };
+        s3bucket.upload(params, function(err, data) {
+        if (err) {
+            console.log("*** Error in callback: ", err);
+            console.log("*** UPLOAD PARAMS: ", params);
+        }
+            console.log("**** SUCCESS", data);
+        });
+    });
+}
+
+function uploadTourPicToS3(file, venue) {
+  console.log("*** SERVER TOUR FILE:", file)
+    let s3bucket = new AWS.S3({
+        accessKeyId: IAM_USER_KEY,
+        secretAccessKey: IAM_USER_SECRET,
+        Bucket: BUCKET_NAME
+    });
+    s3bucket.createBucket(function() {
+        var params = {
+            Bucket: BUCKET_NAME,
+            Key: `Venues/${venue}/TourPic/${file.name}`,
+            Body: file.data,
+            ACL: 'public-read'
+        };
+        s3bucket.upload(params, function(err, data) {
+        if (err) {
+            console.log("*** Error in callback: ", err);
+            console.log("*** UPLOAD PARAMS: ", params);
+        }
+            console.log("**** SUCCESS", data);
+        });
+    });
+}
+
 function uploadManyToS3(file, venue) {
     console.log("*** STARTING TO UPLOADTOS3 FUNCTION")
     console.log("*** S3 FILE:", file)
@@ -152,8 +200,6 @@ class VenuesController {
   upload(req, res) {
     let new_venue = new Venue(req.body);
     let busboy = new Busboy({ headers: req.headers });
-    console.log("*** SERVER REQ.FILES:", req.files);
-    console.log("*** SERVER REQ.FILES.PICTURE:", req.files.picture);
     if (req.files.picture) {
       let file = req.files.picture;
       let file_type = file.mimetype.match(/image\/(\w+)/);
@@ -179,30 +225,29 @@ class VenuesController {
       return res.json(new_venue);
     });
   }
-  
+
   uploadVideoPic(req, res) {
     let new_venue = new Venue(req.body);
     let busboy = new Busboy({ headers: req.headers });
-    console.log("*** SERVER REQ.FILES:", req.files);
-    console.log("*** SERVER REQ.FILES.PICTURE:", req.files.picture);
     if (req.files.picture) {
       let file = req.files.picture;
       let file_type = file.mimetype.match(/image\/(\w+)/);
       let new_file_name = file.name;
 
       if (file_type) {
-        new_venue.pic_url = new_file_name;
+        new_venue.videoPicURL = new_file_name;
         busboy.on("finish", function() {
           const venue = req.params.id;
           const file = req.files.picture;
-          uploadToS3(file, venue);
+          console.log("*** SERVER FILE:", file);
+          uploadVideoPicToS3(file, venue);
         });
         req.pipe(busboy);
       }
     }
     Venue.update(
       { _id: req.params.id },
-      { $set: { video_pic_url: new_venue.video_pic_url } }
+      { $set: { videoPicURL: new_venue.videoPicURL } }
     ).exec((err, new_venue) => {
       if (err) {
         return res.status(204).json(err);
@@ -214,26 +259,24 @@ class VenuesController {
   uploadTourPic(req, res) {
     let new_venue = new Venue(req.body);
     let busboy = new Busboy({ headers: req.headers });
-    console.log("*** SERVER REQ.FILES:", req.files);
-    console.log("*** SERVER REQ.FILES.PICTURE:", req.files.picture);
     if (req.files.picture) {
       let file = req.files.picture;
       let file_type = file.mimetype.match(/image\/(\w+)/);
       let new_file_name = file.name;
 
       if (file_type) {
-        new_venue.pic_url = new_file_name;
+        new_venue.tourPicURL = new_file_name;
         busboy.on("finish", function() {
           const venue = req.params.id;
           const file = req.files.picture;
-          uploadToS3(file, venue);
+          uploadTourPicToS3(file, venue);
         });
         req.pipe(busboy);
       }
     }
     Venue.update(
       { _id: req.params.id },
-      { $set: { tour_pic_url: new_venue.tour_pic_url } }
+      { $set: { tourPicURL: new_venue.tourPicURL } }
     ).exec((err, new_venue) => {
       if (err) {
         return res.status(204).json(err);
@@ -245,8 +288,6 @@ class VenuesController {
   gallery(req, res) {
     let new_venue = new Venue(req.body);
     let busboy = new Busboy({ headers: req.headers });
-    console.log("*** SERVER REQ.FILES:", req.files);
-    console.log("*** SERVER REQ.FILES.PICTURE:", req.files.picture);
     if (req.files.picture) {
       let file = req.files.picture;
       let file_type = file.mimetype.match(/image\/(\w+)/);
@@ -263,15 +304,14 @@ class VenuesController {
       }
     }
     let gallery = req.files.picture;
-    Venue.update(
-      { _id: req.params.id },
-      { $push: { gallery: gallery } }
-    ).exec((err, new_venue) => {
-      if (err) {
-        return res.status(204).json(err);
+    Venue.update({ _id: req.params.id }, { $push: { gallery: gallery } }).exec(
+      (err, new_venue) => {
+        if (err) {
+          return res.status(204).json(err);
+        }
+        return res.json(new_venue);
       }
-      return res.json(new_venue);
-    });
+    );
   }
   // gallery(req, res) {
   //   let new_venue = new Venue(req.body);
@@ -337,7 +377,7 @@ class VenuesController {
           return res.json(venue);
         });
       }
-    })
+    });
   }
 
   images(req, res) {

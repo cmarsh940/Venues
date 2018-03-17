@@ -8,6 +8,8 @@ export class Vendor {
          state: string;
          website: string;
          video_url: string;
+         videoPicURL: string;
+         logo_url: string;
          _category: { _id: string; name: string; createdAt: any; updatedAt: any };
          description: string;
          facebook_url: any;
