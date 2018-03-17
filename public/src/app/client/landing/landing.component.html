@@ -36,9 +36,9 @@
             <div id="slider">
                 <figure *ngFor="let vendor of vendors">
                     <!-- LIVE -->
-                    <!-- <img class="d-block" src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/{{vendor.pic_url}}' alt="Vendor Picture"> -->
+                    <img class="d-block" src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/{{vendor.pic_url}}' alt="Vendor Picture">
                     <!-- TEST -->
-                    <img class="d-block" src='https://s3-us-west-2.amazonaws.com/venue-test/Vendors/{{vendor._id}}/{{vendor.pic_url}}' alt="Vendor Picture">
+                    <!-- <img class="d-block" src='https://s3-us-west-2.amazonaws.com/venue-test/Vendors/{{vendor._id}}/{{vendor.pic_url}}' alt="Vendor Picture"> -->
                     <div class="small-box">
                         <h6>{{vendor?.name | titlecase}}</h6>
                         <p>{{vendor._category.name}}</p>
@@ -67,14 +67,14 @@
                 <mat-card class="card" [tabindex]="i">
                     <ng-container *ngIf="venue.pic_url; else elseTemplate">
                         <!-- LIVE -->
-                        <!-- <a [routerLink]="['/venue', 'display', venue._id]">
-                            <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Vendue Picture" class="img-responsive">
-                        </a> -->
-                        <!-- TEST -->
                         <a [routerLink]="['/venue', 'display', venue._id]">
+                            <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Vendue Picture" class="img-responsive">
+                        </a>
+                        <!-- TEST -->
+                        <!-- <a [routerLink]="['/venue', 'display', venue._id]">
                             <img mat-card-image src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Vendue Picture"
                                 class="img-responsive">
-                        </a>
+                        </a> -->
                     </ng-container>
                     <ng-template #elseTemplate>
                         <a [routerLink]="['/venue', 'display', venue._id]">
