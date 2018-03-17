@@ -8,9 +8,9 @@
         <div id="slider">
             <figure *ngFor="let gallery of venue.gallery">
                 <!-- LIVE -->
-                <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/Gallery/{{gallery.name}}" alt>
+                <!-- <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/Gallery/{{gallery.name}}" alt> -->
                 <!-- TEST -->
-                <!-- <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/Gallery/{{gallery.name}}' alt> -->
+                <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/Gallery/{{gallery.name}}' alt>
             </figure>
         </div>
         <div class="container-fluid">
@@ -69,17 +69,17 @@
                             <ng-container *ngIf="vendor?.pic_url; else elseTemplate">
                                 <div class="vendor-link">
                                     <!-- LIVE -->
-                                    <div class="text-center">
+                                    <!-- <div class="text-center">
                                         <a [routerLink]="['/vendor', 'display', vendor._id]">
                                             <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/{{vendor.pic_url}}' class="img-thumbnail" id="vendor-image" alt="Vendor Picture" />
                                         </a>
-                                    </div>
+                                    </div> -->
                                     <!-- TEST -->
-                                    <!-- <div class="text-center">
+                                    <div class="text-center">
                                         <a [routerLink]="['/vendor', 'display', vendor._id]">
                                             <img src='https://venue-test.s3.amazonaws.com/Vendors/{{vendor._id}}/{{vendor.pic_url}}' class="img-thumbnail" id="vendor-image" alt="Vendor Picture" />
                                         </a>
-                                    </div> -->
+                                    </div>
                                 </div>
                             </ng-container>
                             <ng-template #elseTemplate>
@@ -117,9 +117,9 @@
                                     <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/VideoPic/{{venue.videoPicURL}}" class="img-fluid img-thumbnail" alt="Venue Video">
                                 </div>
                                 <!-- TEST -->
-                                <!-- <div class="text-center">
+                                <div class="text-center">
                                     <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/VideoPic/{{venue.videoPicURL}}' class="img-fluid img-thumbnail" alt="Venue Video">
-                                </div> -->
+                                </div>
                                 <div class="text-center image-button">
                                     <a href="{{venue.video_url}}" target="_blank" class="white">
                                         <i class="material-icons" id="play-icon">&#xE037;</i>
@@ -129,13 +129,13 @@
                             </div>
                             <div class="col-6">
                                 <!-- LIVE -->
-                                <div class="text-center">
-                                    <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.tourPicURL}}" class="img-fluid img-thumbnail" alt="Venue 3D Tour">
-                                </div>
-                                <!-- TEST -->
                                 <!-- <div class="text-center">
-                                    <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/TourPic/{{venue.tourPicURL}}' class="img-fluid img-thumbnail" alt="Venue 3D Tour">
+                                    <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.tourPicURL}}" class="img-fluid img-thumbnail" alt="Venue 3D Tour">
                                 </div> -->
+                                <!-- TEST -->
+                                <div class="text-center">
+                                    <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/TourPic/{{venue.tourPicURL}}' class="img-fluid img-thumbnail" alt="Venue 3D Tour">
+                                </div>
                                 <div class="text-center image-button">
                                     <button mat-button cdk-overlay-origin #trigger="cdkOverlayOrigin" (click)="isMenuOpen = !isMenuOpen" matTooltip="View 3D tour">
                                         <h5 class="white" id="play-text">3D TOUR</h5>
@@ -154,9 +154,9 @@
                         <div *ngFor="let gallery of venue.gallery" id="gallery">
                             <div class="col-2">
                                 <!-- LIVE -->
-                                <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/Gallery/{{gallery.name}}" alt="Venue Gallery Picture" class="img-thumbnail gallery-image">
+                                <!-- <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/Gallery/{{gallery.name}}" alt="Venue Gallery Picture" class="img-thumbnail gallery-image"> -->
                                 <!-- TEST -->
-                                <!-- <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/Gallery/{{gallery.name}}' class="img-thumbnail gallery-image" alt="Venue gallery picture"> -->
+                                <img src='https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/Gallery/{{gallery.name}}' class="img-thumbnail gallery-image" alt="Venue gallery picture">
                             </div>
                         </div>  
                     </div>
@@ -211,9 +211,9 @@
                                                 <mat-card class="mat-card">
                                                     <mat-card-header>
                                                         <!-- LIVE -->
-                                                        <img mat-card-avatar src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Avatar Picture">
+                                                        <!-- <img mat-card-avatar src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Avatar Picture"> -->
                                                         <!-- TEST -->
-                                                        <!-- <img mat-card-avatar src="https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}" alt="Venue Avatar Picture"> -->
+                                                        <img mat-card-avatar src="https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}" alt="Venue Avatar Picture">
                                                     </mat-card-header>
                                                     <mat-card-content class="text-center">
                                                         <mat-card-subtitle>{{venue?.name}}</mat-card-subtitle>

@@ -6,8 +6,8 @@ const Review = mongoose.model("Review");
 
 const config = require("../config/config");
 
-const BUCKET_NAME = "tulsa-venues";
-// const BUCKET_NAME = "venue-test";
+// const BUCKET_NAME = "tulsa-venues";
+const BUCKET_NAME = "venue-test";
 const IAM_USER_KEY = config.iamUser;
 const IAM_USER_SECRET = config.iamSecret;
 

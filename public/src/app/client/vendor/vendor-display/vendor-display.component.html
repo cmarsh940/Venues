@@ -8,9 +8,9 @@
         <div id="slider">
             <figure *ngFor="let gallery of vendor.gallery">
                 <!-- LIVE -->
-                <img src="https://s3-us-west-2.amazonaws.com/tulsa-vendors/Vendors/{{vendor._id}}/Gallery/{{gallery.name}}" alt>
+                <!-- <img src="https://s3-us-west-2.amazonaws.com/tulsa-vendors/Vendors/{{vendor._id}}/Gallery/{{gallery.name}}" alt> -->
                 <!-- TEST -->
-                <!-- <img src='https://venue-test.s3.amazonaws.com/Vendors/{{vendor._id}}/Gallery/{{gallery.name}}' alt> -->
+                <img src='https://venue-test.s3.amazonaws.com/Vendors/{{vendor._id}}/Gallery/{{gallery.name}}' alt>
             </figure>
         </div>
         <div class="container-fluid">
@@ -19,9 +19,9 @@
                     <div class="top-left">
                         <div class="text-center">
                             <!-- LIVE -->
-                            <img src="https://s3-us-west-2.amazonaws.com/tulsa-vendors/Vendors/{{vendor._id}}/Logo/{{vendor.logo_url}}" class="img-thumbnail" alt="Vendor Logo">
+                            <!-- <img src="https://s3-us-west-2.amazonaws.com/tulsa-vendors/Vendors/{{vendor._id}}/Logo/{{vendor.logo_url}}" class="img-thumbnail" alt="Vendor Logo"> -->
                             <!-- TEST -->
-                            <!-- <img src="https://venue-test.s3.amazonaws.com/Vendors/{{vendor._id}}/Logo/{{vendor.logo_url}}" class="img-thumbnail" alt="Vendor Logo"> -->
+                            <img src="https://venue-test.s3.amazonaws.com/Vendors/{{vendor._id}}/Logo/{{vendor.logo_url}}" class="img-thumbnail" alt="Vendor Logo">
                         </div>
                         <ul class="text-left">
                             <li>
@@ -58,14 +58,14 @@
                             <div class="text-center">
                                 <div class="col-6">
                                     <!-- LIVE -->
-                                    <div class="text-center">
-                                        <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/VideoPic/{{vendor.videoPicURL}}" class="img-fluid img-thumbnail" alt="Vendor Video">
-                                    </div>
-                                    <!-- TEST -->
                                     <!-- <div class="text-center">
+                                        <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/VideoPic/{{vendor.videoPicURL}}" class="img-fluid img-thumbnail" alt="Vendor Video">
+                                    </div> -->
+                                    <!-- TEST -->
+                                    <div class="text-center">
                                         <img src='https://venue-test.s3.amazonaws.com/Vendors/{{vendor._id}}/VideoPic/{{vendor.videoPicURL}}' class="img-fluid img-thumbnail"
                                             alt="Vendor Video">
-                                    </div> -->
+                                    </div>
                                     <div class="text-center image-button">
                                         <a href="{{vendor.video_url}}" target="_blank" class="white">
                                             <i class="material-icons" id="play-icon">&#xE037;</i>
@@ -78,9 +78,9 @@
                         <div *ngFor="let gallery of vendor.gallery" id="gallery">
                             <div class="col-2">
                                 <!-- LIVE -->
-                                <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/Gallery/{{gallery.name}}" alt="Vendor Gallery Picture" class="img-thumbnail gallery-image">
+                                <!-- <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/Gallery/{{gallery.name}}" alt="Vendor Gallery Picture" class="img-thumbnail gallery-image"> -->
                                 <!-- TEST -->
-                                <!-- <img src='https://venue-test.s3.amazonaws.com/Vendors/{{vendor._id}}/Gallery/{{gallery.name}}' class="img-thumbnail gallery-image" alt="Vendor gallery picture"> -->
+                                <img src='https://venue-test.s3.amazonaws.com/Vendors/{{vendor._id}}/Gallery/{{gallery.name}}' class="img-thumbnail gallery-image" alt="Vendor gallery picture">
                             </div>
                         </div>
                     </div>
