@@ -40,6 +40,7 @@
   z-index: 3;
   background: white;
   overflow: hidden;
+  box-shadow: 0 0px 10px #0000005c;
 }
 .container-fluid {
   margin: 0;
