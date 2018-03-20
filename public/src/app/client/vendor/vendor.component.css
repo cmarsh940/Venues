@@ -1,5 +1,13 @@
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h1, h5, h6 {
+        max-width: 100%;
+        min-width: 100%;
+    }
 
 }
 
@@ -19,6 +27,10 @@
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+  h1, h5, h6 {
+        max-width: 55%;
+        min-width: 55%;
+    }
 
 }
 
@@ -44,7 +56,6 @@ div.loading {
 }
 
 h1, h5, h6 {
-  width: 55%;
   margin: auto;
 }
 

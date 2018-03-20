@@ -7,6 +7,7 @@ import { Review } from '../../../models/review';
 import { UserService } from '../../../services/user.service';
 import { ReviewService } from '../../../services/review.service';
 import { Venue } from '../../../models/venue';
+import { Location } from "@angular/common";
 
 
 @Component({
@@ -35,7 +36,8 @@ export class ReviewNewComponent implements OnInit, OnDestroy {
     private _userService: UserService,
     private _venueService: VenueService,
     private _router: Router,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -54,17 +56,21 @@ export class ReviewNewComponent implements OnInit, OnDestroy {
 
   createReview() {
     this.errors = [];
-    return this._reviewService.createReview(this.venue._id, this.newReview, review => {
-      console.log(review);
-      if (review.errors) {
-        for (let key in review.errors) {
-          let errors = review.errors[key];
-          this.errors.push(errors.message);
+    return this._reviewService.createReview(
+      this.venue._id,
+      this.newReview,
+      review => {
+        console.log(review);
+        if (review.errors) {
+          for (let key in review.errors) {
+            let errors = review.errors[key];
+            this.errors.push(errors.message);
+          }
+        } else {
+          alert("Thank you, We are reviewing your message now");
+          this.location.back();
         }
-      } else {
-        alert("Thank you, We are reviewing your message now");
-        this._router.navigate(["/search"]);
       }
-    });
+    );
   }
 }

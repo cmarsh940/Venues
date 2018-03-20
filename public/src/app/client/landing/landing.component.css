@@ -5,6 +5,19 @@
         padding: 0;
     }
 
+    .group {
+        display: none;
+    }
+    
+    .col-6 {
+        display: block;
+        max-width: 100%;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
     #main {
         width:100%;
         max-height: 28em;
@@ -53,13 +66,6 @@
 
     div.col-12 {
         background: #ffffff; /* For browsers that do not support gradients */
-        background: linear-gradient(white, whitesmoke);
-        height: 100%;
-    }
-
-    #bottom-group {
-        background: #ffffff; /* For browsers that do not support gradients */
-        background: linear-gradient(whitesmoke, white);
         height: 100%;
     }
 
@@ -75,14 +81,18 @@
     }
 
     .card {
-        
-        border-radius: 5%;
-        overflow: hidden;
+        margin: 0;
         padding: 0;
+        max-width: 100%;
+        min-width: 100%;
+        max-height: 20rem;
+        min-height: 20rem;
+        overflow: hidden;
     }
 
     .mat-card-image {
-        object-position: bottom;
+        max-height: 13rem;
+        min-height: 13rem;
     }
 
     .mat-card-title {
@@ -103,8 +113,6 @@
     color:#00B8D4;
     }
 
-
-
     img {
         object-fit: cover;
     }
@@ -112,28 +120,550 @@
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (min-width: 451px) and (max-width: 575.98px) {
+    div.containerX {
+        margin: 0;
+        padding: 0;
+    }
+
+    .group {
+        width:90%!important;
+    }
+    
+    .col-6 {
+        display: block;
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    #main {
+        width:100%;
+        max-height: 28em;
+        min-height: 28em;
+        background-image: url(/assets/images/headerImage.jpg);
+    }
+
+    .main-inner {
+        position: absolute;
+        width: 100%;
+        top: 10em;
+    }
+
+    div.search {
+        width: 100%;
+        overflow: hidden;
+    }
+    div.search  img{
+        max-width: 2em;
+        min-width: 2em;
+        max-height: 3em;
+        min-height: 3em;
+    }
+
+    .search-icons {
+        margin: 1%;
+    }
+
+    #search-button-style {
+        color: #00B8D4;
+    }
+
+    #search-button-style:hover {
+        border: 2px solid white;
+        background: #00B8D4;
+        color: white;
+    }
+
+    button {
+        margin: auto;
+    }
+
+    h1 {
+        text-align: -webkit-left;
+        color: white;
+        text-shadow: 3px 4px 2px #5f5f5f;
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        text-align: center;
+        letter-spacing: 0.2rem;
+    }
+
+    div.col-12 {
+        background: #ffffff; /* For browsers that do not support gradients */
+        height: 100%;
+    }
+
+    #vendor {
+        margin-top: 2%;
+    }
+
+    .vendor-card {
+        display: inline-block;
+        padding: 0;
+        margin: 1% 1% 5% 1%;
+
+    }
+
+    .card {
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+        min-width: 100%;
+        max-height: 20rem;
+        min-height: 20rem;
+        overflow: hidden;
+    }
+
+    .mat-card-image {
+        max-height: 13rem;
+        min-height: 13rem;
+    }
+
+    .mat-card-title {
+        padding: 2%;
+    }
+
+    .vendor-button {
+        width:100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    h5 {
+        color:#00B8D4;
+    }
+    
+    img {
+        object-fit: cover;
+    }
 
 }
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
+    div.containerX {
+        margin: 0;
+        padding: 0;
+    }
 
+    .group {
+        width:90%!important;
+    }
+    
+    .col-6 {
+        display: block;
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    #main {
+        width:100%;
+        max-height: 28em;
+        min-height: 28em;
+        background-image: url(/assets/images/headerImage.jpg);
+    }
+
+    .main-inner {
+        position: absolute;
+        width: 100%;
+        top: 10em;
+    }
+
+    div.search {
+        width: 100%;
+        overflow: hidden;
+    }
+    div.search  img{
+        max-width: 4em;
+        min-width: 4em;
+        max-height: 4em;
+        min-height: 4em;
+    }
+
+    .search-icons {
+        margin: 1%;
+    }
+
+    #search-button-style {
+        color: #00B8D4;
+    }
+
+    #search-button-style:hover {
+        border: 2px solid white;
+        background: #00B8D4;
+        color: white;
+    }
+
+    button {
+        margin: auto;
+    }
+
+    h1 {
+        text-align: -webkit-left;
+        color: white;
+        text-shadow: 3px 4px 2px #5f5f5f;
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        text-align: center;
+        letter-spacing: 0.2rem;
+    }
+
+    div.col-12 {
+        background: #ffffff; /* For browsers that do not support gradients */
+        height: 100%;
+    }
+
+    #vendor {
+        margin-top: 2%;
+    }
+
+    .vendor-card {
+        display: inline-block;
+        padding: 0;
+        margin: 1% 1% 5% 1%;
+
+    }
+
+    .card {
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+        min-width: 100%;
+        max-height: 30rem;
+        min-height: 30rem;
+        overflow: hidden;
+    }
+
+    .mat-card-image {
+        max-height: 20rem;
+        min-height: 20rem;
+    }
+
+    .mat-card-title {
+        padding: 2%;
+    }
+
+    .vendor-button {
+        width:100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    h5 {
+        color:#00B8D4;
+    }
+    
+    img {
+        object-fit: cover;
+    }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
+    div.containerX {
+        margin: 0;
+        padding: 0;
+    }
 
+    .group {
+        width:90%!important;
+    }
+    
+    .col-6 {
+        display: inline-block;
+    }
+
+    h1 {
+        font-size: 2.6rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    #main {
+        width:100%;
+        max-height: 28em;
+        min-height: 28em;
+        background-image: url(/assets/images/headerImage.jpg);
+    }
+
+    .main-inner {
+        position: absolute;
+        width: 100%;
+        top: 10em;
+    }
+
+    div.search {
+        width: 100%;
+        overflow: hidden;
+    }
+    div.search  img{
+        max-width: 4em;
+        min-width: 4em;
+        max-height: 4em;
+        min-height: 4em;
+    }
+
+    .search-icons {
+        margin: 1%;
+    }
+
+    #search-button-style {
+        color: #00B8D4;
+    }
+
+    #search-button-style:hover {
+        border: 2px solid white;
+        background: #00B8D4;
+        color: white;
+    }
+
+    button {
+        margin: auto;
+    }
+
+    h1 {
+        text-align: -webkit-left;
+        color: white;
+        text-shadow: 3px 4px 2px #5f5f5f;
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        text-align: center;
+        letter-spacing: 0.2rem;
+    }
+
+    div.col-12 {
+        background: #ffffff; /* For browsers that do not support gradients */
+        height: 100%;
+    }
+
+    #vendor {
+        margin-top: 2%;
+    }
+
+    .vendor-card {
+        display: inline-block;
+        padding: 0;
+        margin: 1% 1% 5% 1%;
+
+    }
+
+    .card {
+        max-width: 12rem;
+        min-width: 12rem;
+        max-height: 17rem;
+        min-height: 17rem;
+    }
+
+    .mat-card-image {
+        max-height: 10rem;
+        min-height: 10rem;
+        object-position: bottom;
+    }
+
+    .mat-card-title {
+        padding: 2%;
+    }
+
+    .vendor-button {
+        width:100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    h5 {
+        color:#00B8D4;
+    }
+    
+    img {
+        object-fit: cover;
+    }
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
+    div.containerX {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .col-6 {
+        display: inline-block;
+    }
 
+    .group {
+        width:70%!important;
+    }
+
+    #main {
+        width:100%;
+        max-height: 28em;
+        min-height: 28em;
+        background-image: url(/assets/images/headerImage.jpg);
+    }
+
+    .main-inner {
+        position: absolute;
+        width: 100%;
+        top: 10em;
+    }
+
+    div.search {
+        width: 100%;
+        overflow: hidden;
+    }
+    div.search  img{
+        max-width: 5em;
+        min-width: 5em;
+        max-height: 5em;
+        min-height: 5em;
+    }
+
+    .search-icons {
+        margin: 1%;
+    }
+
+    #search-button-style {
+        color: #00B8D4;
+    }
+
+    #search-button-style:hover {
+        border: 2px solid white;
+        background: #00B8D4;
+        color: white;
+    }
+
+    button {
+        margin: auto;
+    }
+
+    h1 {
+        text-align: -webkit-left;
+        color: white;
+        text-shadow: 3px 4px 2px #5f5f5f;
+        font-size: 2.7rem;
+    }
+
+    h2 {
+        text-align: center;
+        letter-spacing: 0.2rem;
+    }
+
+    div.col-12 {
+        background: #ffffff; /* For browsers that do not support gradients */
+        height: 100%;
+    }
+
+    #vendor {
+        margin-top: 2%;
+    }
+
+    .vendor-card {
+        display: inline-block;
+        padding: 0;
+        margin: 1% 1% 5% 1%;
+
+    }
+
+    .card {
+        max-width: 15rem;
+        min-width: 15rem;
+        max-height: 20rem;
+        min-height: 20rem;
+    }
+
+    .mat-card-image {
+        object-position: bottom;
+        max-height: 13rem;
+        min-height: 13rem;
+    }
+
+    .mat-card-title {
+        padding: 2%;
+    }
+
+    .vendor-button {
+        width:100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    h5 {
+        color:#00B8D4;
+    }
+    
+    img {
+        object-fit: cover;
+    }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
     .main-inner {
         top: 10em;
+    }
+
+    .col-6 {
+        display: inline-block;
+    }
+
+    .card {
+        max-width: 15rem;
+        min-width: 15rem;
+        max-height: 20rem;
+        min-height: 20rem;
+    }
+
+    .mat-card-image {
+        max-height: 13rem;
+        min-height: 13rem;
+    }
+
+    .search-icons {
+        margin: 2%;
+    }
+
+    .search-icons img {
+        max-width: 5em;
+        min-width: 5em;
+        max-height: 5em;
+        min-height: 5em;
     }
 }
 div.containerX {
@@ -183,14 +713,9 @@ div.search {
 .search-icons {
     display: inline-block;
     opacity: 1;
-    margin: 2%;
 }
 
 .search-icons img {
-    max-width: 5em;
-    min-width: 5em;
-    max-height: 5em;
-    min-height: 5em;
     opacity: 1;
 }
 
@@ -259,7 +784,6 @@ h2 {
 }
 
 .col-6 {
-    display: inline-block;
     padding: 5% 10%;
     vertical-align: top;
 }
@@ -300,16 +824,10 @@ div.col-12 {
 .card {
     border-radius: 5%;
     padding: 0;
-    max-width: 15rem;
-    min-width: 15rem;
-    max-height: 20rem;
-    min-height: 20rem;
     overflow: hidden;
 }
 
 .mat-card-image {
-    max-height: 13rem;
-    min-height: 13rem;
     object-fit: cover;
     object-position: center;
 }

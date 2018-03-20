@@ -15,6 +15,11 @@ var ReviewSchema = new mongoose.Schema({
             message: "Please enter your email in the correct format."
         }
     },
+    subject: {
+        type: String,
+        required: [true, 'Subject cannot be blank'],
+        maxlength: [150, "Subject cannot be greater then 150 characters"]
+    },
     content: {
         type: String,
         required: [true, 'Review cannot be blank'],

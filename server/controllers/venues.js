@@ -361,11 +361,11 @@ class VenuesController {
   review(req, res) {
     Venue.find({ _id: req.params.id }, (err, venue) => {
       let review = new Review(req.body);
-      review._venue = venue._id;
       if (err) {
         return res.status(500).send({ message: err.message });
       }
       if (venue) {
+        review._venue = venue._id;
         Venue.update(
           { _id: req.params.id },
           { $push: { reviews: review } }

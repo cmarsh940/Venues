@@ -26,7 +26,7 @@ export class Venue {
   gallery: [{ name: string }];
   reviews: [{ 
     email: string; 
-    title: string; 
+    subject: string; 
     content: string; 
     rating: number; 
     approved: boolean;

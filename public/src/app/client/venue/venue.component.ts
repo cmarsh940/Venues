@@ -46,6 +46,7 @@ export class VenueComponent implements OnInit, OnDestroy {
   approved = Boolean;
   loaded: Boolean = false;
   rating: number;
+  total = 0;
 
   // OVERLAY & PORTAL
   nextPosition: number = 0;
@@ -80,6 +81,7 @@ export class VenueComponent implements OnInit, OnDestroy {
     this.getVendor();
     this.getVenue();
     console.log(this.venue);
+    this.average();
     setTimeout(() => {
       this.loaded = true;
     }, 1000);
@@ -122,13 +124,13 @@ export class VenueComponent implements OnInit, OnDestroy {
     overlayRef.backdropClick().subscribe(() => overlayRef.detach());
   }
 
-  showIcon(index: number) {
-    if (this.rating >= index + 1) {
-      return "star";
-    } else {
-      return "star_border";
+  average() {
+    for (var i = 0; i < this.venue.reviews.length; i++) {
+      this.total += this.venue.reviews[i].rating;
     }
+    var avg = this.total / this.venue.reviews.length;
   }
+
 }
 
 interface marker {

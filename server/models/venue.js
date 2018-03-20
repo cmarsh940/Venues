@@ -99,10 +99,10 @@ const VenueSchema = new mongoose.Schema(
     reviews: [
       {
         email: String,
-        title: String,
+        subject: String,
         content: String,
         rating: Number,
-        approved: Boolean
+        // approved: Boolean
       }
     ],
     tour_url: {
