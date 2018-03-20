@@ -81,7 +81,7 @@ export class VenueComponent implements OnInit, OnDestroy {
     this.getVendor();
     this.getVenue();
     console.log(this.venue);
-    this.average();
+    // this.average();
     setTimeout(() => {
       this.loaded = true;
     }, 1000);
