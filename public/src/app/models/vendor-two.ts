@@ -9,7 +9,12 @@ export class VendorTwo {
     website: string;
     video_url: string;
     logo_url: string;
-    _category: { _id: string; name: string; createdAt: any; updatedAt: any };
+    _category: { 
+        _id: string; 
+        name: string; 
+        createdAt: any; 
+        updatedAt: any 
+    };
     description: string;
     facebook_url: any;
     instagram_url: any;

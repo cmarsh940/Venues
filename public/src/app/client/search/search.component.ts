@@ -22,7 +22,6 @@ export class SearchComponent implements OnInit {
   venues: Array<Venue>;
   categories: Array<Category>;
   search_text: String = "";
-  finished: boolean;
   random: number;
   randomTwo: number;
   loaded: Boolean = false;
@@ -49,9 +48,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.loaded = false;
-    this.finished = true;
     this._vendorService.getVendors(vendor => {
-      this.finished = false;
       this.random = Math.floor(Math.random() * vendor.length);
       this.randomTwo = Math.floor(Math.random() * vendor.length);
       console.log("Random number:", this.random);
@@ -67,12 +64,11 @@ export class SearchComponent implements OnInit {
         console.log(this.vendorTwo);
       }
     });
-    // setTimeout(() => {
-    //   this.loaded = true;
-    // }, 1000);
     this.getVenues();
     this.getCategories();
-    this.loaded = true;
+    setTimeout(() => {
+      this.loaded = true;
+    }, 3000);
   }
 
   getVendors() {

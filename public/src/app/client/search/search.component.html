@@ -1,6 +1,6 @@
 <div class="col align-self-center" *ngIf="!loaded; else mainTemplate">
     <div class="loading">
-        <mat-spinner color="accent"></mat-spinner>
+        <mat-spinner color="primary"></mat-spinner>
     </div>
 </div>
 <ng-template #mainTemplate>
@@ -13,7 +13,7 @@
                             <agm-marker *ngFor="let venue of venues" [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng">
                                 <agm-snazzy-info-window [maxWidth]="400" [padding]="0" [closeWhenOthersOpen]="true">
                                     <ng-template>
-                                        <mat-card class="mat-card">
+                                        <mat-card class="venue-display">
                                             <mat-card-header>
                                                 <!-- LIVE -->
                                                 <img mat-card-avatar src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Avatar Picture">
@@ -24,7 +24,7 @@
                                                 <mat-card-subtitle>{{venue?.name}}</mat-card-subtitle>
                                             </mat-card-content>
                                             <mat-card-actions>
-                                                <button mat-raised-button [routerLink]="['/venue', 'display', venue._id]">VIEW</button>
+                                                <button mat-button [routerLink]="['/venue', 'display', venue._id]">VIEW</button>
                                             </mat-card-actions>
                                         </mat-card>
                                     </ng-template>
@@ -68,7 +68,9 @@
                                 <mat-card-title>
                                     <h5 class="text-center"><span class="color">{{vendor.name}}</span></h5>
                                     <span class="line"></span>
-                                    <mat-card-subtitle class="text-center">{{vendor._category.name | titlecase}}</mat-card-subtitle>
+                                    <mat-card-subtitle class="text-center">
+                                        {{vendor._category.name | titlecase}}
+                                    </mat-card-subtitle>
                                 </mat-card-title>
                                 <mat-card-actions>
                                     <div class="text-center">
@@ -145,7 +147,11 @@
                                     <mat-card-title>
                                         <h5 class="text-center">{{vendorTwo?.name}}</h5>
                                         <span class="line"></span>
-                                        <mat-card-subtitle class="text-center">{{vendorTwo._category.name | titlecase}}</mat-card-subtitle>
+                                        <mat-card-subtitle>
+                                            <div class="text-center">
+                                                {{vendorTwo._category.name | titlecase}}
+                                            </div>
+                                        </mat-card-subtitle>
                                     </mat-card-title>
                                     <mat-card-actions>
                                         <div class="text-center">

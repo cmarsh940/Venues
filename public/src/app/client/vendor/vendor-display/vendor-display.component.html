@@ -1,6 +1,6 @@
 <div class="col align-self-center" *ngIf="!loaded; else mainTemplate">
     <div class="loading">
-        <mat-spinner color="accent"></mat-spinner>
+        <mat-spinner color="primary"></mat-spinner>
     </div>
 </div>
 <ng-template #mainTemplate>
@@ -73,6 +73,12 @@
                                         </a>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="services">
+                            <div class="text-center">
+                                <h2>Services</h2>
+                                <span class="line"></span>
                             </div>
                         </div>
                         <div *ngFor="let gallery of vendor.gallery" id="gallery">

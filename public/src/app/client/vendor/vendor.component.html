@@ -1,6 +1,6 @@
 <div class="col align-self-center" *ngIf="!loaded; else mainTemplate">
     <div class="loading">
-        <mat-spinner color="accent"></mat-spinner>
+        <mat-spinner color="primary"></mat-spinner>
     </div>
 </div>
 <ng-template #mainTemplate>
@@ -43,9 +43,7 @@
                         <mat-card-subtitle class="text-center">{{vendor?.city | titlecase}}, {{vendor?.state | uppercase}}</mat-card-subtitle>
                     </mat-card-title>
                     <mat-card-actions>
-                        <div class="text-center">
-                            <button mat-button [routerLink]="['/vendor', 'display', vendor._id]" matTooltip="View {{vendor.name}}">VIEW</button>
-                        </div>
+                        <button mat-button [routerLink]="['/vendor', 'display', vendor._id]" matTooltip="View {{vendor.name}}">VIEW</button>
                     </mat-card-actions>
                 </mat-card>
             </div>

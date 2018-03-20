@@ -299,3 +299,11 @@ agm-map {
 .reviews-post {
   box-shadow: none!important;
 }
+
+div.loading {
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 20em;
+  max-height: 20em;
+  margin: 25% 50%;
+}

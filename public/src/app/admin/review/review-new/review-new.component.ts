@@ -52,7 +52,7 @@ export class ReviewNewComponent implements OnInit {
     this._reviewService.getReviews((reviews) => this.reviews = reviews);
   }
 
-  // createReview() {
+  createReview() {
   //   this.errors = [];
   //   return this._reviewService.createReview(this.venue._id, this.newReview, (review) => {
   //     console.log(review);
@@ -67,6 +67,6 @@ export class ReviewNewComponent implements OnInit {
   //       this._router.navigate(['/list_review']);
   //     }
   //   })
-  // }
+  }
 
 }
