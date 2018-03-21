@@ -31,6 +31,7 @@ export class Venue {
     rating: number; 
     approved: boolean;
   }];
+  avg: number;
   createdAt: any;
   updatedAt: any;
 }

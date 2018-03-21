@@ -17,13 +17,47 @@
             <div class="row" id="top">
                 <div class="col-3" id="left-col">
                     <div class="top-left">
-                        <div class="mx-auto" id="rating">
-                            <i class="material-icons" value="1">&#xE83A;</i>
-                            <i class="material-icons" value="2">&#xE83A;</i>
-                            <i class="material-icons" value="3">&#xE83A;</i>
-                            <i class="material-icons" value="4">&#xE83A;</i>
-                            <i class="material-icons" value="5">&#xE83A;</i>
-                            / {{total}}
+                        <div class="mx-auto" id="rating" *ngIf="venue.avg == 0">
+                            <i class="material-icons grey">&#xE83A;</i>
+                            <i class="material-icons grey">&#xE83A;</i>
+                            <i class="material-icons grey">&#xE83A;</i>
+                            <i class="material-icons grey">&#xE83A;</i>
+                            <i class="material-icons grey">&#xE83A;</i>
+                        </div>
+                        <div class="mx-auto" id="rating" *ngIf="venue.avg == 1">
+                            <i class="material-icons">&#xE83A;</i>
+                            <i class="material-icons grey">&#xE83A;</i>
+                            <i class="material-icons grey">&#xE83A;</i>
+                            <i class="material-icons grey">&#xE83A;</i>
+                            <i class="material-icons grey">&#xE83A;</i>
+                        </div>
+                        <div class="mx-auto" id="rating" *ngIf="venue.avg == 2">
+                            <i class="material-icons">&#xE83A;</i>
+                            <i class="material-icons">&#xE83A;</i>
+                            <i class="material-icons grey">&#xE83A;</i>
+                            <i class="material-icons grey">&#xE83A;</i>
+                            <i class="material-icons grey">&#xE83A;</i>
+                        </div>
+                        <div class="mx-auto" id="rating" *ngIf="venue.avg == 3">
+                            <i class="material-icons">&#xE83A;</i>
+                            <i class="material-icons">&#xE83A;</i>
+                            <i class="material-icons">&#xE83A;</i>
+                            <i class="material-icons grey">&#xE83A;</i>
+                            <i class="material-icons grey">&#xE83A;</i>
+                        </div>
+                        <div class="mx-auto" id="rating" *ngIf="venue.avg == 4">
+                            <i class="material-icons">&#xE83A;</i>
+                            <i class="material-icons">&#xE83A;</i>
+                            <i class="material-icons">&#xE83A;</i>
+                            <i class="material-icons">&#xE83A;</i>
+                            <i class="material-icons grey">&#xE83A;</i>
+                        </div>
+                        <div class="mx-auto" id="rating" *ngIf="venue.avg == 5">
+                            <i class="material-icons">&#xE83A;</i>
+                            <i class="material-icons">&#xE83A;</i>
+                            <i class="material-icons">&#xE83A;</i>
+                            <i class="material-icons">&#xE83A;</i>
+                            <i class="material-icons">&#xE83A;</i>
                         </div>
                         <ul class="text-left">
                             <li>
@@ -177,21 +211,31 @@
                                             <h6>{{review?.subject}}</h6>
                                             <div id="rating" *ngIf="review.rating <= 1">
                                                 <i class="material-icons">&#xE83A;</i>
+                                                <i class="material-icons grey" >&#xE83A;</i>
+                                                <i class="material-icons grey" >&#xE83A;</i>
+                                                <i class="material-icons grey" >&#xE83A;</i>
+                                                <i class="material-icons grey" >&#xE83A;</i>
                                             </div>
                                             <div id="rating" *ngIf="review.rating == 2">
                                                 <i class="material-icons">&#xE83A;</i>
                                                 <i class="material-icons">&#xE83A;</i>
+                                                <i class="material-icons grey">&#xE83A;</i>
+                                                <i class="material-icons grey">&#xE83A;</i>
+                                                <i class="material-icons grey">&#xE83A;</i>
                                             </div>
                                             <div id="rating" *ngIf="review.rating == 3">
                                                 <i class="material-icons">&#xE83A;</i>
                                                 <i class="material-icons">&#xE83A;</i>
                                                 <i class="material-icons">&#xE83A;</i>
+                                                <i class="material-icons grey">&#xE83A;</i>
+                                                <i class="material-icons grey">&#xE83A;</i>
                                             </div>
                                             <div id="rating" *ngIf="review.rating == 4">
                                                 <i class="material-icons">&#xE83A;</i>
                                                 <i class="material-icons">&#xE83A;</i>
                                                 <i class="material-icons">&#xE83A;</i>
                                                 <i class="material-icons">&#xE83A;</i>
+                                                <i class="material-icons grey">&#xE83A;</i>
                                             </div>
                                             <div id="rating" *ngIf="review.rating == 5">
                                                 <i class="material-icons">&#xE83A;</i>
@@ -227,7 +271,7 @@
                                     <agm-marker [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng">
                                         <agm-snazzy-info-window [maxWidth]="400" [padding]="0" [closeWhenOthersOpen]="true">
                                             <ng-template>
-                                                <mat-card class="mat-card">
+                                                <mat-card class="venue-display">
                                                     <mat-card-header>
                                                         <!-- LIVE -->
                                                         <img mat-card-avatar src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Avatar Picture">
@@ -238,6 +282,7 @@
                                                         <mat-card-subtitle>
                                                             <h6>{{venue?.name}}</h6>
                                                             <h6>{{venue?.address}}</h6>
+                                                            <h6>{{venue.city | titlecase}}, {{venue.state | uppercase}}</h6>
                                                         </mat-card-subtitle>
                                                     </mat-card-content>
                                                 </mat-card>

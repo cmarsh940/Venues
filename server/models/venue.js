@@ -105,6 +105,10 @@ const VenueSchema = new mongoose.Schema(
         // approved: Boolean
       }
     ],
+    avg: {
+      type: Number,
+      default: 0,
+    },
     tour_url: {
       type: String,
       required: false,

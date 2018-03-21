@@ -9,6 +9,7 @@ import { Vendor } from '../../models/vendor';
 import { VendorService } from '../../services/vendor.service';
 import { Category } from '../../models/category';
 import { VendorTwo } from '../../models/vendor-two';
+import { FilterVenuesPipe } from '../../pipes/filter-venues.pipe';
 
 @Component({
   selector: "app-search",

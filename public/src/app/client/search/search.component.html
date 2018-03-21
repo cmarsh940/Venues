@@ -90,12 +90,12 @@
                 <mat-sidenav-container class="sidenav-container">
                     <mat-sidenav align="end" mode="side" opened="true" disableClose="true" #sidenav>
                         <div class="text-center">
-                            <input matInput type='text' name='search_text' [(ngModel)]='search_text' id='search-box' placeholder=" Search for a venue">
+                            <input matInput type='text' name='search_text' [(ngModel)]='search_text' id='search-box' placeholder="Search...">
                         </div>
                         <h5>VENUE TYPES</h5>
                         <hr>
                         <mat-radio-group class="radio-group" [(ngModel)]="search_text">
-                            <mat-radio-button class="radio-button" *ngFor="let categroy of categories" color="primary" disabled>
+                            <mat-radio-button class="radio-button" *ngFor="let categroy of categories" color="primary" value="{{categroy.name}}">
                                 {{categroy.name}}
                             </mat-radio-button>
                         </mat-radio-group>
