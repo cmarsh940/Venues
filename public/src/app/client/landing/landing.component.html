@@ -65,8 +65,8 @@
             <h6 class="text-center" id="bottom-paragraph">We see a lot of venues and we talk to a lot of owners. Combine that with real opinions from fellow Northeastern Oklahomans
             and we’re confident in saying that you can find your dream wedding location on Tulsa Venues. Here is just a sample of the
             hundreds of vetted venues you’ll find inside.</h6>
-            <div class="vendor-card" *ngFor="let venue of venues; let i = index">
-                <mat-card class="card" [tabindex]="i">
+            <div class="venue-card-group" *ngFor="let venue of venues; let i = index">
+                <mat-card class="venue-card" [tabindex]="i">
                     <ng-container *ngIf="venue.pic_url; else elseTemplate">
                         <!-- LIVE -->
                         <a [routerLink]="['/venue', 'display', venue._id]">
@@ -90,7 +90,7 @@
                     <mat-card-subtitle class="text-center">{{venue?.city | titlecase}}, {{venue?.state | uppercase}}</mat-card-subtitle>
         
                     <mat-card-actions>
-                        <button mat-button class="vendor-button" [routerLink]="['/venue', 'display', venue._id]" matTooltip="View {{venue.name}}"
+                        <button mat-button class="venue-button" [routerLink]="['/venue', 'display', venue._id]" matTooltip="View {{venue.name}}"
                             [matTooltipShowDelay]="showDelay">VIEW</button>
                     </mat-card-actions>
                 </mat-card>

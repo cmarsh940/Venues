@@ -5,6 +5,11 @@
         padding: 0;
     }
 
+    div.containerY {
+        min-height: 15em;
+        max-height: 15em;
+    }
+
     .group {
         display: none;
     }
@@ -20,22 +25,22 @@
 
     #main {
         width:100%;
-        max-height: 28em;
-        min-height: 28em;
+        max-height: 15em!important;
+        min-height: 15em!important;
         background-image: url(/assets/images/headerImage.jpg);
+        background-size: 33em 15em;
+        background-position: center;
+        background-repeat: no-repeat;
     }
 
     .main-inner {
-        position: absolute;
-        width: 100%;
-        top: 10em;
+        top: 6rem!important;
     }
 
     div.search {
         width: 100%;
         overflow: hidden;
     }
-
 
 
     #search-button-style {
@@ -56,7 +61,7 @@
         text-align: -webkit-left;
         color: white;
         text-shadow: 3px 4px 2px #5f5f5f;
-        font-family: 'Parisienne', cursive;
+        font-size: 2rem;
     }
 
     h2 {
@@ -73,14 +78,15 @@
         margin-top: 2%;
     }
 
-    .vendor-card {
+    .venue-card-group {
         display: inline-block;
         padding: 0;
+        min-width: 100%;
         margin: 1% 1% 5% 1%;
 
     }
 
-    .card {
+    .venue-card {
         margin: 0;
         padding: 0;
         max-width: 100%;
@@ -99,7 +105,7 @@
         padding: 2%;
     }
 
-    .vendor-button {
+    .venue-button {
         width:100%;
         position: absolute;
         bottom: 0;
@@ -116,6 +122,10 @@
     img {
         object-fit: cover;
     }
+
+    div#slider img {
+        object-fit: cover;
+    }
 }
 
 /* Extra small devices (portrait phones, less than 576px) */
@@ -125,8 +135,13 @@
         padding: 0;
     }
 
+    .containerY {
+        min-height: 20em;
+        max-height: 20em;
+    }
+
     .group {
-        width:90%!important;
+        display: none;
     }
     
     .col-6 {
@@ -135,6 +150,9 @@
     }
 
     h1 {
+        text-align: -webkit-left;
+        color: white;
+        text-shadow: 3px 4px 2px #5f5f5f;
         font-size: 2.2rem;
     }
 
@@ -144,15 +162,15 @@
 
     #main {
         width:100%;
-        max-height: 28em;
-        min-height: 28em;
+        max-height: 20em!important;
+        min-height: 20em!important;
         background-image: url(/assets/images/headerImage.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
     }
 
     .main-inner {
-        position: absolute;
-        width: 100%;
-        top: 10em;
+        top: 9rem!important;
     }
 
     div.search {
@@ -205,33 +223,34 @@
         margin-top: 2%;
     }
 
-    .vendor-card {
+    .venue-card-group {
         display: inline-block;
         padding: 0;
+        min-width: 100%;
         margin: 1% 1% 5% 1%;
 
     }
 
-    .card {
+    .venue-card {
         margin: 0;
         padding: 0;
         max-width: 100%;
         min-width: 100%;
-        max-height: 20rem;
-        min-height: 20rem;
+        max-height: 30rem;
+        min-height: 30rem;
         overflow: hidden;
     }
 
     .mat-card-image {
-        max-height: 13rem;
-        min-height: 13rem;
+        max-height: 20rem;
+        min-height: 20rem;
     }
 
     .mat-card-title {
         padding: 2%;
     }
 
-    .vendor-button {
+    .venue-button {
         width:100%;
         position: absolute;
         bottom: 0;
@@ -249,6 +268,10 @@
         object-fit: cover;
     }
 
+    div#slider img {
+        object-fit: cover;
+    }
+
 }
 
 /* Small devices (landscape phones, 576px and up) */
@@ -258,8 +281,13 @@
         padding: 0;
     }
 
+    .containerY {
+        min-height: 28em;
+        max-height: 28em;
+    }
+
     .group {
-        width:90%!important;
+        width:95%!important;
     }
     
     .col-6 {
@@ -338,14 +366,15 @@
         margin-top: 2%;
     }
 
-    .vendor-card {
+    .venue-card-group {
         display: inline-block;
         padding: 0;
+        min-width: 100%;
         margin: 1% 1% 5% 1%;
 
     }
 
-    .card {
+    .venue-card {
         margin: 0;
         padding: 0;
         max-width: 100%;
@@ -364,7 +393,7 @@
         padding: 2%;
     }
 
-    .vendor-button {
+    .venue-button {
         width:100%;
         position: absolute;
         bottom: 0;
@@ -381,6 +410,10 @@
     img {
         object-fit: cover;
     }
+
+    div#slider img {
+        object-fit: contain;
+    }
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -390,8 +423,13 @@
         padding: 0;
     }
 
+    .containerY {
+        min-height: 28em;
+        max-height: 28em;
+    }
+
     .group {
-        width:90%!important;
+        width:75%!important;
     }
     
     .col-6 {
@@ -469,16 +507,16 @@
         margin-top: 2%;
     }
 
-    .vendor-card {
+    .venue-card-group {
         display: inline-block;
         padding: 0;
         margin: 1% 1% 5% 1%;
 
     }
 
-    .card {
-        max-width: 12rem;
-        min-width: 12rem;
+    .venue-card {
+        max-width: 9rem;
+        min-width: 9rem;
         max-height: 17rem;
         min-height: 17rem;
     }
@@ -489,11 +527,11 @@
         object-position: bottom;
     }
 
-    .mat-card-title {
-        padding: 2%;
+    .mat-card-title h5 {
+        font-size: 1rem;
     }
 
-    .vendor-button {
+    .venue-button {
         width:100%;
         position: absolute;
         bottom: 0;
@@ -510,6 +548,10 @@
     img {
         object-fit: cover;
     }
+
+    div#slider img {
+        object-fit: contain;
+    }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -517,6 +559,11 @@
     div.containerX {
         margin: 0;
         padding: 0;
+    }
+
+    .containerY {
+        min-height: 28em;
+        max-height: 28em;
     }
     
     .col-6 {
@@ -590,16 +637,16 @@
         margin-top: 2%;
     }
 
-    .vendor-card {
+    .venue-card-group {
         display: inline-block;
         padding: 0;
         margin: 1% 1% 5% 1%;
 
     }
 
-    .card {
-        max-width: 15rem;
-        min-width: 15rem;
+    .venue-card {
+        max-width: 13rem;
+        min-width: 13rem;
         max-height: 20rem;
         min-height: 20rem;
     }
@@ -610,11 +657,11 @@
         min-height: 13rem;
     }
 
-    .mat-card-title {
-        padding: 2%;
+    .mat-card-title h5 {
+        font-size: 1.1rem;
     }
 
-    .vendor-button {
+    .venue-button {
         width:100%;
         position: absolute;
         bottom: 0;
@@ -631,10 +678,19 @@
     img {
         object-fit: cover;
     }
+
+    div#slider img {
+        object-fit: contain;
+    }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+    .containerY {
+        min-height: 28em;
+        max-height: 28em;
+    }
+
     .main-inner {
         top: 10em;
     }
@@ -665,6 +721,37 @@
         max-height: 5em;
         min-height: 5em;
     }
+
+    div#slider img {
+        object-fit: contain;
+    }
+
+    .venue-card-group {
+        display: inline-block;
+        padding: 0;
+        margin: 1% 1% 5% 1%;
+
+    }
+
+    .venue-card {
+        max-width: 15rem;
+        min-width: 15rem;
+        max-height: 23rem;
+        min-height: 23rem;
+    }
+
+    .mat-card-image {
+        object-position: bottom;
+        max-height: 15rem;
+        min-height: 15rem;
+    }
+
+    .mat-card-title {
+        padding: 2%;
+    }
+    .mat-card-title h5 {
+        font-size: 1.1rem;
+    }
 }
 div.containerX {
     margin: 0;
@@ -683,8 +770,6 @@ div.containerX {
 .containerY {
     min-width: 100%;
     max-width: 100%;
-    min-height: 28em;
-    max-height: 28em;
     background: black; 
 }
 
@@ -814,14 +899,14 @@ div.col-12 {
     margin-top: 2%;
 }
 
-.vendor-card {
+.venue-card-group {
     display: inline-block;
     padding: 0;
     margin: 1% 1% 5% 1%;
 
 }
 
-.card {
+.venue-card {
     border-radius: 5%;
     padding: 0;
     overflow: hidden;
@@ -839,7 +924,7 @@ div.col-12 {
     margin-top:0;
 }
 
-.vendor-button {
+.venue-button {
     width:100%;
     position: absolute;
     bottom: 0;
@@ -884,8 +969,8 @@ div#slider figure img {
     width: 100%;
     min-height: auto;
 }
+
 div#slider img {
-    object-fit: contain;
     object-position: center;
 }
 

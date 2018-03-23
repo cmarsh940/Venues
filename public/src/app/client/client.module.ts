@@ -21,16 +21,7 @@ import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 
 import { FilterVenuesPipe } from '../pipes/filter-venues.pipe';
 import { ReviewNewComponent } from './venue/review-new/review-new.component';
-import { BarnComponent } from './search/category/barn/barn.component';
-import { BallroomComponent } from './search/category/ballroom/ballroom.component';
-import { ChapelComponent } from './search/category/chapel/chapel.component';
-import { CountryClubComponent } from './search/category/country-club/country-club.component';
-import { EventCenterComponent } from './search/category/event-center/event-center.component';
-import { HistoricComponent } from './search/category/historic/historic.component';
-import { LodgeComponent } from './search/category/lodge/lodge.component';
 import { VendorComponent } from './vendor/vendor.component';
-import { MansionsComponent } from './search/category/Mansions/mansions.component';
-
 
 @NgModule({
   imports: [
@@ -55,14 +46,6 @@ import { MansionsComponent } from './search/category/Mansions/mansions.component
     VenueComponent,
     ReviewNewComponent,
     FilterVenuesPipe,
-    BarnComponent,
-    BallroomComponent,
-    ChapelComponent,
-    CountryClubComponent,
-    EventCenterComponent,
-    MansionsComponent,
-    HistoricComponent,
-    LodgeComponent,
     VendorComponent,
     VendorDisplayComponent
   ],

@@ -243,3 +243,20 @@ a:hover {
 .mat-drawer-content {
   min-height: 65em;
 }
+
+.content-header {
+  width: 100%;
+}
+
+.content-header h2 , .content-header button {
+  display: inline-flex;
+}
+
+#circle-icon {
+  margin:1% 1% 0 0;
+}
+
+#search-icon {
+  width: 100%;
+  margin: 0 60%;
+}
