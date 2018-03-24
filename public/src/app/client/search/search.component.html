@@ -167,12 +167,12 @@
                     <mat-sidenav-content>
                         <div class="content-header">
                             <div class="clearfix">
-                                <div *ngIf="sidenav.opened">
+                                <div *ngIf="sidenav?.opened">
                                     <button mat-button (click)="sidenav.toggle()" class="float-right">
                                         <i class="material-icons">&#xE5CD;</i>
                                     </button>
                                 </div>
-                                <div *ngIf="!sidenav.opened">
+                                <div *ngIf="!sidenav?.opened">
                                     <button mat-fab color="primary" (click)="sidenav.toggle()" class="float-right" id="circle-icon">
                                         <i class="material-icons" id="search-icon">&#xE429;</i>
                                     </button>
@@ -199,7 +199,7 @@
                                     <mat-card-subtitle class="text-center">{{venue?.city | titlecase}}, {{venue?.state | uppercase}}</mat-card-subtitle>
                                 </mat-card-title>
                                 <mat-card-actions>
-                                    <button mat-button [routerLink]="['/venue', 'display', venue._id]" matTooltip="View {{venue.name}}">VIEW</button>
+                                    <button mat-button class="card-button" [routerLink]="['/venue', 'display', venue._id]" matTooltip="View {{venue.name}}">VIEW</button>
                                 </mat-card-actions>
                             </mat-card>
                         </div>

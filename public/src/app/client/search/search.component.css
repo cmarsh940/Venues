@@ -30,6 +30,34 @@
     margin-top: 4em;
   }
 
+  .card-group {
+    display: inline-block;
+    margin: 1%;
+  }
+
+  .card {
+    min-width: 15rem;
+    max-width: 15rem;
+    min-height: 20rem;
+    max-height: 20rem;
+    overflow: hidden;
+  }
+
+  .mat-card-image {
+    max-height: 15rem;
+    min-height: 15rem;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .card-button {
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+
 }
 #none-scroll {
   max-height: 19em;
@@ -111,8 +139,6 @@ agm-map {
 .mat-card {
   padding: 1%;
   margin: 0;
-  min-width: 12em;
-  max-width: 12em;
   overflow: hidden;
   display: inline-block;
 }
