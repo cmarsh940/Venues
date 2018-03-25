@@ -89,6 +89,11 @@
             <div class="container-fluid">
                 <mat-sidenav-container class="sidenav-container">
                     <mat-sidenav align="end" mode="side" opened="true" disableClose="false" #sidenav>
+                        <div *ngIf="sidenav?.opened">
+                            <button mat-button (click)="sidenav.toggle()" class="float-right">
+                                <i class="material-icons">&#xE5CD;</i>
+                            </button>
+                        </div>
                         <div class="text-center">
                             <input matInput type='text' name='search_text' [(ngModel)]='search_text' id='search-box' placeholder="Search...">
                         </div>
@@ -167,11 +172,6 @@
                     <mat-sidenav-content>
                         <div class="content-header">
                             <div class="clearfix">
-                                <div *ngIf="sidenav?.opened">
-                                    <button mat-button (click)="sidenav.toggle()" class="float-right">
-                                        <i class="material-icons">&#xE5CD;</i>
-                                    </button>
-                                </div>
                                 <div *ngIf="!sidenav?.opened">
                                     <button mat-fab color="primary" (click)="sidenav.toggle()" class="float-right" id="circle-icon">
                                         <i class="material-icons" id="search-icon">&#xE429;</i>

@@ -21,7 +21,9 @@ export class Venue {
   videoPicURL: string;
   facebook_url: string;
   instagram_url: string;
-  _category: any;
+  _category: { 
+    name: string; 
+  };
   amenities: any[];
   gallery: [{ name: string }];
   reviews: [{ 
@@ -29,7 +31,7 @@ export class Venue {
     subject: string; 
     content: string; 
     rating: number; 
-    approved: boolean;
+    approved: boolean 
   }];
   avg: number;
   createdAt: any;

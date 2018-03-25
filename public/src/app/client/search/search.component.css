@@ -1,25 +1,226 @@
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 450px) {
-  
+  #none-scroll {
+    max-height: 15em!important;
+    min-height: 15em!important;
+    top: 1em;
+  }
+
+  #none-scroll .col-3 {
+    display: none;
+  }
+  #none-scroll .col-9 {
+    min-width: 100%!important;
+  }
+
+  #scroll {
+    top: 16em!important;
+  }
+
+  .mat-sidenav {
+    display: none;
+  }
+
+  .mat-card {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 20rem;
+    min-height: 20rem;
+    overflow: hidden;
+  }
+
+  .mat-card-image {
+    max-height: 13rem;
+    min-height: 13rem;
+  }
+
+  .mat-card-title {
+    padding: 2%;
+  }
+
+  .card-button {
+    width:100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+  } 
 }
 
 @media (min-width: 451px) and (max-width: 575.98px) {
+  #none-scroll {
+    max-height: 17em!important;
+    min-height: 17em!important;
+    top: 1em;
+  }
   
+  #none-scroll .col-3 {
+    display: none;
+  }
+
+  #none-scroll .col-9 {
+    min-width: 100%!important;
+  }
+
+  #scroll {
+    top:18em!important;
+  }
+  .mat-sidenav {
+    display: none;
+  }
+
+  .card-group {
+    display: inline-block;
+    padding: 0;
+    min-width: 100%;
+    margin: 1% 1% 5% 1%;
+  }
+
+  .mat-card {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 30rem;
+    min-height: 30rem;
+    overflow: hidden;
+  }
+
+  .mat-card-image {
+    max-height: 20rem;
+    min-height: 20rem;
+  }
+
+  .mat-card-title {
+    padding: 2%;
+  }
+
+  .card-button {
+    width:100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
+  .venue-card-group {
+    display: inline-block;
+    padding: 0;
+    min-width: 100%;
+    margin: 1% 1% 5% 1%;
+  }
+
+  .mat-card {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 30rem;
+    min-height: 30rem;
+    overflow: hidden;
+  }
+
+  .mat-card-image {
+    max-height: 20rem;
+    min-height: 20rem;
+  }
+
+  .mat-card-title {
+    padding: 2%;
+  }
+
+  .card-button {
+    width:100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+  }
   
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
+  .card-group {
+    display: inline-block;
+    padding: 0;
+    margin: 1% 1% 5% 1%;
+  }
+
+  .mat-card {
+    max-width: 12rem;
+    min-width: 12rem;
+    max-height: 17rem;
+    min-height: 17rem;
+  }
+
+  .mat-card-image {
+    max-height: 10rem;
+    min-height: 10rem;
+    object-position: bottom;
+  }
+
+  .mat-card-title {
+    font-size: 1rem;
+  }
+
+  .card-button {
+    width:100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+  }
   
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  
+  .card-group {
+    display: inline-block;
+    padding: 0;
+    margin: 1% 1% 5% 1%;
+  }
+
+  .mat-card {
+    max-width: 13rem;
+    min-width: 13rem;
+    max-height: 20rem;
+    min-height: 20rem;
+  }
+
+  .mat-card-image {
+    object-position: bottom;
+    max-height: 13rem;
+    min-height: 13rem;
+  }
+
+  .mat-card-title {
+    font-size: 1.1rem;
+  }
+
+  .card-button {
+    width:100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+  } 
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
@@ -38,8 +239,8 @@
   .card {
     min-width: 15rem;
     max-width: 15rem;
-    min-height: 20rem;
-    max-height: 20rem;
+    min-height: 25rem;
+    max-height: 25rem;
     overflow: hidden;
   }
 
@@ -122,9 +323,8 @@ agm-map {
 }
 
 .mat-card-image {
-  max-height: 10rem;
-  min-height: 10rem;
   object-fit: cover;
+  object-position: center;
 }
 
 .mat-card-title {
