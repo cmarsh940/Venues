@@ -21,7 +21,9 @@
                                                 <!-- <img mat-card-avatar src="https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}" alt="Venue Avatar Picture"> -->
                                             </mat-card-header>
                                             <mat-card-content class="text-center">
-                                                <mat-card-subtitle>{{venue?.name}}</mat-card-subtitle>
+                                                <mat-card-subtitle>
+                                                    {{venue?.name}}
+                                                </mat-card-subtitle>
                                             </mat-card-content>
                                             <mat-card-actions>
                                                 <button mat-button [routerLink]="['/venue', 'display', venue._id]">VIEW</button>
@@ -196,7 +198,10 @@
                                 <mat-card-title>
                                     <h5 class="text-center">{{venue?.name}}</h5>
                                     <span class="line"></span>
-                                    <mat-card-subtitle class="text-center">{{venue?.city | titlecase}}, {{venue?.state | uppercase}}</mat-card-subtitle>
+                                    <mat-card-subtitle class="text-center">
+                                        {{venue?.city | titlecase}}, {{venue?.state | uppercase}}
+                                        <p>{{venue?._category?.name}}</p>
+                                    </mat-card-subtitle>
                                 </mat-card-title>
                                 <mat-card-actions>
                                     <button mat-button class="card-button" [routerLink]="['/venue', 'display', venue._id]" matTooltip="View {{venue.name}}">VIEW</button>
