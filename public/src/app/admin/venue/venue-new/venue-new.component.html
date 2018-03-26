@@ -114,13 +114,13 @@
     
     <div class="input-container">
       <mat-form-field>
-        <mat-select multiple placeholder="Venue Amenities" name="amenities" [(ngModel)]="newVenue.amenities" #amenities='ngModel'>
+        <mat-select multiple placeholder="Venue Amenities" name="amenities" required [(ngModel)]="newVenue.amenities" #amenities='ngModel'>
           <mat-option *ngFor="let amenity of amenitiesList" [value]="amenity._id">{{amenity.name}}</mat-option>
         </mat-select>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-select placeholder="Venue Category" name="_category" [(ngModel)]="newVenue._category" #_category='ngModel'>
+        <mat-select placeholder="Venue Category" name="_category" required [(ngModel)]="newVenue._category" #_category='ngModel'>
           <mat-option *ngFor="let category of categories" [value]="category._id">{{category.name}}</mat-option>
         </mat-select>
       </mat-form-field>
