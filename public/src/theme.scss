@@ -7,15 +7,3 @@ $custom-warn:    mat-palette($mat-red, 600);
 
 $custom-theme: mat-light-theme($custom-primary, $custom-accent, $custom-warn);
 @include angular-material-theme($custom-theme);
-
-
-// ALTERNATIVE THEME
-
-// $alt-primary: mat-palette($mat-yellow);
-// $alt-accent:  mat-palette($mat-grey, 200);
-
-// $alt-theme: mat-dark-theme($alt-primary, $alt-accent);
-
-// .alternative {
-//     @include angular-material-theme($alt-theme);
-// }

@@ -26,7 +26,6 @@
 
   h5 {
     font-size: 1rem;
-    font-weight: lighter;
     line-height: 1;
   }
 
@@ -41,7 +40,22 @@
     transform: rotate(90deg);
   }
 
+  iframe {
+    min-height: 230px;
+    max-height: 230px;
+  }
 
+  .image-button {
+    top: 45%;
+    left: 37%;
+  }
+
+  #gallery img {
+    min-width: 8rem!important;
+    max-width: 8rem!important;
+    min-height: 8rem!important;
+    max-height: 8rem!important;
+  }
 }
 
 /* Small devices (landscape phones, 576px and up) */
@@ -75,7 +89,6 @@
 
   h5 {
     font-size: 1rem;
-    font-weight: lighter;
     line-height: 1;
   }
 
@@ -87,6 +100,24 @@
     right: 46em;
     left: -22em;
     top: -15em;
+  }
+
+  .col-6 {
+    display: block;
+    overflow: hidden;
+    min-width: 100%;
+  }
+
+  iframe {
+    min-width: 600px;
+    max-width: 600px;
+    min-height: 230px;
+    max-height: 230px;
+  }
+
+  .image-button {
+    top: 47%;
+    left: 42%;
   }
   
 }
@@ -114,7 +145,6 @@
 
   h5 {
     font-size: 1rem;
-    font-weight: lighter;
     line-height: 1;
   }
 
@@ -122,9 +152,9 @@
     padding: 1%;
   }
 
-.mat-card-subtitle:not(:first-child), .mat-card-title:not(:first-child) {
+  .mat-card-subtitle:not(:first-child), .mat-card-title:not(:first-child) {
     margin-top: 0;
-}
+  }
 
   .mat-card-actions, .mat-card-content, .mat-card-subtitle, .mat-card-title {
     margin: 0;
@@ -143,6 +173,24 @@
     left: -33em;
     top: -37em;
   }
+
+  .col-6 {
+    display: block;
+    overflow: hidden;
+    min-width: 100%;
+  }
+
+  iframe {
+    min-width: 600px;
+    max-width: 600px;
+    min-height: 230px;
+    max-height: 230px;
+  }
+
+  .image-button {
+    top: 45%;
+    left: 40%;
+  }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -158,6 +206,23 @@
     top: -36em;
   }
 
+  iframe {
+    min-width: 400px;
+    max-width: 400px;
+    min-height: 230px;
+    max-height: 230px;
+  }
+
+  .col-6 {
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  .image-button {
+    top: 40%;
+    left: 35%;
+  }
+
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
@@ -171,6 +236,23 @@
     right: 43em;
     left: -60em;
     top: -32em;
+  }
+
+  iframe {
+    min-width: 600px;
+    max-width: 600px;
+    min-height: 230px;
+    max-height: 230px;
+  }
+
+  .col-6 {
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  .image-button {
+    top: 40%;
+    left: 35%;
   }
 
 }
@@ -245,7 +327,7 @@ ul {
   margin-top: 2%!important;
 }
 
-.col-3 .col-9, .col-6 {
+.col-3 .col-9 {
   display: inline-block;
   overflow: hidden;
 }
@@ -263,15 +345,12 @@ ul {
   -webkit-filter: brightness(85%);
   filter:brightness(85%);
   z-index: 1;
-  background: #00000045;
 }
 
 .image-button {
   z-index: 2;
   color: white;
   position: absolute;
-  top: 40%;
-  left: 35%;
 }
 
 #play-icon, #play-text {
