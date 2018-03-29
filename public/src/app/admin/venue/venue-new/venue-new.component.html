@@ -24,6 +24,7 @@
         #email='ngModel'
         placeholder="Venue Email"
       />
+      <mat-hint>EX: test@test.com</mat-hint>
     </mat-form-field>
 
     <mat-form-field>
@@ -37,7 +38,7 @@
         #phone='ngModel'
         placeholder="Venue Phone #"
       />
-      <mat-hint>no spaces EX: 123-456-7899 </mat-hint>
+      <mat-hint>NO SPACES EX: 123-456-7899</mat-hint>
     </mat-form-field>
 
     <mat-form-field>
@@ -133,7 +134,8 @@
           matInput 
           type="number" 
           name="minAmmount" 
-          required maxlength=250 
+          required 
+          maxlength=250 
           [(ngModel)]="newVenue.minAmmount"
           #minAmmount='ngModel'
           placeholder="Min-ammount" 
@@ -148,7 +150,8 @@
           matInput 
           type="number" 
           name="maxAmmount" 
-          required maxlength=250 
+          required 
+          maxlength=250 
           [(ngModel)]="newVenue.maxAmmount" 
           placeholder="Max-ammount"
           #maxAmmount='ngModel'
@@ -164,6 +167,7 @@
           type="number" 
           name="minCapacity" 
           maxlength=250 
+          required
           [(ngModel)]="newVenue.minCapacity"
           #minCapacity='ngModel'
           placeholder="Min-capacity" 
@@ -177,6 +181,7 @@
           type="number" 
           name="maxCapacity" 
           maxlength=250 
+          required
           [(ngModel)]="newVenue.maxCapacity" 
           placeholder="Max-capacity"
           #maxCapacity='ngModel'
@@ -190,13 +195,14 @@
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput type="url" name="tour" maxlength=500 [(ngModel)]="newVenue.tour_url" #tour_url='ngModel' placeholder="Venue 3D Tour" />
+      <input matInput type="url" name="tour" maxlength=500 required [(ngModel)]="newVenue.tour_url" #tour_url='ngModel' placeholder="Venue 3D Tour" />
       <mat-hint>http://www.transported.co/venueName/t/Fv5mLZTq?embeddable=true</mat-hint>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput type="url" name="video" maxlength=500 [(ngModel)]="newVenue.video_url" #video_url='ngModel' placeholder="Venue Video" />
+      <input matInput type="url" name="video" required maxlength=500 [(ngModel)]="newVenue.video_url" #video_url='ngModel' placeholder="Venue Video" />
       <mat-hint>Video URL</mat-hint>
+      <mat-hint>https://player.vimeo.com/video/259357730</mat-hint>
     </mat-form-field>
 
     <mat-form-field>
@@ -213,7 +219,6 @@
       <button mat-raised-button type="submit" color="accent">Submit</button>
     </div>
   </form>
-  {{newVenue | json}}
 
   <div>
     <p class="text-center" [ngStyle]="{ 'color': 'red' }" *ngFor="let error of errors">{{ error }}</p>
