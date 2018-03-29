@@ -36,7 +36,6 @@ module.exports = function (app) {
     app.put('/vendorCategories/:id', VendorCategories.update);
 
     app.get('/reviews', Reviews.index);
-    // app.post('/reviews/:id', Reviews.create);
     app.delete('/reviews/:id', Reviews.delete);
     app.get('/reviews/:id', Reviews.show);
     app.put('/reviews/:id', Reviews.update);
@@ -45,13 +44,13 @@ module.exports = function (app) {
     app.get('/venues/category/:category', Venues.category);
     app.post('/venues', Venues.create);
     app.put('/venues/upload/:id', Venues.upload);
-    app.put("/venues/uploadVideoPic/:id", Venues.uploadVideoPic);
     app.put('/venues/uploadTourPic/:id', Venues.uploadTourPic);
     app.post('/venues/upload/multiple/:id', Venues.gallery);
     app.delete('/venues/:id', Venues.delete);
     app.get('/venues/:id', Venues.show);
     app.get('/venues/images/:id', Venues.images);
     app.put('/venues/:id', Venues.update);
+    
     app.post("/reviews/:id", Venues.review);
     
     app.get('/vendors', Vendors.index);
@@ -59,7 +58,6 @@ module.exports = function (app) {
     app.post('/vendors', Vendors.create);
     app.put('/vendors/upload/:id', Vendors.upload);
     app.put('/vendors/uploadLogo/:id', Vendors.uploadLogo);
-    app.put('/vendors/uploadVideoPic/:id', Vendors.uploadVideoPic);
     app.post('/vendors/upload/multiple/:id', Vendors.gallery);
     app.delete('/vendors/:id', Vendors.delete);
     app.get('/vendors/:id', Vendors.show);

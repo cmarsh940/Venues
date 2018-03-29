@@ -102,7 +102,7 @@ const VenueSchema = new mongoose.Schema(
         subject: String,
         content: String,
         rating: Number,
-        // approved: Boolean
+        approved: Boolean
       }
     ],
     avg: {
@@ -120,11 +120,6 @@ const VenueSchema = new mongoose.Schema(
       trim: true
     },
     video_url: {
-      type: String,
-      required: false,
-      trim: true
-    },
-    videoPicURL: {
       type: String,
       required: false,
       trim: true

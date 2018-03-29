@@ -7,7 +7,6 @@ const Review = mongoose.model("Review");
 const config = require("../config/config");
 
 const BUCKET_NAME = "tulsa-venues";
-// const BUCKET_NAME = "venue-test";
 const IAM_USER_KEY = config.iamUser;
 const IAM_USER_SECRET = config.iamSecret;
 
@@ -48,29 +47,6 @@ function uploadLogoToS3(file, vendor) {
     var params = {
       Bucket: BUCKET_NAME,
       Key: `Vendors/${vendor}/Logo/${file.name}`,
-      Body: file.data,
-      ACL: "public-read"
-    };
-    s3bucket.upload(params, function(err, data) {
-      if (err) {
-        console.log("*** Error in callback: ", err);
-        console.log("*** UPLOAD PARAMS: ", params);
-      }
-      console.log("**** SUCCESS", data);
-    });
-  });
-}
-
-function uploadVideoPicToS3(file, vendor) {
-  let s3bucket = new AWS.S3({
-    accessKeyId: IAM_USER_KEY,
-    secretAccessKey: IAM_USER_SECRET,
-    Bucket: BUCKET_NAME
-  });
-  s3bucket.createBucket(function() {
-    var params = {
-      Bucket: BUCKET_NAME,
-      Key: `Vendors/${vendor}/VideoPic/${file.name}`,
       Body: file.data,
       ACL: "public-read"
     };
@@ -192,14 +168,6 @@ class VendorsController {
       return res.json(vendor);
     });
   }
-  // create(req, res) {
-  //   Vendor.create(req.body, (err, vendor) => {
-  //     if (err) {
-  //       return res.json(err);
-  //     }
-  //     return res.json(vendor);
-  //   });
-  // }
 
   upload(req, res) {
     let new_vendor = new Vendor(req.body);
@@ -231,6 +199,7 @@ class VendorsController {
       return res.json(new_vendor);
     });
   }
+
   uploadLogo(req, res) {
     let new_vendor = new Vendor(req.body);
     let busboy = new Busboy({ headers: req.headers });
@@ -254,37 +223,6 @@ class VendorsController {
     Vendor.update(
       { _id: req.params.id },
       { $set: { logo_url: new_vendor.logo_url } }
-    ).exec((err, new_vendor) => {
-      if (err) {
-        return res.status(204).json(err);
-      }
-      return res.json(new_vendor);
-    });
-  }
-
-  uploadVideoPic(req, res) {
-    let new_vendor = new Vendor(req.body);
-    let busboy = new Busboy({ headers: req.headers });
-    console.log("*** SERVER REQ.FILES:", req.files);
-    console.log("*** SERVER REQ.FILES.PICTURE:", req.files.picture);
-    if (req.files.picture) {
-      let file = req.files.picture;
-      let file_type = file.mimetype.match(/image\/(\w+)/);
-      let new_file_name = file.name;
-
-      if (file_type) {
-        new_vendor.videoPicURL = new_file_name;
-        busboy.on("finish", function() {
-          const vendor = req.params.id;
-          const file = req.files.picture;
-          uploadVideoPicToS3(file, vendor);
-        });
-        req.pipe(busboy);
-      }
-    }
-    Vendor.update(
-      { _id: req.params.id },
-      { $set: { videoPicURL: new_vendor.videoPicURL } }
     ).exec((err, new_vendor) => {
       if (err) {
         return res.status(204).json(err);

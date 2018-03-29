@@ -18,7 +18,6 @@ export class Venue {
   tour_url: string;
   tourPicURL: string;
   video_url: string;
-  videoPicURL: string;
   facebook_url: string;
   instagram_url: string;
   _category: { 

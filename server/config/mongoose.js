@@ -3,8 +3,6 @@ const fs = require('fs');
 var path = require('path');
 let models_path = __dirname + '/../models';
 
-mongoose.set('debug', true);
-
 mongoose.connect('mongodb://localhost/Venues');
 
 mongoose.Promise = global.Promise;

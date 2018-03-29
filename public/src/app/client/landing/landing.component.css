@@ -722,6 +722,10 @@
         display: inline-block;
     }
 
+    .group {
+        width:70%!important;
+    }
+
     .card {
         max-width: 15rem;
         min-width: 15rem;
@@ -797,7 +801,7 @@ div.containerX {
 .containerY {
     min-width: 100%;
     max-width: 100%;
-    background: black; 
+    background: #00000091; 
 }
 
 

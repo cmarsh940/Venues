@@ -68,11 +68,6 @@ const VendorSchema = new mongoose.Schema(
       required: false,
       trim: true
     },
-    videoPicURL: {
-      type: String,
-      required: false,
-      trim: true
-    },
     logo_url: {
       type: String,
       required: false,

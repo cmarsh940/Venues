@@ -15,10 +15,7 @@
                                     <ng-template>
                                         <mat-card class="venue-display">
                                             <mat-card-header>
-                                                <!-- LIVE -->
                                                 <img mat-card-avatar src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Avatar Picture">
-                                                <!-- TEST -->
-                                                <!-- <img mat-card-avatar src="https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}" alt="Venue Avatar Picture"> -->
                                             </mat-card-header>
                                             <mat-card-content class="text-center">
                                                 <mat-card-subtitle>
@@ -45,19 +42,11 @@
                                 </h6>
                                 <ng-container *ngIf="vendor?.pic_url; else elseTemplate">
                                     <div class="vendor-link">
-                                        <!-- LIVE -->
                                         <div class="text-center">
                                             <a [routerLink]="['/vendor', 'display', vendor._id]">
                                                 <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/{{vendor.pic_url}}' class="img-thumbnail" id="vendor-image" alt="Vendor Picture" />
                                             </a>
                                         </div>
-                                        <!-- TEST -->
-                                        <!-- <div class="text-center">
-                                            <a [routerLink]="['/vendor', 'display', vendorTwo._id]">
-                                                <img src='https://venue-test.s3.amazonaws.com/Vendors/{{vendor._id}}/{{vendor.pic_url}}' class="img-thumbnail" id="vendor-image"
-                                                    alt="Vendor Picture" />
-                                            </a>
-                                        </div> -->
                                     </div>
                                 </ng-container>
                                 <ng-template #elseTemplate>
@@ -134,19 +123,11 @@
                                     </h6>
                                     <ng-container *ngIf="vendorTwo?.pic_url; else elseTemplate">
                                         <div class="vendor-link">
-                                            <!-- LIVE -->
                                             <div class="text-center">
                                                     <a [routerLink]="['/vendor', 'display', vendor._id]">
                                                         <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/{{vendor.pic_url}}' class="img-thumbnail" id="vendor-image" alt="Vendor Picture" />
                                                     </a>
                                                 </div>
-                                            <!-- TEST -->
-                                            <!-- <div class="text-center">
-                                                <a [routerLink]="['/vendor', 'display', vendorTwo._id]">
-                                                    <img src='https://venue-test.s3.amazonaws.com/Vendors/{{vendorTwo._id}}/{{vendorTwo.pic_url}}' class="img-thumbnail" id="vendor-image"
-                                                        alt="Vendor Picture" />
-                                                </a>
-                                            </div> -->
                                         </div>
                                     </ng-container>
                                     <ng-template #elseTemplate>
@@ -195,10 +176,7 @@
                                     <img mat-card-image src='/assets/images/missing.png' alt="Venue Picture">
                                 </ng-container>
                                 <ng-template #elseTemplate>
-                                    <!-- LIVE -->
-                                    <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Picture"> 
-                                    <!-- TEST -->
-                                    <!-- <img mat-card-image src="https://venue-test.s3.amazonaws.com/Venues/{{venue._id}}/{{venue.pic_url}}" alt="Venue Picture"> -->
+                                    <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Picture">
                                 </ng-template>
                                 <mat-card-title>
                                     <h5 class="text-center">{{venue?.name}}</h5>

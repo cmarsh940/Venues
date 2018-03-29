@@ -25,7 +25,7 @@ export class VendorUploadComponent implements OnInit {
   @ViewChild("file") file_input;
   @ViewChild("form") my_form;
   @ViewChild("logoform") my_logoform;
-  @ViewChild("videoform") my_videoform;
+
   @Output() vendor_event = new EventEmitter();
 
   constructor(
@@ -81,6 +81,7 @@ export class VendorUploadComponent implements OnInit {
       });
     }
   }
+  
   uploadLogo() {
     this.errors = [];
     if (this._userService.getCurrentUser() == null) {
@@ -89,28 +90,6 @@ export class VendorUploadComponent implements OnInit {
     } else {
       let formData = new FormData(this.my_logoform.nativeElement);
       this._vendorService.post_logo_to_s3(formData, this.vendor._id, res => {
-        if (res.errors) {
-          for (let key in res.errors) {
-            let errors = res.errors[key];
-            this.errors.push(errors.message);
-          }
-        } else {
-          this.file_input.nativeElement.value = "";
-          this.vendor_event.emit();
-          location.reload();
-        }
-      });
-    }
-  }
-
-  uploadVideoPic() {
-    this.errors = [];
-    if (this._userService.getCurrentUser() == null) {
-      console.log("REPORTED: You do not have administration privilages");
-      this._router.navigateByUrl("/");
-    } else {
-      let formData = new FormData(this.my_videoform.nativeElement);
-      this._vendorService.post_video_pic_to_s3(formData, this.vendor._id, res => {
         if (res.errors) {
           for (let key in res.errors) {
             let errors = res.errors[key];

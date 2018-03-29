@@ -7,7 +7,6 @@ const Review = mongoose.model("Review");
 const config = require("../config/config");
 
 const BUCKET_NAME = "tulsa-venues";
-// const BUCKET_NAME = "venue-test";
 const IAM_USER_KEY = config.iamUser;
 const IAM_USER_SECRET = config.iamSecret;
 
@@ -29,30 +28,6 @@ function uploadToS3(file, venue) {
         var params = {
             Bucket: BUCKET_NAME,
             Key: `Venues/${venue}/${file.name}`,
-            Body: file.data,
-            ACL: 'public-read'
-        };
-        s3bucket.upload(params, function(err, data) {
-        if (err) {
-            console.log("*** Error in callback: ", err);
-            console.log("*** UPLOAD PARAMS: ", params);
-        }
-            console.log("**** SUCCESS", data);
-        });
-    });
-}
-
-function uploadVideoPicToS3(file, venue) {
-    console.log("*** SERVER VIDEO FILE:", file);
-    let s3bucket = new AWS.S3({
-        accessKeyId: IAM_USER_KEY,
-        secretAccessKey: IAM_USER_SECRET,
-        Bucket: BUCKET_NAME
-    });
-    s3bucket.createBucket(function() {
-        var params = {
-            Bucket: BUCKET_NAME,
-            Key: `Venues/${venue}/VideoPic/${file.name}`,
             Body: file.data,
             ACL: 'public-read'
         };
@@ -226,36 +201,6 @@ class VenuesController {
     });
   }
 
-  uploadVideoPic(req, res) {
-    let new_venue = new Venue(req.body);
-    let busboy = new Busboy({ headers: req.headers });
-    if (req.files.picture) {
-      let file = req.files.picture;
-      let file_type = file.mimetype.match(/image\/(\w+)/);
-      let new_file_name = file.name;
-
-      if (file_type) {
-        new_venue.videoPicURL = new_file_name;
-        busboy.on("finish", function() {
-          const venue = req.params.id;
-          const file = req.files.picture;
-          console.log("*** SERVER FILE:", file);
-          uploadVideoPicToS3(file, venue);
-        });
-        req.pipe(busboy);
-      }
-    }
-    Venue.update(
-      { _id: req.params.id },
-      { $set: { videoPicURL: new_venue.videoPicURL } }
-    ).exec((err, new_venue) => {
-      if (err) {
-        return res.status(204).json(err);
-      }
-      return res.json(new_venue);
-    });
-  }
-
   uploadTourPic(req, res) {
     let new_venue = new Venue(req.body);
     let busboy = new Busboy({ headers: req.headers });
@@ -313,50 +258,6 @@ class VenuesController {
       }
     );
   }
-  // gallery(req, res) {
-  //   let new_venue = new Venue(req.body);
-  //   let busboy = new Busboy({ headers: req.headers });
-  //   console.log("*** SERVER REQ.FILES:", req.files);
-  //   console.log("*** SERVER REQ.FILES.PICTURE:", req.files.picture);
-  //   for (let i = 0; i < req.files.length; i++) {
-  //     if (req.files.picture) {
-  //       let file = req.files.picture;
-  //       let file_type = file.mimetype.match(/image\/(\w+)/);
-  //       let new_file_name = file.name;
-
-  //       if (file_type) {
-  //         new_venue.galleryItems = new_file_name;
-  //         busboy.on("finish", function() {
-  //           const venue = req.params.id;
-  //           const file = req.files.picture;
-  //           uploadToS3(file, venue);
-  //         });
-  //         req.pipe(busboy);
-  //       }
-  //     }
-  //   }
-  //   // req.body.files = venue._id;
-  //   Gallery.create(
-  //     req.body.files,
-  //     (err, files) => {
-  //       if (err) {
-  //         return res.json(err);
-  //       }
-  //     }),
-
-  //     new_venue.galleryItems.push(req.body.files);
-
-  //     Venue.update(
-  //       { _id: req.params.id },
-  //       { $set: [{ galleryItems: { objectId: files._id } }] }
-  //     ).exec((err, new_venue) => {
-  //       if (err) {
-  //         return res.json(err);
-  //       }
-  //       return res.json(new_venue);
-  //     }
-  //   )
-  // }
 
   review(req, res) {
     Venue.find({ _id: req.params.id }, (err, venue) => {

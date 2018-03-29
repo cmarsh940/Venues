@@ -11,7 +11,6 @@ class AmenitiesController {
         });
     }
 
-
     create(req, res) {
         Amenity.create(req.body, (err, amenity) => {
             if (err) {
@@ -20,8 +19,6 @@ class AmenitiesController {
             return res.json(amenity);
         });
     }
-
-
 
     show(req, res) {
         Amenity.findById(req.params.id, (err, amenity) => {
@@ -45,8 +42,6 @@ class AmenitiesController {
             }
         );
     }
-
-
 
     delete(req, res) {
         Amenity.findByIdAndRemove(req.params.id, (err, amenity) => {

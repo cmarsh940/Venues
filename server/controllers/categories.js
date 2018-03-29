@@ -10,8 +10,7 @@ class CategoriesController {
             return res.json(categories);
         });
     }
-
-
+    
     create(req, res) {
         Category.create(req.body, (err, category) => {
             if (err) {
@@ -20,8 +19,6 @@ class CategoriesController {
             return res.json(category);
         });
     }
-
-
 
     show(req, res) {
         Category.findById(req.params.id, (err, category) => {
@@ -45,8 +42,6 @@ class CategoriesController {
             }
         );
     }
-
-
 
     delete(req, res) {
         Category.findByIdAndRemove(req.params.id, (err, category) => {

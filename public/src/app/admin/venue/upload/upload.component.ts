@@ -26,7 +26,6 @@ export class UploadComponent implements OnInit, OnDestroy {
   @ViewChild("formMultiple") multiple_form;
   @ViewChild("file") file_input;
   @ViewChild("form") my_form;
-  @ViewChild("videoform") my_videoform;
   @ViewChild("tourform") my_tourform;
   @Output() venue_event = new EventEmitter();
 
@@ -80,21 +79,6 @@ export class UploadComponent implements OnInit, OnDestroy {
           this.venue_event.emit();
           location.reload();
         }
-      });
-    }
-  }
-  
-  uploadVideo() {
-    this.errors = [];
-    if (this._userService.getCurrentUser() == null) {
-      console.log("REPORTED: You do not have administration privilages");
-      this._router.navigateByUrl("/");
-    } else {
-      let formData = new FormData(this.my_videoform.nativeElement);
-      this._venueService.post_video_pic_to_s3(formData, this.venue._id, res => {
-        this.file_input.nativeElement.value = "";
-        this.venue_event.emit();
-        location.reload();
       });
     }
   }

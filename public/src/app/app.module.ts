@@ -1,5 +1,6 @@
-import { AnalyticsService } from './services/analytics.service';
+import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from './../environments/environment';
+import { AnalyticsService } from "./services/analytics.service";
 import { AgmCoreModule } from '@agm/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserService } from './services/user.service';
@@ -17,9 +18,7 @@ import { MaterialModule } from './material/material.module';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -33,12 +32,12 @@ import { MaterialModule } from './material/material.module';
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapsKey
+    }),
+    ServiceWorkerModule.register("/ngsw-worker.js", {
+      enabled: environment.production
     })
   ],
-  providers: [
-    UserService,
-    AnalyticsService
-  ],
+  providers: [UserService, AnalyticsService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

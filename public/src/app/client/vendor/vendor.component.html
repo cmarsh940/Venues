@@ -36,10 +36,7 @@
                         <img mat-card-image src='/assets/images/missing.png' alt="Vendor Picture">
                     </ng-container>
                     <ng-template #elseTemplate>
-                        <!-- LIVE -->
-                        <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/{{vendor.pic_url}}' alt="Vendor Picture"> 
-                        <!-- TEST -->
-                        <!-- <img mat-card-image src="https://venue-test.s3.amazonaws.com/Vendors/{{vendor._id}}/{{vendor.pic_url}}" alt="Vendor Picture"> -->
+                        <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/{{vendor.pic_url}}' alt="Vendor Picture">
                     </ng-template>
                     <mat-card-title>
                         <h5 class="text-center"><span class="color">{{vendor?.name}}</span></h5>
@@ -53,5 +50,4 @@
             </div>
         </div>
     </div>
-
 </ng-template>
