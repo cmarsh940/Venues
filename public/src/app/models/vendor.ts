@@ -10,8 +10,7 @@ export class Vendor {
   video_url: string;
   videoPicURL: string;
   logo_url: string;
-  _category: { 
-    _id: string; 
+  _category: {
     name: string; 
     createdAt: any; 
     updatedAt: any 

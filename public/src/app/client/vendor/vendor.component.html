@@ -16,17 +16,21 @@
 
     <div class="middle-top">
         <h5 class="text-center"> LOOKING FOR A SPECIFIC SERVICE PROVIDER? CHOOSE FROM THE LIST BELOW OR BROWSE ALL OF OUR PREMIUM VENDORS.</h5>
+        <div class="invisible">
+            <input matInput type='text' name='search_text' [(ngModel)]='search_text' id='search-box'>
+        </div>
         <div class="text-center">
             <mat-form-field>
-                <mat-select [(value)]="vendorCategories">
-                    <mat-option *ngFor="let category of vendorCategories">{{category.name}}</mat-option>
+                <mat-select [(ngModel)]='search_text'>
+                    <mat-option [value]="''">View All</mat-option>
+                    <mat-option *ngFor="let category of vendorCategories" [value]="category.name">{{category.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
     </div>
     <div class="bottom">
         <div class="text-center">
-            <div class="card-group" *ngFor="let vendor of vendors; let i = index">
+            <div class="card-group" *ngFor="let vendor of vendors | filterVendors: search_text; let i = index">
                 <mat-card class="card" [tabindex]="i">
                     <ng-container *ngIf="vendor.pic_url === ''; else elseTemplate">
                         <img mat-card-image src='/assets/images/missing.png' alt="Vendor Picture">

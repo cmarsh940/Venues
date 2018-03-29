@@ -17,6 +17,9 @@ export class VendorComponent implements OnInit {
   vendorCategories: Array<VendorCategory>;
   loaded: Boolean = false;
 
+  //search
+  search_text: String = "";
+
   constructor(
     private _vendorService: VendorService,
     private _vendorCategoryService: VendorCategoryService,
@@ -35,9 +38,7 @@ export class VendorComponent implements OnInit {
   }
 
   getVendors(): void {
-    this._vendorService.getVendors(
-      vendors => (this.vendors = vendors)
-    );
+    this._vendorService.getVendors(vendors => (this.vendors = vendors));
   }
 
   getCategories(): void {

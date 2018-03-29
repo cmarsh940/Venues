@@ -101,6 +101,7 @@ h6 {
 .card-group {
   display: inline-block;
   margin: 1%;
+  vertical-align: top;
 }
 
 .card {
@@ -109,6 +110,7 @@ h6 {
   min-height: 25rem;
   max-height: 25rem;
   overflow: hidden;
+  vertical-align: top;
 }
 
 .mat-card-image {

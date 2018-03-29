@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from "@angular/common";
 import { Vendor } from '../../../models/vendor';
 import { VendorService } from '../../../services/vendor.service';
+import { DomSanitizer } from "@angular/platform-browser";
+import { SafeResourceUrl } from "@angular/platform-browser";
 
 @Component({
   selector: "app-vendor-display",
@@ -20,7 +22,8 @@ export class VendorDisplayComponent implements OnInit {
   constructor(
     private _vendorService: VendorService,
     private _activatedRoute: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    public sanitizer: DomSanitizer
   ) {}
 
   ngOnInit() {

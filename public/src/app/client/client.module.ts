@@ -22,6 +22,7 @@ import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import { FilterVenuesPipe } from '../pipes/filter-venues.pipe';
 import { ReviewNewComponent } from './venue/review-new/review-new.component';
 import { VendorComponent } from './vendor/vendor.component';
+import { FilterVendorsPipe } from '../pipes/filter-vendors.pipe';
 
 @NgModule({
   imports: [
@@ -46,6 +47,7 @@ import { VendorComponent } from './vendor/vendor.component';
     VenueComponent,
     ReviewNewComponent,
     FilterVenuesPipe,
+    FilterVendorsPipe,
     VendorComponent,
     VendorDisplayComponent
   ],

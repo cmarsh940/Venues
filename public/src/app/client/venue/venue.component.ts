@@ -58,6 +58,7 @@ export class VenueComponent implements OnInit, OnDestroy {
   longitude: number;
   title: string;
 
+
   @ViewChild("sidenav") sidenav: MatSidenav;
 
   @ViewChildren(CdkPortal) templatePortals: QueryList<Portal<any>>;
@@ -129,7 +130,6 @@ export class VenueComponent implements OnInit, OnDestroy {
     }
     var avg = this.total / this.venue.reviews.length;
   }
-
 }
 
 interface marker {

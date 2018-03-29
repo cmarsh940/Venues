@@ -55,23 +55,25 @@
                             </div>
                         </div>
                         <div class="links">
-                            <div class="text-center">
-                                <div class="col-6">
-                                    <!-- LIVE -->
-                                    <div class="text-center">
-                                        <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/VideoPic/{{vendor.videoPicURL}}" class="img-fluid img-thumbnail" alt="Vendor Video">
-                                    </div>
-                                    <!-- TEST -->
-                                    <!-- <div class="text-center">
-                                        <img src='https://venue-test.s3.amazonaws.com/Vendors/{{vendor._id}}/VideoPic/{{vendor.videoPicURL}}' class="img-fluid img-thumbnail"
-                                            alt="Vendor Video">
-                                    </div> -->
-                                    <div class="text-center image-button">
-                                        <a href="{{vendor.video_url}}" target="_blank" class="white">
-                                            <i class="material-icons" id="play-icon">&#xE037;</i>
-                                            <h5 class="white" id="play-text">PLAY VIDEO</h5>
-                                        </a>
-                                    </div>
+                            <div class="col-12">
+                                <!-- LIVE -->
+                                <!-- <div class="text-center">
+                                    <img src="https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/VideoPic/{{vendor.videoPicURL}}" class="img-fluid img-thumbnail" alt="Vendor Video">
+                                </div> -->
+                                <!-- TEST -->
+                                <!-- <div class="text-center">
+                                    <img src='https://venue-test.s3.amazonaws.com/Vendors/{{vendor._id}}/VideoPic/{{vendor.videoPicURL}}' class="img-fluid img-thumbnail"
+                                        alt="Vendor Video">
+                                </div>
+                                <div class="text-center image-button">
+                                    <a href="{{vendor.video_url}}" target="_blank" class="white">
+                                        <i class="material-icons" id="play-icon">&#xE037;</i>
+                                        <h5 class="white" id="play-text">PLAY VIDEO</h5>
+                                    </a>
+                                </div> -->
+                                <div class="text-center">
+                                    <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(vendor.video_url)" frameborder="0" webkitallowfullscreen mozallowfullscreen
+                                        allowfullscreen></iframe>
                                 </div>
                             </div>
                         </div>

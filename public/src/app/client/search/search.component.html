@@ -99,16 +99,21 @@
                         <div class="text-center">
                             <input matInput type='text' name='search_text' [(ngModel)]='search_text' id='search-box' placeholder="Search...">
                         </div>
+
                         <h5>VENUE TYPES</h5>
                         <hr>
                         <mat-radio-group class="radio-group" [(ngModel)]="search_text">
-                            <mat-radio-button class="radio-button" *ngFor="let categroy of categories" color="primary" value="{{categroy.name}}">
+                            <mat-radio-button class="radio-button" *ngFor="let categroy of categories" color="primary" [value]="categroy.name">
                                 {{categroy?.name}}
                             </mat-radio-button>
+                            <hr>
+                            <mat-radio-button class="radio-button" [value]="''">
+                                RESET
+                            </mat-radio-button>
                         </mat-radio-group>
-                        <h5>CAPACITY</h5>
+                        <!-- <h5>CAPACITY</h5>
                         <hr>
-                        <!-- <mat-radio-group class="radio-group" [(ngModel)]="search_text">
+                        <mat-radio-group class="radio-group" [(ngModel)]="search_text">
                             <mat-radio-button class="radio-button" color="primary" disabled>< 100</mat-radio-button>
                             <mat-radio-button class="radio-button" color="primary" disabled>100 - 500</mat-radio-button>
                             <mat-radio-button class="radio-button" color="primary" disabled><500- 1000</mat-radio-button>
