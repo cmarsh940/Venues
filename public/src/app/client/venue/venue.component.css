@@ -277,6 +277,12 @@
 
 }
 
+.box {
+  min-width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 @keyframes slidy {
 0% { left: 0%; }
 20% { left: 0%; }
@@ -293,6 +299,7 @@ div#slider {
   height: 27rem; 
   box-shadow: 0 1px 18px #88888842;
   background-color: #01090ae3;
+  overflow: hidden;
 }
 
 div#slider figure img { 
@@ -365,6 +372,11 @@ ul {
   -webkit-filter: brightness(85%);
   filter:brightness(85%);
   z-index: 1;
+  margin: 0 25%;
+  max-width: 50%;
+  min-width: 50%;
+  max-height: 15em;
+  min-height: 15em;
 }
 
 .image-button {
@@ -482,4 +494,9 @@ div.loading {
 }
 .col-6 {
   vertical-align: top;
+}
+
+div {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }

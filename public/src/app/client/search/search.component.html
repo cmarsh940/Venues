@@ -10,7 +10,7 @@
                 <div class="col-9">
                     <div class="map">
                         <agm-map [latitude]='36.153883' [longitude]='-95.990629' [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
-                            <agm-marker *ngFor="let venue of venues" [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng">
+                            <agm-marker *ngFor="let venue of venues | filterVenues: search_text; let i = index" [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng">
                                 <agm-snazzy-info-window [maxWidth]="400" [padding]="0" [closeWhenOthersOpen]="true">
                                     <ng-template>
                                         <mat-card class="venue-display">
@@ -124,10 +124,10 @@
                                     <ng-container *ngIf="vendorTwo?.pic_url; else elseTemplate">
                                         <div class="vendor-link">
                                             <div class="text-center">
-                                                    <a [routerLink]="['/vendor', 'display', vendor._id]">
-                                                        <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/{{vendor.pic_url}}' class="img-thumbnail" id="vendor-image" alt="Vendor Picture" />
-                                                    </a>
-                                                </div>
+                                                <a [routerLink]="['/vendor', 'display', vendor._id]">
+                                                    <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/{{vendor.pic_url}}' class="img-thumbnail" id="vendor-image" alt="Vendor Picture" />
+                                                </a>
+                                            </div>
                                         </div>
                                     </ng-container>
                                     <ng-template #elseTemplate>

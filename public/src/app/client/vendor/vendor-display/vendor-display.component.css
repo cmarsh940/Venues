@@ -133,7 +133,7 @@
 }
  
 div#slider { 
-  /* overflow: hidden; */
+  overflow: hidden;
   height: 27rem; 
   box-shadow: 0 1px 18px #88888842;
   background-color: #212829;
