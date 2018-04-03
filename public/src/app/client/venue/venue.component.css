@@ -33,10 +33,6 @@
     padding: 0;
     z-index: 3;
     margin:0;
-    position: absolute;
-    right: 0;
-    left: -15em;
-    top: -15em;
   }
 
   iframe {
@@ -95,10 +91,6 @@
     padding: 0;
     z-index: 3;
     margin:0;
-    position: absolute;
-    right: 0;
-    left: -15em;
-    top: -15em;
   }
 
   .col-6 {
@@ -167,10 +159,6 @@
     padding: 0;
     z-index: 3;
     margin:0;
-    position: absolute;
-    right: 0;
-    left: -20em;
-    top: -18em;
   }
 
   div.overlay iframe {
@@ -206,10 +194,6 @@
     padding: 0;
     z-index: 3;
     margin:0;
-    position: absolute;
-    right: 0;
-    left: -53em;
-    top: -30em;
   }
 
   div.overlay iframe {
@@ -245,10 +229,6 @@
     padding: 0;
     z-index: 3;
     margin:0;
-    position: absolute;
-    right: 0;
-    left: -53em;
-    top: -30em;
   }
 
   div.overlay iframe {
@@ -496,7 +476,14 @@ div.loading {
   vertical-align: top;
 }
 
-div {
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+iframe:focus { 
+  outline: none;
+}
+
+iframe[seamless] { 
+  display: block;
+}
+
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+    background-color: #000000bf!important;
 }

@@ -1,3 +1,17 @@
+@media (max-width: 450px) {
+    .text-hide {
+        max-height: 1.5em!important;
+        min-height: 1.5em!important;
+    }
+
+    .mat-button {
+        min-width: 60px;
+        margin:0!important;
+        padding:0!important;
+        font-size: 12px!important;
+    }
+}
+
 mat-toolbar {
     width: 100%;
     border-bottom: 1px solid #00B8D4;

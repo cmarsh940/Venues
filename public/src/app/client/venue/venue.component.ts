@@ -70,7 +70,6 @@ export class VenueComponent implements OnInit, OnDestroy {
     private _vendorService: VendorService,
     private _activatedRoute: ActivatedRoute,
     private _router: Router,
-    private location: Location,
     public overlay: Overlay,
     public viewContainerRef: ViewContainerRef,
     public sanitizer: DomSanitizer
@@ -87,7 +86,7 @@ export class VenueComponent implements OnInit, OnDestroy {
     }, 1000);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy() :void {
     this.subscription.unsubscribe();
   }
 
@@ -104,18 +103,13 @@ export class VenueComponent implements OnInit, OnDestroy {
     });
   }
 
-  goBack(): void {
-    this.location.back();
-  }
 
   openPanelWithBackdrop() {
     let config = new OverlayConfig({
       hasBackdrop: true,
-      backdropClass: "cdk-overlay-transparent-backdrop",
-      positionStrategy: this.overlay
-        .position()
-        .global()
-        .centerHorizontally()
+      backdropClass: "cdk-overlay-backdrop",
+      scrollStrategy: this.overlay.scrollStrategies.block(),
+      positionStrategy: this.overlay.position().global().centerHorizontally().centerVertically()
     });
 
     let overlayRef = this.overlay.create(config);
@@ -123,14 +117,14 @@ export class VenueComponent implements OnInit, OnDestroy {
     overlayRef.backdropClick().subscribe(() => overlayRef.detach());
   }
 
-  average() {
+  average() :void {
     for (var i = 0; i < this.venue.reviews.length; i++) {
       this.total += this.venue.reviews[i].rating;
     }
     var avg = this.total / this.venue.reviews.length;
   }
 
-  reportReview() {
+  reportReview() :void {
     let r = window.confirm("Thank you we are looking into it.");
     if (r == true) {
       window.close();
