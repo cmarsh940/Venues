@@ -217,7 +217,7 @@
                     </div>
                     <ng-container *ngIf="!venue.reviews">
                         <div class="text-center">
-                            <p>There are no reviews for {{venue?.name}}</p>
+                            <p>There are no reviews for {{venue?.name | titlecase}}</p>
                         </div>
                     </ng-container>
                 </div>
