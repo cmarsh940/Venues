@@ -90,8 +90,8 @@ export class VenueService {
 
   updateVenue(newVenue: Venue, callback) {
     var URL = API_URL + newVenue._id;
-    this._http
-      .put(URL, newVenue)
+    console.log("SERVICE HIT UPDATEVENUE:", newVenue)
+    this._http.put(URL, newVenue)
       .subscribe(res => callback(res.json()), err => console.log(err));
   }
 

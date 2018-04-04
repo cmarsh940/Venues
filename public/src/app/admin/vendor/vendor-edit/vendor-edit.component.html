@@ -57,4 +57,7 @@
 
     <button mat-raised-button type='submit' [disabled]=!formData.valid>Submit</button>
   </form>
+  <div>
+    <p class="text-center" [ngStyle]="{ 'color': 'red' }" *ngFor="let error of errors">{{ error }}</p>
+  </div>
 </div>

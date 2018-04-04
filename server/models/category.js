@@ -11,4 +11,4 @@ const CategorySchema = new mongoose.Schema({
     }],
 }, { timestamps: true });
 
-mongoose.model('Category', CategorySchema);
+const Category = mongoose.model('Category', CategorySchema);

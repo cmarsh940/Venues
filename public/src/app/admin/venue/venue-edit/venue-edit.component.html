@@ -220,7 +220,7 @@
         #amenities='ngModel' 
         placeholder="Venue Amenities" 
         multiple>
-        <mat-option *ngFor="let amenity of amenityList" [value]="venue.amenities">
+        <mat-option *ngFor="let amenity of amenityList" [value]="amenity._id">
           {{amenity.name}}
         </mat-option>
       </mat-select>
@@ -240,4 +240,7 @@
     
     <button mat-raised-button type='submit'>Submit</button>
   </form>
+  <div>
+    <p class="text-center" [ngStyle]="{ 'color': 'red' }" *ngFor="let error of errors">{{ error }}</p>
+  </div>
 </div>

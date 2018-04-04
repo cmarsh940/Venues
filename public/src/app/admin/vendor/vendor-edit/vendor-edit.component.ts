@@ -23,6 +23,7 @@ export class VendorEditComponent implements OnInit, OnDestroy {
   currentUser: User;
   subscription: Subscription;
   dataLoading: boolean;
+  errors: string[] = [];
 
   constructor(
     private _vendorService: VendorService,
@@ -72,7 +73,14 @@ export class VendorEditComponent implements OnInit, OnDestroy {
 
   updateVendor() {
     this._vendorService.updateVendor(this.vendor, res => {
-      this._router.navigate(["/list_vendor"]);
+      if (res.errors) {
+        for (const key of Object.keys(res.errors)) {
+          const errors = res.errors[key];
+          this.errors.push(errors.message);
+        }
+      } else {
+        this._router.navigate(["/list_vendor"]);
+      }
     });
   }
 }

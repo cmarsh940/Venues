@@ -100,4 +100,4 @@ const VendorSchema = new mongoose.Schema(
 
 VendorSchema.plugin(random, { path: 'r' });
 
-mongoose.model('Vendor', VendorSchema);
+const Vendor = mongoose.model('Vendor', VendorSchema);

@@ -319,17 +319,15 @@ class VenuesController {
   }
 
   update(req, res) {
-    Venue.findByIdAndUpdate(
-      req.params.id,
-      { $set: req.body },
-      { new: true },
-      (err, venue) => {
-        if (err) {
-          return res.json(err);
-        }
-        return res.json(venue);
+    Venue.findByIdAndUpdate(req.params.id,{ $set: req.body },{ new: true },(err, venue) => {
+      console.log("*** SERVER REQ", req.body);
+      if (err) {
+        console.log("*** SERVER ERROR", err);
+        return res.json(err);
       }
-    );
+      console.log("*** SERVER VENUE UPDATE", venue);
+      return res.json(venue);
+    });
   }
 
   delete(req, res) {

@@ -13,4 +13,4 @@ const VendorCategorySchema = new mongoose.Schema({
   ]
 });
 
-mongoose.model('VendorCategory', VendorCategorySchema); 
+const VendorCategory = mongoose.model('VendorCategory', VendorCategorySchema); 

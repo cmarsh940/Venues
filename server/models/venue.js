@@ -107,7 +107,7 @@ const VenueSchema = new mongoose.Schema(
     ],
     avg: {
       type: Number,
-      default: 0,
+      default: 0
     },
     tour_url: {
       type: String,
@@ -160,4 +160,4 @@ const VenueSchema = new mongoose.Schema(
 
 VenueSchema.plugin(random, { path: 'r' });
 
-mongoose.model('Venue', VenueSchema);
+const Venue = mongoose.model('Venue', VenueSchema);

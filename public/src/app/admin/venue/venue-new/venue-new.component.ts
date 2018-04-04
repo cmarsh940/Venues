@@ -95,37 +95,4 @@ export class VenueNewComponent implements OnInit {
       this._router.navigateByUrl('/');
     }
   }
-
-  // createVenue() {
-  //   this.errors = [];
-  //   console.log("**** THIS.NEWVENUE:", this.newVenue);
-  //   if (this._userService.getCurrentUser() == null) {
-  //     console.log("REPORTED: You do not have administration privilages");
-  //     this._router.navigateByUrl("/");
-  //   } else {
-  //     const files: FileList = this.file_input.nativeElement.files;
-  //     if (files.length === 0) {
-  //       console.log("No File Was Selected");
-  //       return;
-  //     }
-  //     const formData = new FormData(this.my_form.nativeElement);
-  //     formData.append(files[0].name, files[0]);
-  //     this._venueService.post_to_s3(formData, venue => {
-  //       if (venue.errors) {
-  //         for (const key of Object.keys(venue.errors)) {
-  //           const errors = venue.errors[key];
-  //           this.errors.push(errors.message);
-  //         }
-  //       } else {
-  //         console.log("*** Setting new venue");
-  //         this.newVenue = new Venue();
-  //         console.log("*** Setting file value", formData);
-  //         this.file_input.nativeElement.value = "";
-  //         console.log("*** About to emit");
-  //         this.newVenue_event.emit();
-  //         this._router.navigate(["/list_venue"]);
-  //       }
-  //     });
-  //   }
-  // }
 }

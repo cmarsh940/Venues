@@ -23,7 +23,7 @@ export class Venue {
   _category: { 
     name: string; 
   };
-  amenities: any[];
+  amenities: [{name: string}];
   gallery: [{ name: string }];
   reviews: [{ 
     email: string; 
