@@ -1,4 +1,3 @@
-import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from './../environments/environment';
 import { AnalyticsService } from "./services/analytics.service";
 import { AgmCoreModule } from '@agm/core';
@@ -32,9 +31,6 @@ import { MaterialModule } from './material/material.module';
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapsKey
-    }),
-    ServiceWorkerModule.register("/ngsw-worker.js", {
-      enabled: environment.production
     })
   ],
   providers: [UserService, AnalyticsService],
