@@ -31,7 +31,6 @@ import { tap } from 'rxjs/operators/tap';
 import { MatSidenav } from "@angular/material";
 import { Vendor } from '../../models/vendor';
 import { VendorService } from '../../services/vendor.service';
-
 @Component({
   selector: "app-venue",
   templateUrl: "./venue.component.html",
@@ -75,6 +74,9 @@ export class VenueComponent implements OnInit, OnDestroy {
     public sanitizer: DomSanitizer
   ) {}
 
+  url: string;
+  tourUrl: string;
+
   ngOnInit() {
     this.loaded = false;
     this.getVendor();
@@ -86,13 +88,13 @@ export class VenueComponent implements OnInit, OnDestroy {
     }, 1000);
   }
 
-  ngOnDestroy() :void {
+  ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
   getVenue() {
     this.subscription = this._activatedRoute.params.subscribe(params =>
-      this._venueService.showVenue(params.id, res => (this.venue = res))
+      this._venueService.showVenue(params.id, res => (this.venue = res, this.url = this.venue.video_url, this.tourUrl = this.venue.tour_url))
     );
   }
 
@@ -103,13 +105,16 @@ export class VenueComponent implements OnInit, OnDestroy {
     });
   }
 
-
   openPanelWithBackdrop() {
     let config = new OverlayConfig({
       hasBackdrop: true,
       backdropClass: "cdk-overlay-backdrop",
       scrollStrategy: this.overlay.scrollStrategies.block(),
-      positionStrategy: this.overlay.position().global().centerHorizontally().centerVertically()
+      positionStrategy: this.overlay
+        .position()
+        .global()
+        .centerHorizontally()
+        .centerVertically()
     });
 
     let overlayRef = this.overlay.create(config);
@@ -117,14 +122,14 @@ export class VenueComponent implements OnInit, OnDestroy {
     overlayRef.backdropClick().subscribe(() => overlayRef.detach());
   }
 
-  average() :void {
+  average(): void {
     for (var i = 0; i < this.venue.reviews.length; i++) {
       this.total += this.venue.reviews[i].rating;
     }
     var avg = this.total / this.venue.reviews.length;
   }
 
-  reportReview() :void {
+  reportReview(): void {
     let r = window.confirm("Thank you we are looking into it.");
     if (r == true) {
       window.close();

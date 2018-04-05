@@ -23,6 +23,7 @@ import { FilterVenuesPipe } from '../pipes/filter-venues.pipe';
 import { ReviewNewComponent } from './venue/review-new/review-new.component';
 import { VendorComponent } from './vendor/vendor.component';
 import { FilterVendorsPipe } from '../pipes/filter-vendors.pipe';
+import { SafePipe } from '../pipes/safe.pipe';
 
 @NgModule({
   imports: [
@@ -48,6 +49,7 @@ import { FilterVendorsPipe } from '../pipes/filter-vendors.pipe';
     ReviewNewComponent,
     FilterVenuesPipe,
     FilterVendorsPipe,
+    SafePipe,
     VendorComponent,
     VendorDisplayComponent
   ],

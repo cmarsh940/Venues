@@ -133,12 +133,12 @@
                     </div>
                     <div class="links">
                         <div class="col-6">
-                            <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(venue.video_url)" width="600" height="338" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                            <iframe [src]="url | safe" width="600" height="338" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                         </div>
                         <div class="col-6">
                             <ng-template cdk-portal>
                                 <div class="overlay">
-                                    <iframe [src]='sanitizer.bypassSecurityTrustResourceUrl(venue.tour_url)'></iframe>
+                                    <iframe [src]="tourUrl | safe"></iframe>
                                 </div>
                             </ng-template>
                             

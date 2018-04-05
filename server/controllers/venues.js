@@ -259,27 +259,27 @@ class VenuesController {
     );
   }
 
-  review(req, res) {
-    Venue.find({ _id: req.params.id }, (err, venue) => {
-      let review = new Review(req.body);
-      if (err) {
-        return res.status(500).send({ message: err.message });
-      }
-      if (venue) {
-        review._venue = venue._id;
-        Venue.update(
-          { _id: req.params.id },
-          { $push: { reviews: review } }
-        ).exec((err, venue) => {
-          if (err) {
-            return res.json(err);
-          }
-          console.log("*** SERVER REVIEW:", venue);
-          return res.json(venue);
-        });
-      }
-    });
-  }
+  // review(req, res) {
+  //   Venue.find({ _id: req.params.id }, (err, venue) => {
+  //     let review = new Review(req.body);
+  //     if (err) {
+  //       return res.status(500).send({ message: err.message });
+  //     }
+  //     if (venue) {
+  //       review._venue = venue._id;
+  //       Venue.update(
+  //         { _id: req.params.id },
+  //         { $push: { reviews: review } }
+  //       ).exec((err, venue) => {
+  //         if (err) {
+  //           return res.json(err);
+  //         }
+  //         console.log("*** SERVER REVIEW:", venue);
+  //         return res.json(venue);
+  //       });
+  //     }
+  //   });
+  // }
 
   images(req, res) {
     Venue.findById(req.params.id)

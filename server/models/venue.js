@@ -98,11 +98,8 @@ const VenueSchema = new mongoose.Schema(
     gallery: [{ name: String }],
     reviews: [
       {
-        email: String,
-        subject: String,
-        content: String,
-        rating: Number,
-        approved: Boolean
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Review"
       }
     ],
     avg: {
@@ -159,5 +156,9 @@ const VenueSchema = new mongoose.Schema(
 );
 
 VenueSchema.plugin(random, { path: 'r' });
+
+VenueSchema.methods.average = function() {
+
+};
 
 const Venue = mongoose.model('Venue', VenueSchema);

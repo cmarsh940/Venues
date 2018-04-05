@@ -18,7 +18,14 @@ class ReviewsController {
             if (err) {
                 return res.json(err);
             }
-            return res.json(review);
+            Venue.findByIdAndUpdate(
+                req.params.id,{ $push: { reviews: review._id } },{ new: true },(err, venue) => {
+                if (err) {
+                    return res.json(err);
+                }
+                return res.json(review);
+                }
+            );
         });
     }
 
@@ -51,9 +58,13 @@ class ReviewsController {
 
     delete(req, res) {
         Review.findByIdAndRemove(req.params.id, (err, review) => {
+            console.log("*** SERVER REQ", req);
+            console.log("*** SERVER DELETE REVIEW", review);
             if (err) {
+                console.log("*** SERVER ERROR", err);
                 return res.json(err);
             } else {
+                console.log("*** SERVER DELETE REVIEW SUCCESS");
                 return res.json(true);
             }
         })
