@@ -12,8 +12,8 @@
         <tbody>
             <tr class="reviews" *ngFor="let review of reviews; let i = index">
                 <td>{{ i + 1 }}</td>
-                <td>{{ review.email }}</td>
-                <td>{{ review.approved }}</td>
+                <td>{{ review?.email }}</td>
+                <td>{{ review?.approved }}</td>
                 <td class="delete">
                     <button mat-icon-button color="accent" [routerLink]="['/review', 'edit', review._id]">
                         <mat-icon aria-label="icon-button to edit review">

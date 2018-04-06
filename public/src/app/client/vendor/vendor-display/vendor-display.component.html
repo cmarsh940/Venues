@@ -51,7 +51,7 @@
                         <div class="links">
                             <div class="col-12">
                                 <div>
-                                    <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(vendor.video_url)" width="600" height="338" frameborder="0" webkitallowfullscreen
+                                    <iframe [src]="url | safe" width="600" height="338" frameborder="0" webkitallowfullscreen
                                         mozallowfullscreen allowfullscreen></iframe>
                                 </div>
                             </div>

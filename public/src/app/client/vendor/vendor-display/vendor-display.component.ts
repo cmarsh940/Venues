@@ -18,6 +18,7 @@ export class VendorDisplayComponent implements OnInit {
   subscription: Subscription;
   loaded: Boolean = false;
   errors = [];
+  url: string;
 
   constructor(
     private _vendorService: VendorService,
@@ -40,7 +41,10 @@ export class VendorDisplayComponent implements OnInit {
 
   getVendor() {
     this.subscription = this._activatedRoute.params.subscribe(params =>
-      this._vendorService.showVendor(params.id, res => (this.vendor = res))
+      this._vendorService.showVendor(
+        params.id,
+        res => ((this.vendor = res), (this.url = this.vendor.video_url))
+      )
     );
   }
 

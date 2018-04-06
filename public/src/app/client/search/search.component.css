@@ -21,8 +21,12 @@
     display: none;
   }
 
+  .card-group {
+    margin: 0!important;
+  }
+  
   .mat-card {
-    margin: 0;
+    margin: 2% 0;
     padding: 0;
     max-width: 100%;
     min-width: 100%;
@@ -211,8 +215,8 @@
   .mat-card {
     max-width: 13rem;
     min-width: 13rem;
-    max-height: 20rem;
-    min-height: 20rem;
+    max-height: 22rem;
+    min-height: 22rem;
     vertical-align: top;
     margin: 1% 0;
   }
