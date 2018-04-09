@@ -33,7 +33,7 @@
         </form>
     </div>
     <div>
-        <p [ngStyle]="{ 'color': 'red' }" *ngFor="let error of errors">{{ error }}</p>
+        <p [ngStyle]="{ 'color': 'red' }" *ngFor="let error of tourErrors">{{ error }}</p>
     </div>
     <div class="col-3">
         <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/TourPic/{{venue.tourPicURL}}' alt="Venue Picture" class="img-thumbnail">
@@ -53,7 +53,7 @@
         </form>
     </div>
     <div>
-        <p [ngStyle]="{ 'color': 'red' }" *ngFor="let error of errors">{{ error }}</p>
+        <p [ngStyle]="{ 'color': 'red' }" *ngFor="let error of galleryErrors">{{ error }}</p>
     </div>
     <div class="row">
         <div class="col-3" *ngFor="let gallery of venue.gallery">

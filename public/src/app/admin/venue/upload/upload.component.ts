@@ -20,6 +20,8 @@ export class UploadComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   dataLoading: boolean;
   errors = [];
+  tourErrors = [];
+  galleryErrors = [];
   progressBarValue;
 
   @ViewChild("files") files_input;
@@ -94,7 +96,7 @@ export class UploadComponent implements OnInit, OnDestroy {
         if (res.errors) {
           for (let key in res.errors) {
             let errors = res.errors[key];
-            this.errors.push(errors.message);
+            this.tourErrors.push(errors.message);
           }
         } else {
           this.file_input.nativeElement.value = "";
@@ -126,7 +128,7 @@ export class UploadComponent implements OnInit, OnDestroy {
           if (venue.errors) {
             for (const key of Object.keys(venue.errors)) {
               const errors = venue.errors[key];
-              this.errors.push(errors.message);
+              this.galleryErrors.push(errors.message);
             }
           }
           this.file_input.nativeElement.value = "";

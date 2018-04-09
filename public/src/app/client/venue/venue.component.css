@@ -176,7 +176,7 @@
   }
 
   .links img {
-    margin: 1em 6em!important;
+    margin: 0!important;
     min-width: 26em;
     max-width: 26em;
     max-height: 15em;
@@ -259,8 +259,9 @@
   }
 
   .links img {
-    max-width: 100%;
-    min-width: 100%;
+    margin: 0 1em 0 3em!important;
+    max-width: 26em;
+    min-width: 26em;
     max-height: 15em;
     min-height: 15em;
   }
@@ -300,6 +301,7 @@
   }
 
   .links img {
+    margin: 0!important;
     max-width: stretch;
     min-width: stretch;
     max-height: 14em;
@@ -342,8 +344,8 @@
   }
 
   .links img {
-    max-width: 100%;
-    min-width: 100%;
+    max-width: 50%;
+    min-width: 50%;
     max-height: 15em;
     min-height: 15em;
   }
