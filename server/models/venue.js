@@ -108,7 +108,7 @@ const VenueSchema = new mongoose.Schema(
     },
     tour_url: {
       type: String,
-      required: false,
+      required: [true, "3D Tour cannot be blank"],
       trim: true
     },
     tourPicURL: {
@@ -118,7 +118,7 @@ const VenueSchema = new mongoose.Schema(
     },
     video_url: {
       type: String,
-      required: false,
+      required: [true, "Video URL cannot be blank"],
       trim: true
     },
     facebook_url: {
