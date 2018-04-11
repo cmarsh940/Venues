@@ -124,8 +124,8 @@
                                     <ng-container *ngIf="vendorTwo?.pic_url; else elseTemplate">
                                         <div class="vendor-link">
                                             <div class="text-center">
-                                                <a [routerLink]="['/vendor', 'display', vendor._id]">
-                                                    <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendor._id}}/{{vendor.pic_url}}' class="img-thumbnail" id="vendor-image" alt="Vendor Picture" />
+                                                <a [routerLink]="['/vendor', 'display', vendorTwo._id]">
+                                                    <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Vendors/{{vendorTwo._id}}/{{vendorTwo.pic_url}}' class="img-thumbnail" id="vendor-image" alt="Vendor Picture" />
                                                 </a>
                                             </div>
                                         </div>
