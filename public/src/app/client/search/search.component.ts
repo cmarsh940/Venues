@@ -27,7 +27,7 @@ export class SearchComponent implements OnInit {
   randomTwo: number;
   loaded: Boolean = false;
 
-  zoom: number = 8;
+  zoom: number = 9;
   latitude: number;
   longitude: number;
   title: string;

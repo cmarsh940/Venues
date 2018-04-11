@@ -138,18 +138,18 @@
                                         </div>
                                     </ng-template>
                                     <mat-card-title>
-                                        <h5 class="text-center">{{vendorTwo?.name}}</h5>
+                                        <h5 class="text-center">
+                                            <span class="color">{{vendorTwo.name}}</span>
+                                        </h5>
                                         <span class="line"></span>
-                                        <mat-card-subtitle>
-                                            <div class="text-center">
-                                                {{vendorTwo?._category?.name | titlecase}}
-                                            </div>
+                                        <mat-card-subtitle class="text-center">
+                                            {{vendorTwo?._category?.name | titlecase}}
                                         </mat-card-subtitle>
                                     </mat-card-title>
                                     <mat-card-actions>
                                         <div class="text-center">
                                             <button mat-button [routerLink]="['/vendor', 'display', vendorTwo._id]" matTooltip="View {{vendorTwo.name}}">
-                                                <span>LEARN MORE</span>
+                                                <h6>LEARN MORE</h6>
                                             </button>
                                         </div>
                                     </mat-card-actions>
@@ -170,23 +170,24 @@
                                 <h2>VENUES</h2>
                             </div>
                         </div>
-                        <div class="card-group" *ngFor="let venue of venues | filterVenues: search_text; let i = index">
-                            <ng-container *ngIf="venue?.pic_url !== ''">
-                                <mat-card class="card" [tabindex]="i">
-                                    <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Picture"> 
-                                    <mat-card-title>
-                                        <h5 class="text-center">{{venue?.name}}</h5>
-                                        <span class="line"></span>
-                                        <mat-card-subtitle class="text-center">
-                                            {{venue?.city | titlecase}}, {{venue?.state | uppercase}}
-                                        </mat-card-subtitle>
-                                    </mat-card-title>
-                                    <mat-card-actions>
-                                        <button mat-button class="card-button" [routerLink]="['/venue', 'display', venue._id]" matTooltip="View {{venue.name}}">VIEW</button>
-                                    </mat-card-actions>
-                                </mat-card>
-                            </ng-container>
-                        </div>
+                        <ng-container *ngFor="let venue of venues | filterVenues: search_text; let i = index">
+                            <div class="card-group" *ngIf="venue?.pic_url !== ''; else anotherTemplate">
+                                    <mat-card class="card" [tabindex]="i">
+                                        <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Picture"> 
+                                        <mat-card-title>
+                                            <h5 class="text-center">{{venue?.name}}</h5>
+                                            <span class="line"></span>
+                                            <mat-card-subtitle class="text-center">
+                                                {{venue?.city | titlecase}}, {{venue?.state | uppercase}}
+                                            </mat-card-subtitle>
+                                        </mat-card-title>
+                                        <mat-card-actions>
+                                            <button mat-button class="card-button" [routerLink]="['/venue', 'display', venue._id]" matTooltip="View {{venue.name}}">VIEW</button>
+                                        </mat-card-actions>
+                                    </mat-card>
+                                </div>
+                        </ng-container>
+                        <ng-template #anotherTemplate class="notComplete"></ng-template>
                     </mat-sidenav-content>
                 </mat-sidenav-container>
             </div>

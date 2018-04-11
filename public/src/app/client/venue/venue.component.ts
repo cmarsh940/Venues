@@ -52,7 +52,7 @@ export class VenueComponent implements OnInit, OnDestroy {
   isMenuOpen: boolean = false;
 
   // MAP
-  zoom: number = 12;
+  zoom: number = 18;
   latitude: number;
   longitude: number;
   title: string;

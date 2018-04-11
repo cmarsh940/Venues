@@ -505,3 +505,7 @@ a:hover {
   width: 100%;
   margin: 0 60%;
 }
+
+.notComplete {
+  display: none;
+}
