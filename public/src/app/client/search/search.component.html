@@ -171,7 +171,7 @@
                             </div>
                         </div>
                         <div class="card-group" *ngFor="let venue of venues | filterVenues: search_text; let i = index">
-                            <ng-container *ngIf="venue?.pic_url === ''">
+                            <ng-container *ngIf="venue?.pic_url !== ''">
                                 <mat-card class="card" [tabindex]="i">
                                     <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Picture"> 
                                     <mat-card-title>
