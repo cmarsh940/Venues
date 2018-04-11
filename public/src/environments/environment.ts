@@ -6,5 +6,5 @@
 export const environment = {
   production: false,
 
-  googleMapsKey: 'AIzaSyDfwhnUhdTMpeHKRqy7VNXZSjRcDyWZpns',
+  googleMapsKey: '***',
 };
