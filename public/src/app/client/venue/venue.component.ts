@@ -50,6 +50,8 @@ export class VenueComponent implements OnInit, OnDestroy {
   // OVERLAY & PORTAL
   nextPosition: number = 0;
   isMenuOpen: boolean = false;
+  url: string;
+  tourUrl: string;
 
   // MAP
   zoom: number = 18;
@@ -74,18 +76,15 @@ export class VenueComponent implements OnInit, OnDestroy {
     public sanitizer: DomSanitizer
   ) {}
 
-  url: string;
-  tourUrl: string;
-
   ngOnInit() {
     this.loaded = false;
     this.getVendor();
     this.getVenue();
     console.log(this.venue);
-    // this.average();
     setTimeout(() => {
       this.loaded = true;
     }, 1000);
+    // this.a();
   }
 
   ngOnDestroy(): void {
@@ -94,7 +93,14 @@ export class VenueComponent implements OnInit, OnDestroy {
 
   getVenue() {
     this.subscription = this._activatedRoute.params.subscribe(params =>
-      this._venueService.showVenue(params.id, res => (this.venue = res, this.url = this.venue.video_url, this.tourUrl = this.venue.tour_url))
+      this._venueService.showVenue(
+        params.id,
+        res => (
+          (this.venue = res),
+          (this.url = this.venue.video_url),
+          (this.tourUrl = this.venue.tour_url)
+        )
+      )
     );
   }
 
@@ -122,11 +128,11 @@ export class VenueComponent implements OnInit, OnDestroy {
     overlayRef.backdropClick().subscribe(() => overlayRef.detach());
   }
 
-  average(): void {
-    for (var i = 0; i < this.venue.reviews.length; i++) {
-      this.total += this.venue.reviews[i].rating;
+  a() {
+    console.log("*** STARTED A");
+    for (let i of this.venue.reviews) {
+      console.log("**** AVERAGE", i)
     }
-    var avg = this.total / this.venue.reviews.length;
   }
 
   reportReview(): void {
