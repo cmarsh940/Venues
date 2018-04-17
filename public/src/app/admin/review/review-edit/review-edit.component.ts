@@ -56,6 +56,7 @@ export class ReviewEditComponent implements OnInit, OnDestroy {
   }
 
   updateReview() {
+    this.isLoggedIn();
     this._reviewService.updateReview(this.review, res => {
       this._router.navigate(['/list_review']);
     });

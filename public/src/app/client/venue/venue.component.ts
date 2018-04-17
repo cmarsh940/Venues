@@ -128,13 +128,6 @@ export class VenueComponent implements OnInit, OnDestroy {
     overlayRef.backdropClick().subscribe(() => overlayRef.detach());
   }
 
-  a() {
-    console.log("*** STARTED A");
-    for (let i of this.venue.reviews) {
-      console.log("**** AVERAGE", i)
-    }
-  }
-
   reportReview(): void {
     let r = window.confirm("Thank you we are looking into it.");
     if (r == true) {

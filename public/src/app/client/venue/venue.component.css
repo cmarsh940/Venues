@@ -483,6 +483,13 @@ ul {
   object-position: center;
 }
 
+.gallery-button {
+  z-index: 2;
+  position: absolute;
+  left: 50px;
+  top: 35%;
+}
+
 #bottom-map {
   min-height: 19em;
   max-height: 19em;

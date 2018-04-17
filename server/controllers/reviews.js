@@ -4,7 +4,7 @@ const Review = mongoose.model("Review");
 
 class ReviewsController {
     index(req, res) {
-        Venue.find({}, (err, reviews) => {
+        Review.find({}, (err, reviews) => {
             if (err) {
                 return res.json(err);
             }
@@ -23,6 +23,7 @@ class ReviewsController {
                 if (err) {
                     return res.json(err);
                 }
+                review._venue = req.params.id;
                 return res.json(review);
                 }
             );

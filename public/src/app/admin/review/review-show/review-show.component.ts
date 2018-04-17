@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Rx';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../../models/user';
@@ -40,14 +41,16 @@ export class ReviewShowComponent implements OnInit {
     }
   }
 
-  getReviews(): void {
+  getReviews() {
     this._reviewService.getReviews((reviews) => this.reviews = reviews);
   }
 
   destroyReview(id: string, idx: any) {
+    this.isLoggedIn()
     let r = window.confirm("Delete Review?");
     if (r == true) {
-    this._reviewService.destroyReview(id, res => this.reviews.splice(idx, 1));
+      console.log("**** ID:", id)
+      this._reviewService.destroyReview(id, res => this.reviews.splice(idx, 1));
     } else {
       window.close();
     }

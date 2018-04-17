@@ -13,7 +13,18 @@
             <tr class="reviews" *ngFor="let review of reviews; let i = index">
                 <td>{{ i + 1 }}</td>
                 <td>{{ review?.email }}</td>
-                <td>{{ review?.approved }}</td>
+                <td>
+                    <ng-container *ngIf="review.approved; else elseTemplate">
+                        <mat-icon aria-label="approved icon" class="approved">
+                            <i class="material-icons">&#xE834;</i>
+                        </mat-icon>
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                        <mat-icon aria-label="unapproved icon" class="unapproved">
+                            <i class="material-icons" >&#xE835;</i>
+                        </mat-icon>
+                    </ng-template>
+                </td>
                 <td class="delete">
                     <button mat-icon-button color="accent" [routerLink]="['/review', 'edit', review._id]">
                         <mat-icon aria-label="icon-button to edit review">

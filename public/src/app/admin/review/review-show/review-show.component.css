@@ -32,3 +32,11 @@ td {
   border-bottom: 1px solid black;
   border-right: 1px solid black;
 }
+
+.approved i {
+  color: #00B8D4;
+}
+
+.unapproved i {
+  color: #DC143C;
+}
