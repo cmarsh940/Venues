@@ -46,6 +46,8 @@ export class VenueComponent implements OnInit, OnDestroy {
   loaded: Boolean = false;
   rating: number;
   total = 0;
+  ag: number;
+  reviews= [];
 
   // OVERLAY & PORTAL
   nextPosition: number = 0;
@@ -84,7 +86,6 @@ export class VenueComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.loaded = true;
     }, 1000);
-    // this.a();
   }
 
   ngOnDestroy(): void {
@@ -92,17 +93,35 @@ export class VenueComponent implements OnInit, OnDestroy {
   }
 
   getVenue() {
+    var count = 0;
     this.subscription = this._activatedRoute.params.subscribe(params =>
       this._venueService.showVenue(
         params.id,
-        res => (
+        res => {
+          for (let i = 0; i < res.reviews.length; i++) {
+            this.total += res.reviews[i].rating;
+            count++;
+          }
+          this.ag = this.total / count;
+          console.log("==== AVERAGE ====", this.ag);
           (this.venue = res),
           (this.url = this.venue.video_url),
           (this.tourUrl = this.venue.tour_url)
-        )
+        })
       )
-    );
   }
+  // getVenue() {
+  //   this.subscription = this._activatedRoute.params.subscribe(params =>
+  //     this._venueService.showVenue(
+  //       params.id,
+  //       res => (
+  //         (this.venue = res),
+  //         (this.url = this.venue.video_url),
+  //         (this.tourUrl = this.venue.tour_url)
+  //       )
+  //     )
+  //   );
+  // }
 
   getVendor() {
     this._vendorService.getVendors(vendor => {
@@ -134,6 +153,17 @@ export class VenueComponent implements OnInit, OnDestroy {
       window.close();
     }
   }
+
+//   getAverage(): void {
+//     var count = 0;
+//     let reviews = this.venue.reviews;
+//     reviews.forEach(element => {
+//       this.total += element.rating;
+//       count++; 
+//     });
+//     const ag = this.total / count;
+//     this.ag = ag;
+//   }
 }
 
 interface marker {

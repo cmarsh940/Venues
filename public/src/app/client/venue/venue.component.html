@@ -8,42 +8,42 @@
         <div class="row" id="top">
             <div class="col-3" id="left-col">
                 <div class="top-left">
-                    <div class="mx-auto" id="rating" *ngIf="venue.avg == 0">
+                    <div class="mx-auto" id="rating" *ngIf="ag == 0">
                         <i class="material-icons grey">&#xE83A;</i>
                         <i class="material-icons grey">&#xE83A;</i>
                         <i class="material-icons grey">&#xE83A;</i>
                         <i class="material-icons grey">&#xE83A;</i>
                         <i class="material-icons grey">&#xE83A;</i>
                     </div>
-                    <div class="mx-auto" id="rating" *ngIf="venue.avg == 1">
+                    <div class="mx-auto" id="rating" *ngIf="ag > 0 && ag <= 1">
                         <i class="material-icons">&#xE83A;</i>
                         <i class="material-icons grey">&#xE83A;</i>
                         <i class="material-icons grey">&#xE83A;</i>
                         <i class="material-icons grey">&#xE83A;</i>
                         <i class="material-icons grey">&#xE83A;</i>
                     </div>
-                    <div class="mx-auto" id="rating" *ngIf="venue.avg == 2">
+                    <div class="mx-auto" id="rating" *ngIf="ag > 1 && ag <= 2">
                         <i class="material-icons">&#xE83A;</i>
                         <i class="material-icons">&#xE83A;</i>
                         <i class="material-icons grey">&#xE83A;</i>
                         <i class="material-icons grey">&#xE83A;</i>
                         <i class="material-icons grey">&#xE83A;</i>
                     </div>
-                    <div class="mx-auto" id="rating" *ngIf="venue.avg == 3">
+                    <div class="mx-auto" id="rating" *ngIf="ag > 2 && ag <= 3">
                         <i class="material-icons">&#xE83A;</i>
                         <i class="material-icons">&#xE83A;</i>
                         <i class="material-icons">&#xE83A;</i>
                         <i class="material-icons grey">&#xE83A;</i>
                         <i class="material-icons grey">&#xE83A;</i>
                     </div>
-                    <div class="mx-auto" id="rating" *ngIf="venue.avg == 4">
+                    <div class="mx-auto" id="rating" *ngIf="ag > 3 && ag <= 4">
                         <i class="material-icons">&#xE83A;</i>
                         <i class="material-icons">&#xE83A;</i>
                         <i class="material-icons">&#xE83A;</i>
                         <i class="material-icons">&#xE83A;</i>
                         <i class="material-icons grey">&#xE83A;</i>
                     </div>
-                    <div class="mx-auto" id="rating" *ngIf="venue.avg == 5">
+                    <div class="mx-auto" id="rating" *ngIf="ag >= 5">
                         <i class="material-icons">&#xE83A;</i>
                         <i class="material-icons">&#xE83A;</i>
                         <i class="material-icons">&#xE83A;</i>
@@ -228,11 +228,6 @@
                             </mat-card>
                         </ng-container>
                     </div>
-                    <ng-container *ngIf="!venue.reviews">
-                        <div class="text-center">
-                            <p>There are no reviews for {{venue?.name | titlecase}}</p>
-                        </div>
-                    </ng-container>
                 </div>
             </div>
             <div id="none-scroll">
