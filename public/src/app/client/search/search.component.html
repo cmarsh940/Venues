@@ -95,7 +95,7 @@
                         <hr>
                         <mat-radio-group class="radio-group" [(ngModel)]="search_text">
                             <mat-radio-button class="radio-button" *ngFor="let categroy of categories" color="primary" [value]="categroy.name">
-                                {{categroy?.name}}
+                                {{categroy?.name | titlecase}}
                             </mat-radio-button>
                             <hr>
                             <mat-radio-button class="radio-button" [value]="''">

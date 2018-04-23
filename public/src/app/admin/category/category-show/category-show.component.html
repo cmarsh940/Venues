@@ -25,7 +25,7 @@
         <tbody>
             <tr class="categories" *ngFor="let category of categories; let i = index">
                 <td>{{ i + 1 }}</td>
-                <td>{{ category.name }}</td>
+                <td>{{ category.name | titlecase }}</td>
                 <td>
                     <button mat-icon-button color="accent" [routerLink]="['/category', 'edit', category._id]">
                         <mat-icon aria-label="icon-button to edit category">
