@@ -483,6 +483,15 @@ ul {
   object-position: center;
 }
 
+#gallery img:hover {
+  min-width: 15rem;
+  max-width: 15rem;
+  min-height: 15rem;
+  max-height: 15rem;
+  object-fit: cover;
+  object-position: center;
+}
+
 .gallery-button {
   z-index: 2;
   position: absolute;

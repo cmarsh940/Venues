@@ -102,7 +102,11 @@ export class VenueComponent implements OnInit, OnDestroy {
             this.total += res.reviews[i].rating;
             count++;
           }
-          this.ag = this.total / count;
+          if(count > 0) {
+            this.ag = this.total / count;
+          } else {
+            this.ag = 0;
+          }
           console.log("==== AVERAGE ====", this.ag);
           (this.venue = res),
           (this.url = this.venue.video_url),
