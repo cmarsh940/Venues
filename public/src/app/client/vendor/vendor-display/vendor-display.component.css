@@ -300,3 +300,6 @@ div.loading {
   max-height: 30em;
   margin: 25% 50%;
 }
+.container {
+  padding: 0 8em 0 5em;
+}

@@ -595,3 +595,10 @@ iframe:focus {
 iframe[seamless] { 
   display: block;
 }
+.container {
+  padding: 0 8em 0 5em;
+}
+
+a:hover {
+    text-decoration: none;
+}
