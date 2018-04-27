@@ -125,6 +125,19 @@ class VendorsController {
         return res.json(vendors);
       });
   }
+  
+  inOrder(req, res) {
+    Vendor.find({})
+      .populate({ path: "amenities", model: Amenity })
+      .populate({ path: "reviews", model: Review })
+      .populate({ path: "_category", model: VendorCategory })
+      .exec((err, vendors) => {
+        if (err) {
+          return res.json(err);
+        }
+        return res.json(vendors);
+      });
+  }
 
   show(req, res) {
     Vendor.findById({ _id: req.params.id })

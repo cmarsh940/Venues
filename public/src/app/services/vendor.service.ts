@@ -22,6 +22,12 @@ export class VendorService {
       .get(API_URL)
       .subscribe(res => callback(res.json()), err => console.error(err));
   }
+  
+  getVendorsInOrder(callback) {
+    this._http
+      .get("/vendorsInOrder")
+      .subscribe(res => callback(res.json()), err => console.error(err));
+  }
 
   getSingleVendor(_category: string, callback) {
     var URL = API_URL + "category/" + _category;

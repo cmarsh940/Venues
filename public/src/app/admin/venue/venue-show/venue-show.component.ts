@@ -42,7 +42,7 @@ export class VenueShowComponent implements OnInit {
   }
 
   getVenues(): void {
-    this._venueService.getVenues((venues) => this.venues = venues);
+    this._venueService.getVenuesInOrder(venues => (this.venues = venues));
   }
 
   destroyVenue(id: string, idx: any) {

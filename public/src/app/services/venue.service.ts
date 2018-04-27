@@ -21,6 +21,12 @@ export class VenueService {
       .subscribe(res => callback(res.json()), err => console.error(err));
   }
 
+  getVenuesInOrder(callback) {
+    this._http
+      .get("/venuesInOrder")
+      .subscribe(res => callback(res.json()), err => console.error(err));
+  }
+
   getSingleVenue(_category: string, callback) {
     var URL = API_URL + "category/" + _category;
     return this._http.get(URL, _category)

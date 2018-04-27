@@ -43,7 +43,7 @@ export class VendorShowComponent implements OnInit {
   }
 
   getVendors(): void {
-    this._vendorService.getVendors(vendors => (this.vendors = vendors));
+    this._vendorService.getVendorsInOrder(vendors => (this.vendors = vendors));
   }
 
   destroyVendor(id: string, idx: any) {
