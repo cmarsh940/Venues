@@ -8,7 +8,7 @@
                     <div class="group">
                         <div class="search-icons" *ngFor="let category of categories">
                             <img src="/assets/images/{{category.name}}.png" alt="Category Icon">
-                            <h6 class="category-name">{{ category.name }}</h6>
+                            <h6 class="category-name">{{ category.name | titlecase }}</h6>
                         </div>
                     </div>
                     <div id="search-button">
