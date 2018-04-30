@@ -82,7 +82,6 @@ export class VenueComponent implements OnInit, OnDestroy {
     this.loaded = false;
     this.getVendor();
     this.getVenue();
-    console.log(this.venue);
     setTimeout(() => {
       this.loaded = true;
     }, 1000);
@@ -107,25 +106,12 @@ export class VenueComponent implements OnInit, OnDestroy {
           } else {
             this.ag = 0;
           }
-          console.log("==== AVERAGE ====", this.ag);
           (this.venue = res),
           (this.url = this.venue.video_url),
           (this.tourUrl = this.venue.tour_url)
         })
       )
   }
-  // getVenue() {
-  //   this.subscription = this._activatedRoute.params.subscribe(params =>
-  //     this._venueService.showVenue(
-  //       params.id,
-  //       res => (
-  //         (this.venue = res),
-  //         (this.url = this.venue.video_url),
-  //         (this.tourUrl = this.venue.tour_url)
-  //       )
-  //     )
-  //   );
-  // }
 
   getVendor() {
     this._vendorService.getVendors(vendor => {
@@ -158,16 +144,6 @@ export class VenueComponent implements OnInit, OnDestroy {
     }
   }
 
-//   getAverage(): void {
-//     var count = 0;
-//     let reviews = this.venue.reviews;
-//     reviews.forEach(element => {
-//       this.total += element.rating;
-//       count++; 
-//     });
-//     const ag = this.total / count;
-//     this.ag = ag;
-//   }
 }
 
 interface marker {

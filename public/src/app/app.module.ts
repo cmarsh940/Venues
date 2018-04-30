@@ -22,13 +22,12 @@ import { MaterialModule } from './material/material.module';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     AuthModule,
     AdminModule,
     BrowserAnimationsModule,
-    FormsModule,
     MaterialModule,
-    ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapsKey
     })

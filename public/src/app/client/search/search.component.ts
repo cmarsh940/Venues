@@ -52,17 +52,11 @@ export class SearchComponent implements OnInit {
     this._vendorService.getVendors(vendor => {
       this.random = Math.floor(Math.random() * vendor.length);
       this.randomTwo = Math.floor(Math.random() * vendor.length);
-      console.log("Random number:", this.random);
-      console.log("RandomTwo number:", this.randomTwo);
       if (this.random === this.randomTwo) {
         this.randomTwo = Math.floor(Math.random() * vendor.length);
-        console.log("Random number:", this.random);
-        console.log("RandomTwo number:", this.randomTwo);
       } else {
         this.vendor = vendor[this.random];
-        console.log(this.vendor);
         this.vendorTwo = vendor[this.randomTwo];
-        console.log(this.vendorTwo);
       }
     });
     this.getVenues();
@@ -70,19 +64,6 @@ export class SearchComponent implements OnInit {
     setTimeout(() => {
       this.loaded = true;
     }, 3000);
-  }
-
-  getVendors() {
-    this._vendorService.getVendors(vendor => {
-      this.random = Math.floor(Math.random() * vendor.length);
-      console.log("Random number:", this.random);
-      this.vendor = vendor[this.random];
-      console.log(this.vendor);
-      this.randomTwo = Math.floor(Math.random() * vendor.length);
-      console.log("RandomTwo number:", this.randomTwo);
-      this.vendorTwo = vendor[this.randomTwo];
-      console.log(this.vendorTwo);
-    });
   }
 
   getCategories(): void {

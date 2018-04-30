@@ -60,7 +60,6 @@ export class ReviewNewComponent implements OnInit, OnDestroy {
       this.venue._id,
       this.newReview,
       review => {
-        console.log(review);
         if (review.errors) {
           for (let key in review.errors) {
             let errors = review.errors[key];
