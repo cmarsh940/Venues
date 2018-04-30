@@ -53,7 +53,6 @@
                     <ul class="text-left">
                         <li>
                             <h5 class="black">{{venue?.address}}, {{venue?.city}} {{venue?.state | uppercase}}</h5>
-
                         </li>
                         <li>
                             <a href='tel:{{ venue.phone }}' data-type='phone'>
@@ -61,13 +60,23 @@
                             </a>
                         </li>
                         <li>
-                            <a href='http://{{venue.website}}' target='_blank' rel=' noopener' matTooltip="View {{venue.name}}'s' website">
+                            <a href='http://{{venue.website}}' target='_blank' rel='noopener' matTooltip="View {{venue.name}}'s' website">
                                 <p><span class="color">{{venue?.website}}</span></p>
                             </a>
                         </li>
                         <li>
                             <a href='mailto:{{ venue.email }}' target='_top'>
                                 <p><span class="color">{{ venue?.email }}</span></p>
+                            </a>
+                        </li>
+                        <li *ngIf="venue.facebook_url" class="social-media">
+                            <a href='{{venue.facebook_url}}' target='_blank' rel='noopener' matTooltip="{{venue.name}}'s' Facebook page">
+                                <img src="/assets/images/facebook.svg" alt="Facebook link">
+                            </a>
+                        </li>
+                        <li *ngIf="venue.instagram_url" class="social-media">
+                            <a href='{{venue.instagram_url}}' target='_blank' rel='noopener' matTooltip="{{venue.name}}'s' Facebook page">
+                                <img src="/assets/images/instagram.svg" alt="instagram link">
                             </a>
                         </li>
                     </ul>

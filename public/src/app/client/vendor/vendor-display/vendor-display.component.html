@@ -37,6 +37,16 @@
                                     </p>
                                 </a>
                             </li>
+                            <li *ngIf="vendor.facebook_url" class="social-media">
+                                <a href='{{vendor.facebook_url}}' target='_blank' rel='noopener' matTooltip="{{vendor.name}}'s' Facebook page">
+                                    <img src="/assets/images/facebook.svg" alt="Facebook link">
+                                </a>
+                            </li>
+                            <li *ngIf="vendor.instagram_url" class="social-media">
+                                <a href='{{vendor.instagram_url}}' target='_blank' rel='noopener' matTooltip="{{vendor.name}}'s' Facebook page">
+                                    <img src="/assets/images/instagram.svg" alt="instagram link">
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

@@ -303,3 +303,11 @@ div.loading {
 .container {
   padding: 0 8em 0 5em;
 }
+
+.social-media {
+  display: inline-block;
+  max-width: 2em;
+  min-width: 2em;
+  max-height: 2em;
+  min-height: 2em;
+}
