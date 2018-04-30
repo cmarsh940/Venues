@@ -233,34 +233,27 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="none-scroll">
-                <div class="row">
-                    <div class="col-3"></div>
-                    <div class="col-9" id="bottom-map">
-                        <div class="map">
-                            <agm-map [latitude]='venue.lat' [longitude]='venue.lng' [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
-                                <agm-marker [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng">
-                                    <agm-snazzy-info-window [maxWidth]="400" [padding]="0" [closeWhenOthersOpen]="true">
-                                        <ng-template>
-                                            <mat-card class="venue-display">
-                                                <mat-card-header>
-                                                    <img mat-card-avatar src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Avatar Picture">
-                                                </mat-card-header>
-                                                <mat-card-content class="text-center">
-                                                    <mat-card-subtitle>
-                                                        <h6>{{venue?.name}}</h6>
-                                                        <h6>{{venue?.address}}</h6>
-                                                        <h6>{{venue?.city | titlecase}}, {{venue?.state | uppercase}}</h6>
-                                                    </mat-card-subtitle>
-                                                </mat-card-content>
-                                            </mat-card>
-                                        </ng-template>
-                                    </agm-snazzy-info-window>
-                                </agm-marker>
-                            </agm-map>
-                        </div>
-                    </div>
+                <div class="map">
+                    <agm-map [latitude]='venue.lat' [longitude]='venue.lng' [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
+                        <agm-marker [title]="venue.address" [latitude]="venue.lat" [longitude]="venue.lng">
+                            <agm-snazzy-info-window [maxWidth]="400" [padding]="0" [closeWhenOthersOpen]="true">
+                                <ng-template>
+                                    <mat-card class="venue-display">
+                                        <mat-card-header>
+                                            <img mat-card-avatar src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Avatar Picture">
+                                        </mat-card-header>
+                                        <mat-card-content class="text-center">
+                                            <mat-card-subtitle>
+                                                <h6>{{venue?.name}}</h6>
+                                                <h6>{{venue?.address}}</h6>
+                                                <h6>{{venue?.city | titlecase}}, {{venue?.state | uppercase}}</h6>
+                                            </mat-card-subtitle>
+                                        </mat-card-content>
+                                    </mat-card>
+                                </ng-template>
+                            </agm-snazzy-info-window>
+                        </agm-marker>
+                    </agm-map>
                 </div>
             </div>
         </div>
