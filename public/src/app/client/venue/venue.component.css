@@ -95,6 +95,8 @@
     padding: 0;
     z-index: 3;
     margin:0;
+    max-width: 600px;
+    min-width: 400px;
   }
 
   iframe {
@@ -161,7 +163,9 @@
   div.overlay {
     padding: 0;
     z-index: 3;
-    margin:0;
+    margin: 0 20%;
+    min-width: 500px;
+    max-width: 500px;
   }
 
   .col-6 {
