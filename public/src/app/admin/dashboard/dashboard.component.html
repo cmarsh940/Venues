@@ -29,8 +29,6 @@
         </mat-chip>
     </mat-chip-list>
 </div>
-<!-- <div class="analytics">
-    <div class="embed-responsive embed-responsive-16by9" id="content">
-        <iframe class="embed-responsive-item" [src]="sanitizer.bypassSecurityTrustResourceUrl('https://datastudio.google.com/embed/reporting/1JFLQ3_C9IVy_XbUYukYkKs9VpnrAz27-/page/1M')" width="600" height="800" frameborder="0" style="border:0" allowfullscreen></iframe>
-    </div>
-</div> -->
+<div>
+    <iframe [src]="url | adminSafe" width="100%" height="900px" frameborder="0" style="border:0" allowfullscreen></iframe>
+</div>

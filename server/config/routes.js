@@ -52,6 +52,9 @@ module.exports = function (app) {
     app.get('/venues/:id', Venues.show);
     app.get('/venues/images/:id', Venues.images);
     app.put('/venues/:id', Venues.update);
+    app.delete("/venues/deleteImage/:id", Venues.deleteImage);
+    app.delete("/venues/deleteTourImage/:id", Venues.deleteTourImage);
+    app.delete("/venues/deleteGalleryImage/:id", Venues.deleteGalleryImage);
     
     app.get('/vendors', Vendors.index);
     app.get('/vendorsInOrder', Vendors.inOrder);
@@ -64,6 +67,9 @@ module.exports = function (app) {
     app.get('/vendors/:id', Vendors.show);
     app.get('/vendors/images/:id', Vendors.images);
     app.put('/vendors/:id', Vendors.update);
+    app.delete("/vendors/deleteImage/:id", Vendors.deleteImage);
+    app.delete("/vendors/deleteLogo/:id", Vendors.deleteLogo);
+    app.delete("/vendors/deleteGalleryImage/:id", Vendors.deleteGalleryImage);
 
 
     app.all('*', (req, res, next) => {

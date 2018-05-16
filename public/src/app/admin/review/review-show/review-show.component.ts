@@ -49,7 +49,6 @@ export class ReviewShowComponent implements OnInit {
     this.isLoggedIn()
     let r = window.confirm("Delete Review?");
     if (r == true) {
-      console.log("**** ID:", id)
       this._reviewService.destroyReview(id, res => this.reviews.splice(idx, 1));
     } else {
       window.close();

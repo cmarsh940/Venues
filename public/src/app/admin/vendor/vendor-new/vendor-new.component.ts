@@ -66,10 +66,8 @@ export class VendorNewComponent implements OnInit {
 
   createVendor() {
     if (this.currentUser !== null) {
-      console.log("*** currentUser:", this.currentUser);
       this.errors = [];
       return this._vendorService.createVendor(this.newVendor, vendor => {
-        console.log(vendor);
         if (vendor.errors) {
           for (const key of Object.keys(vendor.errors)) {
             const errors = vendor.errors[key];

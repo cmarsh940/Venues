@@ -15,8 +15,15 @@
     <div>
         <p [ngStyle]="{ 'color': 'red' }" *ngFor="let error of errors">{{ error }}</p>
     </div>
-    <div class="col-3">
-        <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Picture" class="img-thumbnail">
+    <div class="col-3" *ngIf="venue.pic_url">
+        <mat-card>
+            <!-- TEST -->
+            <img mat-card-image src='https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Picture">
+            <!-- <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/{{venue.pic_url}}' alt="Venue Picture"> -->
+            <mat-card-actions class="text-center">
+                <button mat-button (click)="deleteImage()" color="warn">Delete</button>
+            </mat-card-actions>
+        </mat-card>   
     </div>
     <hr>
     <div>
@@ -35,8 +42,15 @@
     <div>
         <p [ngStyle]="{ 'color': 'red' }" *ngFor="let error of tourErrors">{{ error }}</p>
     </div>
-    <div class="col-3">
-        <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/TourPic/{{venue.tourPicURL}}' alt="Venue Picture" class="img-thumbnail">
+    <div class="col-3" *ngIf="venue.tourPicURL">
+        <mat-card>
+            <!-- TEST -->
+            <img mat-card-image src='https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{venue._id}}/TourPic/{{venue.tourPicURL}}' alt="Venue Picture">
+            <!-- <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/TourPic/{{venue.tourPicURL}}' alt="Venue Picture"> -->
+            <mat-card-actions class="text-center">
+                <button mat-button (click)="deleteTourImage()" color="warn">Delete</button>
+            </mat-card-actions>
+        </mat-card>
     </div>
     <hr>
     <div>
@@ -55,9 +69,16 @@
     <div>
         <p [ngStyle]="{ 'color': 'red' }" *ngFor="let error of galleryErrors">{{ error }}</p>
     </div>
-    <div class="row">
-        <div class="col-3" *ngFor="let gallery of venue.gallery">
-            <img src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/Gallery/{{gallery.name}}' alt="Venue Gallery Picture" class="img-thumbnail">
+    <div class="row" *ngIf="venue.gallery">
+        <div class="col-3" *ngFor="let gallery of venue.gallery; let i = index">
+            <mat-card>
+                <!-- TEST -->
+                <img mat-card-image src='https://s3-us-west-2.amazonaws.com/venue-test/Venues/{{venue._id}}/Gallery/{{gallery.name}}' alt="Venue Gallery Picture">
+                <!-- <img mat-card-image src='https://s3-us-west-2.amazonaws.com/tulsa-venues/Venues/{{venue._id}}/Gallery/{{gallery.name}}' alt="Venue Gallery Picture" class="img-thumbnail"> -->
+                <mat-card-actions class="text-center">
+                    <button mat-button (click)="deleteGalleryImage(i)" color="warn">Delete</button>
+                </mat-card-actions>
+            </mat-card>
         </div>
     </div>
 </div>

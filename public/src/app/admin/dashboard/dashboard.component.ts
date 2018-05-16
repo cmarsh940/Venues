@@ -25,6 +25,7 @@ export class DashboardComponent implements OnInit {
   users: Array<User>;
 
   currentUser: User;
+  url: string;
 
   constructor(
     private _amenityService: AmenityService,
@@ -41,6 +42,7 @@ export class DashboardComponent implements OnInit {
     this.getAmenity();
     this.getVenues();
     this.getVendors();
+    this.url = "https://datastudio.google.com/embed/reporting/1JFLQ3_C9IVy_XbUYukYkKs9VpnrAz27-/page/1M";
   }
 
   isLoggedIn() {
@@ -74,4 +76,10 @@ export class DashboardComponent implements OnInit {
   getUsers(): void {
     this._userService.getUsers(users => (this.users = users));
   }
+}
+
+interface scriptSrc {
+  reportSample: any;
+  strictDynamic: any;
+
 }

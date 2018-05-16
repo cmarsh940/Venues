@@ -80,6 +80,37 @@ export class VenueService {
     );
   }
 
+  deleteImage( id: string, callback) {
+    var URL = API_URL + "deleteImage" + "/" + id;
+    return this._http.delete(URL, id).subscribe(
+      res => {
+        callback(res.json());
+      },
+      err => console.log(err)
+    );
+  }
+
+  deleteTourImage( id: string, callback) {
+    var URL = API_URL + "deleteTourImage" + "/" + id;
+    return this._http.delete(URL, id).subscribe(
+      res => {
+        callback(res.json());
+      },
+      err => console.log(err)
+    );
+  }
+
+  deleteGalleryImage( id: string, i, callback) {
+    console.log("*** HIT SERVICE ***");
+    var URL = API_URL + "deleteGalleryImage" + "/" + id;
+    return this._http.delete(URL, id).subscribe(
+      res => {
+        callback(res.json());
+      },
+      err => console.log(err)
+    );
+  }
+
   destroy(id: string, callback) {
     var URL = API_URL + id;
     this._http

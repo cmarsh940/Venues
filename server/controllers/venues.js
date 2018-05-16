@@ -6,7 +6,8 @@ const Review = mongoose.model("Review");
 
 const config = require("../config/config");
 
-const BUCKET_NAME = "tulsa-venues";
+const BUCKET_NAME = "venue-test";
+// const BUCKET_NAME = "tulsa-venues";
 const IAM_USER_KEY = config.iamUser;
 const IAM_USER_SECRET = config.iamSecret;
 
@@ -90,6 +91,8 @@ function uploadManyToS3(file, venue) {
         });
     });
 }
+
+
 
 let shuffle = function (arr) {
     for (let i = 0; i < arr.length; i++) {
@@ -272,6 +275,37 @@ class VenuesController {
     );
   }
 
+  deleteImage(req, res) {
+    let new_venue = new Venue(req.body);
+    new_venue.pic_url = "";   
+    Venue.update(
+      { _id: req.params.id },
+      { $set: { pic_url: new_venue.pic_url } }
+    ).exec((err, new_venue) => {
+      if (err) {
+        return res.status(404).json(err);
+      }
+      return res.json(new_venue);
+    });
+  }
+
+  deleteTourImage(req, res) {
+    console.log("*** SERVER DELETE TOUR IMAGE ***")
+    let new_venue = new Venue(req.body);
+    new_venue.tourPicURL = "";   
+    Venue.update(
+      { _id: req.params.id },
+      { $set: { tourPicURL: new_venue.tourPicURL } }
+    ).exec((err, new_venue) => {
+      if (err) {
+        return res.status(404).json(err);
+      }
+      return res.json(new_venue);
+    });
+  }
+  deleteGalleryImage(req, res) {
+    console.log("*** SERVER DELETE GALLERY IMAGE ***");
+  }
   images(req, res) {
     Venue.findById(req.params.id)
       .populate("galleryItems")
@@ -310,15 +344,20 @@ class VenuesController {
   }
 
   update(req, res) {
-    Venue.findByIdAndUpdate(req.params.id,{ $set: req.body },{ new: true },(err, venue) => {
-      console.log("*** SERVER REQ", req.body);
-      if (err) {
-        console.log("*** SERVER ERROR", err);
-        return res.json(err);
+    Venue.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body },
+      { new: true },
+      (err, venue) => {
+        console.log("*** SERVER REQ", req.body);
+        if (err) {
+          console.log("*** SERVER ERROR", err);
+          return res.json(err);
+        }
+        console.log("*** SERVER VENUE UPDATE", venue);
+        return res.json(venue);
       }
-      console.log("*** SERVER VENUE UPDATE", venue);
-      return res.json(venue);
-    });
+    );
   }
 
   delete(req, res) {

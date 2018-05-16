@@ -6,7 +6,8 @@ const Review = mongoose.model("Review");
 
 const config = require("../config/config");
 
-const BUCKET_NAME = "tulsa-venues";
+const BUCKET_NAME = "venue-test";
+// const BUCKET_NAME = "tulsa-venues";
 const IAM_USER_KEY = config.iamUser;
 const IAM_USER_SECRET = config.iamSecret;
 
@@ -273,6 +274,39 @@ class VendorsController {
         return res.json(new_vendor);
       }
     );
+  }
+
+  deleteImage(req, res) {
+    let new_vendor = new Vendor(req.body);
+    new_vendor.pic_url = "";
+    Vendor.update(
+      { _id: req.params.id },
+      { $set: { pic_url: new_vendor.pic_url } }
+    ).exec((err, new_vendor) => {
+      if (err) {
+        return res.status(404).json(err);
+      }
+      return res.json(new_vendor);
+    });
+  }
+
+  deleteLogo(req, res) {
+    console.log("*** SERVER DELETE LOGO ***")
+    let new_vendor = new Vendor(req.body);
+    new_vendor.logo_url = "";
+    Vendor.update(
+      { _id: req.params.id },
+      { $set: { logo_url: new_vendor.logo_url } }
+    ).exec((err, new_vendor) => {
+      if (err) {
+        return res.status(404).json(err);
+      }
+      return res.json(new_vendor);
+    });
+  }
+
+  deleteGalleryImage(req, res) {
+    console.log("*** SERVER DELETE GALLERY IMAGE ***");
   }
 
   images(req, res) {

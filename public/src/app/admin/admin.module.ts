@@ -1,3 +1,4 @@
+import { AdminSafePipe } from './../pipes/admin-safe.pipe';
 import { VendorNewComponent } from './vendor/vendor-new/vendor-new.component';
 import { VendorService } from './../services/vendor.service';
 import { VendorCategoryEditComponent } from './vendor-category/vendor-category-edit/vendor-category-edit.component';
@@ -70,6 +71,7 @@ import { VendorUploadComponent } from './vendor/vendor-upload/vendor-upload.comp
     VendorCategoryEditComponent,
     VendorCategoryShowComponent,
     SortVenuesPipe,
+    AdminSafePipe,
     UploadComponent,
     VendorUploadComponent
   ],

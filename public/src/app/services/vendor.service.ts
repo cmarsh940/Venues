@@ -50,7 +50,6 @@ export class VendorService {
   }
 
   post_to_s3(formData, id: string, callback) {
-    console.log("**** HIT SERVICE", formData);
     var URL = API_URL + "upload" + "/" + id;
     return this._http.put(URL, formData).subscribe(
       res => {
@@ -62,7 +61,6 @@ export class VendorService {
   }
 
   post_logo_to_s3(formData, id: string, callback) {
-    console.log("**** HIT SERVICE", formData);
     var URL = API_URL + "uploadLogo" + "/" + id;
     return this._http.put(URL, formData).subscribe(
       res => {
@@ -74,11 +72,40 @@ export class VendorService {
   }
 
   post_multiple_to_s3(formData, id: string, callback) {
-    console.log("**** HIT SERVICE", formData);
     var URL = API_URL + "upload" + "/" + "multiple" + "/" + id;
     return this._http.post(URL, formData).subscribe(
       res => {
         // const vendor = res.json();
+        callback(res.json());
+      },
+      err => console.log(err)
+    );
+  }
+
+  deleteImage(id: string, callback) {
+    var URL = API_URL + "deleteImage" + "/" + id;
+    return this._http.delete(URL, id).subscribe(
+      res => {
+        callback(res.json());
+      },
+      err => console.log(err)
+    );
+  }
+
+  deleteLogo(id: string, callback) {
+    var URL = API_URL + "deleteLogo" + "/" + id;
+    return this._http.delete(URL, id).subscribe(
+      res => {
+        callback(res.json());
+      },
+      err => console.log(err)
+    );
+  }
+
+  deleteGalleryImage(id: string, i, callback) {
+    var URL = API_URL + "deleteGalleryImage" + "/" + id;
+    return this._http.delete(URL, id).subscribe(
+      res => {
         callback(res.json());
       },
       err => console.log(err)
@@ -94,7 +121,6 @@ export class VendorService {
 
   showVendor(id: string, callback) {
     var URL = API_URL + id;
-    console.log("*** SERVICE HIT SHOWVENdor:");
     this._http
       .get(URL)
       .subscribe(res => callback(res.json()), err => console.log(err));
@@ -111,7 +137,6 @@ export class VendorService {
     var URL = API_URL + "images/" + id;
     return this._http.get(URL).subscribe(
       res => {
-        console.log("*** SERVICE IMAGE RES:", res);
         callback(res.json());
       },
       err => console.log(err)

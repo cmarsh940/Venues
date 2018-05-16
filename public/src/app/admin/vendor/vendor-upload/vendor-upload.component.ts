@@ -1,3 +1,4 @@
+import { Gallery } from './../../../models/gallery';
 import { Component, OnInit, EventEmitter, Output, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../services/user.service';
@@ -106,7 +107,6 @@ export class VendorUploadComponent implements OnInit {
 
   uploadMultiple() {
     this.errors = [];
-    console.log("**** THIS.NEWVENdor:", this.vendor);
     if (this._userService.getCurrentUser() == null) {
       console.log("REPORTED: You do not have administration privilages");
       this._router.navigateByUrl("/");
@@ -129,6 +129,65 @@ export class VendorUploadComponent implements OnInit {
           this.vendor_event.emit();
           location.reload();
         });
+    }
+  }
+  deleteImage() {
+    this.errors = [];
+    let r = window.confirm("Delete Image?");
+    if (r == true) {
+      this._vendorService.deleteImage(this.vendor._id, res => {
+        if (res.errors) {
+          for (const key of Object.keys(res.errors)) {
+            const errors = res.errors[key];
+            this.errors.push(errors.message);
+          }
+        } else {
+          location.reload();
+        }
+      })
+    } else {
+      window.close();
+    }
+  }
+  deleteLogo() {
+    this.errors = [];
+    let r = window.confirm("Delete Logo?");
+    if (r == true) {
+      this._vendorService.deleteLogo(this.vendor._id, res => {
+        if (res.errors) {
+          for (const key of Object.keys(res.errors)) {
+            const errors = res.errors[key];
+            this.errors.push(errors.message);
+          }
+        } else {
+          location.reload();
+        }
+      })
+    } else {
+      window.close();
+    }
+  }
+
+  deleteGalleryImage(i) {
+    this.errors = [];
+    let r = window.confirm("Delete Gallery Image?");
+    if (r == true) {
+      this.vendor.gallery.indexOf(Gallery);
+      if (i !== -1) {
+        this.vendor.gallery.splice(i, 1);
+        this._vendorService.updateVendor(this.vendor, res => {
+          if (res.errors) {
+            for (const key of Object.keys(res.errors)) {
+              const errors = res.errors[key];
+              this.errors.push(errors.message);
+            }
+          } else {
+            location.reload();
+          }
+        });
+      }
+    } else {
+      window.close();
     }
   }
 }

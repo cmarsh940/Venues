@@ -1,3 +1,4 @@
+import { Gallery } from './../../../models/gallery';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
@@ -109,7 +110,6 @@ export class UploadComponent implements OnInit, OnDestroy {
 
   uploadMultiple() {
     this.errors = [];
-    console.log("**** THIS.NEWVENUE:", this.venue);
     if (this._userService.getCurrentUser() == null) {
       console.log("REPORTED: You do not have administration privilages");
       this._router.navigateByUrl("/");
@@ -138,4 +138,46 @@ export class UploadComponent implements OnInit, OnDestroy {
       );
     }
   }
+
+  deleteImage() {
+    let r = window.confirm("Delete Image?");
+    if (r == true) {
+      this._venueService.deleteImage(this.venue._id, res => {
+        location.reload();
+      })
+    } else {
+      window.close();
+    }
+  } 
+  deleteTourImage() {
+    let r = window.confirm("Delete Tour Image?");
+    if (r == true) {
+      this._venueService.deleteTourImage(this.venue._id, res => {
+        location.reload();
+      })
+    } else {
+      window.close();
+    }
+  } 
+  deleteGalleryImage(i) {
+    let r = window.confirm("Delete Gallery Image?");
+    if (r == true) {
+      this.venue.gallery.indexOf(Gallery);
+      if (i !== -1) {
+        this.venue.gallery.splice(i, 1);
+        this._venueService.updateVenue(this.venue, res => {
+          if (res.errors) {
+            for (const key of Object.keys(res.errors)) {
+              const errors = res.errors[key];
+              this.errors.push(errors.message);
+            }
+          } else {
+            location.reload();
+          }
+        });
+      }
+    } else {
+      window.close();
+    } 
+  } 
 }
