@@ -51,7 +51,8 @@ const routes: Routes = [
         component: Rights
       }
     ]
-  }
+  },
+  { path: "**", redirectTo: "" }
 ];
 
 @NgModule({
