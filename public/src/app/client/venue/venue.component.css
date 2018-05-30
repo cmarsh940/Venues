@@ -1,4 +1,8 @@
 @media (max-width: 400px) {
+  .container {
+    padding: 0!important;
+  }
+
   div#slider {
     height: 20rem;
   }
@@ -124,6 +128,11 @@
     min-height: 9rem!important;
     max-height: 9rem!important;
   }
+
+  #venue-description {
+    margin: 0!important;
+    padding: 0!important;
+  }
 }
 
 /* Small devices (landscape phones, 576px and up) */
@@ -191,6 +200,11 @@
     max-height: 10em;
     max-width: 17em;
     min-width: 17em;
+  }
+
+  #venue-description {
+    margin: 0!important;
+    padding: 0!important;
   }
   
 }
@@ -595,6 +609,7 @@ iframe:focus {
 iframe[seamless] { 
   display: block;
 }
+
 .container {
   padding: 0 8em 0 5em;
 }
