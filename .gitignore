@@ -2,6 +2,7 @@
 /server/config/config.js
 # dependencies
 /node_modules
+information.txt
 
 # IDEs and editors
 /.idea

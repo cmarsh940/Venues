@@ -1,2 +1,7 @@
+User-agent: Siteliner
+Allow: *
+
 User-agent: *
-Disallow: /
+Disallow: /*/data/*
+Allow: /*.html$
+Disallow:
