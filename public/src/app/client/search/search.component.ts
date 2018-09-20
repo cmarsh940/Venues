@@ -44,7 +44,6 @@ export class SearchComponent implements OnInit {
     private _vendorService: VendorService,
     private _venueService: VenueService,
     private _categoryService: CategoryService,
-    private _router: Router
   ) {}
 
   ngOnInit() {

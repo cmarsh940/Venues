@@ -1,6 +1,5 @@
 import { VendorCategory } from './../../models/vendor-category';
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { VendorService } from '../../services/vendor.service';
 import { Vendor } from "./../../models/vendor";
@@ -23,8 +22,6 @@ export class VendorComponent implements OnInit {
   constructor(
     private _vendorService: VendorService,
     private _vendorCategoryService: VendorCategoryService,
-    private _activatedRoute: ActivatedRoute,
-    private _router: Router,
     private location: Location
   ) {}
 

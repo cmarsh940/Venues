@@ -1,4 +1,3 @@
-import { SafePipe } from './pipes/safe.pipe';
 import { environment } from './../environments/environment';
 import { AnalyticsService } from "./services/analytics.service";
 import { AgmCoreModule } from '@agm/core';
@@ -15,7 +14,6 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { AdminModule } from './admin/admin.module';
 import { MaterialModule } from './material/material.module';
-import { AdminSafePipe } from './pipes/admin-safe.pipe';
 
 
 @NgModule({

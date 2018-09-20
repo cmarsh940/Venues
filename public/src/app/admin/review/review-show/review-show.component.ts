@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs/Rx';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../../models/user';

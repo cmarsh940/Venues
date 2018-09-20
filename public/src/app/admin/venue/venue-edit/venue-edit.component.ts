@@ -1,6 +1,5 @@
 import { Location } from '@angular/common';
 import { Subscription } from 'rxjs/Subscription';
-import { Http } from '@angular/http';
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../../../models/user';
 import { UserService } from '../../../services/user.service';
@@ -10,7 +9,6 @@ import { Venue } from '../../../models/venue';
 import { VenueService } from '../../../services/venue.service';
 import { CategoryService } from '../../../services/category.service';
 import { Category } from '../../../models/category';
-import { MatTabChangeEvent } from '@angular/material';
 import { Amenity } from '../../../models/amenity';
 import { AmenityService } from '../../../services/amenity.service';
 
@@ -98,9 +96,4 @@ export class VenueEditComponent implements OnInit, OnDestroy {
       }
     });
   }
-  // updateVenue() {
-  //   this._venueService.updateVenue(this.venue, res => {
-  //     this._router.navigate(["/list_venue"]);
-  //   });
-  // }
 }

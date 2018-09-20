@@ -1,12 +1,12 @@
 import { UserService } from './../../../services/user.service';
 import { Component, OnInit, Output, ViewChild, EventEmitter, ElementRef } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { User } from '../../../models/user';
 import { Venue } from '../../../models/venue';
 import { VenueService } from '../../../services/venue.service';
 import { AmenityService } from '../../../services/amenity.service';
 import { Amenity } from '../../../models/amenity';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Category } from '../../../models/category';
 import { CategoryService } from '../../../services/category.service';
 import { MatChipInputEvent } from '@angular/material';

@@ -1,4 +1,3 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { VenueService } from './../../../services/venue.service';
 import { UserService } from './../../../services/user.service';

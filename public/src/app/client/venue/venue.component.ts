@@ -3,17 +3,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Venue } from '../../models/venue';
 import { VenueService } from '../../services/venue.service';
 import { Subscription } from 'rxjs/Subscription';
-import { Location } from '@angular/common';
 
 import { AgmMap } from '@agm/core/directives/map';
 import { google } from '@agm/core/services/google-maps-types';
 import { Amenity } from '../../models/amenity';
-import { AmenityService } from '../../services/amenity.service';
+
 
 import { DomSanitizer } from '@angular/platform-browser';
 import { SafeResourceUrl } from '@angular/platform-browser';
 import { CdkOverlayOrigin, Overlay, OverlayConfig } from '@angular/cdk/overlay';
-import { CdkPortal, ComponentPortal, Portal } from '@angular/cdk/portal';
+import { CdkPortal, Portal } from '@angular/cdk/portal';
 import {
   Component,
   OnInit,
@@ -21,13 +20,10 @@ import {
   ViewChild,
   ViewChildren,
   ViewContainerRef,
-  ViewEncapsulation,
   Output,
   EventEmitter,
-  Input,
 } from '@angular/core';
-import { filter } from 'rxjs/operators/filter';
-import { tap } from 'rxjs/operators/tap';
+
 import { MatSidenav } from "@angular/material";
 import { Vendor } from '../../models/vendor';
 import { VendorService } from '../../services/vendor.service';
@@ -72,7 +68,6 @@ export class VenueComponent implements OnInit, OnDestroy {
     private _venueService: VenueService,
     private _vendorService: VendorService,
     private _activatedRoute: ActivatedRoute,
-    private _router: Router,
     public overlay: Overlay,
     public viewContainerRef: ViewContainerRef,
     public sanitizer: DomSanitizer

@@ -2,7 +2,6 @@ import { Subscription } from 'rxjs/Subscription';
 import { VenueService } from './../../../services/venue.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { User } from '../../../models/user';
 import { Review } from '../../../models/review';
 import { UserService } from '../../../services/user.service';
 import { ReviewService } from '../../../services/review.service';
@@ -33,9 +32,7 @@ export class ReviewNewComponent implements OnInit, OnDestroy {
 
   constructor(
     private _reviewService: ReviewService,
-    private _userService: UserService,
     private _venueService: VenueService,
-    private _router: Router,
     private _activatedRoute: ActivatedRoute,
     private location: Location
   ) {}
